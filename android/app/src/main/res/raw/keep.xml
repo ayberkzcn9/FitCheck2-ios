@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Kaynak daraltma (isShrinkResources) koruması.
+
+  google_sign_in eklentisi Android tarafında web istemci kimliğini
+  YANSIMA (reflection) ile arar:
+
+      getResources().getIdentifier("default_web_client_id", "string", ...)
+
+  Bu erişim derlenmiş kodda görünmediği için kaynak daraltıcı, google-services
+  eklentisinin ürettiği `default_web_client_id` kaynağını "ulaşılamaz" sayıp
+  release build'den siliyordu. Kaynak silindiğinde eklenti idToken istemiyor
+  (requestIdToken çağrılmıyor), Google girişi de idToken'sız kaldığı için
+  başarısız oluyordu.
+
+  Aşağıdaki kural kaynağı korur; böylece `.env` içindeki GOOGLE_WEB_CLIENT_ID
+  boş olsa bile cihaz varsayılanı çalışmaya devam eder.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@string/default_web_client_id" />

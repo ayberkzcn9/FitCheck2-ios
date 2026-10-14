@@ -1,0 +1,573 @@
+// Card removed - showing content directly with enhanced styling
+                            return Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Gün başlığı ve renk çubuğu
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16, vertical: 12),
+                                    decoration: BoxDecoration(
+                                      color: isGiyildi
+                                          ? Colors.green.withValues(alpha: 0.15)
+                                          : widget.anaRenk.withValues(alpha: 0.1),
+                                      borderRadius: BorderRadius.circular(16),
+                                      border: Border.all(
+                                        color: isGiyildi
+                                            ? Colors.green
+                                            : widget.anaRenk.withValues(alpha: 0.3),
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 8,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            color: isGiyildi
+                                                ? Colors.green
+                                                : widget.anaRenk,
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 12),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                cevrilmisGun,
+                                                style: theme.textTheme.headlineSmall
+                                                    ?.copyWith(
+                                                  fontWeight: FontWeight.w900,
+                                                  letterSpacing: -0.5,
+                                                  color: colorScheme.onSurface,
+                                                ),
+                                              ),
+                                              if (!booleanBosMu &&
+                                                  kombinAdi.isNotEmpty) ...[
+                                                const SizedBox(height: 4),
+                                                Text(
+                                                  kombinAdi,
+                                                  style: theme.textTheme.titleLarge
+                                                      ?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: isGiyildi
+                                                        ? Colors.green
+                                                        : widget.anaRenk,
+                                                  ),
+                                                ),
+                                              ],
+                                            ],
+                                          ),
+                                        ),
+                                        // Rozetler
+                                        if (!booleanBosMu ||
+                                            gunlukHavaTahmini.isNotEmpty) ...[
+                                          const SizedBox(width: 12),
+                                          Wrap(
+                                            spacing: 8,
+                                            runSpacing: 8,
+                                            children: [
+                                              if (!booleanBosMu)
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                    horizontal: 12,
+                                                    vertical: 8,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: colorScheme
+                                                        .surfaceContainerHighest,
+                                                    borderRadius:
+                                                        BorderRadius.circular(12),
+                                                  ),
+                                                  child: isAnalizEdiliyor
+                                                      ? SizedBox(
+                                                          width: 16,
+                                                          height: 16,
+                                                          child: CircularProgressIndicator(
+                                                            strokeWidth: 2,
+                                                            color: colorScheme
+                                                                .onSurfaceVariant,
+                                                          ),
+                                                        )
+                                                      : Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: [
+                                                            const Icon(
+                                                              Icons
+                                                                  .analytics_rounded,
+                                                              size: 16,
+                                                              color: Colors.black,
+                                                            ),
+                                                            const SizedBox(
+                                                                width: 6),
+                                                            Text(
+                                                              l10n.kombinUyumYuzdesi(
+                                                                  renkPuani
+                                                                      .toString()),
+                                                              style: theme.textTheme
+                                                                  .labelMedium
+                                                                  ?.copyWith(
+                                                                fontWeight:
+                                                                    FontWeight.bold,
+                                                                color: colorScheme
+                                                                    .onSurface,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                ),
+                                              if (gunlukHavaTahmini.isNotEmpty)
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                    horizontal: 12,
+                                                    vertical: 8,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: colorScheme
+                                                        .surfaceContainerHighest,
+                                                    borderRadius:
+                                                        BorderRadius.circular(12),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.cloud_outlined,
+                                                        size: 16,
+                                                        color: Colors.black,
+                                                      ),
+                                                      const SizedBox(width: 6),
+                                                      Text(
+                                                        gunlukHavaTahmini,
+                                                        style: theme
+                                                            .textTheme.labelMedium
+                                                            ?.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              colorScheme.onSurface,
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 16),
+
+                                  // Parçalar Listesi - Direkt göster
+                                  if (booleanBosMu)
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 8),
+                                      child: Text(
+                                        tuyoMetni.isNotEmpty
+                                            ? tuyoMetni
+                                            : l10n.haftalikUyumsuzParca,
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(
+                                          color: colorScheme.onSurfaceVariant,
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      ),
+                                    )
+                                  else
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Parçalar',
+                                          style: theme.textTheme.titleMedium
+                                              ?.copyWith(
+                                            fontWeight: FontWeight.w800,
+                                            color: colorScheme.onSurface,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 12),
+                                        SizedBox(
+                                          height: 160,
+                                          child: ListView.separated(
+                                            physics:
+                                                const BouncingScrollPhysics(),
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: parcalarListesi.length,
+                                            separatorBuilder: (context, _) =>
+                                                const SizedBox(width: 12),
+                                            itemBuilder: (context, i) {
+                                              final metin =
+                                                  parcalarListesi[i].toString();
+                                              final gorselBytes = _gucluGorselBul(
+                                                  metin, widget.gardirobum);
+                                              final kategoriStr =
+                                                  _kategoriyiMetindenCikar(metin);
+                                              String uiKategori =
+                                                  _kategoriEtiketiGetir(
+                                                      kategoriStr);
+
+                                              return GestureDetector(
+                                                onTap: () => HaftalikDialoglar
+                                                    .netGorselModalGoster(
+                                                  context: context,
+                                                  anaRenk: widget.anaRenk,
+                                                  tumParcalarMetinleri:
+                                                      parcalarListesi,
+                                                  baslangicIndex: i,
+                                                  parcaBilgisiAyristir:
+                                                      _parcaBilgileriniAyristir,
+                                                  gucluGorselBul: (m) =>
+                                                      _gucluGorselBul(
+                                                          m, widget.gardirobum),
+                                                ),
+                                                child: Container(
+                                                  width: 120,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(20),
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  clipBehavior: Clip.hardEdge,
+                                                  child: Stack(
+                                                    fit: StackFit.expand,
+                                                    children: [
+                                                      if (gorselBytes != null)
+                                                        Image.memory(
+                                                          gorselBytes,
+                                                          fit: BoxFit.cover,
+                                                        )
+                                                      else
+                                                        const Center(
+                                                          child: Icon(
+                                                            Icons
+                                                                .checkroom_rounded,
+                                                            size: 36,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ),
+
+                                                      // Alt Kategori Katmanı
+                                                      Positioned(
+                                                        bottom: 0,
+                                                        left: 0,
+                                                        right: 0,
+                                                        child: Container(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .symmetric(
+                                                            vertical: 6),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            gradient:
+                                                                LinearGradient(
+                                                              begin: Alignment
+                                                                  .bottomCenter,
+                                                              end: Alignment
+                                                                  .topCenter,
+                                                              colors: [
+                                                                Colors.black
+                                                                  .withValues(
+                                                                      alpha:
+                                                                          0.8),
+                                                                Colors
+                                                                  .transparent,
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          child: Text(
+                                                            uiKategori,
+                                                            textAlign:
+                                                                TextAlign.center,
+                                                          style:
+                                                              const TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 11,
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    // Parça Değiştir Butonu
+                                                    Positioned(
+                                                      top: 6,
+                                                      right: 6,
+                                                      child: InkWell(
+                                                        onTap: () =>
+                                                            _parcaDegistirmeyiTetikle(
+                                                            _seciliGunIndex,
+                                                            metin,
+                                                          ),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                          child: BackdropFilter(
+                                                            filter: ImageFilter
+                                                                .blur(
+                                                              sigmaX: 6,
+                                                              sigmaY: 6,
+                                                            ),
+                                                            child: Container(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(6),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withValues(
+                                                                        alpha:
+                                                                            0.3),
+                                                                shape: BoxShape
+                                                                      .circle,
+                                                              ),
+                                                              child: const Icon(
+                                                                Icons
+                                                                    .sync_rounded,
+                                                                size: 16,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
+
+                                    // Kombin kurulamayan (tamamen boş) günlerde
+                                    // stilistin metin kombin önerisi gösterilir;
+                                    // kombin oluşan günlerde bu kutu çıkmaz.
+                                    if (booleanBosMu) ...[
+                                      const SizedBox(height: 14),
+                                      _aiOneriKutusu(
+                                        l10n: l10n,
+                                        theme: theme,
+                                        metin: eksikParcaOneriMetni,
+                                        yukleniyor: _bosGunOnerileriYukleniyor &&
+                                            eksikParcaAiOnerisi.isEmpty,
+                                        onTekrarDene:
+                                            eksikParcaAiOnerisi.isEmpty
+                                                ? _bosGunlerIcinStilistOnerileriniGetir
+                                                : null,
+                                      ),
+                                    ],
+
+                                    // Stilist İpucu Kutusu (YUMUŞAK PASTEL LAVANTA TONLARI)
+                                    if (!booleanBosMu) ...[
+                                      const SizedBox(height: 20),
+                                      Container(
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFF7F2FA),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: const Color(0xFFE8DEF8),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Icon(
+                                              Icons.auto_awesome_rounded,
+                                              size: 18,
+                                              color: Color(0xFF9A73B5),
+                                            ),
+                                            const SizedBox(width: 12),
+                                            Expanded(
+                                              child: isAnalizEdiliyor
+                                                  ? Row(
+                                                      children: [
+                                                        const SizedBox(
+                                                          width: 16,
+                                                          height: 16,
+                                                          child: CircularProgressIndicator(
+                                                            strokeWidth: 2,
+                                                            color: Color(
+                                                                0xFF9A73B5),
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 10),
+                                                        Text(
+                                                          l10n.yenidenDegerlendiriliyor,
+                                                          style: theme.textTheme
+                                                              .bodyMedium
+                                                              ?.copyWith(
+                                                            fontStyle: FontStyle
+                                                                .italic,
+                                                            color: const Color(
+                                                                0xFF6B5382),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : Text(
+                                                      metniGuvenliYap(
+                                                          tuyoMetni),
+                                                      style: theme
+                                                          .textTheme.bodyMedium
+                                                          ?.copyWith(
+                                                        fontSize: 13.5,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: const Color(
+                                                            0xFF4A3B5A),
+                                                        height: 1.45,
+                                                      ),
+                                                    ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+
+                                    const SizedBox(height: 16),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        // Favori Butonu
+                                        IconButton.filledTonal(
+                                          icon: Icon(
+                                            isFavori
+                                                ? Icons.star_rounded
+                                                : Icons.star_outline_rounded,
+                                            size: 22,
+                                          ),
+                                          style: IconButton.styleFrom(
+                                            backgroundColor: isFavori
+                                                ? Colors.amber.shade100
+                                                : colorScheme
+                                                    .surfaceContainerHighest,
+                                            foregroundColor: isFavori
+                                                ? Colors.amber.shade900
+                                                : colorScheme.onSurfaceVariant,
+                                          ),
+                                          onPressed: () {
+                                            HapticFeedback.lightImpact();
+                                            setState(() {
+                                              if (isFavori) {
+                                                _favoriEklenenGunler
+                                                    .remove(_seciliGunIndex);
+                                                widget.onFavoriSil
+                                                    ?.call(favoriObjesi);
+                                              } else {
+                                                _favoriEklenenGunler
+                                                    .add(_seciliGunIndex);
+                                                widget
+                                                    .onFavoriEkle(favoriObjesi);
+                                              }
+                                            });
+                                          },
+                                        ),
+                                        const SizedBox(width: 8),
+
+                                        // Giydim Butonu
+                                        IconButton.filledTonal(
+                                          icon: Icon(
+                                            isGiyildi
+                                                ? Icons.check_circle_rounded
+                                                : Icons
+                                                    .check_circle_outline_rounded,
+                                            size: 22,
+                                          ),
+                                          style: IconButton.styleFrom(
+                                            backgroundColor: isGiyildi
+                                                ? Colors.green.shade100
+                                                : colorScheme
+                                                    .surfaceContainerHighest,
+                                            foregroundColor: isGiyildi
+                                                ? Colors.green.shade800
+                                                : colorScheme.onSurfaceVariant,
+                                          ),
+                                          onPressed: () {
+                                            final List<Kiyafet> guncelParcalar =
+                                                [];
+                                            for (var pMetin
+                                                in parcalarListesi) {
+                                              final kiyafet =
+                                                  _metindenKiyafetBul(
+                                                      pMetin.toString(),
+                                                      widget.gardirobum);
+                                              if (kiyafet != null &&
+                                                  !guncelParcalar
+                                                      .contains(kiyafet)) {
+                                                guncelParcalar.add(kiyafet);
+                                              }
+                                            }
+                                            final String parcaIsimleriMetni =
+                                                guncelParcalar.isNotEmpty
+                                                    ? guncelParcalar
+                                                        .map((k) =>
+                                                            k.gorunenBaslik)
+                                                        .join(", ")
+                                                    : temizParcaIsimleri
+                                                        .join(", ");
+
+                                            _bugunGiydimTetikle(
+                                              index: _seciliGunIndex,
+                                              kombinAdi: kombinAdi,
+                                              parcaIsimleriMetni:
+                                                  parcaIsimleriMetni,
+                                            );
+                                          },
+                                        ),
+                                        const SizedBox(width: 8),
+                                        // Sohbet Butonu
+                                        Tooltip(
+                                          message: l10n.kombinSohbetAc,
+                                          child: IconButton.filledTonal(
+                                            icon: const Icon(
+                                              Icons
+                                                  .chat_bubble_outline_rounded,
+                                              size: 22,
+                                            ),
+                                            style: IconButton.styleFrom(
+                                              backgroundColor: colorScheme
+                                                  .surfaceContainerHighest,
+                                              foregroundColor:
+                                                  colorScheme.onSurfaceVariant,
+                                            ),
+                                            onPressed: booleanBosMu
+                                                ? null
+                                                : () => _kombinSohbetiniAc(
+                                                      gunAdi: cevrilmisGun,
+                                                      kombinAdi: kombinAdi,
+                                                      parcalar: parcalarListesi
+                                                          .map((p) =>
+                                                              p.toString())
+                                                          .toList(),
+                                                      gunlukHava:
+                                                          gunlukHavaTahmini,
+                                                      tuyo: tuyoMetni,
+                                                      renkUyumuPuani: renkPuani
+                                                              is num
+                                                          ? renkPuani.toInt()
+                                                          : 90,
+                                                    ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                ],
+                              ),
+                            );

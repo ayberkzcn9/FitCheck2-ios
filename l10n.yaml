@@ -1,0 +1,6 @@
+arb-dir: lib/l10n
+template-arb-file: app_tr.arb
+output-localization-file: app_localizations.dart
+# Desteklenen diller listesine 'it' mutlaka eklenmeli:
+supported-locales: [tr, en, it, es, zh, ar, fr, de, pt, ja, ko, ru]
+untranslated-messages-file: eksik_ceviriler.json

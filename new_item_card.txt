@@ -1,0 +1,42 @@
+child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  // Görsel - kart yok, direkt
+                                                  Expanded(
+                                                    child: ClipRRect(
+                                                      borderRadius: BorderRadius.circular(16),
+                                                      child: gorselBytes != null
+                                                          ? Image.memory(
+                                                              gorselBytes,
+                                                              fit: BoxFit.cover,
+                                                              width: double.infinity,
+                                                            )
+                                                          : Container(
+                                                              color: colorScheme.surfaceContainerHighest,
+                                                              child: Center(
+                                                                child: Icon(
+                                                                  Icons.checkroom_rounded,
+                                                                  size: 36,
+                                                                  color: colorScheme.onSurfaceVariant,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                    ),
+                                                  ),
+                                                  // Kategori etiketi
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 6),
+                                                    child: Text(
+                                                      uiKategori,
+                                                      maxLines: 1,
+                                                      overflow: TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                        fontSize: 11,
+                                                        fontWeight: FontWeight.w700,
+                                                        color: colorScheme.onSurfaceVariant,
+                                                      ),
+                                                      textAlign: TextAlign.center,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),

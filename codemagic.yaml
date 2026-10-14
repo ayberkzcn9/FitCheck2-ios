@@ -1,0 +1,145 @@
+# Codemagic CI/CD yapılandırması
+# Her iki platform için build alır (iOS + Android)
+#
+# Kullanım:
+#   1. Kod GitHub'a yüklenir
+#   2. Codemagic bu dosyayı okuyup otomatik build alır
+#   3. iOS: TestFlight'a yükler (App Store Connect API Key gerekli)
+#   4. Android: AAB üretir
+#
+# Ortam değişkenleri (Codemagic UI'dan eklenir):
+#   - .env içeriği
+#   - GOOGLE_SERVICE_INFO_PLIST (iOS Firebase)
+#   - GOOGLE_SERVICES_JSON (Android Firebase)
+
+workflows:
+  # ---------------------------------------------------------------
+  # iOS — TestFlight'a yükle
+  # ---------------------------------------------------------------
+  ios-release:
+    name: iOS Release (TestFlight)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      # Codemagic UI'da oluşturulan App Store Connect entegrasyonu
+      app_store_connect: Codemagic ASC
+
+    environment:
+      ios_signing:
+        # Otomatik imzalama: Apple hesabı ile profil oluşturur
+        distribution_type: app_store
+        bundle_identifier: com.fitcheck2.app
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      vars:
+        # .env içeriğini Codemagic UI'da "BG_REMOVE_API_KEY" gibi ekleyin
+        # veya burada tanımlayın (gizli tutmak için UI tercih edilir)
+        FLUTTER_BUILD_MODE: release
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+      cancel_previous_builds: true
+
+    scripts:
+      - name: Flutter bağımlılıkları
+        script: |
+          flutter pub get
+
+      # .env dosyasını Codemagic ortam değişkeninden oluştur
+      - name: .env dosyası oluştur
+        script: |
+          echo "$ENV_FILE" > .env
+
+      # iOS Firebase yapılandırması
+      - name: GoogleService-Info.plist yerleştir
+        script: |
+          echo "$GOOGLE_SERVICE_INFO_PLIST" | base64 --decode > ios/Runner/GoogleService-Info.plist
+
+      - name: CocoaPods kur
+        script: |
+          cd ios && pod install
+
+      - name: iOS imzalamayı ayarla
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "com.fitcheck2.app" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
+
+      - name: iOS build (IPA)
+        script: |
+          flutter build ipa --release \
+            --obfuscate \
+            --split-debug-info=build/symbols-ios
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/symbols-ios/*.symbols
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        # TestFlight'a yükle
+        submit_to_testflight: true
+
+  # ---------------------------------------------------------------
+  # Android — AAB üret
+  # ---------------------------------------------------------------
+  android-release:
+    name: Android Release (AAB)
+    max_build_duration: 60
+    instance_type: linux_x2
+
+    environment:
+      flutter: stable
+      vars:
+        FLUTTER_BUILD_MODE: release
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+      cancel_previous_builds: true
+
+    scripts:
+      - name: Flutter bağımlılıkları
+        script: |
+          flutter pub get
+
+      - name: .env dosyası oluştur
+        script: |
+          echo "$ENV_FILE" > .env
+
+      # Android Firebase yapılandırması
+      - name: google-services.json yerleştir
+        script: |
+          echo "$GOOGLE_SERVICES_JSON" | base64 --decode > android/app/google-services.json
+
+      # İmzalama anahtarı (keystore)
+      - name: Keystore hazırla
+        script: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > android/app/upload-keystore.jks
+          echo "storePassword=$KEYSTORE_PASSWORD" > android/key.properties
+          echo "keyPassword=$KEY_PASSWORD" >> android/key.properties
+          echo "keyAlias=$KEY_ALIAS" >> android/key.properties
+          echo "storeFile=upload-keystore.jks" >> android/key.properties
+
+      - name: Android AAB build
+        script: |
+          flutter build appbundle --release \
+            --obfuscate \
+            --split-debug-info=build/symbols
+
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+      - build/symbols/*.symbols

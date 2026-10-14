@@ -1,0 +1,42 @@
+{
+    // Karartmalı release derlemeleri. Doğrudan `flutter build ... --release` yerine
+    // bu görevleri kullanın; --obfuscate ve --split-debug-info her zaman eklenir.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Release: AAB (karartılmış)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}/tool/release.ps1",
+                "-Hedef",
+                "aab"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Release: APK (karartılmış)",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}/tool/release.ps1",
+                "-Hedef",
+                "apk"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        }
+    ]
+}

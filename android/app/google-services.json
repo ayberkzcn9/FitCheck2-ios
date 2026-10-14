@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1073036685578",
+    "project_id": "fitcheck-98dec",
+    "storage_bucket": "fitcheck-98dec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073036685578:android:7183fa8738a5a590accaf3",
+        "android_client_info": {
+          "package_name": "com.fitcheck2.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073036685578-13falul2cjsoad5ias44d30jr0lsllnn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fitcheck2.app",
+            "certificate_hash": "22429abdc428ce798599797934e6c02ad759331a"
+          }
+        },
+        {
+          "client_id": "1073036685578-4l5ugub50qiso6h1l86ndh9pkt4cnfbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBwE6CjhxRf3JpYTUqqPIjRfercrhmqqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073036685578-4l5ugub50qiso6h1l86ndh9pkt4cnfbe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1073036685578-8uuge0qv8b4f0tch1bfqto45s1vtj962.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.kombinApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

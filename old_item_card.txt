@@ -1,0 +1,249 @@
+child: Container(
+                                                width: 120,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: colorScheme
+                                                      .surfaceContainerHighest,
+                                                ),
+                                                clipBehavior: Clip.hardEdge,
+                                                child: Stack(
+                                                  fit: StackFit.expand,
+                                                  children: [
+                                                    if (gorselBytes != null)
+                                                      Image.memory(
+                                                        gorselBytes,
+                                                        fit: BoxFit.cover,
+                                                      )
+                                                    else
+                                                      const Center(
+                                                        child: Icon(
+                                                          Icons
+                                                              .checkroom_rounded,
+                                                          size: 36,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+
+                                                    // Alt Kategori Katmanı
+                                                    Positioned(
+                                                      bottom: 0,
+                                                      left: 0,
+                                                      right: 0,
+                                                      child: Container(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                vertical: 6),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          gradient:
+                                                              LinearGradient(
+                                                            begin: Alignment
+                                                                .bottomCenter,
+                                                            end: Alignment
+                                                                .topCenter,
+                                                            colors: [
+                                                              Colors.black
+                                                                  .withValues(
+                                                                      alpha:
+                                                                          0.8),
+                                                              Colors
+                                                                  .transparent,
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          uiKategori,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style:
+                                                              const TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 11,
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    // Parça Değiştir Butonu
+                                                    Positioned(
+                                                      top: 6,
+                                                      right: 6,
+                                                      child: InkWell(
+                                                        onTap: () =>
+                                                            _parcaDegistirmeyiTetikle(
+                                                          _seciliGunIndex,
+                                                          metin,
+                                                        ),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                          child: BackdropFilter(
+                                                            filter: ImageFilter
+                                                                .blur(
+                                                              sigmaX: 6,
+                                                              sigmaY: 6,
+                                                            ),
+                                                            child: Container(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(6),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withValues(
+                                                                        alpha:
+                                                                            0.3),
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                              ),
+                                                              child: const Icon(
+                                                                Icons
+                                                                    .sync_rounded,
+                                                                size: 16,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+
+                                    // Kombin kurulamayan (tamamen boş) günlerde
+                                    // stilistin metin kombin önerisi gösterilir;
+                                    // kombin oluşan günlerde bu kutu çıkmaz.
+                                    if (booleanBosMu) ...[
+                                      const SizedBox(height: 14),
+                                      _aiOneriKutusu(
+                                        l10n: l10n,
+                                        theme: theme,
+                                        metin: eksikParcaOneriMetni,
+                                        yukleniyor: _bosGunOnerileriYukleniyor &&
+                                            eksikParcaAiOnerisi.isEmpty,
+                                        onTekrarDene:
+                                            eksikParcaAiOnerisi.isEmpty
+                                                ? _bosGunlerIcinStilistOnerileriniGetir
+                                                : null,
+                                      ),
+                                    ],
+
+                                    // Stilist İpucu Kutusu (YUMUŞAK PASTEL LAVANTA TONLARI)
+                                    if (!booleanBosMu) ...[
+                                      const SizedBox(height: 20),
+                                      Container(
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFF7F2FA),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: const Color(0xFFE8DEF8),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Icon(
+                                              Icons.auto_awesome_rounded,
+                                              size: 18,
+                                              color: Color(0xFF9A73B5),
+                                            ),
+                                            const SizedBox(width: 12),
+                                            Expanded(
+                                              child: isAnalizEdiliyor
+                                                  ? Row(
+                                                      children: [
+                                                        const SizedBox(
+                                                          width: 16,
+                                                          height: 16,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            strokeWidth: 2,
+                                                            color: Color(
+                                                                0xFF9A73B5),
+                                                          ),
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 10),
+                                                        Text(
+                                                          l10n.yenidenDegerlendiriliyor,
+                                                          style: theme.textTheme
+                                                              .bodyMedium
+                                                              ?.copyWith(
+                                                            fontStyle: FontStyle
+                                                                .italic,
+                                                            color: const Color(
+                                                                0xFF6B5382),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : Text(
+                                                      metniGuvenliYap(
+                                                          tuyoMetni),
+                                                      style: theme
+                                                          .textTheme.bodyMedium
+                                                          ?.copyWith(
+                                                        fontSize: 13.5,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: const Color(
+                                                            0xFF4A3B5A),
+                                                        height: 1.45,
+                                                      ),
+                                                    ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                    const SizedBox(height: 20),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        // Favori Butonu
+                                        IconButton.filledTonal(
+                                          icon: Icon(
+                                            isFavori
+                                                ? Icons.star_rounded
+                                                : Icons.star_outline_rounded,
+                                            size: 22,
+                                          ),
+                                          style: IconButton.styleFrom(
+                                            backgroundColor: isFavori
+                                                ? Colors.amber.shade100
+                                                : colorScheme
+                                                    .surfaceContainerHighest,
+                                            foregroundColor: isFavori
+                                                ? Colors.amber.shade900
+                                                : colorScheme.onSurfaceVariant,
+                                          ),
+                                          onPressed: () {
+                                            HapticFeedback.lightImpact();
+                                            setState(() {
+                                              if (isFavori) {
+                                                _favoriEklenenGunler
+                                                    .remove(_seciliGunIndex);
+                                                widget.onFavoriSil
+                                                    ?.call(favoriObjesi);
+                                              } else {
+                                                _favoriEklenenGunler
+                                                    .add(_seciliGunIndex);
+                                                widget
+                                                    .onFavoriEkle(favoriObjesi);
+                                              }
+                                            }

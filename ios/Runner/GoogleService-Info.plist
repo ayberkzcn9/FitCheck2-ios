@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1073036685578-a84k1qi3aag7ica9u3q2gj0akb8qms9t.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1073036685578-a84k1qi3aag7ica9u3q2gj0akb8qms9t</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1073036685578-13falul2cjsoad5ias44d30jr0lsllnn.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBz0DAn8XgHRtyKRUY8VGVgmHQBEbUOw5o</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1073036685578</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fitcheck2.app</string>
+	<key>PROJECT_ID</key>
+	<string>fitcheck-98dec</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fitcheck-98dec.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1073036685578:ios:3d4ef475788c5a5baccaf3</string>
+</dict>
+</plist>

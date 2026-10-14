@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.fitcheck2.app",
+      "sha256_cert_fingerprints":
+        ["54:24:EF:0A:9F:1B:FE:E6:85:14:8E:10:61:96:60:55:93:E9:19:BB:AD:93:FE:D4:99:DB:60:23:98:C6:12:5F"]
+    }
+  }
+]
