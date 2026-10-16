@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
@@ -10,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'l10n/app_localizations.dart';
@@ -104,6 +106,22 @@ Future<UygulamaBaslatmaSonucu> uygulamaHazirliklariniBaslat() async {
 
   if (!kIsWeb && ReklamServisi.reklamlarEtkinMi) {
     try {
+      // iOS 14+: reklamlar için izleme izni (ATT). Kullanıcı reddederse AdMob
+      // kişiselleştirilmemiş reklam servis eder; akış hiçbir durumda bozulmaz.
+      if (Platform.isIOS) {
+        try {
+          final TrackingStatus attDurum =
+              await AppTrackingTransparency.trackingAuthorizationStatus;
+          if (attDurum == TrackingStatus.notDetermined) {
+            // iOS, uygulama tam aktif olmadan diyaloğu göstermez; kısa bekle.
+            await Future.delayed(const Duration(milliseconds: 600));
+            await AppTrackingTransparency.requestTrackingAuthorization();
+          }
+        } catch (e) {
+          debugPrint('ATT izni hatası: $e');
+        }
+      }
+
       // AdMob başlatma ağ gerektirebilir; takılmayı önlemek için zaman aşımı.
       await MobileAds.instance
           .initialize()
