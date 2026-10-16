@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
@@ -11,8 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'l10n/app_localizations.dart';
 
@@ -31,6 +28,7 @@ import 'services/background_removal_service.dart';
 import 'services/bildirim_servisi.dart';
 import 'services/fcm_service.dart';
 import 'services/reklam_servisi.dart';
+import 'services/satin_alma_servisi.dart';
 import '../theme/design_tokens.dart';
 
 Future<void> main() async {
@@ -104,35 +102,16 @@ Future<UygulamaBaslatmaSonucu> uygulamaHazirliklariniBaslat() async {
 
   await ReklamServisi().premiumDurumunuYukle();
 
-  if (!kIsWeb && ReklamServisi.reklamlarEtkinMi) {
-    try {
-      // iOS 14+: reklamlar için izleme izni (ATT). Kullanıcı reddederse AdMob
-      // kişiselleştirilmemiş reklam servis eder; akış hiçbir durumda bozulmaz.
-      if (Platform.isIOS) {
-        try {
-          final TrackingStatus attDurum =
-              await AppTrackingTransparency.trackingAuthorizationStatus;
-          if (attDurum == TrackingStatus.notDetermined) {
-            // iOS, uygulama tam aktif olmadan diyaloğu göstermez; kısa bekle.
-            await Future.delayed(const Duration(milliseconds: 600));
-            await AppTrackingTransparency.requestTrackingAuthorization();
-          }
-        } catch (e) {
-          debugPrint('ATT izni hatası: $e');
-        }
-      }
+  // Abonelik: mağaza fiyatları/planları önceden yüklenir (paywall, ayarlar
+  // kartı ve satın alma diyalogları gerçek fiyatı göstersin) ve yerelde premium
+  // görünen aboneliğin hâlâ geçerli olduğu düzenli aralıkla doğrulanır.
+  // Arayüzü bekletmemek için await edilmez; hata durumunda akış etkilenmez.
+  unawaited(SatinAlmaServisi.ornek.baslat());
 
-      // AdMob başlatma ağ gerektirebilir; takılmayı önlemek için zaman aşımı.
-      await MobileAds.instance
-          .initialize()
-          .timeout(const Duration(seconds: 12));
-      // Ön yükleme (non-blocking): reklamlar hazır bekler, gerektiğinde anında
-      // gösterilir. initialize() await edildiği için SDK hazır durumdadır.
-      ReklamServisi().gecisReklamiYukle();
-      ReklamServisi().odulluReklamYukle();
-    } catch (e) {
-      debugPrint('AdMob başlatma hatası: $e');
-    }
+  if (!kIsWeb && ReklamServisi.reklamlarEtkinMi) {
+    // AdMob başlatma + ATT izni + ön yükleme tek yerde: ReklamServisi.
+    // Abonelik iptalinde aynı metot yeniden tetiklenir.
+    await ReklamServisi().reklamlariBaslat();
   }
 
   try {

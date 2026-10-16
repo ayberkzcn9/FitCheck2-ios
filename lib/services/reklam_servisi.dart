@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:io';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,6 +54,9 @@ class ReklamServisi {
   static int? _kalanHakCache;
   static bool? _isAdminCache;
 
+  /// AdMob SDK'sının bir kez başlatıldığını izler.
+  bool _reklamSdkBaslatildi = false;
+
   // Global hak sayacı dinleyicisi (instance-based for proper disposal)
   final ValueNotifier<int> kalanHakNotifier = ValueNotifier<int>(3);
 
@@ -83,6 +88,58 @@ class ReklamServisi {
     reklamlarEtkinMi = false;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('reklamsiz_premium', true);
+  }
+
+  /// Aboneliği sona ermiş/iptal edilmiş kullanıcıda reklamları yeniden devreye
+  /// alır. Reklam SDK'sı da burada yeniden başlatılır; böylece iptal aynı
+  /// oturumda fark edilse bile reklamlar çalışır.
+  ///
+  /// Yönetici/kupon erişimi olan kullanıcıda reklamlar kapalı kalır.
+  Future<void> reklamlariAc() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('reklamsiz_premium', false);
+    final bool admin = prefs.getBool('fitcheck_admin_modu') ?? false;
+    reklamlarEtkinMi = !admin;
+    if (reklamlarEtkinMi) unawaited(reklamlariBaslat());
+  }
+
+  /// AdMob SDK'sını başlatır ve reklamları önceden yükler.
+  ///
+  /// Uygulama açılışında çağrılır. Reklamlar kapalıysa (premium/kupon) hiç
+  /// başlatılmaz; erişim sonradan kapanırsa [reklamlariAc] üzerinden yeniden
+  /// tetiklenir. Tekrar çağrılması güvenlidir.
+  Future<void> reklamlariBaslat() async {
+    if (!reklamlarEtkinMi) return;
+    if (_reklamSdkBaslatildi) return;
+    _reklamSdkBaslatildi = true;
+
+    try {
+      // iOS 14+: reklamlar için izleme izni (ATT). Kullanıcı reddederse AdMob
+      // kişiselleştirilmemiş reklam servis eder; akış hiçbir durumda bozulmaz.
+      if (Platform.isIOS) {
+        try {
+          final TrackingStatus attDurum =
+              await AppTrackingTransparency.trackingAuthorizationStatus;
+          if (attDurum == TrackingStatus.notDetermined) {
+            // iOS, uygulama tam aktif olmadan diyaloğu göstermez; kısa bekle.
+            await Future.delayed(const Duration(milliseconds: 600));
+            await AppTrackingTransparency.requestTrackingAuthorization();
+          }
+        } catch (e) {
+          debugPrint('ATT izni hatası: $e');
+        }
+      }
+
+      // AdMob başlatma ağ gerektirebilir; takılmayı önlemek için zaman aşımı.
+      await MobileAds.instance
+          .initialize()
+          .timeout(const Duration(seconds: 12));
+      // Ön yükleme: reklamlar hazır bekler, gerektiğinde anında gösterilir.
+      gecisReklamiYukle();
+      odulluReklamYukle();
+    } catch (e) {
+      debugPrint('AdMob başlatma hatası: $e');
+    }
   }
 
   Future<bool> isAdmin() async {

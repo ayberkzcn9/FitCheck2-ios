@@ -414,6 +414,47 @@ class AnaEkranDialoglar {
                       ],
                     ],
                   ),
+                  // Premium teklifi: hakların sınırlı olduğu en doğal anda
+                  // gösterilir. Reklamsız (premium) kullanıcıda yeniden teklif
+                  // edilmez.
+                  if (ReklamServisi.reklamlarEtkinMi && kalanHak < 99999) ...[
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton.icon(
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          backgroundColor: anaRenk,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        icon: const Icon(
+                          Icons.workspace_premium_rounded,
+                          size: 18,
+                          color: Colors.white,
+                        ),
+                        label: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            l10n.premiumGec(
+                              SatinAlmaServisi.ornek.aylikFiyat,
+                            ),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(ctx);
+                          _premiumEkraniniAc(context);
+                        },
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -459,29 +500,97 @@ class AnaEkranDialoglar {
               ),
             ],
           ),
-          content: Text(
-            l10n.gardirobunDolduIcerik(maxLimit),
-            style: TextStyle(fontSize: 14, color: context.uygunAltMetin),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                l10n.gardirobunDolduIcerik(maxLimit),
+                style: TextStyle(fontSize: 14, color: context.uygunAltMetin),
+              ),
+              const SizedBox(height: 20),
+              // Birincil teklif: sınırsız gardırop. Ödüllü reklam ikincil.
+              FilledButton.icon(
+                icon: const Icon(Icons.workspace_premium_rounded, size: 18),
+                label: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                style: FilledButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  backgroundColor: AppAccents.successDark,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(ctx);
+                  _premiumEkraniniAc(context);
+                },
+              ),
+              if (ReklamServisi.reklamlarEtkinMi) ...[
+                const SizedBox(height: 8),
+                OutlinedButton.icon(
+                  icon: Icon(
+                    Icons.play_circle_fill_rounded,
+                    size: 18,
+                    color: context.uygunMetin,
+                  ),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.reklamIzleSlotEkle,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: context.uygunMetin,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    side: BorderSide(color: context.uygunMetin),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                    ReklamServisi().odulluReklamGoster(
+                      context: context,
+                      onReward: (reward) async {
+                        await ReklamServisi().reklamIzleyerekKiyafetLimitiEkle(
+                            ReklamServisi.reklamOduluSlot);
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                l10n.yeniSlotEklendiTebrikler,
+                                style: TextStyle(
+                                  color: colors.onSurface,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              backgroundColor: colors.surfaceContainerHigh,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  },
+                ),
+              ],
+            ],
           ),
           actionsPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           actions: [
-            FilledButton.icon(
-              icon: const Icon(Icons.workspace_premium_rounded, size: 18),
-              label: Text(
-                l10n.premiumGec(SatinAlmaServisi.varsayilanFiyat),
-              ),
-              style: FilledButton.styleFrom(
-                backgroundColor: AppAccents.successDark,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.pop(ctx);
-                _premiumEkraniniAc(context);
-              },
-            ),
             TextButton(
               onPressed: () => Navigator.pop(ctx),
               child: Text(
@@ -492,56 +601,6 @@ class AnaEkranDialoglar {
                 ),
               ),
             ),
-            if (ReklamServisi.reklamlarEtkinMi)
-              FilledButton.icon(
-                icon: const Icon(
-                  Icons.play_circle_fill_rounded,
-                  size: 18,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  l10n.reklamIzleSlotEkle,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                style: FilledButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pop(ctx);
-                  ReklamServisi().odulluReklamGoster(
-                    context: context,
-                    onReward: (reward) async {
-                      await ReklamServisi().reklamIzleyerekKiyafetLimitiEkle(
-                          ReklamServisi.reklamOduluSlot);
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              l10n.yeniSlotEklendiTebrikler,
-                              style: TextStyle(
-                                color: colors.onSurface,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            backgroundColor: colors.surfaceContainerHigh,
-                            behavior: SnackBarBehavior.floating,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                  );
-                },
-              ),
           ],
         );
       },
@@ -584,29 +643,100 @@ class AnaEkranDialoglar {
               ),
             ],
           ),
-          content: Text(
-            l10n.gunlukHakBittiIcerik,
-            style: TextStyle(fontSize: 14, color: context.uygunAltMetin),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                l10n.gunlukHakBittiIcerik,
+                style: TextStyle(fontSize: 14, color: context.uygunAltMetin),
+              ),
+              const SizedBox(height: 20),
+              // Birincil teklif: sınırsız kullanım. Ödüllü reklam premium'un
+              // yerine geçmesin diye ikincil (çerçeveli) görünümde sunulur.
+              FilledButton.icon(
+                icon: const Icon(Icons.workspace_premium_rounded, size: 18),
+                label: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                style: FilledButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  backgroundColor: AppAccents.successDark,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(ctx);
+                  _premiumEkraniniAc(context);
+                },
+              ),
+              if (ReklamServisi.reklamlarEtkinMi) ...[
+                const SizedBox(height: 8),
+                OutlinedButton.icon(
+                  icon: Icon(
+                    Icons.play_circle_fill_rounded,
+                    size: 18,
+                    color: context.uygunMetin,
+                  ),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.reklamIzleHakKazan,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: context.uygunMetin,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    side: BorderSide(color: context.uygunMetin),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                    ReklamServisi().odulluReklamGoster(
+                      context: context,
+                      onReward: (reward) async {
+                        await ReklamServisi().reklamIzleyerekHakEkle(
+                          ReklamServisi.reklamOduluKredi,
+                        );
+                        onHakGuncelle();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                l10n.hakEklendiTebrikler,
+                                style: TextStyle(
+                                  color: colors.onSurface,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              backgroundColor: colors.surfaceContainerHigh,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  },
+                ),
+              ],
+            ],
           ),
           actionsPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           actions: [
-            FilledButton.icon(
-              icon: const Icon(Icons.workspace_premium_rounded, size: 18),
-              label: Text(
-                l10n.premiumGec(SatinAlmaServisi.varsayilanFiyat),
-              ),
-              style: FilledButton.styleFrom(
-                backgroundColor: AppAccents.successDark,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.pop(ctx);
-                _premiumEkraniniAc(context);
-              },
-            ),
             TextButton(
               onPressed: () => Navigator.pop(ctx),
               child: Text(
@@ -617,58 +747,6 @@ class AnaEkranDialoglar {
                 ),
               ),
             ),
-            if (ReklamServisi.reklamlarEtkinMi)
-              FilledButton.icon(
-                icon: const Icon(
-                  Icons.play_circle_fill_rounded,
-                  size: 18,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  l10n.reklamIzleHakKazan,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                style: FilledButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pop(ctx);
-                  ReklamServisi().odulluReklamGoster(
-                    context: context,
-                    onReward: (reward) async {
-                      await ReklamServisi().reklamIzleyerekHakEkle(
-                        ReklamServisi.reklamOduluKredi,
-                      );
-                      onHakGuncelle();
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              l10n.hakEklendiTebrikler,
-                              style: TextStyle(
-                                color: colors.onSurface,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            backgroundColor: colors.surfaceContainerHigh,
-                            behavior: SnackBarBehavior.floating,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                  );
-                },
-              ),
           ],
         );
       },

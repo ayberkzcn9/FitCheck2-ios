@@ -70,6 +70,16 @@ class SatinAlmaServisi extends ChangeNotifier {
 
   bool _sorguSuruyor = false;
 
+  /// Aboneliğin hâlâ geçerli olduğu mağazadan en fazla bu aralıkla doğrulanır.
+  static const int dogrulamaAraligiGun = 3;
+
+  static const String _dogrulamaTsAnahtari = 'premium_dogrulama_ts';
+  static const String _premiumAnahtari = 'reklamsiz_premium';
+  static const String _adminAnahtari = 'fitcheck_admin_modu';
+
+  bool _dogrulamaSuruyor = false;
+  Completer<bool>? _dogrulamaCompleter;
+
   // --- DURUM SORGULARI ---
 
   bool get yillikVar => _yillikAdaylar.isNotEmpty;
@@ -151,7 +161,7 @@ class SatinAlmaServisi extends ChangeNotifier {
 
     try {
       final prefs = await SharedPreferences.getInstance();
-      premiumAktif = prefs.getBool('reklamsiz_premium') ?? false;
+      premiumAktif = prefs.getBool(_premiumAnahtari) ?? false;
       if (premiumAktif) {
         await ReklamServisi().reklamlariKapat();
       }
@@ -161,6 +171,8 @@ class SatinAlmaServisi extends ChangeNotifier {
         onError: (Object error) {
           hata = error.toString();
           yukleniyor = false;
+          // Doğrulama sürüyorsa "durum bilinmiyor" say: premium kapatılmaz.
+          _dogrulamayiBitir(true);
           notifyListeners();
         },
       );
@@ -171,6 +183,86 @@ class SatinAlmaServisi extends ChangeNotifier {
       _sorguSuruyor = false;
       notifyListeners();
     }
+
+    // Arayüz hazır olduktan sonra, arka planda: iptal edilen ya da süresi biten
+    // abonelikte reklamlar yeniden devreye girer.
+    if (magazaHazir) unawaited(_aboneligiDogrula());
+  }
+
+  /// Yerelde premium görünen aboneliğin hâlâ geçerli olduğunu mağazadan
+  /// doğrular; iptal eden ya da süresi biten kullanıcı sonsuza kadar reklamsız
+  /// kalmasın diye.
+  ///
+  /// Emniyet kuralları (yanlış iptal riskini en aza indirir):
+  ///  • Android dışında çalışmaz (iOS'ta mağaza oturum ekranı açabilir).
+  ///  • Mağaza hazır değilse ya da hata verirse hiçbir şey değiştirilmez.
+  ///  • Şüpheli sonuçta (zaman aşımı) yerel kayıt silinir; bir sonraki açılışta
+  ///    doğrulama yeniden çalışır ve abonelik kendiliğinden geri gelir.
+  Future<void> _aboneligiDogrula() async {
+    if (_dogrulamaSuruyor) return;
+    if (!Platform.isAndroid) return;
+
+    final prefs = await SharedPreferences.getInstance();
+
+    // Yönetici/kupon erişimi mağaza aboneliğinden bağımsızdır; dokunulmaz.
+    // (Aksi halde kuponla reklamsız olan kullanıcının erişimi kapanırdı.)
+    if (prefs.getBool(_adminAnahtari) ?? false) return;
+
+    final int? sonTs = prefs.getInt(_dogrulamaTsAnahtari);
+    final bool premiumKayitli = prefs.getBool(_premiumAnahtari) ?? false;
+
+    final bool kontrolZamaniGeldi = sonTs == null ||
+        DateTime.now()
+                .difference(DateTime.fromMillisecondsSinceEpoch(sonTs))
+                .inDays >=
+            dogrulamaAraligiGun;
+    if (!kontrolZamaniGeldi) return;
+
+    _dogrulamaSuruyor = true;
+    final Completer<bool> tamam = Completer<bool>();
+    _dogrulamaCompleter = tamam;
+
+    try {
+      await _magaza.restorePurchases();
+      // Satın alma olayları restore tamamlandıktan hemen sonra da gelebildiği
+      // için kısa bir pencere beklenir. Olay gelmezse abonelik yoktur.
+      final bool abonelikVar =
+          await tamam.future.timeout(const Duration(seconds: 8),
+              onTimeout: () => false);
+
+      if (abonelikVar) {
+        premiumAktif = true;
+        await prefs.setBool(_premiumAnahtari, true);
+        await prefs.setInt(
+            _dogrulamaTsAnahtari, DateTime.now().millisecondsSinceEpoch);
+        await ReklamServisi().reklamlariKapat();
+      } else if (premiumKayitli) {
+        premiumAktif = false;
+        await prefs.setBool(_premiumAnahtari, false);
+        // Bir sonraki açılışta yeniden doğrulanır.
+        await prefs.remove(_dogrulamaTsAnahtari);
+        await ReklamServisi().reklamlariAc();
+        debugPrint('[SatinAlma] Abonelik doğrulanamadı, premium kapatıldı.');
+      } else {
+        await prefs.setInt(
+            _dogrulamaTsAnahtari, DateTime.now().millisecondsSinceEpoch);
+      }
+    } catch (e) {
+      // Çevrimdışı ya da mağaza hatası: mevcut durum korunur.
+      debugPrint('[SatinAlma] Abonelik doğrulama hatası: $e');
+    } finally {
+      _dogrulamaCompleter = null;
+      _dogrulamaSuruyor = false;
+      notifyListeners();
+    }
+  }
+
+  /// Devam eden abonelik doğrulamasını sonuçlandırır (birden fazla olayda
+  /// tekrar tamamlanmasını engeller).
+  void _dogrulamayiBitir(bool sonuc) {
+    final Completer<bool>? tamam = _dogrulamaCompleter;
+    if (tamam == null || tamam.isCompleted) return;
+    tamam.complete(sonuc);
   }
 
   Future<void> _urunleriSorgula() async {
@@ -281,6 +373,8 @@ class SatinAlmaServisi extends ChangeNotifier {
           satinAlma.status == PurchaseStatus.restored) {
         // Üretimde satın alma doğrulaması güvenli bir sunucuda yapılmalıdır.
         premiumAktif = true;
+        // Doğrulama sürüyorsa "abonelik var" bilgisi iletilir.
+        _dogrulamayiBitir(true);
         await ReklamServisi().reklamlariKapat();
         await AnalyticsServisi().olay(
           satinAlma.status == PurchaseStatus.restored

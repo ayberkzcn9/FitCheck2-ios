@@ -56,31 +56,85 @@ class HaftalikDialoglar {
               ),
             ],
           ),
-          content: Text(
-            l10n.gunlukHakBittiIcerik,
-            style: TextStyle(
-              fontSize: 14,
-              color: context.uygunAltMetin,
-            ),
-          ),
-          actions: [
-            FilledButton.icon(
-              icon: const Icon(Icons.workspace_premium_rounded, size: 20),
-              label: Text(
-                l10n.premiumGec(SatinAlmaServisi.varsayilanFiyat),
-              ),
-              style: FilledButton.styleFrom(
-                backgroundColor: AppAccents.successDark,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                l10n.gunlukHakBittiIcerik,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: context.uygunAltMetin,
                 ),
               ),
-              onPressed: () {
-                Navigator.pop(ctx);
-                _premiumEkraniniAc(context);
-              },
-            ),
+              const SizedBox(height: 20),
+              // Birincil teklif: sınırsız kullanım. Ödüllü reklam ikincil
+              // (çerçeveli) görünümde sunulur ki premium'u gölgelemesin.
+              FilledButton.icon(
+                icon: const Icon(Icons.workspace_premium_rounded, size: 20),
+                label: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                style: FilledButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  backgroundColor: AppAccents.successDark,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(ctx);
+                  _premiumEkraniniAc(context);
+                },
+              ),
+              if (ReklamServisi.reklamlarEtkinMi) ...[
+                const SizedBox(height: 8),
+                OutlinedButton.icon(
+                  icon: Icon(
+                    Icons.play_circle_fill_rounded,
+                    size: 20,
+                    color: context.uygunMetin,
+                  ),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.reklamIzleHakKazan,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: context.uygunMetin,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    side: BorderSide(color: context.uygunMetin),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                    ReklamServisi().odulluReklamGoster(
+                      context: context,
+                      onReward: (reward) async {
+                        await ReklamServisi().reklamIzleyerekHakEkle(
+                          ReklamServisi.reklamOduluKredi,
+                        );
+                        onHakKazanildi();
+                      },
+                    );
+                  },
+                ),
+              ],
+            ],
+          ),
+          actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
               child: Text(
@@ -92,40 +146,6 @@ class HaftalikDialoglar {
                 ),
               ),
             ),
-            if (ReklamServisi.reklamlarEtkinMi)
-              FilledButton.icon(
-                icon: const Icon(
-                  Icons.play_circle_fill_rounded,
-                  size: 20,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  l10n.reklamIzleHakKazan,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                style: FilledButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pop(ctx);
-                  ReklamServisi().odulluReklamGoster(
-                    context: context,
-                    onReward: (reward) async {
-                      await ReklamServisi().reklamIzleyerekHakEkle(
-                        ReklamServisi.reklamOduluKredi,
-                      );
-                      onHakKazanildi();
-                    },
-                  );
-                },
-              ),
           ],
         );
       },

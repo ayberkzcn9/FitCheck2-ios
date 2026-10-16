@@ -15,12 +15,15 @@ import '../services/ai_service.dart';
 import '../services/background_removal_service.dart';
 import '../services/background_remover_service.dart';
 import '../services/reklam_servisi.dart';
+import '../services/satin_alma_servisi.dart';
 import '../utils/ana_ekran_dialoglar.dart';
 import '../utils/hava_uygunlugu.dart';
 import '../utils/helpers.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/stroked_text.dart';
 import '../../theme/design_tokens.dart';
+
+import 'reklamsiz_premium_ekrani.dart';
 
 class GardirobumEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -179,13 +182,96 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               ),
             ],
           ),
-          content: Text(
-            l10n.gardirobumHakBittiAciklama,
-            style: TextStyle(
-              fontSize: 14,
-              height: 1.4,
-              color: colors.onSurfaceVariant,
-            ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                l10n.gardirobumHakBittiAciklama,
+                style: TextStyle(
+                  fontSize: 14,
+                  height: 1.4,
+                  color: colors.onSurfaceVariant,
+                ),
+              ),
+              const SizedBox(height: 20),
+              // Birincil teklif: sınırsız kullanım. Ödüllü reklam ikincil.
+              FilledButton.icon(
+                icon: const Icon(Icons.workspace_premium_rounded, size: 20),
+                label: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                style: FilledButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  backgroundColor: AppAccents.successDark,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                ),
+                onPressed: () {
+                  HapticFeedback.selectionClick();
+                  Navigator.pop(ctx);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const ReklamsizPremiumEkrani(),
+                    ),
+                  );
+                },
+              ),
+              if (ReklamServisi.reklamlarEtkinMi) ...[
+                const SizedBox(height: 8),
+                OutlinedButton.icon(
+                  icon: Icon(Icons.play_circle_fill_rounded,
+                      color: colors.onSurfaceVariant, size: 20),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.reklamIzleHakKazan,
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: colors.onSurfaceVariant),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    side: BorderSide(color: colors.onSurfaceVariant),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14)),
+                  ),
+                  onPressed: () {
+                    HapticFeedback.selectionClick();
+                    Navigator.pop(ctx);
+                    ReklamServisi().odulluReklamGoster(
+                      context: context,
+                      onReward: (reward) async {
+                        await ReklamServisi().reklamIzleyerekHakEkle(
+                          ReklamServisi.reklamOduluKredi,
+                        );
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(l10n.gardirobumHakEklendiMesaj,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                              backgroundColor: AppAccents.success,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16)),
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  },
+                ),
+              ],
+            ],
           ),
           actions: [
             TextButton(
@@ -197,46 +283,6 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 l10n.dahaSonra,
                 style: TextStyle(color: colors.onSurfaceVariant, fontSize: 14, fontWeight: FontWeight.bold),
               ),
-            ),
-            ElevatedButton.icon(
-              icon: Icon(Icons.play_circle_fill_rounded,
-                  color: colors.onPrimary, size: 20),
-              label: Text(
-                l10n.reklamIzleHakKazan,
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: colors.onPrimary),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: colors.primary,
-                foregroundColor: colors.onPrimary,
-                elevation: 0,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              ),
-              onPressed: () {
-                HapticFeedback.selectionClick();
-                Navigator.pop(ctx);
-                ReklamServisi().odulluReklamGoster(
-                  context: context,
-                  onReward: (reward) async {
-                    await ReklamServisi().reklamIzleyerekHakEkle(
-                      ReklamServisi.reklamOduluKredi,
-                    );
-                    if (mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(l10n.gardirobumHakEklendiMesaj, style: const TextStyle(fontWeight: FontWeight.bold)),
-                          backgroundColor: AppAccents.success,
-                          behavior: SnackBarBehavior.floating,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                        ),
-                      );
-                    }
-                  },
-                );
-              },
             ),
           ],
         ),

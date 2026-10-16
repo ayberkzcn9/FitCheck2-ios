@@ -891,7 +891,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   ),
                 ),
                 subtitle: Text(
-                  l10n.premiumAylikAltBaslik(SatinAlmaServisi.varsayilanFiyat),
+                  l10n.premiumAylikAltBaslik(
+                    SatinAlmaServisi.ornek.aylikFiyat,
+                  ),
                   style: TextStyle(
                     fontSize: 12,
                     color: colors.onSurfaceVariant,
