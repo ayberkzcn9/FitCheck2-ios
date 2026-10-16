@@ -2851,4 +2851,7 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'L\'abbonamento si rinnova automaticamente alla fine di ogni periodo. Puoi annullare quando vuoi.';
+
+  @override
+  String get kiyafetDondur => 'Ruota';
 }

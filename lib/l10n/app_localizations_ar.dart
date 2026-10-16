@@ -2809,4 +2809,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'يتجدد الاشتراك تلقائيًا في نهاية كل فترة. يمكنك الإلغاء في أي وقت.';
+
+  @override
+  String get kiyafetDondur => 'تدوير';
 }

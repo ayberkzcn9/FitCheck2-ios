@@ -2856,4 +2856,7 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'L\'abonnement se renouvelle automatiquement à la fin de chaque période. Annulable à tout moment.';
+
+  @override
+  String get kiyafetDondur => 'Pivoter';
 }

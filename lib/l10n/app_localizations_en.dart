@@ -2829,4 +2829,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'Subscription renews automatically at the end of each period. Cancel anytime.';
+
+  @override
+  String get kiyafetDondur => 'Rotate';
 }

@@ -2665,4 +2665,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get premiumYenilemeNotu => '订阅将在每个周期结束时自动续订。可随时取消。';
+
+  @override
+  String get kiyafetDondur => '旋转';
 }

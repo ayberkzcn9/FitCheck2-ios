@@ -2830,4 +2830,7 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'Подписка продлевается автоматически в конце каждого периода. Отменить можно в любое время.';
+
+  @override
+  String get kiyafetDondur => 'Повернуть';
 }

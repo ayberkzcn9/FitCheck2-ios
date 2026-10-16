@@ -59,7 +59,12 @@ class BackgroundRemoverService {
 
   /// Görseli yerel sunucuya gönderip arka planı silinmiş baytları döndürür.
   /// Hata durumunda `null` döner.
-  static Future<Uint8List?> removeBackground(File imageFile) async {
+  ///
+  /// Bayt alır: fotoğraf zaten bellekte olduğu için dosyadan yeniden
+  /// okunmaz. Yön (EXIF) düzeltmesini sunucu yapar; istemci yalnızca
+  /// sunucunun PNG çıktısını gerekirse dikeyleştirir
+  /// (bkz. `GorselYonService.dikeylestir`).
+  static Future<Uint8List?> removeBackground(Uint8List imageBytes) async {
     try {
       final request = http.MultipartRequest(
         'POST',
@@ -69,8 +74,9 @@ class BackgroundRemoverService {
       // 🔐 Kimlik doğrulama header'ı
       request.headers['X-API-Key'] = apiKey;
 
-      request.files
-          .add(await http.MultipartFile.fromPath('file', imageFile.path));
+      request.files.add(
+        http.MultipartFile.fromBytes('file', imageBytes, filename: 'kiyafet'),
+      );
 
       final streamed = await request
           .send()

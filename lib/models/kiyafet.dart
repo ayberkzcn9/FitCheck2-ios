@@ -6,7 +6,7 @@ class Kiyafet {
   String baslik; // AI'ın verdiği isim (Düzenlenebilir)
   String? kullaniciBasligi; // Kullanıcının değiştirdiği özel isim
   String kategori; // 🚀 'final' KALDIRILDI! Artık kategoriyi değiştirebiliriz.
-  final Uint8List resimBytes;
+  Uint8List resimBytes; // 🔄 "Döndür" ile güncellenebildiği için final değil.
   String renk;
   final String stil;
 

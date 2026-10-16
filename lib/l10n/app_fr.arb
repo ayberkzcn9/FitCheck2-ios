@@ -909,5 +909,6 @@
       }
     }
   },
-  "premiumYenilemeNotu": "L'abonnement se renouvelle automatiquement à la fin de chaque période. Annulable à tout moment."
+  "premiumYenilemeNotu": "L'abonnement se renouvelle automatiquement à la fin de chaque période. Annulable à tout moment.",
+  "kiyafetDondur": "Pivoter"
 }

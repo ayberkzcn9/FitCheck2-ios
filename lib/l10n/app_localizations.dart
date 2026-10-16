@@ -5241,6 +5241,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Abonelik, dönem sonunda otomatik yenilenir. İstediğin zaman iptal edebilirsin.'**
   String get premiumYenilemeNotu;
+
+  /// No description provided for @kiyafetDondur.
+  ///
+  /// In tr, this message translates to:
+  /// **'Döndür'**
+  String get kiyafetDondur;
 }
 
 class _AppLocalizationsDelegate

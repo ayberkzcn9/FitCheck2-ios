@@ -2831,4 +2831,7 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'Abonelik, dönem sonunda otomatik yenilenir. İstediğin zaman iptal edebilirsin.';
+
+  @override
+  String get kiyafetDondur => 'Döndür';
 }

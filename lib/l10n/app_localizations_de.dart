@@ -2853,4 +2853,7 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'Das Abo verlängert sich am Ende jeder Periode automatisch. Jederzeit kündbar.';
+
+  @override
+  String get kiyafetDondur => 'Drehen';
 }

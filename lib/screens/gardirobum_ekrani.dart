@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
@@ -14,6 +13,7 @@ import '../models/kiyafet.dart';
 import '../services/ai_service.dart';
 import '../services/background_removal_service.dart';
 import '../services/background_remover_service.dart';
+import '../services/gorsel_yon_service.dart';
 import '../services/reklam_servisi.dart';
 import '../services/satin_alma_servisi.dart';
 import '../utils/ana_ekran_dialoglar.dart';
@@ -784,7 +784,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           Uint8List? bgRemoved;
           try {
             bgRemoved = await BackgroundRemoverService.removeBackground(
-              File(currentFile.path),
+              orijinalBytes,
             );
           } catch (e) {
             debugPrint('Yerel arka plan silme hatası: $e');
@@ -800,8 +800,12 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           }
 
           if (bgRemoved != null && bgRemoved.length > 100) {
-            // Çok küçük dosya gelirse (hata durumu) orijinali kullan
-            kaydedilecekBytes = bgRemoved;
+            // 🧭 Yön standardı: arka planı silinmiş görsel hâlâ YATAYSA
+            // dikeyleştir. (EXIF yönünü sunucu zaten uygular; burada yalnızca
+            // gerçekten yatay kalan fotoğraflar düzeltilir → çift döndürme
+            // olmaz.) Böylece gardıropta tüm kıyafetler aynı yönde durur.
+            kaydedilecekBytes =
+                await GorselYonService.dikeylestir(bgRemoved) ?? bgRemoved;
           }
 
           // 🤖 AI Analiz
@@ -935,6 +939,11 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
     final colors = Theme.of(context).colorScheme;
     String secilenKategori = item.kategori.toLowerCase();
 
+    // 🧭 Görsel yönü: döndürme yalnızca "Kaydet"e basılırsa kalıcı olur;
+    // "İptal" edilirse hiçbir şey değişmez.
+    var guncelResim = item.resimBytes;
+    var donduruluyor = false;
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -994,6 +1003,74 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                               fontWeight: FontWeight.w900,
                               letterSpacing: -0.5,
                               color: colors.onSurface,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  // 🧭 Görsel önizleme + döndürme (yan görünen kıyafetler)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 78,
+                          height: 98,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            color: colors.surfaceContainerHighest,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: colors.outlineVariant.withValues(alpha: 0.4),
+                            ),
+                          ),
+                          child: Image.memory(
+                            guncelResim,
+                            fit: BoxFit.contain,
+                            errorBuilder: (_, __, ___) => Icon(
+                              Icons.broken_image_outlined,
+                              color: colors.onSurfaceVariant,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: OutlinedButton.icon(
+                              onPressed: donduruluyor
+                                  ? null
+                                  : () async {
+                                      HapticFeedback.selectionClick();
+                                      setDialogState(() => donduruluyor = true);
+                                      final donuk = await GorselYonService
+                                          .saatYonundeDondur(guncelResim);
+                                      if (!context.mounted) return;
+                                      setDialogState(() {
+                                        if (donuk != null) guncelResim = donuk;
+                                        donduruluyor = false;
+                                      });
+                                    },
+                              icon: donduruluyor
+                                  ? const SizedBox(
+                                      width: 16,
+                                      height: 16,
+                                      child: CircularProgressIndicator(strokeWidth: 2),
+                                    )
+                                  : const Icon(Icons.rotate_90_degrees_cw_rounded, size: 18),
+                              label: Text(
+                                l10n.kiyafetDondur,
+                                style: const TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(vertical: 14),
+                                side: BorderSide(color: colors.outlineVariant),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -1094,6 +1171,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                   item.kullaniciBasligi = yeniIsim;
                                 }
                                 item.kategori = secilenKategori;
+                                // 🧭 Döndürme yalnızca burada kalıcılaşır.
+                                item.resimBytes = guncelResim;
                               });
                               widget.onKiyafetEkle(item);
                               Navigator.pop(sheetContext);
@@ -1222,7 +1301,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                           ]),
                           child: Image.memory(
                             item.resimBytes,
-                            fit: BoxFit.cover,
+                            // 🔍 contain: yatay kalan görsellerde kıyafetin
+                            // kenarları kırpılmasın (cover kırpıyordu).
+                            fit: BoxFit.contain,
                             errorBuilder: (_, __, ___) => Center(
                               child: Icon(Icons.broken_image_outlined, color: colors.onSurfaceVariant),
                             ),

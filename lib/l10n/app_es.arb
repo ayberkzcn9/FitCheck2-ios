@@ -909,5 +909,6 @@
       }
     }
   },
-  "premiumYenilemeNotu": "La suscripción se renueva automáticamente al final de cada período. Cancela cuando quieras."
+  "premiumYenilemeNotu": "La suscripción se renueva automáticamente al final de cada período. Cancela cuando quieras.",
+  "kiyafetDondur": "Girar"
 }

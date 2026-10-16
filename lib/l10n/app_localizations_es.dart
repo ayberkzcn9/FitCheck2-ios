@@ -2853,4 +2853,7 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get premiumYenilemeNotu =>
       'La suscripción se renueva automáticamente al final de cada período. Cancela cuando quieras.';
+
+  @override
+  String get kiyafetDondur => 'Girar';
 }

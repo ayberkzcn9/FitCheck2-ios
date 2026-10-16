@@ -2706,4 +2706,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get premiumYenilemeNotu => 'サブスクリプションは各期間の終了時に自動更新されます。いつでも解約できます。';
+
+  @override
+  String get kiyafetDondur => '回転';
 }
