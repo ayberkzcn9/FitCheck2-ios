@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../models/kiyafet.dart';
+import '../../theme/design_tokens.dart';
 
 /// [jsonString] güvenli şekilde decode eder; hata olursa [fallback] döner.
 /// [tag] loglama için opsiyonel etiket.
@@ -78,7 +79,7 @@ void gorseliBuhur(
         backgroundColor: colors.surfaceContainerHigh,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: AppRadius.dialogRadius,
         ),
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -107,11 +108,11 @@ void gorseliBuhur(
               TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text(
-                  'Kapat',
+                  AppLocalizations.of(context)!.kapat,
                   style: TextStyle(
                     color: colors.primary,
                     fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                    fontSize: 14,
                   ),
                 ),
               ),

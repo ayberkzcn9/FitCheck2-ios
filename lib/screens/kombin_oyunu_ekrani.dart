@@ -8,6 +8,7 @@ import 'package:shimmer/shimmer.dart';
 import '../l10n/app_localizations.dart';
 import '../utils/l10n_combo_ext.dart';
 import '../models/kiyafet.dart';
+import '../../theme/design_tokens.dart';
 
 class KombinOyunuEkrani extends StatefulWidget {
   const KombinOyunuEkrani({super.key, this.onReturnToHome, this.gardirobum});
@@ -751,7 +752,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerLow,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: AppRadius.xlRadius,
                   border: Border.all(color: colors.outlineVariant, width: 1),
                 ),
                 child: Column(
@@ -770,7 +771,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                     ),
                     const SizedBox(height: 12),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       decoration: BoxDecoration(
                         color: colors.primaryContainer,
                         borderRadius: BorderRadius.circular(12),
@@ -849,7 +850,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                               ),
                               const SizedBox(height: 4),
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                 decoration: BoxDecoration(
                                   color: colors.surfaceContainerHighest,
                                   borderRadius: BorderRadius.circular(8),
@@ -857,13 +858,13 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                                 child: Text(l10n.tr(secenek.renkKey) ?? secenek.renkKey, style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.w600)),
                               ),
                               if (dogru) ...[
-                                const SizedBox(height: 6),
+                                const SizedBox(height: 8),
                                 Icon(Icons.check_circle, color: colors.primary, size: 20),
                               ] else if (yanlis) ...[
-                                const SizedBox(height: 6),
+                                const SizedBox(height: 8),
                                 Icon(Icons.cancel, color: colors.error, size: 20),
                               ] else if (sureDolduSecimsiz && i == kombin.dogruIndex) ...[
-                                const SizedBox(height: 6),
+                                const SizedBox(height: 8),
                                 Icon(Icons.check_circle, color: colors.primary, size: 20),
                               ],
                             ],
@@ -970,7 +971,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerLow,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: AppRadius.xlRadius,
                 ),
                 child: Column(
                   children: [
@@ -1032,7 +1033,7 @@ class _BilgiKarti extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: arkaPlanRenk,
         borderRadius: BorderRadius.circular(16),
@@ -1092,7 +1093,7 @@ class _ParcaKarti extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 8),
         Text(l10n.tr(etiketKey) ?? etiketKey, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: colors.onSurfaceVariant)),
         Text(l10n.tr(renkKey) ?? renkKey, style: Theme.of(context).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w600)),
       ],

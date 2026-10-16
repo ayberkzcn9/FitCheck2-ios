@@ -54,6 +54,8 @@ android/local.properties
 
 # Codemagic ortam değerleri (gizli anahtarlar içerir — Git'e girmez!)
 CODEMAGIC_ENV_VALUES.txt
+CODEMAGIC_KOPYALA.txt
+SOHBET_YEDEGI.md
 
 # Arşiv dosyaları (gereksiz, büyük)
 *.rar

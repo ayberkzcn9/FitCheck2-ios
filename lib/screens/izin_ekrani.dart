@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
+import '../../theme/design_tokens.dart';
 
 class IzinDiyalogu extends StatefulWidget {
   const IzinDiyalogu({super.key});
@@ -58,9 +59,9 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           backgroundColor: colors.surfaceContainerHigh.withValues(alpha: 0.95),
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: AppRadius.dialogRadius,
             side: BorderSide(
-              color: const Color(0xFF6C5CE7).withValues(alpha: 0.3),
+              color: AppAccents.celebration.withValues(alpha: 0.3),
               width: 1.5,
             ),
           ),
@@ -69,16 +70,16 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFF7675).withValues(alpha: 0.15),
+                  color: AppPermissionColors.camera.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
                   Icons.shield_outlined,
-                  color: Color(0xFFFF7675),
+                  color: AppPermissionColors.camera,
                   size: 22,
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   l10n.izinGerekliBaslik,
@@ -95,7 +96,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           content: Text(
             l10n.izinGerekliIcerik,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 14,
               color: colors.onSurfaceVariant,
               height: 1.45,
             ),
@@ -111,7 +112,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 l10n.dahaSonraAyarla,
                 style: TextStyle(
                   color: colors.onSurfaceVariant,
-                  fontSize: 14.5,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -120,7 +121,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF6C5CE7), Color(0xFF00CEC9)],
+                  colors: [AppAccents.celebration, AppPermissionColors.location],
                 ),
               ),
               child: ElevatedButton(
@@ -145,7 +146,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   l10n.ayarlaraGit,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 14.5,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -173,7 +174,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           color: colors.surfaceContainerHigh.withValues(alpha: 0.98),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
           border: Border.all(
-            color: const Color(0xFF6C5CE7).withValues(alpha: 0.3),
+            color: AppAccents.celebration.withValues(alpha: 0.3),
             width: 1.5,
           ),
         ),
@@ -197,7 +198,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
-                    colors: [Color(0xFF6C5CE7), Color(0xFFA29BFE)],
+                    colors: [AppAccents.celebration, AppPermissionColors.notification],
                   ),
                 ),
                 child: const Icon(
@@ -211,7 +212,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 l10n.uygulamaIzinleri,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 24,
                   fontWeight: FontWeight.w900,
                   letterSpacing: -0.5,
                   color: colors.onSurface,
@@ -222,7 +223,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 l10n.izinEkraniAciklama,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 13.5,
+                  fontSize: 14,
                   color: colors.onSurfaceVariant,
                   height: 1.4,
                   fontWeight: FontWeight.w500,
@@ -252,7 +253,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                         icon: Icons.notifications_active_rounded,
                         baslik: l10n.bildirimIzni,
                         aciklama: l10n.bildirimIzniAciklama,
-                        accentColor: const Color(0xFF6C5CE7),
+                        accentColor: AppAccents.celebration,
                       ),
                     ],
                   ),
@@ -265,7 +266,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   gradient: const LinearGradient(
-                    colors: [Color(0xFF6C5CE7), Color(0xFF00CEC9)],
+                    colors: [AppAccents.celebration, AppPermissionColors.location],
                   ),
                 ),
                 child: ElevatedButton(
@@ -304,7 +305,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   l10n.simdilikAtla,
                   style: TextStyle(
                     color: colors.onSurfaceVariant,
-                    fontSize: 13.5,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -325,10 +326,10 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: colors.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppRadius.xlRadius,
         border: Border.all(
           color: accentColor.withValues(alpha: 0.3),
           width: 1.5,
@@ -337,7 +338,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: accentColor.withValues(alpha: 0.15),
               shape: BoxShape.circle,
@@ -353,11 +354,11 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   baslik,
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 14.5,
+                    fontSize: 14,
                     color: colors.onSurface,
                   ),
                 ),
-                const SizedBox(height: 2),
+                const SizedBox(height: 4),
                 Text(
                   aciklama,
                   style: TextStyle(

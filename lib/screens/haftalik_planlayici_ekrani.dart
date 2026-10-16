@@ -23,6 +23,8 @@ import '../l10n/app_localizations.dart';
 import '../widgets/hava_bar.dart';
 import '../widgets/gun_secici.dart';
 import '../widgets/ai_oneri_kutusu.dart';
+import '../../theme/design_tokens.dart';
+import '../../theme/tema_yardimcilari.dart';
 
 class HaftalikPlanlayiciEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -816,8 +818,21 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
     return k?.resimBytes;
   }
 
-  Future<void> _yeniKombiniAiIlePuanla(int gunIndex) async {
+  Future<void> _yeniKombiniAiIlePuanla(int gunIndex,
+      {bool reklamGosterildi = false}) async {
     if (_haftalikProgram == null || _haftalikProgram!['hafta'] == null) return;
+
+    // Parça değişince AI yeniden puanlaması başlamadan önce geçiş reklamı.
+    if (!reklamGosterildi) {
+      ReklamServisi().gecisReklamiGoster(
+        onAdClosed: () {
+          if (!mounted) return;
+          _yeniKombiniAiIlePuanla(gunIndex, reklamGosterildi: true);
+        },
+      );
+      return;
+    }
+
     final gunItem = _haftalikProgram!['hafta'][gunIndex];
     final parcalar = gunItem['parcalar'] as List;
     final String gunHavasi = (gunItem['gunluk_hava'] ?? '').toString().trim();
@@ -828,7 +843,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
     try {
       final prefs = await SharedPreferences.getInstance();
-      final String tenRengi = prefs.getString('kullanici_ten_rengi') ?? 'Wheat';
+      final String tenRengi =
+          aiTenRengi(prefs.getString('kullanici_ten_rengi') ?? 'Wheat');
 
       if (!mounted) return;
       final String dilKodu = Localizations.localeOf(context).languageCode;
@@ -971,16 +987,20 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
       _hataMesaji = null;
     });
 
+    final l10n = AppLocalizations.of(context)!;
+
     try {
       final prefs = await SharedPreferences.getInstance();
       if (!mounted) return;
 
-      final String tenRengi = prefs.getString('kullanici_ten_rengi') ?? 'Wheat';
+      final String tenRengi =
+          aiTenRengi(prefs.getString('kullanici_ten_rengi') ?? 'Wheat');
       final String cinsiyet = aiCinsiyet(
           prefs.getString('kullanici_cinsiyet') ?? 'Women');
-      final String tarz = prefs.getString('kullanici_tarzi') ?? 'General';
+      final String tarz =
+          aiTarz(prefs.getString('kullanici_tarzi') ?? 'General');
       final String renkPaleti =
-          prefs.getString('kullanici_renk_paleti') ?? 'Mixed';
+          aiRenkPaleti(prefs.getString('kullanici_renk_paleti') ?? 'Mixed');
 
       final Set<String> mevcutKategoriler = temizKiyafetler
           .map((k) => kategoriModeldenCikar(k.kategori))
@@ -1030,7 +1050,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
         _eksikParcaOnerisi = oneri.isEmpty ? null : oneri;
         _eksikParcaOnerisiYukleniyor = false;
         if (oneri.isEmpty) {
-          _hataMesaji = 'Stilist önerisi hazırlanamadı. Tekrar dene.';
+          _hataMesaji = l10n.haftalikStilistOnerisiHazirlanamadi;
         }
       });
     } catch (e) {
@@ -1039,8 +1059,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
       setState(() {
         _eksikParcaOnerisiYukleniyor = false;
         _hataMesaji = e is AiServiceException
-            ? 'Yapay zekâ servisine ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene.'
-            : 'Stilist önerisi hazırlanamadı. Tekrar dene.';
+            ? l10n.haftalikAiServisHatasi
+            : l10n.haftalikStilistOnerisiHazirlanamadi;
       });
     }
   }
@@ -1072,12 +1092,14 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
       final prefs = await SharedPreferences.getInstance();
       if (!mounted) return;
 
-      final String tenRengi = prefs.getString('kullanici_ten_rengi') ?? 'Wheat';
+      final String tenRengi =
+          aiTenRengi(prefs.getString('kullanici_ten_rengi') ?? 'Wheat');
       final String cinsiyet = aiCinsiyet(
           prefs.getString('kullanici_cinsiyet') ?? 'Women');
-      final String tarz = prefs.getString('kullanici_tarzi') ?? 'General';
+      final String tarz =
+          aiTarz(prefs.getString('kullanici_tarzi') ?? 'General');
       final String renkPaleti =
-          prefs.getString('kullanici_renk_paleti') ?? 'Mixed';
+          aiRenkPaleti(prefs.getString('kullanici_renk_paleti') ?? 'Mixed');
 
       final temizKiyafetler =
           widget.gardirobum.where((k) => !k.sepetteMi).toList();
@@ -1180,7 +1202,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
     }
   }
 
-  Future<void> _haftalikProgramUret() async {
+  Future<void> _haftalikProgramUret({bool reklamGosterildi = false}) async {
     if (_yukleniyor) return;
     HapticFeedback.heavyImpact();
     if (!mounted) return;
@@ -1204,6 +1226,18 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
           baslik: l10n.haftalikUyariDolapBosBaslik,
           mesaj: l10n.haftalikUyariDolapBosIcerik,
           anaRenk: widget.anaRenk);
+      return;
+    }
+
+    // Plan üretimi (AI) başlamadan önce geçiş reklamı gösterilir. Premium'da ve
+    // sıklık sınırında atlanır; akış kesintisiz devam eder.
+    if (!reklamGosterildi) {
+      ReklamServisi().gecisReklamiGoster(
+        onAdClosed: () {
+          if (!mounted) return;
+          _haftalikProgramUret(reklamGosterildi: true);
+        },
+      );
       return;
     }
 
@@ -1249,9 +1283,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
     if (bugununKombiniKorunacak && aiPlanGunSayisi <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content:
-              Text('Bugünün kombini zaten giyildi; yeni kombin oluşturulmadı.'),
+        SnackBar(
+          content: Text(l10n.haftalikBugunGiyildi),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -1280,12 +1313,14 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
     final prefs = await SharedPreferences.getInstance();
     if (!mounted) return;
 
-    final String tenRengi = prefs.getString('kullanici_ten_rengi') ?? 'Wheat';
+    final String tenRengi =
+        aiTenRengi(prefs.getString('kullanici_ten_rengi') ?? 'Wheat');
     final String cinsiyet = aiCinsiyet(
           prefs.getString('kullanici_cinsiyet') ?? 'Women');
-    final String tarz = prefs.getString('kullanici_tarzi') ?? 'General';
+    final String tarz =
+        aiTarz(prefs.getString('kullanici_tarzi') ?? 'General');
     final String renkPaleti =
-        prefs.getString('kullanici_renk_paleti') ?? 'Mixed';
+        aiRenkPaleti(prefs.getString('kullanici_renk_paleti') ?? 'Mixed');
 
     final String envanter = temizKiyafetler.asMap().entries.map((entry) {
       final idx = entry.key + 1;
@@ -1377,10 +1412,10 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
       debugPrint('Haftalık plan oluşturma hatası: $e');
       if (mounted) {
         final String kullaniciHatasi = e is AiServiceException
-            ? 'Yapay zekâ servisine ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene.'
+            ? l10n.haftalikAiServisHatasi
             : e is FormatException
-                ? 'Yapay zekâ geçerli bir plan döndürmedi. Tekrar dene.'
-                : 'Plan oluşturulurken beklenmeyen bir hata oluştu. Tekrar dene.';
+                ? l10n.haftalikAiGecerliPlanYok
+                : l10n.haftalikPlanBeklenmeyenHata;
         setState(() {
           _hataMesaji = kullaniciHatasi;
           _yukleniyor = false;
@@ -1423,12 +1458,12 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
     // Görünen mesaj sadece kombin başlığı; parça/renk/hava bilgisi gizli
     // bağlam olarak AI'ya iletilir (chat ekranında görünmez).
     final String baslangicMetni = kombinAdi.isNotEmpty ? kombinAdi : gunAdi;
-    final String gizliBaglam = 'Gün: $gunAdi\n'
-        'Kombin: $kombinAdi\n'
-        'Parçalar: ${parcalar.join(", ")}\n'
-        'Renk Uyumu: $renkUyumuPuani%\n'
-        'Hava: $gunlukHava\n'
-        'AI Tavsiyesi: $tuyo';
+    final String gizliBaglam = 'Day: $gunAdi\n'
+        'Outfit: $kombinAdi\n'
+        'Items: ${parcalar.join(", ")}\n'
+        'Color Harmony: $renkUyumuPuani%\n'
+        'Weather: $gunlukHava\n'
+        'AI Advice: $tuyo';
 
     showModalBottomSheet(
       context: context,
@@ -1517,7 +1552,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
         label: Text(
           programVarMi ? l10n.planiYenile : l10n.haftalikProgramOlustur,
           style: const TextStyle(
-            fontSize: 15,
+            fontSize: 14,
             fontWeight: FontWeight.bold,
             letterSpacing: -0.2,
           ),
@@ -1709,7 +1744,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                       fontWeight: FontWeight.w800,
                                     ),
                                   ),
-                                  const SizedBox(height: 6),
+                                  const SizedBox(height: 8),
                                   if (_eksikParcaOnerisiYukleniyor)
                                     Row(
                                       children: [
@@ -1722,7 +1757,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                 colorScheme.onTertiaryContainer,
                                           ),
                                         ),
-                                        const SizedBox(width: 10),
+                                        const SizedBox(width: 8),
                                         Expanded(
                                           child: Text(
                                             l10n.haftalikEksikParcaOneriHazirlaniyor,
@@ -1818,7 +1853,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(14),
+                              padding: const EdgeInsets.all(16),
                               child: Row(
                                 children: [
                                   Icon(
@@ -1931,7 +1966,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                               elevation: 0,
                               color: colorScheme.surfaceContainerLow,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28),
+                                borderRadius: AppRadius.dialogRadius,
                                 side: BorderSide(
                                   color: isGiyildi
                                       ? Colors.green
@@ -2006,11 +2041,11 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                       mainAxisSize:
                                                           MainAxisSize.min,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .analytics_rounded,
                                                           size: 16,
-                                                          color: Colors.black,
+                                                          color: context.uygunMetin,
                                                         ),
                                                         const SizedBox(
                                                             width: 6),
@@ -2045,12 +2080,12 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                                  const Icon(
+                                                  Icon(
                                                     Icons.cloud_outlined,
                                                     size: 16,
-                                                    color: Colors.black,
+                                                    color: context.uygunMetin,
                                                   ),
-                                                  const SizedBox(width: 6),
+                                                  const SizedBox(width: 8),
                                                   Text(
                                                     gunlukHavaTahmini,
                                                     style: theme
@@ -2133,12 +2168,12 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                          fit: BoxFit.cover,
                                                        )
                                                      else
-                                                       const Center(
+                                                       Center(
                                                          child: Icon(
                                                            Icons
                                                                .checkroom_rounded,
                                                            size: 36,
-                                                           color: Colors.black,
+                                                           color: context.uygunMetin,
                                                          ),
                                                        ),
 
@@ -2200,7 +2235,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     // stilistin metin kombin önerisi gösterilir;
                                     // kombin oluşan günlerde bu kutu çıkmaz.
                                     if (booleanBosMu) ...[
-                                      const SizedBox(height: 14),
+                                      const SizedBox(height: 16),
                                       AiOneriKutusu(
                                         baslik: l10n.haftalikEksikParcaAiOnerisi,
                                         metin: eksikParcaOneriMetni,
@@ -2219,11 +2254,11 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                       Container(
                                         padding: const EdgeInsets.all(16),
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFFF7F2FA),
+                                          color: AppTints.styleistBgDinamik(context),
                                           borderRadius:
-                                              BorderRadius.circular(20),
+                                              AppRadius.xlRadius,
                                           border: Border.all(
-                                            color: const Color(0xFFE8DEF8),
+                                            color: AppTints.styleistBorderDinamik(context),
                                           ),
                                         ),
                                         child: Row(
@@ -2233,21 +2268,22 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                             const Icon(
                                               Icons.auto_awesome_rounded,
                                               size: 18,
-                                              color: Color(0xFF9A73B5),
+                                              color: AppAccents.styleist,
                                             ),
                                             const SizedBox(width: 12),
                                             Expanded(
                                               child: isAnalizEdiliyor
                                                   ? Row(
                                                       children: [
-                                                        const SizedBox(
+                                                        SizedBox(
                                                           width: 16,
                                                           height: 16,
                                                           child:
                                                               CircularProgressIndicator(
                                                             strokeWidth: 2,
-                                                            color: Color(
-                                                                0xFF9A73B5),
+                                                            color: AppMiscColors
+                                                                .styleistTextDinamik(
+                                                                    context),
                                                           ),
                                                         ),
                                                         const SizedBox(
@@ -2259,8 +2295,10 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                               ?.copyWith(
                                                             fontStyle: FontStyle
                                                                 .italic,
-                                                            color: const Color(
-                                                                0xFF6B5382),
+                                                            color:
+                                                                AppMiscColors
+                                                                    .styleistAltTextDinamik(
+                                                                        context),
                                                           ),
                                                         ),
                                                       ],
@@ -2271,11 +2309,12 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                       style: theme
                                                           .textTheme.bodyMedium
                                                           ?.copyWith(
-                                                        fontSize: 13.5,
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500,
-                                                        color: const Color(
-                                                            0xFF4A3B5A),
+                                                        color: AppMiscColors
+                                                            .styleistTextDinamik(
+                                                                context),
                                                         height: 1.45,
                                                       ),
                                                     ),
@@ -2298,11 +2337,11 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           ),
                                           style: IconButton.styleFrom(
                                             backgroundColor: isFavori
-                                                ? Colors.amber.shade100
+                                                ? AppStatusColors.favoriteBgDinamik(context)
                                                 : colorScheme
                                                     .surfaceContainerHighest,
                                             foregroundColor: isFavori
-                                                ? Colors.amber.shade900
+                                                ? AppStatusColors.favoriteFgDinamik(context)
                                                 : colorScheme.onSurfaceVariant,
                                           ),
                                           onPressed: () {
@@ -2335,11 +2374,11 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           ),
                                           style: IconButton.styleFrom(
                                             backgroundColor: isGiyildi
-                                                ? Colors.green.shade100
+                                                ? AppStatusColors.wornBgDinamik(context)
                                                 : colorScheme
                                                     .surfaceContainerHighest,
                                             foregroundColor: isGiyildi
-                                                ? Colors.green.shade800
+                                                ? AppStatusColors.wornFgDinamik(context)
                                                 : colorScheme.onSurfaceVariant,
                                           ),
                                           onPressed: () {
@@ -2463,7 +2502,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(28),
+                          padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
                             color: colorScheme.surfaceContainerHighest,
                             shape: BoxShape.circle,
@@ -2473,7 +2512,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                 ? Icons.checkroom_rounded
                                 : Icons.auto_awesome_mosaic_rounded,
                             size: 64,
-                            color: Colors.black,
+                            color: context.uygunMetin,
                           ),
                         ),
                         const SizedBox(height: 24),

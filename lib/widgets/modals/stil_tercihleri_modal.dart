@@ -115,11 +115,11 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
                 color: colors.onSurface,
               ),
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
             Text(
               l10n.stilModalAciklama,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 14,
                 color: colors.onSurfaceVariant,
               ),
             ),
@@ -127,13 +127,13 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.favoriTarzinizUst,
               style: TextStyle(
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: FontWeight.w900,
                 color: colors.onSurfaceVariant,
                 letterSpacing: 1.2,
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -154,13 +154,13 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.giyimKesimiFitUst,
               style: TextStyle(
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: FontWeight.w900,
                 color: colors.onSurfaceVariant,
                 letterSpacing: 1.2,
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -200,7 +200,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 240),
         curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
               ? colors.secondaryContainer
@@ -216,7 +216,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
         child: Text(
           label,
           style: TextStyle(
-            fontSize: 12.5,
+            fontSize: 12,
             fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
             color: isSelected
                 ? colors.onSecondaryContainer

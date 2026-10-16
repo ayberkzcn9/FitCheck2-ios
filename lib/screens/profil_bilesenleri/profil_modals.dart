@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import '../../models/kiyafet.dart';
 import '../../models/favori_kombin.dart';
 import '../../l10n/app_localizations.dart';
+import '../../../theme/design_tokens.dart';
 
 class ProfilModals {
   ProfilModals._();
@@ -289,7 +290,7 @@ class _ModalCercevesi extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             color: iconColor.withValues(alpha: 0.15),
                             shape: BoxShape.circle,
@@ -373,7 +374,7 @@ class _ModalKart extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppRadius.xlRadius,
         border: Border.all(
           color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           width: 1.0,
@@ -426,7 +427,7 @@ class _BosDurum extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: colorScheme.onSurfaceVariant,
-                      fontSize: 15,
+                      fontSize: 14,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -490,7 +491,7 @@ class _ParcaGorunumu extends StatelessWidget {
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
             color: colorScheme.onSurface,
           ),
@@ -626,7 +627,7 @@ class _GecmisDetaySheetState extends _IslemSheetState<_GecmisDetaySheet> {
             l10n.giyilenParcalarUst,
             style: TextStyle(
               color: colorScheme.primary,
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: FontWeight.w900,
               letterSpacing: 1.2,
             ),
@@ -705,12 +706,12 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
     return _ModalCercevesi(
       baslik: '${l10n.favoriKombin} (${favoriler.length})',
       icon: Icons.star_rounded,
-      iconColor: const Color(0xFFF59E0B),
+      iconColor: AppAccents.warning,
       islemSuruyor: islemSuruyor,
       child: favoriler.isEmpty
           ? _BosDurum(
               icon: Icons.star_border_rounded,
-              color: const Color(0xFFF59E0B),
+              color: AppAccents.warning,
               message: l10n.henuzFavoriEklemediniz,
             )
           : ListView.separated(
@@ -750,22 +751,30 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                                 const SizedBox(height: 8),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 6,
-                                  ),
+                                      horizontal: 12, vertical: 8),
                                   decoration: BoxDecoration(
-                                    color: colorScheme.tertiaryContainer,
-                                    borderRadius: BorderRadius.circular(10),
+                                    color: colorScheme.surfaceContainerHighest,
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
-                                  child: Text(
-                                    '★ ${l10n.stilistUyum(
-                                      favori.renkUyumuPuani.toString(),
-                                    )}',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w800,
-                                      color: colorScheme.onTertiaryContainer,
-                                    ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.analytics_rounded,
+                                        size: 16,
+                                        color: colorScheme.onSurface,
+                                      ),
+                                      const SizedBox(width: 6),
+                                      Text(
+                                        l10n.kombinUyumYuzdesi(
+                                            favori.renkUyumuPuani.toString()),
+                                        style:
+                                            theme.textTheme.labelMedium?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: colorScheme.onSurface,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -810,7 +819,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                         ),
                       ],
                       if (favori.tuyo.trim().isNotEmpty) ...[
-                        const SizedBox(height: 14),
+                        const SizedBox(height: 16),
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
@@ -830,7 +839,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                                 child: Text(
                                   favori.tuyo,
                                   style: theme.textTheme.bodyMedium?.copyWith(
-                                    fontSize: 13,
+                                    fontSize: 14,
                                     fontStyle: FontStyle.italic,
                                     fontWeight: FontWeight.w600,
                                     height: 1.4,
@@ -901,7 +910,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
-    const temizVurgu = Color(0xFF2E7D32);
+    const temizVurgu = AppAccents.successDark;
 
     final sepettekiler =
         widget.gardirobuGetir().where((k) => k.sepetteMi).toList();
@@ -943,7 +952,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.w900,
-                      fontSize: 15,
+                      fontSize: 14,
                     ),
                   ),
                 ),
@@ -959,7 +968,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
               padding: const EdgeInsets.all(20),
               physics: const BouncingScrollPhysics(),
               itemCount: sepettekiler.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 14),
+              separatorBuilder: (_, __) => const SizedBox(height: 16),
               itemBuilder: (context, index) {
                 final item = sepettekiler[index];
 
@@ -982,7 +991,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                               overflow: TextOverflow.ellipsis,
                               style: theme.textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.w900,
-                                fontSize: 15,
+                                fontSize: 14,
                                 color: colorScheme.onSurface,
                               ),
                             ),
@@ -993,22 +1002,22 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 color: colorScheme.onSurfaceVariant,
-                                fontSize: 11,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(width: 6),
+                      const SizedBox(width: 8),
                       IconButton.filledTonal(
                         onPressed:
                             islemSuruyor || widget.onTekliSepettenCikar == null
                                 ? null
                                 : () => _tekliCikar(item.id),
                         style: IconButton.styleFrom(
-                          backgroundColor: const Color(0xFFDCFCE7),
-                          foregroundColor: const Color(0xFF15803D),
+                          backgroundColor: AppMiscColors.greenPale,
+                          foregroundColor: AppMiscColors.greenDark,
                         ),
                         icon: const Icon(
                           Icons.check_circle_outline_rounded,

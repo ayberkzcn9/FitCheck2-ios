@@ -19,6 +19,7 @@ import '../utils/hava_uygunlugu.dart';
 import '../utils/helpers.dart';
 import '../utils/kategori_utils.dart';
 import '../ai/ai_dil.dart';
+import '../../theme/design_tokens.dart';
 
 class DolaptanKombinStilistiEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -168,11 +169,11 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
 
   Color _uyumRengiGetir(int puan) {
     if (puan <= 60) {
-      return const Color(0xFFDC2626);
+      return AppAccents.error;
     } else if (puan <= 80) {
-      return const Color(0xFF2563EB);
+      return AppAccents.info;
     } else {
-      return const Color(0xFF16A34A);
+      return AppAccents.success;
     }
   }
 
@@ -250,7 +251,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(l10n.tebriklerHakEklendi, style: const TextStyle(fontWeight: FontWeight.bold)),
-              backgroundColor: const Color(0xFF059669),
+              backgroundColor: AppAccents.success,
               behavior: SnackBarBehavior.floating,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
             ),
@@ -345,7 +346,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        backgroundColor: yeniDurum ? const Color(0xFF16A34A) : Colors.grey.shade700,
+        backgroundColor: yeniDurum ? AppAccents.success : Colors.grey.shade700,
       ),
     );
   }
@@ -688,7 +689,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
         _rastgeleKombinOlustur();
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF16A34A),
+        backgroundColor: AppAccents.success,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 0,
@@ -717,7 +718,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
               child: Text(
                 kombinVarMi ? l10n.yenidenZarAt : l10n.zarAtKaristir,
                 style: const TextStyle(
-                  fontSize: 15,
+                  fontSize: 14,
                   fontWeight: FontWeight.w800,
                   color: Colors.white,
                   letterSpacing: -0.2,
@@ -774,7 +775,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                           elevation: 0,
                           color: colors.surfaceContainerLow,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: AppRadius.xlRadius,
                             side: BorderSide(
                               color: widget.havaHatasi
                                   ? colors.error.withValues(alpha: 0.3)
@@ -783,7 +784,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             ),
                           ),
                           child: InkWell(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: AppRadius.xlRadius,
                             onTap: () {
                               HapticFeedback.lightImpact();
                               widget.onKonumuYenile();
@@ -793,7 +794,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                               child: Row(
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       color: widget.havaHatasi
                                           ? colors.errorContainer
@@ -810,7 +811,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                       size: 18,
                                     ),
                                   ),
-                                  const SizedBox(width: 14),
+                                  const SizedBox(width: 16),
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -819,19 +820,19 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                         Text(
                                           l10n.stilistAnlikHavaDurumu.toUpperCase(),
                                           style: TextStyle(
-                                            fontSize: 10,
+                                            fontSize: 12,
                                             color: colors.primary,
                                             fontWeight: FontWeight.w900,
                                             letterSpacing: 1.0,
                                           ),
                                         ),
-                                        const SizedBox(height: 2),
+                                        const SizedBox(height: 4),
                                         Text(
                                           widget.havaYukleniyor
                                               ? l10n.stilistKonumKontrol
                                               : (_formatliHavaMetni.isEmpty ? l10n.yukleniyor : _formatliHavaMetni),
                                           style: TextStyle(
-                                            fontSize: 13.5,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w800,
                                             color: widget.havaHatasi ? colors.error : colors.onSurface,
                                             letterSpacing: -0.2,
@@ -897,7 +898,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 10),
+                              const SizedBox(width: 8),
                               Expanded(
                                 flex: 2,
                                 child: SizedBox(
@@ -934,7 +935,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                                   decoration: BoxDecoration(
                                     color: uyumRengi.withValues(alpha: 0.12),
                                     borderRadius: BorderRadius.circular(12),
@@ -984,10 +985,10 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             Container(
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF7F2FA),
-                                borderRadius: BorderRadius.circular(20),
+                                color: AppTints.styleistBgDinamik(context),
+                                borderRadius: AppRadius.xlRadius,
                                 border: Border.all(
-                                  color: const Color(0xFFE8DEF8),
+                                  color: AppTints.styleistBorderDinamik(context),
                                 ),
                               ),
                               child: Row(
@@ -996,7 +997,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                   const Icon(
                                     Icons.auto_awesome_rounded,
                                     size: 18,
-                                    color: Color(0xFF9A73B5),
+                                    color: AppAccents.styleist,
                                   ),
                                   const SizedBox(width: 12),
                                   Expanded(
@@ -1008,15 +1009,15 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                                 height: 16,
                                                 child: CircularProgressIndicator(
                                                   strokeWidth: 2,
-                                                  color: Color(0xFF9A73B5),
+                                                  color: AppAccents.styleist,
                                                 ),
                                               ),
-                                              const SizedBox(width: 10),
+                                              const SizedBox(width: 8),
                                               Text(
                                                 l10n.yenidenDegerlendiriliyor,
                                                 style: theme.textTheme.bodyMedium?.copyWith(
                                                   fontStyle: FontStyle.italic,
-                                                  color: const Color(0xFF6B5382),
+                                                  color: AppMiscColors.styleistAltTextDinamik(context),
                                                 ),
                                               ),
                                             ],
@@ -1024,9 +1025,9 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                         : Text(
                                             metniGuvenliYap(_stilistYorumu),
                                             style: theme.textTheme.bodyMedium?.copyWith(
-                                              fontSize: 13.5,
+                                              fontSize: 14,
                                               fontWeight: FontWeight.w500,
-                                              color: const Color(0xFF4A3B5A),
+                                              color: AppMiscColors.styleistTextDinamik(context),
                                               height: 1.45,
                                             ),
                                           ),
@@ -1047,8 +1048,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                       size: 22,
                                     ),
                                     style: IconButton.styleFrom(
-                                      backgroundColor: _isFavori ? Colors.amber.shade100 : colors.surfaceContainerHighest,
-                                      foregroundColor: _isFavori ? Colors.amber.shade900 : colors.onSurfaceVariant,
+                                      backgroundColor: _isFavori ? AppStatusColors.favoriteBgDinamik(context) : colors.surfaceContainerHighest,
+                                      foregroundColor: _isFavori ? AppStatusColors.favoriteFgDinamik(context) : colors.onSurfaceVariant,
                                     ),
                                     onPressed: _favoriDurumunuDegistir,
                                   ),
@@ -1064,8 +1065,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                       size: 22,
                                     ),
                                     style: IconButton.styleFrom(
-                                      backgroundColor: _isBugunGiydildi ? Colors.green.shade100 : colors.surfaceContainerHighest,
-                                      foregroundColor: _isBugunGiydildi ? Colors.green.shade800 : colors.onSurfaceVariant,
+                                      backgroundColor: _isBugunGiydildi ? AppStatusColors.wornBgDinamik(context) : colors.surfaceContainerHighest,
+                                      foregroundColor: _isBugunGiydildi ? AppStatusColors.wornFgDinamik(context) : colors.onSurfaceVariant,
                                     ),
                                     onPressed: _bugunGiydimTetikle,
                                   ),
@@ -1182,14 +1183,14 @@ class SadeKiyafetKarti extends StatelessWidget {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: AppRadius.xlRadius,
                           onTap: () => onDegistir(true),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: AppRadius.xlRadius,
                             child: BackdropFilter(
                               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                               child: Container(
-                                padding: const EdgeInsets.all(6),
+                                padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
                                   color: Colors.black.withValues(alpha: 0.35),
                                   shape: BoxShape.circle,
@@ -1214,7 +1215,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                         Text(
                           etiket.toUpperCase(),
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 12,
                             color: colors.primary,
                             fontWeight: FontWeight.w900,
                             letterSpacing: 0.8,
@@ -1222,7 +1223,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        const SizedBox(height: 2),
+                        const SizedBox(height: 4),
                         Text(
                           kiyafet.gorunenBaslik,
                           style: TextStyle(
@@ -1238,7 +1239,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                         Text(
                           kiyafet.renk,
                           style: TextStyle(
-                            fontSize: 10.5,
+                            fontSize: 12,
                             color: colors.onSurfaceVariant,
                             fontWeight: FontWeight.w600,
                           ),
@@ -1289,17 +1290,17 @@ class ZarSallaDialog extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF16A34A).withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(20),
+                      color: AppAccents.success.withValues(alpha: 0.15),
+                      borderRadius: AppRadius.xlRadius,
                       border: Border.all(
-                        color: const Color(0xFF16A34A).withValues(alpha: 0.4),
+                        color: AppAccents.success.withValues(alpha: 0.4),
                         width: 2,
                       ),
                     ),
                     child: const Icon(
                       Icons.casino_rounded,
                       size: 40,
-                      color: Color(0xFF16A34A),
+                      color: AppAccents.success,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -1307,7 +1308,7 @@ class ZarSallaDialog extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: colors.primary.withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: AppRadius.xlRadius,
                       border: Border.all(
                         color: colors.primary.withValues(alpha: 0.4),
                         width: 2,
@@ -1332,11 +1333,11 @@ class ZarSallaDialog extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               Text(
                 l10n.zarPopupAciklama,
                 style: TextStyle(
-                  fontSize: 13.5,
+                  fontSize: 14,
                   height: 1.4,
                   fontWeight: FontWeight.w500,
                   color: colors.onSurfaceVariant,
@@ -1378,7 +1379,7 @@ class ZarSallaDialog extends StatelessWidget {
                         onZarAtildi();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF16A34A),
+                        backgroundColor: AppAccents.success,
                         foregroundColor: Colors.white,
                         elevation: 0,
                         padding: const EdgeInsets.symmetric(vertical: 14),
@@ -1391,7 +1392,7 @@ class ZarSallaDialog extends StatelessWidget {
                         l10n.zarlariAt,
                         style: const TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 15,
+                          fontSize: 14,
                         ),
                       ),
                     ),

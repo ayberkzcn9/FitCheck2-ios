@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../services/auth_servisi.dart';
+import '../utils/auth_hata_utils.dart';
 import '../utils/ayarlar_dialoglar.dart';
 import 'ana_ekran.dart';
+import '../../theme/design_tokens.dart';
 
 class GirisEkrani extends StatefulWidget {
   final Color? anaRenk;
@@ -105,7 +107,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              e.toString(),
+              authHatasiMetni(e, AppLocalizations.of(context)!),
               style:
                   TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
             ),
@@ -148,7 +150,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              e.toString(),
+              authHatasiMetni(e, AppLocalizations.of(context)!),
               style:
                   TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
             ),
@@ -195,7 +197,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
             l10n.sifreEpostasiGonderildi(eposta),
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          backgroundColor: const Color(0xFF059669),
+          backgroundColor: AppAccents.success,
           behavior: SnackBarBehavior.floating,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -206,7 +208,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            e.toString(),
+            authHatasiMetni(e, AppLocalizations.of(context)!),
             style:
                 TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
           ),
@@ -245,7 +247,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              e.toString(),
+              authHatasiMetni(e, AppLocalizations.of(context)!),
               style:
                   TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
             ),
@@ -320,7 +322,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 14, vertical: 8),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
+                            borderRadius: AppRadius.xlRadius),
                         backgroundColor: colors.surfaceContainerHighest,
                       ),
                     ),
@@ -343,7 +345,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                             // Logo ve Başlık
                             Icon(Icons.checkroom_rounded,
                                 size: 60, color: primaryColor),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 8),
                             Text(
                               "FitCheck",
                               textAlign: TextAlign.center,
@@ -354,7 +356,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 color: colors.onSurface,
                               ),
                             ),
-                            const SizedBox(height: 6),
+                            const SizedBox(height: 8),
                             Text(
                               _girisModu
                                   ? l10n.stilDunyanaTekrarHosGeldin
@@ -366,7 +368,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            const SizedBox(height: 28),
+                            const SizedBox(height: 24),
 
                             // Sekme Switcher (Giriş Yap / Kayıt Ol)
                             Container(
@@ -388,7 +390,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                             vertical: 12),
                                         decoration: BoxDecoration(
                                           color: _girisModu
-                                              ? const Color(0xFF2E7D32)
+                                              ? AppAccents.successDark
                                               : Colors.transparent,
                                           borderRadius:
                                               BorderRadius.circular(12),
@@ -418,7 +420,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                             vertical: 12),
                                         decoration: BoxDecoration(
                                           color: !_girisModu
-                                              ? const Color(0xFF2E7D32)
+                                              ? AppAccents.successDark
                                               : Colors.transparent,
                                           borderRadius:
                                               BorderRadius.circular(12),
@@ -463,15 +465,16 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(16),
                                       borderSide: const BorderSide(
-                                          color: Color(0xFF2E7D32), width: 2)),
+                                          color: AppAccents.successDark, width: 2)),
                                 ),
                                 validator: (val) {
-                                  if (val == null || val.trim().length < 3)
-                                    return "En az 3 karakter giriniz";
+                                  if (val == null || val.trim().length < 3) {
+                                    return l10n.girisHataKullaniciAdiKisa;
+                                  }
                                   return null;
                                 },
                               ),
-                              const SizedBox(height: 14),
+                              const SizedBox(height: 16),
                             ],
 
                             // E-Posta Field
@@ -495,15 +498,16 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
                                     borderSide: const BorderSide(
-                                        color: Color(0xFF2E7D32), width: 2)),
+                                        color: AppAccents.successDark, width: 2)),
                               ),
                               validator: (val) {
-                                if (val == null || !val.contains("@"))
-                                  return "Geçerli bir e-posta giriniz";
+                                if (val == null || !val.contains("@")) {
+                                  return l10n.girisHataEpostaGecersiz;
+                                }
                                 return null;
                               },
                             ),
-                            const SizedBox(height: 14),
+                            const SizedBox(height: 16),
 
                             // Şifre Field
                             TextFormField(
@@ -537,11 +541,12 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
                                     borderSide: const BorderSide(
-                                        color: Color(0xFF2E7D32), width: 2)),
+                                        color: AppAccents.successDark, width: 2)),
                               ),
                               validator: (val) {
-                                if (val == null || val.length < 6)
-                                  return "En az 6 karakter giriniz";
+                                if (val == null || val.length < 6) {
+                                  return l10n.girisHataSifreKisa;
+                                }
                                 return null;
                               },
                             ),
@@ -564,9 +569,9 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                   child: Text(
                                     l10n.sifremiUnuttum,
                                     style: const TextStyle(
-                                      fontSize: 13.5,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: Color(0xFF2E7D32),
+                                      color: AppAccents.successDark,
                                     ),
                                   ),
                                 ),
@@ -577,13 +582,13 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 contentPadding: EdgeInsets.zero,
                                 dense: true,
                                 value: _beniHatirla,
-                                activeColor: const Color(0xFF2E7D32),
+                                activeColor: AppAccents.successDark,
                                 controlAffinity:
                                     ListTileControlAffinity.leading,
                                 title: Text(
                                   l10n.girisBeniHatirla,
                                   style: TextStyle(
-                                      fontSize: 13.5,
+                                      fontSize: 14,
                                       color: colors.onSurface,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -597,7 +602,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                             // Tetikleyici Ana Buton
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF2E7D32),
+                                backgroundColor: AppAccents.successDark,
                                 foregroundColor: Colors.white,
                                 minimumSize: const Size(double.infinity, 52),
                                 elevation: 0,
@@ -619,7 +624,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                           ? l10n.girisYapVeBasla
                                           : l10n.kayitOlVeBasla,
                                       style: const TextStyle(
-                                        fontSize: 15.5,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
@@ -641,7 +646,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                     l10n.girisVeya,
                                     style: TextStyle(
                                         color: colors.onSurfaceVariant,
-                                        fontSize: 12.5,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),
@@ -676,13 +681,13 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 errorBuilder: (_, __, ___) => const Icon(
                                   Icons.g_mobiledata_rounded,
                                   size: 26,
-                                  color: Color(0xFF4285F4),
+                                  color: AppMiscColors.googleBlue,
                                 ),
                               ),
                               label: Text(
                                 l10n.girisYapGoogle,
                                 style: TextStyle(
-                                  fontSize: 15.5,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: colors.onSurface,
                                   letterSpacing: 0.2,

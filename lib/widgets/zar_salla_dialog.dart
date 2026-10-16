@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:vibration/vibration.dart';
 
 import '../l10n/app_localizations.dart';
+import '../../theme/design_tokens.dart';
 
 class ZarSallaDialog extends StatelessWidget {
   final VoidCallback onZarAtildi;
@@ -38,17 +39,17 @@ class ZarSallaDialog extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF16A34A).withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(20),
+                      color: AppAccents.success.withValues(alpha: 0.15),
+                      borderRadius: AppRadius.xlRadius,
                       border: Border.all(
-                        color: const Color(0xFF16A34A).withValues(alpha: 0.4),
+                        color: AppAccents.success.withValues(alpha: 0.4),
                         width: 2,
                       ),
                     ),
                     child: const Icon(
                       Icons.casino_rounded,
                       size: 40,
-                      color: Color(0xFF16A34A),
+                      color: AppAccents.success,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -56,7 +57,7 @@ class ZarSallaDialog extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: colors.primary.withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: AppRadius.xlRadius,
                       border: Border.all(
                         color: colors.primary.withValues(alpha: 0.4),
                         width: 2,
@@ -81,11 +82,11 @@ class ZarSallaDialog extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               Text(
                 l10n.zarPopupAciklama,
                 style: TextStyle(
-                  fontSize: 13.5,
+                  fontSize: 14,
                   height: 1.4,
                   fontWeight: FontWeight.w500,
                   color: colors.onSurfaceVariant,
@@ -127,7 +128,7 @@ class ZarSallaDialog extends StatelessWidget {
                         onZarAtildi();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF16A34A),
+                        backgroundColor: AppAccents.success,
                         foregroundColor: Colors.white,
                         elevation: 0,
                         padding: const EdgeInsets.symmetric(vertical: 14),
@@ -140,7 +141,7 @@ class ZarSallaDialog extends StatelessWidget {
                         l10n.zarlariAt,
                         style: const TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 15,
+                          fontSize: 14,
                         ),
                       ),
                     ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../l10n/app_localizations.dart';
+import '../../../theme/design_tokens.dart';
 
 class HesabiSilModal extends StatefulWidget {
   const HesabiSilModal({super.key});
@@ -38,7 +39,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
       backgroundColor: colors.surfaceContainerHigh,
       elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: AppRadius.dialogRadius,
       ),
       title: Row(
         children: [
@@ -47,12 +48,12 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
             color: colors.error,
             size: 26,
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 8),
           Expanded(
             child: Text(
               l10n.hesabiKaliciSilTitle,
               style: TextStyle(
-                fontSize: 17,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: colors.onSurface,
               ),

@@ -9,6 +9,135 @@ class AppLocalizationsIt extends AppLocalizations {
   AppLocalizationsIt([String locale = 'it']) : super(locale);
 
   @override
+  String get chatOrtamCasual => 'Casual';
+
+  @override
+  String get chatOrtamOfis => 'Ufficio';
+
+  @override
+  String get chatOrtamDavet => 'Serata';
+
+  @override
+  String get chatOrtamSpor => 'Sport';
+
+  @override
+  String get chatOrtamGece => 'Notte';
+
+  @override
+  String get chatOrtamRomantik => 'Romantico';
+
+  @override
+  String get chatOrtamHaftaSonu => 'Fine settimana';
+
+  @override
+  String get gardirobumAdimArkaplan => 'Rimozione dello sfondo';
+
+  @override
+  String get gardirobumAdimArkaplanAlt => 'Analisi dell\'immagine con IA';
+
+  @override
+  String get gardirobumAdimAnaliz => 'Analisi del capo';
+
+  @override
+  String get gardirobumAdimAnalizAlt =>
+      'Rilevamento di colore, stile e categoria';
+
+  @override
+  String get gardirobumAdimKaydet => 'Salvataggio';
+
+  @override
+  String get gardirobumAdimKaydetAlt => 'Aggiunta al tuo guardaroba';
+
+  @override
+  String get gardirobumLutfenBekleyin => 'Attendere prego...';
+
+  @override
+  String get authHataZayifSifre =>
+      'La password è troppo debole. Deve contenere almeno 6 caratteri.';
+
+  @override
+  String get authHataEpostaKullanimda => 'Questo indirizzo email è già in uso.';
+
+  @override
+  String get authHataGecersizEposta =>
+      'Hai inserito un indirizzo email non valido.';
+
+  @override
+  String get authHataKullaniciBulunamadi =>
+      'Nessun utente trovato per questo indirizzo email.';
+
+  @override
+  String get authHataYanlisSifre => 'Password errata, riprova.';
+
+  @override
+  String get authHataGecersizKimlik =>
+      'Email o password non corretti. Controlla i tuoi dati.';
+
+  @override
+  String get authHataYontemIzinliDegil =>
+      'Questo metodo di accesso non è abilitato nella console Firebase.';
+
+  @override
+  String get authHataFarkliYontem =>
+      'Questa email è già registrata con un altro metodo di accesso.';
+
+  @override
+  String get authHataAgHatasi => 'Controlla la connessione Internet e riprova.';
+
+  @override
+  String get authHataCokDeneme => 'Troppi tentativi. Riprova più tardi.';
+
+  @override
+  String get authHataHesapDevreDisi => 'Questo account è stato disattivato.';
+
+  @override
+  String get authHataYenidenGiris =>
+      'Devi accedere di nuovo per completare questa azione.';
+
+  @override
+  String get authHataGenel => 'Si è verificato un errore. Riprova.';
+
+  @override
+  String get authHataSifreEpostasiGonderilemedi =>
+      'Impossibile inviare l\'email di reimpostazione. Riprova.';
+
+  @override
+  String get authHataGoogleDogrulanamadi =>
+      'Impossibile verificare l\'accesso con Google. Riprova.';
+
+  @override
+  String get authHataGoogleFarkliKullanici =>
+      'Questo account Google è collegato a un altro utente.';
+
+  @override
+  String get authHataGoogleZatenBagli =>
+      'Questo account Google è già collegato.';
+
+  @override
+  String get authHataGoogleYapilandirilmamis =>
+      'L\'accesso con Google non è configurato su questo dispositivo. Segnalalo all\'assistenza.';
+
+  @override
+  String get authHataGooglePencereAcik =>
+      'La finestra di accesso Google è ancora aperta. Attendi qualche secondo.';
+
+  @override
+  String get authHataGoogleTamamlanamadi =>
+      'Impossibile completare l\'accesso con Google. Riprova tra qualche secondo.';
+
+  @override
+  String get authHataGoogleHesapSec =>
+      'Devi selezionare il tuo account Google per accedere.';
+
+  @override
+  String get authHataGoogleOnayBekliyor =>
+      'C\'è un\'azione in sospeso sul tuo account Google. Riprova.';
+
+  @override
+  String get authHataGoogleBeklenmeyen =>
+      'Si è verificato un errore imprevisto durante l\'accesso con Google.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override
@@ -2626,4 +2755,60 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get yakindaAciklama =>
       'Stiamo lavorando a questa funzione, arriverà molto presto!';
+
+  @override
+  String get aiOneriHazirlaniyor => 'Preparazione del suggerimento...';
+
+  @override
+  String get haftalikStilistOnerisiHazirlanamadi =>
+      'Impossibile preparare il suggerimento dello stilista. Riprova.';
+
+  @override
+  String get haftalikAiServisHatasi =>
+      'Impossibile raggiungere il servizio IA. Controlla la connessione Internet e riprova.';
+
+  @override
+  String get haftalikAiGecerliPlanYok =>
+      'L’IA non ha restituito un piano valido. Riprova.';
+
+  @override
+  String get haftalikPlanBeklenmeyenHata =>
+      'Si è verificato un errore imprevisto durante la creazione del piano. Riprova.';
+
+  @override
+  String get haftalikBugunGiyildi =>
+      'L’outfit di oggi è già stato indossato; non ne è stato creato uno nuovo.';
+
+  @override
+  String get girisHataKullaniciAdiKisa => 'Inserisci almeno 3 caratteri';
+
+  @override
+  String get girisHataEpostaGecersiz => 'Inserisci un’email valida';
+
+  @override
+  String get girisHataSifreKisa => 'Inserisci almeno 6 caratteri';
+
+  @override
+  String get googleKullanicisi => 'Utente Google';
+
+  @override
+  String get premiumEkranBaslik => 'FitCheck Premium';
+
+  @override
+  String get dilSecimBaslik => '🌐 Seleziona lingua';
+
+  @override
+  String get dilSecenekOtomatik => 'Automatico (lingua del dispositivo)';
+
+  @override
+  String get kapat => 'Chiudi';
+
+  @override
+  String get bildirimBaslik => 'Notifica';
+
+  @override
+  String get ayarlarAltbilgi => 'Fatto con stile';
+
+  @override
+  String get geriBildirimKonu => 'FitCheck Feedback';
 }

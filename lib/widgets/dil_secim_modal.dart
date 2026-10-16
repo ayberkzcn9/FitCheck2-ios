@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../main.dart'; // KombinDanismaniApp için
+import '../l10n/app_localizations.dart';
 
 class DilSecimModal extends StatelessWidget {
   const DilSecimModal({super.key});
@@ -8,7 +9,8 @@ class DilSecimModal extends StatelessWidget {
   static const List<Map<String, String>> diller = [
     {
       'kod': 'system',
-      'ad': '📱 Cihaz Dili (Otomatik)',
+      // Görünen ad build sırasında l10n.dilSecenekOtomatik ile üretilir.
+      'ad': 'System',
       'bayrak': '🌐',
     },
     {
@@ -33,7 +35,7 @@ class DilSecimModal extends StatelessWidget {
     },
     {
       'kod': 'zh',
-      'ad': '中文 (Basitleştirilmiş)',
+      'ad': '中文 (简体)',
       'bayrak': '🇨🇳',
     },
     {
@@ -96,6 +98,7 @@ class DilSecimModal extends StatelessWidget {
     final appState = KombinDanismaniApp.of(context);
     final currentLocale = appState.currentLocale;
     final colors = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context)!;
 
     final currentCode = currentLocale?.languageCode ?? 'system';
 
@@ -118,11 +121,11 @@ class DilSecimModal extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 18),
+            const SizedBox(height: 20),
 
             // BAŞLIK
             Text(
-              '🌐 Dil Seçimi / Select Language',
+              l10n.dilSecimBaslik,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
@@ -157,7 +160,8 @@ class DilSecimModal extends StatelessWidget {
                   final dil = diller[index];
 
                   final dilKodu = dil['kod']!;
-                  final dilAdi = dil['ad']!;
+                  final dilAdi =
+                      dilKodu == 'system' ? l10n.dilSecenekOtomatik : dil['ad']!;
                   final bayrak = dil['bayrak']!;
 
                   final isSelected = currentCode == dilKodu;
@@ -185,7 +189,7 @@ class DilSecimModal extends StatelessWidget {
                       child: Text(
                         bayrak,
                         style: const TextStyle(
-                          fontSize: 22,
+                          fontSize: 24,
                         ),
                       ),
                     ),
@@ -194,7 +198,7 @@ class DilSecimModal extends StatelessWidget {
                     title: Text(
                       dilAdi,
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight:
                             isSelected ? FontWeight.bold : FontWeight.normal,
                         color: isSelected ? colors.primary : colors.onSurface,

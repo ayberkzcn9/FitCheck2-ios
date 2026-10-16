@@ -9,6 +9,117 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
+  String get chatOrtamCasual => '休闲';
+
+  @override
+  String get chatOrtamOfis => '办公';
+
+  @override
+  String get chatOrtamDavet => '聚会';
+
+  @override
+  String get chatOrtamSpor => '运动';
+
+  @override
+  String get chatOrtamGece => '夜间';
+
+  @override
+  String get chatOrtamRomantik => '浪漫';
+
+  @override
+  String get chatOrtamHaftaSonu => '周末';
+
+  @override
+  String get gardirobumAdimArkaplan => '正在移除背景';
+
+  @override
+  String get gardirobumAdimArkaplanAlt => '正在用 AI 分析图片';
+
+  @override
+  String get gardirobumAdimAnaliz => '正在分析衣物';
+
+  @override
+  String get gardirobumAdimAnalizAlt => '正在识别颜色、风格和类别';
+
+  @override
+  String get gardirobumAdimKaydet => '正在保存';
+
+  @override
+  String get gardirobumAdimKaydetAlt => '正在添加到衣橱';
+
+  @override
+  String get gardirobumLutfenBekleyin => '请稍候...';
+
+  @override
+  String get authHataZayifSifre => '密码太弱，至少需要 6 个字符。';
+
+  @override
+  String get authHataEpostaKullanimda => '该邮箱地址已被使用。';
+
+  @override
+  String get authHataGecersizEposta => '你输入的邮箱地址无效。';
+
+  @override
+  String get authHataKullaniciBulunamadi => '未找到该邮箱对应的用户。';
+
+  @override
+  String get authHataYanlisSifre => '密码错误，请重试。';
+
+  @override
+  String get authHataGecersizKimlik => '邮箱或密码错误，请检查你的信息。';
+
+  @override
+  String get authHataYontemIzinliDegil => '该登录方式未在 Firebase 控制台中启用。';
+
+  @override
+  String get authHataFarkliYontem => '该邮箱已使用其他登录方式注册。';
+
+  @override
+  String get authHataAgHatasi => '请检查网络连接后重试。';
+
+  @override
+  String get authHataCokDeneme => '尝试次数过多，请稍后再试。';
+
+  @override
+  String get authHataHesapDevreDisi => '该账户已被停用。';
+
+  @override
+  String get authHataYenidenGiris => '你需要重新登录才能完成此操作。';
+
+  @override
+  String get authHataGenel => '出错了，请重试。';
+
+  @override
+  String get authHataSifreEpostasiGonderilemedi => '无法发送密码重置邮件，请重试。';
+
+  @override
+  String get authHataGoogleDogrulanamadi => '无法验证 Google 登录，请重试。';
+
+  @override
+  String get authHataGoogleFarkliKullanici => '该 Google 账户已关联到其他用户。';
+
+  @override
+  String get authHataGoogleZatenBagli => '该 Google 账户已关联。';
+
+  @override
+  String get authHataGoogleYapilandirilmamis => '此设备未配置 Google 登录，请向支持团队反馈。';
+
+  @override
+  String get authHataGooglePencereAcik => 'Google 登录窗口仍处于打开状态，请稍等几秒后重试。';
+
+  @override
+  String get authHataGoogleTamamlanamadi => '无法完成 Google 登录，请几秒后重试。';
+
+  @override
+  String get authHataGoogleHesapSec => '你需要选择 Google 账户才能登录。';
+
+  @override
+  String get authHataGoogleOnayBekliyor => '你的 Google 账户有待处理的操，请重试。';
+
+  @override
+  String get authHataGoogleBeklenmeyen => 'Google 登录时发生意外错误，请重试。';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override
@@ -2464,4 +2575,55 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get yakindaAciklama => '我们正在开发这个功能，很快就会与大家见面！';
+
+  @override
+  String get aiOneriHazirlaniyor => '正在准备建议...';
+
+  @override
+  String get haftalikStilistOnerisiHazirlanamadi => '无法准备造型师建议，请重试。';
+
+  @override
+  String get haftalikAiServisHatasi => '无法连接 AI 服务，请检查网络后重试。';
+
+  @override
+  String get haftalikAiGecerliPlanYok => 'AI 未返回有效的计划，请重试。';
+
+  @override
+  String get haftalikPlanBeklenmeyenHata => '创建计划时发生意外错误，请重试。';
+
+  @override
+  String get haftalikBugunGiyildi => '今天的穿搭已经穿过，未创建新的穿搭。';
+
+  @override
+  String get girisHataKullaniciAdiKisa => '请输入至少 3 个字符';
+
+  @override
+  String get girisHataEpostaGecersiz => '请输入有效的邮箱';
+
+  @override
+  String get girisHataSifreKisa => '请输入至少 6 个字符';
+
+  @override
+  String get googleKullanicisi => 'Google 用户';
+
+  @override
+  String get premiumEkranBaslik => 'FitCheck Premium';
+
+  @override
+  String get dilSecimBaslik => '🌐 选择语言';
+
+  @override
+  String get dilSecenekOtomatik => '自动（设备语言）';
+
+  @override
+  String get kapat => '关闭';
+
+  @override
+  String get bildirimBaslik => '通知';
+
+  @override
+  String get ayarlarAltbilgi => '用心打造';
+
+  @override
+  String get geriBildirimKonu => 'FitCheck 反馈';
 }

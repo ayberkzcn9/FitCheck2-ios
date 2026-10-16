@@ -3,6 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../theme/design_tokens.dart';
+import '../../theme/tema_yardimcilari.dart';
+import '../l10n/app_localizations.dart';
 
 class HavaBar extends StatelessWidget {
   final String havaEtiketi;
@@ -13,8 +16,10 @@ class HavaBar extends StatelessWidget {
   final VoidCallback onKonumuYenile;
   final VoidCallback? onKonumAyarlariniAc;
   final IconData Function(String) havaDurumuIkonu;
-  final String yukleniyorMetni;
-  final String ayarlarTooltip;
+
+  /// Boş bırakılırsa yerelleştirilmiş varsayılan kullanılır.
+  final String? yukleniyorMetni;
+  final String? ayarlarTooltip;
 
   const HavaBar({
     super.key,
@@ -26,22 +31,25 @@ class HavaBar extends StatelessWidget {
     required this.onKonumuYenile,
     this.onKonumAyarlariniAc,
     required this.havaDurumuIkonu,
-    this.yukleniyorMetni = 'Yükleniyor...',
-    this.ayarlarTooltip = 'Ayarlar',
+    this.yukleniyorMetni,
+    this.ayarlarTooltip,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final l10n = AppLocalizations.of(context)!;
+    final yukleniyorMetni = this.yukleniyorMetni ?? l10n.yukleniyor;
+    final ayarlarTooltip = this.ayarlarTooltip ?? l10n.anaAyarlarTooltip;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Card(
         elevation: 0,
         color: colorScheme.surfaceContainerLow,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: AppRadius.xlRadius,
           side: BorderSide(
             color: havaHatasi
                 ? colorScheme.error.withValues(alpha: 0.3)
@@ -49,7 +57,7 @@ class HavaBar extends StatelessWidget {
           ),
         ),
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: AppRadius.xlRadius,
           onTap: () {
             HapticFeedback.lightImpact();
             onKonumuYenile();
@@ -60,7 +68,7 @@ class HavaBar extends StatelessWidget {
               children: [
                 // Location Icon
                 Container(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: havaHatasi
                         ? colorScheme.errorContainer
@@ -69,11 +77,13 @@ class HavaBar extends StatelessWidget {
                   ),
                   child: Icon(
                     havaHatasi ? Icons.location_off_rounded : Icons.my_location_rounded,
-                    color: havaHatasi ? colorScheme.onErrorContainer : Colors.black,
+                    color: havaHatasi
+                        ? colorScheme.onErrorContainer
+                        : colorScheme.onSurfaceVariant,
                     size: 18,
                   ),
                 ),
-                const SizedBox(width: 14),
+                const SizedBox(width: 16),
                 // Weather Info
                 Expanded(
                   child: Column(
@@ -88,7 +98,7 @@ class HavaBar extends StatelessWidget {
                           letterSpacing: 1.0,
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      const SizedBox(height: 4),
                       Text(
                         havaYukleniyor || havaSicaklikMetni.isEmpty
                             ? yukleniyorMetni
@@ -133,17 +143,17 @@ class HavaBar extends StatelessWidget {
                       child: Icon(
                         havaDurumuIkonu(havaDurumMetni),
                         size: 18,
-                        color: Colors.black,
+                        color: context.uygunMetin,
                       ),
                     ),
                   ),
                   const SizedBox(width: 8),
                 ],
                 // Refresh Icon
-                const Icon(
+                Icon(
                   Icons.refresh_rounded,
                   size: 20,
-                  color: Colors.black,
+                  color: context.uygunMetin,
                 ),
               ],
             ),

@@ -29,6 +29,7 @@ import 'services/background_removal_service.dart';
 import 'services/bildirim_servisi.dart';
 import 'services/fcm_service.dart';
 import 'services/reklam_servisi.dart';
+import '../theme/design_tokens.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -263,12 +264,24 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
   final AnalyticsNavigatorObserver _analyticsObserver =
       AnalyticsNavigatorObserver();
   Locale? _locale;
+  late ThemeMode _temaModu;
 
   static const Color _seedColor = Color(0xFF3B3B3B);
 
   @override
   void initState() {
     super.initState();
+    // Kayıtlı tema modunu uygula
+    switch (widget.baslangicTemaModuStr) {
+      case 'dark':
+        _temaModu = ThemeMode.dark;
+        break;
+      case 'system':
+        _temaModu = ThemeMode.system;
+        break;
+      default:
+        _temaModu = ThemeMode.light;
+    }
     if (widget.baslangicDilKodu != null &&
         widget.baslangicDilKodu!.isNotEmpty) {
       _locale = Locale(widget.baslangicDilKodu!);
@@ -293,14 +306,29 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
   Future<void> setThemeMode(ThemeMode mode) async {
     final prefs = await SharedPreferences.getInstance();
     if (!mounted) return;
-    await prefs.setString('uygulama_temasi_modu', 'light');
+
+    setState(() {
+      _temaModu = mode;
+    });
+
+    final deger = mode == ThemeMode.dark
+        ? 'dark'
+        : (mode == ThemeMode.system ? 'system' : 'light');
+    await prefs.setString('uygulama_temasi_modu', deger);
   }
 
   void setTheme(bool isDark) {
-    setThemeMode(ThemeMode.light);
+    setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
   }
 
-  bool get isDarkMode => false;
+  bool get isDarkMode {
+    if (_temaModu == ThemeMode.dark) return true;
+    if (_temaModu == ThemeMode.light) return false;
+    // system: cihaz ayarına bak
+    final brightness =
+        PlatformDispatcher.instance.platformBrightness;
+    return brightness == Brightness.dark;
+  }
 
   Locale? get currentLocale => _locale;
 
@@ -429,19 +457,27 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         Locale('ru'),
       ],
       builder: (context, child) {
+        final bool koyuMu =
+            Theme.of(context).brightness == Brightness.dark;
         return Stack(
           children: [
             Positioned.fill(
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [
-                      Color(0xFFFAFAFC),
-                      Color(0xFFF2F4F7),
-                      Color(0xFFEAECF0),
-                    ],
+                    colors: koyuMu
+                        ? const [
+                            Color(0xFF121212),
+                            Color(0xFF1A1A1A),
+                            Color(0xFF202020),
+                          ]
+                        : const [
+                            Color(0xFFFAFAFC),
+                            Color(0xFFF2F4F7),
+                            Color(0xFFEAECF0),
+                          ],
                   ),
                 ),
               ),
@@ -454,7 +490,10 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
                 height: 320,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: const Color(0xFFE2E8F0).withValues(alpha: 0.6),
+                  color: (koyuMu
+                          ? const Color(0xFF2A2A2A)
+                          : const Color(0xFFE2E8F0))
+                      .withValues(alpha: koyuMu ? 0.4 : 0.6),
                 ),
               ),
             ),
@@ -466,7 +505,10 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
                 height: 380,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: const Color(0xFFD1D5DB).withValues(alpha: 0.4),
+                  color: (koyuMu
+                          ? const Color(0xFF262626)
+                          : const Color(0xFFD1D5DB))
+                      .withValues(alpha: 0.4),
                 ),
               ),
             ),
@@ -519,7 +561,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         dialogTheme: DialogThemeData(
           backgroundColor: lightColorScheme.surfaceContainerHigh,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: AppRadius.dialogRadius,
           ),
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -591,7 +633,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         dialogTheme: DialogThemeData(
           backgroundColor: darkColorScheme.surfaceContainerHigh,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: AppRadius.dialogRadius,
           ),
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -624,7 +666,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           }),
         ),
       ),
-      themeMode: ThemeMode.light,
+      themeMode: _temaModu,
       home: _BaslangicKapisi(
         baslatmaIslemi: widget.baslatmaIslemi,
         anaSayfaOlustur: _oturumKapisi,

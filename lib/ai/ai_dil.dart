@@ -83,6 +83,68 @@ String aiCinsiyet(String ham) {
   return 'female';
 }
 
+/// Kullanıcının kayıtlı stil tercihini (cihaz diline göre Türkçe/İngilizce
+/// saklanabilir, ör. 'Spor', 'Klasik / Ofis', 'Streetwear / Casual')
+/// yapay zekâ istemleri için İngilizce/nötr bir terime çevirir.
+String aiTarz(String ham) {
+  final s = ham.toLowerCase().trim();
+  if (s.contains('streetwear') || s.contains('sokak') || s.contains('casual')) {
+    return 'Streetwear / Casual';
+  }
+  if (s.contains('klasik') ||
+      s.contains('classic') ||
+      s.contains('ofis') ||
+      s.contains('office') ||
+      s.contains('formal')) {
+    return 'Classic / Smart';
+  }
+  if (s.contains('minimal')) return 'Minimalist';
+  if (s.contains('spor') || s.contains('sport') || s.contains('athleisure')) {
+    return 'Sporty / Athleisure';
+  }
+  if (s.contains('vintage') || s.contains('retro')) return 'Vintage / Retro';
+  return 'General';
+}
+
+/// Kullanıcının kayıtlı renk paleti tercihini (ör. 'Koyu Tonlar', 'Pastel',
+/// 'Canlı', 'Nötr') yapay zekâ istemleri için İngilizce terime çevirir.
+String aiRenkPaleti(String ham) {
+  final s = ham.toLowerCase().trim();
+  if (s.contains('koyu') || s.contains('dark')) return 'Dark tones';
+  if (s.contains('pastel')) return 'Pastel';
+  if (s.contains('canlı') ||
+      s.contains('canli') ||
+      s.contains('vibrant') ||
+      s.contains('bright') ||
+      s.contains('bold')) {
+    return 'Vibrant / Bold';
+  }
+  if (s.contains('nötr') ||
+      s.contains('notr') ||
+      s.contains('neutral')) {
+    return 'Neutral';
+  }
+  return 'Mixed';
+}
+
+/// Kullanıcının kayıtlı ten rengi değerini (anahtar: 'light'/'wheat'/'dark'
+/// ya da yerelleştirilmiş etiket) yapay zekâ istemleri için İngilizce
+/// terime çevirir. Dönen değer, istemdeki ten önerisi başlıklarıyla eşleşir.
+String aiTenRengi(String ham) {
+  final s = ham.toLowerCase().trim();
+  if (s == 'light' ||
+      s.contains('açık') ||
+      s.contains('acik') ||
+      s.contains('beyaz') ||
+      s.contains('fair')) {
+    return 'Fair/Light';
+  }
+  if (s == 'dark' || s.contains('esmer') || s.contains('koyu') || s.contains('deep')) {
+    return 'Dark/Tan';
+  }
+  return 'Wheat/Medium/Warm';
+}
+
 /// Kullanıcı mesajında "kombin isteniyor mu" tespiti için çok dilli
 /// anahtar kelimeler. Her dilde kombin/giyim talebini yakalar.
 const List<String> kombinIstegiAnahtarKelimeleri = [ // Türkçe

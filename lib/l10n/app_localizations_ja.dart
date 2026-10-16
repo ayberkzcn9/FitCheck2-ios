@@ -9,6 +9,123 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get chatOrtamCasual => 'カジュアル';
+
+  @override
+  String get chatOrtamOfis => 'オフィス';
+
+  @override
+  String get chatOrtamDavet => 'パーティー';
+
+  @override
+  String get chatOrtamSpor => 'スポーツ';
+
+  @override
+  String get chatOrtamGece => 'ナイト';
+
+  @override
+  String get chatOrtamRomantik => 'ロマンチック';
+
+  @override
+  String get chatOrtamHaftaSonu => '週末';
+
+  @override
+  String get gardirobumAdimArkaplan => '背景を削除中';
+
+  @override
+  String get gardirobumAdimArkaplanAlt => 'AIで画像を解析中';
+
+  @override
+  String get gardirobumAdimAnaliz => '衣類を解析中';
+
+  @override
+  String get gardirobumAdimAnalizAlt => '色・スタイル・カテゴリを判定中';
+
+  @override
+  String get gardirobumAdimKaydet => '保存中';
+
+  @override
+  String get gardirobumAdimKaydetAlt => 'ワードローブに追加中';
+
+  @override
+  String get gardirobumLutfenBekleyin => 'お待ちください...';
+
+  @override
+  String get authHataZayifSifre => 'パスワードが弱すぎます。6文字以上にしてください。';
+
+  @override
+  String get authHataEpostaKullanimda => 'このメールアドレスはすでに使用されています。';
+
+  @override
+  String get authHataGecersizEposta => '無効なメールアドレスを入力しました。';
+
+  @override
+  String get authHataKullaniciBulunamadi => 'このメールアドレスのユーザーが見つかりません。';
+
+  @override
+  String get authHataYanlisSifre => 'パスワードが正しくありません。もう一度お試しください。';
+
+  @override
+  String get authHataGecersizKimlik => 'メールアドレスまたはパスワードが正しくありません。ご確認ください。';
+
+  @override
+  String get authHataYontemIzinliDegil => 'このログイン方法はFirebaseコンソールで有効になっていません。';
+
+  @override
+  String get authHataFarkliYontem => 'このメールアドレスは別のログイン方法ですでに登録されています。';
+
+  @override
+  String get authHataAgHatasi => 'インターネット接続を確認してもう一度お試しください。';
+
+  @override
+  String get authHataCokDeneme => '試行回数が多すぎます。しばらくしてからお試しください。';
+
+  @override
+  String get authHataHesapDevreDisi => 'このアカウントは無効化されています。';
+
+  @override
+  String get authHataYenidenGiris => 'この操作を行うには再度ログインが必要です。';
+
+  @override
+  String get authHataGenel => 'エラーが発生しました。もう一度お試しください。';
+
+  @override
+  String get authHataSifreEpostasiGonderilemedi =>
+      'パスワード再設定メールを送信できませんでした。もう一度お試しください。';
+
+  @override
+  String get authHataGoogleDogrulanamadi =>
+      'Googleログインを確認できませんでした。もう一度お試しください。';
+
+  @override
+  String get authHataGoogleFarkliKullanici => 'このGoogleアカウントは別のユーザーにリンクされています。';
+
+  @override
+  String get authHataGoogleZatenBagli => 'このGoogleアカウントはすでにリンクされています。';
+
+  @override
+  String get authHataGoogleYapilandirilmamis =>
+      'この端末ではGoogleログインが設定されていません。サポートにご連絡ください。';
+
+  @override
+  String get authHataGooglePencereAcik =>
+      'Googleログイン画面がまだ開いています。数秒待って再試行してください。';
+
+  @override
+  String get authHataGoogleTamamlanamadi =>
+      'Googleログインを完了できませんでした。数秒後にもう一度お試しください。';
+
+  @override
+  String get authHataGoogleHesapSec => 'ログインするにはGoogleアカウントを選択してください。';
+
+  @override
+  String get authHataGoogleOnayBekliyor =>
+      'Googleアカウントに保留中の操作があります。もう一度お試しください。';
+
+  @override
+  String get authHataGoogleBeklenmeyen => 'Googleログイン中に予期しないエラーが発生しました。';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override
@@ -2497,4 +2614,58 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get yakindaAciklama => 'この機能は準備中です、もうすぐお届けします！';
+
+  @override
+  String get aiOneriHazirlaniyor => '提案を準備中...';
+
+  @override
+  String get haftalikStilistOnerisiHazirlanamadi =>
+      'スタイリストの提案を作成できませんでした。もう一度お試しください。';
+
+  @override
+  String get haftalikAiServisHatasi =>
+      'AIサービスに接続できませんでした。インターネット接続を確認して再試行してください。';
+
+  @override
+  String get haftalikAiGecerliPlanYok => 'AIが有効なプランを返しませんでした。もう一度お試しください。';
+
+  @override
+  String get haftalikPlanBeklenmeyenHata =>
+      'プランの作成中に予期しないエラーが発生しました。もう一度お試しください。';
+
+  @override
+  String get haftalikBugunGiyildi => '今日のコーデはすでに着用済みです。新しいコーデは作成されませんでした。';
+
+  @override
+  String get girisHataKullaniciAdiKisa => '3文字以上入力してください';
+
+  @override
+  String get girisHataEpostaGecersiz => '有効なメールアドレスを入力してください';
+
+  @override
+  String get girisHataSifreKisa => '6文字以上入力してください';
+
+  @override
+  String get googleKullanicisi => 'Google ユーザー';
+
+  @override
+  String get premiumEkranBaslik => 'FitCheck Premium';
+
+  @override
+  String get dilSecimBaslik => '🌐 言語を選択';
+
+  @override
+  String get dilSecenekOtomatik => '自動（端末の言語）';
+
+  @override
+  String get kapat => '閉じる';
+
+  @override
+  String get bildirimBaslik => '通知';
+
+  @override
+  String get ayarlarAltbilgi => 'スタイルを込めて';
+
+  @override
+  String get geriBildirimKonu => 'FitCheck フィードバック';
 }

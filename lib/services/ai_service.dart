@@ -54,25 +54,28 @@ class AiService {
     String kisilikTalimat;
     if (kisilik == 'Profesyonel Moda Eleştirmeni') {
       kisilikTalimat =
-          'Yanıt tarzın profesyonel bir moda eleştirmeni gibi olsun: net, bilgili, yapıcı ve somut öneriler ver. Eleştirirken kırıcı veya küçümseyici olma.';
+          'Adopt the tone of a professional fashion critic: be clear, knowledgeable, constructive and specific. Never be harsh or condescending when giving feedback.';
     } else if (kisilik == 'Minimalist & Kısa') {
       kisilikTalimat =
-          'Yanıtlarını minimalist ve kısa tut. Gereksiz giriş yapma; en önemli değerlendirmeyi ve öneriyi doğrudan söyle.';
+          'Keep your answers minimalist and short. Skip unnecessary introductions; state the most important assessment and suggestion directly.';
     } else {
       kisilikTalimat =
-          'Yanıt tarzın samimi ve arkadaş canlısı olsun: sıcak, cesaretlendirici ve doğal konuş. Kullanıcıyı yargılama.';
+          'Use a warm, friendly and encouraging tone. Speak naturally and never judge the user.';
     }
 
     final fitTalimat = switch (fit) {
-      'Slim Fit' => 'Kıyafetlerin vücuda daha oturan Slim Fit tercihine uygunluğunu değerlendir.',
-      'Oversize / Relaxed' => 'Rahat ve bol Oversize / Relaxed tercihine uygunluğu değerlendir.',
-      _ => 'Regular Fit tercihine uygun, dengeli kalıpları önceliklendir.',
+      'Slim Fit' =>
+        'Evaluate how well the clothes suit a Slim Fit preference that hugs the body more closely.',
+      'Oversize / Relaxed' =>
+        'Evaluate how well the clothes suit a relaxed, loose Oversize / Relaxed preference.',
+      _ =>
+        'Prioritize balanced, Regular Fit silhouettes that match the Regular Fit preference.',
     };
     final renkTalimat = sikiRenkUyumu
-        ? 'Renk uyumunda daha seçici ol; uyumsuz ve çakışan renk kombinlerini açıkça belirt.'
-        : 'Renk uyumunda esnek ol; cesur ve kontrast kombinleri de uygun olduğunda öner.';
+        ? 'Be stricter about color harmony; clearly point out clashing or mismatched color combinations.'
+        : 'Be flexible about color harmony; also suggest bold and contrasting combinations when they work.';
 
-    return '$sistemPromptu\n\nSTİLİST KİŞİLİĞİ VE YANIT TARZI:\n$kisilikTalimat\n\nKULLANICI TERCİHLERİ:\n$fitTalimat\n$renkTalimat';
+    return '$sistemPromptu\n\nSTYLIST PERSONALITY AND RESPONSE TONE:\n$kisilikTalimat\n\nUSER PREFERENCES:\n$fitTalimat\n$renkTalimat';
   }
 
   dynamic _decodeJson(http.Response response) {

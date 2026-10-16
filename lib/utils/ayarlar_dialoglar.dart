@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../l10n/app_localizations.dart';
+import '../../theme/design_tokens.dart';
 
 class AyarlarDialoglar {
   AyarlarDialoglar._();
@@ -17,12 +18,12 @@ class AyarlarDialoglar {
         return AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: AppRadius.dialogRadius,
           ),
           title: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: colors.errorContainer,
                   shape: BoxShape.circle,
@@ -49,7 +50,7 @@ class AyarlarDialoglar {
           content: Text(
             l10n.cikisYapOnayIcerik,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 14,
               color: colors.onSurfaceVariant,
               height: 1.4,
             ),
@@ -203,12 +204,12 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
     return AlertDialog(
       backgroundColor: widget.colors.surfaceContainerHigh,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: AppRadius.dialogRadius,
       ),
       title: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: widget.colors.primaryContainer,
               shape: BoxShape.circle,
@@ -240,7 +241,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
             Text(
               widget.l10n.sifreSifirlamaAciklama,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 14,
                 color: widget.colors.onSurfaceVariant,
               ),
             ),
@@ -358,7 +359,7 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
     return AlertDialog(
       backgroundColor: widget.colors.surfaceContainerHigh,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: AppRadius.dialogRadius,
       ),
       title: Text(
         widget.l10n.varsayilanSehirBolge,
@@ -404,7 +405,7 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
               style: TextStyle(
                 color: widget.colors.primary,
                 fontWeight: FontWeight.bold,
-                fontSize: 15,
+                fontSize: 14,
               ),
             ),
           ),
@@ -431,7 +432,7 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
               widget.l10n.kaydet,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 15,
+                fontSize: 14,
               ),
             ),
           ),

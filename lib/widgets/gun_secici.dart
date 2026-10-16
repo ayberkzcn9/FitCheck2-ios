@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../theme/design_tokens.dart';
 
 class GunSecici extends StatelessWidget {
   final List<dynamic> hafta;
@@ -56,7 +57,7 @@ class GunSecici extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 8),
             child: InkWell(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: AppRadius.xxlRadius,
               onTap: () {
                 HapticFeedback.selectionClick();
                 onGunSecildi(index);
@@ -68,7 +69,7 @@ class GunSecici extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: bg,
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: AppRadius.xxlRadius,
                   border: Border.all(
                     color: giyildiMi && !seciliMi
                         ? Colors.green.withValues(alpha: 0.4)
@@ -85,12 +86,12 @@ class GunSecici extends StatelessWidget {
                         size: 14,
                         color: fg,
                       ),
-                      const SizedBox(width: 6),
+                      const SizedBox(width: 8),
                     ],
                     Text(
                       gunAdi,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 14,
                         fontWeight: FontWeight.w800,
                         color: fg,
                         letterSpacing: 0.5,

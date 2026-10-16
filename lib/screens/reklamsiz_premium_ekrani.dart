@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/satin_alma_servisi.dart';
+import '../../theme/design_tokens.dart';
 
 class ReklamsizPremiumEkrani extends StatefulWidget {
   const ReklamsizPremiumEkrani({super.key});
@@ -55,7 +56,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     final hataMetni = _hataMetni(l10n);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('FitCheck Premium')),
+      appBar: AppBar(title: Text(l10n.premiumEkranBaslik)),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(24, 20, 24, 32),
         children: [
@@ -63,7 +64,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: colors.primaryContainer,
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: AppRadius.dialogRadius,
             ),
             child: Icon(Icons.workspace_premium_rounded,
                 size: 72, color: colors.onPrimaryContainer),
@@ -73,7 +74,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.w900,
                   )),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           Text(
             l10n.premiumAciklama,
             style: TextStyle(color: colors.onSurfaceVariant, height: 1.45),
@@ -82,7 +83,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           _OzellikSatiri(metin: l10n.premiumOzellikReklamsiz),
           _OzellikSatiri(metin: l10n.premiumOzellikAylik),
           _OzellikSatiri(metin: l10n.premiumOzellikMagaza),
-          const SizedBox(height: 28),
+          const SizedBox(height: 24),
           if (_satinAlma.premiumAktif)
             Container(
               padding: const EdgeInsets.all(16),
@@ -115,7 +116,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
                         : l10n.premiumAboneOlFiyatli(fiyat)),
               ),
             ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           TextButton(
             onPressed: _satinAlma.yukleniyor ||
                     _satinAlma.hazirlaniyor ||
@@ -145,13 +146,13 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           // Mağazanın neden ürün döndürmediğini görünür kılar (ör. Play
           // Console'da etkin temel plan yok ya da ürün kimliği bulunamadı).
           if (!_satinAlma.hazirlaniyor && _satinAlma.tani != null) ...[
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
             Text(
               _satinAlma.tani!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: colors.onSurfaceVariant,
-                fontSize: 11,
+                fontSize: 12,
               ),
             ),
           ],
@@ -174,7 +175,7 @@ class _OzellikSatiri extends StatelessWidget {
         children: [
           Icon(Icons.check_circle_rounded,
               size: 22, color: Theme.of(context).colorScheme.primary),
-          const SizedBox(width: 10),
+          const SizedBox(width: 8),
           Text(metin, style: const TextStyle(fontWeight: FontWeight.w600)),
         ],
       ),

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vibration/vibration.dart';
 
 import '../l10n/app_localizations.dart';
+import '../../theme/design_tokens.dart';
 
 // Global nav bar visibility notifier for trivia screen
 final ValueNotifier<bool> triviaNavBarVisible = ValueNotifier<bool>(true);
@@ -268,7 +269,7 @@ class _ModaRenkYarismasiEkraniState extends State<ModaRenkYarismasiEkrani> with 
                 ScaleTransition(
                   scale: _skorScaleAnim,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: colors.primaryContainer,
                       borderRadius: BorderRadius.circular(16),
@@ -401,7 +402,7 @@ class _ModaRenkYarismasiEkraniState extends State<ModaRenkYarismasiEkrani> with 
                     Card(
                       color: colors.surfaceContainerLow,
                       elevation: 0,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      shape: RoundedRectangleBorder(borderRadius: AppRadius.xlRadius),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: Text(soru.soru, style: Theme.of(context).textTheme.headlineSmall),

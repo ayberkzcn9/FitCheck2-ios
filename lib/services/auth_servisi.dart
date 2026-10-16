@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'analytics_servisi.dart';
+import '../utils/l10n_yardimcilari.dart';
 
 class AuthServisi {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -201,9 +202,10 @@ class AuthServisi {
       return;
     }
 
+    final l10n = await cevrimdisiL10n();
     await _profilBelgesiniKaydet(user.uid, {
       'uid': user.uid,
-      'kullaniciAdi': user.displayName ?? 'Google Kullanıcısı',
+      'kullaniciAdi': user.displayName ?? l10n.googleKullanicisi,
       'email': user.email ?? '',
       'cinsiyet': cinsiyet,
       'isAnonymous': false,
@@ -297,7 +299,7 @@ class AuthServisi {
       throw _hataMesajiniGetir(e.code);
     } catch (e) {
       debugPrint('Şifre sıfırlama e-postası gönderilemedi → $e');
-      throw 'Şifre sıfırlama e-postası gönderilemedi. Lütfen tekrar deneyin.';
+      throw 'authHataSifreEpostasiGonderilemedi';
     }
   }
 
@@ -330,7 +332,7 @@ class AuthServisi {
       // İki jeton da yoksa GoogleAuthProvider.credential anlaşılması güç bir
       // argüman hatası fırlatır; kullanıcıya ne olduğunu açıkça söyleyelim.
       if (googleAuth.idToken == null && googleAuth.accessToken == null) {
-        throw 'Google oturumu doğrulanamadı. Lütfen tekrar deneyin.';
+        throw 'authHataGoogleDogrulanamadi';
       }
 
       // 3. Firebase credential nesnesi oluştur
@@ -361,12 +363,11 @@ class AuthServisi {
       if (mesaj == null) return null;
       throw mesaj;
     } catch (e) {
-      // Yukarıdaki kontrollerden gelen bir String zaten kullanıcıya
-      // gösterilmeye hazır bir mesajdır; genel mesajla ezilmemeli.
+      // Yukarıdaki kontrollerden gelen bir String, yerelleştirme anahtarıdır
+      // (ör. 'authHataGoogleDogrulanamadi'); genel mesajla ezilmemeli.
       if (e is String) rethrow;
       debugPrint('Google ile giriş beklenmeyen hata → $e');
-      throw 'Google ile giriş yapılırken beklenmeyen bir hata oluştu. '
-          '(neden: ${e.runtimeType})';
+      throw 'authHataGoogleBeklenmeyen';
     }
   }
 
@@ -377,12 +378,13 @@ class AuthServisi {
       User? user = userCredential.user;
 
       if (user != null) {
-        await _kullaniciAdiniAyarla(user, 'Misafir Kullanıcı');
+        final l10n = await cevrimdisiL10n();
+        await _kullaniciAdiniAyarla(user, l10n.misafirKullanici);
 
         // Firestore'da misafir kaydı oluştur
         await _profilBelgesiniKaydet(user.uid, {
           'uid': user.uid,
-          'kullaniciAdi': 'Misafir Kullanıcı',
+          'kullaniciAdi': l10n.misafirKullanici,
           'email': '',
           'cinsiyet': cinsiyet,
           'isAnonymous': true,
@@ -453,7 +455,7 @@ class AuthServisi {
       if (googleUser == null) return false;
       final googleAuth = await googleUser.authentication;
       if (googleAuth.idToken == null && googleAuth.accessToken == null) {
-        throw 'Google oturumu doğrulanamadı. Lütfen tekrar deneyin.';
+        throw 'authHataGoogleDogrulanamadi';
       }
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -491,42 +493,44 @@ class AuthServisi {
     }
   }
 
-  // Türkçe Hata Mesajı Dönüştürücü
+  // Hata kodu → yerelleştirme anahtarı dönüştürücü.
+  // Dönen değerler `authHata*` anahtarlarıdır; kullanıcıya gösterilecek
+  // metne `authHatasiMetni` ile çevrilir (bkz. lib/utils/auth_hata_utils.dart).
   String _hataMesajiniGetir(String kod) {
     switch (kod) {
       case 'weak-password':
-        return 'Girilen şifre çok zayıf. En az 6 karakter olmalı.';
+        return 'authHataZayifSifre';
       case 'email-already-in-use':
-        return 'Bu e-posta adresi zaten kullanımda.';
+        return 'authHataEpostaKullanimda';
       case 'invalid-email':
-        return 'Geçersiz bir e-posta adresi girdiniz.';
+        return 'authHataGecersizEposta';
       case 'user-not-found':
-        return 'Bu e-posta adresine ait kullanıcı bulunamadı.';
+        return 'authHataKullaniciBulunamadi';
       case 'wrong-password':
-        return 'Şifre hatalı, lütfen tekrar deneyin.';
+        return 'authHataYanlisSifre';
       case 'invalid-credential':
-        return 'E-posta veya şifre hatalı. Lütfen bilgilerinizi kontrol edin.';
+        return 'authHataGecersizKimlik';
       case 'operation-not-allowed':
-        return 'Giriş yöntemi Firebase Konsolu üzerinden etkinleştirilmemiş.';
+        return 'authHataYontemIzinliDegil';
       case 'account-exists-with-different-credential':
-        return 'Bu e-posta adresi farklı bir giriş yöntemi ile zaten kayıtlı.';
+        return 'authHataFarkliYontem';
       case 'network-request-failed':
-        return 'İnternet bağlantınızı kontrol edip tekrar deneyin.';
+        return 'authHataAgHatasi';
       case 'too-many-requests':
-        return 'Çok fazla deneme yaptınız. Lütfen biraz sonra tekrar deneyin.';
+        return 'authHataCokDeneme';
       case 'user-disabled':
-        return 'Bu hesap devre dışı bırakılmış.';
+        return 'authHataHesapDevreDisi';
       case 'requires-recent-login':
-        return 'Bu işlem için tekrar giriş yapmanız gerekiyor.';
+        return 'authHataYenidenGiris';
       default:
-        return 'Bir hata oluştu. Lütfen tekrar deneyin.';
+        return 'authHataGenel';
     }
   }
 
   /// Google girişinde Firebase'in döndürdüğü hata kodunu kullanıcıya
-  /// gösterilecek Türkçe mesaja çevirir. E-posta/şifre akışındaki genel
-  /// mesajlardan farklıdır; örneğin `invalid-credential` burada "şifre hatalı"
-  /// anlamına gelmez.
+  /// gösterilecek yerelleştirme anahtarına çevirir. E-posta/şifre akışındaki
+  /// genel mesajlardan farklıdır; örneğin `invalid-credential` burada "şifre
+  /// hatalı" anlamına gelmez.
   String _googleFirebaseHataMesajiniGetir(String kod) {
     debugPrint('Google ile giriş Firebase hata kodu → $kod');
 
@@ -534,19 +538,20 @@ class AuthServisi {
       case 'invalid-credential':
       case 'internal-error':
       case 'invalid-user-token':
-        return 'Google oturumu doğrulanamadı. Lütfen tekrar deneyin.';
+        return 'authHataGoogleDogrulanamadi';
       case 'credential-already-in-use':
-        return 'Bu Google hesabı başka bir kullanıcıya bağlı.';
+        return 'authHataGoogleFarkliKullanici';
       case 'provider-already-linked':
-        return 'Bu Google hesabı zaten bağlı.';
+        return 'authHataGoogleZatenBagli';
       default:
         return _hataMesajiniGetir(kod);
     }
   }
 
-  /// Google SDK'sından gelen platform hatasını kullanıcıya gösterilecek Türkçe
-  /// mesaja çevirir. `null` dönerse hata kullanıcıya hiç gösterilmez; bu,
-  /// kullanıcının hesap seçme penceresini kendi isteğiyle kapatması durumudur.
+  /// Google SDK'sından gelen platform hatasını kullanıcıya gösterilecek
+  /// yerelleştirme anahtarına çevirir. `null` dönerse hata kullanıcıya hiç
+  /// gösterilmez; bu, kullanıcının hesap seçme penceresini kendi isteğiyle
+  /// kapatması durumudur.
   ///
   /// Ham kod ve mesaj günlüğe yazılır: sorunun kaynağı (SHA-1 parmak izi,
   /// ağ, Google Play Hizmetleri ya da çakışan oturum akışı) yalnızca bu
@@ -564,44 +569,39 @@ class AuthServisi {
 
       // DEVELOPER_ERROR: SHA-1 parmak izi ya da web istemci kimliği eksik.
       if (apiKodu == '10' || ayrinti.contains('DEVELOPER_ERROR')) {
-        return 'Google ile giriş bu cihazda yapılandırılmamış. '
-            'Lütfen bu hatayı destek ekibine bildirin.';
+        return 'authHataGoogleYapilandirilmamis';
       }
 
       // SIGN_IN_CURRENTLY_IN_PROGRESS / başka bir oturum akışı sürüyor.
       if (apiKodu == '12500' || apiKodu == '12502') {
-        return 'Google giriş penceresi hâlâ açık. Birkaç saniye bekleyip '
-            'tekrar deneyin.';
+        return 'authHataGooglePencereAcik';
       }
 
       // INTERNAL_ERROR: Google tarafında geçici hata; tekrar denemek yeterli.
       if (apiKodu == '8') {
-        return 'Google ile giriş tamamlanamadı. Lütfen birkaç saniye sonra '
-            'tekrar deneyin.';
+        return 'authHataGoogleTamamlanamadi';
       }
 
       // NETWORK_ERROR
       if (apiKodu == '7') {
-        return 'İnternet bağlantınızı kontrol edip tekrar deneyin.';
+        return 'authHataAgHatasi';
       }
     }
 
     switch (hata.code) {
       case GoogleSignIn.kNetworkError:
-        return 'İnternet bağlantınızı kontrol edip tekrar deneyin.';
+        return 'authHataAgHatasi';
       case 'sign_in_required':
-        return 'Oturum açmak için Google hesabınızı seçmeniz gerekiyor.';
+        return 'authHataGoogleHesapSec';
       case 'failed_to_recover_auth':
       case 'user_recoverable_auth':
-        return 'Google hesabınızda onay bekleyen bir işlem var. '
-            'Lütfen tekrar deneyin.';
+        return 'authHataGoogleOnayBekliyor';
       default:
         // `sign_in_failed` kodu Google tarafında birden çok durumu kapsar
-        // (iptal, çakışan akış, yapılandırma hatası...); gerçek sebep yalnızca
-        // ham mesajdaki `ApiException: <numara>` ifadesinde görünür.
-        final String ham = (hata.message ?? '').trim();
-        return 'Google ile giriş yapılırken beklenmeyen bir hata oluştu. '
-            '(kod: ${hata.code}${ham.isEmpty ? '' : ' · $ham'})';
+        // (iptal, çakışan akış, yapılandırma hatası...); gerçek sebep ham
+        // mesajdaki `ApiException: <numara>` ifadesinde görünür ve yukarıda
+        // `debugPrint` ile günlüğe yazılmıştır.
+        return 'authHataGoogleBeklenmeyen';
     }
   }
 

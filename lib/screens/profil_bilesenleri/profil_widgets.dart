@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../models/kiyafet.dart';
 import '../../l10n/app_localizations.dart';
+import '../../../theme/design_tokens.dart';
 
 class KiyafetKartcigi extends StatelessWidget {
   final Kiyafet kiyafet;
@@ -93,7 +94,7 @@ class KiyafetKartcigi extends StatelessWidget {
                   style: theme.textTheme.labelSmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                     fontWeight: FontWeight.w800,
-                    fontSize: 10,
+                    fontSize: 12,
                   ),
                 ),
               ],
@@ -129,7 +130,7 @@ class IstatistikKutusu extends StatelessWidget {
 
     return Material(
       color: colorScheme.surfaceContainerLow,
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: AppRadius.xlRadius,
       child: InkWell(
         onTap: onTap != null
             ? () {
@@ -137,11 +138,11 @@ class IstatistikKutusu extends StatelessWidget {
                 onTap!();
               }
             : null,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppRadius.xlRadius,
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppRadius.xlRadius,
             border: Border.all(
               color: colorScheme.outlineVariant.withValues(alpha: 0.5),
               width: 1.0,
@@ -154,7 +155,7 @@ class IstatistikKutusu extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: effectiveIconColor.withValues(alpha: 0.15),
                       shape: BoxShape.circle,
@@ -191,7 +192,7 @@ class IstatistikKutusu extends StatelessWidget {
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: colorScheme.onSurfaceVariant,
                   fontWeight: FontWeight.w800,
-                  fontSize: 11,
+                  fontSize: 12,
                 ),
               ),
             ],
@@ -249,7 +250,7 @@ class KategoriSatiri extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
         LinearProgressIndicator(
           value: oran,
           backgroundColor: colorScheme.surfaceContainerHighest,

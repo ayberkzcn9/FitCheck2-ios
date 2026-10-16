@@ -34,6 +34,7 @@ import '../widgets/ana_ekran_rehber.dart';
 
 import '../widgets/fade_indexed_stack.dart';
 import '../utils/ana_ekran_dialoglar.dart';
+import '../../theme/design_tokens.dart';
 
 class AnaEkraniNavigasyon extends StatefulWidget {
   const AnaEkraniNavigasyon({super.key});
@@ -195,7 +196,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         backgroundColor: colorScheme.surfaceContainerHigh,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: AppRadius.xxlRadius,
         ),
         title: Row(
           children: [
@@ -965,7 +966,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                   backgroundColor: colorScheme.surfaceContainerHigh,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: AppRadius.xxlRadius,
                   ),
                   title: Row(
                     children: [
@@ -1273,7 +1274,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                               color: _kalanHak > 0
                                   ? Colors.amber.withValues(alpha: 0.15)
                                   : colorScheme.errorContainer,
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: AppRadius.xlRadius,
                               border: Border.all(
                                 color: (_kalanHak > 0
                                         ? Colors.amber
@@ -1318,7 +1319,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                   horizontal: 4),
                               decoration: BoxDecoration(
                                 color: colorScheme.surfaceContainerHighest,
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: AppRadius.xlRadius,
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -1430,9 +1431,10 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     required Color iconColor,
     required VoidCallback onPressed,
   }) {
+    // Dokunma alanı min 44dp olmalı (erişilebilirlik); ikon boyutu aynı kalır.
     return SizedBox(
-      width: 38,
-      height: 38,
+      width: 44,
+      height: 44,
       child: IconButton(
         key: key,
         padding: EdgeInsets.zero,

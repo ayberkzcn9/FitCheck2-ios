@@ -9,6 +9,133 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
+  String get chatOrtamCasual => 'كاجوال';
+
+  @override
+  String get chatOrtamOfis => 'مكتب';
+
+  @override
+  String get chatOrtamDavet => 'حفلة';
+
+  @override
+  String get chatOrtamSpor => 'رياضة';
+
+  @override
+  String get chatOrtamGece => 'سهرة';
+
+  @override
+  String get chatOrtamRomantik => 'رومانسي';
+
+  @override
+  String get chatOrtamHaftaSonu => 'نهاية الأسبوع';
+
+  @override
+  String get gardirobumAdimArkaplan => 'إزالة الخلفية';
+
+  @override
+  String get gardirobumAdimArkaplanAlt => 'تحليل الصورة بالذكاء الاصطناعي';
+
+  @override
+  String get gardirobumAdimAnaliz => 'تحليل الملابس';
+
+  @override
+  String get gardirobumAdimAnalizAlt => 'تحديد اللون والطراز والفئة';
+
+  @override
+  String get gardirobumAdimKaydet => 'جارٍ الحفظ';
+
+  @override
+  String get gardirobumAdimKaydetAlt => 'الإضافة إلى خزانة ملابسك';
+
+  @override
+  String get gardirobumLutfenBekleyin => 'يرجى الانتظار...';
+
+  @override
+  String get authHataZayifSifre =>
+      'كلمة المرور ضعيفة جدًا. يجب ألا تقل عن 6 أحرف.';
+
+  @override
+  String get authHataEpostaKullanimda =>
+      'هذا البريد الإلكتروني قيد الاستخدام بالفعل.';
+
+  @override
+  String get authHataGecersizEposta => 'أدخلت عنوان بريد إلكتروني غير صالح.';
+
+  @override
+  String get authHataKullaniciBulunamadi =>
+      'لم يتم العثور على مستخدم لهذا البريد الإلكتروني.';
+
+  @override
+  String get authHataYanlisSifre =>
+      'كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authHataGecersizKimlik =>
+      'البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى التحقق من بياناتك.';
+
+  @override
+  String get authHataYontemIzinliDegil =>
+      'طريقة تسجيل الدخول هذه غير مفعّلة في وحدة تحكم Firebase.';
+
+  @override
+  String get authHataFarkliYontem =>
+      'هذا البريد مسجّل بالفعل بطريقة تسجيل دخول مختلفة.';
+
+  @override
+  String get authHataAgHatasi => 'تحقق من اتصالك بالإنترنت وحاول مرة أخرى.';
+
+  @override
+  String get authHataCokDeneme => 'محاولات كثيرة جدًا. يرجى المحاولة بعد قليل.';
+
+  @override
+  String get authHataHesapDevreDisi => 'تم تعطيل هذا الحساب.';
+
+  @override
+  String get authHataYenidenGiris =>
+      'يجب تسجيل الدخول مرة أخرى لإتمام هذا الإجراء.';
+
+  @override
+  String get authHataGenel => 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authHataSifreEpostasiGonderilemedi =>
+      'تعذّر إرسال بريد إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authHataGoogleDogrulanamadi =>
+      'تعذّر التحقق من تسجيل الدخول عبر Google. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authHataGoogleFarkliKullanici =>
+      'حساب Google هذا مرتبط بمستخدم آخر.';
+
+  @override
+  String get authHataGoogleZatenBagli => 'حساب Google هذا مرتبط بالفعل.';
+
+  @override
+  String get authHataGoogleYapilandirilmamis =>
+      'لم يتم إعداد تسجيل الدخول عبر Google على هذا الجهاز. يرجى إبلاغ الدعم.';
+
+  @override
+  String get authHataGooglePencereAcik =>
+      'نافذة تسجيل الدخول عبر Google لا تزال مفتوحة. انتظر بضع ثوانٍ.';
+
+  @override
+  String get authHataGoogleTamamlanamadi =>
+      'تعذّر إكمال تسجيل الدخول عبر Google. يرجى المحاولة بعد بضع ثوانٍ.';
+
+  @override
+  String get authHataGoogleHesapSec => 'يجب اختيار حساب Google لتسجيل الدخول.';
+
+  @override
+  String get authHataGoogleOnayBekliyor =>
+      'هناك إجراء معلّق في حساب Google الخاص بك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authHataGoogleBeklenmeyen =>
+      'حدث خطأ غير متوقع أثناء تسجيل الدخول عبر Google.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override
@@ -2585,4 +2712,60 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get yakindaAciklama => 'نعمل على هذه الميزة، ستصل قريبًا جدًا!';
+
+  @override
+  String get aiOneriHazirlaniyor => 'جارٍ إعداد الاقتراح...';
+
+  @override
+  String get haftalikStilistOnerisiHazirlanamadi =>
+      'تعذّر إعداد اقتراح المنسّق. حاول مرة أخرى.';
+
+  @override
+  String get haftalikAiServisHatasi =>
+      'تعذّر الوصول إلى خدمة الذكاء الاصطناعي. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.';
+
+  @override
+  String get haftalikAiGecerliPlanYok =>
+      'لم يُرجع الذكاء الاصطناعي خطة صالحة. حاول مرة أخرى.';
+
+  @override
+  String get haftalikPlanBeklenmeyenHata =>
+      'حدث خطأ غير متوقع أثناء إنشاء الخطة. حاول مرة أخرى.';
+
+  @override
+  String get haftalikBugunGiyildi =>
+      'تم ارتداء ملابس اليوم بالفعل؛ لم يتم إنشاء ملابس جديدة.';
+
+  @override
+  String get girisHataKullaniciAdiKisa => 'أدخل 3 أحرف على الأقل';
+
+  @override
+  String get girisHataEpostaGecersiz => 'أدخل بريدًا إلكترونيًا صالحًا';
+
+  @override
+  String get girisHataSifreKisa => 'أدخل 6 أحرف على الأقل';
+
+  @override
+  String get googleKullanicisi => 'مستخدم Google';
+
+  @override
+  String get premiumEkranBaslik => 'FitCheck Premium';
+
+  @override
+  String get dilSecimBaslik => '🌐 اختر اللغة';
+
+  @override
+  String get dilSecenekOtomatik => 'تلقائي (لغة الجهاز)';
+
+  @override
+  String get kapat => 'إغلاق';
+
+  @override
+  String get bildirimBaslik => 'إشعار';
+
+  @override
+  String get ayarlarAltbilgi => 'صُنع بأناقة';
+
+  @override
+  String get geriBildirimKonu => 'FitCheck ملاحظات';
 }

@@ -118,6 +118,228 @@ abstract class AppLocalizations {
     Locale('zh')
   ];
 
+  /// No description provided for @chatOrtamCasual.
+  ///
+  /// In tr, this message translates to:
+  /// **'Casual'**
+  String get chatOrtamCasual;
+
+  /// No description provided for @chatOrtamOfis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ofis'**
+  String get chatOrtamOfis;
+
+  /// No description provided for @chatOrtamDavet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Davet'**
+  String get chatOrtamDavet;
+
+  /// No description provided for @chatOrtamSpor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Spor'**
+  String get chatOrtamSpor;
+
+  /// No description provided for @chatOrtamGece.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gece'**
+  String get chatOrtamGece;
+
+  /// No description provided for @chatOrtamRomantik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Romantik'**
+  String get chatOrtamRomantik;
+
+  /// No description provided for @chatOrtamHaftaSonu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hafta Sonu'**
+  String get chatOrtamHaftaSonu;
+
+  /// No description provided for @gardirobumAdimArkaplan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arkaplan Siliniyor'**
+  String get gardirobumAdimArkaplan;
+
+  /// No description provided for @gardirobumAdimArkaplanAlt.
+  ///
+  /// In tr, this message translates to:
+  /// **'AI ile görüntü ayrıştırılıyor'**
+  String get gardirobumAdimArkaplanAlt;
+
+  /// No description provided for @gardirobumAdimAnaliz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafet Analiz Ediliyor'**
+  String get gardirobumAdimAnaliz;
+
+  /// No description provided for @gardirobumAdimAnalizAlt.
+  ///
+  /// In tr, this message translates to:
+  /// **'Renk, stil, kategori belirleniyor'**
+  String get gardirobumAdimAnalizAlt;
+
+  /// No description provided for @gardirobumAdimKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydediliyor'**
+  String get gardirobumAdimKaydet;
+
+  /// No description provided for @gardirobumAdimKaydetAlt.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gardıroba ekleniyor'**
+  String get gardirobumAdimKaydetAlt;
+
+  /// No description provided for @gardirobumLutfenBekleyin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen bekleyin...'**
+  String get gardirobumLutfenBekleyin;
+
+  /// No description provided for @authHataZayifSifre.
+  ///
+  /// In tr, this message translates to:
+  /// **'Girilen şifre çok zayıf. En az 6 karakter olmalı.'**
+  String get authHataZayifSifre;
+
+  /// No description provided for @authHataEpostaKullanimda.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu e-posta adresi zaten kullanımda.'**
+  String get authHataEpostaKullanimda;
+
+  /// No description provided for @authHataGecersizEposta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geçersiz bir e-posta adresi girdiniz.'**
+  String get authHataGecersizEposta;
+
+  /// No description provided for @authHataKullaniciBulunamadi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu e-posta adresine ait kullanıcı bulunamadı.'**
+  String get authHataKullaniciBulunamadi;
+
+  /// No description provided for @authHataYanlisSifre.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifre hatalı, lütfen tekrar deneyin.'**
+  String get authHataYanlisSifre;
+
+  /// No description provided for @authHataGecersizKimlik.
+  ///
+  /// In tr, this message translates to:
+  /// **'E-posta veya şifre hatalı. Lütfen bilgilerinizi kontrol edin.'**
+  String get authHataGecersizKimlik;
+
+  /// No description provided for @authHataYontemIzinliDegil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giriş yöntemi Firebase Konsolu üzerinden etkinleştirilmemiş.'**
+  String get authHataYontemIzinliDegil;
+
+  /// No description provided for @authHataFarkliYontem.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu e-posta adresi farklı bir giriş yöntemi ile zaten kayıtlı.'**
+  String get authHataFarkliYontem;
+
+  /// No description provided for @authHataAgHatasi.
+  ///
+  /// In tr, this message translates to:
+  /// **'İnternet bağlantınızı kontrol edip tekrar deneyin.'**
+  String get authHataAgHatasi;
+
+  /// No description provided for @authHataCokDeneme.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çok fazla deneme yaptınız. Lütfen biraz sonra tekrar deneyin.'**
+  String get authHataCokDeneme;
+
+  /// No description provided for @authHataHesapDevreDisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hesap devre dışı bırakılmış.'**
+  String get authHataHesapDevreDisi;
+
+  /// No description provided for @authHataYenidenGiris.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu işlem için tekrar giriş yapmanız gerekiyor.'**
+  String get authHataYenidenGiris;
+
+  /// No description provided for @authHataGenel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bir hata oluştu. Lütfen tekrar deneyin.'**
+  String get authHataGenel;
+
+  /// No description provided for @authHataSifreEpostasiGonderilemedi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifre sıfırlama e-postası gönderilemedi. Lütfen tekrar deneyin.'**
+  String get authHataSifreEpostasiGonderilemedi;
+
+  /// No description provided for @authHataGoogleDogrulanamadi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google oturumu doğrulanamadı. Lütfen tekrar deneyin.'**
+  String get authHataGoogleDogrulanamadi;
+
+  /// No description provided for @authHataGoogleFarkliKullanici.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu Google hesabı başka bir kullanıcıya bağlı.'**
+  String get authHataGoogleFarkliKullanici;
+
+  /// No description provided for @authHataGoogleZatenBagli.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu Google hesabı zaten bağlı.'**
+  String get authHataGoogleZatenBagli;
+
+  /// No description provided for @authHataGoogleYapilandirilmamis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google ile giriş bu cihazda yapılandırılmamış. Lütfen bu hatayı destek ekibine bildirin.'**
+  String get authHataGoogleYapilandirilmamis;
+
+  /// No description provided for @authHataGooglePencereAcik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google giriş penceresi hâlâ açık. Birkaç saniye bekleyip tekrar deneyin.'**
+  String get authHataGooglePencereAcik;
+
+  /// No description provided for @authHataGoogleTamamlanamadi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google ile giriş tamamlanamadı. Lütfen birkaç saniye sonra tekrar deneyin.'**
+  String get authHataGoogleTamamlanamadi;
+
+  /// No description provided for @authHataGoogleHesapSec.
+  ///
+  /// In tr, this message translates to:
+  /// **'Oturum açmak için Google hesabınızı seçmeniz gerekiyor.'**
+  String get authHataGoogleHesapSec;
+
+  /// No description provided for @authHataGoogleOnayBekliyor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google hesabınızda onay bekleyen bir işlem var. Lütfen tekrar deneyin.'**
+  String get authHataGoogleOnayBekliyor;
+
+  /// No description provided for @authHataGoogleBeklenmeyen.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google ile giriş yapılırken beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.'**
+  String get authHataGoogleBeklenmeyen;
+
   /// No description provided for @appTitle.
   ///
   /// In tr, this message translates to:
@@ -4851,6 +5073,108 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Bu özellik üzerinde çalışıyoruz, çok yakında sizlerle!'**
   String get yakindaAciklama;
+
+  /// No description provided for @aiOneriHazirlaniyor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Öneri hazırlanıyor...'**
+  String get aiOneriHazirlaniyor;
+
+  /// No description provided for @haftalikStilistOnerisiHazirlanamadi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stilist önerisi hazırlanamadı. Tekrar dene.'**
+  String get haftalikStilistOnerisiHazirlanamadi;
+
+  /// No description provided for @haftalikAiServisHatasi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yapay zekâ servisine ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene.'**
+  String get haftalikAiServisHatasi;
+
+  /// No description provided for @haftalikAiGecerliPlanYok.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yapay zekâ geçerli bir plan döndürmedi. Tekrar dene.'**
+  String get haftalikAiGecerliPlanYok;
+
+  /// No description provided for @haftalikPlanBeklenmeyenHata.
+  ///
+  /// In tr, this message translates to:
+  /// **'Plan oluşturulurken beklenmeyen bir hata oluştu. Tekrar dene.'**
+  String get haftalikPlanBeklenmeyenHata;
+
+  /// No description provided for @haftalikBugunGiyildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünün kombini zaten giyildi; yeni kombin oluşturulmadı.'**
+  String get haftalikBugunGiyildi;
+
+  /// No description provided for @girisHataKullaniciAdiKisa.
+  ///
+  /// In tr, this message translates to:
+  /// **'En az 3 karakter giriniz'**
+  String get girisHataKullaniciAdiKisa;
+
+  /// No description provided for @girisHataEpostaGecersiz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geçerli bir e-posta giriniz'**
+  String get girisHataEpostaGecersiz;
+
+  /// No description provided for @girisHataSifreKisa.
+  ///
+  /// In tr, this message translates to:
+  /// **'En az 6 karakter giriniz'**
+  String get girisHataSifreKisa;
+
+  /// No description provided for @googleKullanicisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google Kullanıcısı'**
+  String get googleKullanicisi;
+
+  /// No description provided for @premiumEkranBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'FitCheck Premium'**
+  String get premiumEkranBaslik;
+
+  /// No description provided for @dilSecimBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'🌐 Dil Seçimi'**
+  String get dilSecimBaslik;
+
+  /// No description provided for @dilSecenekOtomatik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Otomatik (Cihaz Dili)'**
+  String get dilSecenekOtomatik;
+
+  /// No description provided for @kapat.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kapat'**
+  String get kapat;
+
+  /// No description provided for @bildirimBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bildirim'**
+  String get bildirimBaslik;
+
+  /// No description provided for @ayarlarAltbilgi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stil ile yapıldı'**
+  String get ayarlarAltbilgi;
+
+  /// No description provided for @geriBildirimKonu.
+  ///
+  /// In tr, this message translates to:
+  /// **'FitCheck Geri Bildirim'**
+  String get geriBildirimKonu;
 }
 
 class _AppLocalizationsDelegate

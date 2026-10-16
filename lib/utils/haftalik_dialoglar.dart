@@ -7,6 +7,8 @@ import '../models/kiyafet.dart';
 import '../services/reklam_servisi.dart';
 import '../services/satin_alma_servisi.dart';
 import '../screens/reklamsiz_premium_ekrani.dart';
+import '../../theme/design_tokens.dart';
+import '../../theme/tema_yardimcilari.dart';
 
 class HaftalikDialoglar {
   static void _premiumEkraniniAc(BuildContext context) {
@@ -31,7 +33,7 @@ class HaftalikDialoglar {
         return AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: AppRadius.dialogRadius,
           ),
           title: Row(
             children: [
@@ -44,10 +46,10 @@ class HaftalikDialoglar {
               Expanded(
                 child: Text(
                   l10n.gunlukHakBittiBaslik,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: context.uygunMetin,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -56,9 +58,9 @@ class HaftalikDialoglar {
           ),
           content: Text(
             l10n.gunlukHakBittiIcerik,
-            style: const TextStyle(
-              fontSize: 15,
-              color: Colors.black87,
+            style: TextStyle(
+              fontSize: 14,
+              color: context.uygunAltMetin,
             ),
           ),
           actions: [
@@ -68,7 +70,7 @@ class HaftalikDialoglar {
                 l10n.premiumGec(SatinAlmaServisi.varsayilanFiyat),
               ),
               style: FilledButton.styleFrom(
-                backgroundColor: const Color(0xFF2E7D32),
+                backgroundColor: AppAccents.successDark,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -83,9 +85,9 @@ class HaftalikDialoglar {
               onPressed: () => Navigator.pop(ctx),
               child: Text(
                 l10n.dahaSonra,
-                style: const TextStyle(
-                  color: Colors.black54,
-                  fontSize: 15,
+                style: TextStyle(
+                  color: context.uygunAltMetin,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -100,7 +102,7 @@ class HaftalikDialoglar {
                 label: Text(
                   l10n.reklamIzleHakKazan,
                   style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -152,7 +154,7 @@ class HaftalikDialoglar {
             backgroundColor: colors.surfaceContainerHigh,
             elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: AppRadius.dialogRadius,
             ),
             title: Row(
               children: [
@@ -165,11 +167,11 @@ class HaftalikDialoglar {
                 Expanded(
                   child: Text(
                     baslik,
-                    style: const TextStyle(
-                      fontSize: 19,
+                    style: TextStyle(
+                      fontSize: 18,
                       fontWeight: FontWeight.w900,
                       letterSpacing: -0.5,
-                      color: Colors.black,
+                      color: context.uygunMetin,
                     ),
                   ),
                 ),
@@ -177,9 +179,9 @@ class HaftalikDialoglar {
             ),
             content: Text(
               mesaj,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
-                color: Colors.black87,
+                color: context.uygunAltMetin,
                 height: 1.4,
               ),
             ),
@@ -202,7 +204,7 @@ class HaftalikDialoglar {
                 child: Text(
                   l10n.haftalikUyariButon,
                   style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -247,7 +249,7 @@ class HaftalikDialoglar {
                 backgroundColor: colors.surfaceContainerHigh,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(28),
+                  borderRadius: AppRadius.dialogRadius,
                 ),
                 insetPadding: const EdgeInsets.symmetric(
                   horizontal: 24,
@@ -307,7 +309,7 @@ class HaftalikDialoglar {
                             top: 12,
                             right: 12,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: AppRadius.xlRadius,
                               child: BackdropFilter(
                                 filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                                 child: Container(
@@ -321,9 +323,9 @@ class HaftalikDialoglar {
                                     ),
                                   ),
                                   child: IconButton(
-                                    icon: const Icon(
+                                    icon: Icon(
                                       Icons.close_rounded,
-                                      color: Colors.black,
+                                      color: context.uygunMetin,
                                       size: 20,
                                     ),
                                     onPressed: () {
@@ -396,10 +398,10 @@ class HaftalikDialoglar {
                                 if (tumParcalarMetinleri.length > 1)
                                   Text(
                                     "${mevcutIndex + 1} / ${tumParcalarMetinleri.length}",
-                                    style: const TextStyle(
-                                      fontSize: 13,
+                                    style: TextStyle(
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black54,
+                                      color: context.uygunAltMetin,
                                     ),
                                   ),
                               ],
@@ -407,11 +409,11 @@ class HaftalikDialoglar {
                             const SizedBox(height: 8),
                             Text(
                               bilgi['baslik']!,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: -0.3,
-                                color: Colors.black,
+                                color: context.uygunMetin,
                                 height: 1.2,
                               ),
                             ),
@@ -468,7 +470,7 @@ class HaftalikDialoglar {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(12),
@@ -480,15 +482,15 @@ class HaftalikDialoglar {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(ikon, size: 16, color: softRenk),
-          const SizedBox(width: 6),
+          const SizedBox(width: 8),
           Text(
             metin,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
-            style: const TextStyle(
-              fontSize: 13,
+            style: TextStyle(
+              fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: context.uygunMetin,
             ),
           ),
         ],
@@ -549,19 +551,19 @@ class HaftalikDialoglar {
                       child: Text(
                         modalBaslik,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 19,
+                        style: TextStyle(
+                          fontSize: 18,
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.3,
-                          color: Colors.black,
+                          color: context.uygunMetin,
                         ),
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.close_rounded,
                         size: 28,
-                        color: Colors.black,
+                        color: context.uygunMetin,
                       ),
                       onPressed: () => Navigator.pop(ctx),
                     ),
@@ -583,8 +585,8 @@ class HaftalikDialoglar {
                           Text(
                             l10n.baskaTemizKiyafetYok,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black87,
+                            style: TextStyle(
+                              color: context.uygunAltMetin,
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),

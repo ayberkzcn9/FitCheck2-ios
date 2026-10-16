@@ -23,6 +23,8 @@ import '../utils/shake_detector.dart';
 import '../widgets/hava_bar.dart';
 import '../widgets/zar_salla_dialog.dart';
 import 'ai_chatbot_modal.dart';
+import '../../theme/design_tokens.dart';
+import '../../theme/tema_yardimcilari.dart';
 
 class GunlukKombinEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -373,7 +375,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         backgroundColor:
-            yeniDurum ? const Color(0xFF16A34A) : Colors.grey.shade700,
+            yeniDurum ? AppAccents.success : Colors.grey.shade700,
       ),
     );
   }
@@ -390,10 +392,10 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     final parcaMetinleri =
         parcalar.map((k) => '${k.gorunenBaslik} (${k.renk})').join(', ');
     final gizliBaglam =
-        'Kombin: $_kombinBasligi\n'
-        'Parçalar: $parcaMetinleri\n'
-        'Renk Uyumu: $_renkUyumuPuani%\n'
-        'Hava: ${widget.gunlukHava}';
+        'Outfit: $_kombinBasligi\n'
+        'Items: $parcaMetinleri\n'
+        'Color Harmony: $_renkUyumuPuani%\n'
+        'Weather: ${widget.gunlukHava}';
 
     _modalAcik = true;
     await showModalBottomSheet(
@@ -571,11 +573,11 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF22C55E), Color(0xFF16A34A)],
+                  colors: [Color(0xFF22C55E), AppAccents.success],
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF16A34A)
+                    color: AppAccents.success
                         .withValues(alpha: 0.30 + 0.35 * t),
                     blurRadius: 14 + 18 * t,
                     spreadRadius: 2 + 5 * t,
@@ -668,7 +670,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w800,
                                   letterSpacing: -0.2,
                                   color: colorScheme.onSurface,
@@ -683,7 +685,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                               label: Text(
                                 l10n.temizle,
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                   color: colorScheme.error,
                                 ),
@@ -705,11 +707,11 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             zarDairesi(boyut: 96, ikonBoyut: 46),
-                            const SizedBox(height: 14),
+                            const SizedBox(height: 16),
                             Text(
                               l10n.zarAtKaristir,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: -0.2,
                                 color: colorScheme.onSurface,
@@ -802,7 +804,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
       elevation: 0,
       color: colorScheme.surfaceContainerLow,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: AppRadius.dialogRadius,
         side: BorderSide(
           color: _isBugunGiydildi
               ? Colors.green
@@ -843,11 +845,15 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.analytics_rounded,
-                          size: 16, color: Colors.black),
+                      // Haftalık planlayıcı ile aynı görünüm (devamlılık).
+                      Icon(
+                        Icons.analytics_rounded,
+                        size: 16,
+                        color: context.uygunMetin,
+                      ),
                       const SizedBox(width: 6),
                       Text(
-                        l10n.stilistUyum(_renkUyumuPuani.toString()),
+                        l10n.kombinUyumYuzdesi(_renkUyumuPuani.toString()),
                         style: theme.textTheme.labelMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: colorScheme.onSurface,
@@ -868,7 +874,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(_havaDurumuIkonu(havaDurumMetni),
-                            size: 16, color: Colors.black),
+                            size: 16, color: context.uygunMetin),
                         const SizedBox(width: 6),
                         Text(
                           havaSicaklikMetni,
@@ -907,15 +913,15 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF7F2FA),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: const Color(0xFFE8DEF8)),
+                  color: AppTints.styleistBgDinamik(context),
+                  borderRadius: AppRadius.xlRadius,
+                  border: Border.all(color: AppTints.styleistBorderDinamik(context)),
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Icon(Icons.auto_awesome_rounded,
-                        size: 18, color: Color(0xFF9A73B5)),
+                        size: 18, color: AppAccents.styleist),
                     const SizedBox(width: 12),
                     Expanded(
                       child: _aiAnalizEdiyor
@@ -926,21 +932,21 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                                     height: 16,
                                     child: CircularProgressIndicator(
                                         strokeWidth: 2,
-                                        color: Color(0xFF9A73B5))),
-                                const SizedBox(width: 10),
+                                        color: AppAccents.styleist)),
+                                const SizedBox(width: 8),
                                 Text(l10n.yenidenDegerlendiriliyor,
                                     style: theme.textTheme.bodyMedium
                                         ?.copyWith(
                                             fontStyle: FontStyle.italic,
-                                            color: const Color(0xFF6B5382))),
+                                            color: AppMiscColors.styleistAltTextDinamik(context))),
                               ],
                             )
                           : Text(
                               metniGuvenliYap(_stilistYorumu),
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                fontSize: 13.5,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xFF4A3B5A),
+                                color: AppMiscColors.styleistTextDinamik(context),
                                 height: 1.45,
                               ),
                             ),
@@ -964,10 +970,10 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                   ),
                   style: IconButton.styleFrom(
                     backgroundColor: _isFavori
-                        ? Colors.amber.shade100
+                        ? AppStatusColors.favoriteBgDinamik(context)
                         : colorScheme.surfaceContainerHighest,
                     foregroundColor: _isFavori
-                        ? Colors.amber.shade900
+                        ? AppStatusColors.favoriteFgDinamik(context)
                         : colorScheme.onSurfaceVariant,
                   ),
                   onPressed: _favoriDurumunuDegistir,
@@ -982,10 +988,10 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                   ),
                   style: IconButton.styleFrom(
                     backgroundColor: _isBugunGiydildi
-                        ? Colors.green.shade100
+                        ? AppStatusColors.wornBgDinamik(context)
                         : colorScheme.surfaceContainerHighest,
                     foregroundColor: _isBugunGiydildi
-                        ? Colors.green.shade800
+                        ? AppStatusColors.wornFgDinamik(context)
                         : colorScheme.onSurfaceVariant,
                   ),
                   onPressed: _bugunGiydimTetikle,
@@ -1035,11 +1041,11 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
               child: InkWell(
                 onTap: () => _parcaDegistirModaliniAc(bolge, kiyafet),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: AppRadius.xlRadius,
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
                     child: Container(
-                      padding: const EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.black.withValues(alpha: 0.3),
                         shape: BoxShape.circle,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../l10n/app_localizations.dart';
+import '../../../theme/design_tokens.dart';
 
 class GizlilikPolitikasiModal extends StatelessWidget {
   const GizlilikPolitikasiModal({super.key});
@@ -20,13 +21,13 @@ class GizlilikPolitikasiModal extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+      shape: RoundedRectangleBorder(borderRadius: AppRadius.dialogRadius),
       backgroundColor: colors.surfaceContainerHigh,
       elevation: 0,
       title: Row(
         children: [
           Icon(Icons.privacy_tip_rounded, color: colors.primary),
-          const SizedBox(width: 10),
+          const SizedBox(width: 8),
           Expanded(
             child: Text(
               l10n.gizlilikPolitikasiTitle,
@@ -49,12 +50,12 @@ class GizlilikPolitikasiModal extends StatelessWidget {
               Text(
                 l10n.sonGuncellemeTarihi,
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold,
                   color: colors.onSurfaceVariant,
                 ),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 16),
               _politikaParagraf(
                 context,
                 l10n.gizlilikMadde1Baslik,
@@ -83,7 +84,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
       actions: [
         FilledButton(
           style: FilledButton.styleFrom(
-            backgroundColor: const Color(0xFF2E7D32),
+            backgroundColor: AppAccents.successDark,
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -115,7 +116,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
             baslik,
             style: TextStyle(
               fontWeight: FontWeight.w800,
-              fontSize: 13,
+              fontSize: 14,
               color: colors.primary,
             ),
           ),
@@ -123,7 +124,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
           Text(
             icerik,
             style: TextStyle(
-              fontSize: 12.5,
+              fontSize: 12,
               height: 1.4,
               color: colors.onSurfaceVariant,
             ),

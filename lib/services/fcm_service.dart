@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 
 import 'bildirim_servisi.dart';
 import 'auth_servisi.dart';
+import '../utils/l10n_yardimcilari.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -58,10 +59,11 @@ class FcmService {
     });
 
     // Foreground messages - yerel bildirim göster
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       debugPrint('Foreground message: ${message.messageId}');
+      final l10n = await cevrimdisiL10n();
       BildirimServisi().anlikBildirimGoster(
-        baslik: message.notification?.title ?? 'Bildirim',
+        baslik: message.notification?.title ?? l10n.bildirimBaslik,
         icerik: message.notification?.body ?? '',
       );
     });

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import '../l10n/app_localizations.dart';
+import '../../theme/design_tokens.dart';
 
 class AnaEkranRehber {
   static void rehberiBaslat({
@@ -262,7 +263,7 @@ class AnaEkranRehber {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHigh,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: AppRadius.xxlRadius,
         border: Border.all(
           color: colors.outlineVariant.withValues(alpha: 0.5),
           width: 1,
@@ -282,7 +283,7 @@ class AnaEkranRehber {
           Text(
             baslik,
             style: TextStyle(
-              fontSize: 17,
+              fontSize: 18,
               fontWeight: FontWeight.w700,
               color: colors.onSurface,
             ),
@@ -316,7 +317,7 @@ class AnaEkranRehber {
                 sonAdimMi ? l10n.rehberAnladimBasla : l10n.rehberSonrakiAdim,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 13,
+                  fontSize: 14,
                 ),
               ),
             ),

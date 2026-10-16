@@ -127,13 +127,13 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
                       Text(
                         'FitCheck',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.5,
                           color: colors.onSurface,
                         ),
                       ),
-                      const SizedBox(height: 18),
+                      const SizedBox(height: 20),
                       _ilerlemeCubugu(colors),
                     ],
                   ),

@@ -11,6 +11,8 @@ import '../l10n/app_localizations.dart';
 import '../widgets/dil_secim_modal.dart';
 import '../services/auth_servisi.dart';
 import '../services/analytics_servisi.dart';
+import '../utils/auth_hata_utils.dart';
+import '../../theme/design_tokens.dart';
 
 class OnboardingEkrani extends StatefulWidget {
   const OnboardingEkrani({super.key});
@@ -67,17 +69,17 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
   // Her sayfa için canlı ve tematik renk paleti
   List<Color> _getSayfaRenkPaleti(int index) {
     const paletler = [
-      [Color(0xFF6C5CE7), Color(0xFFA29BFE)], // Hoş Geldin - Mor / Indigo
-      [Color(0xFF8E44AD), Color(0xFFE056FD)], // Dolap - Eflatun / Pembe
+      [AppAccents.celebration, AppPermissionColors.notification], // Hoş Geldin - Mor / Indigo
+      [AppOnboardingColors.purple, Color(0xFFE056FD)], // Dolap - Eflatun / Pembe
       [
-        Color(0xFFFF9F43),
-        Color(0xFFFECA57)
+        AppOnboardingColors.orange,
+        AppOnboardingColors.yellow
       ], // Hava Durumu - Sıcak Turuncu / Sarı
-      [Color(0xFF00CEC9), Color(0xFF81ECEC)], // Yıkama - Turkuaz / Su Yeşili
-      [Color(0xFFFF7675), Color(0xFFFF9FF3)], // Eksik Parça - Mercan / Roze
-      [Color(0xFF1DD1A1), Color(0xFF10AC84)], // Analitik - Zümrüt Yeşili
-      [Color(0xFFF39C12), Color(0xFFFFD32A)], // Stilist - Altın Sarı
-      [Color(0xFF6C5CE7), Color(0xFFFF7675)], // Giriş / Kayıt - Canlı Gradient
+      [AppPermissionColors.location, Color(0xFF81ECEC)], // Yıkama - Turkuaz / Su Yeşili
+      [AppPermissionColors.camera, Color(0xFFFF9FF3)], // Eksik Parça - Mercan / Roze
+      [AppOnboardingColors.green, Color(0xFF10AC84)], // Analitik - Zümrüt Yeşili
+      [AppOnboardingColors.deepOrange, Color(0xFFFFD32A)], // Stilist - Altın Sarı
+      [AppAccents.celebration, AppPermissionColors.camera], // Giriş / Kayıt - Canlı Gradient
     ];
     return paletler[index % paletler.length];
   }
@@ -85,19 +87,19 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
   Color _getIconColor(String iconName, ColorScheme colors) {
     switch (iconName) {
       case 'language':
-        return const Color(0xFF6C5CE7);
+        return AppAccents.celebration;
       case 'checkroom':
-        return const Color(0xFF8E44AD);
+        return AppOnboardingColors.purple;
       case 'wb_sunny':
-        return const Color(0xFFFF9F43);
+        return AppOnboardingColors.orange;
       case 'local_laundry_service':
-        return const Color(0xFF00CEC9);
+        return AppPermissionColors.location;
       case 'shopping_bag':
-        return const Color(0xFFFF7675);
+        return AppPermissionColors.camera;
       case 'insights':
-        return const Color(0xFF1DD1A1);
+        return AppOnboardingColors.green;
       case 'auto_awesome':
-        return const Color(0xFFF39C12);
+        return AppOnboardingColors.deepOrange;
       default:
         return colors.primary;
     }
@@ -157,7 +159,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            e.toString(),
+            authHatasiMetni(e, AppLocalizations.of(context)!),
             style:
                 TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
           ),
@@ -254,7 +256,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            e.toString(),
+            authHatasiMetni(e, AppLocalizations.of(context)!),
             style:
                 TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
           ),
@@ -318,7 +320,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            e.toString(),
+            authHatasiMetni(e, AppLocalizations.of(context)!),
             style:
                 TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
           ),
@@ -359,7 +361,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(28)),
                   border: Border.all(
-                      color: const Color(0xFF6C5CE7).withValues(alpha: 0.3),
+                      color: AppAccents.celebration.withValues(alpha: 0.3),
                       width: 1.5),
                 ),
                 child: Column(
@@ -369,7 +371,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       width: 48,
                       height: 5,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF6C5CE7).withValues(alpha: 0.6),
+                        color: AppAccents.celebration.withValues(alpha: 0.6),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -379,14 +381,14 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       child: Row(
                         children: [
                           const Icon(Icons.gavel_rounded,
-                              color: Color(0xFF6C5CE7), size: 24),
+                              color: AppAccents.celebration, size: 24),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
                               l10n.kullanimKosullariBaslik,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                fontSize: 17,
+                                fontSize: 18,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: -0.5,
                                 color: colors.onSurface,
@@ -454,8 +456,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Icon(Icons.arrow_downward_rounded,
-                                      size: 14, color: Color(0xFF6C5CE7)),
-                                  const SizedBox(width: 6),
+                                      size: 14, color: AppAccents.celebration),
+                                  const SizedBox(width: 8),
                                   Flexible(
                                     child: Text(
                                       l10n.onaylamakIcinKaydirin,
@@ -463,7 +465,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       style: const TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
-                                          color: Color(0xFF6C5CE7)),
+                                          color: AppAccents.celebration),
                                     ),
                                   ),
                                 ],
@@ -475,7 +477,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: enAltaUlasildi
-                                    ? const Color(0xFF2E7D32)
+                                    ? AppAccents.successDark
                                     : colors.surfaceContainerHighest,
                                 foregroundColor: enAltaUlasildi
                                     ? Colors.white
@@ -498,7 +500,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 l10n.okudumAnladimKabulEdiyorum,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+                                    fontSize: 14, fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
@@ -531,7 +533,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
     final String dilAdiEtiketi =
         _getDilEtiketi(seciliLocale?.languageCode, l10n);
-    final Color authGreenColor = const Color(0xFF2E7D32);
+    final Color authGreenColor = AppAccents.successDark;
     final Color antrasitRenk = const Color(0xFF37474F);
 
     final List<Map<String, String>> tanitimSayfalari = [
@@ -639,7 +641,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 8),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
+                                borderRadius: AppRadius.xlRadius),
                             backgroundColor: colors.surfaceContainerHighest
                                 .withValues(alpha: 0.8),
                           ),
@@ -683,13 +685,13 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     : l10n.yeniHesapOlusturun,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 25,
+                                  fontSize: 24,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: -0.5,
                                   color: colors.onSurface,
                                 ),
                               ),
-                              const SizedBox(height: 6),
+                              const SizedBox(height: 8),
                               Text(
                                 _girisModu
                                     ? l10n.stilDunyanaTekrarHosGeldin
@@ -728,7 +730,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                             border: _girisModu
                                                 ? const Border(
                                                     bottom: BorderSide(
-                                                      color: Color(0xFF1B5E20),
+                                                      color: AppOnboardingColors.darkGreen,
                                                       width: 2,
                                                     ),
                                                   )
@@ -765,7 +767,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                             border: !_girisModu
                                                 ? const Border(
                                                     bottom: BorderSide(
-                                                      color: Color(0xFF1B5E20),
+                                                      color: AppOnboardingColors.darkGreen,
                                                       width: 2,
                                                     ),
                                                   )
@@ -795,7 +797,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   textCapitalization: TextCapitalization.words,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 15,
+                                      fontSize: 14,
                                       color: colors.onSurface),
                                   decoration: InputDecoration(
                                     labelText: l10n.adinizVeyaLakabiniz,
@@ -826,7 +828,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 keyboardType: TextInputType.emailAddress,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     color: colors.onSurface),
                                 decoration: InputDecoration(
                                   labelText: l10n.epostaAdresiniz,
@@ -854,7 +856,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 obscureText: _sifreGizli,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     color: colors.onSurface),
                                 decoration: InputDecoration(
                                   labelText: l10n.sifreniz,
@@ -937,10 +939,10 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12),
                                     child: Text(
-                                      "veya",
+                                      l10n.girisVeya,
                                       style: TextStyle(
                                           color: colors.onSurfaceVariant,
-                                          fontSize: 12.5,
+                                          fontSize: 12,
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
@@ -975,13 +977,13 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                    errorBuilder: (_, __, ___) => const Icon(
                                      Icons.g_mobiledata_rounded,
                                      size: 26,
-                                     color: Color(0xFF4285F4),
+                                     color: AppMiscColors.googleBlue,
                                    ),
                                  ),
                                  label: Text(
                                    l10n.girisYapGoogle,
                                    style: TextStyle(
-                                     fontSize: 15.5,
+                                     fontSize: 16,
                                      fontWeight: FontWeight.w600,
                                      color: colors.onSurface,
                                      letterSpacing: 0.2,
@@ -1078,7 +1080,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               sayfa["aciklama"]!,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 14.5,
+                                fontSize: 14,
                                 color: colors.onSurfaceVariant,
                                 height: 1.5,
                                 fontWeight: FontWeight.w500,
@@ -1090,15 +1092,15 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
-                                      const Color(0xFF6C5CE7)
+                                      AppAccents.celebration
                                           .withValues(alpha: 0.12),
-                                      const Color(0xFFA29BFE)
+                                      AppPermissionColors.notification
                                           .withValues(alpha: 0.05),
                                     ],
                                   ),
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: AppRadius.xlRadius,
                                   border: Border.all(
-                                      color: const Color(0xFF6C5CE7)
+                                      color: AppAccents.celebration
                                           .withValues(alpha: 0.3),
                                       width: 1.5),
                                 ),
@@ -1107,21 +1109,21 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       horizontal: 18, vertical: 6),
                                   leading: _buildPremiumIconContainer(
                                       Icons.language_rounded,
-                                      iconColor: const Color(0xFF6C5CE7)),
+                                      iconColor: AppAccents.celebration),
                                   title: Text(l10n.uygulamaDili,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
-                                          fontSize: 15,
+                                          fontSize: 14,
                                           color: colors.onSurface)),
                                   subtitle: Text(dilAdiEtiketi,
                                       style: TextStyle(
-                                          fontSize: 13,
+                                          fontSize: 14,
                                           color: colors.onSurfaceVariant,
                                           fontWeight: FontWeight.w600)),
                                   trailing: const Icon(
                                       Icons.keyboard_arrow_down_rounded,
                                       size: 24,
-                                      color: Color(0xFF6C5CE7)),
+                                      color: AppAccents.celebration),
                                   onTap: () {
                                     HapticFeedback.selectionClick();
                                     DilSecimModal.goster(context);
@@ -1233,7 +1235,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     child: RichText(
                                       text: TextSpan(
                                         style: TextStyle(
-                                          fontSize: 13,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w600,
                                           color: colors.onSurfaceVariant,
                                         ),
@@ -1320,7 +1322,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       height: 52,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: AppRadius.xlRadius,
                         gradient: LinearGradient(
                             colors: [aktifPalet[0], aktifPalet[1]]),
                       ),
@@ -1329,7 +1331,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                           backgroundColor: Colors.transparent,
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
+                              borderRadius: AppRadius.xlRadius),
                         ),
                         onPressed: () {
                           if (_mevcutSayfa == tanitimSayfalari.length - 1 &&
@@ -1359,7 +1361,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                         child: Text(
                           l10n.onboardingDevamEt,
                           style: const TextStyle(
-                              fontSize: 17,
+                              fontSize: 18,
                               fontWeight: FontWeight.w800,
                               color: Colors.white,
                               letterSpacing: 0.5),
@@ -1377,11 +1379,11 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
               blastDirectionality: BlastDirectionality.explosive,
               shouldLoop: false,
               colors: const [
-                Color(0xFF6C5CE7),
-                Color(0xFFFF7675),
-                Color(0xFF00CEC9),
-                Color(0xFFFECA57),
-                Color(0xFF1DD1A1),
+                AppAccents.celebration,
+                AppPermissionColors.camera,
+                AppPermissionColors.location,
+                AppOnboardingColors.yellow,
+                AppOnboardingColors.green,
               ],
               numberOfParticles: 50,
               maxBlastForce: 40,
@@ -1410,7 +1412,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? effectiveAccent : colors.surfaceContainerLow,
           borderRadius: BorderRadius.circular(14),
@@ -1422,7 +1424,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         ),
         child: Text(label,
             style: TextStyle(
-              fontSize: 13.5,
+              fontSize: 14,
               fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
               color: isSelected ? Colors.white : colors.onSurfaceVariant,
             )),
@@ -1441,7 +1443,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           style: TextStyle(
             fontWeight: FontWeight.w900,
             color: labelColor ?? colors.onSurface,
-            fontSize: 11,
+            fontSize: 12,
             letterSpacing: 1.2,
           ),
         ),

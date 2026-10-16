@@ -7,8 +7,10 @@ import '../models/favori_kombin.dart';
 import '../l10n/app_localizations.dart';
 import '../services/ai_service.dart';
 import '../services/analytics_servisi.dart';
+import '../services/reklam_servisi.dart';
 import '../ai/ai_dil.dart';
 import '../utils/helpers.dart';
+import '../../theme/design_tokens.dart';
 
 class KendiKombinimEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -64,16 +66,6 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
       _tenRengi = prefs.getString('kullanici_ten_rengi') ?? 'Buğday';
       _tarz = prefs.getString('kullanici_tarzi') ?? 'Genel';
     });
-  }
-
-  Color _uyumRengiGetir(int puan) {
-    if (puan <= 60) {
-      return const Color(0xFFDC2626); // Kırmızı
-    } else if (puan <= 80) {
-      return const Color(0xFF2563EB); // Mavi
-    } else {
-      return const Color(0xFF16A34A); // Yeşil
-    }
   }
 
   void _kombiniTemizle() {
@@ -165,7 +157,19 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
     }
   }
 
+  /// "AI ile Analiz Et" butonu: geçiş reklamı gösterildikten sonra AI analizi
+  /// başlar. Premium kullanıcıda ve sıklık sınırında reklam atlanır, akış
+  /// beklemeden devam eder.
   Future<void> _kombiniAiIleAnalizEtVeKaydet() async {
+    ReklamServisi().gecisReklamiGoster(
+      onAdClosed: () {
+        if (!mounted) return;
+        _kombiniAiIleAnalizEtVeKaydetGercek();
+      },
+    );
+  }
+
+  Future<void> _kombiniAiIleAnalizEtVeKaydetGercek() async {
     HapticFeedback.heavyImpact();
     if (!mounted) return;
     final l10n = AppLocalizations.of(context)!;
@@ -191,18 +195,18 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
       final rawRes = await AiService().hibritAiSorgula(
         sistemPromptu: "Sadece geçerli bir JSON yanıt ver. You MUST answer in $aiDili language.",
         kullaniciMesaji: """
-Sen profesyonel bir stil danışmanısın. Kullanıcı kendi kombinini oluşturdu. Parçaların birbiriyle renk/stil uyumunu ve kullanıcının TEN RENGİNE ($_tenRengi) uyumunu değerlendir.
+Sen profesyonel bir stil danışmanısın. Kullanıcı kendi kombinini oluşturdu. Parçaların birbiriyle renk/stil uyumunu ve kullanıcının TEN RENGİNE (${aiTenRengi(_tenRengi)}) uyumunu değerlendir.
 
 Kullanıcı Profili:
 - Cinsiyet: ${aiCinsiyet(_cinsiyet)}
-- Tarz: $_tarz
-- Ten Rengi: $_tenRengi
+- Tarz: ${aiTarz(_tarz)}
+- Ten Rengi: ${aiTenRengi(_tenRengi)}
 
 Kombin Parçaları:
 ${parcaDetaylari.join("\n")}
 
 TALİMATLAR:
-1. UYUM VE TEN RENGİ KONTRASTI: Parçaların uyumunu ve renklerin $_tenRengi ten rengiyle oluşturduğu kontrastı incele.
+1. UYUM VE TEN RENGİ KONTRASTI: Parçaların uyumunu ve renklerin ${aiTenRengi(_tenRengi)} ten rengiyle oluşturduğu kontrastı incele.
 2. PUANLAMA: 100 üzerinden dürüst bir renk & stil uyum puanı hesapla (60-98 arası).
 3. TÜYO: 2 cümlelik samimi stil önerisi ver (Ten rengine olan uyumuna da değin).
 
@@ -292,7 +296,7 @@ SADECE bu JSON formatında dön:
               top: false,
               child: Column(
                 children: [
-                  const SizedBox(height: 14),
+                  const SizedBox(height: 16),
                   Container(
                     width: 48, 
                     height: 5, 
@@ -313,7 +317,7 @@ SADECE bu JSON formatında dön:
                             l10n.parcaSecModalBaslik(baslik), 
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 19, 
+                              fontSize: 18, 
                               fontWeight: FontWeight.w900, 
                               color: colors.onSurface, 
                               letterSpacing: -0.4,
@@ -366,7 +370,7 @@ SADECE bu JSON formatında dön:
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: colors.onSurfaceVariant, 
-                                    fontSize: 15, 
+                                    fontSize: 14, 
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -402,7 +406,7 @@ SADECE bu JSON formatında dön:
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: AppRadius.xlRadius,
                                     border: Border.all(
                                       color: colors.outlineVariant.withValues(alpha: 0.4), 
                                       width: 1.5,
@@ -447,7 +451,7 @@ SADECE bu JSON formatında dön:
         margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
           color: colors.surfaceContainerLow,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: AppRadius.xxlRadius,
           border: Border.all(
             color: colors.outlineVariant.withValues(alpha: 0.5),
             width: 1.5,
@@ -494,7 +498,7 @@ SADECE bu JSON formatında dön:
                       style: TextStyle(
                         color: colors.onSurface, 
                         fontWeight: FontWeight.w900, 
-                        fontSize: 10, 
+                        fontSize: 12, 
                         letterSpacing: 1.1,
                       ),
                     ),
@@ -502,7 +506,7 @@ SADECE bu JSON formatında dön:
                     Text(
                       doluMu ? secilenKiyafet.gorunenBaslik : l10n.parcaSecModalBaslik(baslik),
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: doluMu ? FontWeight.w800 : FontWeight.w600,
                         color: doluMu ? colors.onSurface : colors.onSurfaceVariant,
                         letterSpacing: -0.3,
@@ -525,7 +529,7 @@ SADECE bu JSON formatında dön:
                   style: IconButton.styleFrom(
                     backgroundColor: colors.errorContainer,
                     foregroundColor: colors.onErrorContainer,
-                    padding: const EdgeInsets.all(6),
+                    padding: const EdgeInsets.all(8),
                     minimumSize: const Size(32, 32),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
@@ -549,7 +553,8 @@ SADECE bu JSON formatında dön:
                 padding: const EdgeInsets.only(right: 16.0),
                 child: Icon(
                   Icons.add_circle_rounded, 
-                  color: Colors.black.withValues(alpha: 0.4), 
+                  // Koyu modda görünür kalsın diye temaya duyarlı renk.
+                  color: colors.onSurfaceVariant.withValues(alpha: 0.55), 
                   size: 30,
                 ),
               ),
@@ -624,17 +629,17 @@ SADECE bu JSON formatında dön:
               margin: const EdgeInsets.only(bottom: 20),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFFF7F2FA),
-                borderRadius: BorderRadius.circular(20),
+                color: AppTints.styleistBgDinamik(context),
+                borderRadius: AppRadius.xlRadius,
                 border: Border.all(
-                  color: const Color(0xFFE8DEF8),
+                  color: AppTints.styleistBorderDinamik(context),
                 ),
               ),
               child: Row(
                 children: [
                   const Icon(
                     Icons.auto_awesome_rounded, 
-                    color: Color(0xFF9A73B5), 
+                    color: AppAccents.styleist, 
                     size: 20,
                   ),
                   const SizedBox(width: 12),
@@ -642,9 +647,9 @@ SADECE bu JSON formatında dön:
                     child: Text(
                       kombinHazirMi ? l10n.kombinHazirAiTavsiyesi : l10n.kombinBaslaIpucu,
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        fontSize: 13.5,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: const Color(0xFF4A3B5A),
+                        color: AppMiscColors.styleistTextDinamik(context),
                         height: 1.45,
                       ),
                     ),
@@ -656,10 +661,10 @@ SADECE bu JSON formatında dön:
             // Üst-Alt / Tek Parça Mod Switcher
             Container(
               margin: const EdgeInsets.only(bottom: 24),
-              padding: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: AppRadius.xlRadius,
                 border: Border.all(color: colors.outlineVariant.withValues(alpha: 0.4)),
               ),
               child: Row(
@@ -743,7 +748,7 @@ SADECE bu JSON formatında dön:
             
             // Stilist AI Analiz Sonuç Kartı
             if (_sonRenkPuani != null && _sonTuyo != null) ...[
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               AnimatedContainer(
                 duration: const Duration(milliseconds: 400),
                 curve: Curves.easeOutBack,
@@ -751,7 +756,7 @@ SADECE bu JSON formatında dön:
                 margin: const EdgeInsets.only(bottom: 24),
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerLow,
-                  borderRadius: BorderRadius.circular(28),
+                  borderRadius: AppRadius.dialogRadius,
                   border: Border.all(color: colors.outlineVariant.withValues(alpha: 0.5), width: 1.0),
                 ),
                 child: Column(
@@ -766,7 +771,7 @@ SADECE bu JSON formatında dön:
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontWeight: FontWeight.w900, 
-                              fontSize: 15.5, 
+                              fontSize: 16, 
                               letterSpacing: -0.5,
                               color: colors.onSurface,
                             ),
@@ -774,7 +779,8 @@ SADECE bu JSON formatında dön:
                         ),
                         const SizedBox(width: 8),
 
-                        // DINAMIK RENKLI UYUM ROZETI
+                        // Uyum rozeti — Haftalık Planlayıcı ve Günlük Kombin
+                        // ekranlarıyla birebir aynı görünüm (tasarım devamlılığı).
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                           decoration: BoxDecoration(
@@ -784,18 +790,17 @@ SADECE bu JSON formatında dön:
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.analytics_rounded,
                                 size: 16,
-                                color: Colors.black,
+                                color: colors.onSurface,
                               ),
                               const SizedBox(width: 6),
                               Text(
-                                l10n.stilistUyum(_sonRenkPuani.toString()),
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold, 
-                                  fontSize: 12, 
-                                  color: _uyumRengiGetir(_sonRenkPuani!),
+                                l10n.kombinUyumYuzdesi(_sonRenkPuani.toString()),
+                                style: theme.textTheme.labelMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: colors.onSurface,
                                 ),
                               ),
                             ],
@@ -809,10 +814,10 @@ SADECE bu JSON formatında dön:
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF7F2FA),
-                        borderRadius: BorderRadius.circular(20),
+                        color: AppTints.styleistBgDinamik(context),
+                        borderRadius: AppRadius.xlRadius,
                         border: Border.all(
-                          color: const Color(0xFFE8DEF8),
+                          color: AppTints.styleistBorderDinamik(context),
                         ),
                       ),
                       child: Row(
@@ -821,16 +826,16 @@ SADECE bu JSON formatında dön:
                           const Icon(
                             Icons.auto_awesome_rounded,
                             size: 18,
-                            color: Color(0xFF9A73B5),
+                            color: AppAccents.styleist,
                           ),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
                               metniGuvenliYap(_sonTuyo!),
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                fontSize: 13.5,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xFF4A3B5A),
+                                color: AppMiscColors.styleistTextDinamik(context),
                                 height: 1.45,
                               ),
                             ),
@@ -873,7 +878,7 @@ SADECE bu JSON formatında dön:
                           child: Text(
                             _aiIslemde ? l10n.stilistDegerlendiriyor : l10n.aiIleAnalizEtKaydet, 
                             style: const TextStyle(
-                              fontSize: 15, 
+                              fontSize: 14, 
                               fontWeight: FontWeight.bold, 
                               letterSpacing: -0.2,
                             ),
@@ -905,10 +910,10 @@ SADECE bu JSON formatında dön:
                       ),
                       style: IconButton.styleFrom(
                         backgroundColor: _isLocalFavori
-                            ? Colors.amber.shade100
+                            ? AppStatusColors.favoriteBgDinamik(context)
                             : colors.surfaceContainerHighest,
                         foregroundColor: _isLocalFavori
-                            ? Colors.amber.shade900
+                            ? AppStatusColors.favoriteFgDinamik(context)
                             : colors.onSurfaceVariant,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),

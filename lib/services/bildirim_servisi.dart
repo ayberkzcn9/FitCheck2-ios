@@ -4,6 +4,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import '../l10n/app_localizations.dart';
+import '../utils/l10n_yardimcilari.dart';
+import '../../theme/design_tokens.dart';
 
 class BildirimServisi {
   static final BildirimServisi _instance = BildirimServisi._internal();
@@ -90,33 +92,33 @@ class BildirimServisi {
 
     if (androidPlugin == null) return;
 
-    final l10n = context != null ? AppLocalizations.of(context) : null;
+    final l10n = await l10nAl(context);
 
     final AndroidNotificationChannel genelKanal = AndroidNotificationChannel(
       genelKanalId,
-      l10n?.bildirimKanalGenelBaslik ?? 'Genel Bildirimler',
-      description: l10n?.bildirimKanalGenelAciklama ?? 'FitCheck genel bildirimleri',
+      l10n.bildirimKanalGenelBaslik,
+      description: l10n.bildirimKanalGenelAciklama,
       importance: Importance.high,
     );
 
     final AndroidNotificationChannel gunlukKanal = AndroidNotificationChannel(
       gunlukKanalId,
-      l10n?.bildirimKanalGunlukBaslik ?? 'Günlük Kombin Önerileri',
-      description: l10n?.bildirimKanalGunlukAciklama ?? 'Günlük kombin önerileri bildirimleri',
+      l10n.bildirimKanalGunlukBaslik,
+      description: l10n.bildirimKanalGunlukAciklama,
       importance: Importance.high,
     );
 
     final AndroidNotificationChannel yikamaKanal = AndroidNotificationChannel(
       yikamaKanalId,
-      l10n?.bildirimKanalYikamaBaslik ?? 'Çamaşır Hatırlatıcıları',
-      description: l10n?.bildirimKanalYikamaAciklama ?? 'Çamaşır ve kıyafet bakım hatırlatıcıları',
+      l10n.bildirimKanalYikamaBaslik,
+      description: l10n.bildirimKanalYikamaAciklama,
       importance: Importance.high,
     );
 
     final AndroidNotificationChannel raporKanal = AndroidNotificationChannel(
       raporKanalId,
-      l10n?.bildirimKanalRaporBaslik ?? 'Haftalık Stil Raporları',
-      description: l10n?.bildirimKanalRaporAciklama ?? 'Haftalık gardırop ve stil raporları',
+      l10n.bildirimKanalRaporBaslik,
+      description: l10n.bildirimKanalRaporAciklama,
       importance: Importance.high,
     );
 
@@ -174,7 +176,7 @@ class BildirimServisi {
       builder: (dialogContext) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppRadius.xlRadius,
           ),
           title: Row(
             children: [
@@ -183,7 +185,7 @@ class BildirimServisi {
                 color: Colors.orange,
                 size: 26,
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   l10n.bildirimIzinGerekliBaslik,
@@ -247,13 +249,13 @@ class BildirimServisi {
     if (!_initialized) await init(context);
 
     try {
-      final l10n = context != null ? AppLocalizations.of(context) : null;
+      final l10n = await l10nAl(context);
 
       final AndroidNotificationDetails androidDetay =
           AndroidNotificationDetails(
         genelKanalId,
-        l10n?.bildirimKanalGenelBaslik ?? 'Genel Bildirimler',
-        channelDescription: l10n?.bildirimKanalGenelAciklama ?? 'FitCheck genel bildirimleri',
+        l10n.bildirimKanalGenelBaslik,
+        channelDescription: l10n.bildirimKanalGenelAciklama,
         importance: Importance.max,
         priority: Priority.high,
         color: const Color(0xFF3B3B3B),
@@ -298,13 +300,13 @@ class BildirimServisi {
       saat = saat.clamp(0, 23);
       dakika = dakika.clamp(0, 59);
 
-      final l10n = context != null ? AppLocalizations.of(context) : null;
+      final l10n = await l10nAl(context);
 
       final AndroidNotificationDetails androidDetay =
           AndroidNotificationDetails(
         gunlukKanalId,
-        l10n?.bildirimKanalGunlukBaslik ?? 'Günlük Kombin Önerileri',
-        channelDescription: l10n?.bildirimKanalGunlukAciklama ?? 'Günlük kombin önerileri bildirimleri',
+        l10n.bildirimKanalGunlukBaslik,
+        channelDescription: l10n.bildirimKanalGunlukAciklama,
         importance: Importance.max,
         priority: Priority.high,
         color: const Color(0xFF3B3B3B),
@@ -340,8 +342,8 @@ class BildirimServisi {
 
       await _notificationsPlugin.zonedSchedule(
         id: sabahBildirimId,
-        title: l10n?.bildirimGunaydinBaslik ?? 'Günaydın! ☀️',
-        body: l10n?.bildirimGunaydinIcerik ?? 'Bugünün hava durumuna göre harika bir kombin hazırladım. Görmek ister misin?',
+        title: l10n.bildirimGunaydinBaslik,
+        body: l10n.bildirimGunaydinIcerik,
         scheduledDate: planlananZaman,
         notificationDetails: detaylar,
         androidScheduleMode: AndroidScheduleMode.exact,
@@ -380,7 +382,7 @@ class BildirimServisi {
     if (!_initialized) await init(context);
 
     try {
-      final l10n = context != null ? AppLocalizations.of(context) : null;
+      final l10n = await l10nAl(context);
       final simdi = tz.TZDateTime.now(tz.local);
       var planlanan = tz.TZDateTime(
         tz.local,
@@ -402,9 +404,8 @@ class BildirimServisi {
       final detaylar = NotificationDetails(
         android: AndroidNotificationDetails(
           raporKanalId,
-          l10n?.bildirimKanalRaporBaslik ?? 'Haftalık Stil Raporları',
-          channelDescription: l10n?.bildirimKanalRaporAciklama ??
-              'Haftalık gardırop ve stil raporları',
+          l10n.bildirimKanalRaporBaslik,
+          channelDescription: l10n.bildirimKanalRaporAciklama,
           importance: Importance.high,
           priority: Priority.high,
         color: const Color(0xFF3B3B3B),
@@ -419,9 +420,8 @@ class BildirimServisi {
       await _notificationsPlugin.cancel(id: haftalikRaporBildirimId);
       await _notificationsPlugin.zonedSchedule(
         id: haftalikRaporBildirimId,
-        title: l10n?.haftalikStilRaporu ?? 'Haftalık Stil Raporun Hazır',
-        body: l10n?.haftalikStilRaporuAciklama ??
-            'Bu haftaki kombinlerini ve stil gelişimini incele.',
+        title: l10n.haftalikStilRaporu,
+        body: l10n.haftalikStilRaporuAciklama,
         scheduledDate: planlanan,
         notificationDetails: detaylar,
         androidScheduleMode: AndroidScheduleMode.exact,

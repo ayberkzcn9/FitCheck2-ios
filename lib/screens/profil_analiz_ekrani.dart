@@ -11,6 +11,7 @@ import '../models/favori_kombin.dart';
 import '../l10n/app_localizations.dart';
 
 import 'profil_bilesenleri/profil_widgets.dart';
+import '../../theme/design_tokens.dart';
 
 class ProfilVeAnalizEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -391,10 +392,10 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
       return const Color(0xFFEF4444);
     }
     if (r.contains('yesil') || r.contains('green')) {
-      return const Color(0xFF10B981);
+      return AppMiscColors.greenLight;
     }
     if (r.contains('sari') || r.contains('yellow')) {
-      return const Color(0xFFF59E0B);
+      return AppAccents.warning;
     }
     if (r.contains('gri') || r.contains('grey') || r.contains('gray')) {
       return const Color(0xFF6B7280);
@@ -406,10 +407,10 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
       return const Color(0xFFEC4899);
     }
     if (r.contains('mor') || r.contains('purple')) {
-      return const Color(0xFF8B5CF6);
+      return AppAccents.styleist;
     }
     if (r.contains('turuncu') || r.contains('orange')) {
-      return const Color(0xFFF97316);
+      return AppMiscColors.orangeLight;
     }
     if (r.contains('bej') ||
         r.contains('krem') ||
@@ -567,7 +568,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
         return AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: AppRadius.dialogRadius,
           ),
           title: Text(
             l10n.gecmisiTemizleTitle,
@@ -697,11 +698,11 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
     final colors = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.only(top: 28, bottom: 14),
+      padding: const EdgeInsets.only(top: 24, bottom: 14),
       child: Row(
         children: [
           if (emoji != null) ...[
-            Text(emoji, style: const TextStyle(fontSize: 22)),
+            Text(emoji, style: const TextStyle(fontSize: 24)),
             const SizedBox(width: 8),
           ],
           Expanded(
@@ -730,7 +731,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemCount: kiyafetler.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 14),
+        separatorBuilder: (_, __) => const SizedBox(width: 16),
         itemBuilder: (context, index) => KiyafetKartcigi(
           kiyafet: kiyafetler[index],
           isSoluk: soluk,
@@ -773,8 +774,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
               children: [
                 const _ProfilIkon(
                   icon: Icons.check_circle_rounded,
-                  bgRenk: Color(0xFFDCFCE7),
-                  ikonRenk: Color(0xFF15803D),
+                  bgRenk: AppMiscColors.greenPale,
+                  ikonRenk: AppMiscColors.greenDark,
                 ),
                 const SizedBox(width: 12),
                 Expanded(
@@ -804,7 +805,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                             tarih,
                             style: TextStyle(
                               color: colors.onSurfaceVariant,
-                              fontSize: 11,
+                              fontSize: 12,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -827,13 +828,13 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: colors.onSurfaceVariant,
-                  fontSize: 13,
+                  fontSize: 14,
                   height: 1.4,
                 ),
               ),
             ],
             if (parcalar.isNotEmpty) ...[
-              const SizedBox(height: 14),
+              const SizedBox(height: 16),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -941,13 +942,13 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                         _ProfilIkon(
                           icon: Icons.local_laundry_service_rounded,
                           bgRenk: analiz.sepette == 0
-                              ? const Color(0xFFDCFCE7)
-                              : const Color(0xFFFFE4E6),
+                              ? AppMiscColors.greenPale
+                              : AppMiscColors.roseBg,
                           ikonRenk: analiz.sepette == 0
-                              ? const Color(0xFF16A34A)
-                              : const Color(0xFFE11D48),
+                              ? AppAccents.success
+                              : AppMiscColors.rose,
                         ),
-                        const SizedBox(width: 14),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -968,11 +969,11 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                         analiz.sepette,
                                       ),
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: analiz.sepette == 0
-                                      ? const Color(0xFF16A34A)
-                                      : const Color(0xFFE11D48),
+                                      ? AppAccents.success
+                                      : AppMiscColors.rose,
                                 ),
                               ),
                             ],
@@ -983,9 +984,9 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                           Chip(
                             label: Text('${analiz.sepette}'),
                             visualDensity: VisualDensity.compact,
-                            backgroundColor: const Color(0xFFFFE4E6),
+                            backgroundColor: AppMiscColors.roseBg,
                             labelStyle: const TextStyle(
-                              color: Color(0xFFE11D48),
+                              color: AppMiscColors.rose,
                               fontWeight: FontWeight.bold,
                             ),
                             side: BorderSide.none,
@@ -1003,7 +1004,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   _ProfilIkili(
                     sol: _ProfilOzetKarti(
                       icon: Icons.psychology_rounded,
-                      bgRenk: const Color(0xFFF3E8FF),
+                      bgRenk: AppMiscColors.lightPurpleBg,
                       ikonRenk: const Color(0xFF7C3AED),
                       deger: stil,
                       baslik: l10n.stilKimligin,
@@ -1011,7 +1012,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                     sag: _ProfilOzetKarti(
                       icon: Icons.eco_rounded,
                       bgRenk: const Color(0xFFD1FAE5),
-                      ikonRenk: const Color(0xFF059669),
+                      ikonRenk: AppAccents.success,
                       deger: '%${(analiz.verimlilik * 100).toStringAsFixed(0)}',
                       baslik: l10n.dolapVerimliligi,
                     ),
@@ -1024,13 +1025,13 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       baslik: l10n.toplamParca,
                       deger: '$toplam',
                       icon: Icons.checkroom_rounded,
-                      iconColor: const Color(0xFF2563EB),
+                      iconColor: AppAccents.info,
                     ),
                     sag: IstatistikKutusu(
                       baslik: l10n.favoriKombin,
                       deger: '${widget.favoriKombinler.length}',
                       icon: Icons.star_rounded,
-                      iconColor: const Color(0xFFD97706),
+                      iconColor: AppAccents.warning,
                       onTap: () => _favorileriAc(),
                     ),
                   ),
@@ -1084,7 +1085,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(height: 10),
+                                    const SizedBox(height: 8),
                                     Text(
                                       renk.key,
                                       maxLines: 2,
@@ -1096,7 +1097,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                         color: colors.onSurface,
                                       ),
                                     ),
-                                    const SizedBox(height: 3),
+                                    const SizedBox(height: 4),
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 8, vertical: 2),
@@ -1108,7 +1109,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                         '%${oran.toStringAsFixed(0)}',
                                         style: TextStyle(
                                           color: colors.onSurfaceVariant,
-                                          fontSize: 11,
+                                          fontSize: 12,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -1157,19 +1158,19 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                           adet: analiz.ust,
                           toplam: toplam == 0 ? 1 : toplam,
                         ),
-                        const SizedBox(height: 18),
+                        const SizedBox(height: 20),
                         KategoriSatiri(
                           etiket: l10n.altGiyim,
                           adet: analiz.alt,
                           toplam: toplam == 0 ? 1 : toplam,
                         ),
-                        const SizedBox(height: 18),
+                        const SizedBox(height: 20),
                         KategoriSatiri(
                           etiket: l10n.ayakkabi,
                           adet: analiz.ayakkabi,
                           toplam: toplam == 0 ? 1 : toplam,
                         ),
-                        const SizedBox(height: 18),
+                        const SizedBox(height: 20),
                         KategoriSatiri(
                           etiket: l10n.aksesuar,
                           adet: analiz.aksesuar,
@@ -1178,7 +1179,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 24),
 
                   // SON GIYILENLER BASLIK VE AKSIYONLAR
                   Wrap(
@@ -1314,7 +1315,7 @@ class _ProfilKart extends StatelessWidget {
     return Material(
       color: colors.surfaceContainerLow,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: AppRadius.xxlRadius,
         side: BorderSide(
           color: colors.outlineVariant.withValues(alpha: 0.4),
           width: 1.5,
@@ -1350,7 +1351,7 @@ class _ProfilIkon extends StatelessWidget {
     final fg = ikonRenk ?? defaultAccent;
 
     return Container(
-      padding: const EdgeInsets.all(11),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: bg,
         shape: BoxShape.circle,
@@ -1400,7 +1401,7 @@ class _ProfilBilgiKarti extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 8),
                 Text(
                   deger,
                   style: TextStyle(

@@ -9,6 +9,134 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
+  String get chatOrtamCasual => 'Casual';
+
+  @override
+  String get chatOrtamOfis => 'Ofis';
+
+  @override
+  String get chatOrtamDavet => 'Davet';
+
+  @override
+  String get chatOrtamSpor => 'Spor';
+
+  @override
+  String get chatOrtamGece => 'Gece';
+
+  @override
+  String get chatOrtamRomantik => 'Romantik';
+
+  @override
+  String get chatOrtamHaftaSonu => 'Hafta Sonu';
+
+  @override
+  String get gardirobumAdimArkaplan => 'Arkaplan Siliniyor';
+
+  @override
+  String get gardirobumAdimArkaplanAlt => 'AI ile görüntü ayrıştırılıyor';
+
+  @override
+  String get gardirobumAdimAnaliz => 'Kıyafet Analiz Ediliyor';
+
+  @override
+  String get gardirobumAdimAnalizAlt => 'Renk, stil, kategori belirleniyor';
+
+  @override
+  String get gardirobumAdimKaydet => 'Kaydediliyor';
+
+  @override
+  String get gardirobumAdimKaydetAlt => 'Gardıroba ekleniyor';
+
+  @override
+  String get gardirobumLutfenBekleyin => 'Lütfen bekleyin...';
+
+  @override
+  String get authHataZayifSifre =>
+      'Girilen şifre çok zayıf. En az 6 karakter olmalı.';
+
+  @override
+  String get authHataEpostaKullanimda => 'Bu e-posta adresi zaten kullanımda.';
+
+  @override
+  String get authHataGecersizEposta => 'Geçersiz bir e-posta adresi girdiniz.';
+
+  @override
+  String get authHataKullaniciBulunamadi =>
+      'Bu e-posta adresine ait kullanıcı bulunamadı.';
+
+  @override
+  String get authHataYanlisSifre => 'Şifre hatalı, lütfen tekrar deneyin.';
+
+  @override
+  String get authHataGecersizKimlik =>
+      'E-posta veya şifre hatalı. Lütfen bilgilerinizi kontrol edin.';
+
+  @override
+  String get authHataYontemIzinliDegil =>
+      'Giriş yöntemi Firebase Konsolu üzerinden etkinleştirilmemiş.';
+
+  @override
+  String get authHataFarkliYontem =>
+      'Bu e-posta adresi farklı bir giriş yöntemi ile zaten kayıtlı.';
+
+  @override
+  String get authHataAgHatasi =>
+      'İnternet bağlantınızı kontrol edip tekrar deneyin.';
+
+  @override
+  String get authHataCokDeneme =>
+      'Çok fazla deneme yaptınız. Lütfen biraz sonra tekrar deneyin.';
+
+  @override
+  String get authHataHesapDevreDisi => 'Bu hesap devre dışı bırakılmış.';
+
+  @override
+  String get authHataYenidenGiris =>
+      'Bu işlem için tekrar giriş yapmanız gerekiyor.';
+
+  @override
+  String get authHataGenel => 'Bir hata oluştu. Lütfen tekrar deneyin.';
+
+  @override
+  String get authHataSifreEpostasiGonderilemedi =>
+      'Şifre sıfırlama e-postası gönderilemedi. Lütfen tekrar deneyin.';
+
+  @override
+  String get authHataGoogleDogrulanamadi =>
+      'Google oturumu doğrulanamadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get authHataGoogleFarkliKullanici =>
+      'Bu Google hesabı başka bir kullanıcıya bağlı.';
+
+  @override
+  String get authHataGoogleZatenBagli => 'Bu Google hesabı zaten bağlı.';
+
+  @override
+  String get authHataGoogleYapilandirilmamis =>
+      'Google ile giriş bu cihazda yapılandırılmamış. Lütfen bu hatayı destek ekibine bildirin.';
+
+  @override
+  String get authHataGooglePencereAcik =>
+      'Google giriş penceresi hâlâ açık. Birkaç saniye bekleyip tekrar deneyin.';
+
+  @override
+  String get authHataGoogleTamamlanamadi =>
+      'Google ile giriş tamamlanamadı. Lütfen birkaç saniye sonra tekrar deneyin.';
+
+  @override
+  String get authHataGoogleHesapSec =>
+      'Oturum açmak için Google hesabınızı seçmeniz gerekiyor.';
+
+  @override
+  String get authHataGoogleOnayBekliyor =>
+      'Google hesabınızda onay bekleyen bir işlem var. Lütfen tekrar deneyin.';
+
+  @override
+  String get authHataGoogleBeklenmeyen =>
+      'Google ile giriş yapılırken beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override
@@ -2607,4 +2735,60 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get yakindaAciklama =>
       'Bu özellik üzerinde çalışıyoruz, çok yakında sizlerle!';
+
+  @override
+  String get aiOneriHazirlaniyor => 'Öneri hazırlanıyor...';
+
+  @override
+  String get haftalikStilistOnerisiHazirlanamadi =>
+      'Stilist önerisi hazırlanamadı. Tekrar dene.';
+
+  @override
+  String get haftalikAiServisHatasi =>
+      'Yapay zekâ servisine ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene.';
+
+  @override
+  String get haftalikAiGecerliPlanYok =>
+      'Yapay zekâ geçerli bir plan döndürmedi. Tekrar dene.';
+
+  @override
+  String get haftalikPlanBeklenmeyenHata =>
+      'Plan oluşturulurken beklenmeyen bir hata oluştu. Tekrar dene.';
+
+  @override
+  String get haftalikBugunGiyildi =>
+      'Bugünün kombini zaten giyildi; yeni kombin oluşturulmadı.';
+
+  @override
+  String get girisHataKullaniciAdiKisa => 'En az 3 karakter giriniz';
+
+  @override
+  String get girisHataEpostaGecersiz => 'Geçerli bir e-posta giriniz';
+
+  @override
+  String get girisHataSifreKisa => 'En az 6 karakter giriniz';
+
+  @override
+  String get googleKullanicisi => 'Google Kullanıcısı';
+
+  @override
+  String get premiumEkranBaslik => 'FitCheck Premium';
+
+  @override
+  String get dilSecimBaslik => '🌐 Dil Seçimi';
+
+  @override
+  String get dilSecenekOtomatik => 'Otomatik (Cihaz Dili)';
+
+  @override
+  String get kapat => 'Kapat';
+
+  @override
+  String get bildirimBaslik => 'Bildirim';
+
+  @override
+  String get ayarlarAltbilgi => 'Stil ile yapıldı';
+
+  @override
+  String get geriBildirimKonu => 'FitCheck Geri Bildirim';
 }
