@@ -1229,8 +1229,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
       return;
     }
 
-    // Plan üretimi (AI) başlamadan önce geçiş reklamı gösterilir. Premium'da ve
-    // sıklık sınırında atlanır; akış kesintisiz devam eder.
+    // Plan üretimi (AI) başlamadan önce geçiş reklamı gösterilir. Premium/admin
+    // kullanıcıda, günlük hakkı bitmemiş kullanıcıda ve sıklık sınırında
+    // atlanır; akış kesintisiz devam eder.
     if (!reklamGosterildi) {
       ReklamServisi().gecisReklamiGoster(
         onAdClosed: () {

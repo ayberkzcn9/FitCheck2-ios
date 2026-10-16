@@ -158,8 +158,8 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
   }
 
   /// "AI ile Analiz Et" butonu: geçiş reklamı gösterildikten sonra AI analizi
-  /// başlar. Premium kullanıcıda ve sıklık sınırında reklam atlanır, akış
-  /// beklemeden devam eder.
+  /// başlar. Premium/admin kullanıcıda, günlük hakkı bitmemiş kullanıcıda ve
+  /// sıklık sınırında reklam atlanır, akış beklemeden devam eder.
   Future<void> _kombiniAiIleAnalizEtVeKaydet() async {
     ReklamServisi().gecisReklamiGoster(
       onAdClosed: () {

@@ -73,7 +73,10 @@ class ReklamServisi {
 
   Future<void> premiumDurumunuYukle() async {
     final prefs = await SharedPreferences.getInstance();
-    reklamlarEtkinMi = !(prefs.getBool('reklamsiz_premium') ?? false);
+    final bool premium = prefs.getBool('reklamsiz_premium') ?? false;
+    final bool admin = prefs.getBool('fitcheck_admin_modu') ?? false;
+    // Premium ya da kuponla sınırsız (admin) kullanıcıya reklam gösterilmez.
+    reklamlarEtkinMi = !(premium || admin);
   }
 
   Future<void> reklamlariKapat() async {
@@ -156,6 +159,12 @@ class ReklamServisi {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('fitcheck_admin_modu', true);
     _isAdminCache = true;
+    // Kuponla sınırsız olan (admin) kullanıcıya da reklam gösterilmez.
+    reklamlarEtkinMi = false;
+    _gecisReklam?.dispose();
+    _gecisReklam = null;
+    _odulluReklam?.dispose();
+    _odulluReklam = null;
     return 1;
   }
 
@@ -202,9 +211,18 @@ class ReklamServisi {
     );
   }
 
-  void gecisReklamiGoster({required VoidCallback onAdClosed}) {
-    // Premium kullanıcıya reklam gösterilmez; akış kesintisiz devam eder.
+  Future<void> gecisReklamiGoster({required VoidCallback onAdClosed}) async {
+    // Premium/admin kullanıcıya reklam gösterilmez; akış kesintisiz devam eder.
     if (!reklamlarEtkinMi) {
+      onAdClosed();
+      return;
+    }
+
+    // Politika: günlük kombin hakkı henüz bitmemiş kullanıcıya geçiş reklamı
+    // gösterilmez. Böylece ücretsiz kullanıcı deneyimi korunur; reklam, hakkını
+    // tüketen yoğun kullanıcıya yönelir (hem gelir hem premium dönüşümü için).
+    final int kalanHak = await kalanHakGetir();
+    if (kalanHak > 0) {
       onAdClosed();
       return;
     }
