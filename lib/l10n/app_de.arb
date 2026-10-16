@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "Analysedaten teilen",
   "analitikVerileriPaylasAciklama": "Zur Verbesserung der App werden anonyme Nutzungsdaten gesendet. Beim Ausschalten werden die Analysedaten auf diesem Gerät gelöscht.",
   "chatKarsilamaHavaYok": "Hallo! 👋 Sollen wir ein tolles Outfit zusammenstellen, das zu deinem Stil passt? ✨",
-  "premiumBaslik": "Monatlich werbefrei",
-  "premiumAciklama": "Nutze FitCheck werbefrei. Solange dein Abo aktiv ist, werden alle Anzeigen entfernt.",
+  "premiumBaslik": "Unbegrenzter Stil, keine Werbung",
+  "premiumAciklama": "Nutze Outfits und Stilanalysen unbegrenzt und entferne mit einem Abo alle Werbung.",
   "premiumOzellikReklamsiz": "Alle Anzeigen werden entfernt",
   "premiumOzellikAylik": "Verlängert sich automatisch jeden Monat",
   "premiumOzellikMagaza": "Verwaltung über Google Play",
-  "premiumAktifMesaji": "Premium ist aktiv. Anzeigen sind für dein Konto deaktiviert.",
-  "premiumAboneOl": "Monatlich abonnieren",
-  "premiumAboneOlFiyatli": "Monatlich abonnieren • {fiyat}",
+  "premiumAktifMesaji": "Premium ist aktiv. Unbegrenzte Nutzung und keine Werbung.",
+  "premiumAboneOl": "Abonnieren",
+  "premiumAboneOlFiyatli": "Abonnieren • {fiyat}",
   "premiumGeriYukle": "Kauf wiederherstellen",
   "premiumMagazaHazirDegil": "Google Play ist gerade nicht verfügbar. Bitte versuche es erneut.",
   "premiumSatinAlmaBaslatilamadi": "Der Kauf konnte nicht gestartet werden.",
   "premiumSatinAlmaBasarisiz": "Der Kauf ist fehlgeschlagen.",
-  "premiumAylikBaslik": "Monatliches werbefreies Premium",
-  "premiumAylikAltBaslik": "Anzeigen für {fiyat} pro Monat entfernen",
-  "premiumGec": "Premium holen • {fiyat}/Monat",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "Unbegrenzte Outfits • {fiyat}/Monat",
+  "premiumGec": "Unbegrenzt nutzen • {fiyat}/Monat",
   "guncellemeBaslik": "Update erforderlich",
   "guncellemeAciklama": "Eine neue Version von FitCheck ist verfügbar. Bitte aktualisiere die App, um fortzufahren.",
   "guncellemeButonu": "Jetzt aktualisieren",
@@ -877,5 +877,37 @@
   "kapat": "Schließen",
   "bildirimBaslik": "Benachrichtigung",
   "ayarlarAltbilgi": "Mit Stil gemacht",
-  "geriBildirimKonu": "FitCheck Feedback"
+  "geriBildirimKonu": "FitCheck Feedback",
+  "premiumOzelliklerBaslik": "Das schaltet Premium frei",
+  "premiumOzellikSinirsizKombin": "Unbegrenzt Outfits erstellen",
+  "premiumOzellikSinirsizAnaliz": "Unbegrenzte KI-Stilanalyse",
+  "premiumOzellikSinirsizGardirob": "Unbegrenzter Kleiderschrank",
+  "premiumPlanAylik": "Monatlich",
+  "premiumPlanYillik": "Jährlich",
+  "premiumEnAvantajli": "BESTES ANGEBOT",
+  "premiumTasarrufYuzde": "{yuzde} % sparen",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun} TAGE GRATIS",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "Danach {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "Das Abo verlängert sich am Ende jeder Periode automatisch. Jederzeit kündbar."
 }

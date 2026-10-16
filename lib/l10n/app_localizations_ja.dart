@@ -2117,11 +2117,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get chatKarsilamaHavaYok => 'こんにちは！👋 あなたのスタイルに合う素敵なコーデを作りましょうか？✨';
 
   @override
-  String get premiumBaslik => '月額の広告なしプラン';
+  String get premiumBaslik => 'スタイル無制限、広告ゼロ';
 
   @override
-  String get premiumAciklama =>
-      'FitCheckを広告なしで利用できます。サブスクリプションが有効な間はすべての広告が削除されます。';
+  String get premiumAciklama => 'コーデとスタイル分析を無制限に使えて、1つのサブスクリプションで広告をすべて削除。';
 
   @override
   String get premiumOzellikReklamsiz => 'すべての広告が削除されます';
@@ -2133,14 +2132,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get premiumOzellikMagaza => 'Google Playで管理されます';
 
   @override
-  String get premiumAktifMesaji => 'プレミアムが有効です。このアカウントでは広告がオフになっています。';
+  String get premiumAktifMesaji => 'Premiumが有効です。無制限で広告もありません。';
 
   @override
-  String get premiumAboneOl => '月額で登録する';
+  String get premiumAboneOl => '登録する';
 
   @override
   String premiumAboneOlFiyatli(String fiyat) {
-    return '月額で登録する • $fiyat';
+    return '登録する • $fiyat';
   }
 
   @override
@@ -2156,16 +2155,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get premiumSatinAlmaBasarisiz => '購入に失敗しました。';
 
   @override
-  String get premiumAylikBaslik => '月額 広告なしプレミアム';
+  String get premiumAylikBaslik => 'FitCheck Premium';
 
   @override
   String premiumAylikAltBaslik(String fiyat) {
-    return '月額$fiyatで広告を削除';
+    return 'コーデ無制限 • 月 $fiyat';
   }
 
   @override
   String premiumGec(String fiyat) {
-    return 'プレミアムに登録 • $fiyat/月';
+    return '無制限で使う • $fiyat/月';
   }
 
   @override
@@ -2668,4 +2667,43 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get geriBildirimKonu => 'FitCheck フィードバック';
+
+  @override
+  String get premiumOzelliklerBaslik => 'Premiumで使えるもの';
+
+  @override
+  String get premiumOzellikSinirsizKombin => 'コーデ作成が無制限';
+
+  @override
+  String get premiumOzellikSinirsizAnaliz => 'AIスタイル分析が無制限';
+
+  @override
+  String get premiumOzellikSinirsizGardirob => 'クローゼット容量が無制限';
+
+  @override
+  String get premiumPlanAylik => '月払い';
+
+  @override
+  String get premiumPlanYillik => '年払い';
+
+  @override
+  String get premiumEnAvantajli => 'いちばんお得';
+
+  @override
+  String premiumTasarrufYuzde(int yuzde) {
+    return '$yuzde% お得';
+  }
+
+  @override
+  String premiumDenemeRozeti(int gun) {
+    return '$gun日間無料';
+  }
+
+  @override
+  String premiumDenemeSonrasi(String fiyat) {
+    return 'その後 $fiyat';
+  }
+
+  @override
+  String get premiumYenilemeNotu => 'サブスクリプションは各期間の終了時に自動更新されます。いつでも解約できます。';
 }

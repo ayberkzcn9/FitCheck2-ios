@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "مشاركة بيانات التحليلات",
   "analitikVerileriPaylasAciklama": "تُرسل بيانات استخدام مجهولة لتحسين تجربة التطبيق. عند الإيقاف تُحذف بيانات التحليلات المخزّنة على هذا الجهاز.",
   "chatKarsilamaHavaYok": "مرحبًا! 👋 هل ننسّق طقمًا رائعًا يناسب أسلوبك؟ ✨",
-  "premiumBaslik": "استخدام شهري بدون إعلانات",
-  "premiumAciklama": "استمتع بتجربة FitCheck بدون إعلانات. تُزال جميع الإعلانات طالما أن اشتراكك نشط.",
+  "premiumBaslik": "أناقة بلا حدود وبدون إعلانات",
+  "premiumAciklama": "استخدم إطلالاتك وتحليلات الأناقة بلا حدود وأزل كل الإعلانات باشتراك واحد.",
   "premiumOzellikReklamsiz": "تُزال جميع الإعلانات",
   "premiumOzellikAylik": "يتجدد تلقائيًا كل شهر",
   "premiumOzellikMagaza": "يُدار عبر Google Play",
-  "premiumAktifMesaji": "الاشتراك المميز نشط. الإعلانات متوقفة لحسابك.",
-  "premiumAboneOl": "اشترك شهريًا",
-  "premiumAboneOlFiyatli": "اشترك شهريًا • {fiyat}",
+  "premiumAktifMesaji": "Premium مفعّل. استخدام بلا حدود وبدون إعلانات.",
+  "premiumAboneOl": "اشترك",
+  "premiumAboneOlFiyatli": "اشترك • {fiyat}",
   "premiumGeriYukle": "استعادة الشراء",
   "premiumMagazaHazirDegil": "Google Play غير متاح حاليًا. حاول مرة أخرى.",
   "premiumSatinAlmaBaslatilamadi": "تعذّر بدء عملية الشراء.",
   "premiumSatinAlmaBasarisiz": "فشلت عملية الشراء.",
-  "premiumAylikBaslik": "اشتراك شهري مميز بدون إعلانات",
-  "premiumAylikAltBaslik": "أزل الإعلانات مقابل {fiyat} شهريًا",
-  "premiumGec": "انتقل إلى المميز • {fiyat}/شهر",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "إطلالات بلا حدود • {fiyat} شهريًا",
+  "premiumGec": "استخدم بلا حدود • {fiyat}/شهر",
   "guncellemeBaslik": "التحديث مطلوب",
   "guncellemeAciklama": "يتوفر إصدار جديد من FitCheck. يُرجى تحديث التطبيق للمتابعة.",
   "guncellemeButonu": "التحديث الآن",
@@ -877,5 +877,37 @@
   "kapat": "إغلاق",
   "bildirimBaslik": "إشعار",
   "ayarlarAltbilgi": "صُنع بأناقة",
-  "geriBildirimKonu": "FitCheck ملاحظات"
+  "geriBildirimKonu": "FitCheck ملاحظات",
+  "premiumOzelliklerBaslik": "ما الذي يفتحه لك Premium",
+  "premiumOzellikSinirsizKombin": "إنشاء إطلالات بلا حدود",
+  "premiumOzellikSinirsizAnaliz": "تحليل الأناقة بالذكاء الاصطناعي بلا حدود",
+  "premiumOzellikSinirsizGardirob": "مساحة خزانة بلا حدود",
+  "premiumPlanAylik": "شهري",
+  "premiumPlanYillik": "سنوي",
+  "premiumEnAvantajli": "الأفضل قيمة",
+  "premiumTasarrufYuzde": "وفّر {yuzde}%",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun} أيام مجانًا",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "ثم {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "يتجدد الاشتراك تلقائيًا في نهاية كل فترة. يمكنك الإلغاء في أي وقت."
 }

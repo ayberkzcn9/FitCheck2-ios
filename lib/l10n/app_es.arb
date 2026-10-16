@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "Compartir datos de análisis",
   "analitikVerileriPaylasAciklama": "Se envían datos de uso anónimos para mejorar la experiencia de la app. Si lo desactivas, se eliminan los datos de análisis de este dispositivo.",
   "chatKarsilamaHavaYok": "¡Hola! 👋 ¿Creamos un conjunto genial que vaya con tu estilo? ✨",
-  "premiumBaslik": "Uso mensual sin anuncios",
-  "premiumAciklama": "Disfruta de FitCheck sin anuncios. Se eliminan todos los anuncios mientras tu suscripción esté activa.",
+  "premiumBaslik": "Estilo ilimitado, cero anuncios",
+  "premiumAciklama": "Usa tus conjuntos y análisis de estilo sin límites y elimina todos los anuncios con una sola suscripción.",
   "premiumOzellikReklamsiz": "Se eliminan todos los anuncios",
   "premiumOzellikAylik": "Se renueva automáticamente cada mes",
   "premiumOzellikMagaza": "Se gestiona a través de Google Play",
-  "premiumAktifMesaji": "Premium está activo. Los anuncios están desactivados para tu cuenta.",
-  "premiumAboneOl": "Suscríbete mensualmente",
-  "premiumAboneOlFiyatli": "Suscríbete mensualmente • {fiyat}",
+  "premiumAktifMesaji": "Premium activo. Uso ilimitado y sin anuncios.",
+  "premiumAboneOl": "Suscríbete",
+  "premiumAboneOlFiyatli": "Suscríbete • {fiyat}",
   "premiumGeriYukle": "Restaurar compra",
   "premiumMagazaHazirDegil": "Google Play no está disponible ahora mismo. Inténtalo de nuevo.",
   "premiumSatinAlmaBaslatilamadi": "No se pudo iniciar la compra.",
   "premiumSatinAlmaBasarisiz": "La compra no se completó.",
-  "premiumAylikBaslik": "Premium mensual sin anuncios",
-  "premiumAylikAltBaslik": "Elimina los anuncios por {fiyat} al mes",
-  "premiumGec": "Hazte Premium • {fiyat}/mes",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "Conjuntos ilimitados • {fiyat}/mes",
+  "premiumGec": "Hazte ilimitado • {fiyat}/mes",
   "guncellemeBaslik": "Actualización necesaria",
   "guncellemeAciklama": "Hay una nueva versión de FitCheck disponible. Actualiza la aplicación para continuar.",
   "guncellemeButonu": "Actualizar ahora",
@@ -877,5 +877,37 @@
   "kapat": "Cerrar",
   "bildirimBaslik": "Notificación",
   "ayarlarAltbilgi": "Hecho con estilo",
-  "geriBildirimKonu": "FitCheck Comentarios"
+  "geriBildirimKonu": "FitCheck Comentarios",
+  "premiumOzelliklerBaslik": "Lo que desbloqueas con Premium",
+  "premiumOzellikSinirsizKombin": "Creación de conjuntos ilimitada",
+  "premiumOzellikSinirsizAnaliz": "Análisis de estilo con IA ilimitado",
+  "premiumOzellikSinirsizGardirob": "Espacio de armario ilimitado",
+  "premiumPlanAylik": "Mensual",
+  "premiumPlanYillik": "Anual",
+  "premiumEnAvantajli": "MEJOR OPCIÓN",
+  "premiumTasarrufYuzde": "Ahorra un {yuzde}%",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun} DÍAS GRATIS",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "Luego {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "La suscripción se renueva automáticamente al final de cada período. Cancela cuando quieras."
 }

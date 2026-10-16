@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "Partager les données d'analyse",
   "analitikVerileriPaylasAciklama": "Des données d'usage anonymes sont envoyées pour améliorer l'application. Si vous désactivez cette option, les données d'analyse de cet appareil sont supprimées.",
   "chatKarsilamaHavaYok": "Bonjour ! 👋 On te compose une super tenue qui correspond à ton style ? ✨",
-  "premiumBaslik": "Formule mensuelle sans publicité",
-  "premiumAciklama": "Profite de FitCheck sans publicité. Toutes les publicités sont supprimées tant que ton abonnement est actif.",
+  "premiumBaslik": "Style illimité, zéro pub",
+  "premiumAciklama": "Utilise tes tenues et tes analyses de style sans limite et supprime toutes les publicités avec un seul abonnement.",
   "premiumOzellikReklamsiz": "Toutes les publicités sont supprimées",
   "premiumOzellikAylik": "Renouvellement automatique chaque mois",
   "premiumOzellikMagaza": "Géré via Google Play",
-  "premiumAktifMesaji": "Premium est actif. Les publicités sont désactivées pour ton compte.",
-  "premiumAboneOl": "S’abonner mensuellement",
-  "premiumAboneOlFiyatli": "S’abonner mensuellement • {fiyat}",
+  "premiumAktifMesaji": "Premium est actif. Utilisation illimitée et sans publicité.",
+  "premiumAboneOl": "S'abonner",
+  "premiumAboneOlFiyatli": "S'abonner • {fiyat}",
   "premiumGeriYukle": "Restaurer l’achat",
   "premiumMagazaHazirDegil": "Google Play n’est pas disponible pour le moment. Réessaie plus tard.",
   "premiumSatinAlmaBaslatilamadi": "L’achat n’a pas pu démarrer.",
   "premiumSatinAlmaBasarisiz": "L’achat a échoué.",
-  "premiumAylikBaslik": "Premium mensuel sans publicité",
-  "premiumAylikAltBaslik": "Supprime les publicités pour {fiyat} par mois",
-  "premiumGec": "Passer à Premium • {fiyat}/mois",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "Tenues illimitées • {fiyat}/mois",
+  "premiumGec": "Passe à l'illimité • {fiyat}/mois",
   "guncellemeBaslik": "Mise à jour requise",
   "guncellemeAciklama": "Une nouvelle version de FitCheck est disponible. Veuillez mettre à jour l'application pour continuer.",
   "guncellemeButonu": "Mettre à jour",
@@ -877,5 +877,37 @@
   "kapat": "Fermer",
   "bildirimBaslik": "Notification",
   "ayarlarAltbilgi": "Fait avec style",
-  "geriBildirimKonu": "FitCheck Avis"
+  "geriBildirimKonu": "FitCheck Avis",
+  "premiumOzelliklerBaslik": "Ce que Premium débloque",
+  "premiumOzellikSinirsizKombin": "Création de tenues illimitée",
+  "premiumOzellikSinirsizAnaliz": "Analyse de style IA illimitée",
+  "premiumOzellikSinirsizGardirob": "Espace dressing illimité",
+  "premiumPlanAylik": "Mensuel",
+  "premiumPlanYillik": "Annuel",
+  "premiumEnAvantajli": "MEILLEUR CHOIX",
+  "premiumTasarrufYuzde": "Économisez {yuzde} %",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun} JOURS GRATUITS",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "Puis {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "L'abonnement se renouvelle automatiquement à la fin de chaque période. Annulable à tout moment."
 }

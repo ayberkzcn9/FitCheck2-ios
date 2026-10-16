@@ -2212,11 +2212,11 @@ class AppLocalizationsAr extends AppLocalizations {
       'مرحبًا! 👋 هل ننسّق طقمًا رائعًا يناسب أسلوبك؟ ✨';
 
   @override
-  String get premiumBaslik => 'استخدام شهري بدون إعلانات';
+  String get premiumBaslik => 'أناقة بلا حدود وبدون إعلانات';
 
   @override
   String get premiumAciklama =>
-      'استمتع بتجربة FitCheck بدون إعلانات. تُزال جميع الإعلانات طالما أن اشتراكك نشط.';
+      'استخدم إطلالاتك وتحليلات الأناقة بلا حدود وأزل كل الإعلانات باشتراك واحد.';
 
   @override
   String get premiumOzellikReklamsiz => 'تُزال جميع الإعلانات';
@@ -2229,14 +2229,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get premiumAktifMesaji =>
-      'الاشتراك المميز نشط. الإعلانات متوقفة لحسابك.';
+      'Premium مفعّل. استخدام بلا حدود وبدون إعلانات.';
 
   @override
-  String get premiumAboneOl => 'اشترك شهريًا';
+  String get premiumAboneOl => 'اشترك';
 
   @override
   String premiumAboneOlFiyatli(String fiyat) {
-    return 'اشترك شهريًا • $fiyat';
+    return 'اشترك • $fiyat';
   }
 
   @override
@@ -2253,16 +2253,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get premiumSatinAlmaBasarisiz => 'فشلت عملية الشراء.';
 
   @override
-  String get premiumAylikBaslik => 'اشتراك شهري مميز بدون إعلانات';
+  String get premiumAylikBaslik => 'FitCheck Premium';
 
   @override
   String premiumAylikAltBaslik(String fiyat) {
-    return 'أزل الإعلانات مقابل $fiyat شهريًا';
+    return 'إطلالات بلا حدود • $fiyat شهريًا';
   }
 
   @override
   String premiumGec(String fiyat) {
-    return 'انتقل إلى المميز • $fiyat/شهر';
+    return 'استخدم بلا حدود • $fiyat/شهر';
   }
 
   @override
@@ -2768,4 +2768,45 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get geriBildirimKonu => 'FitCheck ملاحظات';
+
+  @override
+  String get premiumOzelliklerBaslik => 'ما الذي يفتحه لك Premium';
+
+  @override
+  String get premiumOzellikSinirsizKombin => 'إنشاء إطلالات بلا حدود';
+
+  @override
+  String get premiumOzellikSinirsizAnaliz =>
+      'تحليل الأناقة بالذكاء الاصطناعي بلا حدود';
+
+  @override
+  String get premiumOzellikSinirsizGardirob => 'مساحة خزانة بلا حدود';
+
+  @override
+  String get premiumPlanAylik => 'شهري';
+
+  @override
+  String get premiumPlanYillik => 'سنوي';
+
+  @override
+  String get premiumEnAvantajli => 'الأفضل قيمة';
+
+  @override
+  String premiumTasarrufYuzde(int yuzde) {
+    return 'وفّر $yuzde%';
+  }
+
+  @override
+  String premiumDenemeRozeti(int gun) {
+    return '$gun أيام مجانًا';
+  }
+
+  @override
+  String premiumDenemeSonrasi(String fiyat) {
+    return 'ثم $fiyat';
+  }
+
+  @override
+  String get premiumYenilemeNotu =>
+      'يتجدد الاشتراك تلقائيًا في نهاية كل فترة. يمكنك الإلغاء في أي وقت.';
 }

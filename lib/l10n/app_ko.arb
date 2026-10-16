@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "분석 데이터 공유",
   "analitikVerileriPaylasAciklama": "앱 개선을 위해 익명 사용 데이터가 전송됩니다. 끄면 이 기기에 저장된 분석 데이터가 삭제됩니다.",
   "chatKarsilamaHavaYok": "안녕하세요! 👋 당신의 스타일에 어울리는 근사한 코디를 만들어 볼까요? ✨",
-  "premiumBaslik": "월간 광고 없는 이용",
-  "premiumAciklama": "광고 없이 FitCheck를 이용하세요. 구독이 활성 상태인 동안 모든 광고가 제거됩니다.",
+  "premiumBaslik": "무제한 스타일, 광고 없음",
+  "premiumAciklama": "코디와 스타일 분석을 무제한으로 사용하고 하나의 구독으로 모든 광고를 제거하세요.",
   "premiumOzellikReklamsiz": "모든 광고가 제거됩니다",
   "premiumOzellikAylik": "매월 자동으로 갱신됩니다",
   "premiumOzellikMagaza": "Google Play에서 관리됩니다",
-  "premiumAktifMesaji": "프리미엄이 활성화되었습니다. 이 계정에서는 광고가 꺼져 있습니다.",
-  "premiumAboneOl": "월간 구독하기",
-  "premiumAboneOlFiyatli": "월간 구독하기 • {fiyat}",
+  "premiumAktifMesaji": "Premium이 활성화되었습니다. 무제한 사용과 광고 없음.",
+  "premiumAboneOl": "구독하기",
+  "premiumAboneOlFiyatli": "구독하기 • {fiyat}",
   "premiumGeriYukle": "구매 복원",
   "premiumMagazaHazirDegil": "지금은 Google Play에 연결할 수 없습니다. 다시 시도해 주세요.",
   "premiumSatinAlmaBaslatilamadi": "구매를 시작할 수 없습니다.",
   "premiumSatinAlmaBasarisiz": "구매에 실패했습니다.",
-  "premiumAylikBaslik": "월간 광고 없는 프리미엄",
-  "premiumAylikAltBaslik": "월 {fiyat}로 광고 제거",
-  "premiumGec": "프리미엄으로 전환 • 월 {fiyat}",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "무제한 코디 • 월 {fiyat}",
+  "premiumGec": "무제한 사용 • {fiyat}/월",
   "guncellemeBaslik": "업데이트가 필요합니다",
   "guncellemeAciklama": "FitCheck의 새 버전이 출시되었습니다. 계속하려면 앱을 업데이트해 주세요.",
   "guncellemeButonu": "지금 업데이트",
@@ -877,5 +877,37 @@
   "kapat": "닫기",
   "bildirimBaslik": "알림",
   "ayarlarAltbilgi": "스타일로 만들었습니다",
-  "geriBildirimKonu": "FitCheck 피드백"
+  "geriBildirimKonu": "FitCheck 피드백",
+  "premiumOzelliklerBaslik": "Premium로 열리는 것",
+  "premiumOzellikSinirsizKombin": "무제한 코디 생성",
+  "premiumOzellikSinirsizAnaliz": "무제한 AI 스타일 분석",
+  "premiumOzellikSinirsizGardirob": "무제한 옷장 공간",
+  "premiumPlanAylik": "월간",
+  "premiumPlanYillik": "연간",
+  "premiumEnAvantajli": "가장 이득",
+  "premiumTasarrufYuzde": "{yuzde}% 절약",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun}일 무료",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "이후 {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "구독은 각 기간 종료 시 자동으로 갱신됩니다. 언제든지 해지할 수 있습니다."
 }

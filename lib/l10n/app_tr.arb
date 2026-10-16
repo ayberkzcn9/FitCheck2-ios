@@ -703,14 +703,14 @@
   "analitikVerileriPaylas": "Analitik verileri paylaş",
   "analitikVerileriPaylasAciklama": "Uygulama deneyimini iyileştirmek için anonim kullanım verileri gönderilir. Kapatırsanız bu cihazdaki analitik veriler silinir.",
   "chatKarsilamaHavaYok": "Selam! 👋 Senin tarzına uygun harika bir kombin hazırlayalım mı? ✨",
-  "premiumBaslik": "Aylık reklamsız kullanım",
-  "premiumAciklama": "FitCheck deneyimini reklamsız kullan. Aboneliğin aktif olduğu sürece tüm reklamlar kaldırılır.",
+  "premiumBaslik": "Sınırsız stil, sıfır reklam",
+  "premiumAciklama": "Kombinlerini ve stil analizlerini sınırsız kullan, tüm reklamları kaldır. Tek bir avantajlı abonelikle.",
   "premiumOzellikReklamsiz": "Tüm reklamlar kaldırılır",
   "premiumOzellikAylik": "Aylık otomatik yenilenir",
   "premiumOzellikMagaza": "Google Play üzerinden yönetilir",
-  "premiumAktifMesaji": "Premium aktif. Reklamlar hesabınız için kapalı.",
-  "premiumAboneOl": "Aylık abone ol",
-  "premiumAboneOlFiyatli": "Aylık abone ol • {fiyat}",
+  "premiumAktifMesaji": "Premium aktif. Sınırsız kullanım ve reklamsız deneyim açık.",
+  "premiumAboneOl": "Abone ol",
+  "premiumAboneOlFiyatli": "Abone ol • {fiyat}",
   "@premiumAboneOlFiyatli": {
     "placeholders": {
       "fiyat": {
@@ -722,8 +722,8 @@
   "premiumMagazaHazirDegil": "Google Play bağlantısı hazır değil. Lütfen tekrar deneyin.",
   "premiumSatinAlmaBaslatilamadi": "Satın alma başlatılamadı.",
   "premiumSatinAlmaBasarisiz": "Satın alma başarısız oldu.",
-  "premiumAylikBaslik": "Aylık Reklamsız Premium",
-  "premiumAylikAltBaslik": "Aylık {fiyat} ile reklamları kaldır",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "Sınırsız kombin • ayda {fiyat}",
   "@premiumAylikAltBaslik": {
     "placeholders": {
       "fiyat": {
@@ -731,7 +731,7 @@
       }
     }
   },
-  "premiumGec": "Premium’a geç • {fiyat}/ay",
+  "premiumGec": "Sınırsız kullan • {fiyat}/ay",
   "@premiumGec": {
     "placeholders": {
       "fiyat": {
@@ -905,5 +905,37 @@
   "kapat": "Kapat",
   "bildirimBaslik": "Bildirim",
   "ayarlarAltbilgi": "Stil ile yapıldı",
-  "geriBildirimKonu": "FitCheck Geri Bildirim"
+  "geriBildirimKonu": "FitCheck Geri Bildirim",
+  "premiumOzelliklerBaslik": "Premium ile neler kazanırsın?",
+  "premiumOzellikSinirsizKombin": "Sınırsız kombin oluşturma",
+  "premiumOzellikSinirsizAnaliz": "Sınırsız yapay zekâ stil analizi",
+  "premiumOzellikSinirsizGardirob": "Sınırsız gardırop alanı",
+  "premiumPlanAylik": "Aylık",
+  "premiumPlanYillik": "Yıllık",
+  "premiumEnAvantajli": "EN AVANTAJLI",
+  "premiumTasarrufYuzde": "%{yuzde} tasarruf",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun} GÜN ÜCRETSİZ",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "Deneme bitince {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "Abonelik, dönem sonunda otomatik yenilenir. İstediğin zaman iptal edebilirsin."
 }

@@ -2130,11 +2130,10 @@ class AppLocalizationsKo extends AppLocalizations {
       '안녕하세요! 👋 당신의 스타일에 어울리는 근사한 코디를 만들어 볼까요? ✨';
 
   @override
-  String get premiumBaslik => '월간 광고 없는 이용';
+  String get premiumBaslik => '무제한 스타일, 광고 없음';
 
   @override
-  String get premiumAciklama =>
-      '광고 없이 FitCheck를 이용하세요. 구독이 활성 상태인 동안 모든 광고가 제거됩니다.';
+  String get premiumAciklama => '코디와 스타일 분석을 무제한으로 사용하고 하나의 구독으로 모든 광고를 제거하세요.';
 
   @override
   String get premiumOzellikReklamsiz => '모든 광고가 제거됩니다';
@@ -2146,14 +2145,14 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumOzellikMagaza => 'Google Play에서 관리됩니다';
 
   @override
-  String get premiumAktifMesaji => '프리미엄이 활성화되었습니다. 이 계정에서는 광고가 꺼져 있습니다.';
+  String get premiumAktifMesaji => 'Premium이 활성화되었습니다. 무제한 사용과 광고 없음.';
 
   @override
-  String get premiumAboneOl => '월간 구독하기';
+  String get premiumAboneOl => '구독하기';
 
   @override
   String premiumAboneOlFiyatli(String fiyat) {
-    return '월간 구독하기 • $fiyat';
+    return '구독하기 • $fiyat';
   }
 
   @override
@@ -2170,16 +2169,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumSatinAlmaBasarisiz => '구매에 실패했습니다.';
 
   @override
-  String get premiumAylikBaslik => '월간 광고 없는 프리미엄';
+  String get premiumAylikBaslik => 'FitCheck Premium';
 
   @override
   String premiumAylikAltBaslik(String fiyat) {
-    return '월 $fiyat로 광고 제거';
+    return '무제한 코디 • 월 $fiyat';
   }
 
   @override
   String premiumGec(String fiyat) {
-    return '프리미엄으로 전환 • 월 $fiyat';
+    return '무제한 사용 • $fiyat/월';
   }
 
   @override
@@ -2681,4 +2680,44 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get geriBildirimKonu => 'FitCheck 피드백';
+
+  @override
+  String get premiumOzelliklerBaslik => 'Premium로 열리는 것';
+
+  @override
+  String get premiumOzellikSinirsizKombin => '무제한 코디 생성';
+
+  @override
+  String get premiumOzellikSinirsizAnaliz => '무제한 AI 스타일 분석';
+
+  @override
+  String get premiumOzellikSinirsizGardirob => '무제한 옷장 공간';
+
+  @override
+  String get premiumPlanAylik => '월간';
+
+  @override
+  String get premiumPlanYillik => '연간';
+
+  @override
+  String get premiumEnAvantajli => '가장 이득';
+
+  @override
+  String premiumTasarrufYuzde(int yuzde) {
+    return '$yuzde% 절약';
+  }
+
+  @override
+  String premiumDenemeRozeti(int gun) {
+    return '$gun일 무료';
+  }
+
+  @override
+  String premiumDenemeSonrasi(String fiyat) {
+    return '이후 $fiyat';
+  }
+
+  @override
+  String get premiumYenilemeNotu =>
+      '구독은 각 기간 종료 시 자동으로 갱신됩니다. 언제든지 해지할 수 있습니다.';
 }

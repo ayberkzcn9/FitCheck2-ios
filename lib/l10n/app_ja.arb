@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "分析データを共有",
   "analitikVerileriPaylasAciklama": "アプリの改善のため、匿名の利用データを送信します。オフにすると、この端末に保存された分析データは削除されます。",
   "chatKarsilamaHavaYok": "こんにちは！👋 あなたのスタイルに合う素敵なコーデを作りましょうか？✨",
-  "premiumBaslik": "月額の広告なしプラン",
-  "premiumAciklama": "FitCheckを広告なしで利用できます。サブスクリプションが有効な間はすべての広告が削除されます。",
+  "premiumBaslik": "スタイル無制限、広告ゼロ",
+  "premiumAciklama": "コーデとスタイル分析を無制限に使えて、1つのサブスクリプションで広告をすべて削除。",
   "premiumOzellikReklamsiz": "すべての広告が削除されます",
   "premiumOzellikAylik": "毎月自動で更新されます",
   "premiumOzellikMagaza": "Google Playで管理されます",
-  "premiumAktifMesaji": "プレミアムが有効です。このアカウントでは広告がオフになっています。",
-  "premiumAboneOl": "月額で登録する",
-  "premiumAboneOlFiyatli": "月額で登録する • {fiyat}",
+  "premiumAktifMesaji": "Premiumが有効です。無制限で広告もありません。",
+  "premiumAboneOl": "登録する",
+  "premiumAboneOlFiyatli": "登録する • {fiyat}",
   "premiumGeriYukle": "購入を復元",
   "premiumMagazaHazirDegil": "Google Playに接続できません。もう一度お試しください。",
   "premiumSatinAlmaBaslatilamadi": "購入を開始できませんでした。",
   "premiumSatinAlmaBasarisiz": "購入に失敗しました。",
-  "premiumAylikBaslik": "月額 広告なしプレミアム",
-  "premiumAylikAltBaslik": "月額{fiyat}で広告を削除",
-  "premiumGec": "プレミアムに登録 • {fiyat}/月",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "コーデ無制限 • 月 {fiyat}",
+  "premiumGec": "無制限で使う • {fiyat}/月",
   "guncellemeBaslik": "アップデートが必要です",
   "guncellemeAciklama": "FitCheckの新しいバージョンが公開されました。続けるにはアプリを更新してください。",
   "guncellemeButonu": "今すぐ更新",
@@ -877,5 +877,37 @@
   "kapat": "閉じる",
   "bildirimBaslik": "通知",
   "ayarlarAltbilgi": "スタイルを込めて",
-  "geriBildirimKonu": "FitCheck フィードバック"
+  "geriBildirimKonu": "FitCheck フィードバック",
+  "premiumOzelliklerBaslik": "Premiumで使えるもの",
+  "premiumOzellikSinirsizKombin": "コーデ作成が無制限",
+  "premiumOzellikSinirsizAnaliz": "AIスタイル分析が無制限",
+  "premiumOzellikSinirsizGardirob": "クローゼット容量が無制限",
+  "premiumPlanAylik": "月払い",
+  "premiumPlanYillik": "年払い",
+  "premiumEnAvantajli": "いちばんお得",
+  "premiumTasarrufYuzde": "{yuzde}% お得",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun}日間無料",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "その後 {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "サブスクリプションは各期間の終了時に自動更新されます。いつでも解約できます。"
 }

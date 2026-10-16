@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "Share analytics data",
   "analitikVerileriPaylasAciklama": "Anonymous usage data is sent to improve the app experience. Turning this off deletes the analytics data stored on this device.",
   "chatKarsilamaHavaYok": "Hi there! 👋 Shall we put together a great outfit that matches your style? ✨",
-  "premiumBaslik": "Monthly ad-free plan",
-  "premiumAciklama": "Enjoy FitCheck without ads. All ads are removed for as long as your subscription is active.",
+  "premiumBaslik": "Unlimited style, zero ads",
+  "premiumAciklama": "Use your outfits and style analyses without limits and remove all ads with a single subscription.",
   "premiumOzellikReklamsiz": "All ads are removed",
   "premiumOzellikAylik": "Renews automatically every month",
   "premiumOzellikMagaza": "Managed through Google Play",
-  "premiumAktifMesaji": "Premium is active. Ads are turned off for your account.",
-  "premiumAboneOl": "Subscribe monthly",
-  "premiumAboneOlFiyatli": "Subscribe monthly • {fiyat}",
+  "premiumAktifMesaji": "Premium is active. Unlimited use and an ad-free experience are on.",
+  "premiumAboneOl": "Subscribe",
+  "premiumAboneOlFiyatli": "Subscribe • {fiyat}",
   "premiumGeriYukle": "Restore purchase",
   "premiumMagazaHazirDegil": "Google Play is not available right now. Please try again.",
   "premiumSatinAlmaBaslatilamadi": "Purchase could not be started.",
   "premiumSatinAlmaBasarisiz": "Purchase failed.",
-  "premiumAylikBaslik": "Monthly Ad-Free Premium",
-  "premiumAylikAltBaslik": "Remove ads for {fiyat} per month",
-  "premiumGec": "Go Premium • {fiyat}/month",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "Unlimited outfits • {fiyat}/month",
+  "premiumGec": "Go unlimited • {fiyat}/mo",
   "guncellemeBaslik": "Update required",
   "guncellemeAciklama": "A new version of FitCheck is available. Please update the app to continue.",
   "guncellemeButonu": "Update now",
@@ -877,5 +877,37 @@
   "kapat": "Close",
   "bildirimBaslik": "Notification",
   "ayarlarAltbilgi": "Made with style",
-  "geriBildirimKonu": "FitCheck Feedback"
+  "geriBildirimKonu": "FitCheck Feedback",
+  "premiumOzelliklerBaslik": "What you unlock with Premium",
+  "premiumOzellikSinirsizKombin": "Unlimited outfit creation",
+  "premiumOzellikSinirsizAnaliz": "Unlimited AI style analysis",
+  "premiumOzellikSinirsizGardirob": "Unlimited wardrobe space",
+  "premiumPlanAylik": "Monthly",
+  "premiumPlanYillik": "Yearly",
+  "premiumEnAvantajli": "BEST VALUE",
+  "premiumTasarrufYuzde": "Save {yuzde}%",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun}-DAY FREE TRIAL",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "Then {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "Subscription renews automatically at the end of each period. Cancel anytime."
 }

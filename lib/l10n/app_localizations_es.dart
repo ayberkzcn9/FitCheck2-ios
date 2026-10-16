@@ -2255,11 +2255,11 @@ class AppLocalizationsEs extends AppLocalizations {
       '¡Hola! 👋 ¿Creamos un conjunto genial que vaya con tu estilo? ✨';
 
   @override
-  String get premiumBaslik => 'Uso mensual sin anuncios';
+  String get premiumBaslik => 'Estilo ilimitado, cero anuncios';
 
   @override
   String get premiumAciklama =>
-      'Disfruta de FitCheck sin anuncios. Se eliminan todos los anuncios mientras tu suscripción esté activa.';
+      'Usa tus conjuntos y análisis de estilo sin límites y elimina todos los anuncios con una sola suscripción.';
 
   @override
   String get premiumOzellikReklamsiz => 'Se eliminan todos los anuncios';
@@ -2272,14 +2272,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get premiumAktifMesaji =>
-      'Premium está activo. Los anuncios están desactivados para tu cuenta.';
+      'Premium activo. Uso ilimitado y sin anuncios.';
 
   @override
-  String get premiumAboneOl => 'Suscríbete mensualmente';
+  String get premiumAboneOl => 'Suscríbete';
 
   @override
   String premiumAboneOlFiyatli(String fiyat) {
-    return 'Suscríbete mensualmente • $fiyat';
+    return 'Suscríbete • $fiyat';
   }
 
   @override
@@ -2296,16 +2296,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get premiumSatinAlmaBasarisiz => 'La compra no se completó.';
 
   @override
-  String get premiumAylikBaslik => 'Premium mensual sin anuncios';
+  String get premiumAylikBaslik => 'FitCheck Premium';
 
   @override
   String premiumAylikAltBaslik(String fiyat) {
-    return 'Elimina los anuncios por $fiyat al mes';
+    return 'Conjuntos ilimitados • $fiyat/mes';
   }
 
   @override
   String premiumGec(String fiyat) {
-    return 'Hazte Premium • $fiyat/mes';
+    return 'Hazte ilimitado • $fiyat/mes';
   }
 
   @override
@@ -2812,4 +2812,45 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get geriBildirimKonu => 'FitCheck Comentarios';
+
+  @override
+  String get premiumOzelliklerBaslik => 'Lo que desbloqueas con Premium';
+
+  @override
+  String get premiumOzellikSinirsizKombin => 'Creación de conjuntos ilimitada';
+
+  @override
+  String get premiumOzellikSinirsizAnaliz =>
+      'Análisis de estilo con IA ilimitado';
+
+  @override
+  String get premiumOzellikSinirsizGardirob => 'Espacio de armario ilimitado';
+
+  @override
+  String get premiumPlanAylik => 'Mensual';
+
+  @override
+  String get premiumPlanYillik => 'Anual';
+
+  @override
+  String get premiumEnAvantajli => 'MEJOR OPCIÓN';
+
+  @override
+  String premiumTasarrufYuzde(int yuzde) {
+    return 'Ahorra un $yuzde%';
+  }
+
+  @override
+  String premiumDenemeRozeti(int gun) {
+    return '$gun DÍAS GRATIS';
+  }
+
+  @override
+  String premiumDenemeSonrasi(String fiyat) {
+    return 'Luego $fiyat';
+  }
+
+  @override
+  String get premiumYenilemeNotu =>
+      'La suscripción se renueva automáticamente al final de cada período. Cancela cuando quieras.';
 }

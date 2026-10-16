@@ -692,21 +692,21 @@
   "analitikVerileriPaylas": "Делиться данными аналитики",
   "analitikVerileriPaylasAciklama": "Для улучшения приложения отправляются анонимные данные об использовании. При отключении данные аналитики на этом устройстве удаляются.",
   "chatKarsilamaHavaYok": "Привет! 👋 Соберём отличный образ в твоём стиле? ✨",
-  "premiumBaslik": "Месячный план без рекламы",
-  "premiumAciklama": "Пользуйся FitCheck без рекламы. Пока подписка активна, вся реклама отключена.",
+  "premiumBaslik": "Безлимитный стиль, без рекламы",
+  "premiumAciklama": "Пользуйся образами и анализом стиля без ограничений и отключи всю рекламу одной подпиской.",
   "premiumOzellikReklamsiz": "Вся реклама отключена",
   "premiumOzellikAylik": "Продлевается автоматически каждый месяц",
   "premiumOzellikMagaza": "Управляется через Google Play",
-  "premiumAktifMesaji": "Premium активен. Реклама для твоего аккаунта отключена.",
-  "premiumAboneOl": "Оформить подписку на месяц",
-  "premiumAboneOlFiyatli": "Оформить подписку на месяц • {fiyat}",
+  "premiumAktifMesaji": "Premium активен. Безлимитный доступ и без рекламы.",
+  "premiumAboneOl": "Подписаться",
+  "premiumAboneOlFiyatli": "Подписаться • {fiyat}",
   "premiumGeriYukle": "Восстановить покупку",
   "premiumMagazaHazirDegil": "Google Play сейчас недоступен. Попробуй ещё раз.",
   "premiumSatinAlmaBaslatilamadi": "Не удалось начать покупку.",
   "premiumSatinAlmaBasarisiz": "Покупка не удалась.",
-  "premiumAylikBaslik": "Месячный Premium без рекламы",
-  "premiumAylikAltBaslik": "Отключить рекламу за {fiyat} в месяц",
-  "premiumGec": "Перейти на Premium • {fiyat}/мес.",
+  "premiumAylikBaslik": "FitCheck Premium",
+  "premiumAylikAltBaslik": "Безлимитные образы • {fiyat}/мес.",
+  "premiumGec": "Безлимит • {fiyat}/мес.",
   "guncellemeBaslik": "Требуется обновление",
   "guncellemeAciklama": "Доступна новая версия FitCheck. Чтобы продолжить, обновите приложение.",
   "guncellemeButonu": "Обновить сейчас",
@@ -877,5 +877,37 @@
   "kapat": "Закрыть",
   "bildirimBaslik": "Уведомление",
   "ayarlarAltbilgi": "Сделано со вкусом",
-  "geriBildirimKonu": "FitCheck Отзыв"
+  "geriBildirimKonu": "FitCheck Отзыв",
+  "premiumOzelliklerBaslik": "Что открывает Premium",
+  "premiumOzellikSinirsizKombin": "Неограниченное создание образов",
+  "premiumOzellikSinirsizAnaliz": "Неограниченный ИИ-анализ стиля",
+  "premiumOzellikSinirsizGardirob": "Неограниченное место в гардеробе",
+  "premiumPlanAylik": "Месяц",
+  "premiumPlanYillik": "Год",
+  "premiumEnAvantajli": "ЛУЧШИЙ ВЫБОР",
+  "premiumTasarrufYuzde": "Скидка {yuzde}%",
+  "@premiumTasarrufYuzde": {
+    "placeholders": {
+      "yuzde": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeRozeti": "{gun} ДНЕЙ БЕСПЛАТНО",
+  "@premiumDenemeRozeti": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumDenemeSonrasi": "Затем {fiyat}",
+  "@premiumDenemeSonrasi": {
+    "placeholders": {
+      "fiyat": {
+        "type": "String"
+      }
+    }
+  },
+  "premiumYenilemeNotu": "Подписка продлевается автоматически в конце каждого периода. Отменить можно в любое время."
 }

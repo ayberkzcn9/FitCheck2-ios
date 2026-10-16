@@ -2081,10 +2081,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get chatKarsilamaHavaYok => '您好！👋 要不要来搭配一套适合您风格的穿搭？✨';
 
   @override
-  String get premiumBaslik => '月度无广告方案';
+  String get premiumBaslik => '风格无限制，零广告';
 
   @override
-  String get premiumAciklama => '无广告畅享 FitCheck。订阅有效期间，所有广告都会被移除。';
+  String get premiumAciklama => '无限制使用搭配和风格分析，并通过一次订阅移除所有广告。';
 
   @override
   String get premiumOzellikReklamsiz => '移除所有广告';
@@ -2096,14 +2096,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get premiumOzellikMagaza => '通过 Google Play 管理';
 
   @override
-  String get premiumAktifMesaji => '高级版已生效。您的账号已关闭广告。';
+  String get premiumAktifMesaji => 'Premium 已生效。无限使用且无广告。';
 
   @override
-  String get premiumAboneOl => '按月订阅';
+  String get premiumAboneOl => '订阅';
 
   @override
   String premiumAboneOlFiyatli(String fiyat) {
-    return '按月订阅 • $fiyat';
+    return '订阅 • $fiyat';
   }
 
   @override
@@ -2119,16 +2119,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get premiumSatinAlmaBasarisiz => '购买失败。';
 
   @override
-  String get premiumAylikBaslik => '月度无广告高级版';
+  String get premiumAylikBaslik => 'FitCheck Premium';
 
   @override
   String premiumAylikAltBaslik(String fiyat) {
-    return '每月 $fiyat 移除广告';
+    return '无限制搭配 • 每月 $fiyat';
   }
 
   @override
   String premiumGec(String fiyat) {
-    return '升级高级版 • $fiyat/月';
+    return '无限使用 • $fiyat/月';
   }
 
   @override
@@ -2626,4 +2626,43 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get geriBildirimKonu => 'FitCheck 反馈';
+
+  @override
+  String get premiumOzelliklerBaslik => 'Premium 解锁的内容';
+
+  @override
+  String get premiumOzellikSinirsizKombin => '无限制搭配生成';
+
+  @override
+  String get premiumOzellikSinirsizAnaliz => '无限制 AI 风格分析';
+
+  @override
+  String get premiumOzellikSinirsizGardirob => '无限制衣橱空间';
+
+  @override
+  String get premiumPlanAylik => '按月';
+
+  @override
+  String get premiumPlanYillik => '按年';
+
+  @override
+  String get premiumEnAvantajli => '最超值';
+
+  @override
+  String premiumTasarrufYuzde(int yuzde) {
+    return '省 $yuzde%';
+  }
+
+  @override
+  String premiumDenemeRozeti(int gun) {
+    return '$gun 天免费';
+  }
+
+  @override
+  String premiumDenemeSonrasi(String fiyat) {
+    return '之后 $fiyat';
+  }
+
+  @override
+  String get premiumYenilemeNotu => '订阅将在每个周期结束时自动续订。可随时取消。';
 }

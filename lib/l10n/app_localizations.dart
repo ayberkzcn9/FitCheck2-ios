@@ -4129,13 +4129,13 @@ abstract class AppLocalizations {
   /// No description provided for @premiumBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Aylık reklamsız kullanım'**
+  /// **'Sınırsız stil, sıfır reklam'**
   String get premiumBaslik;
 
   /// No description provided for @premiumAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'FitCheck deneyimini reklamsız kullan. Aboneliğin aktif olduğu sürece tüm reklamlar kaldırılır.'**
+  /// **'Kombinlerini ve stil analizlerini sınırsız kullan, tüm reklamları kaldır. Tek bir avantajlı abonelikle.'**
   String get premiumAciklama;
 
   /// No description provided for @premiumOzellikReklamsiz.
@@ -4159,19 +4159,19 @@ abstract class AppLocalizations {
   /// No description provided for @premiumAktifMesaji.
   ///
   /// In tr, this message translates to:
-  /// **'Premium aktif. Reklamlar hesabınız için kapalı.'**
+  /// **'Premium aktif. Sınırsız kullanım ve reklamsız deneyim açık.'**
   String get premiumAktifMesaji;
 
   /// No description provided for @premiumAboneOl.
   ///
   /// In tr, this message translates to:
-  /// **'Aylık abone ol'**
+  /// **'Abone ol'**
   String get premiumAboneOl;
 
   /// No description provided for @premiumAboneOlFiyatli.
   ///
   /// In tr, this message translates to:
-  /// **'Aylık abone ol • {fiyat}'**
+  /// **'Abone ol • {fiyat}'**
   String premiumAboneOlFiyatli(String fiyat);
 
   /// No description provided for @premiumGeriYukle.
@@ -4201,19 +4201,19 @@ abstract class AppLocalizations {
   /// No description provided for @premiumAylikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Aylık Reklamsız Premium'**
+  /// **'FitCheck Premium'**
   String get premiumAylikBaslik;
 
   /// No description provided for @premiumAylikAltBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Aylık {fiyat} ile reklamları kaldır'**
+  /// **'Sınırsız kombin • ayda {fiyat}'**
   String premiumAylikAltBaslik(String fiyat);
 
   /// No description provided for @premiumGec.
   ///
   /// In tr, this message translates to:
-  /// **'Premium’a geç • {fiyat}/ay'**
+  /// **'Sınırsız kullan • {fiyat}/ay'**
   String premiumGec(String fiyat);
 
   /// No description provided for @guncellemeBaslik.
@@ -5175,6 +5175,72 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'FitCheck Geri Bildirim'**
   String get geriBildirimKonu;
+
+  /// No description provided for @premiumOzelliklerBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Premium ile neler kazanırsın?'**
+  String get premiumOzelliklerBaslik;
+
+  /// No description provided for @premiumOzellikSinirsizKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sınırsız kombin oluşturma'**
+  String get premiumOzellikSinirsizKombin;
+
+  /// No description provided for @premiumOzellikSinirsizAnaliz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sınırsız yapay zekâ stil analizi'**
+  String get premiumOzellikSinirsizAnaliz;
+
+  /// No description provided for @premiumOzellikSinirsizGardirob.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sınırsız gardırop alanı'**
+  String get premiumOzellikSinirsizGardirob;
+
+  /// No description provided for @premiumPlanAylik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aylık'**
+  String get premiumPlanAylik;
+
+  /// No description provided for @premiumPlanYillik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yıllık'**
+  String get premiumPlanYillik;
+
+  /// No description provided for @premiumEnAvantajli.
+  ///
+  /// In tr, this message translates to:
+  /// **'EN AVANTAJLI'**
+  String get premiumEnAvantajli;
+
+  /// No description provided for @premiumTasarrufYuzde.
+  ///
+  /// In tr, this message translates to:
+  /// **'%{yuzde} tasarruf'**
+  String premiumTasarrufYuzde(int yuzde);
+
+  /// No description provided for @premiumDenemeRozeti.
+  ///
+  /// In tr, this message translates to:
+  /// **'{gun} GÜN ÜCRETSİZ'**
+  String premiumDenemeRozeti(int gun);
+
+  /// No description provided for @premiumDenemeSonrasi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Deneme bitince {fiyat}'**
+  String premiumDenemeSonrasi(String fiyat);
+
+  /// No description provided for @premiumYenilemeNotu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Abonelik, dönem sonunda otomatik yenilenir. İstediğin zaman iptal edebilirsin.'**
+  String get premiumYenilemeNotu;
 }
 
 class _AppLocalizationsDelegate
