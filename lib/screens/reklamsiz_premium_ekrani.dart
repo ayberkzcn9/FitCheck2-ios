@@ -63,6 +63,11 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
   bool get _seciliPlandaDeneme =>
       _satinAlma.planDenemesiVar(_satinAlma.seciliPlan);
 
+  /// Arapça gibi bitişik yazılan dillerde harf aralığı harflerin birleşmesini
+  /// bozduğu için yalnızca soldan sağa dillerde uygulanır.
+  double _harfAraligi(double deger) =>
+      Directionality.of(context) == TextDirection.rtl ? 0 : deger;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -175,11 +180,11 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
               ),
               child: Text(
                 l10n.premiumDenemeRozeti(SatinAlmaServisi.denemeGunSayisi),
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 12,
                   fontWeight: FontWeight.w900,
-                  letterSpacing: 0.5,
+                  letterSpacing: _harfAraligi(0.5),
                 ),
               ),
             ),
@@ -190,7 +195,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w900,
-              letterSpacing: -0.4,
+              letterSpacing: _harfAraligi(-0.4),
               color: colors.onPrimaryContainer,
             ),
           ),
@@ -401,7 +406,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           color: onArka,
           fontSize: 10.5,
           fontWeight: FontWeight.w900,
-          letterSpacing: 0.4,
+          letterSpacing: _harfAraligi(0.4),
         ),
       ),
     );
