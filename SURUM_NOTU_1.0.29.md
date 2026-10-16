@@ -2,141 +2,202 @@
 
 Play Console → **Test ve yayın → Sürümler → Yeni sürüm** ekranındaki
 **"Bu sürümdeki yenilikler"** alanına yapıştırılır. Her dil için ayrı alan
-vardır; sınır **500 karakter**dir (aşağıdakilerin hepsi sınırın altında).
+vardır; sınır **500 karakter**, aşağıdakilerin hepsi sınırın çok altında.
 
-Kelimeler uygulamanın kendi çevirileriyle uyumludur (kombin/outfit/tenue...,
-"Premium: sınırsız stil, sıfır reklam" sloganı).
+Üslup: telli/teknik değil, mağaza dili. Selamlama + 3 kısa fayda maddesi +
+kapanış. Terimler uygulamanın kendi çevirileriyle uyumludur
+(kombin/outfit/tenue/look...).
 
 ---
 
 ## Türkçe (tr)
 
 ```
-• Kıyafet fotoğrafları artık her zaman doğru yönde görünüyor; yatay çekilen fotoğraflar düzeltiliyor, istersen "Döndür" ile çevirebilirsin.
-• Gardıropta kıyafetler çerçeveyi tam dolduruyor, boş alanlar kırpılıyor.
-• Arka plan silme hızlandırıldı, kenarlar daha temiz.
-• Premium: sınırsız stil, sıfır reklam.
-• Performans ve kararlılık iyileştirmeleri.
+Merhaba! 💚
+
+FitCheck'i senin için bir tık daha iyi yaptık:
+
+✨ Kıyafet fotoğrafların artık her zaman doğru yönde görünüyor.
+✨ Gardırobun daha derli toplu: kıyafetlerini daha büyük ve net görüyorsun.
+✨ Arka plan silme daha hızlı, kenarlar daha temiz.
+
+İyi kombinler! 👗
 ```
 
 ## English (en)
 
 ```
-• Clothing photos now always appear in the correct orientation — horizontal shots are fixed, and you can rotate them manually if needed.
-• Garments now fill the frame: empty margins are cropped away.
-• Faster background removal with cleaner edges.
-• Premium: unlimited style, zero ads.
-• Performance and stability improvements.
+Hi there! 💚
+
+We made FitCheck a little better for you:
+
+✨ Clothing photos now always appear in the right orientation.
+✨ A tidier wardrobe — your clothes look bigger and clearer.
+✨ Faster background removal with cleaner edges.
+
+Happy styling! 👗
 ```
 
 ## Italiano (it)
 
 ```
-• Le foto dei capi ora hanno sempre l'orientamento giusto: gli scatti orizzontali vengono corretti e puoi ruotarli manualmente se serve.
-• I capi riempiono l'intera anteprima: i margini vuoti vengono ritagliati.
-• Rimozione dello sfondo più rapida e bordi più puliti.
-• Premium: stile illimitato, zero pubblicità.
-• Miglioramenti di prestazioni e stabilità.
+Ciao! 💚
+
+Abbiamo reso FitCheck ancora migliore per te:
+
+✨ Le foto dei capi ora hanno sempre l'orientamento giusto.
+✨ Guardaroba più ordinato: i capi si vedono più grandi e nitidi.
+✨ Rimozione dello sfondo più veloce e bordi più puliti.
+
+Buon styling! 👗
 ```
 
 ## Español (es)
 
 ```
-• Las fotos de prendas ahora siempre tienen la orientación correcta: las fotos horizontales se corrigen y puedes girarlas manualmente si lo necesitas.
-• Las prendas llenan la vista previa: los márgenes vacíos se recortan.
-• Eliminación de fondo más rápida y bordes más limpios.
-• Premium: estilo ilimitado, cero anuncios.
-• Mejoras de rendimiento y estabilidad.
+¡Hola! 💚
+
+Hemos mejorado FitCheck para ti:
+
+✨ Las fotos de tus prendas ahora siempre tienen la orientación correcta.
+✨ Un armario más ordenado: tus prendas se ven más grandes y nítidas.
+✨ Eliminación de fondo más rápida y con bordes más limpios.
+
+¡A crear atuendos! 👗
 ```
 
 ## 中文 (zh)
 
 ```
-• 服装照片现在始终保持正确的方向：横向拍摄的照片会自动校正，也可以手动旋转。
-• 服装会填满预览框，多余空白会被裁掉。
-• 背景移除更快，边缘更干净。
-• Premium：风格无限制，零广告。
-• 性能与稳定性改进。
+你好！💚
+
+我们让 FitCheck 变得更好用了：
+
+✨ 服装照片现在始终保持正确的方向。
+✨ 衣橱更整洁：服装显示得更大更清晰。
+✨ 背景移除更快，边缘更干净。
+
+祝你穿搭愉快！👗
 ```
 
 ## العربية (ar)
 
 ```
-• تظهر صور الملابس الآن بالاتجاه الصحيح دائمًا؛ وتُصحَّح الصور الأفقية، ويمكنك تدويرها يدويًا عند الحاجة.
-• تملأ الملابس الإطار بالكامل بعد قص الهوامش الفارغة.
-• إزالة الخلفية أسرع مع حواف أنظف.
-• Premium: أناقة بلا حدود وبدون إعلانات.
-• تحسينات في الأداء والاستقرار.
+مرحبًا! 💚
+
+جعلنا FitCheck أفضل لك:
+
+✨ تظهر صور ملابسك الآن بالاتجاه الصحيح دائمًا.
+✨ خزانة أكثر ترتيبًا: تظهر ملابسك أكبر وأوضح.
+✨ إزالة الخلفية أسرع مع حواف أنظف.
+
+استمتع بتنسيق أطقمك! 👗
 ```
 
 ## Français (fr)
 
 ```
-• Les photos de vêtements s'affichent désormais toujours dans le bon sens : les photos horizontales sont corrigées et vous pouvez les faire pivoter si besoin.
-• Les vêtements remplissent l'aperçu : les marges vides sont recadrées.
-• Suppression de l'arrière-plan plus rapide et contours plus nets.
-• Premium : style illimité, zéro pub.
-• Améliorations de performance et de stabilité.
+Salut ! 💚
+
+On a rendu FitCheck encore meilleur pour toi :
+
+✨ Les photos de vêtements s'affichent toujours dans le bon sens.
+✨ Un dressing plus net : tes vêtements apparaissent plus grands et plus clairs.
+✨ Suppression de l'arrière-plan plus rapide, contours plus nets.
+
+Bonnes tenues ! 👗
 ```
 
 ## Deutsch (de)
 
 ```
-• Kleidungsfotos erscheinen jetzt immer in der richtigen Ausrichtung – Querformat wird automatisch korrigiert, bei Bedarf kannst du manuell drehen.
-• Kleidungsstücke füllen die Vorschau: leere Ränder werden abgeschnitten.
-• Schnellere Hintergrundentfernung mit saubereren Kanten.
-• Premium: unbegrenzter Stil, keine Werbung.
-• Verbesserungen bei Leistung und Stabilität.
+Hallo! 💚
+
+Wir haben FitCheck für dich noch besser gemacht:
+
+✨ Kleidungsfotos erscheinen jetzt immer in der richtigen Ausrichtung.
+✨ Aufgeräumter Kleiderschrank: Deine Kleidung wirkt größer und klarer.
+✨ Schnellere Hintergrundentfernung mit saubereren Kanten.
+
+Viel Spaß beim Stylen! 👗
 ```
 
 ## Português (pt)
 
 ```
-• As fotos das peças agora aparecem sempre na orientação correta: as fotos na horizontal são corrigidas e você pode girar manualmente se quiser.
-• As peças preenchem a prévia: as margens vazias são recortadas.
-• Remoção de fundo mais rápida e bordas mais limpas.
-• Premium: estilo ilimitado, zero anúncios.
-• Melhorias de desempenho e estabilidade.
+Olá! 💚
+
+Deixamos o FitCheck ainda melhor para você:
+
+✨ As fotos das suas peças agora aparecem sempre na orientação correta.
+✨ Guarda-roupa mais organizado: suas peças aparecem maiores e mais nítidas.
+✨ Remoção de fundo mais rápida e com bordas mais limpas.
+
+Bons looks! 👗
 ```
 
 ## 日本語 (ja)
 
 ```
-• 服の写真が常に正しい向きで表示されるようになりました。横向きの写真は自動で補正され、必要なら手動で回転できます。
-• 服がプレビューいっぱいに表示され、余白はカットされます。
-• 背景の削除が速くなり、輪郭もきれいになりました。
-• Premium：スタイル無制限、広告ゼロ。
-• パフォーマンスと安定性の改善。
+こんにちは！💚
+
+FitCheck をもっと使いやすくしました:
+
+✨ 服の写真がいつも正しい向きで表示されます。
+✨ クローゼットがすっきり。服が大きくはっきり見えます。
+✨ 背景の削除が速くなり、輪郭もきれいに。
+
+素敵なコーデを！👗
 ```
 
 ## 한국어 (ko)
 
 ```
-• 옷 사진이 항상 올바른 방향으로 표시됩니다. 가로로 찍은 사진은 자동으로 보정되며 필요하면 직접 회전할 수 있습니다.
-• 옷이 미리보기를 가득 채우고 빈 여백은 잘라냅니다.
-• 배경 제거 속도가 빨라지고 가장자리가 깔끔해졌습니다.
-• Premium: 무제한 스타일, 광고 없음.
-• 성능 및 안정성 개선.
+안녕하세요! 💚
+
+FitCheck을 더 좋게 만들었어요:
+
+✨ 옷 사진이 항상 올바른 방향으로 표시됩니다.
+✨ 옷장이 더 깔끔해졌어요. 옷이 더 크고 선명하게 보입니다.
+✨ 배경 제거가 빨라지고 가장자리가 깔끔해졌습니다.
+
+좋은 코디 되세요! 👗
 ```
 
 ## Русский (ru)
 
 ```
-• Фотографии одежды теперь всегда в правильной ориентации: горизонтальные снимки исправляются автоматически, при необходимости их можно повернуть вручную.
-• Вещи занимают всю область предпросмотра — лишние поля обрезаются.
-• Удаление фона стало быстрее, края — чище.
-• Premium: безлимитный стиль, без рекламы.
-• Улучшения производительности и стабильности.
+Привет! 💚
+
+Мы сделали FitCheck ещё лучше:
+
+✨ Фотографии одежды теперь всегда в правильной ориентации.
+✨ Гардероб стал аккуратнее: вещи видны крупнее и чётче.
+✨ Удаление фона быстрее, края чище.
+
+Удачных образов! 👗
 ```
 
 ---
 
+## Kısa alternatif (Türkçe)
+
+Daha da kısa bir not istersen:
+
+```
+FitCheck güncellendi! Kıyafet fotoğrafların artık her zaman doğru yönde görünüyor, gardırobun daha derli toplu ve arka plan silme daha hızlı. İyi kombinler! 💚
+```
+
+## Emoji istemiyorsan
+
+Selamlama ve ✨ işaretlerini çıkarıp madde başına `•` koymak yeterli;
+metinlerin geri kalanı aynı kalır.
+
 ## Notlar
 
-- Play Console'da yalnızca mağaza girişi olan diller için alan çıkar; hangisi
-  yoksa o dili atla.
+- Play Console'da yalnızca mağaza girişi olan diller için alan çıkar;
+  hangisi yoksa o dili atla.
 - Not, 1.0.28 (34) sürümünden **bu yana** yapılan kullanıcı-görünür
-  değişiklikleri anlatır. Sürüm numarası iç geliştirme numaralarından
-  bağımsızdır.
+  değişiklikleri anlatır. Sürüm numarası iç geliştirme numaralarından bağımsızdır.
 - "7 gün ücretsiz deneme" **yazılmadı**: Play Console'da deneme teklifi
   tanımlanmadan bu ifade yanıltıcı olur.
