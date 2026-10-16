@@ -5,24 +5,28 @@ POST /remove-bg  → görsel alır, arka planı silinmiş PNG döner (X-API-Key 
 GET  /health     → sunucu ayakta mı (model, doluluk, sürüm).
 
 Neden bu ayarlar:
-  • Model `isnet-general-use` (IS-Net/DIS): girdiyi 1024x1024'te işler.
-    Eski model `u2net` 320x320'de çalışıyordu; ince detaylar (askı, düğme,
-    kol ucu, çorap deseni) ve beyaz/açık renkli kıyafetler bu yüzden kötü
-    çıkıyordu. Ölçüm (1 OCPU): u2net ~3,7 sn / isnet ~10 sn.
+  • Model `u2net` (VARSAYILAN): girdiyi 320x320'de işler, 1 OCPU'da ~3,6 sn.
+    Kalite/hız dengesi bilerek hız tarafında seçildi.
+  • Alternatif `isnet-general-use` (IS-Net/DIS): girdiyi 1024x1024'te işler ve
+    belirgin şekilde daha kalitelidir (ince detaylar: askı, düğme, kol ucu;
+    beyaz/açık renkli kıyafetler; yarı saydam kalan bölgeler) — ancak aynı
+    sunucuda ~10 sn sürer. Denenmiş, ölçülmüş ve hız nedeniyle geri alınmıştır.
+    Tek satırla açılır:  Environment=BG_MODEL=isnet-general-use
+    (Ölçümler ve karşılaştırma: KURULUM.md)
   • `post_process_mask` varsayılan KAPALI: rembg'nin morfolojik temizliği
-    alfayı 0/255'e indirger (kenarlar testere dişli olur). Modelin yumuşak
-    alfası görsel olarak daha iyi. Gerekirse BG_POST_PROCESS=1 ile açılır.
-  • Arka plan silme CPU'yu uzun süre meşgul eder; bu yüzden iş bir iş
-    parçacığında (thread pool) ve tek seferde bir istek olacak şekilde
-    çalıştırılır. Böylece /health ve diğer istekler kilitlenmez, istekler
-    sıraya girer (hata vermez).
+    alfayı 0/255'e indirger (kenarlar testere dişli olur). Gerekirse
+    BG_POST_PROCESS=1 ile açılır.
+  • Arka plan silme CPU'yu meşgul eder; bu yüzden iş bir iş parçacığında
+    (thread pool) ve tek seferde bir istek olacak şekilde çalıştırılır.
+    Böylece /health ve diğer istekler kilitlenmez, istekler sıraya girer
+    (hata vermez).
 
 Çalıştırma:
     python3 server.py
 
 Ortam değişkenleri:
     BG_REMOVE_API_KEY   API anahtarı (zorunlu, üretimde systemd'den verilir)
-    BG_MODEL            rembg model adı            (varsayılan isnet-general-use)
+    BG_MODEL            rembg model adı            (varsayılan u2net)
     BG_POST_PROCESS     1 → morfolojik maske temizliği (varsayılan 0)
     BG_MAX_EDGE         Girdi en uzun kenar sınırı (varsayılan 1400)
     BG_CONCURRENCY      Aynı anda işlenecek istek  (varsayılan 1)
@@ -46,11 +50,11 @@ API_KEY = os.getenv(
     "BG_REMOVE_API_KEY", "uIplFP4EIh0-9ARqmOnNc-S4g8AgOKYi-tEBZcmJ_qA"
 )
 ADMIN_KEY = os.getenv("BG_ADMIN_KEY", "change-this-admin-key")
-MODEL = os.getenv("BG_MODEL", "isnet-general-use")
+MODEL = os.getenv("BG_MODEL", "u2net")
 POST_PROCESS = os.getenv("BG_POST_PROCESS", "0") not in ("0", "false", "False")
 MAX_EDGE = int(os.getenv("BG_MAX_EDGE", "1400"))
 CONCURRENCY = max(1, int(os.getenv("BG_CONCURRENCY", "1")))
-SURUM = "2.0"
+SURUM = "2.1"
 
 app = FastAPI(title="FitCheck Background Remover", version=SURUM)
 

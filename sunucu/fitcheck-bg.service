@@ -10,8 +10,9 @@ ExecStart=/usr/bin/python3 /home/opc/server.py
 Restart=always
 RestartSec=5
 Environment=BG_REMOVE_API_KEY=BURAYA_KENDI_ANAHTARINIZ
-# Kaliteli model: girdiyi 1024x1024'te isler (u2net'e donmek icin u2net yapin).
-Environment=BG_MODEL=isnet-general-use
+# Model: u2net = 320x320, 1 OCPU'da ~3,6 sn (varsayilan).
+# Kalite oncelikli alternatif: isnet-general-use (1024x1024, ~10 sn).
+Environment=BG_MODEL=u2net
 # Morfolojik maske temizligi: 0 = kapali (modelin yumusak kenarlari korunur).
 Environment=BG_POST_PROCESS=0
 # Ayni anda islenecek istek sayisi (1 OCPU icin 1; CPU artarsa 2-3 yapilabilir).
