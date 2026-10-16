@@ -800,12 +800,12 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           }
 
           if (bgRemoved != null && bgRemoved.length > 100) {
-            // 🧭 Yön standardı: arka planı silinmiş görsel hâlâ YATAYSA
-            // dikeyleştir. (EXIF yönünü sunucu zaten uygular; burada yalnızca
-            // gerçekten yatay kalan fotoğraflar düzeltilir → çift döndürme
-            // olmaz.) Böylece gardıropta tüm kıyafetler aynı yönde durur.
-            kaydedilecekBytes =
-                await GorselYonService.dikeylestir(bgRemoved) ?? bgRemoved;
+            // 🧭 Yön + çerçeve standardı: arka planı silinmiş görsel hâlâ
+            // YATAYSA dikeyleştir (EXIF yönünü sunucu zaten uygular; burada
+            // yalnızca gerçekten yatay kalan fotoğraflar düzeltilir → çift
+            // döndürme olmaz), ardından çevresindeki boş alanı kırp ki kıyafet
+            // ızgarada tüm kutuyu doldursun.
+            kaydedilecekBytes = await GorselYonService.duzenle(bgRemoved) ?? bgRemoved;
           }
 
           // 🤖 AI Analiz

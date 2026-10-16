@@ -2,7 +2,7 @@ name: fitcheck
 description: "FitCheck - Akıllı Kişisel Stilist ve Gardırop Uygulaması"
 publish_to: 'none'
 
-version: 1.0.52+58
+version: 1.0.53+59
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

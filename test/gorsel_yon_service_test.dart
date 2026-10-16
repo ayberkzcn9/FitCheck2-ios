@@ -165,4 +165,128 @@ void main() {
       );
     });
   });
+
+  group('icerigeKirpSenkron', () {
+    test('çevredeki saydam boşluk kırpılır, pay bırakılır', () {
+      // 60x40 kare, ortada 20x20 kırmızı blok (x:20..39, y:10..29).
+      final girdi = Uint8List.fromList(img.encodePng(_blokluGorsel(60, 40)));
+
+      final cikti = GorselYonService.icerigeKirpSenkron(girdi);
+      expect(cikti, isNotNull);
+      expect(identical(cikti, girdi), isFalse, reason: 'Kırpılmalı');
+
+      final sonuc = img.decodeImage(cikti!)!;
+      // pay = round(60 * 0.05) = 3 → 20 + 2*3 = 26
+      expect(sonuc.width, 26);
+      expect(sonuc.height, 26);
+      expect(sonuc.numChannels, 4, reason: 'Saydamlık korunmalı (PNG)');
+      expect(_kirmiziMi(sonuc, 13, 13), isTrue, reason: 'Kıyafet ortada kalmalı');
+      expect(sonuc.getPixel(0, 0).a, lessThan(10),
+          reason: 'Bırakılan pay saydam olmalı');
+    });
+
+    test('zaten sıkı görsel değiştirilmez', () {
+      // İçerik karenin tamamını kaplıyor → kırpılacak boşluk yok.
+      final gorsel = img.Image(width: 20, height: 20, numChannels: 4);
+      img.fillRect(
+        gorsel,
+        x1: 0,
+        y1: 0,
+        x2: 19,
+        y2: 19,
+        color: img.ColorRgba8(255, 0, 0, 255),
+        alphaBlend: false,
+      );
+      final girdi = Uint8List.fromList(img.encodePng(gorsel));
+
+      final cikti = GorselYonService.icerigeKirpSenkron(girdi);
+      expect(identical(cikti, girdi), isTrue,
+          reason: 'Gereksiz yeniden kodlama yapılmamalı');
+    });
+
+    test('saydamlık yoksa (JPEG) dokunulmaz', () {
+      final girdi = Uint8List.fromList(img.encodeJpg(_yariliGorsel(60, 40)));
+
+      final cikti = GorselYonService.icerigeKirpSenkron(girdi);
+      expect(identical(cikti, girdi), isTrue);
+    });
+
+    test('tamamen saydam görsel değiştirilmez', () {
+      final girdi = Uint8List.fromList(
+        img.encodePng(img.Image(width: 30, height: 30, numChannels: 4)),
+      );
+
+      final cikti = GorselYonService.icerigeKirpSenkron(girdi);
+      expect(identical(cikti, girdi), isTrue);
+    });
+
+    test('içerik karenin çok küçük bir parçasıysa kırpılmaz', () {
+      // 200x200 karede 10x10 blok ≈ %0,25 → model yanlış bulmuş olabilir.
+      final girdi = Uint8List.fromList(
+        img.encodePng(_blokluGorsel(200, 200, blokG: 10, blokY: 10)),
+      );
+
+      final cikti = GorselYonService.icerigeKirpSenkron(girdi);
+      expect(identical(cikti, girdi), isTrue);
+    });
+
+    test('bozuk baytlar null döner', () {
+      expect(
+        GorselYonService.icerigeKirpSenkron(Uint8List.fromList([7, 7, 7])),
+        isNull,
+      );
+    });
+  });
+
+  group('duzenleSenkron', () {
+    test('önce dikeyleştirir, sonra kırpar', () {
+      // 60x40 yatay kare, ortada 20x20 blok → 40x60 olmalı, sonra kırpılmalı.
+      final girdi = Uint8List.fromList(img.encodePng(_blokluGorsel(60, 40)));
+
+      final cikti = GorselYonService.duzenleSenkron(girdi);
+      expect(cikti, isNotNull);
+
+      final sonuc = img.decodeImage(cikti!)!;
+      expect(sonuc.width, 26, reason: 'Kırpma payı: round(60*0,05)=3');
+      expect(sonuc.height, 26);
+    });
+
+    test('dikey görselde yalnızca kırpma yapılır', () {
+      final girdi = Uint8List.fromList(img.encodePng(_blokluGorsel(40, 60)));
+
+      final cikti = GorselYonService.duzenleSenkron(girdi);
+      final sonuc = img.decodeImage(cikti!)!;
+      expect(sonuc.width, 26);
+      expect(sonuc.height, 26);
+    });
+
+    test('bozuk baytlar null döner', () {
+      expect(
+        GorselYonService.duzenleSenkron(Uint8List.fromList([3])),
+        isNull,
+      );
+    });
+  });
+}
+
+/// Saydam zemin üzerinde ortada kırmızı blok olan RGBA görsel üretir.
+img.Image _blokluGorsel(
+  int genislik,
+  int yukseklik, {
+  int blokG = 20,
+  int blokY = 20,
+}) {
+  final gorsel = img.Image(width: genislik, height: yukseklik, numChannels: 4);
+  final sol = (genislik - blokG) ~/ 2;
+  final ust = (yukseklik - blokY) ~/ 2;
+  img.fillRect(
+    gorsel,
+    x1: sol,
+    y1: ust,
+    x2: sol + blokG - 1,
+    y2: ust + blokY - 1,
+    color: img.ColorRgba8(255, 0, 0, 255),
+    alphaBlend: false,
+  );
+  return gorsel;
 }

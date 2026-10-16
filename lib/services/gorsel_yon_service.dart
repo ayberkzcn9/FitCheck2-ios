@@ -1,10 +1,15 @@
-// FitCheck — Gardırop görsellerinin yönünü standartlaştıran servis.
+// FitCheck — Gardırop görsellerinin yönünü ve çerçevesini standartlaştıran
+// servis.
 //
-// Sorun: Telefon yatay tutularak çekilen fotoğraflar yatay kalır; gardıropta
+// Sorun 1: Telefon yatay tutularak çekilen fotoğraflar yatay kalır; gardıropta
 // kıyafet "yan yatmış" görünür ve ızgarada diğer kıyafetlerle aynı durmaz.
+// Çözüm 1: Arka planı silinmiş görsel hâlâ yataysa saat yönünde 90°
+// döndürülüp dikeyleştirilir.
 //
-// Çözüm: Arka planı silinmiş görsel hâlâ yataysa saat yönünde 90° döndürülüp
-// dikeyleştirilir.
+// Sorun 2: Arka planı silinen görselin çevresinde fotoğrafın boş alanı kalır;
+// kıyafet kutuda küçük görünür.
+// Çözüm 2: Saydam boşluk, görselin gerçek içeriğine (alfa sınırına) göre
+// kırpılır — bkz. [icerigeKirp].
 //
 // ⚠️ Neden ham fotoğrafa değil de arka plan silme ÇIKTISINA uygulanıyor:
 //    • Fotoğrafların yönü çoğu zaman yalnızca EXIF etiketinde durur ve EXIF
@@ -20,6 +25,8 @@
 // Ayrıca kullanıcı, düzenleme ekranındaki "Döndür" ile her kıyafeti
 // istediği yöne çevirebilir (bkz. GardirobumEkrani._kiyafetDuzenle).
 
+import 'dart:math' as math;
+
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as img;
 
@@ -34,6 +41,19 @@ class GorselYonService {
   /// taşımak saat yönünde (90°) döndürmek demektir.
   static const bool yatayiSaatYonundeDondur = true;
 
+  /// Kırpma sırasında içeriğin çevresinde bırakılan boşluk oranı
+  /// (görselin uzun kenarına göre). Kıyafet kutuya yapışmaz.
+  static const double kenarPayiOrani = 0.05;
+
+  /// Bu eşiğin altındaki alfa "boş" sayılır (fotoğraf gürültüsü sınırı
+  /// bozmasın diye 0 değil, küçük bir eşik kullanılır).
+  static const int alfaEsigi = 8;
+
+  /// İçerik, karenin bu oranından daha azını kaplıyorsa kırpma yapılmaz:
+  /// bu durumda büyük olasılıkla model kıyafetin yalnızca bir parçasını
+  /// bulmuştur ve kırpmak yanlış yeri devasa büyütür.
+  static const double enAzIcerikOrani = 0.05;
+
   /// Yatay görseli dikeyleştirir; zaten dikeyse **aynı baytları** döndürür
   /// (gereksiz yeniden kodlama / kalite kaybı olmaz).
   ///
@@ -44,6 +64,16 @@ class GorselYonService {
   /// Görseli saat yönünde 90° döndürür (kullanıcının "Döndür" butonu).
   static Future<Uint8List?> saatYonundeDondur(Uint8List bytes) =>
       compute(saatYonundeDondurSenkron, bytes);
+
+  /// Gardıroba kaydedilecek görseli hazırlar: gerekirse dikeyleştirir ve
+  /// çevresindeki boş (saydam) alanı kırpar. Tek isolate turu kullanır.
+  static Future<Uint8List?> duzenle(Uint8List bytes) =>
+      compute(duzenleSenkron, bytes);
+
+  /// Görselin çevresindeki boş alanı kırpar (bkz. [icerigeKirpSenkron]).
+  static Future<Uint8List?> icerigeKirp(Uint8List bytes) =>
+      compute(icerigeKirpSenkron, bytes);
+
 
   /// [dikeylestir] ile aynı işi yapar, isolate açmadan (testler için).
   static Uint8List? dikeylestirSenkron(Uint8List bytes) {
@@ -76,6 +106,92 @@ class GorselYonService {
       debugPrint('Görsel döndürülemedi: $e');
       return null;
     }
+  }
+
+  /// [duzenle] ile aynı işi yapar, isolate açmadan (testler için).
+  ///
+  /// Sıra önemli: önce yön (karenin en-boy oranına göre karar verilir),
+  /// sonra kırpma. Ters sırada kırpma kararı içeriğin oranına göre verilirdi
+  /// ve kare biçimli çekilmiş yatay fotoğraflar yanlış dönerdi.
+  static Uint8List? duzenleSenkron(Uint8List bytes) {
+    final dikey = dikeylestirSenkron(bytes);
+    if (dikey == null) return null;
+    return icerigeKirpSenkron(dikey) ?? dikey;
+  }
+
+  /// Görselin çevresindeki saydam boşluğu kırpar; kıyafet kareyi doldurur ve
+  /// ızgarada tüm kıyafetler aynı ölçekte görünür.
+  ///
+  /// Kırpılacak anlamlı bir alan yoksa (görsel zaten sıkıysa, saydamlık
+  /// yoksa veya içerik karenin çok küçük bir bölümündeyse) **aynı baytları**
+  /// döndürür — gereksiz yeniden kodlama yapılmaz.
+  static Uint8List? icerigeKirpSenkron(Uint8List bytes) {
+    try {
+      final cozulen = _coz(bytes);
+      if (cozulen == null) return null;
+
+      // Saydamlık yoksa kırpılacak boş alan da yoktur (ör. JPEG).
+      if (!cozulen.hasAlpha) return bytes;
+
+      final kutu = _alfaSinirKutusu(cozulen);
+      if (kutu == null) return bytes;
+
+      final kareAlan = cozulen.width * cozulen.height;
+      if (kutu[2] * kutu[3] < kareAlan * enAzIcerikOrani) return bytes;
+
+      final pay = (math.max(cozulen.width, cozulen.height) * kenarPayiOrani)
+          .round();
+      final sol = math.max(0, kutu[0] - pay);
+      final ust = math.max(0, kutu[1] - pay);
+      final sag = math.min(cozulen.width, kutu[0] + kutu[2] + pay);
+      final alt = math.min(cozulen.height, kutu[1] + kutu[3] + pay);
+
+      // Zaten kırpılmışsa (kenarlarda boşluk yoksa) yeniden kodlama yapma.
+      if (sol == 0 &&
+          ust == 0 &&
+          sag == cozulen.width &&
+          alt == cozulen.height) {
+        return bytes;
+      }
+
+      return _kodla(
+        img.copyCrop(
+          cozulen,
+          x: sol,
+          y: ust,
+          width: sag - sol,
+          height: alt - ust,
+        ),
+      );
+    } catch (e) {
+      debugPrint('Görsel kırpılamadı: $e');
+      return null;
+    }
+  }
+
+  /// Alfa kanalına göre içeriğin sınır kutusunu bulur: `[x, y, genişlik,
+  /// yükseklik]`. Görsel tamamen saydamsa `null` döner.
+  static List<int>? _alfaSinirKutusu(img.Image gorsel) {
+    final veri = gorsel.getBytes(order: img.ChannelOrder.rgba);
+    var sol = gorsel.width;
+    var ust = gorsel.height;
+    var sag = -1;
+    var alt = -1;
+
+    for (var y = 0; y < gorsel.height; y++) {
+      final satir = y * gorsel.width * 4;
+      for (var x = 0; x < gorsel.width; x++) {
+        if (veri[satir + x * 4 + 3] > alfaEsigi) {
+          if (x < sol) sol = x;
+          if (x > sag) sag = x;
+          if (y < ust) ust = y;
+          if (y > alt) alt = y;
+        }
+      }
+    }
+
+    if (sag < 0 || alt < 0) return null;
+    return [sol, ust, sag - sol + 1, alt - ust + 1];
   }
 
   /// Görseli çözer: yalnızca PNG ve JPEG.

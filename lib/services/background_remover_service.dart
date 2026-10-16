@@ -61,9 +61,9 @@ class BackgroundRemoverService {
   /// Hata durumunda `null` döner.
   ///
   /// Bayt alır: fotoğraf zaten bellekte olduğu için dosyadan yeniden
-  /// okunmaz. Yön (EXIF) düzeltmesini sunucu yapar; istemci yalnızca
-  /// sunucunun PNG çıktısını gerekirse dikeyleştirir
-  /// (bkz. `GorselYonService.dikeylestir`).
+  /// okunmaz. Yön (EXIF) düzeltmesini sunucu yapar; istemci sunucunun PNG
+  /// çıktısını gerekirse dikeyleştirir ve çevresindeki boş alanı kırpar
+  /// (bkz. `GorselYonService.duzenle`).
   static Future<Uint8List?> removeBackground(Uint8List imageBytes) async {
     try {
       final request = http.MultipartRequest(
@@ -78,9 +78,13 @@ class BackgroundRemoverService {
         http.MultipartFile.fromBytes('file', imageBytes, filename: 'kiyafet'),
       );
 
+      // ⏱️ Zaman aşımı: sunucu kaliteli model (1024x1024) kullandığı için tek
+      // fotoğraf ~11 sn sürer. Sunucu tek isteği aynı anda işlediğinden sırada
+      // bekleyen istekler de olabilir; bu yüzden süre geniş tutulur. Süre
+      // dolarsa çağıran bulut yedeğe (remove.bg) düşer.
       final streamed = await request
           .send()
-          .timeout(const Duration(seconds: 60));
+          .timeout(const Duration(seconds: 90));
       final response = await http.Response.fromStream(streamed);
 
       if (response.statusCode == 200) return response.bodyBytes;

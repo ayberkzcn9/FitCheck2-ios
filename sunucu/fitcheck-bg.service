@@ -1,0 +1,23 @@
+[Unit]
+Description=FitCheck Background Remover (RemBG)
+After=network.target
+
+[Service]
+Type=simple
+User=opc
+WorkingDirectory=/home/opc
+ExecStart=/usr/bin/python3 /home/opc/server.py
+Restart=always
+RestartSec=5
+Environment=BG_REMOVE_API_KEY=BURAYA_KENDI_ANAHTARINIZ
+# Kaliteli model: girdiyi 1024x1024'te isler (u2net'e donmek icin u2net yapin).
+Environment=BG_MODEL=isnet-general-use
+# Morfolojik maske temizligi: 0 = kapali (modelin yumusak kenarlari korunur).
+Environment=BG_POST_PROCESS=0
+# Ayni anda islenecek istek sayisi (1 OCPU icin 1; CPU artarsa 2-3 yapilabilir).
+Environment=BG_CONCURRENCY=1
+# Girdi en uzun kenar siniri (model zaten 1024'te calisir; fazlasi bosa CPU).
+Environment=BG_MAX_EDGE=1400
+
+[Install]
+WantedBy=multi-user.target
