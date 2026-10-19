@@ -15,8 +15,16 @@
 // KORUNANLAR (eşikler bilinçli olarak tutucu):
 //   • Büyük ve dolu adacıklar — ör. kıyafetten ayrı duran kemer, tokalı çanta
 //     askısı — silinmez (yalnızca küçük ya da gürültü benzeri olanlar gider).
+//   • İnce ama UZUN adacıklar — eğik duran askı, bağcık, kemer ucu — "seyrek"
+//     görünseler bile silinmez (bkz. inceUzunKosegenOrani). Gerçek lekeler
+//     kısa ve dağınıktır; ayırt etmenin ölçütü budur.
 //   • Büyük delikler — ör. çanta sapının oluşturduğu gerçek boşluk, gözlük
 //     çerçevesinin içi — kapatılmaz.
+//
+// NOT: Eşikler 19.10.2026'da 10 kat sıkılaştırıldı. Önceki değerlerle (leke
+// oranı 0,0002 / orta 0,0008) 1600 px'lik bir görselde 343 piksele kadar olan
+// seyrek parçalar siliniyor, yani kıyafetin bağcık/toka gibi gerçek parçaları
+// kayboluyordu.
 //
 // Tüm eşikler aşağıdaki sabitlerden ayarlanabilir; algoritma görsel boyutundan
 // bağımsız çalışsın diye hepsi GÖRSEL ALANINA ORAN olarak tanımlıdır.
@@ -35,15 +43,24 @@ class MaskeTemizleyici {
   static const int alfaEsigi = 128;
 
   /// Bu orandan küçük adacıklar her koşulda silinir (görsel alanına oran).
-  static const double kucukLekeOrani = 0.0002;
+  /// Bilinçli olarak çok küçük: gerçek lekeler birkaç pikselliktir, tokası/
+  /// bağcığı olan gerçek parçalar bu boyuta nadiren iner.
+  static const double kucukLekeOrani = 0.00002;
 
   /// Bu orandan küçük adacıklar, yalnızca "gürültü benzeri" ise silinir.
-  static const double ortaLekeOrani = 0.0008;
+  static const double ortaLekeOrani = 0.0002;
 
   /// Gürültü ölçütü: adacığın alanı, sınır kutusunun alanına göre bu orandan
   /// küçükse seyrek/dağınık (gürültü benzeri) sayılır. Kenarları taraklı, ince
   /// bir leke bu sayede yakalanır; dolu ve toplu bir parça korunur.
   static const double seyreklikSiniri = 0.35;
+
+  /// İnce-uzun koruma: "seyrek" görünen adacık, sınır kutusunun köşegeni
+  /// görselin uzun kenarının bu oranından büyükse SİLİNMEZ. Eğik duran ince
+  /// askı, bağcık ya da kemer ucu bu kurala girer; aksi hâlde kıyafetin bir
+  /// parçası "leke" sanılıp yok ediliyordu. Kısa ve seyrek parçalar (gerçek
+  /// lekeler) silinmeye devam eder.
+  static const double inceUzunKosegenOrani = 0.03;
 
   /// Bu orandan küçük delikler kapatılır (görsel alanına oran).
   static const double enBuyukDelikOrani = 0.002;
@@ -75,8 +92,8 @@ class MaskeTemizleyici {
     // Temizlenecek bir maske yok: ya tamamen boş ya tamamen dolu.
     if (doluSayi == 0 || doluSayi == n) return false;
 
-    final kucukEsik = math.max(24, (n * kucukLekeOrani).round());
-    final ortaEsik = math.max(64, (n * ortaLekeOrani).round());
+    final kucukEsik = math.max(6, (n * kucukLekeOrani).round());
+    final ortaEsik = math.max(24, (n * ortaLekeOrani).round());
     final delikEsigi = math.max(64, (n * enBuyukDelikOrani).round());
 
     var degisti = false;
@@ -142,9 +159,20 @@ class MaskeTemizleyici {
 
       final alan = uyeler.length;
       var silinsin = alan < kucukEsik;
-      if (!silinsin && alan < ortaEsik) {
-        final kutuAlan = (sag - sol + 1) * (alt - ust + 1);
-        if (alan < kutuAlan * seyreklikSiniri) silinsin = true;
+      var seyrek = false;
+      final kutuAlan = (sag - sol + 1) * (alt - ust + 1);
+      if (alan < ortaEsik && alan < kutuAlan * seyreklikSiniri) {
+        seyrek = true;
+        silinsin = true;
+      }
+
+      // İnce ama uzun parça (askı, bağcık, kemer ucu) yapısal kıyafet
+      // parçasıdır: "seyrek" görünse bile korunur.
+      if (silinsin && seyrek) {
+        final kosegen = math.sqrt(kutuAlan.toDouble());
+        if (kosegen >= inceUzunKosegenOrani * math.max(en, boy)) {
+          silinsin = false;
+        }
       }
 
       if (silinsin) {

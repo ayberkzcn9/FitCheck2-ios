@@ -18,8 +18,9 @@ import 'package:fitcheck/services/maske_temizleyici.dart';
 
 /// 400x400 kare, ortada 200x200 kırmızı kıyafet, gerisi saydam.
 ///
-/// Eşikler bu boyutta anlamlı: leke eşiği 32 px, orta eşik 128 px,
-/// delik eşiği 320 px (bkz. MaskeTemizleyici sabitleri).
+/// Eşikler bu boyutta anlamlı (19.10.2026 sonrası): küçük leke eşiği 6 px,
+/// orta leke eşiği 32 px, delik eşiği 320 px, ince-uzun köşegen eşiği 12 px
+/// (bkz. MaskeTemizleyici sabitleri).
 img.Image _kare() {
   final gorsel = img.Image(width: 400, height: 400, numChannels: 4);
   img.fillRect(
@@ -57,11 +58,37 @@ void main() {
   group('MaskeTemizleyici.temizle', () {
     test('küçük leke silinir, kıyafet korunur', () {
       final gorsel = _kare();
-      _leke(gorsel, 10, 10, 3, 3); // 9 px → küçük eşiğin (32) altında
+      _leke(gorsel, 10, 10, 2, 2); // 4 px → küçük eşiğin (6) altında
 
       expect(MaskeTemizleyici.temizle(gorsel), isTrue);
       expect(_alfa(gorsel, 11, 11), 0, reason: 'Leke silinmeli');
       expect(_alfa(gorsel, 200, 200), 255, reason: 'Kıyafet dokunulmamalı');
+    });
+
+    test('kısa ve seyrek leke silinir', () {
+      final gorsel = _kare();
+      // L biçimi: 12 px, kutusu 7x6 (köşegen ≈ 6,5 px < 12) → leke sayılır.
+      _leke(gorsel, 18, 20, 7, 1);
+      _leke(gorsel, 18, 15, 1, 6);
+
+      expect(MaskeTemizleyici.temizle(gorsel), isTrue);
+      expect(_alfa(gorsel, 20, 20), 0, reason: 'Kısa seyrek parça silinmeli');
+      expect(_alfa(gorsel, 200, 200), 255);
+    });
+
+    test('ince ama uzun ayrı parça (eğik askı) korunur', () {
+      final gorsel = _kare();
+      // 4 komşulukla bağlı eğik ince çizgi (24 px). Kutusu 12x13
+      // (köşegen ≈ 12,5 px ≥ 12) → seyrek olsa da gerçek kıyafet parçası.
+      for (var i = 0; i < 12; i++) {
+        _leke(gorsel, 10 + i, 300 + i, 1, 1);
+        _leke(gorsel, 10 + i, 301 + i, 1, 1);
+      }
+
+      expect(MaskeTemizleyici.temizle(gorsel), isFalse,
+          reason: 'Eğik ince askı silinmemeli');
+      expect(_alfa(gorsel, 20, 310), 255);
+      expect(_alfa(gorsel, 200, 200), 255);
     });
 
     test('büyük ve dolu ayrı parça korunur', () {
