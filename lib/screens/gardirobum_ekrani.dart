@@ -791,18 +791,22 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
 
         if (!cameraStatus.isGranted) return;
 
+        // 1600 px / q90: kesim kalitesi doğrudan girdi çözünürlüğüne bağlı.
+        // 800 px/q75'te ince parçalar (bağcık, toka, ince askı) maskede
+        // kayboluyor ve kenarlar bulanık kalıyordu; 1600 px'te sunucu süresi
+        // yalnızca ~0,2 sn artıyor (bkz. sunucu/KURULUM.md ölçümleri).
         final XFile? singleFile = await _picker.pickImage(
           source: ImageSource.camera,
-          maxWidth: 800,
-          maxHeight: 800,
-          imageQuality: 75,
+          maxWidth: 1600,
+          maxHeight: 1600,
+          imageQuality: 90,
         );
         if (singleFile != null) files.add(singleFile);
       } else {
         files = await _picker.pickMultiImage(
-          maxWidth: 800,
-          maxHeight: 800,
-          imageQuality: 75,
+          maxWidth: 1600,
+          maxHeight: 1600,
+          imageQuality: 90,
         );
       }
 
