@@ -30,6 +30,8 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as img;
 
+import 'maske_temizleyici.dart';
+
 class GorselYonService {
   GorselYonService._();
 
@@ -116,7 +118,34 @@ class GorselYonService {
   static Uint8List? duzenleSenkron(Uint8List bytes) {
     final dikey = dikeylestirSenkron(bytes);
     if (dikey == null) return null;
-    return icerigeKirpSenkron(dikey) ?? dikey;
+    return _temizleVeKirpSenkron(dikey) ?? dikey;
+  }
+
+  /// Maske temizliği + kırpma: **tek** çözümleme/kodlama turu (hız için).
+  ///
+  /// Sıra önemli: temizlik ÖNCE yapılır, çünkü kırpma sınırı temizlenmiş
+  /// maskeye göre hesaplanmalıdır — aksi hâlde uzaktaki küçük bir leke kırpma
+  /// kutusunu büyütür ve kıyafet ızgarada küçük görünür.
+  ///
+  /// Görselde değişiklik gerekmiyorsa **aynı baytlar** döndürülür.
+  static Uint8List? _temizleVeKirpSenkron(Uint8List bytes) {
+    try {
+      final cozulen = _coz(bytes);
+      if (cozulen == null) return null;
+
+      // Saydamlık yoksa (ör. JPEG) ne temizlenecek maske ne de kırpılacak
+      // boşluk vardır.
+      if (!cozulen.hasAlpha) return bytes;
+
+      final maskeDegisti = MaskeTemizleyici.temizle(cozulen);
+      final kirpilmis = _icerigeKirpGoruntu(cozulen);
+
+      if (!maskeDegisti && kirpilmis == null) return bytes;
+      return _kodla(kirpilmis ?? cozulen);
+    } catch (e) {
+      debugPrint('Görsel düzenlenemedi: $e');
+      return null;
+    }
   }
 
   /// Görselin çevresindeki saydam boşluğu kırpar; kıyafet kareyi doldurur ve
@@ -133,40 +162,45 @@ class GorselYonService {
       // Saydamlık yoksa kırpılacak boş alan da yoktur (ör. JPEG).
       if (!cozulen.hasAlpha) return bytes;
 
-      final kutu = _alfaSinirKutusu(cozulen);
-      if (kutu == null) return bytes;
-
-      final kareAlan = cozulen.width * cozulen.height;
-      if (kutu[2] * kutu[3] < kareAlan * enAzIcerikOrani) return bytes;
-
-      final pay = (math.max(cozulen.width, cozulen.height) * kenarPayiOrani)
-          .round();
-      final sol = math.max(0, kutu[0] - pay);
-      final ust = math.max(0, kutu[1] - pay);
-      final sag = math.min(cozulen.width, kutu[0] + kutu[2] + pay);
-      final alt = math.min(cozulen.height, kutu[1] + kutu[3] + pay);
-
-      // Zaten kırpılmışsa (kenarlarda boşluk yoksa) yeniden kodlama yapma.
-      if (sol == 0 &&
-          ust == 0 &&
-          sag == cozulen.width &&
-          alt == cozulen.height) {
-        return bytes;
-      }
-
-      return _kodla(
-        img.copyCrop(
-          cozulen,
-          x: sol,
-          y: ust,
-          width: sag - sol,
-          height: alt - ust,
-        ),
-      );
+      final kirpilmis = _icerigeKirpGoruntu(cozulen);
+      if (kirpilmis == null) return bytes;
+      return _kodla(kirpilmis);
     } catch (e) {
       debugPrint('Görsel kırpılamadı: $e');
       return null;
     }
+  }
+
+  /// Kırpılacak anlamlı bir alan yoksa `null` döner (çağıran yeniden kodlamaz).
+  static img.Image? _icerigeKirpGoruntu(img.Image cozulen) {
+    final kutu = _alfaSinirKutusu(cozulen);
+    if (kutu == null) return null;
+
+    final kareAlan = cozulen.width * cozulen.height;
+    if (kutu[2] * kutu[3] < kareAlan * enAzIcerikOrani) return null;
+
+    final pay =
+        (math.max(cozulen.width, cozulen.height) * kenarPayiOrani).round();
+    final sol = math.max(0, kutu[0] - pay);
+    final ust = math.max(0, kutu[1] - pay);
+    final sag = math.min(cozulen.width, kutu[0] + kutu[2] + pay);
+    final alt = math.min(cozulen.height, kutu[1] + kutu[3] + pay);
+
+    // Zaten kırpılmışsa (kenarlarda boşluk yoksa) yeniden kodlama yapma.
+    if (sol == 0 &&
+        ust == 0 &&
+        sag == cozulen.width &&
+        alt == cozulen.height) {
+      return null;
+    }
+
+    return img.copyCrop(
+      cozulen,
+      x: sol,
+      y: ust,
+      width: sag - sol,
+      height: alt - ust,
+    );
   }
 
   /// Alfa kanalına göre içeriğin sınır kutusunu bulur: `[x, y, genişlik,
