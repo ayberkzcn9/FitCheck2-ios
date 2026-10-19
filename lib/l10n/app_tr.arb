@@ -955,5 +955,8 @@
   "stilistHafizasiBos": "Henüz bir şey öğrenmedim. Sohbet ettikçe tarzını tanırım.",
   "stilistHafizasiTemizle": "Hafızayı temizle",
   "stilistHafizasiTemizleOnay": "Stilistin seninle ilgili hatırladığı her şey silinecek. Bu işlem geri alınamaz.",
-  "stilistHafizasiTemizlendi": "Hafıza temizlendi 🧠"
+  "stilistHafizasiTemizlendi": "Hafıza temizlendi 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "Arka plan silinemedi",
+  "gardirobumArkaPlanSilinemediAciklama": "Bağlantı sorunu olabilir. Tekrar denemek, fotoğrafı arka planıyla kaydetmek ya da bu fotoğrafı atlamak istediğini seç.",
+  "gardirobumArkaPlanliKaydet": "Arka planıyla kaydet"
 }

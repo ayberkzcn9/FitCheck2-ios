@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "I haven't learned anything yet. I will get to know your style as we chat.",
   "stilistHafizasiTemizle": "Clear memory",
   "stilistHafizasiTemizleOnay": "Everything the stylist remembers about you will be deleted. This cannot be undone.",
-  "stilistHafizasiTemizlendi": "Memory cleared 🧠"
+  "stilistHafizasiTemizlendi": "Memory cleared 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "Background not removed",
+  "gardirobumArkaPlanSilinemediAciklama": "There may be a connection problem. Choose whether to try again, save the photo with its background, or skip this photo.",
+  "gardirobumArkaPlanliKaydet": "Save with background"
 }

@@ -2867,4 +2867,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Memory cleared 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Background not removed';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'There may be a connection problem. Choose whether to try again, save the photo with its background, or skip this photo.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Save with background';
 }

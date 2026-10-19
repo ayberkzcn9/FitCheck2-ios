@@ -2889,4 +2889,14 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Memoria cancellata 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Sfondo non rimosso';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'Potrebbe esserci un problema di connessione. Scegli se riprovare, salvare la foto con lo sfondo o saltare questa foto.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Salva con sfondo';
 }

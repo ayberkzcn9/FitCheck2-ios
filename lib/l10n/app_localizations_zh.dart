@@ -2701,4 +2701,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => '记忆已清除 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => '未能移除背景';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      '可能是连接问题。你可以选择重试、保留背景保存照片，或跳过这张照片。';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => '保留背景保存';
 }

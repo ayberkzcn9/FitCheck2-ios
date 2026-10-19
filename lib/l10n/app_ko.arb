@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "아직 배운 내용이 없어요. 대화할수록 스타일을 알아갑니다.",
   "stilistHafizasiTemizle": "기억 삭제",
   "stilistHafizasiTemizleOnay": "스타일리스트가 당신에 대해 기억한 모든 내용이 삭제됩니다. 되돌릴 수 없습니다.",
-  "stilistHafizasiTemizlendi": "기억이 삭제되었습니다 🧠"
+  "stilistHafizasiTemizlendi": "기억이 삭제되었습니다 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "배경을 제거하지 못했습니다",
+  "gardirobumArkaPlanSilinemediAciklama": "연결에 문제가 있을 수 있습니다. 다시 시도하거나, 배경이 있는 그대로 저장하거나, 이 사진을 건너뛰세요.",
+  "gardirobumArkaPlanliKaydet": "배경 포함 저장"
 }

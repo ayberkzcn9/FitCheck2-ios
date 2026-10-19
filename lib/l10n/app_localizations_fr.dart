@@ -2895,4 +2895,14 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Mémoire effacée 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Arrière-plan non supprimé';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'Il peut s\'agir d\'un problème de connexion. Choisis de réessayer, d\'enregistrer la photo avec son arrière-plan ou d\'ignorer cette photo.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Enregistrer avec l\'arrière-plan';
 }

@@ -5307,6 +5307,24 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Hafıza temizlendi 🧠'**
   String get stilistHafizasiTemizlendi;
+
+  /// No description provided for @gardirobumArkaPlanSilinemediBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arka plan silinemedi'**
+  String get gardirobumArkaPlanSilinemediBaslik;
+
+  /// No description provided for @gardirobumArkaPlanSilinemediAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlantı sorunu olabilir. Tekrar denemek, fotoğrafı arka planıyla kaydetmek ya da bu fotoğrafı atlamak istediğini seç.'**
+  String get gardirobumArkaPlanSilinemediAciklama;
+
+  /// No description provided for @gardirobumArkaPlanliKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arka planıyla kaydet'**
+  String get gardirobumArkaPlanliKaydet;
 }
 
 class _AppLocalizationsDelegate

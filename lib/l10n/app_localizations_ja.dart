@@ -2743,4 +2743,14 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => '記憶を消去しました 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => '背景を削除できませんでした';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      '接続に問題がある可能性があります。再試行する、背景付きで保存する、この写真をスキップする、のいずれかを選んでください。';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => '背景付きで保存';
 }
