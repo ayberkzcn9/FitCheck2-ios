@@ -919,7 +919,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
         return await AiService().hibritAiSorgula(
           sistemPromptu: sistemPromptu,
           kullaniciMesaji: kullaniciMesaji,
-          resimBytes: resimBytes,
+          resimler: <Uint8List>[resimBytes],
         );
       } catch (e) {
         sonHata = e;

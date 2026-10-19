@@ -13,6 +13,7 @@ import '../models/favori_kombin.dart';
 import '../models/kiyafet.dart';
 import '../services/ai_service.dart';
 import '../services/analytics_servisi.dart';
+import '../services/kiyafet_gorsel_hazirlayici.dart';
 import '../services/reklam_servisi.dart';
 import '../utils/haftalik_dialoglar.dart';
 import '../utils/hava_uygunlugu.dart';
@@ -606,6 +607,26 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     );
   }
 
+  /// Modele gönderilen kombin görsellerinin sırasını ve ne olduğunu anlatır.
+  ///
+  /// Görseller [hazir] sırasıyla gider; promptta numaralarla eşleştirilir ki
+  /// model yanlış parçayı yanlış görselle bağdaştırmasın.
+  String _kombinGorselNotu(HazirGorseller hazir) {
+    final esleme = <String>[];
+    for (var i = 0; i < hazir.uzunluk; i++) {
+      final parca = hazir.parcalar[i];
+      esleme.add(
+        '${i + 1}) "${parca.gorunenBaslik}" (${parca.kategori}, ${parca.renk})',
+      );
+    }
+    return '[ATTACHED IMAGES] Images 1..${hazir.uzunluk} are the actual '
+        'garments of this outfit, in this order: ${esleme.join(', ')}. Their '
+        'backgrounds were removed automatically (plain white background), so do '
+        'not treat the white area as part of the garment. Judge pattern, '
+        'fabric, cut and exact shade from the images and mention what you '
+        'actually see.\n';
+  }
+
   Future<void> _parcaGuncelleVeAiAnalizEt(String bolge, Kiyafet yeniParca) async {
     if (!mounted) return;
     final l10n = AppLocalizations.of(context)!;
@@ -633,12 +654,28 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
       if (_sonKombinAyakkabi != null) parcaListesi += "${l10n.ayakkabi}: ${_sonKombinAyakkabi!.gorunenBaslik} (${_sonKombinAyakkabi!.renk}), ";
       if (_sonKombinAksesuar != null) parcaListesi += "${l10n.disGiyim}: ${_sonKombinAksesuar!.gorunenBaslik} (${_sonKombinAksesuar!.renk}), ";
 
+      // 👁️ VİZYON: Kombinin gerçek parçaları modele gönderilir (en fazla 4).
+      // Böylece puan/yorum desen, kumaş ve tonu gerçekten görerek verilir.
+      // Görsel hazırlanamazsa sessizce metinle devam edilir.
+      final List<Kiyafet> kombinParcalari = <Kiyafet>[
+        if (_sonKombinUst != null) _sonKombinUst!,
+        if (_sonKombinAlt != null) _sonKombinAlt!,
+        if (_sonKombinAyakkabi != null) _sonKombinAyakkabi!,
+        if (_sonKombinAksesuar != null) _sonKombinAksesuar!,
+      ];
+      final HazirGorseller hazirGorseller =
+          await KiyafetGorselHazirlayici.hazirla(kombinParcalari);
+      final String gorselNotu = hazirGorseller.bosMu
+          ? ''
+          : _kombinGorselNotu(hazirGorseller);
       final aiCevap = await AiService().hibritAiSorgula(
         sistemPromptu: "Sen uzman bir moda stilistisin. You MUST answer in $aiDili language. Kullanıcının değiştirdiği bu kombini renk uyumu, stil ve hava durumuna (${_istemIcinHavaMetni(l10n)}) göre yeniden değerlendir.\n"
             "MEVSİM KURALI (ÇOK ÖNEMLİ): Kombini havaya uygunluğu açısından da değerlendir. Hava soğuksa (en yüksek sıcaklık 12°C ve altı) şort, keten, askılı, sandalet gibi yazlık parçalar uygun değildir; hava sıcaksa (en yüksek sıcaklık 28°C ve üstü) yün, mont, kaban, kalın triko, bot gibi kışlık parçalar uygun değildir. Uygun olmayan parça varsa 'yorum' alanında bunu açıkça belirt ve puanı düşür.\n"
+            "$gorselNotu"
             "SADECE şu JSON formatında cevap ver (başka hiçbir açıklama yazma):\n"
             "{\n  \"puan\": 85,\n  \"yorum\": \"Stilistin bu yeni kombinasyon hakkındaki samimi, yaratıcı ve profesyonel yorumu\"\n}",
         kullaniciMesaji: "Güncel kombin parçaları: $parcaListesi. Bu kombini puanla ve yorumla.",
+        resimler: hazirGorseller.gorseller,
       );
 
       String clean = aiCevap.replaceAll(RegExp(r'```json\s*|```\s*'), '').trim();

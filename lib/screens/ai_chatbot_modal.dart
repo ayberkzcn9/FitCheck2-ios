@@ -11,8 +11,10 @@ import '../models/kiyafet.dart';
 import '../models/chat_mesaj.dart';
 import '../services/ai_service.dart';
 import '../services/analytics_servisi.dart';
+import '../services/kiyafet_gorsel_hazirlayici.dart';
 import '../services/stilist_hafizasi.dart';
 import '../ai/ai_dil.dart';
+import '../utils/gorsel_secici.dart';
 import '../utils/hava_uygunlugu.dart';
 import '../utils/helpers.dart';
 import '../l10n/app_localizations.dart';
@@ -214,6 +216,49 @@ class _AiChatbotPenceresiState extends State<AiChatbotPenceresi> {
     _scrollToBottom();
   }
 
+  /// Modele gönderilen görsellerin ne olduğunu anlatan prompt bloğu.
+  ///
+  /// Sıra kritik: görseller [hazir] sırasıyla gönderilir, kullanıcının kendi
+  /// fotoğrafı (varsa) en sonda yer alır. Görsel yoksa boş string döner; bu
+  /// durumda modele "fotoğraf gördüm" dedirtmemek için metin de eklenmez.
+  String _gorselPromptNotu(
+    HazirGorseller hazir, {
+    required bool kullaniciFotografiVar,
+  }) {
+    if (hazir.bosMu && !kullaniciFotografiVar) return '';
+
+    final satirlar = StringBuffer()..writeln('[ATTACHED IMAGES]');
+    if (!hazir.bosMu) {
+      final esleme = <String>[];
+      for (var i = 0; i < hazir.uzunluk; i++) {
+        final parca = hazir.parcalar[i];
+        esleme.add('${i + 1}) "${parca.gorunenBaslik}" (ID: ${parca.id})');
+      }
+      satirlar
+        ..writeln(
+          "- Images 1..${hazir.uzunluk} are the user's own garments, in this "
+          'order: ${esleme.join(', ')}.',
+        )
+        ..writeln(
+          '- Those garment images had their background removed automatically, '
+          'so they appear on a plain white background; do not treat the white '
+          'area as part of the garment.',
+        );
+    }
+    if (kullaniciFotografiVar) {
+      satirlar.writeln(
+        '- Image ${hazir.uzunluk + 1} is the photo the user attached in this '
+        'message (it may show a garment, a full outfit or the user themselves).',
+      );
+    }
+    satirlar.writeln(
+      '- Read pattern, fabric, cut and exact shade from the images; use the '
+      'inventory text for everything else. Never claim to see an image that is '
+      'not attached.',
+    );
+    return satirlar.toString().trimRight();
+  }
+
   Future<void> _mesajGonder({String? mesaj, Uint8List? resimBytes}) async {
     if (_aiIslemde || !mounted) return;
     final text = (mesaj ?? _textController.text).trim();
@@ -334,6 +379,18 @@ You MUST write your ENTIRE response in **$hedefDil**!
     // Yaşayan stilist: geçmiş sohbetlerden öğrenilen kalıcı notlar.
     final String hafizaBlogu = StilistHafizasi().promptBlogu();
 
+    // 👁️ VİZYON: Mesajda adı geçen parçaların GERÇEK fotoğrafları hazırlanır.
+    // Böylece desen/kumaş/kesim yorumu tahminden değil görüntüden gelir.
+    // Eşleşme yoksa (örn. "bugün ne giysem?") görsel gönderilmez, sohbet
+    // eskisi gibi metinle çalışır. Görsel hazırlanamazsa sessizce atlanır.
+    final List<Kiyafet> ilgiliParcalar =
+        ilgiliParcalariSec(mesaj: aiMesaji, parcalar: temizler);
+    final HazirGorseller hazirGorseller =
+        await KiyafetGorselHazirlayici.hazirla(ilgiliParcalar);
+    if (!mounted) return;
+    final String gorselNotu =
+        _gorselPromptNotu(hazirGorseller, kullaniciFotografiVar: resim != null);
+
     try {
       final String gizliBaglamEki =
           (widget.gizliBaglam != null && widget.gizliBaglam!.trim().isNotEmpty)
@@ -341,9 +398,12 @@ You MUST write your ENTIRE response in **$hedefDil**!
               : "";
       final cevap = await AiService().hibritAiSorgula(
         sistemPromptu:
-            "$sistemPromptu\n\n$hafizaBlogu\n\n📜 CHAT HISTORY:\n$sohbetGecmisi\n\n$envanter\n\n$kirliSepetiDurumu$gizliBaglamEki",
+            "$sistemPromptu\n\n$hafizaBlogu\n\n$gorselNotu\n\n📜 CHAT HISTORY:\n$sohbetGecmisi\n\n$envanter\n\n$kirliSepetiDurumu$gizliBaglamEki",
         kullaniciMesaji: aiMesaji.isEmpty ? l10n.chatGorselIncele : aiMesaji,
-        resimBytes: resim,
+        resimler: <Uint8List>[
+          ...hazirGorseller.gorseller,
+          if (resim != null) resim,
+        ],
       );
       if (!mounted) return;
       final guvenliCevap = metniGuvenliYap(cevap);
@@ -353,6 +413,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
       await AnalyticsServisi().olay('ai_chat_message', {
         'source': 'main',
         'with_image': resim != null ? 1 : 0,
+        'with_garment_images': hazirGorseller.uzunluk,
       });
       HapticFeedback.lightImpact();
       _scrollToBottom();
