@@ -2884,4 +2884,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Memória limpa 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Fundo não removido';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'Pode haver um problema de conexão. Escolha tentar novamente, salvar a foto com o fundo ou pular esta foto.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Salvar com fundo';
 }

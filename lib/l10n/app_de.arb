@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "Ich habe noch nichts gelernt. Ich lerne deinen Stil mit jedem Chat besser kennen.",
   "stilistHafizasiTemizle": "Gedächtnis löschen",
   "stilistHafizasiTemizleOnay": "Alles, was der Stilist über dich gespeichert hat, wird gelöscht. Das kann nicht rückgängig gemacht werden.",
-  "stilistHafizasiTemizlendi": "Gedächtnis gelöscht 🧠"
+  "stilistHafizasiTemizlendi": "Gedächtnis gelöscht 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "Hintergrund nicht entfernt",
+  "gardirobumArkaPlanSilinemediAciklama": "Möglicherweise liegt ein Verbindungsproblem vor. Wähle, ob du es erneut versuchen, das Foto mit Hintergrund speichern oder dieses Foto überspringen möchtest.",
+  "gardirobumArkaPlanliKaydet": "Mit Hintergrund speichern"
 }

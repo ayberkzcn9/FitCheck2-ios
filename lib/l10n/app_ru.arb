@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "Я пока ничего не узнал. Чем больше мы общаемся, тем лучше я знаю ваш стиль.",
   "stilistHafizasiTemizle": "Очистить память",
   "stilistHafizasiTemizleOnay": "Всё, что стилист помнит о вас, будет удалено. Это действие нельзя отменить.",
-  "stilistHafizasiTemizlendi": "Память очищена 🧠"
+  "stilistHafizasiTemizlendi": "Память очищена 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "Фон не удалён",
+  "gardirobumArkaPlanSilinemediAciklama": "Возможно, проблема с подключением. Выберите: повторить попытку, сохранить фото с фоном или пропустить это фото.",
+  "gardirobumArkaPlanliKaydet": "Сохранить с фоном"
 }

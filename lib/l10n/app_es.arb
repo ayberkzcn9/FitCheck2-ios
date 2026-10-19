@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "Todavía no he aprendido nada. Iré conociendo tu estilo mientras charlamos.",
   "stilistHafizasiTemizle": "Borrar memoria",
   "stilistHafizasiTemizleOnay": "Se eliminará todo lo que el estilista recuerda sobre ti. Esta acción no se puede deshacer.",
-  "stilistHafizasiTemizlendi": "Memoria borrada 🧠"
+  "stilistHafizasiTemizlendi": "Memoria borrada 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "Fondo no eliminado",
+  "gardirobumArkaPlanSilinemediAciklama": "Puede haber un problema de conexión. Elige si quieres intentarlo de nuevo, guardar la foto con su fondo u omitir esta foto.",
+  "gardirobumArkaPlanliKaydet": "Guardar con fondo"
 }

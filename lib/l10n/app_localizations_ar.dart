@@ -2847,4 +2847,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'تم مسح الذاكرة 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'لم تتم إزالة الخلفية';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'قد تكون هناك مشكلة في الاتصال. اختر إعادة المحاولة أو حفظ الصورة مع خلفيتها أو تخطي هذه الصورة.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'حفظ مع الخلفية';
 }

@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "まだ何も学んでいません。会話するほどあなたのスタイルを理解します。",
   "stilistHafizasiTemizle": "記憶を消去",
   "stilistHafizasiTemizleOnay": "スタイリストがあなたについて記憶した内容はすべて削除されます。元に戻せません。",
-  "stilistHafizasiTemizlendi": "記憶を消去しました 🧠"
+  "stilistHafizasiTemizlendi": "記憶を消去しました 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "背景を削除できませんでした",
+  "gardirobumArkaPlanSilinemediAciklama": "接続に問題がある可能性があります。再試行する、背景付きで保存する、この写真をスキップする、のいずれかを選んでください。",
+  "gardirobumArkaPlanliKaydet": "背景付きで保存"
 }

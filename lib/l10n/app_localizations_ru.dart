@@ -2868,4 +2868,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Память очищена 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Фон не удалён';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'Возможно, проблема с подключением. Выберите: повторить попытку, сохранить фото с фоном или пропустить это фото.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Сохранить с фоном';
 }

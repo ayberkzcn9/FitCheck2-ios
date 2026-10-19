@@ -2891,4 +2891,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Memoria borrada 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Fondo no eliminado';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'Puede haber un problema de conexión. Elige si quieres intentarlo de nuevo, guardar la foto con su fondo u omitir esta foto.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Guardar con fondo';
 }

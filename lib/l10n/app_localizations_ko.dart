@@ -2757,4 +2757,14 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => '기억이 삭제되었습니다 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => '배경을 제거하지 못했습니다';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      '연결에 문제가 있을 수 있습니다. 다시 시도하거나, 배경이 있는 그대로 저장하거나, 이 사진을 건너뛰세요.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => '배경 포함 저장';
 }

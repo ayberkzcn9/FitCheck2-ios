@@ -2869,4 +2869,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Hafıza temizlendi 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Arka plan silinemedi';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'Bağlantı sorunu olabilir. Tekrar denemek, fotoğrafı arka planıyla kaydetmek ya da bu fotoğrafı atlamak istediğini seç.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Arka planıyla kaydet';
 }

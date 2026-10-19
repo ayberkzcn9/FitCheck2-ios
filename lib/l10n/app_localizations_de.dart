@@ -2892,4 +2892,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get stilistHafizasiTemizlendi => 'Gedächtnis gelöscht 🧠';
+
+  @override
+  String get gardirobumArkaPlanSilinemediBaslik => 'Hintergrund nicht entfernt';
+
+  @override
+  String get gardirobumArkaPlanSilinemediAciklama =>
+      'Möglicherweise liegt ein Verbindungsproblem vor. Wähle, ob du es erneut versuchen, das Foto mit Hintergrund speichern oder dieses Foto überspringen möchtest.';
+
+  @override
+  String get gardirobumArkaPlanliKaydet => 'Mit Hintergrund speichern';
 }

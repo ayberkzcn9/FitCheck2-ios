@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "Je n'ai encore rien appris. Je découvrirai ton style au fil des conversations.",
   "stilistHafizasiTemizle": "Effacer la mémoire",
   "stilistHafizasiTemizleOnay": "Tout ce que le styliste retient de toi sera supprimé. Cette action est irréversible.",
-  "stilistHafizasiTemizlendi": "Mémoire effacée 🧠"
+  "stilistHafizasiTemizlendi": "Mémoire effacée 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "Arrière-plan non supprimé",
+  "gardirobumArkaPlanSilinemediAciklama": "Il peut s'agir d'un problème de connexion. Choisis de réessayer, d'enregistrer la photo avec son arrière-plan ou d'ignorer cette photo.",
+  "gardirobumArkaPlanliKaydet": "Enregistrer avec l'arrière-plan"
 }

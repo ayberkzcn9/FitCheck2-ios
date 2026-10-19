@@ -11,6 +11,7 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import '../l10n/app_localizations.dart';
 import '../models/kiyafet.dart';
 import '../services/ai_service.dart';
+import '../services/arka_plan_silme_yardimcisi.dart';
 import '../services/background_removal_service.dart';
 import '../services/background_remover_service.dart';
 import '../services/gorsel_yon_service.dart';
@@ -24,6 +25,18 @@ import '../widgets/stroked_text.dart';
 import '../../theme/design_tokens.dart';
 
 import 'reklamsiz_premium_ekrani.dart';
+
+/// Arka plan silinemediğinde kullanıcının verdiği karar.
+enum ArkaPlanKarari {
+  /// Yerel sunucu/bulut yeniden denenecek.
+  tekrarDene,
+
+  /// Fotoğraf, arka planı silinmeden (olduğu gibi) kaydedilecek.
+  arkaPlaniylaKaydet,
+
+  /// Bu fotoğraf hiç eklenmeyecek.
+  atla,
+}
 
 class GardirobumEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -138,6 +151,66 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
 
   void _yuklemeAnimasyonunuDurdur() {
     _aiMesajTimer?.cancel();
+  }
+
+  /// Arka plan silinemediğinde kullanıcıya sorar.
+  ///
+  /// Neden: sessizce arka planıyla kaydetmek, kullanıcının "arka plan
+  /// silinmiyor" sanmasına yol açıyordu. Kullanıcı tekrar deneyebilir, fotoğrafı
+  /// olduğu gibi kaydedebilir ya da o fotoğrafı atlayabilir.
+  ///
+  /// Dışarı dokunarak kapatılırsa güvenli seçenek uygulanır: fotoğraf atlanır.
+  Future<ArkaPlanKarari> _arkaPlanSilinemediKarari(
+    int sira,
+    int toplam,
+  ) async {
+    final l10n = AppLocalizations.of(context)!;
+    final colors = Theme.of(context).colorScheme;
+
+    final karar = await showDialog<ArkaPlanKarari>(
+      context: context,
+      barrierColor: Colors.black.withValues(alpha: 0.6),
+      builder: (ctx) => BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        child: AlertDialog(
+          backgroundColor: colors.surfaceContainerHigh,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: AppRadius.dialogRadius,
+            side: BorderSide(
+              color: colors.outlineVariant.withValues(alpha: 0.4),
+            ),
+          ),
+          title: Text(l10n.gardirobumArkaPlanSilinemediBaslik),
+          content: Text(
+            toplam > 1
+                ? '${l10n.gardirobumArkaPlanSilinemediAciklama}  ($sira/$toplam)'
+                : l10n.gardirobumArkaPlanSilinemediAciklama,
+            style: TextStyle(color: colors.onSurfaceVariant, height: 1.4),
+          ),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          actions: [
+            TextButton(
+              onPressed: () =>
+                  Navigator.of(ctx).pop(ArkaPlanKarari.atla),
+              child: Text(l10n.simdilikAtla),
+            ),
+            TextButton(
+              onPressed: () =>
+                  Navigator.of(ctx).pop(ArkaPlanKarari.arkaPlaniylaKaydet),
+              child: Text(l10n.gardirobumArkaPlanliKaydet),
+            ),
+            FilledButton(
+              onPressed: () =>
+                  Navigator.of(ctx).pop(ArkaPlanKarari.tekrarDene),
+              child: Text(l10n.chatTekrarDene),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    return karar ?? ArkaPlanKarari.atla;
   }
 
   void _kombinHakkiBittiDiyaloguGoster() {
@@ -773,7 +846,10 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           final currentFile = files[i];
           final orijinalBytes = await currentFile.readAsBytes();
 
-          // 🎯 Arkaplanı sil — önce YEREL sunucu (rembg), olmazsa bulut (remove.bg)
+          // 🎯 Arkaplanı sil — önce YEREL sunucu (rembg, gerekirse tekrar),
+          // olmazsa bulut (remove.bg). İkisi de olmazsa kullanıcıya sorulur;
+          // sessizce arka planlı kaydetmek "arka plan silinmiyor" izlenimi
+          // veriyordu.
           Uint8List kaydedilecekBytes = orijinalBytes;
           if (!mounted) return;
           setState(() {
@@ -782,29 +858,40 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           });
 
           Uint8List? bgRemoved;
-          try {
-            bgRemoved = await BackgroundRemoverService.removeBackground(
+          var fotografAtlandi = false;
+
+          while (true) {
+            bgRemoved = await ArkaPlanSilmeYardimcisi.dene(
               orijinalBytes,
+              yerel: BackgroundRemoverService.removeBackground,
+              bulut: (baytlar) => BackgroundRemovalService().removeBackground(
+                imageBytes: baytlar,
+                size: 'auto',
+                format: 'png',
+              ),
             );
-          } catch (e) {
-            debugPrint('Yerel arka plan silme hatası: $e');
+            if (bgRemoved != null) break;
+
+            if (!mounted) return;
+            final karar = await _arkaPlanSilinemediKarari(i + 1, files.length);
+            if (karar == ArkaPlanKarari.tekrarDene) continue;
+            if (karar == ArkaPlanKarari.atla) fotografAtlandi = true;
+            break;
           }
 
-          // Yerel sunucu sonuç vermezse bulut API'ye (remove.bg) düş
-          if (bgRemoved == null || bgRemoved.length <= 100) {
-            bgRemoved = await BackgroundRemovalService().removeBackground(
-              imageBytes: orijinalBytes,
-              size: 'auto',
-              format: 'png',
-            );
+          // Kullanıcı "bu fotoğrafı atla" dediyse hiç ekleme.
+          if (fotografAtlandi) {
+            basarisizFotografSayisi++;
+            continue;
           }
 
-          if (bgRemoved != null && bgRemoved.length > 100) {
+          if (bgRemoved != null) {
             // 🧭 Yön + çerçeve standardı: arka planı silinmiş görsel hâlâ
             // YATAYSA dikeyleştir (EXIF yönünü sunucu zaten uygular; burada
             // yalnızca gerçekten yatay kalan fotoğraflar düzeltilir → çift
             // döndürme olmaz), ardından çevresindeki boş alanı kırp ki kıyafet
-            // ızgarada tüm kutuyu doldursun.
+            // ızgarada tüm kutuyu doldursun. Maske temizliği (leke/delik) da
+            // aynı turda yapılır.
             kaydedilecekBytes = await GorselYonService.duzenle(bgRemoved) ?? bgRemoved;
           }
 

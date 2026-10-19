@@ -920,5 +920,8 @@
   "stilistHafizasiBos": "Non ho ancora imparato nulla. Conoscerò il tuo stile chiacchierando.",
   "stilistHafizasiTemizle": "Cancella memoria",
   "stilistHafizasiTemizleOnay": "Tutto ciò che lo stilista ricorda di te verrà eliminato. L'operazione non è reversibile.",
-  "stilistHafizasiTemizlendi": "Memoria cancellata 🧠"
+  "stilistHafizasiTemizlendi": "Memoria cancellata 🧠",
+  "gardirobumArkaPlanSilinemediBaslik": "Sfondo non rimosso",
+  "gardirobumArkaPlanSilinemediAciklama": "Potrebbe esserci un problema di connessione. Scegli se riprovare, salvare la foto con lo sfondo o saltare questa foto.",
+  "gardirobumArkaPlanliKaydet": "Salva con sfondo"
 }
