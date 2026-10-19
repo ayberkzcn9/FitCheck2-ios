@@ -2914,4 +2914,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Evita sombras y superficies con dibujos.';
+
+  @override
+  String get kesimUyarisiBaslik => 'El recorte puede no ser preciso';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'El color de la prenda es muy parecido al del fondo. La eliminación del fondo tiene dificultades: puede quedar parte del fondo o cortarse una parte de la prenda. Volver a hacer la foto sobre una superficie de otro color suele solucionarlo.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Volver a hacer la foto';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Guardar igualmente';
 }

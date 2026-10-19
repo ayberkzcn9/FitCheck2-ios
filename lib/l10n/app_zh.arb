@@ -927,5 +927,9 @@
   "cekimIpucuBaslik": "让抠图更干净",
   "cekimIpucu1": "将衣物放在平整的纯色表面上。",
   "cekimIpucu2": "表面颜色要与衣物不同。",
-  "cekimIpucu3": "避免阴影和带花纹的表面。"
+  "cekimIpucu3": "避免阴影和带花纹的表面。",
+  "kesimUyarisiBaslik": "抠图可能不准确",
+  "kesimUyarisiAciklama": "衣物颜色与背景非常接近。此时去背景容易出错：可能残留背景，或把衣物的一部分切掉。换一种颜色的背景重新拍摄通常就能解决。",
+  "kesimUyarisiTekrarCek": "重新拍摄",
+  "kesimUyarisiYineDeKaydet": "仍然保存"
 }

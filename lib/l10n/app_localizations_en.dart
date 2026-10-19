@@ -2889,4 +2889,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Avoid shadows and patterned surfaces.';
+
+  @override
+  String get kesimUyarisiBaslik => 'The cutout may be inaccurate';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'The garment colour is very close to the background. Background removal struggles here: some background may remain or part of the garment may be cut off. Retaking the photo on a surface of a different colour usually fixes it.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Retake photo';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Save anyway';
 }

@@ -927,5 +927,9 @@
   "cekimIpucuBaslik": "きれいに切り抜くために",
   "cekimIpucu1": "衣類は平らな無地の面に置いてください。",
   "cekimIpucu2": "衣類と違う色の面を使ってください。",
-  "cekimIpucu3": "影や柄のある面は避けてください。"
+  "cekimIpucu3": "影や柄のある面は避けてください。",
+  "kesimUyarisiBaslik": "切り抜きが正しくない可能性があります",
+  "kesimUyarisiAciklama": "衣類の色が背景と非常に近いため、背景の削除がうまくいかないことがあります。背景が残ったり、衣類の一部が切れたりする場合があります。別の色の面で撮り直すと解決することが多いです。",
+  "kesimUyarisiTekrarCek": "撮り直す",
+  "kesimUyarisiYineDeKaydet": "このまま保存"
 }

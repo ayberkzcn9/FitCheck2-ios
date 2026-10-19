@@ -2779,4 +2779,17 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => '그림자와 무늬 있는 바닥은 피해 주세요.';
+
+  @override
+  String get kesimUyarisiBaslik => '누끼가 정확하지 않을 수 있습니다';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      '옷 색상이 배경과 매우 비슷합니다. 이 경우 배경 제거가 어려워 배경이 남거나 옷의 일부가 잘릴 수 있습니다. 다른 색의 바닥에서 다시 촬영하면 대부분 해결됩니다.';
+
+  @override
+  String get kesimUyarisiTekrarCek => '다시 촬영';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => '그대로 저장';
 }

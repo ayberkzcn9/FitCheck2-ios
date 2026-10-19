@@ -927,5 +927,9 @@
   "cekimIpucuBaslik": "Para um recorte melhor",
   "cekimIpucu1": "Coloque a peça numa superfície plana e lisa.",
   "cekimIpucu2": "Use uma cor diferente da peça.",
-  "cekimIpucu3": "Evite sombras e superfícies com padrão."
+  "cekimIpucu3": "Evite sombras e superfícies com padrão.",
+  "kesimUyarisiBaslik": "O recorte pode não estar preciso",
+  "kesimUyarisiAciklama": "A cor da peça é muito parecida com a do fundo. A remoção do fundo tem dificuldade: pode sobrar parte do fundo ou cortar parte da peça. Tirar a foto novamente sobre uma superfície de outra cor costuma resolver.",
+  "kesimUyarisiTekrarCek": "Tirar novamente",
+  "kesimUyarisiYineDeKaydet": "Guardar mesmo assim"
 }

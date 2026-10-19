@@ -2869,4 +2869,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'تجنّب الظلال والأسطح المنقوشة.';
+
+  @override
+  String get kesimUyarisiBaslik => 'قد يكون القص غير دقيق';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'لون الملابس قريب جدًا من لون الخلفية. تواجه إزالة الخلفية صعوبة هنا: قد تبقى أجزاء من الخلفية أو يُقطع جزء من الملابس. إعادة التصوير على سطح بلون مختلف تحل المشكلة عادةً.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'إعادة التصوير';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'الحفظ على أي حال';
 }

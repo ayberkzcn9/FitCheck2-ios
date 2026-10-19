@@ -2916,4 +2916,17 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Vermeide Schatten und gemusterte Flächen.';
+
+  @override
+  String get kesimUyarisiBaslik => 'Der Ausschnitt ist evtl. ungenau';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'Die Farbe des Kleidungsstücks liegt sehr nah am Hintergrund. Die Freistellung hat damit Mühe: Es können Hintergrundreste bleiben oder ein Teil des Kleidungsstücks abgeschnitten werden. Ein neues Foto auf einer andersfarbigen Fläche löst das meist.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Neu aufnehmen';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Trotzdem speichern';
 }

@@ -2890,4 +2890,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Избегайте теней и узорчатых поверхностей.';
+
+  @override
+  String get kesimUyarisiBaslik => 'Вырез может быть неточным';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'Цвет вещи очень близок к цвету фона. Удаление фона в таком случае затруднено: могут остаться части фона или обрежется часть вещи. Повторная съёмка на поверхности другого цвета обычно решает проблему.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Переснять';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Всё равно сохранить';
 }

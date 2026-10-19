@@ -2723,4 +2723,17 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => '避免阴影和带花纹的表面。';
+
+  @override
+  String get kesimUyarisiBaslik => '抠图可能不准确';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      '衣物颜色与背景非常接近。此时去背景容易出错：可能残留背景，或把衣物的一部分切掉。换一种颜色的背景重新拍摄通常就能解决。';
+
+  @override
+  String get kesimUyarisiTekrarCek => '重新拍摄';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => '仍然保存';
 }

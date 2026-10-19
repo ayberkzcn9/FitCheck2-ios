@@ -2906,4 +2906,17 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Evite sombras e superfícies com padrão.';
+
+  @override
+  String get kesimUyarisiBaslik => 'O recorte pode não estar preciso';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'A cor da peça é muito parecida com a do fundo. A remoção do fundo tem dificuldade: pode sobrar parte do fundo ou cortar parte da peça. Tirar a foto novamente sobre uma superfície de outra cor costuma resolver.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Tirar novamente';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Guardar mesmo assim';
 }

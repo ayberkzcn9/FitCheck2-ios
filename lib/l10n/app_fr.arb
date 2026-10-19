@@ -927,5 +927,9 @@
   "cekimIpucuBaslik": "Pour un meilleur détourage",
   "cekimIpucu1": "Pose le vêtement sur une surface plane et unie.",
   "cekimIpucu2": "Choisis une couleur différente de celle du vêtement.",
-  "cekimIpucu3": "Évite les ombres et les surfaces à motifs."
+  "cekimIpucu3": "Évite les ombres et les surfaces à motifs.",
+  "kesimUyarisiBaslik": "Le détourage peut être imprécis",
+  "kesimUyarisiAciklama": "La couleur du vêtement est très proche de celle du fond. Le détourage a du mal : il peut rester des morceaux de fond ou une partie du vêtement peut être coupée. Reprendre la photo sur une surface d'une autre couleur règle généralement le problème.",
+  "kesimUyarisiTekrarCek": "Reprendre la photo",
+  "kesimUyarisiYineDeKaydet": "Enregistrer quand même"
 }

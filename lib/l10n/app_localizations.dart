@@ -5349,6 +5349,30 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Gölge ve desenli zeminden kaçın.'**
   String get cekimIpucu3;
+
+  /// No description provided for @kesimUyarisiBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kesim hatalı olabilir'**
+  String get kesimUyarisiBaslik;
+
+  /// No description provided for @kesimUyarisiAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafet zemine çok yakın renkte. Arka plan silme bu durumda zorlanır: zeminden parça kalabilir ya da kıyafetin bir bölümü kesilebilir. Farklı renkte bir zeminde tekrar çekmek genellikle çözer.'**
+  String get kesimUyarisiAciklama;
+
+  /// No description provided for @kesimUyarisiTekrarCek.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tekrar çek'**
+  String get kesimUyarisiTekrarCek;
+
+  /// No description provided for @kesimUyarisiYineDeKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yine de kaydet'**
+  String get kesimUyarisiYineDeKaydet;
 }
 
 class _AppLocalizationsDelegate

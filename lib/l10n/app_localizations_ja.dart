@@ -2765,4 +2765,17 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => '影や柄のある面は避けてください。';
+
+  @override
+  String get kesimUyarisiBaslik => '切り抜きが正しくない可能性があります';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      '衣類の色が背景と非常に近いため、背景の削除がうまくいかないことがあります。背景が残ったり、衣類の一部が切れたりする場合があります。別の色の面で撮り直すと解決することが多いです。';
+
+  @override
+  String get kesimUyarisiTekrarCek => '撮り直す';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'このまま保存';
 }

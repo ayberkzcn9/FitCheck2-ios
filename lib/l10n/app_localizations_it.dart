@@ -2912,4 +2912,17 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Evita ombre e superfici con motivi.';
+
+  @override
+  String get kesimUyarisiBaslik => 'Il ritaglio potrebbe non essere preciso';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'Il colore del capo è molto vicino a quello dello sfondo. La rimozione dello sfondo fatica: può restare parte dello sfondo o tagliare una parte del capo. Rifare la foto su una superficie di colore diverso di solito risolve.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Scatta di nuovo';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Salva comunque';
 }

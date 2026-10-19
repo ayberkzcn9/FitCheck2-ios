@@ -962,5 +962,9 @@
   "cekimIpucuBaslik": "Daha iyi kesim için",
   "cekimIpucu1": "Kıyafeti düz, tek renkli bir zemine koy.",
   "cekimIpucu2": "Zemin kıyafetten farklı bir renk olsun.",
-  "cekimIpucu3": "Gölge ve desenli zeminden kaçın."
+  "cekimIpucu3": "Gölge ve desenli zeminden kaçın.",
+  "kesimUyarisiBaslik": "Kesim hatalı olabilir",
+  "kesimUyarisiAciklama": "Kıyafet zemine çok yakın renkte. Arka plan silme bu durumda zorlanır: zeminden parça kalabilir ya da kıyafetin bir bölümü kesilebilir. Farklı renkte bir zeminde tekrar çekmek genellikle çözer.",
+  "kesimUyarisiTekrarCek": "Tekrar çek",
+  "kesimUyarisiYineDeKaydet": "Yine de kaydet"
 }

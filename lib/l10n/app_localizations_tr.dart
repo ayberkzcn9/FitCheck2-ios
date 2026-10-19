@@ -2891,4 +2891,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Gölge ve desenli zeminden kaçın.';
+
+  @override
+  String get kesimUyarisiBaslik => 'Kesim hatalı olabilir';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'Kıyafet zemine çok yakın renkte. Arka plan silme bu durumda zorlanır: zeminden parça kalabilir ya da kıyafetin bir bölümü kesilebilir. Farklı renkte bir zeminde tekrar çekmek genellikle çözer.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Tekrar çek';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Yine de kaydet';
 }

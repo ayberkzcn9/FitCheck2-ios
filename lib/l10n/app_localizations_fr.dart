@@ -2918,4 +2918,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Évite les ombres et les surfaces à motifs.';
+
+  @override
+  String get kesimUyarisiBaslik => 'Le détourage peut être imprécis';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'La couleur du vêtement est très proche de celle du fond. Le détourage a du mal : il peut rester des morceaux de fond ou une partie du vêtement peut être coupée. Reprendre la photo sur une surface d\'une autre couleur règle généralement le problème.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Reprendre la photo';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Enregistrer quand même';
 }

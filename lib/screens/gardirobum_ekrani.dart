@@ -15,6 +15,7 @@ import '../services/arka_plan_silme_yardimcisi.dart';
 import '../services/background_removal_service.dart';
 import '../services/background_remover_service.dart';
 import '../services/gorsel_yon_service.dart';
+import '../services/kesim_kalite_denetimi.dart';
 import '../services/reklam_servisi.dart';
 import '../services/satin_alma_servisi.dart';
 import '../utils/ana_ekran_dialoglar.dart';
@@ -67,6 +68,10 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
   final ImagePicker _picker = ImagePicker();
   bool _otomatikYukleniyor = false;
   bool _gizlendi = false;
+
+  /// Kullanıcı "kesim hatalı olabilir → tekrar çek" dediyse, fotoğraf ekleme
+  /// turu bittiğinde kamera yeniden açılır.
+  bool _yenidenCekIstendi = false;
   String _yuklemeDurumMesaji = '';
   String? _acikKartId;
 
@@ -211,6 +216,84 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
     );
 
     return karar ?? ArkaPlanKarari.atla;
+  }
+
+  /// Kıyafet zemine çok yakın renkteyse (kesim zorlanır) kullanıcıya
+  /// "tekrar çek" seçeneği sunar.
+  ///
+  /// Neden: bu durumda görüntüde sınır bilgisi yoktur — hangi model kullanılırsa
+  /// kullanılsın arka plandan parça kalır ya da kıyafetten parça kesilir. Sorun
+  /// girdide olduğu için tek çözüm yeni fotoğraftır; kullanıcı bunu sonucu
+  /// gördükten çok sonra değil, tam şimdi öğrenmeli.
+  ///
+  /// `true` → kullanıcı yeniden çekmek istiyor.
+  Future<bool> _zeminBenzerKarari(int sira, int toplam) async {
+    final l10n = AppLocalizations.of(context)!;
+    final colors = Theme.of(context).colorScheme;
+
+    final tekrarCek = await showDialog<bool>(
+      context: context,
+      barrierColor: Colors.black.withValues(alpha: 0.6),
+      builder: (ctx) => BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        child: AlertDialog(
+          backgroundColor: colors.surfaceContainerHigh,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: AppRadius.dialogRadius,
+            side: BorderSide(
+              color: colors.outlineVariant.withValues(alpha: 0.4),
+            ),
+          ),
+          title: Row(
+            children: [
+              Icon(
+                Icons.warning_amber_rounded,
+                color: colors.tertiary,
+                size: 22,
+              ),
+              const SizedBox(width: 8),
+              Expanded(child: Text(l10n.kesimUyarisiBaslik)),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  toplam > 1
+                      ? '${l10n.kesimUyarisiAciklama}  ($sira/$toplam)'
+                      : l10n.kesimUyarisiAciklama,
+                  style: TextStyle(
+                    color: colors.onSurfaceVariant,
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _cekimIpucuSatiri(colors, l10n.cekimIpucu1),
+                _cekimIpucuSatiri(colors, l10n.cekimIpucu2),
+                _cekimIpucuSatiri(colors, l10n.cekimIpucu3),
+              ],
+            ),
+          ),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(false),
+              child: Text(l10n.kesimUyarisiYineDeKaydet),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(ctx).pop(true),
+              child: Text(l10n.kesimUyarisiTekrarCek),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    // Dışarı dokunarak kapatılırsa güvenli seçenek: fotoğrafı kaydet.
+    return tekrarCek ?? false;
   }
 
   void _kombinHakkiBittiDiyaloguGoster() {
@@ -967,6 +1050,25 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             kaydedilecekBytes = await GorselYonService.duzenle(bgRemoved) ?? bgRemoved;
           }
 
+          // 🎨 Zemin denetimi: kıyafet zemine çok yakın renkteyse hiçbir model
+          // sınırı bulamaz (arka plandan parça kalır / kıyafetten parça kesilir).
+          // Bunu kaydettikten çok sonra değil, tam şimdi söyle ki kullanıcı
+          // yeni bir fotoğrafla düzeltebilsin.
+          if (bgRemoved != null && mounted) {
+            final zeminBenzer = await KesimKaliteDenetimi.zeminBenzerMi(
+              orijinalBytes,
+              kaydedilecekBytes,
+            );
+            if (!mounted) return;
+            if (zeminBenzer) {
+              final tekrarCek = await _zeminBenzerKarari(i + 1, files.length);
+              if (tekrarCek) {
+                _yenidenCekIstendi = true;
+                continue;
+              }
+            }
+          }
+
           // 🤖 AI Analiz
           if (!mounted) return;
           setState(() {
@@ -1062,6 +1164,14 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           _otomatikYukleniyor = false;
           _yuklemeDurumMesaji = l10n.gardirobumYukleniyor;
         });
+      }
+    }
+
+    // Kullanıcı "tekrar çek" dediyse, tur bittiğinde kamerayı yeniden aç.
+    if (_yenidenCekIstendi) {
+      _yenidenCekIstendi = false;
+      if (mounted) {
+        await _kiyafetEkleIslemi(ImageSource.camera);
       }
     }
   }

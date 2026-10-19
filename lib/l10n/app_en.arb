@@ -927,5 +927,9 @@
   "cekimIpucuBaslik": "For a better cutout",
   "cekimIpucu1": "Place the garment on a flat, plain surface.",
   "cekimIpucu2": "Use a surface colour different from the garment.",
-  "cekimIpucu3": "Avoid shadows and patterned surfaces."
+  "cekimIpucu3": "Avoid shadows and patterned surfaces.",
+  "kesimUyarisiBaslik": "The cutout may be inaccurate",
+  "kesimUyarisiAciklama": "The garment colour is very close to the background. Background removal struggles here: some background may remain or part of the garment may be cut off. Retaking the photo on a surface of a different colour usually fixes it.",
+  "kesimUyarisiTekrarCek": "Retake photo",
+  "kesimUyarisiYineDeKaydet": "Save anyway"
 }

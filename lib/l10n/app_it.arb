@@ -927,5 +927,9 @@
   "cekimIpucuBaslik": "Per un ritaglio migliore",
   "cekimIpucu1": "Appoggia il capo su una superficie piana e tinta unita.",
   "cekimIpucu2": "Usa un colore diverso da quello del capo.",
-  "cekimIpucu3": "Evita ombre e superfici con motivi."
+  "cekimIpucu3": "Evita ombre e superfici con motivi.",
+  "kesimUyarisiBaslik": "Il ritaglio potrebbe non essere preciso",
+  "kesimUyarisiAciklama": "Il colore del capo è molto vicino a quello dello sfondo. La rimozione dello sfondo fatica: può restare parte dello sfondo o tagliare una parte del capo. Rifare la foto su una superficie di colore diverso di solito risolve.",
+  "kesimUyarisiTekrarCek": "Scatta di nuovo",
+  "kesimUyarisiYineDeKaydet": "Salva comunque"
 }
