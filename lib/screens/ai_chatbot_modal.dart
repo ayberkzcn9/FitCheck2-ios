@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -9,6 +11,7 @@ import '../models/kiyafet.dart';
 import '../models/chat_mesaj.dart';
 import '../services/ai_service.dart';
 import '../services/analytics_servisi.dart';
+import '../services/stilist_hafizasi.dart';
 import '../ai/ai_dil.dart';
 import '../utils/hava_uygunlugu.dart';
 import '../utils/helpers.dart';
@@ -55,6 +58,7 @@ class _AiChatbotPenceresiState extends State<AiChatbotPenceresi> {
   String? _sonMesaj;
   Uint8List? _sonResim;
   bool _kombinModuBekleniyor = false;
+  bool _hafizaGuncelleniyor = false;
   String _aktifCinsiyet = 'Kadın';
   String _aktifTarz = 'Genel';
   String _aktifRenk = 'Karışık';
@@ -69,6 +73,8 @@ class _AiChatbotPenceresiState extends State<AiChatbotPenceresi> {
 
   Future<void> _kullaniciVerileriniYukleVeBaslat() async {
     final prefs = await SharedPreferences.getInstance();
+    // Yaşayan stilist: kalıcı hafızayı yükle (cihazda tutulur, ağa çıkmaz).
+    await StilistHafizasi().yukle();
 
     if (mounted) {
       setState(() {
@@ -325,6 +331,9 @@ You MUST write your ENTIRE response in **$hedefDil**!
 - Remind the user that dirty items are not used in outfit suggestions until they are washed, then offer to build a look from the clean inventory.
 """;
 
+    // Yaşayan stilist: geçmiş sohbetlerden öğrenilen kalıcı notlar.
+    final String hafizaBlogu = StilistHafizasi().promptBlogu();
+
     try {
       final String gizliBaglamEki =
           (widget.gizliBaglam != null && widget.gizliBaglam!.trim().isNotEmpty)
@@ -332,7 +341,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
               : "";
       final cevap = await AiService().hibritAiSorgula(
         sistemPromptu:
-            "$sistemPromptu\n\n📜 CHAT HISTORY:\n$sohbetGecmisi\n\n$envanter\n\n$kirliSepetiDurumu$gizliBaglamEki",
+            "$sistemPromptu\n\n$hafizaBlogu\n\n📜 CHAT HISTORY:\n$sohbetGecmisi\n\n$envanter\n\n$kirliSepetiDurumu$gizliBaglamEki",
         kullaniciMesaji: aiMesaji.isEmpty ? l10n.chatGorselIncele : aiMesaji,
         resimBytes: resim,
       );
@@ -347,6 +356,14 @@ You MUST write your ENTIRE response in **$hedefDil**!
       });
       HapticFeedback.lightImpact();
       _scrollToBottom();
+
+      // Yaşayan stilist: uzun sohbetlerde hafızayı ara ara güncelle; kısa
+      // sohbetlerde pencere kapanışı (dispose) beklenir.
+      final int kullaniciMesajSayisi =
+          _mesajlar.where((m) => m.isUser).length;
+      if (kullaniciMesajSayisi >= 4 && kullaniciMesajSayisi % 4 == 0) {
+        unawaited(_hafizayiGuncelle());
+      }
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -628,8 +645,38 @@ You MUST write your ENTIRE response in **$hedefDil**!
     );
   }
 
+  /// Yaşayan stilist: sohbet dökümünden kalıcı notları çıkarıp hafızaya işler.
+  ///
+  /// Sohbet kapanışında (dispose) ve uzun sohbetlerde ara ara çağrılır. Ağ/kota
+  /// hatasında sessizce vazgeçer; sohbet akışını hiçbir şekilde etkilemez.
+  Future<void> _hafizayiGuncelle() async {
+    if (_hafizaGuncelleniyor) return;
+    final hafiza = StilistHafizasi();
+    if (hafiza.ogreniyor) return;
+
+    final kullaniciSayisi = _mesajlar.where((m) => m.isUser).length;
+    if (kullaniciSayisi < StilistHafizasi.enAzKullaniciMesaji) return;
+
+    final dokum = _mesajlar
+        .where((m) => m.mesaj.trim().isNotEmpty)
+        .map((m) => "${m.isUser ? 'User' : 'Stylist'}: ${m.mesaj.trim()}")
+        .join("\n");
+    if (dokum.trim().isEmpty) return;
+
+    _hafizaGuncelleniyor = true;
+    try {
+      await hafiza.sohbettenOgren(dokum);
+    } catch (e) {
+      debugPrint('Stilist hafızası güncellenemedi: $e');
+    } finally {
+      _hafizaGuncelleniyor = false;
+    }
+  }
+
   @override
   void dispose() {
+    // Yaşayan stilist: pencere kapanırken sohbetten kalıcı notları çıkar.
+    unawaited(_hafizayiGuncelle());
     _speechToText.stop();
     _speechToText.cancel();
     _textController.dispose();
