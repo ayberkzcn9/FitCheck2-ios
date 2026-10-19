@@ -664,123 +664,127 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               border: Border.all(color: colors.outlineVariant.withValues(alpha: 0.4)),
             ),
             child: SafeArea(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Container(
-                      width: 48,
-                      height: 5,
-                      margin: const EdgeInsets.only(bottom: 16),
-                      decoration: BoxDecoration(
-                        color: colors.outlineVariant,
-                        borderRadius: BorderRadius.circular(10),
+              // İçerik küçük ekran/yatay modda taşmasın: çekim ipuçları
+              // pencereye eklendiği için kaydırma gerekli.
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 48,
+                        height: 5,
+                        margin: const EdgeInsets.only(bottom: 16),
+                        decoration: BoxDecoration(
+                          color: colors.outlineVariant,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                    child: Text(
-                      l10n.kiyafetEkle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: -0.5,
-                        color: colors.onSurface,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                      child: Text(
+                        l10n.kiyafetEkle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -0.5,
+                          color: colors.onSurface,
+                        ),
                       ),
                     ),
-                  ),
-                  // Çekim ipuçları: kesim kalitesini en çok zemin belirliyor;
-                  // kullanıcı tam çekim anında görsün.
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(14, 12, 14, 10),
-                      decoration: BoxDecoration(
-                        color: colors.primaryContainer.withValues(alpha: 0.35),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: colors.primary.withValues(alpha: 0.25)),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.tips_and_updates_rounded, size: 17, color: colors.primary),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: Text(
-                                  l10n.cekimIpucuBaslik,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: colors.onSurface,
+                    // Çekim ipuçları: kesim kalitesini en çok zemin belirliyor;
+                    // kullanıcı tam çekim anında görsün.
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(14, 12, 14, 10),
+                        decoration: BoxDecoration(
+                          color: colors.primaryContainer.withValues(alpha: 0.35),
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: colors.primary.withValues(alpha: 0.25)),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.tips_and_updates_rounded, size: 17, color: colors.primary),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    l10n.cekimIpucuBaslik,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: colors.onSurface,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 8),
-                          _cekimIpucuSatiri(colors, l10n.cekimIpucu1),
-                          _cekimIpucuSatiri(colors, l10n.cekimIpucu2),
-                          _cekimIpucuSatiri(colors, l10n.cekimIpucu3),
-                        ],
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            _cekimIpucuSatiri(colors, l10n.cekimIpucu1),
+                            _cekimIpucuSatiri(colors, l10n.cekimIpucu2),
+                            _cekimIpucuSatiri(colors, l10n.cekimIpucu3),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                    leading: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: colors.surfaceContainerHighest,
-                        shape: BoxShape.circle,
+                    const SizedBox(height: 4),
+                    ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                      leading: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: colors.surfaceContainerHighest,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(Icons.camera_alt_rounded, color: colors.onSurface, size: 22),
                       ),
-                      child: Icon(Icons.camera_alt_rounded, color: colors.onSurface, size: 22),
-                    ),
-                    title: Text(
-                      l10n.kameraIleCek,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: colors.onSurface,
+                      title: Text(
+                        l10n.kameraIleCek,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: colors.onSurface,
+                        ),
                       ),
+                      onTap: () {
+                        HapticFeedback.selectionClick();
+                        Navigator.pop(bottomContext);
+                        _kiyafetEkleIslemi(ImageSource.camera);
+                      },
                     ),
-                    onTap: () {
-                      HapticFeedback.selectionClick();
-                      Navigator.pop(bottomContext);
-                      _kiyafetEkleIslemi(ImageSource.camera);
-                    },
-                  ),
-                  ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                    leading: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: colors.surfaceContainerHighest,
-                        shape: BoxShape.circle,
+                    ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                      leading: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: colors.surfaceContainerHighest,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(Icons.photo_library_rounded, color: colors.onSurface, size: 22),
                       ),
-                      child: Icon(Icons.photo_library_rounded, color: colors.onSurface, size: 22),
-                    ),
-                    title: Text(
-                      l10n.galeridenSecToplu,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: colors.onSurface,
+                      title: Text(
+                        l10n.galeridenSecToplu,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: colors.onSurface,
+                        ),
                       ),
+                      onTap: () {
+                        HapticFeedback.selectionClick();
+                        Navigator.pop(bottomContext);
+                        _kiyafetEkleIslemi(ImageSource.gallery);
+                      },
                     ),
-                    onTap: () {
-                      HapticFeedback.selectionClick();
-                      Navigator.pop(bottomContext);
-                      _kiyafetEkleIslemi(ImageSource.gallery);
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
