@@ -65,17 +65,19 @@ sudo systemctl edit fitcheck-bg            # Environment=BG_MODEL=u2net
 sudo systemctl restart fitcheck-bg
 ```
 
-### Hız için donanım (isteğe bağlı, ücretsiz)
+### Hız için donanım
 
-Sunucu **1 OCPU** çalışıyor; Oracle'ın ücretsiz Ampere hakkı **4 OCPU / 24 GB**.
-Instans 4 OCPU'ya çıkarılırsa tek fotoğraf ~10 sn → **~3 sn** düşer ve aynı
-anda birden çok kullanıcı sırada beklemez.
+Sunucu **2 OCPU / 12 GB** çalışıyor (19.10.2026'da yükseltildi). 2026'da Always
+Free Ampere A1 kotası 4 OCPU/24 GB'tan 2 OCPU/12 GB'a indirildi; 4 OCPU artık
+ücretli (~25-28 $/ay). 2 OCPU ölçümleri için aşağıdaki "Model değiştirme" ve
+"2 OCPU'ya çıkarma" bölümlerine bak.
 
 > ⚠️ Dikkat: Instans tipi değiştirilirken (durdur → şekli değiştir → başlat)
 > **genel IP değişebilir**. Genel IP şu an "ephemeral" (rezerve değil) ve
 > uygulamada sabit yazılı olduğu için IP değişirse **yayındaki eski sürümler
 > bağlanamaz**. Bu yüzden işlem öncesi IP'nin sabitlenmesi (rezerve IP) veya
-> işlem sonrası IP'nin hemen doğrulanması gerekir.
+> işlem sonrası IP'nin hemen doğrulanması gerekir. (19.10.2026 resize'ında IP
+> **değişmedi**.)
 
 ## Kurulum (sıfırdan)
 
@@ -143,25 +145,28 @@ sudo systemctl restart fitcheck-bg
 
 ## Model değiştirme (tek komut)
 
-Canlı model **`silueta`** (1 OCPU'da ~1,7 sn; u2net'ten hızlı ve açık renkli
+Canlı model **`silueta`** (2 OCPU'da ~1,0-1,2 sn; u2net'ten hızlı ve açık renkli
 kıyafetlerde daha temiz). Modeli değiştirip ölçmek için:
 
 ```bash
 bash /home/opc/model_degistir.sh                    # mevcut durumu raporla + ölç
-bash /home/opc/model_degistir.sh silueta            # 1 OCPU: ~1,7 sn (canlı)
-bash /home/opc/model_degistir.sh isnet-general-use  # 1 OCPU: ~10 sn, 2 OCPU: ~5-6 sn
+bash /home/opc/model_degistir.sh silueta            # 1 OCPU: ~1,7 sn, 2 OCPU: ~1,2 sn (canlı)
+bash /home/opc/model_degistir.sh isnet-general-use  # 1 OCPU: ~10 sn, 2 OCPU: ~5,4 sn
 bash /home/opc/model_degistir.sh u2net              # eski model
 ```
 
-Ölçümler (gerçek `/remove-bg`, `/tmp/bgtest` fotoğrafları, 1 OCPU):
+Ölçümler (gerçek `/remove-bg`, `/tmp/bgtest` fotoğrafları):
 
-| Model | Süre | Not |
-|---|---|---|
-| u2net | 3,7-4,4 sn | arka plandan parça bırakıyor, beyaz kıyafetin bir bölümünü kesiyor |
-| **silueta** | **1,6-1,8 sn** | u2net'ten temiz; canlıda bu çalışıyor |
-| isnet-general-use | 10,0-10,3 sn | en temiz maske; ONNX girdisi sabit 1024x1024, küçültülemiyor |
-| birefnet-general-lite | ~130 sn | kullanılamaz |
-| u2net_cloth_seg | ~21 sn | parçalı sonuç, kıyafet için işe yaramaz |
+| Model | 1 OCPU | 2 OCPU | Not |
+|---|---|---|---|
+| u2net | 3,7-4,4 sn | — | arka plandan parça bırakıyor, beyaz kıyafetin bir bölümünü kesiyor |
+| **silueta** | 1,6-1,8 sn | **1,0-1,2 sn** | u2net'ten temiz; **canlıda bu çalışıyor** |
+| isnet-general-use | 10,0-10,3 sn | 5,2-5,8 sn | en temiz maske; ONNX girdisi sabit 1024x1024, küçültülemiyor |
+| birefnet-general-lite | ~130 sn | — | kullanılamaz |
+| u2net_cloth_seg | ~21 sn | — | parçalı sonuç, kıyafet için işe yaramaz |
+
+**Karar (19.10.2026):** 2 OCPU'ya geçildi, isnet ölçüldü (~5,4 sn) ama kullanıcı
+hız tercihinde bulundu; canlıda **`silueta`** kaldı. isnet'e dönmek tek komut.
 
 `bria-rmbg` sunucuda indirilmiş durumda ama **ticari kullanıma kapalı lisanslı**;
 canlıda kullanılmamalı.
@@ -179,6 +184,11 @@ indirildi; 4 OCPU artık ücretli (~25-28 $/ay). 2 OCPU'da isnet ~5-6 sn'ye iner
    başlatmak sabit IP'yi korur).
 5. `bash /home/opc/model_degistir.sh isnet-general-use` ile isnet'e geç ve ölç;
    8 sn'yi geçerse `bash /home/opc/model_degistir.sh silueta` ile geri dön.
+
+**Sonuç (19.10.2026):** Resize başarılı (2 OCPU / 12 GB, genel IP değişmedi).
+`isnet-general-use` 10-13 sn -> **5,2-5,8 sn** düştü; `silueta` ise **1,0-1,2 sn**.
+Kalite farkı bu test fotoğraflarında küçük olduğu için canlıda `silueta` bırakıldı
+(hız şikayeti öncelikli). İleride kalite öne çıkarsa isnet tek komutla açılabilir.
 
 Durdurma sırasında arka plan silme çalışmaz: eski sürümler fotoğrafı sessizce
 arka planıyla kaydeder, 1.0.30+ sürümler kullanıcıya sorar.
