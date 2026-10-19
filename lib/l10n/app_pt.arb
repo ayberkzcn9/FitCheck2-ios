@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "Memória limpa 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Fundo não removido",
   "gardirobumArkaPlanSilinemediAciklama": "Pode haver um problema de conexão. Escolha tentar novamente, salvar a foto com o fundo ou pular esta foto.",
-  "gardirobumArkaPlanliKaydet": "Salvar com fundo"
+  "gardirobumArkaPlanliKaydet": "Salvar com fundo",
+  "cekimIpucuBaslik": "Para um recorte melhor",
+  "cekimIpucu1": "Coloque a peça numa superfície plana e lisa.",
+  "cekimIpucu2": "Use uma cor diferente da peça.",
+  "cekimIpucu3": "Evite sombras e superfícies com padrão."
 }

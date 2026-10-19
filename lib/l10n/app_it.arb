@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "Memoria cancellata 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Sfondo non rimosso",
   "gardirobumArkaPlanSilinemediAciklama": "Potrebbe esserci un problema di connessione. Scegli se riprovare, salvare la foto con lo sfondo o saltare questa foto.",
-  "gardirobumArkaPlanliKaydet": "Salva con sfondo"
+  "gardirobumArkaPlanliKaydet": "Salva con sfondo",
+  "cekimIpucuBaslik": "Per un ritaglio migliore",
+  "cekimIpucu1": "Appoggia il capo su una superficie piana e tinta unita.",
+  "cekimIpucu2": "Usa un colore diverso da quello del capo.",
+  "cekimIpucu3": "Evita ombre e superfici con motivi."
 }

@@ -958,5 +958,9 @@
   "stilistHafizasiTemizlendi": "Hafıza temizlendi 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Arka plan silinemedi",
   "gardirobumArkaPlanSilinemediAciklama": "Bağlantı sorunu olabilir. Tekrar denemek, fotoğrafı arka planıyla kaydetmek ya da bu fotoğrafı atlamak istediğini seç.",
-  "gardirobumArkaPlanliKaydet": "Arka planıyla kaydet"
+  "gardirobumArkaPlanliKaydet": "Arka planıyla kaydet",
+  "cekimIpucuBaslik": "Daha iyi kesim için",
+  "cekimIpucu1": "Kıyafeti düz, tek renkli bir zemine koy.",
+  "cekimIpucu2": "Zemin kıyafetten farklı bir renk olsun.",
+  "cekimIpucu3": "Gölge ve desenli zeminden kaçın."
 }

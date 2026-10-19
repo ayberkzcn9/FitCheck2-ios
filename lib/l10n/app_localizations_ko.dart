@@ -2767,4 +2767,16 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => '배경 포함 저장';
+
+  @override
+  String get cekimIpucuBaslik => '더 깔끔한 누끼를 위해';
+
+  @override
+  String get cekimIpucu1 => '옷을 평평한 단색 위에 놓아 주세요.';
+
+  @override
+  String get cekimIpucu2 => '옷과 다른 색의 바닥을 사용해 주세요.';
+
+  @override
+  String get cekimIpucu3 => '그림자와 무늬 있는 바닥은 피해 주세요.';
 }

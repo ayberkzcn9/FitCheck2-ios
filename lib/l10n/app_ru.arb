@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "Память очищена 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Фон не удалён",
   "gardirobumArkaPlanSilinemediAciklama": "Возможно, проблема с подключением. Выберите: повторить попытку, сохранить фото с фоном или пропустить это фото.",
-  "gardirobumArkaPlanliKaydet": "Сохранить с фоном"
+  "gardirobumArkaPlanliKaydet": "Сохранить с фоном",
+  "cekimIpucuBaslik": "Для лучшего выреза",
+  "cekimIpucu1": "Положите вещь на ровную однотонную поверхность.",
+  "cekimIpucu2": "Цвет поверхности должен отличаться от цвета вещи.",
+  "cekimIpucu3": "Избегайте теней и узорчатых поверхностей."
 }

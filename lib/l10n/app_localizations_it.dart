@@ -2899,4 +2899,17 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => 'Salva con sfondo';
+
+  @override
+  String get cekimIpucuBaslik => 'Per un ritaglio migliore';
+
+  @override
+  String get cekimIpucu1 =>
+      'Appoggia il capo su una superficie piana e tinta unita.';
+
+  @override
+  String get cekimIpucu2 => 'Usa un colore diverso da quello del capo.';
+
+  @override
+  String get cekimIpucu3 => 'Evita ombre e superfici con motivi.';
 }

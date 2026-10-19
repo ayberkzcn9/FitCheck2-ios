@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "تم مسح الذاكرة 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "لم تتم إزالة الخلفية",
   "gardirobumArkaPlanSilinemediAciklama": "قد تكون هناك مشكلة في الاتصال. اختر إعادة المحاولة أو حفظ الصورة مع خلفيتها أو تخطي هذه الصورة.",
-  "gardirobumArkaPlanliKaydet": "حفظ مع الخلفية"
+  "gardirobumArkaPlanliKaydet": "حفظ مع الخلفية",
+  "cekimIpucuBaslik": "لنتيجة قص أفضل",
+  "cekimIpucu1": "ضع الملابس على سطح مستوٍ بلون واحد.",
+  "cekimIpucu2": "اجعل لون السطح مختلفًا عن لون الملابس.",
+  "cekimIpucu3": "تجنّب الظلال والأسطح المنقوشة."
 }

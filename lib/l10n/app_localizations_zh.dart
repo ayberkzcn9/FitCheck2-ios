@@ -2711,4 +2711,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => '保留背景保存';
+
+  @override
+  String get cekimIpucuBaslik => '让抠图更干净';
+
+  @override
+  String get cekimIpucu1 => '将衣物放在平整的纯色表面上。';
+
+  @override
+  String get cekimIpucu2 => '表面颜色要与衣物不同。';
+
+  @override
+  String get cekimIpucu3 => '避免阴影和带花纹的表面。';
 }
