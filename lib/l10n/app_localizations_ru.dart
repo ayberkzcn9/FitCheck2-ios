@@ -2878,4 +2878,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => 'Сохранить с фоном';
+
+  @override
+  String get cekimIpucuBaslik => 'Для лучшего выреза';
+
+  @override
+  String get cekimIpucu1 => 'Положите вещь на ровную однотонную поверхность.';
+
+  @override
+  String get cekimIpucu2 => 'Цвет поверхности должен отличаться от цвета вещи.';
+
+  @override
+  String get cekimIpucu3 => 'Избегайте теней и узорчатых поверхностей.';
 }

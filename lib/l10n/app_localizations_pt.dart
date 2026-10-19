@@ -2894,4 +2894,16 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => 'Salvar com fundo';
+
+  @override
+  String get cekimIpucuBaslik => 'Para um recorte melhor';
+
+  @override
+  String get cekimIpucu1 => 'Coloque a peça numa superfície plana e lisa.';
+
+  @override
+  String get cekimIpucu2 => 'Use uma cor diferente da peça.';
+
+  @override
+  String get cekimIpucu3 => 'Evite sombras e superfícies com padrão.';
 }

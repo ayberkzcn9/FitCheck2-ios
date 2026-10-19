@@ -2879,4 +2879,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => 'Arka planıyla kaydet';
+
+  @override
+  String get cekimIpucuBaslik => 'Daha iyi kesim için';
+
+  @override
+  String get cekimIpucu1 => 'Kıyafeti düz, tek renkli bir zemine koy.';
+
+  @override
+  String get cekimIpucu2 => 'Zemin kıyafetten farklı bir renk olsun.';
+
+  @override
+  String get cekimIpucu3 => 'Gölge ve desenli zeminden kaçın.';
 }

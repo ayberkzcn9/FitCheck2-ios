@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "Memory cleared 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Background not removed",
   "gardirobumArkaPlanSilinemediAciklama": "There may be a connection problem. Choose whether to try again, save the photo with its background, or skip this photo.",
-  "gardirobumArkaPlanliKaydet": "Save with background"
+  "gardirobumArkaPlanliKaydet": "Save with background",
+  "cekimIpucuBaslik": "For a better cutout",
+  "cekimIpucu1": "Place the garment on a flat, plain surface.",
+  "cekimIpucu2": "Use a surface colour different from the garment.",
+  "cekimIpucu3": "Avoid shadows and patterned surfaces."
 }

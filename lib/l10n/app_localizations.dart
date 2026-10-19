@@ -5325,6 +5325,30 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Arka planıyla kaydet'**
   String get gardirobumArkaPlanliKaydet;
+
+  /// No description provided for @cekimIpucuBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Daha iyi kesim için'**
+  String get cekimIpucuBaslik;
+
+  /// No description provided for @cekimIpucu1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafeti düz, tek renkli bir zemine koy.'**
+  String get cekimIpucu1;
+
+  /// No description provided for @cekimIpucu2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Zemin kıyafetten farklı bir renk olsun.'**
+  String get cekimIpucu2;
+
+  /// No description provided for @cekimIpucu3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gölge ve desenli zeminden kaçın.'**
+  String get cekimIpucu3;
 }
 
 class _AppLocalizationsDelegate

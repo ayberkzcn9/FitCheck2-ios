@@ -2877,4 +2877,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => 'Save with background';
+
+  @override
+  String get cekimIpucuBaslik => 'For a better cutout';
+
+  @override
+  String get cekimIpucu1 => 'Place the garment on a flat, plain surface.';
+
+  @override
+  String get cekimIpucu2 => 'Use a surface colour different from the garment.';
+
+  @override
+  String get cekimIpucu3 => 'Avoid shadows and patterned surfaces.';
 }

@@ -2857,4 +2857,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => 'حفظ مع الخلفية';
+
+  @override
+  String get cekimIpucuBaslik => 'لنتيجة قص أفضل';
+
+  @override
+  String get cekimIpucu1 => 'ضع الملابس على سطح مستوٍ بلون واحد.';
+
+  @override
+  String get cekimIpucu2 => 'اجعل لون السطح مختلفًا عن لون الملابس.';
+
+  @override
+  String get cekimIpucu3 => 'تجنّب الظلال والأسطح المنقوشة.';
 }

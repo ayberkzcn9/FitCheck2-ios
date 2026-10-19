@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "Memoria borrada 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Fondo no eliminado",
   "gardirobumArkaPlanSilinemediAciklama": "Puede haber un problema de conexión. Elige si quieres intentarlo de nuevo, guardar la foto con su fondo u omitir esta foto.",
-  "gardirobumArkaPlanliKaydet": "Guardar con fondo"
+  "gardirobumArkaPlanliKaydet": "Guardar con fondo",
+  "cekimIpucuBaslik": "Para un mejor recorte",
+  "cekimIpucu1": "Coloca la prenda sobre una superficie plana y lisa.",
+  "cekimIpucu2": "Usa un color distinto al de la prenda.",
+  "cekimIpucu3": "Evita sombras y superficies con dibujos."
 }

@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "Mémoire effacée 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Arrière-plan non supprimé",
   "gardirobumArkaPlanSilinemediAciklama": "Il peut s'agir d'un problème de connexion. Choisis de réessayer, d'enregistrer la photo avec son arrière-plan ou d'ignorer cette photo.",
-  "gardirobumArkaPlanliKaydet": "Enregistrer avec l'arrière-plan"
+  "gardirobumArkaPlanliKaydet": "Enregistrer avec l'arrière-plan",
+  "cekimIpucuBaslik": "Pour un meilleur détourage",
+  "cekimIpucu1": "Pose le vêtement sur une surface plane et unie.",
+  "cekimIpucu2": "Choisis une couleur différente de celle du vêtement.",
+  "cekimIpucu3": "Évite les ombres et les surfaces à motifs."
 }

@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "記憶を消去しました 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "背景を削除できませんでした",
   "gardirobumArkaPlanSilinemediAciklama": "接続に問題がある可能性があります。再試行する、背景付きで保存する、この写真をスキップする、のいずれかを選んでください。",
-  "gardirobumArkaPlanliKaydet": "背景付きで保存"
+  "gardirobumArkaPlanliKaydet": "背景付きで保存",
+  "cekimIpucuBaslik": "きれいに切り抜くために",
+  "cekimIpucu1": "衣類は平らな無地の面に置いてください。",
+  "cekimIpucu2": "衣類と違う色の面を使ってください。",
+  "cekimIpucu3": "影や柄のある面は避けてください。"
 }

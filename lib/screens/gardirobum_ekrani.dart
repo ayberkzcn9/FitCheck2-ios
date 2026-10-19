@@ -693,7 +693,45 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  // Çekim ipuçları: kesim kalitesini en çok zemin belirliyor;
+                  // kullanıcı tam çekim anında görsün.
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(14, 12, 14, 10),
+                      decoration: BoxDecoration(
+                        color: colors.primaryContainer.withValues(alpha: 0.35),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: colors.primary.withValues(alpha: 0.25)),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.tips_and_updates_rounded, size: 17, color: colors.primary),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  l10n.cekimIpucuBaslik,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: colors.onSurface,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          _cekimIpucuSatiri(colors, l10n.cekimIpucu1),
+                          _cekimIpucuSatiri(colors, l10n.cekimIpucu2),
+                          _cekimIpucuSatiri(colors, l10n.cekimIpucu3),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
                   ListTile(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
                     leading: Container(
@@ -748,6 +786,32 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           ),
         );
       },
+    );
+  }
+
+  /// Çekim ipucu satırı: küçük madde işareti + açıklama.
+  Widget _cekimIpucuSatiri(ColorScheme colors, String metin) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 6, right: 8),
+            child: Container(
+              width: 5,
+              height: 5,
+              decoration: BoxDecoration(color: colors.primary, shape: BoxShape.circle),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              metin,
+              style: TextStyle(fontSize: 12.5, height: 1.35, color: colors.onSurfaceVariant),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

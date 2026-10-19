@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "Gedächtnis gelöscht 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "Hintergrund nicht entfernt",
   "gardirobumArkaPlanSilinemediAciklama": "Möglicherweise liegt ein Verbindungsproblem vor. Wähle, ob du es erneut versuchen, das Foto mit Hintergrund speichern oder dieses Foto überspringen möchtest.",
-  "gardirobumArkaPlanliKaydet": "Mit Hintergrund speichern"
+  "gardirobumArkaPlanliKaydet": "Mit Hintergrund speichern",
+  "cekimIpucuBaslik": "Für einen saubereren Ausschnitt",
+  "cekimIpucu1": "Lege das Kleidungsstück auf eine ebene, einfarbige Fläche.",
+  "cekimIpucu2": "Wähle eine andere Farbe als die des Kleidungsstücks.",
+  "cekimIpucu3": "Vermeide Schatten und gemusterte Flächen."
 }

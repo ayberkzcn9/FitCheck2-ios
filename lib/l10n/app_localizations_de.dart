@@ -2902,4 +2902,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => 'Mit Hintergrund speichern';
+
+  @override
+  String get cekimIpucuBaslik => 'Für einen saubereren Ausschnitt';
+
+  @override
+  String get cekimIpucu1 =>
+      'Lege das Kleidungsstück auf eine ebene, einfarbige Fläche.';
+
+  @override
+  String get cekimIpucu2 =>
+      'Wähle eine andere Farbe als die des Kleidungsstücks.';
+
+  @override
+  String get cekimIpucu3 => 'Vermeide Schatten und gemusterte Flächen.';
 }

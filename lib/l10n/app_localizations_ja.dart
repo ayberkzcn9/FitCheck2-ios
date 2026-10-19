@@ -2753,4 +2753,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get gardirobumArkaPlanliKaydet => '背景付きで保存';
+
+  @override
+  String get cekimIpucuBaslik => 'きれいに切り抜くために';
+
+  @override
+  String get cekimIpucu1 => '衣類は平らな無地の面に置いてください。';
+
+  @override
+  String get cekimIpucu2 => '衣類と違う色の面を使ってください。';
+
+  @override
+  String get cekimIpucu3 => '影や柄のある面は避けてください。';
 }

@@ -923,5 +923,9 @@
   "stilistHafizasiTemizlendi": "记忆已清除 🧠",
   "gardirobumArkaPlanSilinemediBaslik": "未能移除背景",
   "gardirobumArkaPlanSilinemediAciklama": "可能是连接问题。你可以选择重试、保留背景保存照片，或跳过这张照片。",
-  "gardirobumArkaPlanliKaydet": "保留背景保存"
+  "gardirobumArkaPlanliKaydet": "保留背景保存",
+  "cekimIpucuBaslik": "让抠图更干净",
+  "cekimIpucu1": "将衣物放在平整的纯色表面上。",
+  "cekimIpucu2": "表面颜色要与衣物不同。",
+  "cekimIpucu3": "避免阴影和带花纹的表面。"
 }
