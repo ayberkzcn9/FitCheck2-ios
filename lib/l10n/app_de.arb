@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "Das Abo verlängert sich am Ende jeder Periode automatisch. Jederzeit kündbar.",
-  "kiyafetDondur": "Drehen"
+  "kiyafetDondur": "Drehen",
+  "stilistHafizasiBaslik": "Stilisten-Gedächtnis",
+  "stilistHafizasiAltBaslikNotlu": "Merkt sich {sayi} Notizen",
+  "stilistHafizasiAltBaslikBos": "Merkt sich noch nichts",
+  "stilistHafizasiAciklama": "Der Stilist speichert, was er in deinen Chats lernt, als dauerhafte Notizen und personalisiert damit seine Vorschläge. Die Notizen bleiben nur auf diesem Gerät.",
+  "stilistHafizasiNelerBiliyor": "Was merkt er sich?",
+  "stilistHafizasiOzetBaslik": "Zusammenfassung deiner letzten Chats",
+  "stilistHafizasiBos": "Ich habe noch nichts gelernt. Ich lerne deinen Stil mit jedem Chat besser kennen.",
+  "stilistHafizasiTemizle": "Gedächtnis löschen",
+  "stilistHafizasiTemizleOnay": "Alles, was der Stilist über dich gespeichert hat, wird gelöscht. Das kann nicht rückgängig gemacht werden.",
+  "stilistHafizasiTemizlendi": "Gedächtnis gelöscht 🧠"
 }

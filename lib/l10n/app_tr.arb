@@ -938,5 +938,22 @@
     }
   },
   "premiumYenilemeNotu": "Abonelik, dönem sonunda otomatik yenilenir. İstediğin zaman iptal edebilirsin.",
-  "kiyafetDondur": "Döndür"
+  "kiyafetDondur": "Döndür",
+  "stilistHafizasiBaslik": "Stilist Hafızası",
+  "stilistHafizasiAltBaslikNotlu": "{sayi} not hatırlıyor",
+  "@stilistHafizasiAltBaslikNotlu": {
+    "placeholders": {
+      "sayi": {
+        "type": "int"
+      }
+    }
+  },
+  "stilistHafizasiAltBaslikBos": "Henüz bir şey hatırlamıyor",
+  "stilistHafizasiAciklama": "Stilist, sohbetlerden öğrendiklerini kalıcı not olarak saklar ve önerilerini ona göre kişiselleştirir. Notlar yalnızca bu cihazda tutulur.",
+  "stilistHafizasiNelerBiliyor": "Neler hatırlıyor?",
+  "stilistHafizasiOzetBaslik": "Son konuşmaların özeti",
+  "stilistHafizasiBos": "Henüz bir şey öğrenmedim. Sohbet ettikçe tarzını tanırım.",
+  "stilistHafizasiTemizle": "Hafızayı temizle",
+  "stilistHafizasiTemizleOnay": "Stilistin seninle ilgili hatırladığı her şey silinecek. Bu işlem geri alınamaz.",
+  "stilistHafizasiTemizlendi": "Hafıza temizlendi 🧠"
 }

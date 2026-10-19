@@ -2834,4 +2834,39 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get kiyafetDondur => 'Döndür';
+
+  @override
+  String get stilistHafizasiBaslik => 'Stilist Hafızası';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return '$sayi not hatırlıyor';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => 'Henüz bir şey hatırlamıyor';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      'Stilist, sohbetlerden öğrendiklerini kalıcı not olarak saklar ve önerilerini ona göre kişiselleştirir. Notlar yalnızca bu cihazda tutulur.';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => 'Neler hatırlıyor?';
+
+  @override
+  String get stilistHafizasiOzetBaslik => 'Son konuşmaların özeti';
+
+  @override
+  String get stilistHafizasiBos =>
+      'Henüz bir şey öğrenmedim. Sohbet ettikçe tarzını tanırım.';
+
+  @override
+  String get stilistHafizasiTemizle => 'Hafızayı temizle';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      'Stilistin seninle ilgili hatırladığı her şey silinecek. Bu işlem geri alınamaz.';
+
+  @override
+  String get stilistHafizasiTemizlendi => 'Hafıza temizlendi 🧠';
 }

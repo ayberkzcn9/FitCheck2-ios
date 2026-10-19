@@ -2849,4 +2849,39 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get kiyafetDondur => 'Rodar';
+
+  @override
+  String get stilistHafizasiBaslik => 'Memória do stylist';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return 'Lembra de $sayi notas';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => 'Ainda não lembra de nada';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      'O stylist guarda como notas permanentes o que aprende nas suas conversas e personaliza as sugestões. As notas ficam apenas neste dispositivo.';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => 'O que ele lembra?';
+
+  @override
+  String get stilistHafizasiOzetBaslik => 'Resumo das suas conversas recentes';
+
+  @override
+  String get stilistHafizasiBos =>
+      'Ainda não aprendi nada. Vou conhecendo seu estilo conforme conversamos.';
+
+  @override
+  String get stilistHafizasiTemizle => 'Limpar memória';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      'Tudo o que o stylist lembra sobre você será apagado. Isso não pode ser desfeito.';
+
+  @override
+  String get stilistHafizasiTemizlendi => 'Memória limpa 🧠';
 }

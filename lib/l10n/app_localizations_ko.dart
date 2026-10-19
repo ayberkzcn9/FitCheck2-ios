@@ -2723,4 +2723,38 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get kiyafetDondur => '회전';
+
+  @override
+  String get stilistHafizasiBaslik => '스타일리스트 기억';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return '메모 $sayi개 기억 중';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => '아직 기억하는 내용이 없어요';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      '스타일리스트는 대화에서 배운 내용을 장기 메모로 저장하고 이를 바탕으로 제안을 개인화합니다. 메모는 이 기기에만 저장됩니다.';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => '무엇을 기억하나요?';
+
+  @override
+  String get stilistHafizasiOzetBaslik => '최근 대화 요약';
+
+  @override
+  String get stilistHafizasiBos => '아직 배운 내용이 없어요. 대화할수록 스타일을 알아갑니다.';
+
+  @override
+  String get stilistHafizasiTemizle => '기억 삭제';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      '스타일리스트가 당신에 대해 기억한 모든 내용이 삭제됩니다. 되돌릴 수 없습니다.';
+
+  @override
+  String get stilistHafizasiTemizlendi => '기억이 삭제되었습니다 🧠';
 }

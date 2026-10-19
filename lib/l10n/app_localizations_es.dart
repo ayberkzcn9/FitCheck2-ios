@@ -2856,4 +2856,39 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get kiyafetDondur => 'Girar';
+
+  @override
+  String get stilistHafizasiBaslik => 'Memoria del estilista';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return 'Recuerda $sayi notas';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => 'Todavía no recuerda nada';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      'El estilista guarda como notas permanentes lo que aprende en tus chats y personaliza sus sugerencias. Las notas solo se guardan en este dispositivo.';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => '¿Qué recuerda?';
+
+  @override
+  String get stilistHafizasiOzetBaslik => 'Resumen de tus chats recientes';
+
+  @override
+  String get stilistHafizasiBos =>
+      'Todavía no he aprendido nada. Iré conociendo tu estilo mientras charlamos.';
+
+  @override
+  String get stilistHafizasiTemizle => 'Borrar memoria';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      'Se eliminará todo lo que el estilista recuerda sobre ti. Esta acción no se puede deshacer.';
+
+  @override
+  String get stilistHafizasiTemizlendi => 'Memoria borrada 🧠';
 }

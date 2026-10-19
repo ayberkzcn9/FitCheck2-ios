@@ -2859,4 +2859,40 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get kiyafetDondur => 'Pivoter';
+
+  @override
+  String get stilistHafizasiBaslik => 'Mémoire du styliste';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return 'Retient $sayi notes';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => 'Ne retient rien pour l\'instant';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      'Le styliste enregistre sous forme de notes permanentes ce qu\'il apprend dans tes conversations et personnalise ses suggestions. Les notes restent uniquement sur cet appareil.';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => 'Que retient-il ?';
+
+  @override
+  String get stilistHafizasiOzetBaslik =>
+      'Résumé de tes conversations récentes';
+
+  @override
+  String get stilistHafizasiBos =>
+      'Je n\'ai encore rien appris. Je découvrirai ton style au fil des conversations.';
+
+  @override
+  String get stilistHafizasiTemizle => 'Effacer la mémoire';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      'Tout ce que le styliste retient de toi sera supprimé. Cette action est irréversible.';
+
+  @override
+  String get stilistHafizasiTemizlendi => 'Mémoire effacée 🧠';
 }

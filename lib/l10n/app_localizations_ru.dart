@@ -2833,4 +2833,39 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get kiyafetDondur => 'Повернуть';
+
+  @override
+  String get stilistHafizasiBaslik => 'Память стилиста';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return 'Помнит $sayi заметок';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => 'Пока ничего не помнит';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      'Стилист сохраняет то, что узнаёт из ваших чатов, как постоянные заметки и персонализирует советы. Заметки хранятся только на этом устройстве.';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => 'Что он помнит?';
+
+  @override
+  String get stilistHafizasiOzetBaslik => 'Сводка последних чатов';
+
+  @override
+  String get stilistHafizasiBos =>
+      'Я пока ничего не узнал. Чем больше мы общаемся, тем лучше я знаю ваш стиль.';
+
+  @override
+  String get stilistHafizasiTemizle => 'Очистить память';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      'Всё, что стилист помнит о вас, будет удалено. Это действие нельзя отменить.';
+
+  @override
+  String get stilistHafizasiTemizlendi => 'Память очищена 🧠';
 }

@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "订阅将在每个周期结束时自动续订。可随时取消。",
-  "kiyafetDondur": "旋转"
+  "kiyafetDondur": "旋转",
+  "stilistHafizasiBaslik": "造型师记忆",
+  "stilistHafizasiAltBaslikNotlu": "已记住 {sayi} 条",
+  "stilistHafizasiAltBaslikBos": "还没有记住任何内容",
+  "stilistHafizasiAciklama": "造型师会把聊天中学到的内容保存为长期笔记，并据此个性化建议。笔记只保存在本机。",
+  "stilistHafizasiNelerBiliyor": "记住了什么？",
+  "stilistHafizasiOzetBaslik": "最近对话摘要",
+  "stilistHafizasiBos": "我还没有学到任何内容。多聊几次就能了解你的风格。",
+  "stilistHafizasiTemizle": "清除记忆",
+  "stilistHafizasiTemizleOnay": "造型师关于你的所有记忆都将被删除，此操作无法撤销。",
+  "stilistHafizasiTemizlendi": "记忆已清除 🧠"
 }

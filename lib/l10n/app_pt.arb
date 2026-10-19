@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "A subscrição renova automaticamente no fim de cada período. Cancelas quando quiseres.",
-  "kiyafetDondur": "Rodar"
+  "kiyafetDondur": "Rodar",
+  "stilistHafizasiBaslik": "Memória do stylist",
+  "stilistHafizasiAltBaslikNotlu": "Lembra de {sayi} notas",
+  "stilistHafizasiAltBaslikBos": "Ainda não lembra de nada",
+  "stilistHafizasiAciklama": "O stylist guarda como notas permanentes o que aprende nas suas conversas e personaliza as sugestões. As notas ficam apenas neste dispositivo.",
+  "stilistHafizasiNelerBiliyor": "O que ele lembra?",
+  "stilistHafizasiOzetBaslik": "Resumo das suas conversas recentes",
+  "stilistHafizasiBos": "Ainda não aprendi nada. Vou conhecendo seu estilo conforme conversamos.",
+  "stilistHafizasiTemizle": "Limpar memória",
+  "stilistHafizasiTemizleOnay": "Tudo o que o stylist lembra sobre você será apagado. Isso não pode ser desfeito.",
+  "stilistHafizasiTemizlendi": "Memória limpa 🧠"
 }

@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "Subscription renews automatically at the end of each period. Cancel anytime.",
-  "kiyafetDondur": "Rotate"
+  "kiyafetDondur": "Rotate",
+  "stilistHafizasiBaslik": "Stylist Memory",
+  "stilistHafizasiAltBaslikNotlu": "Remembers {sayi} notes",
+  "stilistHafizasiAltBaslikBos": "Remembers nothing yet",
+  "stilistHafizasiAciklama": "The stylist stores what it learns in your chats as permanent notes and personalises its suggestions. Notes stay on this device only.",
+  "stilistHafizasiNelerBiliyor": "What does it remember?",
+  "stilistHafizasiOzetBaslik": "Summary of your recent chats",
+  "stilistHafizasiBos": "I haven't learned anything yet. I will get to know your style as we chat.",
+  "stilistHafizasiTemizle": "Clear memory",
+  "stilistHafizasiTemizleOnay": "Everything the stylist remembers about you will be deleted. This cannot be undone.",
+  "stilistHafizasiTemizlendi": "Memory cleared 🧠"
 }

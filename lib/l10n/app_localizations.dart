@@ -5247,6 +5247,66 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Döndür'**
   String get kiyafetDondur;
+
+  /// No description provided for @stilistHafizasiBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stilist Hafızası'**
+  String get stilistHafizasiBaslik;
+
+  /// No description provided for @stilistHafizasiAltBaslikNotlu.
+  ///
+  /// In tr, this message translates to:
+  /// **'{sayi} not hatırlıyor'**
+  String stilistHafizasiAltBaslikNotlu(int sayi);
+
+  /// No description provided for @stilistHafizasiAltBaslikBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz bir şey hatırlamıyor'**
+  String get stilistHafizasiAltBaslikBos;
+
+  /// No description provided for @stilistHafizasiAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stilist, sohbetlerden öğrendiklerini kalıcı not olarak saklar ve önerilerini ona göre kişiselleştirir. Notlar yalnızca bu cihazda tutulur.'**
+  String get stilistHafizasiAciklama;
+
+  /// No description provided for @stilistHafizasiNelerBiliyor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Neler hatırlıyor?'**
+  String get stilistHafizasiNelerBiliyor;
+
+  /// No description provided for @stilistHafizasiOzetBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son konuşmaların özeti'**
+  String get stilistHafizasiOzetBaslik;
+
+  /// No description provided for @stilistHafizasiBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz bir şey öğrenmedim. Sohbet ettikçe tarzını tanırım.'**
+  String get stilistHafizasiBos;
+
+  /// No description provided for @stilistHafizasiTemizle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hafızayı temizle'**
+  String get stilistHafizasiTemizle;
+
+  /// No description provided for @stilistHafizasiTemizleOnay.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stilistin seninle ilgili hatırladığı her şey silinecek. Bu işlem geri alınamaz.'**
+  String get stilistHafizasiTemizleOnay;
+
+  /// No description provided for @stilistHafizasiTemizlendi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hafıza temizlendi 🧠'**
+  String get stilistHafizasiTemizlendi;
 }
 
 class _AppLocalizationsDelegate

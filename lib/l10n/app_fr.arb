@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "L'abonnement se renouvelle automatiquement à la fin de chaque période. Annulable à tout moment.",
-  "kiyafetDondur": "Pivoter"
+  "kiyafetDondur": "Pivoter",
+  "stilistHafizasiBaslik": "Mémoire du styliste",
+  "stilistHafizasiAltBaslikNotlu": "Retient {sayi} notes",
+  "stilistHafizasiAltBaslikBos": "Ne retient rien pour l'instant",
+  "stilistHafizasiAciklama": "Le styliste enregistre sous forme de notes permanentes ce qu'il apprend dans tes conversations et personnalise ses suggestions. Les notes restent uniquement sur cet appareil.",
+  "stilistHafizasiNelerBiliyor": "Que retient-il ?",
+  "stilistHafizasiOzetBaslik": "Résumé de tes conversations récentes",
+  "stilistHafizasiBos": "Je n'ai encore rien appris. Je découvrirai ton style au fil des conversations.",
+  "stilistHafizasiTemizle": "Effacer la mémoire",
+  "stilistHafizasiTemizleOnay": "Tout ce que le styliste retient de toi sera supprimé. Cette action est irréversible.",
+  "stilistHafizasiTemizlendi": "Mémoire effacée 🧠"
 }

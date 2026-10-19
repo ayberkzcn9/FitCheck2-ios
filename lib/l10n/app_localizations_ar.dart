@@ -2812,4 +2812,39 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kiyafetDondur => 'تدوير';
+
+  @override
+  String get stilistHafizasiBaslik => 'ذاكرة المصمم';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return 'يتذكر $sayi ملاحظة';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => 'لا يتذكر شيئًا بعد';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      'يحفظ المصمم ما يتعلمه من محادثاتك كملاحظات دائمة ويخصص اقتراحاته بناءً عليها. تبقى الملاحظات على هذا الجهاز فقط.';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => 'ماذا يتذكر؟';
+
+  @override
+  String get stilistHafizasiOzetBaslik => 'ملخص محادثاتك الأخيرة';
+
+  @override
+  String get stilistHafizasiBos =>
+      'لم أتعلم شيئًا بعد. سأتعرف على أسلوبك مع كل محادثة.';
+
+  @override
+  String get stilistHafizasiTemizle => 'مسح الذاكرة';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      'سيتم حذف كل ما يتذكره المصمم عنك. لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get stilistHafizasiTemizlendi => 'تم مسح الذاكرة 🧠';
 }

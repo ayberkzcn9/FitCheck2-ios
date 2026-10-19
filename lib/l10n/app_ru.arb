@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "Подписка продлевается автоматически в конце каждого периода. Отменить можно в любое время.",
-  "kiyafetDondur": "Повернуть"
+  "kiyafetDondur": "Повернуть",
+  "stilistHafizasiBaslik": "Память стилиста",
+  "stilistHafizasiAltBaslikNotlu": "Помнит {sayi} заметок",
+  "stilistHafizasiAltBaslikBos": "Пока ничего не помнит",
+  "stilistHafizasiAciklama": "Стилист сохраняет то, что узнаёт из ваших чатов, как постоянные заметки и персонализирует советы. Заметки хранятся только на этом устройстве.",
+  "stilistHafizasiNelerBiliyor": "Что он помнит?",
+  "stilistHafizasiOzetBaslik": "Сводка последних чатов",
+  "stilistHafizasiBos": "Я пока ничего не узнал. Чем больше мы общаемся, тем лучше я знаю ваш стиль.",
+  "stilistHafizasiTemizle": "Очистить память",
+  "stilistHafizasiTemizleOnay": "Всё, что стилист помнит о вас, будет удалено. Это действие нельзя отменить.",
+  "stilistHafizasiTemizlendi": "Память очищена 🧠"
 }

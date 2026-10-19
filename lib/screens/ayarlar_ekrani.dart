@@ -17,6 +17,8 @@ import '../widgets/dil_secim_modal.dart';
 import '../widgets/modals/gizlilik_politikasi_modal.dart';
 import '../widgets/modals/hesabi_sil_modal.dart';
 import '../widgets/modals/stil_tercihleri_modal.dart';
+import '../widgets/modals/stilist_hafizasi_modal.dart';
+import '../services/stilist_hafizasi.dart';
 import 'giris_ekrani.dart';
 
 // DIŞARI AKTARILAN DİYALOGLARIN İMPORTU
@@ -62,6 +64,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
   // 🤖 YAPAY ZEKÂ
   String _aiStilistKisiligi = 'Samimi / Arkadaş Canlısı';
   bool _sikiRenkUyumModu = true;
+
+  // 🧠 STİLİST HAFIZASI (kalıcı öğrenme)
+  bool _stilistHafizasiAcik = true;
+  int _stilistHafizaNotSayisi = 0;
 
   // 🌦️ LOKASYON & BİRİMLER
   String _sicaklikBirimi = '°C';
@@ -322,6 +328,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
   Future<void> _bilgileriYukle() async {
     final prefs = await SharedPreferences.getInstance();
+    final hafiza = StilistHafizasi();
+    await hafiza.yukle();
     if (!mounted) return;
 
     setState(() {
@@ -356,7 +364,27 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       _varsayilanSehir =
           prefs.getString('varsayilan_sehir') ?? 'Otomatik (GPS)';
       _analitikIzinli = AnalyticsServisi.veriToplamaIzinli;
+      _stilistHafizasiAcik = hafiza.acik;
+      _stilistHafizaNotSayisi = hafiza.notlar.length;
     });
+  }
+
+  /// Stilist hafızası ekranından dönünce sayaç/anahtar durumunu tazeler.
+  void _stilistHafizasiDurumunuYenile() {
+    final hafiza = StilistHafizasi();
+    if (!mounted) return;
+    setState(() {
+      _stilistHafizasiAcik = hafiza.acik;
+      _stilistHafizaNotSayisi = hafiza.notlar.length;
+    });
+  }
+
+  /// Hafızayı aç/kapat. Kapalıyken yeni bilgi öğrenilmez ve mevcut notlar
+  /// AI'ya gönderilmez (notlar silinmez, kullanıcı isterse modalden siler).
+  Future<void> _stilistHafizasiAnahtariniDegistir(bool deger) async {
+    HapticFeedback.lightImpact();
+    setState(() => _stilistHafizasiAcik = deger);
+    await StilistHafizasi().acikAyarla(deger);
   }
 
   Future<void> _ayarKaydet(String key, dynamic value) async {
@@ -1190,6 +1218,45 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         _sikiRenkUyumModu = val;
                       });
                       _ayarKaydet('siki_renk_uyumu', val);
+                    },
+                  ),
+                  Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.4)),
+                  ListTile(
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    leading: _buildIconContainer(
+                      Icons.psychology_rounded,
+                      iconColor: AppAccents.styleist,
+                    ),
+                    title: Text(
+                      l10n.stilistHafizasiBaslik,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 14,
+                          color: colors.onSurface),
+                    ),
+                    subtitle: Text(
+                      (_stilistHafizasiAcik && _stilistHafizaNotSayisi > 0)
+                          ? l10n.stilistHafizasiAltBaslikNotlu(
+                              _stilistHafizaNotSayisi)
+                          : l10n.stilistHafizasiAltBaslikBos,
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: colors.onSurfaceVariant,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    trailing: Switch.adaptive(
+                      value: _stilistHafizasiAcik,
+                      onChanged: _stilistHafizasiAnahtariniDegistir,
+                    ),
+                    onTap: () {
+                      HapticFeedback.selectionClick();
+                      StilistHafizasiModal.goster(
+                        context: context,
+                        onDegisti: _stilistHafizasiDurumunuYenile,
+                      );
                     },
                   ),
                 ],

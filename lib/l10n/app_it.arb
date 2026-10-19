@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "L'abbonamento si rinnova automaticamente alla fine di ogni periodo. Puoi annullare quando vuoi.",
-  "kiyafetDondur": "Ruota"
+  "kiyafetDondur": "Ruota",
+  "stilistHafizasiBaslik": "Memoria dello stilista",
+  "stilistHafizasiAltBaslikNotlu": "Ricorda {sayi} note",
+  "stilistHafizasiAltBaslikBos": "Non ricorda ancora nulla",
+  "stilistHafizasiAciklama": "Lo stilista salva come note permanenti ciò che impara dalle tue chat e personalizza i suggerimenti. Le note restano solo su questo dispositivo.",
+  "stilistHafizasiNelerBiliyor": "Cosa ricorda?",
+  "stilistHafizasiOzetBaslik": "Riepilogo delle tue chat recenti",
+  "stilistHafizasiBos": "Non ho ancora imparato nulla. Conoscerò il tuo stile chiacchierando.",
+  "stilistHafizasiTemizle": "Cancella memoria",
+  "stilistHafizasiTemizleOnay": "Tutto ciò che lo stilista ricorda di te verrà eliminato. L'operazione non è reversibile.",
+  "stilistHafizasiTemizlendi": "Memoria cancellata 🧠"
 }

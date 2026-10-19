@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "يتجدد الاشتراك تلقائيًا في نهاية كل فترة. يمكنك الإلغاء في أي وقت.",
-  "kiyafetDondur": "تدوير"
+  "kiyafetDondur": "تدوير",
+  "stilistHafizasiBaslik": "ذاكرة المصمم",
+  "stilistHafizasiAltBaslikNotlu": "يتذكر {sayi} ملاحظة",
+  "stilistHafizasiAltBaslikBos": "لا يتذكر شيئًا بعد",
+  "stilistHafizasiAciklama": "يحفظ المصمم ما يتعلمه من محادثاتك كملاحظات دائمة ويخصص اقتراحاته بناءً عليها. تبقى الملاحظات على هذا الجهاز فقط.",
+  "stilistHafizasiNelerBiliyor": "ماذا يتذكر؟",
+  "stilistHafizasiOzetBaslik": "ملخص محادثاتك الأخيرة",
+  "stilistHafizasiBos": "لم أتعلم شيئًا بعد. سأتعرف على أسلوبك مع كل محادثة.",
+  "stilistHafizasiTemizle": "مسح الذاكرة",
+  "stilistHafizasiTemizleOnay": "سيتم حذف كل ما يتذكره المصمم عنك. لا يمكن التراجع عن هذا الإجراء.",
+  "stilistHafizasiTemizlendi": "تم مسح الذاكرة 🧠"
 }

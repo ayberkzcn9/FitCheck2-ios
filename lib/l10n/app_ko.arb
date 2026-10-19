@@ -910,5 +910,15 @@
     }
   },
   "premiumYenilemeNotu": "구독은 각 기간 종료 시 자동으로 갱신됩니다. 언제든지 해지할 수 있습니다.",
-  "kiyafetDondur": "회전"
+  "kiyafetDondur": "회전",
+  "stilistHafizasiBaslik": "스타일리스트 기억",
+  "stilistHafizasiAltBaslikNotlu": "메모 {sayi}개 기억 중",
+  "stilistHafizasiAltBaslikBos": "아직 기억하는 내용이 없어요",
+  "stilistHafizasiAciklama": "스타일리스트는 대화에서 배운 내용을 장기 메모로 저장하고 이를 바탕으로 제안을 개인화합니다. 메모는 이 기기에만 저장됩니다.",
+  "stilistHafizasiNelerBiliyor": "무엇을 기억하나요?",
+  "stilistHafizasiOzetBaslik": "최근 대화 요약",
+  "stilistHafizasiBos": "아직 배운 내용이 없어요. 대화할수록 스타일을 알아갑니다.",
+  "stilistHafizasiTemizle": "기억 삭제",
+  "stilistHafizasiTemizleOnay": "스타일리스트가 당신에 대해 기억한 모든 내용이 삭제됩니다. 되돌릴 수 없습니다.",
+  "stilistHafizasiTemizlendi": "기억이 삭제되었습니다 🧠"
 }

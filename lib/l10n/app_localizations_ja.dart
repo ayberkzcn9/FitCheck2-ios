@@ -2709,4 +2709,38 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get kiyafetDondur => '回転';
+
+  @override
+  String get stilistHafizasiBaslik => 'スタイリストの記憶';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return '$sayi 件のメモを記憶';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => 'まだ何も覚えていません';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      'スタイリストはチャットから学んだ内容を長期メモとして保存し、提案をパーソナライズします。メモはこの端末にのみ保存されます。';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => '何を覚えている？';
+
+  @override
+  String get stilistHafizasiOzetBaslik => '最近の会話の要約';
+
+  @override
+  String get stilistHafizasiBos => 'まだ何も学んでいません。会話するほどあなたのスタイルを理解します。';
+
+  @override
+  String get stilistHafizasiTemizle => '記憶を消去';
+
+  @override
+  String get stilistHafizasiTemizleOnay =>
+      'スタイリストがあなたについて記憶した内容はすべて削除されます。元に戻せません。';
+
+  @override
+  String get stilistHafizasiTemizlendi => '記憶を消去しました 🧠';
 }

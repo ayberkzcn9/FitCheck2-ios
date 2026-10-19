@@ -2668,4 +2668,37 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get kiyafetDondur => '旋转';
+
+  @override
+  String get stilistHafizasiBaslik => '造型师记忆';
+
+  @override
+  String stilistHafizasiAltBaslikNotlu(int sayi) {
+    return '已记住 $sayi 条';
+  }
+
+  @override
+  String get stilistHafizasiAltBaslikBos => '还没有记住任何内容';
+
+  @override
+  String get stilistHafizasiAciklama =>
+      '造型师会把聊天中学到的内容保存为长期笔记，并据此个性化建议。笔记只保存在本机。';
+
+  @override
+  String get stilistHafizasiNelerBiliyor => '记住了什么？';
+
+  @override
+  String get stilistHafizasiOzetBaslik => '最近对话摘要';
+
+  @override
+  String get stilistHafizasiBos => '我还没有学到任何内容。多聊几次就能了解你的风格。';
+
+  @override
+  String get stilistHafizasiTemizle => '清除记忆';
+
+  @override
+  String get stilistHafizasiTemizleOnay => '造型师关于你的所有记忆都将被删除，此操作无法撤销。';
+
+  @override
+  String get stilistHafizasiTemizlendi => '记忆已清除 🧠';
 }
