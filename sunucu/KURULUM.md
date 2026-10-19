@@ -172,6 +172,28 @@ u2net_cloth_seg aynı hatayı yaptı; yalnızca **isnet** doğru kesti. Hız şi
 5,1 sn'ye indiği için isnet canlıya alındı. Hız yeniden sorun olursa geri dönüş
 tek komut; kalıcı çözüm daha fazla CPU (ücretli) veya daha ucuz bir sağlayıcı.
 
+### Otomatik maske denetimi (sunucu v2.2, 19.10.2026)
+
+isnet'in zayıf noktası: **koyu kıyafet + koyu zemin** (ör. siyah zeminde bordo
+pantolon). Bu durumda kıyafeti arka plan sanıp maskeyi parçalıyor; yalnızca açık
+renkli çizgiler kalıyor. Tersine silueta da açık kıyafette bacak arasındaki
+zemini bırakıyor. Tek bir model her fotoğrafta doğru değil.
+
+Sunucu bu yüzden her maskenin **doluluk** oranını ölçer (opak piksel / maskenin
+sınır kutusu):
+
+| Fotoğraf | isnet doluluk | Sonuç |
+|---|---|---|
+| krem pantolon | 0,58 | isnet |
+| **bordo pantolon** | **0,07** | **silueta'ya düşüldü** (0,69) |
+| beyaz pantolon / sneaker / tişört | 0,49-0,66 | isnet |
+
+Doluluk `BG_MIN_FILL` (varsayılan 0,30) altındaysa yedek model
+(`BG_FALLBACK_MODEL=silueta`) çalışır; yedeğin doluluğu isnet'in 1,3 katından
+fazlaysa o kullanılır. Ek maliyet yalnızca bu fotoğraflarda ~1 sn (6,2 sn);
+normal fotoğraflar 5,1 sn'de kalır. Yanıt başlığı `X-BG-Model` hangi modelin
+kullanıldığını söyler. Kapatmak için: `Environment=BG_FALLBACK_MODEL=`.
+
 `bria-rmbg` sunucuda indirilmiş durumda ama **ticari kullanıma kapalı lisanslı**;
 canlıda kullanılmamalı.
 

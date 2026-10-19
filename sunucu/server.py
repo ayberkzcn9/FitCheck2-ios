@@ -5,14 +5,15 @@ POST /remove-bg  → görsel alır, arka planı silinmiş PNG döner (X-API-Key 
 GET  /health     → sunucu ayakta mı (model, doluluk, sürüm).
 
 Neden bu ayarlar:
-  • Model `u2net` (VARSAYILAN): girdiyi 320x320'de işler, 1 OCPU'da ~3,6 sn.
-    Kalite/hız dengesi bilerek hız tarafında seçildi.
-  • Alternatif `isnet-general-use` (IS-Net/DIS): girdiyi 1024x1024'te işler ve
-    belirgin şekilde daha kalitelidir (ince detaylar: askı, düğme, kol ucu;
-    beyaz/açık renkli kıyafetler; yarı saydam kalan bölgeler) — ancak aynı
-    sunucuda ~10 sn sürer. Denenmiş, ölçülmüş ve hız nedeniyle geri alınmıştır.
-    Tek satırla açılır:  Environment=BG_MODEL=isnet-general-use
-    (Ölçümler ve karşılaştırma: KURULUM.md)
+  • Model `isnet-general-use` (VARSAYILAN, canlı): girdiyi 1024x1024'te işler.
+    320 px'lik u2net ailesine göre belirgin şekilde daha temiz keser
+    (bacak arasındaki zemin, ince detaylar). 2 OCPU'da ~5,1 sn.
+  • Yedek model `silueta`: isnet koyu kıyafet + koyu zeminde maskeyi
+    parçalayabiliyor (ör. bordo pantolonun yalnızca açık renkli çizgileri
+    kalıyor). Böyle bir durumda maske "doluluk" oranıyla yakalanır
+    (opak piksel / sınır kutusu; sağlıklı maske ≥ 0,5, parçalanmış maske
+    < 0,1) ve silueta'ya düşülür. Yedek yalnızca gerektiğinde çalışır
+    (+1 sn); normal fotoğraflarda ek maliyet yok.
   • `post_process_mask` varsayılan KAPALI: rembg'nin morfolojik temizliği
     alfayı 0/255'e indirger (kenarlar testere dişli olur). Gerekirse
     BG_POST_PROCESS=1 ile açılır.
@@ -30,6 +31,8 @@ Ortam değişkenleri:
     BG_POST_PROCESS     1 → morfolojik maske temizliği (varsayılan 0)
     BG_MAX_EDGE         Girdi en uzun kenar sınırı (varsayılan 1400)
     BG_CONCURRENCY      Aynı anda işlenecek istek  (varsayılan 1)
+    BG_FALLBACK_MODEL   Yedek model (varsayılan silueta; boş bırakılırsa kapalı)
+    BG_MIN_FILL         Yedek modele düşme eşiği   (varsayılan 0.30)
 """
 
 import io
@@ -37,6 +40,7 @@ import os
 import threading
 from typing import Optional
 
+import numpy as np
 from fastapi import FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.responses import Response
 from PIL import Image, ImageOps
@@ -54,12 +58,50 @@ MODEL = os.getenv("BG_MODEL", "u2net")
 POST_PROCESS = os.getenv("BG_POST_PROCESS", "0") not in ("0", "false", "False")
 MAX_EDGE = int(os.getenv("BG_MAX_EDGE", "1400"))
 CONCURRENCY = max(1, int(os.getenv("BG_CONCURRENCY", "1")))
-SURUM = "2.1"
+
+# Yedek model: ana model maskeyi parçaladığında (ör. koyu kıyafet + koyu zemin
+# üzerinde isnet) devreye girer. Boş bırakılırsa yedek kapalıdır.
+FALLBACK_MODEL = os.getenv("BG_FALLBACK_MODEL", "silueta").strip()
+MIN_FILL = float(os.getenv("BG_MIN_FILL", "0.30"))
+
+SURUM = "2.2"
 
 app = FastAPI(title="FitCheck Background Remover", version=SURUM)
 
 # Modeli süreç başında bir kez yükle (ilk istekte gecikme olmasın).
 _session = new_session(MODEL)
+
+# Yedek model yalnızca gerektiğinde yüklenir (bellek 12 GB, yükleme ~0,3 sn).
+_yedek_session = None
+_yedek_kilidi = threading.Lock()
+
+
+def _yedek_oturum():
+    global _yedek_session
+    if _yedek_session is None:
+        with _yedek_kilidi:
+            if _yedek_session is None:
+                _yedek_session = new_session(FALLBACK_MODEL)
+    return _yedek_session
+
+
+def _doluluk(kesim: Image.Image) -> float:
+    """Maskenin kendi sınır kutusunu ne kadar doldurduğu (0-1).
+
+    Neden: model bir kıyafeti tanıyamadığında maskeyi parçalara böler (ör.
+    koyu kıyafetin yalnızca açık renkli dikişleri kalır). Sağlıklı bir insan
+    maskesi kutunun yarısından fazlasını doldurur; parçalanmış maske 0,1'in
+    altına düşer. Bu sinyal, sonucun bozuk olduğunu anlamanın en ucuz yolu.
+    """
+    alfa = np.asarray(kesim.convert("RGBA"))[:, :, 3]
+    opak = alfa > 200
+    sayi = int(opak.sum())
+    if sayi == 0:
+        return 0.0
+    ys, xs = np.nonzero(opak)
+    alan = int(ys.max() - ys.min() + 1) * int(xs.max() - xs.min() + 1)
+    return sayi / alan if alan else 0.0
+
 
 # Aynı anda en fazla CONCURRENCY istek işlenir; fazlası sırada bekler.
 _isl_kilidi = threading.Semaphore(CONCURRENCY)
@@ -85,8 +127,11 @@ def _kucult(img: Image.Image) -> Image.Image:
     return img
 
 
-def _arka_plani_sil(input_bytes: bytes) -> bytes:
-    """Senkron (CPU yoğun) iş: görseli çözer, arka planı siler, PNG döner."""
+def _arka_plani_sil(input_bytes: bytes):
+    """Senkron (CPU yoğun) iş: görseli çözer, arka planı siler, PNG döner.
+
+    Dönüş: (png_baytlari, kullanilan_model)
+    """
     img = Image.open(io.BytesIO(input_bytes))
     # EXIF yönünü piksellere işle (telefon fotoğrafları yan görünmesin);
     # rembg de aynı işlemi yapar, burada görseli kendimiz açtığımız için
@@ -97,10 +142,33 @@ def _arka_plani_sil(input_bytes: bytes) -> bytes:
     img = _kucult(img)
 
     kesim = remove(img, session=_session, post_process_mask=POST_PROCESS)
+    kullanilan = MODEL
+
+    # Ana model maskeyi parçaladıysa (koyu kıyafet + koyu zemin gibi zor
+    # durumlarda görülür) yedek modeli dene ve daha iyi olanı kullan.
+    if FALLBACK_MODEL and FALLBACK_MODEL != MODEL:
+        doluluk = _doluluk(kesim)
+        if doluluk < MIN_FILL:
+            try:
+                yedek = remove(
+                    img.copy(), session=_yedek_oturum(),
+                    post_process_mask=POST_PROCESS,
+                )
+                yedek_doluluk = _doluluk(yedek)
+                print(
+                    "maske parcali (doluluk %.3f) -> yedek %s (doluluk %.3f)"
+                    % (doluluk, FALLBACK_MODEL, yedek_doluluk),
+                    flush=True,
+                )
+                if yedek_doluluk > doluluk * 1.3:
+                    kesim = yedek
+                    kullanilan = FALLBACK_MODEL
+            except Exception as e:  # yedek model yoksa isteği bozmayız
+                print("yedek model calismadi: %s" % e, flush=True)
 
     cikis = io.BytesIO()
     kesim.save(cikis, "PNG")
-    return cikis.getvalue()
+    return cikis.getvalue(), kullanilan
 
 
 # ---------------------------------------------------------------------------
@@ -118,6 +186,8 @@ def health():
         "post_process": POST_PROCESS,
         "max_edge": MAX_EDGE,
         "bekleyen_istek": bekleyen,
+        "yedek_model": FALLBACK_MODEL or None,
+        "min_fill": MIN_FILL,
     }
 
 
@@ -141,12 +211,20 @@ async def remove_bg(
             # CPU yoğun işi olay döngüsünden çıkar: sunucu bu sırada
             # /health'e ve yeni isteklere cevap verebilir.
             with _isl_kilidi:
-                cikti = await run_in_threadpool(_arka_plani_sil, input_bytes)
+                cikti, model = await run_in_threadpool(
+                    _arka_plani_sil, input_bytes
+                )
         finally:
             with _bekleyen_kilidi:
                 _bekleyen -= 1
 
-        return Response(content=cikti, media_type="image/png")
+        # Hangi modelin kullanıldığı istemciye bildirilir (teşhis için;
+        # eski istemciler bu başlığı yok sayar).
+        return Response(
+            content=cikti,
+            media_type="image/png",
+            headers={"X-BG-Model": model},
+        )
     except HTTPException:
         raise
     except Exception as e:
