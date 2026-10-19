@@ -140,3 +140,45 @@ sudo systemctl restart fitcheck-bg
   `/health` ve yeni bağlantılar kilitlenmiyor, istekler sıraya giriyor);
   girdi boyutu sınırı (`BG_MAX_EDGE`); EXIF yönü açıkça uygulanıyor.
 - **1.0** — İlk sürüm: FastAPI + rembg `u2net`, `X-API-Key` doğrulaması.
+
+## Model değiştirme (tek komut)
+
+Canlı model **`silueta`** (1 OCPU'da ~1,7 sn; u2net'ten hızlı ve açık renkli
+kıyafetlerde daha temiz). Modeli değiştirip ölçmek için:
+
+```bash
+bash /home/opc/model_degistir.sh                    # mevcut durumu raporla + ölç
+bash /home/opc/model_degistir.sh silueta            # 1 OCPU: ~1,7 sn (canlı)
+bash /home/opc/model_degistir.sh isnet-general-use  # 1 OCPU: ~10 sn, 2 OCPU: ~5-6 sn
+bash /home/opc/model_degistir.sh u2net              # eski model
+```
+
+Ölçümler (gerçek `/remove-bg`, `/tmp/bgtest` fotoğrafları, 1 OCPU):
+
+| Model | Süre | Not |
+|---|---|---|
+| u2net | 3,7-4,4 sn | arka plandan parça bırakıyor, beyaz kıyafetin bir bölümünü kesiyor |
+| **silueta** | **1,6-1,8 sn** | u2net'ten temiz; canlıda bu çalışıyor |
+| isnet-general-use | 10,0-10,3 sn | en temiz maske; ONNX girdisi sabit 1024x1024, küçültülemiyor |
+| birefnet-general-lite | ~130 sn | kullanılamaz |
+| u2net_cloth_seg | ~21 sn | parçalı sonuç, kıyafet için işe yaramaz |
+
+`bria-rmbg` sunucuda indirilmiş durumda ama **ticari kullanıma kapalı lisanslı**;
+canlıda kullanılmamalı.
+
+## 2 OCPU'ya çıkarma (ücretsiz kota)
+
+2026'da Always Free Ampere A1 kotası 4 OCPU/24 GB'tan **2 OCPU/12 GB**'a
+indirildi; 4 OCPU artık ücretli (~25-28 $/ay). 2 OCPU'da isnet ~5-6 sn'ye iner.
+
+1. Genel IP'yi not et (uygulamada sabit: `BG_REMOVE_BASE_URL` + koddaki yedek).
+2. Sakin bir saatte: Console -> Compute -> Instances -> instance -> **Stop**.
+3. Actions -> **Edit**: Ampere A1 Flex, OCPU **2**, Memory **12 GB** -> Save.
+   ("Out of host capacity" hatası olursa tekrar dene / farklı fault domain dene.)
+4. **Start** ve genel IP'nin değişmediğini doğrula (Oracle dokümanı: durdurup
+   başlatmak sabit IP'yi korur).
+5. `bash /home/opc/model_degistir.sh isnet-general-use` ile isnet'e geç ve ölç;
+   8 sn'yi geçerse `bash /home/opc/model_degistir.sh silueta` ile geri dön.
+
+Durdurma sırasında arka plan silme çalışmaz: eski sürümler fotoğrafı sessizce
+arka planıyla kaydeder, 1.0.30+ sürümler kullanıcıya sorar.
