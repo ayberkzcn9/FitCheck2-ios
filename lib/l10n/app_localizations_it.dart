@@ -2996,4 +2996,143 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get bugunRafIpucu => 'Tocca per aprire nel guardaroba';
+
+  @override
+  String get duelloSekmesi => 'Duello';
+
+  @override
+  String get duelloBaslik => 'Duello di outfit';
+
+  @override
+  String get duelloAltBaslik =>
+      'Scegli uno dei due outfit e metti alla prova il tuo occhio.';
+
+  @override
+  String get duelloBaslat => 'Inizia il duello';
+
+  @override
+  String get duelloNasilOynanir => 'Come si gioca';
+
+  @override
+  String get duelloKural1 => 'Ogni turno mostra due outfit.';
+
+  @override
+  String get duelloKural2 => 'Scegli quello indicato dalla domanda.';
+
+  @override
+  String get duelloKural3 => 'La scelta giusta dà punti e serie.';
+
+  @override
+  String get duelloEnIyi => 'Migliore';
+
+  @override
+  String get duelloSeri => 'Serie';
+
+  @override
+  String duelloGunSerisi(int gun) {
+    return '$gun giorni';
+  }
+
+  @override
+  String get duelloSeviye => 'Livello';
+
+  @override
+  String duelloSeviyeDegeri(int seviye) {
+    return 'Livello $seviye';
+  }
+
+  @override
+  String duelloXp(int xp) {
+    return '$xp XP';
+  }
+
+  @override
+  String duelloTur(int tur, int toplam) {
+    return 'Turno $tur/$toplam';
+  }
+
+  @override
+  String get duelloOlcuRenk => 'Quale ha colori più armoniosi?';
+
+  @override
+  String get duelloOlcuHava => 'Quale è più adatto al meteo di oggi?';
+
+  @override
+  String get duelloDokun => 'Tocca un outfit';
+
+  @override
+  String get duelloDogru => 'Giusto!';
+
+  @override
+  String get duelloYanlis => 'Non ci siamo';
+
+  @override
+  String get duelloDevam => 'Continua';
+
+  @override
+  String get duelloSonuc => 'Vedi il risultato';
+
+  @override
+  String get duelloBitti => 'Duello finito';
+
+  @override
+  String duelloSkor(int dogru, int toplam) {
+    return '$dogru/$toplam corrette';
+  }
+
+  @override
+  String get duelloYeniden => 'Gioca ancora';
+
+  @override
+  String get duelloBugune => 'Torna a Oggi';
+
+  @override
+  String duelloEnIyiSeri(int seri) {
+    return 'Serie migliore: $seri';
+  }
+
+  @override
+  String get duelloPaletNotu =>
+      'Questo turno usa cartelle colore. Aggiungi capi al guardaroba e i duelli useranno i tuoi vestiti.';
+
+  @override
+  String get duelloDolapEkle => 'Aggiungi capi';
+
+  @override
+  String get duelloBugunOynadi =>
+      'Hai giocato oggi. Torna domani per continuare la serie.';
+
+  @override
+  String get duelloSebepNotr => 'I toni neutri e terrosi si bilanciano.';
+
+  @override
+  String get duelloSebepMonokrom =>
+      'Restare in una sola famiglia di colori crea coerenza.';
+
+  @override
+  String get duelloSebepAnalog => 'Toni vicini creano una transizione morbida.';
+
+  @override
+  String get duelloSebepVurgu =>
+      'Un solo colore d\'accento su una base neutra.';
+
+  @override
+  String get duelloSebepZit => 'Colori opposti usati in equilibrio.';
+
+  @override
+  String get duelloSebepDagink =>
+      'Due colori lontani senza nulla che li unisca.';
+
+  @override
+  String get duelloSebepCokRenk => 'Tre colori vivaci competono tra loro.';
+
+  @override
+  String get duelloSebepHavaUygun =>
+      'I capi sono adatti alla temperatura di oggi.';
+
+  @override
+  String get duelloSebepHavaAgir => 'Troppo pesante per questo meteo.';
+
+  @override
+  String get duelloSebepHavaHafif => 'Troppo leggero per questo meteo.';
 }

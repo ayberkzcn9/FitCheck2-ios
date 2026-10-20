@@ -2975,4 +2975,139 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get bugunRafIpucu => 'Dolabında görmek için dokun';
+
+  @override
+  String get duelloSekmesi => 'Düello';
+
+  @override
+  String get duelloBaslik => 'Kombin Düellosu';
+
+  @override
+  String get duelloAltBaslik =>
+      'İki kombinden birini seç, stil gözünü test et.';
+
+  @override
+  String get duelloBaslat => 'Düelloya başla';
+
+  @override
+  String get duelloNasilOynanir => 'Nasıl oynanır?';
+
+  @override
+  String get duelloKural1 => 'Her turda iki kombin görürsün.';
+
+  @override
+  String get duelloKural2 => 'Soruya göre doğru olanı seç.';
+
+  @override
+  String get duelloKural3 => 'Doğru seçim seri ve puan kazandırır.';
+
+  @override
+  String get duelloEnIyi => 'En iyi';
+
+  @override
+  String get duelloSeri => 'Seri';
+
+  @override
+  String duelloGunSerisi(int gun) {
+    return '$gun gün';
+  }
+
+  @override
+  String get duelloSeviye => 'Seviye';
+
+  @override
+  String duelloSeviyeDegeri(int seviye) {
+    return 'Seviye $seviye';
+  }
+
+  @override
+  String duelloXp(int xp) {
+    return '$xp XP';
+  }
+
+  @override
+  String duelloTur(int tur, int toplam) {
+    return 'Tur $tur/$toplam';
+  }
+
+  @override
+  String get duelloOlcuRenk => 'Hangisinin renkleri daha uyumlu?';
+
+  @override
+  String get duelloOlcuHava => 'Hangisi bugünkü havaya daha uygun?';
+
+  @override
+  String get duelloDokun => 'Bir kombine dokun';
+
+  @override
+  String get duelloDogru => 'Doğru!';
+
+  @override
+  String get duelloYanlis => 'Olmadı';
+
+  @override
+  String get duelloDevam => 'Devam';
+
+  @override
+  String get duelloSonuc => 'Sonucu gör';
+
+  @override
+  String get duelloBitti => 'Düello bitti';
+
+  @override
+  String duelloSkor(int dogru, int toplam) {
+    return '$dogru/$toplam doğru';
+  }
+
+  @override
+  String get duelloYeniden => 'Tekrar oyna';
+
+  @override
+  String get duelloBugune => 'Bugün\'e dön';
+
+  @override
+  String duelloEnIyiSeri(int seri) {
+    return 'En iyi seri: $seri';
+  }
+
+  @override
+  String get duelloPaletNotu =>
+      'Bu turda renk kartları var. Dolabına parça ekledikçe düellolar kendi kıyafetlerinle oynanır.';
+
+  @override
+  String get duelloDolapEkle => 'Dolaba parça ekle';
+
+  @override
+  String get duelloBugunOynadi => 'Bugün oynadın. Yarın seriyi sürdür.';
+
+  @override
+  String get duelloSebepNotr => 'Nötr ve toprak tonlar birbirini dengeliyor.';
+
+  @override
+  String get duelloSebepMonokrom =>
+      'Tek renk ailesinde kalarak bütünlük sağlıyor.';
+
+  @override
+  String get duelloSebepAnalog => 'Yakın tonlar yumuşak bir geçiş oluşturuyor.';
+
+  @override
+  String get duelloSebepVurgu => 'Nötr bir zeminde tek vurgu rengi var.';
+
+  @override
+  String get duelloSebepZit => 'Karşıt renkler dengeli kullanılmış.';
+
+  @override
+  String get duelloSebepDagink => 'İki uzak renk arasında köprü yok.';
+
+  @override
+  String get duelloSebepCokRenk => 'Üç ayrı canlı renk birbiriyle yarışıyor.';
+
+  @override
+  String get duelloSebepHavaUygun => 'Parçalar bugünkü sıcaklığa uygun.';
+
+  @override
+  String get duelloSebepHavaAgir => 'Kalın parçalar bu hava için fazla.';
+
+  @override
+  String get duelloSebepHavaHafif => 'İnce parçalar bu hava için yetersiz.';
 }

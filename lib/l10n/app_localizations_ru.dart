@@ -2974,4 +2974,141 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get bugunRafIpucu => 'Нажмите, чтобы открыть в гардеробе';
+
+  @override
+  String get duelloSekmesi => 'Дуэль';
+
+  @override
+  String get duelloBaslik => 'Дуэль образов';
+
+  @override
+  String get duelloAltBaslik =>
+      'Выбери один из двух образов и проверь свой вкус.';
+
+  @override
+  String get duelloBaslat => 'Начать дуэль';
+
+  @override
+  String get duelloNasilOynanir => 'Как играть';
+
+  @override
+  String get duelloKural1 => 'В каждом раунде два образа.';
+
+  @override
+  String get duelloKural2 => 'Выбери тот, о котором спрашивают.';
+
+  @override
+  String get duelloKural3 => 'Верный выбор даёт очки и серию.';
+
+  @override
+  String get duelloEnIyi => 'Лучший';
+
+  @override
+  String get duelloSeri => 'Серия';
+
+  @override
+  String duelloGunSerisi(int gun) {
+    return '$gun дн.';
+  }
+
+  @override
+  String get duelloSeviye => 'Уровень';
+
+  @override
+  String duelloSeviyeDegeri(int seviye) {
+    return 'Уровень $seviye';
+  }
+
+  @override
+  String duelloXp(int xp) {
+    return '$xp XP';
+  }
+
+  @override
+  String duelloTur(int tur, int toplam) {
+    return 'Раунд $tur/$toplam';
+  }
+
+  @override
+  String get duelloOlcuRenk => 'У какого образа лучше сочетание цветов?';
+
+  @override
+  String get duelloOlcuHava => 'Какой образ подходит к погоде сегодня?';
+
+  @override
+  String get duelloDokun => 'Нажми на образ';
+
+  @override
+  String get duelloDogru => 'Верно!';
+
+  @override
+  String get duelloYanlis => 'Почти';
+
+  @override
+  String get duelloDevam => 'Продолжить';
+
+  @override
+  String get duelloSonuc => 'Смотреть результат';
+
+  @override
+  String get duelloBitti => 'Дуэль окончена';
+
+  @override
+  String duelloSkor(int dogru, int toplam) {
+    return '$dogru/$toplam верно';
+  }
+
+  @override
+  String get duelloYeniden => 'Играть снова';
+
+  @override
+  String get duelloBugune => 'Вернуться к «Сегодня»';
+
+  @override
+  String duelloEnIyiSeri(int seri) {
+    return 'Лучшая серия: $seri';
+  }
+
+  @override
+  String get duelloPaletNotu =>
+      'В этом раунде карточки цветов. Добавь вещи в гардероб — и дуэли будут с твоей одеждой.';
+
+  @override
+  String get duelloDolapEkle => 'Добавить вещи';
+
+  @override
+  String get duelloBugunOynadi =>
+      'Сегодня ты уже играл. Вернись завтра, чтобы продолжить серию.';
+
+  @override
+  String get duelloSebepNotr =>
+      'Нейтральные и землистые тона уравновешивают друг друга.';
+
+  @override
+  String get duelloSebepMonokrom => 'Одна цветовая гамма создаёт цельность.';
+
+  @override
+  String get duelloSebepAnalog => 'Близкие тона дают мягкий переход.';
+
+  @override
+  String get duelloSebepVurgu => 'Один акцентный цвет на нейтральной основе.';
+
+  @override
+  String get duelloSebepZit =>
+      'Противоположные цвета использованы сбалансированно.';
+
+  @override
+  String get duelloSebepDagink => 'Два далёких цвета ничем не связаны.';
+
+  @override
+  String get duelloSebepCokRenk => 'Три ярких цвета спорят друг с другом.';
+
+  @override
+  String get duelloSebepHavaUygun => 'Вещи подходят к сегодняшней температуре.';
+
+  @override
+  String get duelloSebepHavaAgir => 'Слишком тепло для такой погоды.';
+
+  @override
+  String get duelloSebepHavaHafif => 'Слишком легко для такой погоды.';
 }

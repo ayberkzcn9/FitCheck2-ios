@@ -2953,4 +2953,137 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get bugunRafIpucu => 'اضغط لفتحها في خزانتك';
+
+  @override
+  String get duelloSekmesi => 'مبارزة';
+
+  @override
+  String get duelloBaslik => 'مبارزة الإطلالات';
+
+  @override
+  String get duelloAltBaslik => 'اختر إطلالة من اثنتين واختبر ذوقك.';
+
+  @override
+  String get duelloBaslat => 'ابدأ المبارزة';
+
+  @override
+  String get duelloNasilOynanir => 'كيف تلعب';
+
+  @override
+  String get duelloKural1 => 'كل جولة تعرض إطلالتين.';
+
+  @override
+  String get duelloKural2 => 'اختر الإطلالة التي يطلبها السؤال.';
+
+  @override
+  String get duelloKural3 => 'الاختيار الصحيح يمنحك نقاطًا وسلسلة.';
+
+  @override
+  String get duelloEnIyi => 'الأفضل';
+
+  @override
+  String get duelloSeri => 'السلسلة';
+
+  @override
+  String duelloGunSerisi(int gun) {
+    return '$gun أيام';
+  }
+
+  @override
+  String get duelloSeviye => 'المستوى';
+
+  @override
+  String duelloSeviyeDegeri(int seviye) {
+    return 'المستوى $seviye';
+  }
+
+  @override
+  String duelloXp(int xp) {
+    return '$xp XP';
+  }
+
+  @override
+  String duelloTur(int tur, int toplam) {
+    return 'الجولة $tur/$toplam';
+  }
+
+  @override
+  String get duelloOlcuRenk => 'أي إطلالة تناسق ألوانها أفضل؟';
+
+  @override
+  String get duelloOlcuHava => 'أي إطلالة تناسب طقس اليوم؟';
+
+  @override
+  String get duelloDokun => 'اضغط على إطلالة';
+
+  @override
+  String get duelloDogru => 'صحيح!';
+
+  @override
+  String get duelloYanlis => 'ليس تمامًا';
+
+  @override
+  String get duelloDevam => 'متابعة';
+
+  @override
+  String get duelloSonuc => 'عرض النتيجة';
+
+  @override
+  String get duelloBitti => 'انتهت المبارزة';
+
+  @override
+  String duelloSkor(int dogru, int toplam) {
+    return '$dogru/$toplam صحيحة';
+  }
+
+  @override
+  String get duelloYeniden => 'العب مرة أخرى';
+
+  @override
+  String get duelloBugune => 'العودة إلى اليوم';
+
+  @override
+  String duelloEnIyiSeri(int seri) {
+    return 'أفضل سلسلة: $seri';
+  }
+
+  @override
+  String get duelloPaletNotu =>
+      'هذه الجولة ببطاقات ألوان. أضف قطعًا إلى خزانتك وستستخدم المبارزات ملابسك.';
+
+  @override
+  String get duelloDolapEkle => 'أضف قطعًا إلى الخزانة';
+
+  @override
+  String get duelloBugunOynadi => 'لعبت اليوم. عد غدًا لمواصلة السلسلة.';
+
+  @override
+  String get duelloSebepNotr => 'الألوان المحايدة والترابية توازن بعضها.';
+
+  @override
+  String get duelloSebepMonokrom => 'البقاء في عائلة لون واحدة يمنح انسجامًا.';
+
+  @override
+  String get duelloSebepAnalog => 'الدرجات المتقاربة تصنع انتقالًا ناعمًا.';
+
+  @override
+  String get duelloSebepVurgu => 'لون مميز واحد على قاعدة محايدة.';
+
+  @override
+  String get duelloSebepZit => 'الألوان المتضادة مستخدمة بتوازن.';
+
+  @override
+  String get duelloSebepDagink => 'لونان متباعدان بلا شيء يربط بينهما.';
+
+  @override
+  String get duelloSebepCokRenk => 'ثلاثة ألوان زاهية تتنافس معًا.';
+
+  @override
+  String get duelloSebepHavaUygun => 'القطع مناسبة لحرارة اليوم.';
+
+  @override
+  String get duelloSebepHavaAgir => 'ثقيلة جدًا على هذا الطقس.';
+
+  @override
+  String get duelloSebepHavaHafif => 'خفيفة جدًا على هذا الطقس.';
 }

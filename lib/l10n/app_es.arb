@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "Sin usar desde hace 2 semanas",
   "bugunYeniRafi": "Añadidos recientemente",
   "bugunHavaRafi": "Adecuados para hoy",
-  "bugunRafIpucu": "Toca para abrir en tu armario"
+  "bugunRafIpucu": "Toca para abrir en tu armario",
+  "duelloSekmesi": "Duelo",
+  "duelloBaslik": "Duelo de conjuntos",
+  "duelloAltBaslik": "Elige uno de los dos conjuntos y pon a prueba tu ojo.",
+  "duelloBaslat": "Empezar el duelo",
+  "duelloNasilOynanir": "¿Cómo se juega?",
+  "duelloKural1": "Cada ronda muestra dos conjuntos.",
+  "duelloKural2": "Elige el que pide la pregunta.",
+  "duelloKural3": "Acertar da puntos y racha.",
+  "duelloEnIyi": "Mejor",
+  "duelloSeri": "Racha",
+  "duelloGunSerisi": "{gun} días",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Nivel",
+  "duelloSeviyeDegeri": "Nivel {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Ronda {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "¿Cuál tiene mejores colores?",
+  "duelloOlcuHava": "¿Cuál va mejor con el tiempo de hoy?",
+  "duelloDokun": "Toca un conjunto",
+  "duelloDogru": "¡Correcto!",
+  "duelloYanlis": "Casi",
+  "duelloDevam": "Continuar",
+  "duelloSonuc": "Ver resultado",
+  "duelloBitti": "Duelo terminado",
+  "duelloSkor": "{dogru}/{toplam} correctas",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Jugar otra vez",
+  "duelloBugune": "Volver a Hoy",
+  "duelloEnIyiSeri": "Mejor racha: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "Esta ronda usa tarjetas de color. Añade prendas y los duelos usarán tu ropa.",
+  "duelloDolapEkle": "Añadir prendas",
+  "duelloBugunOynadi": "Has jugado hoy. Vuelve mañana para seguir la racha.",
+  "duelloSebepNotr": "Los tonos neutros y tierra se equilibran.",
+  "duelloSebepMonokrom": "Mantener una sola familia de color da unidad.",
+  "duelloSebepAnalog": "Los tonos cercanos crean una transición suave.",
+  "duelloSebepVurgu": "Un solo color de acento sobre una base neutra.",
+  "duelloSebepZit": "Colores opuestos usados con equilibrio.",
+  "duelloSebepDagink": "Dos colores lejanos sin nada que los una.",
+  "duelloSebepCokRenk": "Tres colores vivos compiten entre sí.",
+  "duelloSebepHavaUygun": "Las prendas van bien con la temperatura de hoy.",
+  "duelloSebepHavaAgir": "Demasiado abrigo para este tiempo.",
+  "duelloSebepHavaHafif": "Demasiado ligero para este tiempo."
 }

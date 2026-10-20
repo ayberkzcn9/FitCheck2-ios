@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "Seit 2 Wochen nicht getragen",
   "bugunYeniRafi": "Neu hinzugefügt",
   "bugunHavaRafi": "Passend für heute",
-  "bugunRafIpucu": "Tippen, um in der Garderobe zu öffnen"
+  "bugunRafIpucu": "Tippen, um in der Garderobe zu öffnen",
+  "duelloSekmesi": "Duell",
+  "duelloBaslik": "Outfit-Duell",
+  "duelloAltBaslik": "Wähle eines von zwei Outfits und teste dein Stilgefühl.",
+  "duelloBaslat": "Duell starten",
+  "duelloNasilOynanir": "So wird gespielt",
+  "duelloKural1": "Jede Runde zeigt zwei Outfits.",
+  "duelloKural2": "Wähle das, wonach die Frage fragt.",
+  "duelloKural3": "Eine richtige Wahl bringt Punkte und eine Serie.",
+  "duelloEnIyi": "Bestwert",
+  "duelloSeri": "Serie",
+  "duelloGunSerisi": "{gun} Tage",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Level",
+  "duelloSeviyeDegeri": "Level {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Runde {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "Welches hat die bessere Farbharmonie?",
+  "duelloOlcuHava": "Welches passt zum heutigen Wetter?",
+  "duelloDokun": "Tippe ein Outfit an",
+  "duelloDogru": "Richtig!",
+  "duelloYanlis": "Knapp daneben",
+  "duelloDevam": "Weiter",
+  "duelloSonuc": "Ergebnis ansehen",
+  "duelloBitti": "Duell beendet",
+  "duelloSkor": "{dogru}/{toplam} richtig",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Nochmal spielen",
+  "duelloBugune": "Zurück zu Heute",
+  "duelloEnIyiSeri": "Beste Serie: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "Diese Runde nutzt Farbkarten. Füge Teile zum Kleiderschrank hinzu, dann nutzen die Duelle deine Kleidung.",
+  "duelloDolapEkle": "Teile hinzufügen",
+  "duelloBugunOynadi": "Du hast heute gespielt. Komm morgen wieder, um die Serie zu halten.",
+  "duelloSebepNotr": "Neutrale und erdige Töne balancieren sich.",
+  "duelloSebepMonokrom": "In einer Farbfamilie zu bleiben wirkt stimmig.",
+  "duelloSebepAnalog": "Nahe Töne ergeben einen weichen Übergang.",
+  "duelloSebepVurgu": "Eine Akzentfarbe auf neutraler Basis.",
+  "duelloSebepZit": "Gegensätzliche Farben sind ausgewogen eingesetzt.",
+  "duelloSebepDagink": "Zwei weit entfernte Farben ohne Verbindung.",
+  "duelloSebepCokRenk": "Drei kräftige Farben konkurrieren miteinander.",
+  "duelloSebepHavaUygun": "Die Teile passen zur heutigen Temperatur.",
+  "duelloSebepHavaAgir": "Zu warm für dieses Wetter.",
+  "duelloSebepHavaHafif": "Zu leicht für dieses Wetter."
 }

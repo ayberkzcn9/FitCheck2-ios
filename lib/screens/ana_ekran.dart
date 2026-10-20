@@ -18,7 +18,7 @@ import 'haftalik_planlayici_ekrani.dart';
 import 'gunluk_kombin_ekrani.dart';
 import 'kendi_kombinim_ekrani.dart';
 import 'profil_analiz_ekrani.dart';
-import 'kombin_oyunu_ekrani.dart';
+import 'kombin_duellosu_ekrani.dart';
 import 'ai_chatbot_modal.dart';
 import 'ayarlar_ekrani.dart';
 import 'izin_ekrani.dart';
@@ -1519,7 +1519,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                         Icons.insights_rounded, _sekmeProfil,
                         key: _profilNavKey),
                     _buildNavItem(
-                        Icons.quiz_outlined, Icons.quiz_rounded, _sekmeOyun),
+                        Icons.style_outlined, Icons.style_rounded, _sekmeOyun),
                   ],
                 ),
               ),
@@ -1550,7 +1550,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       l10n.anaSekmeAnlik,
       l10n.kendiKombininiTasarlaTitle,
       l10n.anaSekmeProfil,
-      l10n.yakinda,
+      l10n.duelloSekmesi,
     ];
 
     final iconColor = isSelected ? colorScheme.primary : colorScheme.onSurfaceVariant;
@@ -1684,9 +1684,12 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         onGecmisiTemizle: _onGecmisiTemizle,
         onTekliGecmisSil: _onTekliGecmisSil,
       ),
-      KombinOyunuEkrani(
-          onReturnToHome: () => _sekmeSec(_sekmeBugun),
-          gardirobum: _gardirobum),
+      KombinDuellosuEkrani(
+        gardirobum: _gardirobum,
+        gunlukHava: _gunlukHavaDurumu,
+        onReturnToHome: () => _sekmeSec(_sekmeBugun),
+        onDolapAc: () => _sekmeSec(_sekmeDolap),
+      ),
     ];
 
     return Scaffold(

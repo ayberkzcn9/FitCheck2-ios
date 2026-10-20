@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "Not worn in 2 weeks",
   "bugunYeniRafi": "Recently added",
   "bugunHavaRafi": "Right for today",
-  "bugunRafIpucu": "Tap to open in your wardrobe"
+  "bugunRafIpucu": "Tap to open in your wardrobe",
+  "duelloSekmesi": "Duel",
+  "duelloBaslik": "Outfit Duel",
+  "duelloAltBaslik": "Pick one of two outfits and test your style eye.",
+  "duelloBaslat": "Start the duel",
+  "duelloNasilOynanir": "How to play",
+  "duelloKural1": "Each round shows two outfits.",
+  "duelloKural2": "Choose the one the question asks for.",
+  "duelloKural3": "A correct pick earns points and a streak.",
+  "duelloEnIyi": "Best",
+  "duelloSeri": "Streak",
+  "duelloGunSerisi": "{gun} days",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Level",
+  "duelloSeviyeDegeri": "Level {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Round {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "Which one has better colour harmony?",
+  "duelloOlcuHava": "Which one suits today's weather?",
+  "duelloDokun": "Tap an outfit",
+  "duelloDogru": "Correct!",
+  "duelloYanlis": "Not quite",
+  "duelloDevam": "Continue",
+  "duelloSonuc": "See results",
+  "duelloBitti": "Duel finished",
+  "duelloSkor": "{dogru}/{toplam} correct",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Play again",
+  "duelloBugune": "Back to Today",
+  "duelloEnIyiSeri": "Best streak: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "Colour cards this round. Add more pieces to your wardrobe and the duels will use your own clothes.",
+  "duelloDolapEkle": "Add pieces to wardrobe",
+  "duelloBugunOynadi": "You played today. Come back tomorrow to keep the streak.",
+  "duelloSebepNotr": "Neutral and earthy tones balance each other.",
+  "duelloSebepMonokrom": "Staying in one colour family creates a cohesive look.",
+  "duelloSebepAnalog": "Close tones create a soft transition.",
+  "duelloSebepVurgu": "One accent colour against a neutral base.",
+  "duelloSebepZit": "Opposite colours are used in balance.",
+  "duelloSebepDagink": "Two distant colours with nothing to bridge them.",
+  "duelloSebepCokRenk": "Three vivid colours compete with each other.",
+  "duelloSebepHavaUygun": "The pieces suit today's temperature.",
+  "duelloSebepHavaAgir": "Too heavy for this weather.",
+  "duelloSebepHavaHafif": "Too light for this weather."
 }

@@ -2862,4 +2862,137 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get bugunRafIpucu => '탭하여 옷장에서 열기';
+
+  @override
+  String get duelloSekmesi => '대결';
+
+  @override
+  String get duelloBaslik => '코디 대결';
+
+  @override
+  String get duelloAltBaslik => '두 코디 중 하나를 골라 스타일 감각을 시험해 보세요.';
+
+  @override
+  String get duelloBaslat => '대결 시작';
+
+  @override
+  String get duelloNasilOynanir => '플레이 방법';
+
+  @override
+  String get duelloKural1 => '매 라운드 두 코디가 나옵니다.';
+
+  @override
+  String get duelloKural2 => '질문에 맞는 쪽을 고르세요.';
+
+  @override
+  String get duelloKural3 => '정답을 고르면 점수와 연승이 쌓입니다.';
+
+  @override
+  String get duelloEnIyi => '최고';
+
+  @override
+  String get duelloSeri => '연승';
+
+  @override
+  String duelloGunSerisi(int gun) {
+    return '$gun일';
+  }
+
+  @override
+  String get duelloSeviye => '레벨';
+
+  @override
+  String duelloSeviyeDegeri(int seviye) {
+    return '레벨 $seviye';
+  }
+
+  @override
+  String duelloXp(int xp) {
+    return '$xp XP';
+  }
+
+  @override
+  String duelloTur(int tur, int toplam) {
+    return '$tur/$toplam 라운드';
+  }
+
+  @override
+  String get duelloOlcuRenk => '어느 쪽 색 조합이 더 조화로운가요?';
+
+  @override
+  String get duelloOlcuHava => '어느 쪽이 오늘 날씨에 더 맞나요?';
+
+  @override
+  String get duelloDokun => '코디를 탭하세요';
+
+  @override
+  String get duelloDogru => '정답!';
+
+  @override
+  String get duelloYanlis => '아쉬워요';
+
+  @override
+  String get duelloDevam => '계속';
+
+  @override
+  String get duelloSonuc => '결과 보기';
+
+  @override
+  String get duelloBitti => '대결 종료';
+
+  @override
+  String duelloSkor(int dogru, int toplam) {
+    return '$dogru/$toplam 정답';
+  }
+
+  @override
+  String get duelloYeniden => '다시 하기';
+
+  @override
+  String get duelloBugune => '오늘로 돌아가기';
+
+  @override
+  String duelloEnIyiSeri(int seri) {
+    return '최고 연승: $seri';
+  }
+
+  @override
+  String get duelloPaletNotu =>
+      '이번 라운드는 컬러 카드입니다. 옷장에 옷을 더 추가하면 내 옷으로 대결할 수 있어요.';
+
+  @override
+  String get duelloDolapEkle => '옷 추가';
+
+  @override
+  String get duelloBugunOynadi => '오늘 이미 플레이했어요. 내일 다시 와서 연승을 이어가세요.';
+
+  @override
+  String get duelloSebepNotr => '뉴트럴과 어스 톤은 서로 균형을 이룹니다.';
+
+  @override
+  String get duelloSebepMonokrom => '한 색 계열로 맞추면 통일감이 생깁니다.';
+
+  @override
+  String get duelloSebepAnalog => '가까운 톤은 부드러운 전환을 만듭니다.';
+
+  @override
+  String get duelloSebepVurgu => '뉴트럴 베이스에 포인트 컬러 하나.';
+
+  @override
+  String get duelloSebepZit => '반대 색이 균형 있게 쓰였습니다.';
+
+  @override
+  String get duelloSebepDagink => '멀리 떨어진 두 색을 잇는 색이 없습니다.';
+
+  @override
+  String get duelloSebepCokRenk => '선명한 세 색이 서로 경쟁합니다.';
+
+  @override
+  String get duelloSebepHavaUygun => '오늘 기온에 맞는 옷입니다.';
+
+  @override
+  String get duelloSebepHavaAgir => '이 날씨에는 너무 두껍습니다.';
+
+  @override
+  String get duelloSebepHavaHafif => '이 날씨에는 너무 얇습니다.';
 }

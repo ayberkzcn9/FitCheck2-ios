@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "Не надевали 2 недели",
   "bugunYeniRafi": "Недавно добавленные",
   "bugunHavaRafi": "Подходят на сегодня",
-  "bugunRafIpucu": "Нажмите, чтобы открыть в гардеробе"
+  "bugunRafIpucu": "Нажмите, чтобы открыть в гардеробе",
+  "duelloSekmesi": "Дуэль",
+  "duelloBaslik": "Дуэль образов",
+  "duelloAltBaslik": "Выбери один из двух образов и проверь свой вкус.",
+  "duelloBaslat": "Начать дуэль",
+  "duelloNasilOynanir": "Как играть",
+  "duelloKural1": "В каждом раунде два образа.",
+  "duelloKural2": "Выбери тот, о котором спрашивают.",
+  "duelloKural3": "Верный выбор даёт очки и серию.",
+  "duelloEnIyi": "Лучший",
+  "duelloSeri": "Серия",
+  "duelloGunSerisi": "{gun} дн.",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Уровень",
+  "duelloSeviyeDegeri": "Уровень {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Раунд {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "У какого образа лучше сочетание цветов?",
+  "duelloOlcuHava": "Какой образ подходит к погоде сегодня?",
+  "duelloDokun": "Нажми на образ",
+  "duelloDogru": "Верно!",
+  "duelloYanlis": "Почти",
+  "duelloDevam": "Продолжить",
+  "duelloSonuc": "Смотреть результат",
+  "duelloBitti": "Дуэль окончена",
+  "duelloSkor": "{dogru}/{toplam} верно",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Играть снова",
+  "duelloBugune": "Вернуться к «Сегодня»",
+  "duelloEnIyiSeri": "Лучшая серия: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "В этом раунде карточки цветов. Добавь вещи в гардероб — и дуэли будут с твоей одеждой.",
+  "duelloDolapEkle": "Добавить вещи",
+  "duelloBugunOynadi": "Сегодня ты уже играл. Вернись завтра, чтобы продолжить серию.",
+  "duelloSebepNotr": "Нейтральные и землистые тона уравновешивают друг друга.",
+  "duelloSebepMonokrom": "Одна цветовая гамма создаёт цельность.",
+  "duelloSebepAnalog": "Близкие тона дают мягкий переход.",
+  "duelloSebepVurgu": "Один акцентный цвет на нейтральной основе.",
+  "duelloSebepZit": "Противоположные цвета использованы сбалансированно.",
+  "duelloSebepDagink": "Два далёких цвета ничем не связаны.",
+  "duelloSebepCokRenk": "Три ярких цвета спорят друг с другом.",
+  "duelloSebepHavaUygun": "Вещи подходят к сегодняшней температуре.",
+  "duelloSebepHavaAgir": "Слишком тепло для такой погоды.",
+  "duelloSebepHavaHafif": "Слишком легко для такой погоды."
 }

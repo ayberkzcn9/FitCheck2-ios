@@ -2806,4 +2806,136 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get bugunRafIpucu => '点击在衣橱中打开';
+
+  @override
+  String get duelloSekmesi => '对决';
+
+  @override
+  String get duelloBaslik => '穿搭对决';
+
+  @override
+  String get duelloAltBaslik => '两套穿搭中选一套，测试你的时尚眼光。';
+
+  @override
+  String get duelloBaslat => '开始对决';
+
+  @override
+  String get duelloNasilOynanir => '怎么玩';
+
+  @override
+  String get duelloKural1 => '每轮显示两套穿搭。';
+
+  @override
+  String get duelloKural2 => '按问题选出正确的一套。';
+
+  @override
+  String get duelloKural3 => '选对可以得分并累积连胜。';
+
+  @override
+  String get duelloEnIyi => '最佳';
+
+  @override
+  String get duelloSeri => '连胜';
+
+  @override
+  String duelloGunSerisi(int gun) {
+    return '$gun 天';
+  }
+
+  @override
+  String get duelloSeviye => '等级';
+
+  @override
+  String duelloSeviyeDegeri(int seviye) {
+    return '等级 $seviye';
+  }
+
+  @override
+  String duelloXp(int xp) {
+    return '$xp XP';
+  }
+
+  @override
+  String duelloTur(int tur, int toplam) {
+    return '第 $tur/$toplam 轮';
+  }
+
+  @override
+  String get duelloOlcuRenk => '哪一套配色更协调？';
+
+  @override
+  String get duelloOlcuHava => '哪一套更适合今天的天气？';
+
+  @override
+  String get duelloDokun => '点选一套穿搭';
+
+  @override
+  String get duelloDogru => '答对了！';
+
+  @override
+  String get duelloYanlis => '差一点';
+
+  @override
+  String get duelloDevam => '继续';
+
+  @override
+  String get duelloSonuc => '查看结果';
+
+  @override
+  String get duelloBitti => '对决结束';
+
+  @override
+  String duelloSkor(int dogru, int toplam) {
+    return '$dogru/$toplam 正确';
+  }
+
+  @override
+  String get duelloYeniden => '再玩一次';
+
+  @override
+  String get duelloBugune => '回到今天';
+
+  @override
+  String duelloEnIyiSeri(int seri) {
+    return '最佳连胜：$seri';
+  }
+
+  @override
+  String get duelloPaletNotu => '本轮使用色卡。往衣橱里添加单品，对决就会用你自己的衣服。';
+
+  @override
+  String get duelloDolapEkle => '添加单品';
+
+  @override
+  String get duelloBugunOynadi => '今天已玩过。明天再来延续连胜。';
+
+  @override
+  String get duelloSebepNotr => '中性色与大地色彼此平衡。';
+
+  @override
+  String get duelloSebepMonokrom => '保持同一色系更有整体感。';
+
+  @override
+  String get duelloSebepAnalog => '相近色调形成柔和过渡。';
+
+  @override
+  String get duelloSebepVurgu => '中性底色上只有一个强调色。';
+
+  @override
+  String get duelloSebepZit => '对比色使用得很平衡。';
+
+  @override
+  String get duelloSebepDagink => '两种相距很远的颜色之间缺少过渡。';
+
+  @override
+  String get duelloSebepCokRenk => '三种鲜艳颜色互相抢眼。';
+
+  @override
+  String get duelloSebepHavaUygun => '单品适合今天的气温。';
+
+  @override
+  String get duelloSebepHavaAgir => '这个天气穿得太厚了。';
+
+  @override
+  String get duelloSebepHavaHafif => '这个天气穿得太薄了。';
 }

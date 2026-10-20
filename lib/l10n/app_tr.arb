@@ -989,5 +989,93 @@
   "bugunGiyilmediRafi": "2 haftadır giymediklerin",
   "bugunYeniRafi": "Yeni eklenenler",
   "bugunHavaRafi": "Bugüne uygun",
-  "bugunRafIpucu": "Dolabında görmek için dokun"
+  "bugunRafIpucu": "Dolabında görmek için dokun",
+  "duelloSekmesi": "Düello",
+  "duelloBaslik": "Kombin Düellosu",
+  "duelloAltBaslik": "İki kombinden birini seç, stil gözünü test et.",
+  "duelloBaslat": "Düelloya başla",
+  "duelloNasilOynanir": "Nasıl oynanır?",
+  "duelloKural1": "Her turda iki kombin görürsün.",
+  "duelloKural2": "Soruya göre doğru olanı seç.",
+  "duelloKural3": "Doğru seçim seri ve puan kazandırır.",
+  "duelloEnIyi": "En iyi",
+  "duelloSeri": "Seri",
+  "duelloGunSerisi": "{gun} gün",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Seviye",
+  "duelloSeviyeDegeri": "Seviye {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Tur {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "Hangisinin renkleri daha uyumlu?",
+  "duelloOlcuHava": "Hangisi bugünkü havaya daha uygun?",
+  "duelloDokun": "Bir kombine dokun",
+  "duelloDogru": "Doğru!",
+  "duelloYanlis": "Olmadı",
+  "duelloDevam": "Devam",
+  "duelloSonuc": "Sonucu gör",
+  "duelloBitti": "Düello bitti",
+  "duelloSkor": "{dogru}/{toplam} doğru",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Tekrar oyna",
+  "duelloBugune": "Bugün'e dön",
+  "duelloEnIyiSeri": "En iyi seri: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "Bu turda renk kartları var. Dolabına parça ekledikçe düellolar kendi kıyafetlerinle oynanır.",
+  "duelloDolapEkle": "Dolaba parça ekle",
+  "duelloBugunOynadi": "Bugün oynadın. Yarın seriyi sürdür.",
+  "duelloSebepNotr": "Nötr ve toprak tonlar birbirini dengeliyor.",
+  "duelloSebepMonokrom": "Tek renk ailesinde kalarak bütünlük sağlıyor.",
+  "duelloSebepAnalog": "Yakın tonlar yumuşak bir geçiş oluşturuyor.",
+  "duelloSebepVurgu": "Nötr bir zeminde tek vurgu rengi var.",
+  "duelloSebepZit": "Karşıt renkler dengeli kullanılmış.",
+  "duelloSebepDagink": "İki uzak renk arasında köprü yok.",
+  "duelloSebepCokRenk": "Üç ayrı canlı renk birbiriyle yarışıyor.",
+  "duelloSebepHavaUygun": "Parçalar bugünkü sıcaklığa uygun.",
+  "duelloSebepHavaAgir": "Kalın parçalar bu hava için fazla.",
+  "duelloSebepHavaHafif": "İnce parçalar bu hava için yetersiz."
 }

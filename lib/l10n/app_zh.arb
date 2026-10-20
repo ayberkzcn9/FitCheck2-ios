@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "两周未穿",
   "bugunYeniRafi": "最近添加",
   "bugunHavaRafi": "适合今天",
-  "bugunRafIpucu": "点击在衣橱中打开"
+  "bugunRafIpucu": "点击在衣橱中打开",
+  "duelloSekmesi": "对决",
+  "duelloBaslik": "穿搭对决",
+  "duelloAltBaslik": "两套穿搭中选一套，测试你的时尚眼光。",
+  "duelloBaslat": "开始对决",
+  "duelloNasilOynanir": "怎么玩",
+  "duelloKural1": "每轮显示两套穿搭。",
+  "duelloKural2": "按问题选出正确的一套。",
+  "duelloKural3": "选对可以得分并累积连胜。",
+  "duelloEnIyi": "最佳",
+  "duelloSeri": "连胜",
+  "duelloGunSerisi": "{gun} 天",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "等级",
+  "duelloSeviyeDegeri": "等级 {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "第 {tur}/{toplam} 轮",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "哪一套配色更协调？",
+  "duelloOlcuHava": "哪一套更适合今天的天气？",
+  "duelloDokun": "点选一套穿搭",
+  "duelloDogru": "答对了！",
+  "duelloYanlis": "差一点",
+  "duelloDevam": "继续",
+  "duelloSonuc": "查看结果",
+  "duelloBitti": "对决结束",
+  "duelloSkor": "{dogru}/{toplam} 正确",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "再玩一次",
+  "duelloBugune": "回到今天",
+  "duelloEnIyiSeri": "最佳连胜：{seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "本轮使用色卡。往衣橱里添加单品，对决就会用你自己的衣服。",
+  "duelloDolapEkle": "添加单品",
+  "duelloBugunOynadi": "今天已玩过。明天再来延续连胜。",
+  "duelloSebepNotr": "中性色与大地色彼此平衡。",
+  "duelloSebepMonokrom": "保持同一色系更有整体感。",
+  "duelloSebepAnalog": "相近色调形成柔和过渡。",
+  "duelloSebepVurgu": "中性底色上只有一个强调色。",
+  "duelloSebepZit": "对比色使用得很平衡。",
+  "duelloSebepDagink": "两种相距很远的颜色之间缺少过渡。",
+  "duelloSebepCokRenk": "三种鲜艳颜色互相抢眼。",
+  "duelloSebepHavaUygun": "单品适合今天的气温。",
+  "duelloSebepHavaAgir": "这个天气穿得太厚了。",
+  "duelloSebepHavaHafif": "这个天气穿得太薄了。"
 }

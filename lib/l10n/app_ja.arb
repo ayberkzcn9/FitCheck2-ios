@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "2週間着ていない",
   "bugunYeniRafi": "最近追加",
   "bugunHavaRafi": "今日に合う",
-  "bugunRafIpucu": "タップしてワードローブで開く"
+  "bugunRafIpucu": "タップしてワードローブで開く",
+  "duelloSekmesi": "デュエル",
+  "duelloBaslik": "コーデ対決",
+  "duelloAltBaslik": "2つのコーデから1つ選んで、スタイル眼を試そう。",
+  "duelloBaslat": "対決を始める",
+  "duelloNasilOynanir": "遊び方",
+  "duelloKural1": "毎ラウンド2つのコーデが出ます。",
+  "duelloKural2": "質問に合うほうを選びましょう。",
+  "duelloKural3": "正解するとポイントと連勝が増えます。",
+  "duelloEnIyi": "ベスト",
+  "duelloSeri": "連勝",
+  "duelloGunSerisi": "{gun} 日",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "レベル",
+  "duelloSeviyeDegeri": "レベル {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "第 {tur}/{toplam} 問",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "色のまとまりが良いのはどっち？",
+  "duelloOlcuHava": "今日の天気に合うのはどっち？",
+  "duelloDokun": "コーデをタップ",
+  "duelloDogru": "正解！",
+  "duelloYanlis": "おしい",
+  "duelloDevam": "次へ",
+  "duelloSonuc": "結果を見る",
+  "duelloBitti": "対決終了",
+  "duelloSkor": "{dogru}/{toplam} 正解",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "もう一度",
+  "duelloBugune": "今日に戻る",
+  "duelloEnIyiSeri": "最高連勝：{seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "このラウンドはカラーカードです。ワードローブに服を追加すると、自分の服で対決できます。",
+  "duelloDolapEkle": "服を追加",
+  "duelloBugunOynadi": "今日はプレイ済み。明日また続けて連勝を伸ばそう。",
+  "duelloSebepNotr": "ニュートラルとアースカラーは互いに調和します。",
+  "duelloSebepMonokrom": "同じ色系でまとめると一体感が出ます。",
+  "duelloSebepAnalog": "近い色はやわらかなグラデーションになります。",
+  "duelloSebepVurgu": "ニュートラルなベースにアクセントカラーが1色。",
+  "duelloSebepZit": "反対色がバランスよく使われています。",
+  "duelloSebepDagink": "遠い2色をつなぐ色がありません。",
+  "duelloSebepCokRenk": "鮮やかな3色がぶつかり合っています。",
+  "duelloSebepHavaUygun": "今日の気温に合った服です。",
+  "duelloSebepHavaAgir": "この天気には厚すぎます。",
+  "duelloSebepHavaHafif": "この天気には薄すぎます。"
 }

@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "Pas portés depuis 2 semaines",
   "bugunYeniRafi": "Ajoutés récemment",
   "bugunHavaRafi": "Adaptés à aujourd'hui",
-  "bugunRafIpucu": "Touche pour ouvrir dans ton dressing"
+  "bugunRafIpucu": "Touche pour ouvrir dans ton dressing",
+  "duelloSekmesi": "Duo",
+  "duelloBaslik": "Duel de tenues",
+  "duelloAltBaslik": "Choisis une des deux tenues et teste ton œil.",
+  "duelloBaslat": "Lancer le duel",
+  "duelloNasilOynanir": "Comment jouer",
+  "duelloKural1": "Chaque manche montre deux tenues.",
+  "duelloKural2": "Choisis celle que demande la question.",
+  "duelloKural3": "Un bon choix rapporte des points et une série.",
+  "duelloEnIyi": "Meilleur",
+  "duelloSeri": "Série",
+  "duelloGunSerisi": "{gun} jours",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Niveau",
+  "duelloSeviyeDegeri": "Niveau {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Manche {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "Laquelle a les meilleures couleurs ?",
+  "duelloOlcuHava": "Laquelle convient au temps d'aujourd'hui ?",
+  "duelloDokun": "Touche une tenue",
+  "duelloDogru": "Correct !",
+  "duelloYanlis": "Pas tout à fait",
+  "duelloDevam": "Continuer",
+  "duelloSonuc": "Voir le résultat",
+  "duelloBitti": "Duel terminé",
+  "duelloSkor": "{dogru}/{toplam} correctes",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Rejouer",
+  "duelloBugune": "Retour à Aujourd'hui",
+  "duelloEnIyiSeri": "Meilleure série : {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "Cette manche utilise des cartes couleur. Ajoute des pièces à ton dressing et les duels utiliseront tes vêtements.",
+  "duelloDolapEkle": "Ajouter des pièces",
+  "duelloBugunOynadi": "Tu as joué aujourd'hui. Reviens demain pour continuer la série.",
+  "duelloSebepNotr": "Les tons neutres et terre s’équilibrent.",
+  "duelloSebepMonokrom": "Rester dans une même famille de couleurs crée une unité.",
+  "duelloSebepAnalog": "Des tons proches créent une transition douce.",
+  "duelloSebepVurgu": "Une seule couleur d'accent sur une base neutre.",
+  "duelloSebepZit": "Des couleurs opposées utilisées en équilibre.",
+  "duelloSebepDagink": "Deux couleurs éloignées sans rien pour les relier.",
+  "duelloSebepCokRenk": "Trois couleurs vives se disputent l'attention.",
+  "duelloSebepHavaUygun": "Les pièces conviennent à la température du jour.",
+  "duelloSebepHavaAgir": "Trop chaud pour ce temps.",
+  "duelloSebepHavaHafif": "Trop léger pour ce temps."
 }

@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "لم تُلبس منذ أسبوعين",
   "bugunYeniRafi": "أُضيفت مؤخرًا",
   "bugunHavaRafi": "مناسبة لليوم",
-  "bugunRafIpucu": "اضغط لفتحها في خزانتك"
+  "bugunRafIpucu": "اضغط لفتحها في خزانتك",
+  "duelloSekmesi": "مبارزة",
+  "duelloBaslik": "مبارزة الإطلالات",
+  "duelloAltBaslik": "اختر إطلالة من اثنتين واختبر ذوقك.",
+  "duelloBaslat": "ابدأ المبارزة",
+  "duelloNasilOynanir": "كيف تلعب",
+  "duelloKural1": "كل جولة تعرض إطلالتين.",
+  "duelloKural2": "اختر الإطلالة التي يطلبها السؤال.",
+  "duelloKural3": "الاختيار الصحيح يمنحك نقاطًا وسلسلة.",
+  "duelloEnIyi": "الأفضل",
+  "duelloSeri": "السلسلة",
+  "duelloGunSerisi": "{gun} أيام",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "المستوى",
+  "duelloSeviyeDegeri": "المستوى {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "الجولة {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "أي إطلالة تناسق ألوانها أفضل؟",
+  "duelloOlcuHava": "أي إطلالة تناسب طقس اليوم؟",
+  "duelloDokun": "اضغط على إطلالة",
+  "duelloDogru": "صحيح!",
+  "duelloYanlis": "ليس تمامًا",
+  "duelloDevam": "متابعة",
+  "duelloSonuc": "عرض النتيجة",
+  "duelloBitti": "انتهت المبارزة",
+  "duelloSkor": "{dogru}/{toplam} صحيحة",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "العب مرة أخرى",
+  "duelloBugune": "العودة إلى اليوم",
+  "duelloEnIyiSeri": "أفضل سلسلة: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "هذه الجولة ببطاقات ألوان. أضف قطعًا إلى خزانتك وستستخدم المبارزات ملابسك.",
+  "duelloDolapEkle": "أضف قطعًا إلى الخزانة",
+  "duelloBugunOynadi": "لعبت اليوم. عد غدًا لمواصلة السلسلة.",
+  "duelloSebepNotr": "الألوان المحايدة والترابية توازن بعضها.",
+  "duelloSebepMonokrom": "البقاء في عائلة لون واحدة يمنح انسجامًا.",
+  "duelloSebepAnalog": "الدرجات المتقاربة تصنع انتقالًا ناعمًا.",
+  "duelloSebepVurgu": "لون مميز واحد على قاعدة محايدة.",
+  "duelloSebepZit": "الألوان المتضادة مستخدمة بتوازن.",
+  "duelloSebepDagink": "لونان متباعدان بلا شيء يربط بينهما.",
+  "duelloSebepCokRenk": "ثلاثة ألوان زاهية تتنافس معًا.",
+  "duelloSebepHavaUygun": "القطع مناسبة لحرارة اليوم.",
+  "duelloSebepHavaAgir": "ثقيلة جدًا على هذا الطقس.",
+  "duelloSebepHavaHafif": "خفيفة جدًا على هذا الطقس."
 }

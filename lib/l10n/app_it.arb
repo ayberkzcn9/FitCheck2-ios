@@ -954,5 +954,93 @@
   "bugunGiyilmediRafi": "Non indossati da 2 settimane",
   "bugunYeniRafi": "Aggiunti di recente",
   "bugunHavaRafi": "Adatti a oggi",
-  "bugunRafIpucu": "Tocca per aprire nel guardaroba"
+  "bugunRafIpucu": "Tocca per aprire nel guardaroba",
+  "duelloSekmesi": "Duello",
+  "duelloBaslik": "Duello di outfit",
+  "duelloAltBaslik": "Scegli uno dei due outfit e metti alla prova il tuo occhio.",
+  "duelloBaslat": "Inizia il duello",
+  "duelloNasilOynanir": "Come si gioca",
+  "duelloKural1": "Ogni turno mostra due outfit.",
+  "duelloKural2": "Scegli quello indicato dalla domanda.",
+  "duelloKural3": "La scelta giusta dà punti e serie.",
+  "duelloEnIyi": "Migliore",
+  "duelloSeri": "Serie",
+  "duelloGunSerisi": "{gun} giorni",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Livello",
+  "duelloSeviyeDegeri": "Livello {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Turno {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "Quale ha colori più armoniosi?",
+  "duelloOlcuHava": "Quale è più adatto al meteo di oggi?",
+  "duelloDokun": "Tocca un outfit",
+  "duelloDogru": "Giusto!",
+  "duelloYanlis": "Non ci siamo",
+  "duelloDevam": "Continua",
+  "duelloSonuc": "Vedi il risultato",
+  "duelloBitti": "Duello finito",
+  "duelloSkor": "{dogru}/{toplam} corrette",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Gioca ancora",
+  "duelloBugune": "Torna a Oggi",
+  "duelloEnIyiSeri": "Serie migliore: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "Questo turno usa cartelle colore. Aggiungi capi al guardaroba e i duelli useranno i tuoi vestiti.",
+  "duelloDolapEkle": "Aggiungi capi",
+  "duelloBugunOynadi": "Hai giocato oggi. Torna domani per continuare la serie.",
+  "duelloSebepNotr": "I toni neutri e terrosi si bilanciano.",
+  "duelloSebepMonokrom": "Restare in una sola famiglia di colori crea coerenza.",
+  "duelloSebepAnalog": "Toni vicini creano una transizione morbida.",
+  "duelloSebepVurgu": "Un solo colore d'accento su una base neutra.",
+  "duelloSebepZit": "Colori opposti usati in equilibrio.",
+  "duelloSebepDagink": "Due colori lontani senza nulla che li unisca.",
+  "duelloSebepCokRenk": "Tre colori vivaci competono tra loro.",
+  "duelloSebepHavaUygun": "I capi sono adatti alla temperatura di oggi.",
+  "duelloSebepHavaAgir": "Troppo pesante per questo meteo.",
+  "duelloSebepHavaHafif": "Troppo leggero per questo meteo."
 }

@@ -5511,6 +5511,246 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Dolabında görmek için dokun'**
   String get bugunRafIpucu;
+
+  /// No description provided for @duelloSekmesi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düello'**
+  String get duelloSekmesi;
+
+  /// No description provided for @duelloBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin Düellosu'**
+  String get duelloBaslik;
+
+  /// No description provided for @duelloAltBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'İki kombinden birini seç, stil gözünü test et.'**
+  String get duelloAltBaslik;
+
+  /// No description provided for @duelloBaslat.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düelloya başla'**
+  String get duelloBaslat;
+
+  /// No description provided for @duelloNasilOynanir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nasıl oynanır?'**
+  String get duelloNasilOynanir;
+
+  /// No description provided for @duelloKural1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her turda iki kombin görürsün.'**
+  String get duelloKural1;
+
+  /// No description provided for @duelloKural2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soruya göre doğru olanı seç.'**
+  String get duelloKural2;
+
+  /// No description provided for @duelloKural3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Doğru seçim seri ve puan kazandırır.'**
+  String get duelloKural3;
+
+  /// No description provided for @duelloEnIyi.
+  ///
+  /// In tr, this message translates to:
+  /// **'En iyi'**
+  String get duelloEnIyi;
+
+  /// No description provided for @duelloSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seri'**
+  String get duelloSeri;
+
+  /// No description provided for @duelloGunSerisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{gun} gün'**
+  String duelloGunSerisi(int gun);
+
+  /// No description provided for @duelloSeviye.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seviye'**
+  String get duelloSeviye;
+
+  /// No description provided for @duelloSeviyeDegeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seviye {seviye}'**
+  String duelloSeviyeDegeri(int seviye);
+
+  /// No description provided for @duelloXp.
+  ///
+  /// In tr, this message translates to:
+  /// **'{xp} XP'**
+  String duelloXp(int xp);
+
+  /// No description provided for @duelloTur.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tur {tur}/{toplam}'**
+  String duelloTur(int tur, int toplam);
+
+  /// No description provided for @duelloOlcuRenk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hangisinin renkleri daha uyumlu?'**
+  String get duelloOlcuRenk;
+
+  /// No description provided for @duelloOlcuHava.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hangisi bugünkü havaya daha uygun?'**
+  String get duelloOlcuHava;
+
+  /// No description provided for @duelloDokun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bir kombine dokun'**
+  String get duelloDokun;
+
+  /// No description provided for @duelloDogru.
+  ///
+  /// In tr, this message translates to:
+  /// **'Doğru!'**
+  String get duelloDogru;
+
+  /// No description provided for @duelloYanlis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Olmadı'**
+  String get duelloYanlis;
+
+  /// No description provided for @duelloDevam.
+  ///
+  /// In tr, this message translates to:
+  /// **'Devam'**
+  String get duelloDevam;
+
+  /// No description provided for @duelloSonuc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sonucu gör'**
+  String get duelloSonuc;
+
+  /// No description provided for @duelloBitti.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düello bitti'**
+  String get duelloBitti;
+
+  /// No description provided for @duelloSkor.
+  ///
+  /// In tr, this message translates to:
+  /// **'{dogru}/{toplam} doğru'**
+  String duelloSkor(int dogru, int toplam);
+
+  /// No description provided for @duelloYeniden.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tekrar oyna'**
+  String get duelloYeniden;
+
+  /// No description provided for @duelloBugune.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün\'e dön'**
+  String get duelloBugune;
+
+  /// No description provided for @duelloEnIyiSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'En iyi seri: {seri}'**
+  String duelloEnIyiSeri(int seri);
+
+  /// No description provided for @duelloPaletNotu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu turda renk kartları var. Dolabına parça ekledikçe düellolar kendi kıyafetlerinle oynanır.'**
+  String get duelloPaletNotu;
+
+  /// No description provided for @duelloDolapEkle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolaba parça ekle'**
+  String get duelloDolapEkle;
+
+  /// No description provided for @duelloBugunOynadi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün oynadın. Yarın seriyi sürdür.'**
+  String get duelloBugunOynadi;
+
+  /// No description provided for @duelloSebepNotr.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nötr ve toprak tonlar birbirini dengeliyor.'**
+  String get duelloSebepNotr;
+
+  /// No description provided for @duelloSebepMonokrom.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tek renk ailesinde kalarak bütünlük sağlıyor.'**
+  String get duelloSebepMonokrom;
+
+  /// No description provided for @duelloSebepAnalog.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yakın tonlar yumuşak bir geçiş oluşturuyor.'**
+  String get duelloSebepAnalog;
+
+  /// No description provided for @duelloSebepVurgu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nötr bir zeminde tek vurgu rengi var.'**
+  String get duelloSebepVurgu;
+
+  /// No description provided for @duelloSebepZit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Karşıt renkler dengeli kullanılmış.'**
+  String get duelloSebepZit;
+
+  /// No description provided for @duelloSebepDagink.
+  ///
+  /// In tr, this message translates to:
+  /// **'İki uzak renk arasında köprü yok.'**
+  String get duelloSebepDagink;
+
+  /// No description provided for @duelloSebepCokRenk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Üç ayrı canlı renk birbiriyle yarışıyor.'**
+  String get duelloSebepCokRenk;
+
+  /// No description provided for @duelloSebepHavaUygun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parçalar bugünkü sıcaklığa uygun.'**
+  String get duelloSebepHavaUygun;
+
+  /// No description provided for @duelloSebepHavaAgir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kalın parçalar bu hava için fazla.'**
+  String get duelloSebepHavaAgir;
+
+  /// No description provided for @duelloSebepHavaHafif.
+  ///
+  /// In tr, this message translates to:
+  /// **'İnce parçalar bu hava için yetersiz.'**
+  String get duelloSebepHavaHafif;
 }
 
 class _AppLocalizationsDelegate
