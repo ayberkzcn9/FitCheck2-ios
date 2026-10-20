@@ -76,6 +76,11 @@ class GizlilikPolitikasiModal extends StatelessWidget {
                 l10n.gizlilikMadde4Baslik,
                 l10n.gizlilikMadde4Icerik,
               ),
+              _politikaParagraf(
+                context,
+                l10n.gizlilikMadde5Baslik,
+                l10n.gizlilikMadde5Icerik,
+              ),
             ],
           ),
         ),

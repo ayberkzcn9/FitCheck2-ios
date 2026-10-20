@@ -556,7 +556,7 @@
   "epostaUygulamasiAcilamadi": "E-Mail-Programm konnte nicht geöffnet werden. Bitte schreibe an ayberkzcn9@gmail.com.",
   "gizlilikPolitikasiTitle": "Datenschutzrichtlinie",
   "veriKullanimiVeGizlilikHaklari": "Datennutzung und Datenschutzrechte ansehen",
-  "sonGuncellemeTarihi": "Letzte Aktualisierung: 27. August 2026",
+  "sonGuncellemeTarihi": "Letzte Aktualisierung: 20. Oktober 2026",
   "gizlilikMadde1Baslik": "1. Datenerhebung und -nutzung",
   "gizlilikMadde1Icerik": "FitCheck optimiert deine persönliche Schrankverwaltung und Outfit-Empfehlungen. In die App hochgeladene Kleiderfotos, Stil- und Geschlechterpräferenzen werden lokal auf deinem Gerät gespeichert.",
   "gizlilikMadde2Baslik": "2. Standortberechtigungen",
@@ -931,5 +931,7 @@
   "kesimUyarisiBaslik": "Der Ausschnitt ist evtl. ungenau",
   "kesimUyarisiAciklama": "Die Farbe des Kleidungsstücks liegt sehr nah am Hintergrund. Die Freistellung hat damit Mühe: Es können Hintergrundreste bleiben oder ein Teil des Kleidungsstücks abgeschnitten werden. Ein neues Foto auf einer andersfarbigen Fläche löst das meist.",
   "kesimUyarisiTekrarCek": "Neu aufnehmen",
-  "kesimUyarisiYineDeKaydet": "Trotzdem speichern"
+  "kesimUyarisiYineDeKaydet": "Trotzdem speichern",
+  "gizlilikMadde5Baslik": "5. KI-Bildanalyse",
+  "gizlilikMadde5Icerik": "Kleidungsfotos werden auf unserem eigenen Server verarbeitet, um den Hintergrund zu entfernen, und für Stilanalyse und Outfit-Vorschläge an die KI-Dienste von Google (Gemini) und Groq gesendet. Die Fotos werden nur zur Beantwortung deiner Anfrage verarbeitet, von uns nicht dauerhaft gespeichert und nicht für Werbung genutzt. Das Foto selbst bleibt auf deinem Gerät; du kannst es jederzeit aus der Garderobe löschen."
 }

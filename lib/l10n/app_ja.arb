@@ -526,7 +526,7 @@
   "epostaUygulamasiAcilamadi": "メールアプリを開けませんでした。 ayberkzcn9@gmail.com まで直接ご連絡ください。",
   "gizlilikPolitikasiTitle": "プライバシーポリシー",
   "veriKullanimiVeGizlilikHaklari": "データの使用方法とプライバシー権を確認",
-  "sonGuncellemeTarihi": "最終更新日：2026年8月27日",
+  "sonGuncellemeTarihi": "最終更新日：2026年10月20日",
   "gizlilikMadde1Baslik": "1. データの収集と利用",
   "gizlilikMadde1Icerik": "FitCheckは、ワードローブ管理とコーデ提案を最適化するために情報を処理します。写真、スタイル、性別の設定は端末内にローカル保存されます。",
   "gizlilikMadde2Baslik": "2. 位置情報の権限",
@@ -931,5 +931,7 @@
   "kesimUyarisiBaslik": "切り抜きが正しくない可能性があります",
   "kesimUyarisiAciklama": "衣類の色が背景と非常に近いため、背景の削除がうまくいかないことがあります。背景が残ったり、衣類の一部が切れたりする場合があります。別の色の面で撮り直すと解決することが多いです。",
   "kesimUyarisiTekrarCek": "撮り直す",
-  "kesimUyarisiYineDeKaydet": "このまま保存"
+  "kesimUyarisiYineDeKaydet": "このまま保存",
+  "gizlilikMadde5Baslik": "5. AI による画像分析",
+  "gizlilikMadde5Icerik": "衣類の写真は背景を削除するために当社のサーバーで処理され、スタイル分析とコーディネート提案のために Google（Gemini）および Groq の AI サービスに送信されます。写真はご依頼への回答のみに使用され、当社が永続的に保存することはなく、広告には使用しません。写真自体は端末に保存され、いつでもワードローブから削除できます。"
 }

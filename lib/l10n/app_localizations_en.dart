@@ -1737,7 +1737,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'View data usage and privacy rights';
 
   @override
-  String get sonGuncellemeTarihi => 'Last Updated: August 27, 2026';
+  String get sonGuncellemeTarihi => 'Last Updated: October 20, 2026';
 
   @override
   String get gizlilikMadde1Baslik => '1. Data Collection and Usage';
@@ -2902,4 +2902,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => 'Save anyway';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. AI Image Analysis';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      'Garment photos are processed on our own server to remove the background and sent to Google (Gemini) and Groq AI services for style analysis and outfit suggestions. Photos are processed only to answer your request, are not stored permanently by us and are not used for advertising. The photo itself stays on your device; you can delete it from your wardrobe at any time.';
 }

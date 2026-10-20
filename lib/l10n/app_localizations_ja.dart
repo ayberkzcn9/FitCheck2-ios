@@ -1644,7 +1644,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get veriKullanimiVeGizlilikHaklari => 'データの使用方法とプライバシー権を確認';
 
   @override
-  String get sonGuncellemeTarihi => '最終更新日：2026年8月27日';
+  String get sonGuncellemeTarihi => '最終更新日：2026年10月20日';
 
   @override
   String get gizlilikMadde1Baslik => '1. データの収集と利用';
@@ -2778,4 +2778,11 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => 'このまま保存';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. AI による画像分析';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      '衣類の写真は背景を削除するために当社のサーバーで処理され、スタイル分析とコーディネート提案のために Google（Gemini）および Groq の AI サービスに送信されます。写真はご依頼への回答のみに使用され、当社が永続的に保存することはなく、広告には使用しません。写真自体は端末に保存され、いつでもワードローブから削除できます。';
 }

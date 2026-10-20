@@ -537,7 +537,7 @@
   "epostaUygulamasiAcilamadi": "E-posta uygulaması açılamadı. Lütfen ayberkzcn9@gmail.com adresine yazın.",
   "gizlilikPolitikasiTitle": "Gizlilik Politikası",
   "veriKullanimiVeGizlilikHaklari": "Veri kullanımı ve gizlilik haklarınızı görün",
-  "sonGuncellemeTarihi": "Son Güncelleme: 27 Ağustos 2026",
+  "sonGuncellemeTarihi": "Son Güncelleme: 20 Ekim 2026",
   "gizlilikMadde1Baslik": "1. Veri Toplama ve Kullanımı",
   "gizlilikMadde1Icerik": "FitCheck uygulaması, kişisel gardırop yönetiminizi ve kombin önerilerinizi optimize etmek için çalışır. Uygulamaya eklediğiniz kıyafet fotoğrafları, tarz ve cinsiyet tercihleriniz cihazınızda yerel olarak saklanır.",
   "gizlilikMadde2Baslik": "2. Konum İzinleri",
@@ -966,5 +966,7 @@
   "kesimUyarisiBaslik": "Kesim hatalı olabilir",
   "kesimUyarisiAciklama": "Kıyafet zemine çok yakın renkte. Arka plan silme bu durumda zorlanır: zeminden parça kalabilir ya da kıyafetin bir bölümü kesilebilir. Farklı renkte bir zeminde tekrar çekmek genellikle çözer.",
   "kesimUyarisiTekrarCek": "Tekrar çek",
-  "kesimUyarisiYineDeKaydet": "Yine de kaydet"
+  "kesimUyarisiYineDeKaydet": "Yine de kaydet",
+  "gizlilikMadde5Baslik": "5. Yapay Zekâ ile Görsel Analizi",
+  "gizlilikMadde5Icerik": "Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz."
 }

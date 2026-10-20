@@ -1621,7 +1621,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get veriKullanimiVeGizlilikHaklari => '查看数据使用规则和隐私权利';
 
   @override
-  String get sonGuncellemeTarihi => '最后更新日期：2026年8月27日';
+  String get sonGuncellemeTarihi => '最后更新：2026年10月20日';
 
   @override
   String get gizlilikMadde1Baslik => '1. 数据收集与使用';
@@ -2736,4 +2736,11 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => '仍然保存';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. AI 图像分析';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      '衣物照片会在我们自己的服务器上去除背景，并发送至 Google（Gemini）和 Groq 人工智能服务进行风格分析与搭配建议。照片仅用于回应您的请求，我们不会永久保存，也不会用于广告。照片本身保存在您的设备上，您可以随时从衣橱中删除。';
 }

@@ -526,7 +526,7 @@
   "epostaUygulamasiAcilamadi": "Could not open email app. Please write to ayberkzcn9@gmail.com.",
   "gizlilikPolitikasiTitle": "Privacy Policy",
   "veriKullanimiVeGizlilikHaklari": "View data usage and privacy rights",
-  "sonGuncellemeTarihi": "Last Updated: August 27, 2026",
+  "sonGuncellemeTarihi": "Last Updated: October 20, 2026",
   "gizlilikMadde1Baslik": "1. Data Collection and Usage",
   "gizlilikMadde1Icerik": "FitCheck processes information to optimize your wardrobe management and outfit recommendations. Photos, style, and gender preferences are stored locally on your device.",
   "gizlilikMadde2Baslik": "2. Location Permissions",
@@ -931,5 +931,7 @@
   "kesimUyarisiBaslik": "The cutout may be inaccurate",
   "kesimUyarisiAciklama": "The garment colour is very close to the background. Background removal struggles here: some background may remain or part of the garment may be cut off. Retaking the photo on a surface of a different colour usually fixes it.",
   "kesimUyarisiTekrarCek": "Retake photo",
-  "kesimUyarisiYineDeKaydet": "Save anyway"
+  "kesimUyarisiYineDeKaydet": "Save anyway",
+  "gizlilikMadde5Baslik": "5. AI Image Analysis",
+  "gizlilikMadde5Icerik": "Garment photos are processed on our own server to remove the background and sent to Google (Gemini) and Groq AI services for style analysis and outfit suggestions. Photos are processed only to answer your request, are not stored permanently by us and are not used for advertising. The photo itself stays on your device; you can delete it from your wardrobe at any time."
 }

@@ -1737,7 +1737,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Просмотр правил использования данных и прав конфиденциальности';
 
   @override
-  String get sonGuncellemeTarihi => 'Последнее обновление: 27 августа 2026 г.';
+  String get sonGuncellemeTarihi => 'Последнее обновление: 20 октября 2026 г.';
 
   @override
   String get gizlilikMadde1Baslik => '1. Сбор и использование данных';
@@ -2903,4 +2903,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => 'Всё равно сохранить';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. Анализ изображений с помощью ИИ';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      'Фотографии одежды обрабатываются на нашем собственном сервере для удаления фона и отправляются в сервисы ИИ Google (Gemini) и Groq для анализа стиля и подбора образов. Фотографии обрабатываются только для ответа на ваш запрос, мы не храним их постоянно и не используем для рекламы. Сама фотография остаётся на вашем устройстве; вы можете удалить её из гардероба в любой момент.';
 }

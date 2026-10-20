@@ -1721,7 +1721,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'عرض استخدام البيانات وحقوق الخصوصية';
 
   @override
-  String get sonGuncellemeTarihi => 'آخر تحديث: 27 أغسطس 2026';
+  String get sonGuncellemeTarihi => 'آخر تحديث: 20 أكتوبر 2026';
 
   @override
   String get gizlilikMadde1Baslik => '1. جمع البيانات واستخدامها';
@@ -2882,4 +2882,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => 'الحفظ على أي حال';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. تحليل الصور بالذكاء الاصطناعي';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      'تُعالج صور الملابس على خادمنا الخاص لإزالة الخلفية، ثم تُرسل إلى خدمات الذكاء الاصطناعي من Google (Gemini) وGroq لتحليل الأسلوب واقتراح التنسيقات. تُعالج الصور فقط للإجابة على طلبك، ولا نحتفظ بها بشكل دائم ولا نستخدمها للإعلانات. تبقى الصورة على جهازك، ويمكنك حذفها من خزانة ملابسك في أي وقت.';
 }

@@ -526,7 +526,7 @@
   "epostaUygulamasiAcilamadi": "无法打开邮件应用。请直接发送邮件至 ayberkzcn9@gmail.com。",
   "gizlilikPolitikasiTitle": "隐私政策",
   "veriKullanimiVeGizlilikHaklari": "查看数据使用规则和隐私权利",
-  "sonGuncellemeTarihi": "最后更新日期：2026年8月27日",
+  "sonGuncellemeTarihi": "最后更新：2026年10月20日",
   "gizlilikMadde1Baslik": "1. 数据收集与使用",
   "gizlilikMadde1Icerik": "FitCheck 处理信息以优化您的衣橱管理和搭配推荐。您的照片、风格和性别偏好均本地存储于您的设备上。",
   "gizlilikMadde2Baslik": "2. 位置权限",
@@ -931,5 +931,7 @@
   "kesimUyarisiBaslik": "抠图可能不准确",
   "kesimUyarisiAciklama": "衣物颜色与背景非常接近。此时去背景容易出错：可能残留背景，或把衣物的一部分切掉。换一种颜色的背景重新拍摄通常就能解决。",
   "kesimUyarisiTekrarCek": "重新拍摄",
-  "kesimUyarisiYineDeKaydet": "仍然保存"
+  "kesimUyarisiYineDeKaydet": "仍然保存",
+  "gizlilikMadde5Baslik": "5. AI 图像分析",
+  "gizlilikMadde5Icerik": "衣物照片会在我们自己的服务器上去除背景，并发送至 Google（Gemini）和 Groq 人工智能服务进行风格分析与搭配建议。照片仅用于回应您的请求，我们不会永久保存，也不会用于广告。照片本身保存在您的设备上，您可以随时从衣橱中删除。"
 }

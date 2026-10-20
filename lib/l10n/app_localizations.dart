@@ -3259,7 +3259,7 @@ abstract class AppLocalizations {
   /// No description provided for @sonGuncellemeTarihi.
   ///
   /// In tr, this message translates to:
-  /// **'Son Güncelleme: 27 Ağustos 2026'**
+  /// **'Son Güncelleme: 20 Ekim 2026'**
   String get sonGuncellemeTarihi;
 
   /// No description provided for @gizlilikMadde1Baslik.
@@ -5373,6 +5373,18 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Yine de kaydet'**
   String get kesimUyarisiYineDeKaydet;
+
+  /// No description provided for @gizlilikMadde5Baslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'5. Yapay Zekâ ile Görsel Analizi'**
+  String get gizlilikMadde5Baslik;
+
+  /// No description provided for @gizlilikMadde5Icerik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz.'**
+  String get gizlilikMadde5Icerik;
 }
 
 class _AppLocalizationsDelegate

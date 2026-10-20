@@ -1738,7 +1738,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Veri kullanımı ve gizlilik haklarınızı görün';
 
   @override
-  String get sonGuncellemeTarihi => 'Son Güncelleme: 27 Ağustos 2026';
+  String get sonGuncellemeTarihi => 'Son Güncelleme: 20 Ekim 2026';
 
   @override
   String get gizlilikMadde1Baslik => '1. Veri Toplama ve Kullanımı';
@@ -2904,4 +2904,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => 'Yine de kaydet';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. Yapay Zekâ ile Görsel Analizi';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      'Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz.';
 }

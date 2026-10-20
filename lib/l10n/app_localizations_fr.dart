@@ -1759,7 +1759,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Voir l\'utilisation des données et les droits à la confidentialité';
 
   @override
-  String get sonGuncellemeTarihi => 'Dernière mise à jour : 27 août 2026';
+  String get sonGuncellemeTarihi => 'Dernière mise à jour : 20 octobre 2026';
 
   @override
   String get gizlilikMadde1Baslik => '1. Collecte et utilisation des données';
@@ -2931,4 +2931,11 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => 'Enregistrer quand même';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. Analyse d\'images par IA';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      'Les photos de vêtements sont traitées sur notre propre serveur pour supprimer l\'arrière-plan, puis envoyées aux services d\'IA Google (Gemini) et Groq pour l\'analyse du style et les suggestions de tenues. Les photos sont traitées uniquement pour répondre à votre demande, ne sont pas conservées durablement par nos soins et ne servent pas à la publicité. La photo reste sur votre appareil ; vous pouvez la supprimer du dressing à tout moment.';
 }

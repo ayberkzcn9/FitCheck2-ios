@@ -1651,7 +1651,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get veriKullanimiVeGizlilikHaklari => '데이터 사용 방식 및 개인정보 보호 권리 확인';
 
   @override
-  String get sonGuncellemeTarihi => '최종 수정일: 2026년 8월 27일';
+  String get sonGuncellemeTarihi => '최종 업데이트: 2026년 10월 20일';
 
   @override
   String get gizlilikMadde1Baslik => '1. 데이터 수집 및 이용';
@@ -2792,4 +2792,11 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get kesimUyarisiYineDeKaydet => '그대로 저장';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. AI 이미지 분석';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      '의류 사진은 배경 제거를 위해 자체 서버에서 처리되며, 스타일 분석과 코디 추천을 위해 Google(Gemini) 및 Groq AI 서비스로 전송됩니다. 사진은 요청에 응답하기 위해서만 처리되고, 당사가 영구적으로 저장하지 않으며 광고에 사용하지 않습니다. 사진 자체는 기기에 남아 있으며 언제든지 옷장에서 삭제할 수 있습니다.';
 }

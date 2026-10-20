@@ -526,7 +526,7 @@
   "epostaUygulamasiAcilamadi": "No se pudo abrir la aplicación de correo. Escribe a ayberkzcn9@gmail.com.",
   "gizlilikPolitikasiTitle": "Política de privacidad",
   "veriKullanimiVeGizlilikHaklari": "Ver uso de datos y derechos de privacidad",
-  "sonGuncellemeTarihi": "Última actualización: 27 de agosto de 2026",
+  "sonGuncellemeTarihi": "Última actualización: 20 de octubre de 2026",
   "gizlilikMadde1Baslik": "1. Recopilación y uso de datos",
   "gizlilikMadde1Icerik": "FitCheck procesa información para optimizar la gestión de tu armario y las recomendaciones de atuendos. Las fotos, el estilo y las preferencias de género se almacenan localmente en tu dispositivo.",
   "gizlilikMadde2Baslik": "2. Permisos de ubicación",
@@ -931,5 +931,7 @@
   "kesimUyarisiBaslik": "El recorte puede no ser preciso",
   "kesimUyarisiAciklama": "El color de la prenda es muy parecido al del fondo. La eliminación del fondo tiene dificultades: puede quedar parte del fondo o cortarse una parte de la prenda. Volver a hacer la foto sobre una superficie de otro color suele solucionarlo.",
   "kesimUyarisiTekrarCek": "Volver a hacer la foto",
-  "kesimUyarisiYineDeKaydet": "Guardar igualmente"
+  "kesimUyarisiYineDeKaydet": "Guardar igualmente",
+  "gizlilikMadde5Baslik": "5. Análisis de imágenes con IA",
+  "gizlilikMadde5Icerik": "Las fotos de las prendas se procesan en nuestro propio servidor para quitar el fondo y se envían a los servicios de IA de Google (Gemini) y Groq para el análisis de estilo y las sugerencias de conjuntos. Las fotos se procesan solo para responder a tu solicitud, no las almacenamos de forma permanente ni las usamos para publicidad. La foto permanece en tu dispositivo; puedes borrarla del armario cuando quieras."
 }
