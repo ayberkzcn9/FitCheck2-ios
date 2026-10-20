@@ -22,6 +22,7 @@ void main() {
     WidgetTester tester, {
     List<Kiyafet> dolap = const <Kiyafet>[],
     int tohum = 7,
+    double menuYuksekligi = 0,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -29,6 +30,11 @@ void main() {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         home: Scaffold(
+          // Gerçek AnaEkran gibi: gövde menünün altına uzanıyor.
+          extendBody: menuYuksekligi > 0,
+          bottomNavigationBar: menuYuksekligi > 0
+              ? SizedBox(height: menuYuksekligi)
+              : null,
           body: KombinDuellosuEkrani(
             gardirobum: dolap,
             motor: DuelMotoru(),
@@ -145,7 +151,7 @@ void main() {
     tester.view.padding = const FakeViewPadding(bottom: 24);
     addTearDown(tester.view.reset);
 
-    await kur(tester);
+    await kur(tester, menuYuksekligi: 86);
     await tester.ensureVisible(find.text('Düelloya başla'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Düelloya başla'));
@@ -171,7 +177,7 @@ void main() {
     tester.view.physicalSize = const Size(640, 360);
     addTearDown(tester.view.reset);
 
-    await kur(tester);
+    await kur(tester, menuYuksekligi: 62);
     await tester.ensureVisible(find.text('Düelloya başla'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Düelloya başla'));
@@ -183,7 +189,7 @@ void main() {
     expect(devam, findsOneWidget);
     final kutu = tester.getRect(devam);
     expect(kutu.top, greaterThanOrEqualTo(0));
-    expect(kutu.bottom, lessThanOrEqualTo(360));
+    expect(kutu.bottom, lessThanOrEqualTo(360 - 62));
 
     await tester.tap(devam);
     await tester.pumpAndSettle();

@@ -69,7 +69,6 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
   int _xp = 0;
 
   /// Kısa ekranda (yatay mod) panel açılınca "Devam" görünür olsun diye.
-  final GlobalKey _panelAnahtari = GlobalKey();
   final ScrollController _kaydirici = ScrollController();
 
   @override
@@ -155,15 +154,14 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     }
 
     // Kısa ekranda panel ekranın altında kalabiliyor; cevaptan sonra
-    // "Devam" düğmesini görünür alana getir.
+    // "Devam" düğmesi görünür olsun diye en alta kaydır.
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final baglam = _panelAnahtari.currentContext;
-      if (baglam == null || !mounted) return;
-      if (Scrollable.maybeOf(baglam) == null) return;
-      Scrollable.ensureVisible(
-        baglam,
-        alignment: 1,
-        duration: const Duration(milliseconds: 240),
+      if (!mounted || !_kaydirici.hasClients) return;
+      final hedef = _kaydirici.position.maxScrollExtent;
+      if (_kaydirici.offset >= hedef - 1) return;
+      _kaydirici.animateTo(
+        hedef,
+        duration: const Duration(milliseconds: 220),
         curve: Curves.easeOutCubic,
       );
     });
@@ -534,10 +532,16 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
   // ---------------------------------------------------------------- oyun
 
   /// AnaEkran `extendBody: true` kullandığı için gövde, alt menünün altına
-  /// uzanıyor. Bu boşluk bırakılmazsa geri bildirim panelinin "Devam" düğmesi
-  /// menünün arkasında kalır ve oyun ilk turdan sonra kilitlenmiş görünür.
-  double _altMenuBoslugu(BuildContext context) =>
-      62 + MediaQuery.of(context).padding.bottom;
+  /// uzanıyor. Scaffold bu durumda gövdenin alt boşluğunu menünün yüksekliği
+  /// kadar bildiriyor; bu boşluk bırakılmazsa geri bildirim panelinin "Devam"
+  /// düğmesi menünün arkasında kalır ve oyun ilk turdan sonra kilitlenmiş
+  /// görünür.
+  double _altMenuBoslugu(BuildContext context) {
+    final media = MediaQuery.of(context);
+    return media.padding.bottom > 0
+        ? media.padding.bottom
+        : media.viewPadding.bottom;
+  }
 
   /// Cevap verildiğinde kartların altında panel için ayrılan yer.
   static const double _panelYuksekligi = 176;
@@ -608,12 +612,9 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             child: _kartlar(context, _soru),
           ),
           const SizedBox(height: 12),
-          KeyedSubtree(
-            key: _panelAnahtari,
-            child: _cevaplandi
-                ? _geriBildirim(context, _soru)
-                : _dokunmaIpucu(context),
-          ),
+          _cevaplandi
+              ? _geriBildirim(context, _soru)
+              : _dokunmaIpucu(context),
         ],
       ),
     );
