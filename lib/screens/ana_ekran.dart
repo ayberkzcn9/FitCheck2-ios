@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
@@ -31,6 +30,7 @@ import '../services/reklam_servisi.dart';
 import '../utils/helpers.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/ana_ekran_rehber.dart';
+import 'bugun_ekrani.dart';
 
 import '../widgets/fade_indexed_stack.dart';
 import '../utils/ana_ekran_dialoglar.dart';
@@ -45,6 +45,17 @@ class AnaEkraniNavigasyon extends StatefulWidget {
 
 class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   int _seciliSekme = 0;
+
+  // ---- Sekme indeksleri -------------------------------------------------
+  // Sihirli sayı yerine ad kullanılıyor: başa yeni bir sekme eklendiğinde
+  // (Bugün gibi) çağrıların tek tek düzeltilmesi gerekmiyor.
+  static const int _sekmeBugun = 0;
+  static const int _sekmeDolap = 1;
+  static const int _sekmePlan = 2;
+  static const int _sekmeKombin = 3;
+  static const int _sekmeKendi = 4;
+  static const int _sekmeProfil = 5;
+  static const int _sekmeOyun = 6;
   List<Kiyafet> _gardirobum = [];
   List<FavoriKombin> _favoriKombinler = [];
   List<Map<String, String>> _gecmisKombinler = [];
@@ -64,7 +75,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   int _kalanHak = 3;
   Locale? _aktifDil;
   late final ValueListenable<int> _hakListener;
-  bool _isBarsVisible = true;
+  final bool _isBarsVisible = true;
 
   final GlobalKey<GunlukKombinEkraniState> _dolaptanKombinKey =
       GlobalKey<GunlukKombinEkraniState>();
@@ -76,6 +87,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   final GlobalKey _sesliAsistanKey = GlobalKey();
   final GlobalKey _ayarlarKey = GlobalKey();
 
+  final GlobalKey _bugunNavKey = GlobalKey();
   final GlobalKey _gardirobumNavKey = GlobalKey();
   final GlobalKey _haftalikNavKey = GlobalKey();
   final GlobalKey _dolaptanNavKey = GlobalKey();
@@ -869,6 +881,35 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     return l10n.anaKombinMukemmel;
   }
 
+  /// Fotoğraf ekleme akışı.
+  ///
+  /// Hem uygulama çubuğundaki kamera ikonu hem de "Bugün" ekranındaki
+  /// "Fotoğrafla ekle" kutusu bu yolu kullanır; iki yerde ayrı mantık
+  /// tutulmasın diye tek yere alındı.
+  Future<void> _fotografEkleAkisi() async {
+    HapticFeedback.mediumImpact();
+    final int maxLimit = await ReklamServisi().maxKiyafetLimitiniGetir();
+    if (!mounted) return;
+
+    if (_gardirobum.length >= maxLimit) {
+      AnaEkranDialoglar.gardiropLimitiDolduDiyaloguGoster(
+        context: context,
+        anaRenk: _anaRenk,
+        maxLimit: maxLimit,
+      );
+      return;
+    }
+
+    if (_seciliSekme != _sekmeDolap) {
+      _sekmeSec(_sekmeDolap);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _gardirobumKey.currentState?.topluFotografEkle();
+      });
+    } else {
+      _gardirobumKey.currentState?.topluFotografEkle();
+    }
+  }
+
   Future<void> _kombinGecmisineEkle(
       String kombinAdi, dynamic detayOrList) async {
     await _dataLock.synchronized(() async {
@@ -1087,7 +1128,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     ReklamServisi().gecisReklamiGoster(
       onAdClosed: () {
         if (!mounted) return;
-        _sekmeSec(2);
+        _sekmeSec(_sekmeKombin);
 
         WidgetsBinding.instance.addPostFrameCallback((_) {
           final promptHedef =
@@ -1117,7 +1158,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       await ReklamServisi().hakDusur();
 
       if (mounted) {
-        _sekmeSec(2);
+        _sekmeSec(_sekmeKombin);
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -1157,7 +1198,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       await ReklamServisi().hakDusur();
 
       if (mounted) {
-        _sekmeSec(2);
+        _sekmeSec(_sekmeKombin);
       }
       String? hedefOrtam = sonuc is String ? sonuc : null;
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -1329,33 +1370,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                     icon: Icons.add_photo_alternate_outlined,
                                     tooltip: l10n.topluFotografEkleTooltip,
                                     iconColor: colorScheme.onSurface,
-                                    onPressed: () async {
-                                      HapticFeedback.mediumImpact();
-                                      final int maxLimit = await ReklamServisi()
-                                          .maxKiyafetLimitiniGetir();
-
-                                      if (!mounted) return;
-
-                                      if (_gardirobum.length >= maxLimit) {
-                                        AnaEkranDialoglar
-                                            .gardiropLimitiDolduDiyaloguGoster(
-                                                context: context,
-                                                anaRenk: _anaRenk,
-                                                maxLimit: maxLimit);
-                                        return;
-                                      }
-                                      if (_seciliSekme != 0) {
-                                        _sekmeSec(0);
-                                        WidgetsBinding.instance
-                                            .addPostFrameCallback((_) {
-                                          _gardirobumKey.currentState
-                                              ?.topluFotografEkle();
-                                        });
-                                      } else {
-                                        _gardirobumKey.currentState
-                                            ?.topluFotografEkle();
-                                      }
-                                    },
+                                    onPressed: _fotografEkleAkisi,
                                   ),
                                   _buildHeaderIconButton(
                                     key: _sesliAsistanKey,
@@ -1484,20 +1499,27 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _buildNavItem(
-                        Icons.door_sliding_outlined, Icons.door_sliding_rounded, 0,
+                        Icons.wb_sunny_outlined, Icons.wb_sunny_rounded,
+                        _sekmeBugun,
+                        key: _bugunNavKey),
+                    _buildNavItem(
+                        Icons.door_sliding_outlined, Icons.door_sliding_rounded,
+                        _sekmeDolap,
                         key: _gardirobumNavKey),
                     _buildNavItem(Icons.calendar_month_outlined,
-                        Icons.calendar_month_rounded, 1,
+                        Icons.calendar_month_rounded, _sekmePlan,
                         key: _haftalikNavKey),
-                    _buildNavItem(Icons.casino_outlined, Icons.casino_rounded, 2,
+                    _buildNavItem(Icons.casino_outlined, Icons.casino_rounded,
+                        _sekmeKombin,
                         key: _dolaptanNavKey),
                     _buildNavItem(Icons.add_box_outlined,
-                        Icons.add_box_rounded, 3,
+                        Icons.add_box_rounded, _sekmeKendi,
                         key: _kendiNavKey),
                     _buildNavItem(Icons.insights_outlined,
-                        Icons.insights_rounded, 4,
+                        Icons.insights_rounded, _sekmeProfil,
                         key: _profilNavKey),
-                    _buildNavItem(Icons.quiz_outlined, Icons.quiz_rounded, 5),
+                    _buildNavItem(
+                        Icons.quiz_outlined, Icons.quiz_rounded, _sekmeOyun),
                   ],
                 ),
               ),
@@ -1522,6 +1544,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     final colorScheme = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context)!;
     final labels = [
+      l10n.bugunSekmesi,
       l10n.anaSekmeGardirop,
       l10n.anaSekmeHaftalik,
       l10n.anaSekmeAnlik,
@@ -1589,6 +1612,18 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     final l10n = AppLocalizations.of(context)!;
 
     final List<Widget> ekranlar = [
+      BugunEkrani(
+        gardirobum: _gardirobum,
+        gunlukHava: _gunlukHavaDurumu,
+        havaYukleniyor: _havaYukleniyor,
+        isAktifSekme: _seciliSekme == _sekmeBugun,
+        onSekmeSec: _sekmeSec,
+        onFotografEkle: _fotografEkleAkisi,
+        onFavoriEkle: _favoriKombinEkle,
+        onGecmiseEkle: _kombinGecmisineEkle,
+        onStilistAc: () => _aiChatbotModalAc(),
+        anaRenk: _anaRenk,
+      ),
       GardirobumEkrani(
         key: _gardirobumKey,
         gardirobum: _gardirobum,
@@ -1626,7 +1661,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         onKonumuYenile: _konumVeHavaDurumlariniAl,
         onKonumAyarlariniAc: _konumAyarlariniAc,
         anaRenk: _anaRenk,
-        isAktifSekme: _seciliSekme == 2,
+        isAktifSekme: _seciliSekme == _sekmeKombin,
       ),
       KendiKombinimEkrani(
         gardirobum: _gardirobum,
@@ -1649,7 +1684,9 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         onGecmisiTemizle: _onGecmisiTemizle,
         onTekliGecmisSil: _onTekliGecmisSil,
       ),
-      KombinOyunuEkrani(onReturnToHome: () => _sekmeSec(0), gardirobum: _gardirobum),
+      KombinOyunuEkrani(
+          onReturnToHome: () => _sekmeSec(_sekmeBugun),
+          gardirobum: _gardirobum),
     ];
 
     return Scaffold(

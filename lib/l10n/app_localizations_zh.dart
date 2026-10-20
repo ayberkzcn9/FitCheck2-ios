@@ -2743,4 +2743,67 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       '衣物照片会在我们自己的服务器上去除背景，并发送至 Google（Gemini）和 Groq 人工智能服务进行风格分析与搭配建议。照片仅用于回应您的请求，我们不会永久保存，也不会用于广告。照片本身保存在您的设备上，您可以随时从衣橱中删除。';
+
+  @override
+  String get bugunSekmesi => '今天';
+
+  @override
+  String get bugunBaslik => '今天';
+
+  @override
+  String get bugunGunaydin => '早上好';
+
+  @override
+  String get bugunIyiGunler => '下午好';
+
+  @override
+  String get bugunIyiAksamlar => '晚上好';
+
+  @override
+  String get bugunBugununKombini => '今日穿搭';
+
+  @override
+  String get bugunHizliFotograf => '添加照片';
+
+  @override
+  String get bugunHizliKombin => '生成穿搭';
+
+  @override
+  String get bugunHizliStilist => '询问造型师';
+
+  @override
+  String get bugunHizliPlan => '规划一周';
+
+  @override
+  String get bugunHazirlaniyor => '正在准备穿搭…';
+
+  @override
+  String get bugunBosBaslik => '你的衣橱还是空的';
+
+  @override
+  String get bugunBosAciklama => '添加第一件衣物，每天早上这里都会有新的搭配建议。';
+
+  @override
+  String get bugunYenile => '刷新';
+
+  @override
+  String get bugunGiydim => '我穿了';
+
+  @override
+  String get bugunKaydet => '保存';
+
+  @override
+  String get bugunSeninIcin => '为你推荐';
+
+  @override
+  String get bugunGiyilmediRafi => '两周未穿';
+
+  @override
+  String get bugunYeniRafi => '最近添加';
+
+  @override
+  String get bugunHavaRafi => '适合今天';
+
+  @override
+  String get bugunRafIpucu => '点击在衣橱中打开';
 }

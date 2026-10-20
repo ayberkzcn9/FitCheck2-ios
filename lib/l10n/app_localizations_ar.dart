@@ -2889,4 +2889,68 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       'تُعالج صور الملابس على خادمنا الخاص لإزالة الخلفية، ثم تُرسل إلى خدمات الذكاء الاصطناعي من Google (Gemini) وGroq لتحليل الأسلوب واقتراح التنسيقات. تُعالج الصور فقط للإجابة على طلبك، ولا نحتفظ بها بشكل دائم ولا نستخدمها للإعلانات. تبقى الصورة على جهازك، ويمكنك حذفها من خزانة ملابسك في أي وقت.';
+
+  @override
+  String get bugunSekmesi => 'اليوم';
+
+  @override
+  String get bugunBaslik => 'اليوم';
+
+  @override
+  String get bugunGunaydin => 'صباح الخير';
+
+  @override
+  String get bugunIyiGunler => 'نهارك سعيد';
+
+  @override
+  String get bugunIyiAksamlar => 'مساء الخير';
+
+  @override
+  String get bugunBugununKombini => 'إطلالة اليوم';
+
+  @override
+  String get bugunHizliFotograf => 'أضف صورة';
+
+  @override
+  String get bugunHizliKombin => 'أنشئ إطلالة';
+
+  @override
+  String get bugunHizliStilist => 'اسأل المنسق';
+
+  @override
+  String get bugunHizliPlan => 'خطط للأسبوع';
+
+  @override
+  String get bugunHazirlaniyor => 'يتم تجهيز الإطلالات…';
+
+  @override
+  String get bugunBosBaslik => 'خزانتك فارغة';
+
+  @override
+  String get bugunBosAciklama =>
+      'أضف أول قطعة؛ ستجد أفكار إطلالات جديدة هنا كل صباح.';
+
+  @override
+  String get bugunYenile => 'تحديث';
+
+  @override
+  String get bugunGiydim => 'ارتديته';
+
+  @override
+  String get bugunKaydet => 'حفظ';
+
+  @override
+  String get bugunSeninIcin => 'لك';
+
+  @override
+  String get bugunGiyilmediRafi => 'لم تُلبس منذ أسبوعين';
+
+  @override
+  String get bugunYeniRafi => 'أُضيفت مؤخرًا';
+
+  @override
+  String get bugunHavaRafi => 'مناسبة لليوم';
+
+  @override
+  String get bugunRafIpucu => 'اضغط لفتحها في خزانتك';
 }

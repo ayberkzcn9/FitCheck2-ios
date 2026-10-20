@@ -2938,4 +2938,68 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       'Les photos de vêtements sont traitées sur notre propre serveur pour supprimer l\'arrière-plan, puis envoyées aux services d\'IA Google (Gemini) et Groq pour l\'analyse du style et les suggestions de tenues. Les photos sont traitées uniquement pour répondre à votre demande, ne sont pas conservées durablement par nos soins et ne servent pas à la publicité. La photo reste sur votre appareil ; vous pouvez la supprimer du dressing à tout moment.';
+
+  @override
+  String get bugunSekmesi => 'Aujourd\'hui';
+
+  @override
+  String get bugunBaslik => 'Aujourd\'hui';
+
+  @override
+  String get bugunGunaydin => 'Bonjour';
+
+  @override
+  String get bugunIyiGunler => 'Bon après-midi';
+
+  @override
+  String get bugunIyiAksamlar => 'Bonsoir';
+
+  @override
+  String get bugunBugununKombini => 'La tenue du jour';
+
+  @override
+  String get bugunHizliFotograf => 'Ajouter une photo';
+
+  @override
+  String get bugunHizliKombin => 'Créer une tenue';
+
+  @override
+  String get bugunHizliStilist => 'Demander au styliste';
+
+  @override
+  String get bugunHizliPlan => 'Planifier la semaine';
+
+  @override
+  String get bugunHazirlaniyor => 'Préparation des tenues…';
+
+  @override
+  String get bugunBosBaslik => 'Ton dressing est vide';
+
+  @override
+  String get bugunBosAciklama =>
+      'Ajoute ta première pièce ; chaque matin, de nouvelles idées de tenues t\'attendront ici.';
+
+  @override
+  String get bugunYenile => 'Actualiser';
+
+  @override
+  String get bugunGiydim => 'Je l\'ai porté';
+
+  @override
+  String get bugunKaydet => 'Enregistrer';
+
+  @override
+  String get bugunSeninIcin => 'Pour toi';
+
+  @override
+  String get bugunGiyilmediRafi => 'Pas portés depuis 2 semaines';
+
+  @override
+  String get bugunYeniRafi => 'Ajoutés récemment';
+
+  @override
+  String get bugunHavaRafi => 'Adaptés à aujourd\'hui';
+
+  @override
+  String get bugunRafIpucu => 'Touche pour ouvrir dans ton dressing';
 }

@@ -2934,4 +2934,68 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       'Las fotos de las prendas se procesan en nuestro propio servidor para quitar el fondo y se envían a los servicios de IA de Google (Gemini) y Groq para el análisis de estilo y las sugerencias de conjuntos. Las fotos se procesan solo para responder a tu solicitud, no las almacenamos de forma permanente ni las usamos para publicidad. La foto permanece en tu dispositivo; puedes borrarla del armario cuando quieras.';
+
+  @override
+  String get bugunSekmesi => 'Hoy';
+
+  @override
+  String get bugunBaslik => 'Hoy';
+
+  @override
+  String get bugunGunaydin => 'Buenos días';
+
+  @override
+  String get bugunIyiGunler => 'Buenas tardes';
+
+  @override
+  String get bugunIyiAksamlar => 'Buenas noches';
+
+  @override
+  String get bugunBugununKombini => 'El conjunto de hoy';
+
+  @override
+  String get bugunHizliFotograf => 'Añadir una foto';
+
+  @override
+  String get bugunHizliKombin => 'Crear un conjunto';
+
+  @override
+  String get bugunHizliStilist => 'Preguntar al estilista';
+
+  @override
+  String get bugunHizliPlan => 'Planificar la semana';
+
+  @override
+  String get bugunHazirlaniyor => 'Preparando conjuntos…';
+
+  @override
+  String get bugunBosBaslik => 'Tu armario está vacío';
+
+  @override
+  String get bugunBosAciklama =>
+      'Añade tu primera prenda; cada mañana tendrás aquí nuevas ideas de conjuntos.';
+
+  @override
+  String get bugunYenile => 'Actualizar';
+
+  @override
+  String get bugunGiydim => 'Me lo puse';
+
+  @override
+  String get bugunKaydet => 'Guardar';
+
+  @override
+  String get bugunSeninIcin => 'Para ti';
+
+  @override
+  String get bugunGiyilmediRafi => 'Sin usar desde hace 2 semanas';
+
+  @override
+  String get bugunYeniRafi => 'Añadidos recientemente';
+
+  @override
+  String get bugunHavaRafi => 'Adecuados para hoy';
+
+  @override
+  String get bugunRafIpucu => 'Toca para abrir en tu armario';
 }

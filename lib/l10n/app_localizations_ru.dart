@@ -2910,4 +2910,68 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       'Фотографии одежды обрабатываются на нашем собственном сервере для удаления фона и отправляются в сервисы ИИ Google (Gemini) и Groq для анализа стиля и подбора образов. Фотографии обрабатываются только для ответа на ваш запрос, мы не храним их постоянно и не используем для рекламы. Сама фотография остаётся на вашем устройстве; вы можете удалить её из гардероба в любой момент.';
+
+  @override
+  String get bugunSekmesi => 'Сегодня';
+
+  @override
+  String get bugunBaslik => 'Сегодня';
+
+  @override
+  String get bugunGunaydin => 'Доброе утро';
+
+  @override
+  String get bugunIyiGunler => 'Добрый день';
+
+  @override
+  String get bugunIyiAksamlar => 'Добрый вечер';
+
+  @override
+  String get bugunBugununKombini => 'Образ дня';
+
+  @override
+  String get bugunHizliFotograf => 'Добавить фото';
+
+  @override
+  String get bugunHizliKombin => 'Создать образ';
+
+  @override
+  String get bugunHizliStilist => 'Спросить стилиста';
+
+  @override
+  String get bugunHizliPlan => 'Спланировать неделю';
+
+  @override
+  String get bugunHazirlaniyor => 'Готовим образы…';
+
+  @override
+  String get bugunBosBaslik => 'Ваш гардероб пока пуст';
+
+  @override
+  String get bugunBosAciklama =>
+      'Добавьте первую вещь; каждое утро здесь будут новые идеи образов.';
+
+  @override
+  String get bugunYenile => 'Обновить';
+
+  @override
+  String get bugunGiydim => 'Надел';
+
+  @override
+  String get bugunKaydet => 'Сохранить';
+
+  @override
+  String get bugunSeninIcin => 'Для вас';
+
+  @override
+  String get bugunGiyilmediRafi => 'Не надевали 2 недели';
+
+  @override
+  String get bugunYeniRafi => 'Недавно добавленные';
+
+  @override
+  String get bugunHavaRafi => 'Подходят на сегодня';
+
+  @override
+  String get bugunRafIpucu => 'Нажмите, чтобы открыть в гардеробе';
 }

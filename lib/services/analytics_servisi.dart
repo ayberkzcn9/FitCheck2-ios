@@ -38,6 +38,7 @@ class AnalyticsServisi {
 
   /// Ana ekran sekmelerinin adları (`_seciliSekme` sırasıyla aynı).
   static const List<String> sekmeAdlari = <String>[
+    'tab_today',
     'tab_wardrobe',
     'tab_weekly_plan',
     'tab_now',

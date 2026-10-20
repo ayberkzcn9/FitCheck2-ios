@@ -5385,6 +5385,132 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz.'**
   String get gizlilikMadde5Icerik;
+
+  /// No description provided for @bugunSekmesi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün'**
+  String get bugunSekmesi;
+
+  /// No description provided for @bugunBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün'**
+  String get bugunBaslik;
+
+  /// No description provided for @bugunGunaydin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günaydın'**
+  String get bugunGunaydin;
+
+  /// No description provided for @bugunIyiGunler.
+  ///
+  /// In tr, this message translates to:
+  /// **'İyi günler'**
+  String get bugunIyiGunler;
+
+  /// No description provided for @bugunIyiAksamlar.
+  ///
+  /// In tr, this message translates to:
+  /// **'İyi akşamlar'**
+  String get bugunIyiAksamlar;
+
+  /// No description provided for @bugunBugununKombini.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünün kombini'**
+  String get bugunBugununKombini;
+
+  /// No description provided for @bugunHizliFotograf.
+  ///
+  /// In tr, this message translates to:
+  /// **'Fotoğrafla ekle'**
+  String get bugunHizliFotograf;
+
+  /// No description provided for @bugunHizliKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin üret'**
+  String get bugunHizliKombin;
+
+  /// No description provided for @bugunHizliStilist.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stiliste sor'**
+  String get bugunHizliStilist;
+
+  /// No description provided for @bugunHizliPlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftayı planla'**
+  String get bugunHizliPlan;
+
+  /// No description provided for @bugunHazirlaniyor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombinler hazırlanıyor…'**
+  String get bugunHazirlaniyor;
+
+  /// No description provided for @bugunBosBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabın henüz boş'**
+  String get bugunBosBaslik;
+
+  /// No description provided for @bugunBosAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'İlk parçanı ekle; her sabah burada yeni kombin önerileri olacak.'**
+  String get bugunBosAciklama;
+
+  /// No description provided for @bugunYenile.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yenile'**
+  String get bugunYenile;
+
+  /// No description provided for @bugunGiydim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giydim'**
+  String get bugunGiydim;
+
+  /// No description provided for @bugunKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get bugunKaydet;
+
+  /// No description provided for @bugunSeninIcin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Senin için'**
+  String get bugunSeninIcin;
+
+  /// No description provided for @bugunGiyilmediRafi.
+  ///
+  /// In tr, this message translates to:
+  /// **'2 haftadır giymediklerin'**
+  String get bugunGiyilmediRafi;
+
+  /// No description provided for @bugunYeniRafi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni eklenenler'**
+  String get bugunYeniRafi;
+
+  /// No description provided for @bugunHavaRafi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugüne uygun'**
+  String get bugunHavaRafi;
+
+  /// No description provided for @bugunRafIpucu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabında görmek için dokun'**
+  String get bugunRafIpucu;
 }
 
 class _AppLocalizationsDelegate

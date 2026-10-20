@@ -2799,4 +2799,67 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       '의류 사진은 배경 제거를 위해 자체 서버에서 처리되며, 스타일 분석과 코디 추천을 위해 Google(Gemini) 및 Groq AI 서비스로 전송됩니다. 사진은 요청에 응답하기 위해서만 처리되고, 당사가 영구적으로 저장하지 않으며 광고에 사용하지 않습니다. 사진 자체는 기기에 남아 있으며 언제든지 옷장에서 삭제할 수 있습니다.';
+
+  @override
+  String get bugunSekmesi => '오늘';
+
+  @override
+  String get bugunBaslik => '오늘';
+
+  @override
+  String get bugunGunaydin => '좋은 아침이에요';
+
+  @override
+  String get bugunIyiGunler => '좋은 오후예요';
+
+  @override
+  String get bugunIyiAksamlar => '좋은 저녁이에요';
+
+  @override
+  String get bugunBugununKombini => '오늘의 코디';
+
+  @override
+  String get bugunHizliFotograf => '사진 추가';
+
+  @override
+  String get bugunHizliKombin => '코디 만들기';
+
+  @override
+  String get bugunHizliStilist => '스타일리스트에게 묻기';
+
+  @override
+  String get bugunHizliPlan => '한 주 계획하기';
+
+  @override
+  String get bugunHazirlaniyor => '코디를 준비하는 중…';
+
+  @override
+  String get bugunBosBaslik => '옷장이 비어 있어요';
+
+  @override
+  String get bugunBosAciklama => '첫 옷을 추가해 보세요. 매일 아침 새로운 코디 제안이 여기에 표시됩니다.';
+
+  @override
+  String get bugunYenile => '새로고침';
+
+  @override
+  String get bugunGiydim => '입었어요';
+
+  @override
+  String get bugunKaydet => '저장';
+
+  @override
+  String get bugunSeninIcin => '당신을 위해';
+
+  @override
+  String get bugunGiyilmediRafi => '2주 동안 입지 않은 옷';
+
+  @override
+  String get bugunYeniRafi => '최근 추가';
+
+  @override
+  String get bugunHavaRafi => '오늘에 어울리는';
+
+  @override
+  String get bugunRafIpucu => '탭하여 옷장에서 열기';
 }

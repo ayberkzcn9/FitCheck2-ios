@@ -2785,4 +2785,67 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       '衣類の写真は背景を削除するために当社のサーバーで処理され、スタイル分析とコーディネート提案のために Google（Gemini）および Groq の AI サービスに送信されます。写真はご依頼への回答のみに使用され、当社が永続的に保存することはなく、広告には使用しません。写真自体は端末に保存され、いつでもワードローブから削除できます。';
+
+  @override
+  String get bugunSekmesi => '今日';
+
+  @override
+  String get bugunBaslik => '今日';
+
+  @override
+  String get bugunGunaydin => 'おはようございます';
+
+  @override
+  String get bugunIyiGunler => 'こんにちは';
+
+  @override
+  String get bugunIyiAksamlar => 'こんばんは';
+
+  @override
+  String get bugunBugununKombini => '今日のコーデ';
+
+  @override
+  String get bugunHizliFotograf => '写真を追加';
+
+  @override
+  String get bugunHizliKombin => 'コーデを作成';
+
+  @override
+  String get bugunHizliStilist => 'スタイリストに聞く';
+
+  @override
+  String get bugunHizliPlan => '1週間を計画';
+
+  @override
+  String get bugunHazirlaniyor => 'コーデを準備中…';
+
+  @override
+  String get bugunBosBaslik => 'ワードローブはまだ空です';
+
+  @override
+  String get bugunBosAciklama => '最初のアイテムを追加しましょう。毎朝ここに新しいコーデの提案が届きます。';
+
+  @override
+  String get bugunYenile => '更新';
+
+  @override
+  String get bugunGiydim => '着た';
+
+  @override
+  String get bugunKaydet => '保存';
+
+  @override
+  String get bugunSeninIcin => 'あなたへ';
+
+  @override
+  String get bugunGiyilmediRafi => '2週間着ていない';
+
+  @override
+  String get bugunYeniRafi => '最近追加';
+
+  @override
+  String get bugunHavaRafi => '今日に合う';
+
+  @override
+  String get bugunRafIpucu => 'タップしてワードローブで開く';
 }

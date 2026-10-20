@@ -2911,4 +2911,68 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get gizlilikMadde5Icerik =>
       'Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz.';
+
+  @override
+  String get bugunSekmesi => 'Bugün';
+
+  @override
+  String get bugunBaslik => 'Bugün';
+
+  @override
+  String get bugunGunaydin => 'Günaydın';
+
+  @override
+  String get bugunIyiGunler => 'İyi günler';
+
+  @override
+  String get bugunIyiAksamlar => 'İyi akşamlar';
+
+  @override
+  String get bugunBugununKombini => 'Bugünün kombini';
+
+  @override
+  String get bugunHizliFotograf => 'Fotoğrafla ekle';
+
+  @override
+  String get bugunHizliKombin => 'Kombin üret';
+
+  @override
+  String get bugunHizliStilist => 'Stiliste sor';
+
+  @override
+  String get bugunHizliPlan => 'Haftayı planla';
+
+  @override
+  String get bugunHazirlaniyor => 'Kombinler hazırlanıyor…';
+
+  @override
+  String get bugunBosBaslik => 'Dolabın henüz boş';
+
+  @override
+  String get bugunBosAciklama =>
+      'İlk parçanı ekle; her sabah burada yeni kombin önerileri olacak.';
+
+  @override
+  String get bugunYenile => 'Yenile';
+
+  @override
+  String get bugunGiydim => 'Giydim';
+
+  @override
+  String get bugunKaydet => 'Kaydet';
+
+  @override
+  String get bugunSeninIcin => 'Senin için';
+
+  @override
+  String get bugunGiyilmediRafi => '2 haftadır giymediklerin';
+
+  @override
+  String get bugunYeniRafi => 'Yeni eklenenler';
+
+  @override
+  String get bugunHavaRafi => 'Bugüne uygun';
+
+  @override
+  String get bugunRafIpucu => 'Dolabında görmek için dokun';
 }
