@@ -415,10 +415,17 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
       ...satirlar,
     ].join('\n');
 
+    // iPad'de paylaşım sayfasının konumu gerekiyor.
+    final kutu = context.findRenderObject();
+    final konum = kutu is RenderBox
+        ? kutu.localToGlobal(Offset.zero) & kutu.size
+        : null;
+
     await SharePlus.instance.share(
       ShareParams(
         text: metin,
         subject: l10n.seyahatBaslik,
+        sharePositionOrigin: konum,
       ),
     );
   }
