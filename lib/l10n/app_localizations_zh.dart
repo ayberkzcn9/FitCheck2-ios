@@ -2983,4 +2983,119 @@ class AppLocalizationsZh extends AppLocalizations {
   String bugunParcaGiydimIsaretlendi(String parca) {
     return '已将“$parca”标记为今天穿过。';
   }
+
+  @override
+  String get stilGunluguBaslik => '我的风格日记';
+
+  @override
+  String get stilGunluguTakvim => '日历';
+
+  @override
+  String get stilGunluguGunluk => '日记';
+
+  @override
+  String get stilGunluguRapor => '报告';
+
+  @override
+  String get stilGunluguGiyildi => '已穿';
+
+  @override
+  String get stilGunluguPlanli => '已计划';
+
+  @override
+  String get stilGunluguGunBos => '这天没有记录';
+
+  @override
+  String stilGunluguRaporOzet(String kombin) {
+    return '本周你穿了 $kombin 套搭配';
+  }
+
+  @override
+  String stilGunluguRaporGecenHafta(String fark) {
+    return '与上周相比：$fark';
+  }
+
+  @override
+  String get stilGunluguRaporKullanim => '衣橱使用率';
+
+  @override
+  String get stilGunluguRaporEnCok => '最常穿的单品';
+
+  @override
+  String get stilGunluguRaporSeri => '连续天数';
+
+  @override
+  String get stilGunluguRaporHicGiyilmemis => '从未穿过';
+
+  @override
+  String get stilGunluguRaporPaylas => '分享报告';
+
+  @override
+  String stilGunluguRaporPaylasMetni(String ozet) {
+    return '我的每周风格报告：$ozet';
+  }
+
+  @override
+  String get stilGunluguRaporBos => '本周还没有记录搭配，穿上后就会出现在这里。';
+
+  @override
+  String get seyahatBaslik => '旅行模式';
+
+  @override
+  String get seyahatGunSayisi => '天数';
+
+  @override
+  String get seyahatHava => '天气';
+
+  @override
+  String get seyahatHavaSicak => '炎热';
+
+  @override
+  String get seyahatHavaIliman => '温和';
+
+  @override
+  String get seyahatHavaSoguk => '寒冷';
+
+  @override
+  String get seyahatAmac => '场合';
+
+  @override
+  String get seyahatAmacGunluk => '日常';
+
+  @override
+  String get seyahatAmacIs => '工作';
+
+  @override
+  String get seyahatAmacOzel => '特别';
+
+  @override
+  String get seyahatPlanBaslik => '行李清单';
+
+  @override
+  String seyahatKombine(String adet) {
+    return '$adet 套搭配';
+  }
+
+  @override
+  String get seyahatDiger => '外套';
+
+  @override
+  String get seyahatEksikUst => '没有干净的上衣';
+
+  @override
+  String get seyahatEksikAlt => '没有干净的裤子';
+
+  @override
+  String get seyahatEksikAyakkabi => '没有鞋子';
+
+  @override
+  String seyahatEksikKombin(String gun) {
+    return '$gun 天的搭配不够';
+  }
+
+  @override
+  String get seyahatPaylas => '分享清单';
+
+  @override
+  String get seyahatPaylasMetni => '我的 FitCheck 行李计划 ✨';
 }

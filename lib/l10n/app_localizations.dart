@@ -5829,6 +5829,216 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'«{parca}» bugün giydim olarak işaretlendi.'**
   String bugunParcaGiydimIsaretlendi(String parca);
+
+  /// No description provided for @stilGunluguBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stil Günlüğüm'**
+  String get stilGunluguBaslik;
+
+  /// No description provided for @stilGunluguTakvim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takvim'**
+  String get stilGunluguTakvim;
+
+  /// No description provided for @stilGunluguGunluk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük'**
+  String get stilGunluguGunluk;
+
+  /// No description provided for @stilGunluguRapor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rapor'**
+  String get stilGunluguRapor;
+
+  /// No description provided for @stilGunluguGiyildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giyildi'**
+  String get stilGunluguGiyildi;
+
+  /// No description provided for @stilGunluguPlanli.
+  ///
+  /// In tr, this message translates to:
+  /// **'Planlandı'**
+  String get stilGunluguPlanli;
+
+  /// No description provided for @stilGunluguGunBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu gün için kayıt yok'**
+  String get stilGunluguGunBos;
+
+  /// No description provided for @stilGunluguRaporOzet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta {kombin} kombin giyindin'**
+  String stilGunluguRaporOzet(String kombin);
+
+  /// No description provided for @stilGunluguRaporGecenHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geçen haftaya göre {fark}'**
+  String stilGunluguRaporGecenHafta(String fark);
+
+  /// No description provided for @stilGunluguRaporKullanim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolap kullanımı'**
+  String get stilGunluguRaporKullanim;
+
+  /// No description provided for @stilGunluguRaporEnCok.
+  ///
+  /// In tr, this message translates to:
+  /// **'En çok giyilen'**
+  String get stilGunluguRaporEnCok;
+
+  /// No description provided for @stilGunluguRaporSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük seri'**
+  String get stilGunluguRaporSeri;
+
+  /// No description provided for @stilGunluguRaporHicGiyilmemis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hiç giyilmemiş'**
+  String get stilGunluguRaporHicGiyilmemis;
+
+  /// No description provided for @stilGunluguRaporPaylas.
+  ///
+  /// In tr, this message translates to:
+  /// **'Raporu paylaş'**
+  String get stilGunluguRaporPaylas;
+
+  /// No description provided for @stilGunluguRaporPaylasMetni.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftalık stil raporum: {ozet}'**
+  String stilGunluguRaporPaylasMetni(String ozet);
+
+  /// No description provided for @stilGunluguRaporBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta henüz kombin kaydın yok. Giyildiğinde burada görünecek.'**
+  String get stilGunluguRaporBos;
+
+  /// No description provided for @seyahatBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat Modu'**
+  String get seyahatBaslik;
+
+  /// No description provided for @seyahatGunSayisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gün sayısı'**
+  String get seyahatGunSayisi;
+
+  /// No description provided for @seyahatHava.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hava'**
+  String get seyahatHava;
+
+  /// No description provided for @seyahatHavaSicak.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sıcak'**
+  String get seyahatHavaSicak;
+
+  /// No description provided for @seyahatHavaIliman.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ilıman'**
+  String get seyahatHavaIliman;
+
+  /// No description provided for @seyahatHavaSoguk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soğuk'**
+  String get seyahatHavaSoguk;
+
+  /// No description provided for @seyahatAmac.
+  ///
+  /// In tr, this message translates to:
+  /// **'Amaç'**
+  String get seyahatAmac;
+
+  /// No description provided for @seyahatAmacGunluk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük'**
+  String get seyahatAmacGunluk;
+
+  /// No description provided for @seyahatAmacIs.
+  ///
+  /// In tr, this message translates to:
+  /// **'İş'**
+  String get seyahatAmacIs;
+
+  /// No description provided for @seyahatAmacOzel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Özel'**
+  String get seyahatAmacOzel;
+
+  /// No description provided for @seyahatPlanBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Valiz Planı'**
+  String get seyahatPlanBaslik;
+
+  /// No description provided for @seyahatKombine.
+  ///
+  /// In tr, this message translates to:
+  /// **'{adet} kombin çıkar'**
+  String seyahatKombine(String adet);
+
+  /// No description provided for @seyahatDiger.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dış giyim'**
+  String get seyahatDiger;
+
+  /// No description provided for @seyahatEksikUst.
+  ///
+  /// In tr, this message translates to:
+  /// **'Temiz üst giyim yok'**
+  String get seyahatEksikUst;
+
+  /// No description provided for @seyahatEksikAlt.
+  ///
+  /// In tr, this message translates to:
+  /// **'Temiz alt giyim yok'**
+  String get seyahatEksikAlt;
+
+  /// No description provided for @seyahatEksikAyakkabi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ayakkabı yok'**
+  String get seyahatEksikAyakkabi;
+
+  /// No description provided for @seyahatEksikKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'{gun} gün için kombin yetmiyor'**
+  String seyahatEksikKombin(String gun);
+
+  /// No description provided for @seyahatPaylas.
+  ///
+  /// In tr, this message translates to:
+  /// **'Listeyi paylaş'**
+  String get seyahatPaylas;
+
+  /// No description provided for @seyahatPaylasMetni.
+  ///
+  /// In tr, this message translates to:
+  /// **'FitCheck valiz planım ✨'**
+  String get seyahatPaylasMetni;
 }
 
 class _AppLocalizationsDelegate

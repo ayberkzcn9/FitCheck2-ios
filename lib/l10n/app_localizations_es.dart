@@ -3185,4 +3185,120 @@ class AppLocalizationsEs extends AppLocalizations {
   String bugunParcaGiydimIsaretlendi(String parca) {
     return '«$parca» marcada como usada hoy.';
   }
+
+  @override
+  String get stilGunluguBaslik => 'Mi diario de estilo';
+
+  @override
+  String get stilGunluguTakvim => 'Calendario';
+
+  @override
+  String get stilGunluguGunluk => 'Diario';
+
+  @override
+  String get stilGunluguRapor => 'Informe';
+
+  @override
+  String get stilGunluguGiyildi => 'Usado';
+
+  @override
+  String get stilGunluguPlanli => 'Planeado';
+
+  @override
+  String get stilGunluguGunBos => 'No hay registro para este día';
+
+  @override
+  String stilGunluguRaporOzet(String kombin) {
+    return 'Esta semana llevaste $kombin looks';
+  }
+
+  @override
+  String stilGunluguRaporGecenHafta(String fark) {
+    return 'Comparado con la semana pasada: $fark';
+  }
+
+  @override
+  String get stilGunluguRaporKullanim => 'Uso del armario';
+
+  @override
+  String get stilGunluguRaporEnCok => 'El más usado';
+
+  @override
+  String get stilGunluguRaporSeri => 'Racha diaria';
+
+  @override
+  String get stilGunluguRaporHicGiyilmemis => 'Nunca usado';
+
+  @override
+  String get stilGunluguRaporPaylas => 'Compartir informe';
+
+  @override
+  String stilGunluguRaporPaylasMetni(String ozet) {
+    return 'Mi informe de estilo semanal: $ozet';
+  }
+
+  @override
+  String get stilGunluguRaporBos =>
+      'Aún no hay looks registrados esta semana. Aparecerán aquí.';
+
+  @override
+  String get seyahatBaslik => 'Modo viaje';
+
+  @override
+  String get seyahatGunSayisi => 'Días';
+
+  @override
+  String get seyahatHava => 'Clima';
+
+  @override
+  String get seyahatHavaSicak => 'Calor';
+
+  @override
+  String get seyahatHavaIliman => 'Templado';
+
+  @override
+  String get seyahatHavaSoguk => 'Frío';
+
+  @override
+  String get seyahatAmac => 'Ocasión';
+
+  @override
+  String get seyahatAmacGunluk => 'Diario';
+
+  @override
+  String get seyahatAmacIs => 'Trabajo';
+
+  @override
+  String get seyahatAmacOzel => 'Especial';
+
+  @override
+  String get seyahatPlanBaslik => 'Plan de maleta';
+
+  @override
+  String seyahatKombine(String adet) {
+    return '$adet looks';
+  }
+
+  @override
+  String get seyahatDiger => 'Abrigo';
+
+  @override
+  String get seyahatEksikUst => 'No hay tops limpios';
+
+  @override
+  String get seyahatEksikAlt => 'No hay bottoms limpios';
+
+  @override
+  String get seyahatEksikAyakkabi => 'No hay zapatos';
+
+  @override
+  String seyahatEksikKombin(String gun) {
+    return 'No hay suficientes looks para $gun días';
+  }
+
+  @override
+  String get seyahatPaylas => 'Compartir lista';
+
+  @override
+  String get seyahatPaylasMetni => 'Mi plan de maleta de FitCheck ✨';
 }

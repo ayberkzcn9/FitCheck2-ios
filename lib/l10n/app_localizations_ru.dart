@@ -3159,4 +3159,120 @@ class AppLocalizationsRu extends AppLocalizations {
   String bugunParcaGiydimIsaretlendi(String parca) {
     return '«$parca» отмечено как надетое сегодня.';
   }
+
+  @override
+  String get stilGunluguBaslik => 'Мой дневник стиля';
+
+  @override
+  String get stilGunluguTakvim => 'Календарь';
+
+  @override
+  String get stilGunluguGunluk => 'Дневник';
+
+  @override
+  String get stilGunluguRapor => 'Отчёт';
+
+  @override
+  String get stilGunluguGiyildi => 'Надето';
+
+  @override
+  String get stilGunluguPlanli => 'Запланировано';
+
+  @override
+  String get stilGunluguGunBos => 'Нет записи за этот день';
+
+  @override
+  String stilGunluguRaporOzet(String kombin) {
+    return 'На этой неделе: $kombin образов';
+  }
+
+  @override
+  String stilGunluguRaporGecenHafta(String fark) {
+    return 'По сравнению с прошлой неделей: $fark';
+  }
+
+  @override
+  String get stilGunluguRaporKullanim => 'Использование гардероба';
+
+  @override
+  String get stilGunluguRaporEnCok => 'Самое частое';
+
+  @override
+  String get stilGunluguRaporSeri => 'Серия дней';
+
+  @override
+  String get stilGunluguRaporHicGiyilmemis => 'Ни разу не носили';
+
+  @override
+  String get stilGunluguRaporPaylas => 'Поделиться отчётом';
+
+  @override
+  String stilGunluguRaporPaylasMetni(String ozet) {
+    return 'Мой недельный отчёт о стиле: $ozet';
+  }
+
+  @override
+  String get stilGunluguRaporBos =>
+      'На этой неделе пока нет записанных образов. Они появятся здесь.';
+
+  @override
+  String get seyahatBaslik => 'Режим путешествия';
+
+  @override
+  String get seyahatGunSayisi => 'Количество дней';
+
+  @override
+  String get seyahatHava => 'Погода';
+
+  @override
+  String get seyahatHavaSicak => 'Жарко';
+
+  @override
+  String get seyahatHavaIliman => 'Тепло';
+
+  @override
+  String get seyahatHavaSoguk => 'Холодно';
+
+  @override
+  String get seyahatAmac => 'Повод';
+
+  @override
+  String get seyahatAmacGunluk => 'Повседневный';
+
+  @override
+  String get seyahatAmacIs => 'Работа';
+
+  @override
+  String get seyahatAmacOzel => 'Особый';
+
+  @override
+  String get seyahatPlanBaslik => 'План чемодана';
+
+  @override
+  String seyahatKombine(String adet) {
+    return '$adet образов';
+  }
+
+  @override
+  String get seyahatDiger => 'Верхняя одежда';
+
+  @override
+  String get seyahatEksikUst => 'Нет чистых верхов';
+
+  @override
+  String get seyahatEksikAlt => 'Нет чистых низов';
+
+  @override
+  String get seyahatEksikAyakkabi => 'Нет обуви';
+
+  @override
+  String seyahatEksikKombin(String gun) {
+    return 'Не хватает образов на $gun дней';
+  }
+
+  @override
+  String get seyahatPaylas => 'Поделиться списком';
+
+  @override
+  String get seyahatPaylasMetni => 'Мой план чемодана FitCheck ✨';
 }

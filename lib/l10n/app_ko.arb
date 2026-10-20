@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "나의 스타일 다이어리",
+  "stilGunluguTakvim": "달력",
+  "stilGunluguGunluk": "일지",
+  "stilGunluguRapor": "리포트",
+  "stilGunluguGiyildi": "착용",
+  "stilGunluguPlanli": "예정",
+  "stilGunluguGunBos": "이 날짜의 기록이 없어요",
+  "stilGunluguRaporOzet": "이번 주에 {kombin}가지 코디를 입었어요",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "지난주와 비교: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "옷장 사용률",
+  "stilGunluguRaporEnCok": "가장 많이 입은 아이템",
+  "stilGunluguRaporSeri": "연속 기록",
+  "stilGunluguRaporHicGiyilmemis": "한 번도 입지 않음",
+  "stilGunluguRaporPaylas": "리포트 공유",
+  "stilGunluguRaporPaylasMetni": "나의 주간 스타일 리포트: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "이번 주에 아직 기록된 코디가 없어요. 여기에 표시될 거예요.",
+  "seyahatBaslik": "여행 모드",
+  "seyahatGunSayisi": "여행 일수",
+  "seyahatHava": "날씨",
+  "seyahatHavaSicak": "더움",
+  "seyahatHavaIliman": "온화",
+  "seyahatHavaSoguk": "추움",
+  "seyahatAmac": "목적",
+  "seyahatAmacGunluk": "일상",
+  "seyahatAmacIs": "출근",
+  "seyahatAmacOzel": "특별",
+  "seyahatPlanBaslik": "여행 짐 계획",
+  "seyahatKombine": "{adet}가지 코디",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "아우터",
+  "seyahatEksikUst": "깨끗한 상의가 없어요",
+  "seyahatEksikAlt": "깨끗한 하의가 없어요",
+  "seyahatEksikAyakkabi": "신발이 없어요",
+  "seyahatEksikKombin": "{gun}일치 코디가 부족해요",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "목록 공유",
+  "seyahatPaylasMetni": "FitCheck 여행 짐 계획 ✨"
 }

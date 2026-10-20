@@ -3025,4 +3025,119 @@ class AppLocalizationsJa extends AppLocalizations {
   String bugunParcaGiydimIsaretlendi(String parca) {
     return '「$parca」を今日着たものにしました。';
   }
+
+  @override
+  String get stilGunluguBaslik => 'マイスタイル日記';
+
+  @override
+  String get stilGunluguTakvim => 'カレンダー';
+
+  @override
+  String get stilGunluguGunluk => '日記';
+
+  @override
+  String get stilGunluguRapor => 'レポート';
+
+  @override
+  String get stilGunluguGiyildi => '着用';
+
+  @override
+  String get stilGunluguPlanli => '予定';
+
+  @override
+  String get stilGunluguGunBos => 'この日の記録はありません';
+
+  @override
+  String stilGunluguRaporOzet(String kombin) {
+    return '今週は $kombin 通りの着合わせをしました';
+  }
+
+  @override
+  String stilGunluguRaporGecenHafta(String fark) {
+    return '先週との比較: $fark';
+  }
+
+  @override
+  String get stilGunluguRaporKullanim => 'クローゼットの使用率';
+
+  @override
+  String get stilGunluguRaporEnCok => '一番着たアイテム';
+
+  @override
+  String get stilGunluguRaporSeri => '連続日数';
+
+  @override
+  String get stilGunluguRaporHicGiyilmemis => '一度も着ていない';
+
+  @override
+  String get stilGunluguRaporPaylas => 'レポートを共有';
+
+  @override
+  String stilGunluguRaporPaylasMetni(String ozet) {
+    return '今週のスタイルレポート: $ozet';
+  }
+
+  @override
+  String get stilGunluguRaporBos => '今週はまだ着用の記録がありません。ここに表示されます。';
+
+  @override
+  String get seyahatBaslik => 'トラベルモード';
+
+  @override
+  String get seyahatGunSayisi => '日数';
+
+  @override
+  String get seyahatHava => '天気';
+
+  @override
+  String get seyahatHavaSicak => '暑い';
+
+  @override
+  String get seyahatHavaIliman => '温暖';
+
+  @override
+  String get seyahatHavaSoguk => '寒い';
+
+  @override
+  String get seyahatAmac => '目的';
+
+  @override
+  String get seyahatAmacGunluk => '日常';
+
+  @override
+  String get seyahatAmacIs => '仕事';
+
+  @override
+  String get seyahatAmacOzel => '特別な予定';
+
+  @override
+  String get seyahatPlanBaslik => 'パッキングプラン';
+
+  @override
+  String seyahatKombine(String adet) {
+    return '$adet 通りの着合わせ';
+  }
+
+  @override
+  String get seyahatDiger => 'アウター';
+
+  @override
+  String get seyahatEksikUst => '清潔なトップスがありません';
+
+  @override
+  String get seyahatEksikAlt => '清潔なボトムスがありません';
+
+  @override
+  String get seyahatEksikAyakkabi => '靴がありません';
+
+  @override
+  String seyahatEksikKombin(String gun) {
+    return '$gun 日分の着合わせが足りません';
+  }
+
+  @override
+  String get seyahatPaylas => 'リストを共有';
+
+  @override
+  String get seyahatPaylasMetni => 'FitCheck のパッキングプラン ✨';
 }

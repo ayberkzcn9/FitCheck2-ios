@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "マイスタイル日記",
+  "stilGunluguTakvim": "カレンダー",
+  "stilGunluguGunluk": "日記",
+  "stilGunluguRapor": "レポート",
+  "stilGunluguGiyildi": "着用",
+  "stilGunluguPlanli": "予定",
+  "stilGunluguGunBos": "この日の記録はありません",
+  "stilGunluguRaporOzet": "今週は {kombin} 通りの着合わせをしました",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "先週との比較: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "クローゼットの使用率",
+  "stilGunluguRaporEnCok": "一番着たアイテム",
+  "stilGunluguRaporSeri": "連続日数",
+  "stilGunluguRaporHicGiyilmemis": "一度も着ていない",
+  "stilGunluguRaporPaylas": "レポートを共有",
+  "stilGunluguRaporPaylasMetni": "今週のスタイルレポート: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "今週はまだ着用の記録がありません。ここに表示されます。",
+  "seyahatBaslik": "トラベルモード",
+  "seyahatGunSayisi": "日数",
+  "seyahatHava": "天気",
+  "seyahatHavaSicak": "暑い",
+  "seyahatHavaIliman": "温暖",
+  "seyahatHavaSoguk": "寒い",
+  "seyahatAmac": "目的",
+  "seyahatAmacGunluk": "日常",
+  "seyahatAmacIs": "仕事",
+  "seyahatAmacOzel": "特別な予定",
+  "seyahatPlanBaslik": "パッキングプラン",
+  "seyahatKombine": "{adet} 通りの着合わせ",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "アウター",
+  "seyahatEksikUst": "清潔なトップスがありません",
+  "seyahatEksikAlt": "清潔なボトムスがありません",
+  "seyahatEksikAyakkabi": "靴がありません",
+  "seyahatEksikKombin": "{gun} 日分の着合わせが足りません",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "リストを共有",
+  "seyahatPaylasMetni": "FitCheck のパッキングプラン ✨"
 }

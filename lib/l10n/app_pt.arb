@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "O meu diário de estilo",
+  "stilGunluguTakvim": "Calendário",
+  "stilGunluguGunluk": "Diário",
+  "stilGunluguRapor": "Relatório",
+  "stilGunluguGiyildi": "Usei",
+  "stilGunluguPlanli": "Planeado",
+  "stilGunluguGunBos": "Sem registo para este dia",
+  "stilGunluguRaporOzet": "Esta semana usaste {kombin} looks",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "Comparado com a semana passada: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "Uso do guarda-roupa",
+  "stilGunluguRaporEnCok": "O mais usado",
+  "stilGunluguRaporSeri": "Sequência diária",
+  "stilGunluguRaporHicGiyilmemis": "Nunca usado",
+  "stilGunluguRaporPaylas": "Partilhar relatório",
+  "stilGunluguRaporPaylasMetni": "O meu relatório de estilo semanal: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "Ainda não há looks registados esta semana. Aparecerão aqui.",
+  "seyahatBaslik": "Modo viagem",
+  "seyahatGunSayisi": "Dias",
+  "seyahatHava": "Tempo",
+  "seyahatHavaSicak": "Quente",
+  "seyahatHavaIliman": "Ameno",
+  "seyahatHavaSoguk": "Frio",
+  "seyahatAmac": "Ocasião",
+  "seyahatAmacGunluk": "Diário",
+  "seyahatAmacIs": "Trabalho",
+  "seyahatAmacOzel": "Especial",
+  "seyahatPlanBaslik": "Plano de mala",
+  "seyahatKombine": "{adet} looks",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "Casaco",
+  "seyahatEksikUst": "Sem tops limpos",
+  "seyahatEksikAlt": "Sem bottoms limpos",
+  "seyahatEksikAyakkabi": "Sem sapatos",
+  "seyahatEksikKombin": "Não há looks suficientes para {gun} dias",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "Partilhar lista",
+  "seyahatPaylasMetni": "O meu plano de mala FitCheck ✨"
 }

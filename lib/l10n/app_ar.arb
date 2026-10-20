@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "مجلد أسلوبي",
+  "stilGunluguTakvim": "التقويم",
+  "stilGunluguGunluk": "اليوميات",
+  "stilGunluguRapor": "التقرير",
+  "stilGunluguGiyildi": "تم ارتداؤه",
+  "stilGunluguPlanli": "مخطط",
+  "stilGunluguGunBos": "لا يوجد سجل لهذا اليوم",
+  "stilGunluguRaporOzet": "ارتديت {kombin} إطلالات هذا الأسبوع",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "مقارنة بالأسبوع الماضي: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "استخدام خزانة الملابس",
+  "stilGunluguRaporEnCok": "الأكثر ارتداءً",
+  "stilGunluguRaporSeri": "سلسلة الأيام",
+  "stilGunluguRaporHicGiyilmemis": "لم تُرتدى أبداً",
+  "stilGunluguRaporPaylas": "مشاركة التقرير",
+  "stilGunluguRaporPaylasMetni": "تقرير أسلوبي الأسبوعي: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "لا توجد إطلالات مسجلة هذا الأسبوع بعد. ستظهر هنا.",
+  "seyahatBaslik": "وضع السفر",
+  "seyahatGunSayisi": "عدد الأيام",
+  "seyahatHava": "الطقس",
+  "seyahatHavaSicak": "حار",
+  "seyahatHavaIliman": "معتدل",
+  "seyahatHavaSoguk": "بارد",
+  "seyahatAmac": "المناسبة",
+  "seyahatAmacGunluk": "يومي",
+  "seyahatAmacIs": "عمل",
+  "seyahatAmacOzel": "مناسبة خاصة",
+  "seyahatPlanBaslik": "خطة الحقيبة",
+  "seyahatKombine": "{adet} إطلالات",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "ملابس خارجية",
+  "seyahatEksikUst": "لا توجد قطع علوية نظيفة",
+  "seyahatEksikAlt": "لا توجد قطع سفلية نظيفة",
+  "seyahatEksikAyakkabi": "لا توجد أحذية",
+  "seyahatEksikKombin": "الإطلالات لا تكفي لـ {gun} يوم",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "مشاركة القائمة",
+  "seyahatPaylasMetni": "خطة حقيبتي في FitCheck ✨"
 }

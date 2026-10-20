@@ -31,6 +31,8 @@ import '../utils/helpers.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/ana_ekran_rehber.dart';
 import 'bugun_ekrani.dart';
+import 'seyahat_ekrani.dart';
+import 'stil_gunlugu_ekrani.dart';
 
 import '../widgets/fade_indexed_stack.dart';
 import '../utils/ana_ekran_dialoglar.dart';
@@ -915,6 +917,27 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     }
   }
 
+  /// "Stil Günlüğüm": takvim + günlük + haftalık rapor.
+  void _stilGunluguAc() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => StilGunluguEkrani(
+          gardirobum: _gardirobum,
+          gecmisKombinler: _gecmisKombinler,
+        ),
+      ),
+    );
+  }
+
+  /// "Seyahat Modu": kısa geziler için valiz planı.
+  void _seyahatAc() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => SeyahatEkrani(gardirobum: _gardirobum),
+      ),
+    );
+  }
+
   /// Raftan tek parça "bugün giydim": parçayı sepete taşır ve kaydeder.
   Future<void> _kiyafetGiydi(Kiyafet kiyafet) async {
     await _dataLock.synchronized(() async {
@@ -1678,6 +1701,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         onStilistAc: () => _aiChatbotModalAc(),
         onKiyafetGiyildi: _kiyafetGiydi,
         onKombinIstegi: _odakKiyafetIleKombinBaslat,
+        onStilGunluguAc: _stilGunluguAc,
+        onSeyahatAc: _seyahatAc,
         anaRenk: _anaRenk,
       ),
       GardirobumEkrani(

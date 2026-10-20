@@ -1111,5 +1111,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "Stil Günlüğüm",
+  "stilGunluguTakvim": "Takvim",
+  "stilGunluguGunluk": "Günlük",
+  "stilGunluguRapor": "Rapor",
+  "stilGunluguGiyildi": "Giyildi",
+  "stilGunluguPlanli": "Planlandı",
+  "stilGunluguGunBos": "Bu gün için kayıt yok",
+  "stilGunluguRaporOzet": "Bu hafta {kombin} kombin giyindin",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "Geçen haftaya göre {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "Dolap kullanımı",
+  "stilGunluguRaporEnCok": "En çok giyilen",
+  "stilGunluguRaporSeri": "Günlük seri",
+  "stilGunluguRaporHicGiyilmemis": "Hiç giyilmemiş",
+  "stilGunluguRaporPaylas": "Raporu paylaş",
+  "stilGunluguRaporPaylasMetni": "Haftalık stil raporum: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "Bu hafta henüz kombin kaydın yok. Giyildiğinde burada görünecek.",
+  "seyahatBaslik": "Seyahat Modu",
+  "seyahatGunSayisi": "Gün sayısı",
+  "seyahatHava": "Hava",
+  "seyahatHavaSicak": "Sıcak",
+  "seyahatHavaIliman": "Ilıman",
+  "seyahatHavaSoguk": "Soğuk",
+  "seyahatAmac": "Amaç",
+  "seyahatAmacGunluk": "Günlük",
+  "seyahatAmacIs": "İş",
+  "seyahatAmacOzel": "Özel",
+  "seyahatPlanBaslik": "Valiz Planı",
+  "seyahatKombine": "{adet} kombin çıkar",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "Dış giyim",
+  "seyahatEksikUst": "Temiz üst giyim yok",
+  "seyahatEksikAlt": "Temiz alt giyim yok",
+  "seyahatEksikAyakkabi": "Ayakkabı yok",
+  "seyahatEksikKombin": "{gun} gün için kombin yetmiyor",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "Listeyi paylaş",
+  "seyahatPaylasMetni": "FitCheck valiz planım ✨"
 }

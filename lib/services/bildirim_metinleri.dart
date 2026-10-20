@@ -7,9 +7,9 @@
 // Plan (`haftalik_program_json`) gün adlarıyla saklanıyor (Monday, Tuesday...).
 // Bu yüzden eşleme takvim gününe göre değil GÜN ADINA göre yapılıyor: plan kaç
 // gün önce kaydedilmiş olursa olsun "pazartesi kombini" doğru güne düşer.
-// Kullanıcı uygulamayı hiç açmazsa dahi eski plan yanlış güne kaymaz.
 
 import '../l10n/app_localizations.dart';
+import '../utils/takvim_gunleri.dart';
 
 /// Bildirimde kullanılacak tek bir gün.
 class BildirimGunu {
@@ -30,18 +30,8 @@ class BildirimGunu {
 class BildirimMetinleri {
   BildirimMetinleri._();
 
-  static const List<String> _ingilizceGunler = <String>[
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ];
-
   /// Planlayıcının kullandığı İngilizce gün adı.
-  static String gunAdi(DateTime tarih) => _ingilizceGunler[tarih.weekday - 1];
+  static String gunAdi(DateTime tarih) => ingilizceGunAdi(tarih);
 
   /// Bugünden başlayarak [gunSayisi] günü, planlanan kombin adlarıyla döndürür.
   static List<BildirimGunu> gunler({
@@ -49,20 +39,9 @@ class BildirimMetinleri {
     required DateTime simdi,
     int gunSayisi = 7,
   }) {
+    final planaGore = planKombinAdlari(program);
+
     final bugun = DateTime(simdi.year, simdi.month, simdi.day);
-    final planaGore = <String, String>{};
-
-    final hafta = program?['hafta'];
-    if (hafta is List) {
-      for (final gun in hafta) {
-        if (gun is! Map) continue;
-        final ad = _kanonikGun(gun['gun']);
-        if (ad == null) continue;
-        final kombin = gun['kombin_adi']?.toString().trim() ?? '';
-        if (kombin.isNotEmpty) planaGore[ad] = kombin;
-      }
-    }
-
     return List<BildirimGunu>.generate(gunSayisi, (index) {
       final tarih = bugun.add(Duration(days: index));
       return BildirimGunu(
@@ -70,6 +49,22 @@ class BildirimMetinleri {
         kombinAdi: planaGore[gunAdi(tarih)],
       );
     }, growable: false);
+  }
+
+  /// Plan → gün adı → kombin adı (boş kombinler atlanır).
+  static Map<String, String> planKombinAdlari(Map<String, dynamic>? program) {
+    final sonuc = <String, String>{};
+    final hafta = program?['hafta'];
+    if (hafta is! List) return sonuc;
+
+    for (final gun in hafta) {
+      if (gun is! Map) continue;
+      final ad = kanonikGunAdi(gun['gun']);
+      if (ad == null) continue;
+      final kombin = gun['kombin_adi']?.toString().trim() ?? '';
+      if (kombin.isNotEmpty) sonuc[ad] = kombin;
+    }
+    return sonuc;
   }
 
   /// Sabah bildirimi: kombini olan gün için kişisel, olmayan gün için genel.
@@ -87,33 +82,4 @@ class BildirimMetinleri {
   /// Plan en az bir gün için dolu mu? Boş planda akşam hatırlatıcısı kurulmaz.
   static bool planDolu(List<BildirimGunu> gunler) =>
       gunler.any((gun) => gun.kombinVarMi);
-
-  /// "pazartesi", "Monday", "Mon", "mon", "Pazartesi" → "Monday".
-  ///
-  /// Eski kayıtlarda gün adı yerelleştirilmiş olabilir; ikisi de desteklenir.
-  static String? _kanonikGun(Object? ham) {
-    final metin = ham?.toString().toLowerCase().trim() ?? '';
-    if (metin.isEmpty) return null;
-
-    const esler = <String, List<String>>{
-      'Monday': ['monday', 'mon', 'pazartesi', 'pzt', 'montag', 'mo', 'lundi', 'lunedi', 'lunes'],
-      'Tuesday': ['tuesday', 'tue', 'salı', 'sali', 'sal', 'dienstag', 'di', 'mardi', 'martedi', 'martes'],
-      'Wednesday': ['wednesday', 'wed', 'çarşamba', 'carsamba', 'çar', 'car', 'mittwoch', 'mi', 'mercredi', 'mercoledi', 'miercoles'],
-      'Thursday': ['thursday', 'thu', 'perşembe', 'persembe', 'per', 'donnerstag', 'do', 'jeudi', 'giovedi', 'jueves'],
-      'Friday': ['friday', 'fri', 'cuma', 'cum', 'freitag', 'fr', 'vendredi', 'venerdi', 'viernes'],
-      'Saturday': ['saturday', 'sat', 'cumartesi', 'cmt', 'samstag', 'sa', 'samedi', 'sabato', 'sabado'],
-      'Sunday': ['sunday', 'sun', 'pazar', 'paz', 'sonntag', 'so', 'dimanche', 'domenica', 'domingo'],
-    };
-
-    for (final giris in esler.entries) {
-      if (giris.value.contains(metin)) return giris.key;
-    }
-    // "Pazartesi 12 Ekim" gibi ek metin varsa baştan eşle.
-    for (final giris in esler.entries) {
-      for (final ad in giris.value) {
-        if (metin.startsWith(ad)) return giris.key;
-      }
-    }
-    return null;
-  }
 }

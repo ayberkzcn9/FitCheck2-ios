@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "Мой дневник стиля",
+  "stilGunluguTakvim": "Календарь",
+  "stilGunluguGunluk": "Дневник",
+  "stilGunluguRapor": "Отчёт",
+  "stilGunluguGiyildi": "Надето",
+  "stilGunluguPlanli": "Запланировано",
+  "stilGunluguGunBos": "Нет записи за этот день",
+  "stilGunluguRaporOzet": "На этой неделе: {kombin} образов",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "По сравнению с прошлой неделей: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "Использование гардероба",
+  "stilGunluguRaporEnCok": "Самое частое",
+  "stilGunluguRaporSeri": "Серия дней",
+  "stilGunluguRaporHicGiyilmemis": "Ни разу не носили",
+  "stilGunluguRaporPaylas": "Поделиться отчётом",
+  "stilGunluguRaporPaylasMetni": "Мой недельный отчёт о стиле: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "На этой неделе пока нет записанных образов. Они появятся здесь.",
+  "seyahatBaslik": "Режим путешествия",
+  "seyahatGunSayisi": "Количество дней",
+  "seyahatHava": "Погода",
+  "seyahatHavaSicak": "Жарко",
+  "seyahatHavaIliman": "Тепло",
+  "seyahatHavaSoguk": "Холодно",
+  "seyahatAmac": "Повод",
+  "seyahatAmacGunluk": "Повседневный",
+  "seyahatAmacIs": "Работа",
+  "seyahatAmacOzel": "Особый",
+  "seyahatPlanBaslik": "План чемодана",
+  "seyahatKombine": "{adet} образов",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "Верхняя одежда",
+  "seyahatEksikUst": "Нет чистых верхов",
+  "seyahatEksikAlt": "Нет чистых низов",
+  "seyahatEksikAyakkabi": "Нет обуви",
+  "seyahatEksikKombin": "Не хватает образов на {gun} дней",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "Поделиться списком",
+  "seyahatPaylasMetni": "Мой план чемодана FitCheck ✨"
 }

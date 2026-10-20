@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "Mein Stil-Tagebuch",
+  "stilGunluguTakvim": "Kalender",
+  "stilGunluguGunluk": "Tagebuch",
+  "stilGunluguRapor": "Bericht",
+  "stilGunluguGiyildi": "Getragen",
+  "stilGunluguPlanli": "Geplant",
+  "stilGunluguGunBos": "Für diesen Tag gibt es keinen Eintrag",
+  "stilGunluguRaporOzet": "Du hast diese Woche {kombin} Outfits getragen",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "Im Vergleich zur letzten Woche: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "Kleiderschrank-Nutzung",
+  "stilGunluguRaporEnCok": "Am meisten getragen",
+  "stilGunluguRaporSeri": "Tages-Serie",
+  "stilGunluguRaporHicGiyilmemis": "Noch nie getragen",
+  "stilGunluguRaporPaylas": "Bericht teilen",
+  "stilGunluguRaporPaylasMetni": "Mein Wochen-Stilbericht: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "Diese Woche noch keine Outfits erfasst. Sie erscheinen hier.",
+  "seyahatBaslik": "Reisemodus",
+  "seyahatGunSayisi": "Anzahl Tage",
+  "seyahatHava": "Wetter",
+  "seyahatHavaSicak": "Heiß",
+  "seyahatHavaIliman": "Mild",
+  "seyahatHavaSoguk": "Kalt",
+  "seyahatAmac": "Zweck",
+  "seyahatAmacGunluk": "Alltag",
+  "seyahatAmacIs": "Arbeit",
+  "seyahatAmacOzel": "Sonderanlass",
+  "seyahatPlanBaslik": "Packplan",
+  "seyahatKombine": "{adet} Outfits",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "Outerwear",
+  "seyahatEksikUst": "Keine sauberen Oberteile",
+  "seyahatEksikAlt": "Keine sauberen Unterteile",
+  "seyahatEksikAyakkabi": "Keine Schuhe",
+  "seyahatEksikKombin": "Nicht genug Outfits für {gun} Tage",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "Liste teilen",
+  "seyahatPaylasMetni": "Mein FitCheck-Packplan ✨"
 }

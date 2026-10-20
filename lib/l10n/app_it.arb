@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "Il mio diario di stile",
+  "stilGunluguTakvim": "Calendario",
+  "stilGunluguGunluk": "Diario",
+  "stilGunluguRapor": "Rapporto",
+  "stilGunluguGiyildi": "Indossato",
+  "stilGunluguPlanli": "Pianificato",
+  "stilGunluguGunBos": "Nessuna registrazione per questo giorno",
+  "stilGunluguRaporOzet": "Questa settimana hai indossato {kombin} outfit",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "Rispetto alla settimana scorsa: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "Utilizzo dell'armadio",
+  "stilGunluguRaporEnCok": "Più indossato",
+  "stilGunluguRaporSeri": "Serie di giorni",
+  "stilGunluguRaporHicGiyilmemis": "Mai indossato",
+  "stilGunluguRaporPaylas": "Condividi rapporto",
+  "stilGunluguRaporPaylasMetni": "Il mio rapporto di stile settimanale: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "Nessun outfit registrato questa settimana. Appariranno qui.",
+  "seyahatBaslik": "Modalità viaggio",
+  "seyahatGunSayisi": "Numero di giorni",
+  "seyahatHava": "Meteo",
+  "seyahatHavaSicak": "Caldo",
+  "seyahatHavaIliman": "Mite",
+  "seyahatHavaSoguk": "Freddo",
+  "seyahatAmac": "Occasione",
+  "seyahatAmacGunluk": "Quotidiano",
+  "seyahatAmacIs": "Lavoro",
+  "seyahatAmacOzel": "Speciale",
+  "seyahatPlanBaslik": "Piano valigia",
+  "seyahatKombine": "{adet} outfit",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "Capispalla",
+  "seyahatEksikUst": "Nessun top pulito",
+  "seyahatEksikAlt": "Nessun bottom pulito",
+  "seyahatEksikAyakkabi": "Nessuna scarpa",
+  "seyahatEksikKombin": "Non bastano gli outfit per {gun} giorni",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "Condividi lista",
+  "seyahatPaylasMetni": "Il mio piano valigia FitCheck ✨"
 }

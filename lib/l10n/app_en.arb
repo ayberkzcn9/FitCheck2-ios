@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "My Style Diary",
+  "stilGunluguTakvim": "Calendar",
+  "stilGunluguGunluk": "Diary",
+  "stilGunluguRapor": "Report",
+  "stilGunluguGiyildi": "Worn",
+  "stilGunluguPlanli": "Planned",
+  "stilGunluguGunBos": "No record for this day",
+  "stilGunluguRaporOzet": "You wore {kombin} outfits this week",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "Compared with last week: {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "Wardrobe usage",
+  "stilGunluguRaporEnCok": "Most worn",
+  "stilGunluguRaporSeri": "Daily streak",
+  "stilGunluguRaporHicGiyilmemis": "Never worn",
+  "stilGunluguRaporPaylas": "Share report",
+  "stilGunluguRaporPaylasMetni": "My weekly style report: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "No outfits logged this week yet. They will show up here.",
+  "seyahatBaslik": "Travel Mode",
+  "seyahatGunSayisi": "Days",
+  "seyahatHava": "Weather",
+  "seyahatHavaSicak": "Hot",
+  "seyahatHavaIliman": "Mild",
+  "seyahatHavaSoguk": "Cold",
+  "seyahatAmac": "Purpose",
+  "seyahatAmacGunluk": "Everyday",
+  "seyahatAmacIs": "Work",
+  "seyahatAmacOzel": "Special",
+  "seyahatPlanBaslik": "Packing Plan",
+  "seyahatKombine": "{adet} outfits",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "Outerwear",
+  "seyahatEksikUst": "No clean tops",
+  "seyahatEksikAlt": "No clean bottoms",
+  "seyahatEksikAyakkabi": "No shoes",
+  "seyahatEksikKombin": "Not enough outfits for {gun} days",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "Share list",
+  "seyahatPaylasMetni": "My FitCheck packing plan ✨"
 }

@@ -1076,5 +1076,75 @@
         "type": "String"
       }
     }
-  }
+  },
+  "stilGunluguBaslik": "我的风格日记",
+  "stilGunluguTakvim": "日历",
+  "stilGunluguGunluk": "日记",
+  "stilGunluguRapor": "报告",
+  "stilGunluguGiyildi": "已穿",
+  "stilGunluguPlanli": "已计划",
+  "stilGunluguGunBos": "这天没有记录",
+  "stilGunluguRaporOzet": "本周你穿了 {kombin} 套搭配",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "与上周相比：{fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "衣橱使用率",
+  "stilGunluguRaporEnCok": "最常穿的单品",
+  "stilGunluguRaporSeri": "连续天数",
+  "stilGunluguRaporHicGiyilmemis": "从未穿过",
+  "stilGunluguRaporPaylas": "分享报告",
+  "stilGunluguRaporPaylasMetni": "我的每周风格报告：{ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "本周还没有记录搭配，穿上后就会出现在这里。",
+  "seyahatBaslik": "旅行模式",
+  "seyahatGunSayisi": "天数",
+  "seyahatHava": "天气",
+  "seyahatHavaSicak": "炎热",
+  "seyahatHavaIliman": "温和",
+  "seyahatHavaSoguk": "寒冷",
+  "seyahatAmac": "场合",
+  "seyahatAmacGunluk": "日常",
+  "seyahatAmacIs": "工作",
+  "seyahatAmacOzel": "特别",
+  "seyahatPlanBaslik": "行李清单",
+  "seyahatKombine": "{adet} 套搭配",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "外套",
+  "seyahatEksikUst": "没有干净的上衣",
+  "seyahatEksikAlt": "没有干净的裤子",
+  "seyahatEksikAyakkabi": "没有鞋子",
+  "seyahatEksikKombin": "{gun} 天的搭配不够",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "分享清单",
+  "seyahatPaylasMetni": "我的 FitCheck 行李计划 ✨"
 }

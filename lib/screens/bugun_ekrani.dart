@@ -45,6 +45,8 @@ class BugunEkrani extends StatefulWidget {
     required this.anaRenk,
     this.onKiyafetGiyildi,
     this.onKombinIstegi,
+    this.onStilGunluguAc,
+    this.onSeyahatAc,
     this.feedServisi,
   });
 
@@ -69,6 +71,12 @@ class BugunEkrani extends StatefulWidget {
 
   /// Raftaki parçayla kombin kurma isteği (Kombin sekmesine odakla gider).
   final void Function(Kiyafet)? onKombinIstegi;
+
+  /// "Stil Günlüğüm" ekranını açar (takvim + günlük + haftalık rapor).
+  final VoidCallback? onStilGunluguAc;
+
+  /// "Seyahat Modu" ekranını açar (valiz planı).
+  final VoidCallback? onSeyahatAc;
 
   /// Testlerde sahte akış servisi vermek için; varsayılan gerçek servis.
   final BugunFeedServisi? feedServisi;
@@ -238,6 +246,10 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 baslik: l10n.bugunHavaRafi,
                 parcalar: havayaUygun,
               ),
+            ),
+          if (widget.onStilGunluguAc != null || widget.onSeyahatAc != null)
+            SliverToBoxAdapter(
+              child: _stilVeSeyahat(context, l10n, colors),
             ),
           const SliverToBoxAdapter(child: SizedBox(height: 120)),
         ],
@@ -1073,6 +1085,95 @@ class _BugunEkraniState extends State<BugunEkrani> {
           ),
         ),
       ],
+    );
+  }
+
+  /// "Stil Günlüğüm" ve "Seyahat Modu" kartları.
+  Widget _stilVeSeyahat(
+    BuildContext context,
+    AppLocalizations l10n,
+    ColorScheme colors,
+  ) {
+    final kartlar = <Widget>[];
+
+    if (widget.onStilGunluguAc != null) {
+      kartlar.add(
+        _miniKart(
+          context,
+          ikon: Icons.auto_stories_rounded,
+          baslik: l10n.stilGunluguBaslik,
+          onTap: widget.onStilGunluguAc!,
+        ),
+      );
+    }
+
+    if (widget.onSeyahatAc != null) {
+      kartlar.add(
+        _miniKart(
+          context,
+          ikon: Icons.luggage_rounded,
+          baslik: l10n.seyahatBaslik,
+          onTap: widget.onSeyahatAc!,
+        ),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 18, 16, 0),
+      child: Row(
+        children: [
+          for (final kart in kartlar) ...[
+            Expanded(child: kart),
+            if (kart != kartlar.last) const SizedBox(width: 10),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _miniKart(
+    BuildContext context, {
+    required IconData ikon,
+    required String baslik,
+    required VoidCallback onTap,
+  }) {
+    final colors = Theme.of(context).colorScheme;
+    return Material(
+      color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
+      borderRadius: BorderRadius.circular(18),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: () {
+          HapticFeedback.lightImpact();
+          onTap();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+          child: Row(
+            children: [
+              Icon(ikon, size: 20, color: colors.primary),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  baslik,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                    color: colors.onSurface,
+                  ),
+                ),
+              ),
+              Icon(
+                Icons.chevron_right_rounded,
+                size: 18,
+                color: colors.onSurfaceVariant,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
