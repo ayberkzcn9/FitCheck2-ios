@@ -55,15 +55,12 @@ void main() {
     await kur(tester);
 
     expect(find.text('Dolaba parça ekle'), findsOneWidget);
+    expect(find.textContaining('renk kartları'), findsOneWidget);
 
     await tester.tap(find.text('Düelloya başla'));
     await tester.pumpAndSettle();
 
     expect(find.text('Tur 1/10'), findsOneWidget);
-    expect(
-      find.textContaining('Bu turda renk kartları var'),
-      findsOneWidget,
-    );
   });
 
   testWidgets('doğru karta dokununca Doğru! ve XP gösterilir', (tester) async {
@@ -139,5 +136,57 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Tur 1/10'), findsOneWidget);
+  });
+
+  testWidgets('küçük ekranda Devam düğmesi alt menünün üstünde kalır',
+      (tester) async {
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = const Size(360, 640);
+    tester.view.padding = const FakeViewPadding(bottom: 24);
+    addTearDown(tester.view.reset);
+
+    await kur(tester);
+    await tester.ensureVisible(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('A'));
+    await tester.pumpAndSettle();
+
+    final devam = find.text('Devam');
+    expect(devam, findsOneWidget);
+
+    // Menü 62 dp + güvenli alan 24 dp = 86 dp. Düğme bunun üstünde olmalı,
+    // aksi halde menünün arkasında kalıp oyun kilitleniyor gibi görünüyor.
+    expect(tester.getRect(devam).bottom, lessThan(640 - 86));
+
+    await tester.tap(devam);
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
+  });
+
+  testWidgets('yatay modda oyun kilitlenmez, Devam görünür olur',
+      (tester) async {
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = const Size(640, 360);
+    addTearDown(tester.view.reset);
+
+    await kur(tester);
+    await tester.ensureVisible(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('A'));
+    await tester.pumpAndSettle();
+
+    final devam = find.text('Devam');
+    expect(devam, findsOneWidget);
+    final kutu = tester.getRect(devam);
+    expect(kutu.top, greaterThanOrEqualTo(0));
+    expect(kutu.bottom, lessThanOrEqualTo(360));
+
+    await tester.tap(devam);
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
   });
 }

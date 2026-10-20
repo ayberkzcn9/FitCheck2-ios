@@ -68,6 +68,16 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
   int _enIyiSeri = 0;
   int _xp = 0;
 
+  /// Kısa ekranda (yatay mod) panel açılınca "Devam" görünür olsun diye.
+  final GlobalKey _panelAnahtari = GlobalKey();
+  final ScrollController _kaydirici = ScrollController();
+
+  @override
+  void dispose() {
+    _kaydirici.dispose();
+    super.dispose();
+  }
+
   KombinDuellosuServisi get _servis =>
       widget.servisi ?? _varsayilanServis;
 
@@ -143,6 +153,20 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     } else {
       HapticFeedback.heavyImpact();
     }
+
+    // Kısa ekranda panel ekranın altında kalabiliyor; cevaptan sonra
+    // "Devam" düğmesini görünür alana getir.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final baglam = _panelAnahtari.currentContext;
+      if (baglam == null || !mounted) return;
+      if (Scrollable.maybeOf(baglam) == null) return;
+      Scrollable.ensureVisible(
+        baglam,
+        alignment: 1,
+        duration: const Duration(milliseconds: 240),
+        curve: Curves.easeOutCubic,
+      );
+    });
   }
 
   void _devam() {
@@ -153,6 +177,12 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     setState(() {
       _soruIndex += 1;
       _secim = null;
+    });
+    // Yeni turda başa dön; kısa ekranda kaydırma altta kalmış olabilir.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _kaydirici.hasClients) {
+        _kaydirici.jumpTo(0);
+      }
     });
   }
 
@@ -205,7 +235,12 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
 
     return SingleChildScrollView(
       key: const ValueKey<String>('duello-lobi'),
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
+      padding: EdgeInsets.fromLTRB(
+        20,
+        12,
+        20,
+        28 + _altMenuBoslugu(context),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -372,13 +407,23 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               ],
             ),
           ),
-          if (widget.gardirobum.length < 4) ...[
+          if (widget.gardirobum.length < 4 || _paletKullanildi) ...[
             const SizedBox(height: 14),
-            TextButton.icon(
-              onPressed: widget.onDolapAc,
-              icon: const Icon(Icons.add_rounded),
-              label: Text(l10n.duelloDolapEkle),
+            Text(
+              l10n.duelloPaletNotu,
+              textAlign: TextAlign.center,
+              style: text.labelSmall?.copyWith(
+                color: colors.onSurfaceVariant,
+              ),
             ),
+            if (widget.gardirobum.length < 4) ...[
+              const SizedBox(height: 4),
+              TextButton.icon(
+                onPressed: widget.onDolapAc,
+                icon: const Icon(Icons.add_rounded),
+                label: Text(l10n.duelloDolapEkle),
+              ),
+            ],
           ],
         ],
       ),
@@ -488,113 +533,176 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
 
   // ---------------------------------------------------------------- oyun
 
-  Widget _oyun(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final colors = Theme.of(context).colorScheme;
-    final soru = _soru;
+  /// AnaEkran `extendBody: true` kullandığı için gövde, alt menünün altına
+  /// uzanıyor. Bu boşluk bırakılmazsa geri bildirim panelinin "Devam" düğmesi
+  /// menünün arkasında kalır ve oyun ilk turdan sonra kilitlenmiş görünür.
+  double _altMenuBoslugu(BuildContext context) =>
+      62 + MediaQuery.of(context).padding.bottom;
 
-    return Padding(
+  /// Cevap verildiğinde kartların altında panel için ayrılan yer.
+  static const double _panelYuksekligi = 176;
+
+  Widget _oyun(BuildContext context) {
+    final altBosluk = _altMenuBoslugu(context);
+
+    return LayoutBuilder(
+      builder: (context, kisit) {
+        // Yatay mod / çok kısa ekran: iki kartı yan yana sığdırmak imkânsız,
+        // o yüzden sabit yükseklikte kartlar + kaydırılabilir panel.
+        final kisaEkran = kisit.maxHeight - altBosluk < 400;
+        if (kisaEkran) return _oyunKisa(context, altBosluk);
+
+        return Stack(
+          key: const ValueKey<String>('duello-oyun'),
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                16,
+                8,
+                16,
+                altBosluk + 8 + (_cevaplandi ? _panelYuksekligi : 0),
+              ),
+              child: Column(
+                children: [
+                  _ustBilgi(context),
+                  const SizedBox(height: 10),
+                  _ilerleme(context),
+                  const SizedBox(height: 12),
+                  _olcuSeridi(context, _soru.olcu),
+                  const SizedBox(height: 12),
+                  Expanded(child: _kartlar(context, _soru)),
+                  if (!_cevaplandi) _dokunmaIpucu(context),
+                ],
+              ),
+            ),
+            // Panel menünün üstünde sabit duruyor: yüksekliği metne göre
+            // büyüse bile kırpılmıyor, taşma da yapmıyor.
+            if (_cevaplandi)
+              Positioned(
+                left: 16,
+                right: 16,
+                bottom: altBosluk + 6,
+                child: _geriBildirim(context, _soru),
+              ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _oyunKisa(BuildContext context, double altBosluk) {
+    return SingleChildScrollView(
       key: const ValueKey<String>('duello-oyun'),
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+      controller: _kaydirici,
+      padding: EdgeInsets.fromLTRB(16, 8, 16, altBosluk + 12),
       child: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                l10n.duelloTur(_soruIndex + 1, _sorular.length),
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-              const Spacer(),
-              if (_seri > 0)
-                _pill(
-                  context,
-                  icon: Icons.local_fire_department_rounded,
-                  metin: 'x$_seri',
-                  renk: colors.error,
-                  zemin: colors.error.withValues(alpha: 0.1),
-                ),
-              const SizedBox(width: 8),
-              _pill(
-                context,
-                icon: Icons.bolt_rounded,
-                metin: l10n.duelloXp(_xp),
-                renk: colors.primary,
-                zemin: colors.primary.withValues(alpha: 0.1),
-              ),
-            ],
-          ),
+          _ustBilgi(context),
           const SizedBox(height: 10),
           _ilerleme(context),
           const SizedBox(height: 12),
-          _olcuSeridi(context, soru.olcu),
+          _olcuSeridi(context, _soru.olcu),
           const SizedBox(height: 12),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: _kart(
-                    context,
-                    kart: soru.sol,
-                    etiket: 'A',
-                    dogruKart: soru.solDogru,
-                    secildi: _secim == true,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                _vs(context),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: _kart(
-                    context,
-                    kart: soru.sag,
-                    etiket: 'B',
-                    dogruKart: !soru.solDogru,
-                    secildi: _secim == false,
-                  ),
-                ),
-              ],
-            ),
+          SizedBox(
+            height: 210,
+            child: _kartlar(context, _soru),
           ),
           const SizedBox(height: 12),
-          AnimatedSize(
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.easeOutCubic,
+          KeyedSubtree(
+            key: _panelAnahtari,
             child: _cevaplandi
-                ? _geriBildirim(context, soru)
-                : Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 18),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.touch_app_outlined,
-                          size: 18,
-                          color: colors.onSurfaceVariant,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          l10n.duelloDokun,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(color: colors.onSurfaceVariant),
-                        ),
-                      ],
-                    ),
-                  ),
+                ? _geriBildirim(context, _soru)
+                : _dokunmaIpucu(context),
           ),
-          if (_paletKullanildi && _soruIndex == 0) ...[
-            const SizedBox(height: 8),
-            Text(
-              l10n.duelloPaletNotu,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: colors.onSurfaceVariant,
-                  ),
+        ],
+      ),
+    );
+  }
+
+  Widget _ustBilgi(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final colors = Theme.of(context).colorScheme;
+    return Row(
+      children: [
+        Text(
+          l10n.duelloTur(_soruIndex + 1, _sorular.length),
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+        ),
+        const Spacer(),
+        if (_seri > 0) ...[
+          _pill(
+            context,
+            icon: Icons.local_fire_department_rounded,
+            metin: 'x$_seri',
+            renk: colors.error,
+            zemin: colors.error.withValues(alpha: 0.1),
+          ),
+          const SizedBox(width: 8),
+        ],
+        _pill(
+          context,
+          icon: Icons.bolt_rounded,
+          metin: l10n.duelloXp(_xp),
+          renk: colors.primary,
+          zemin: colors.primary.withValues(alpha: 0.1),
+        ),
+      ],
+    );
+  }
+
+  Widget _kartlar(BuildContext context, DuelSorusu soru) {
+    return Row(
+      children: [
+        Expanded(
+          child: _kart(
+            context,
+            kart: soru.sol,
+            etiket: 'A',
+            dogruKart: soru.solDogru,
+            secildi: _secim == true,
+          ),
+        ),
+        const SizedBox(width: 8),
+        _vs(context),
+        const SizedBox(width: 8),
+        Expanded(
+          child: _kart(
+            context,
+            kart: soru.sag,
+            etiket: 'B',
+            dogruKart: !soru.solDogru,
+            secildi: _secim == false,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _dokunmaIpucu(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final colors = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 2),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.touch_app_outlined,
+            size: 18,
+            color: colors.onSurfaceVariant,
+          ),
+          const SizedBox(width: 8),
+          Flexible(
+            child: Text(
+              l10n.duelloDokun,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: colors.onSurfaceVariant),
             ),
-          ],
+          ),
         ],
       ),
     );
@@ -964,7 +1072,12 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
 
     return SingleChildScrollView(
       key: const ValueKey<String>('duello-sonuc'),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
+      padding: EdgeInsets.fromLTRB(
+        24,
+        16,
+        24,
+        28 + _altMenuBoslugu(context),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
