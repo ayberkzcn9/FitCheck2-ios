@@ -3126,4 +3126,28 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get duelloSebepHavaHafif => 'Demasiado leve para este tempo.';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return 'O teu look de hoje está pronto: $kombin. Toca para ver.';
+  }
+
+  @override
+  String get bildirimPlanBaslik => 'O teu look de amanhã está pronto';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return 'Para amanhã: $kombin. Vê agora, sem pressa de manhã.';
+  }
+
+  @override
+  String get bildirimPlanBos =>
+      'Ainda não há look para amanhã. Planeia em 2 minutos.';
+
+  @override
+  String get planHatirlatimiAyar => 'Lembrete da noite';
+
+  @override
+  String get planHatirlatimiAyarAciklama =>
+      'Lembra-te do look de amanhã às 21:00';
 }

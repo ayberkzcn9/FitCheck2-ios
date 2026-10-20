@@ -3111,4 +3111,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get duelloSebepHavaHafif => 'Слишком легко для такой погоды.';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return 'Твой образ на сегодня готов: $kombin. Нажми, чтобы посмотреть.';
+  }
+
+  @override
+  String get bildirimPlanBaslik => 'Твой образ на завтра готов';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return 'На завтра: $kombin. Посмотри сейчас, утром не будет спешки.';
+  }
+
+  @override
+  String get bildirimPlanBos =>
+      'На завтра образ ещё не запланирован. Спланируй за 2 минуты.';
+
+  @override
+  String get planHatirlatimiAyar => 'Вечернее напоминание';
+
+  @override
+  String get planHatirlatimiAyarAciklama =>
+      'Напомнит об образе на завтра в 21:00';
 }

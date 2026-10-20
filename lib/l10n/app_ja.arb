@@ -1042,5 +1042,25 @@
   "duelloSebepCokRenk": "鮮やかな3色がぶつかり合っています。",
   "duelloSebepHavaUygun": "今日の気温に合った服です。",
   "duelloSebepHavaAgir": "この天気には厚すぎます。",
-  "duelloSebepHavaHafif": "この天気には薄すぎます。"
+  "duelloSebepHavaHafif": "この天気には薄すぎます。",
+  "bildirimSabahKombin": "今日のコーデができました：{kombin}。タップして見る。",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "明日のコーデができました",
+  "bildirimPlanKombin": "明日は：{kombin}。今のうちにチェックして、朝はゆっくり。",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "明日のコーデはまだ未定です。2分で計画しましょう。",
+  "planHatirlatimiAyar": "夜のプラン通知",
+  "planHatirlatimiAyarAciklama": "明日のコーデを21:00にお知らせします"
 }

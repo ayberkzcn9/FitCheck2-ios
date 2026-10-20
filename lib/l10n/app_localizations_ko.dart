@@ -2995,4 +2995,26 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get duelloSebepHavaHafif => '이 날씨에는 너무 얇습니다.';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return '오늘의 코디가 준비됐어요: $kombin. 눌러서 확인하세요.';
+  }
+
+  @override
+  String get bildirimPlanBaslik => '내일의 코디가 준비됐어요';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return '내일은: $kombin. 지금 확인하고 아침엔 여유롭게.';
+  }
+
+  @override
+  String get bildirimPlanBos => '내일 코디가 아직 없어요. 2분이면 계획할 수 있어요.';
+
+  @override
+  String get planHatirlatimiAyar => '저녁 플랜 알림';
+
+  @override
+  String get planHatirlatimiAyarAciklama => '내일의 코디를 21:00에 알려드려요';
 }

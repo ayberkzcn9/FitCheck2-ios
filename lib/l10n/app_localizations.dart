@@ -5751,6 +5751,42 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'İnce parçalar bu hava için yetersiz.'**
   String get duelloSebepHavaHafif;
+
+  /// No description provided for @bildirimSabahKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünkü kombinin hazır: {kombin}. Görmek için dokun.'**
+  String bildirimSabahKombin(String kombin);
+
+  /// No description provided for @bildirimPlanBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarınki kombinin hazır'**
+  String get bildirimPlanBaslik;
+
+  /// No description provided for @bildirimPlanKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarın için: {kombin}. Şimdi bak, sabah acele etme.'**
+  String bildirimPlanKombin(String kombin);
+
+  /// No description provided for @bildirimPlanBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarın için henüz kombin yok. 2 dakikada planla.'**
+  String get bildirimPlanBos;
+
+  /// No description provided for @planHatirlatimiAyar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Akşam plan hatırlatıcısı'**
+  String get planHatirlatimiAyar;
+
+  /// No description provided for @planHatirlatimiAyarAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarınki kombinini akşam 21:00\'de hatırlatır'**
+  String get planHatirlatimiAyarAciklama;
 }
 
 class _AppLocalizationsDelegate

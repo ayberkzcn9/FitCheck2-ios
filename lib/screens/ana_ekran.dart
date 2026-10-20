@@ -117,11 +117,15 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     ReklamServisi().odulluReklamYukle();
     ReklamServisi().gecisReklamiYukle();
 
+    // Bildirime dokununca ilgili sekme açılsın.
+    BildirimServisi().hedefSekme.addListener(_bildirimYonlendirmesi);
+
     _degerlendirmeKontrolEt();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _rehberBaslat();
       if (mounted) {
+        _bildirimYonlendirmesi();
         await _izinKontrolEtVeGoster();
       }
       if (!mounted) return;
@@ -142,6 +146,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   @override
   void dispose() {
     _hakListener.removeListener(_onHakChanged);
+    BildirimServisi().hedefSekme.removeListener(_bildirimYonlendirmesi);
     _speechToText.stop();
     super.dispose();
   }
@@ -1535,6 +1540,26 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     if (_seciliSekme == index) return;
     setState(() => _seciliSekme = index);
     AnalyticsServisi().ekranGoruntule(AnalyticsServisi.sekmeAdlari[index]);
+  }
+
+  /// Bildirim yükü → sekme. `BildirimServisi` bu değerleri kullanıyor.
+  static const Map<String, int> _bildirimSekmeleri = <String, int>{
+    'bugun': _sekmeBugun,
+    'plan': _sekmePlan,
+    'duello': _sekmeOyun,
+  };
+
+  /// Bildirime dokunulduysa hedef sekmeye geçer ve isteği tüketir.
+  void _bildirimYonlendirmesi() {
+    final hedef = BildirimServisi().hedefSekme.value;
+    if (hedef == null) return;
+
+    // Aynı bildirime iki kez tepki vermemek için önce tüket.
+    BildirimServisi().hedefSekme.value = null;
+
+    final index = _bildirimSekmeleri[hedef];
+    if (index == null || !mounted) return;
+    _sekmeSec(index);
   }
 
   Widget _buildNavItem(

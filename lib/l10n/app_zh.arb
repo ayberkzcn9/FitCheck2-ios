@@ -1042,5 +1042,25 @@
   "duelloSebepCokRenk": "三种鲜艳颜色互相抢眼。",
   "duelloSebepHavaUygun": "单品适合今天的气温。",
   "duelloSebepHavaAgir": "这个天气穿得太厚了。",
-  "duelloSebepHavaHafif": "这个天气穿得太薄了。"
+  "duelloSebepHavaHafif": "这个天气穿得太薄了。",
+  "bildirimSabahKombin": "今天的穿搭已就绪：{kombin}。点击查看。",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "明天的穿搭已就绪",
+  "bildirimPlanKombin": "明天：{kombin}。现在看看，早上不慌。",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "明天还没有穿搭计划。两分钟就能安排。",
+  "planHatirlatimiAyar": "晚间计划提醒",
+  "planHatirlatimiAyarAciklama": "21:00 提醒你明天的穿搭"
 }

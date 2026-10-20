@@ -3086,4 +3086,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get duelloSebepHavaHafif => 'خفيفة جدًا على هذا الطقس.';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return 'إطلالتك لهذا اليوم جاهزة: $kombin. اضغط للعرض.';
+  }
+
+  @override
+  String get bildirimPlanBaslik => 'إطلالتك ليوم غد جاهزة';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return 'لغد: $kombin. ألقِ نظرة الآن، بلا عجلة في الصباح.';
+  }
+
+  @override
+  String get bildirimPlanBos =>
+      'لا توجد إطلالة مخطط لها لغد بعد. خططها في دقيقتين.';
+
+  @override
+  String get planHatirlatimiAyar => 'تذكير مسائي';
+
+  @override
+  String get planHatirlatimiAyarAciklama => 'يذكّرك بإطلالة الغد الساعة 21:00';
 }

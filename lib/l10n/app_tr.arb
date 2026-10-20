@@ -1077,5 +1077,25 @@
   "duelloSebepCokRenk": "Üç ayrı canlı renk birbiriyle yarışıyor.",
   "duelloSebepHavaUygun": "Parçalar bugünkü sıcaklığa uygun.",
   "duelloSebepHavaAgir": "Kalın parçalar bu hava için fazla.",
-  "duelloSebepHavaHafif": "İnce parçalar bu hava için yetersiz."
+  "duelloSebepHavaHafif": "İnce parçalar bu hava için yetersiz.",
+  "bildirimSabahKombin": "Bugünkü kombinin hazır: {kombin}. Görmek için dokun.",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "Yarınki kombinin hazır",
+  "bildirimPlanKombin": "Yarın için: {kombin}. Şimdi bak, sabah acele etme.",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "Yarın için henüz kombin yok. 2 dakikada planla.",
+  "planHatirlatimiAyar": "Akşam plan hatırlatıcısı",
+  "planHatirlatimiAyarAciklama": "Yarınki kombinini akşam 21:00'de hatırlatır"
 }

@@ -1042,5 +1042,25 @@
   "duelloSebepCokRenk": "ثلاثة ألوان زاهية تتنافس معًا.",
   "duelloSebepHavaUygun": "القطع مناسبة لحرارة اليوم.",
   "duelloSebepHavaAgir": "ثقيلة جدًا على هذا الطقس.",
-  "duelloSebepHavaHafif": "خفيفة جدًا على هذا الطقس."
+  "duelloSebepHavaHafif": "خفيفة جدًا على هذا الطقس.",
+  "bildirimSabahKombin": "إطلالتك لهذا اليوم جاهزة: {kombin}. اضغط للعرض.",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "إطلالتك ليوم غد جاهزة",
+  "bildirimPlanKombin": "لغد: {kombin}. ألقِ نظرة الآن، بلا عجلة في الصباح.",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "لا توجد إطلالة مخطط لها لغد بعد. خططها في دقيقتين.",
+  "planHatirlatimiAyar": "تذكير مسائي",
+  "planHatirlatimiAyarAciklama": "يذكّرك بإطلالة الغد الساعة 21:00"
 }

@@ -1042,5 +1042,25 @@
   "duelloSebepCokRenk": "Drei kräftige Farben konkurrieren miteinander.",
   "duelloSebepHavaUygun": "Die Teile passen zur heutigen Temperatur.",
   "duelloSebepHavaAgir": "Zu warm für dieses Wetter.",
-  "duelloSebepHavaHafif": "Zu leicht für dieses Wetter."
+  "duelloSebepHavaHafif": "Zu leicht für dieses Wetter.",
+  "bildirimSabahKombin": "Dein Outfit für heute ist fertig: {kombin}. Zum Ansehen tippen.",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "Dein Outfit für morgen ist fertig",
+  "bildirimPlanKombin": "Für morgen: {kombin}. Schon jetzt ansehen, morgens keine Eile.",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "Für morgen ist noch kein Outfit geplant. In 2 Minuten planen.",
+  "planHatirlatimiAyar": "Abend-Erinnerung",
+  "planHatirlatimiAyarAciklama": "Erinnert dich um 21:00 an das Outfit für morgen"
 }

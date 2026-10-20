@@ -11,6 +11,7 @@ import '../services/analytics_servisi.dart';
 import '../services/auth_servisi.dart';
 import '../utils/auth_hata_utils.dart';
 import '../services/bildirim_servisi.dart';
+import '../services/bildirim_zamanlayici.dart';
 import '../services/satin_alma_servisi.dart';
 import 'reklamsiz_premium_ekrani.dart';
 import '../widgets/dil_secim_modal.dart';
@@ -55,6 +56,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
   bool _sabahBildirimi = true;
   bool _yikamaUyarisi = true;
   bool _haftalikRaporBildirimi = true;
+
+  /// Akşam "yarınki kombinin hazır" hatırlatıcısı.
+  bool _planHatirlatimi = true;
 
   TimeOfDay _sabahBildirimSaati = const TimeOfDay(
     hour: 8,
@@ -345,6 +349,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       _seciliCinsiyet =
           prefs.getString('kullanici_cinsiyet') ?? 'Kadın';
       _sabahBildirimi = prefs.getBool('sabah_bildirimi') ?? true;
+      _planHatirlatimi = prefs.getBool('plan_hatirlatimi') ?? true;
       _yikamaUyarisi = prefs.getBool('yikama_uyarisi') ?? true;
       _haftalikRaporBildirimi =
           prefs.getBool('haftalik_rapor_bildirimi') ?? true;
@@ -427,11 +432,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
     if (_sabahBildirimi) {
       try {
-        await BildirimServisi().gunlukSabahBildirimiKur(
-          saat: secilen.hour,
-          dakika: secilen.minute,
-          context: context,
-        );
+        await BildirimZamanlayici.yenidenKur(context: context);
       } catch (e) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
@@ -499,11 +500,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       await _ayarKaydet('sabah_bildirimi', true);
 
       try {
-        await BildirimServisi().gunlukSabahBildirimiKur(
-          saat: _sabahBildirimSaati.hour,
-          dakika: _sabahBildirimSaati.minute,
-          context: context,
-        );
+        await BildirimZamanlayici.yenidenKur(context: context);
       } catch (_) {}
     } else {
       setState(() {
@@ -515,6 +512,49 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         await BildirimServisi().gunlukSabahBildiriminiIptalEt();
       } catch (_) {}
     }
+  }
+
+  Future<void> _planHatirlatimiDegistir(bool val) async {
+    HapticFeedback.lightImpact();
+    final l10n = AppLocalizations.of(context)!;
+
+    if (val) {
+      bool izinVerildi = false;
+      try {
+        izinVerildi =
+            await BildirimServisi().bildirimIzniKontrolEtVeIste(context);
+      } catch (_) {
+        izinVerildi = false;
+      }
+
+      if (!mounted) return;
+
+      if (!izinVerildi) {
+        setState(() => _planHatirlatimi = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l10n.bildirimIzinGerekliUyari,
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+            backgroundColor: AppAccents.error,
+            behavior: SnackBarBehavior.floating,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          ),
+        );
+        return;
+      }
+    }
+
+    setState(() => _planHatirlatimi = val);
+    await _ayarKaydet('plan_hatirlatimi', val);
+
+    try {
+      if (val) {
+        await BildirimZamanlayici.yenidenKur(context: context);
+      } else {
+        await BildirimServisi().planHatirlatmalariniIptalEt();
+      }
+    } catch (_) {}
   }
 
   Future<void> _haftalikRaporBildiriminiDegistir(bool val) async {
@@ -1338,6 +1378,34 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       ),
                     ),
                     onTap: _saatSec,
+                  ),
+                  Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.4)),
+                  SwitchListTile.adaptive(
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    secondary: _buildIconContainer(
+                      Icons.nightlight_round,
+                      iconColor: AppAccents.info,
+                    ),
+                    title: Text(
+                      l10n.planHatirlatimiAyar,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 14,
+                          color: colors.onSurface),
+                    ),
+                    subtitle: Text(
+                      l10n.planHatirlatimiAyarAciklama,
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: colors.onSurfaceVariant,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    value: _planHatirlatimi,
+                    activeColor: colors.primary,
+                    onChanged: _planHatirlatimiDegistir,
                   ),
                   Divider(
                       height: 1,

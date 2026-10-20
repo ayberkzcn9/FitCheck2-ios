@@ -26,6 +26,7 @@ import 'services/analytics_servisi.dart';
 import 'services/auth_servisi.dart';
 import 'services/background_removal_service.dart';
 import 'services/bildirim_servisi.dart';
+import 'services/bildirim_zamanlayici.dart';
 import 'services/fcm_service.dart';
 import 'services/reklam_servisi.dart';
 import 'services/satin_alma_servisi.dart';
@@ -117,19 +118,10 @@ Future<UygulamaBaslatmaSonucu> uygulamaHazirliklariniBaslat() async {
   try {
     await BildirimServisi().init().timeout(const Duration(seconds: 10));
     final prefs = await SharedPreferences.getInstance();
-    final bool sabahBildirimiAcik = prefs.getBool('sabah_bildirimi') ?? true;
 
-    if (sabahBildirimiAcik) {
-      final int saat = prefs.getInt('sabah_bildirim_saat') ?? 8;
-      final int dakika = prefs.getInt('sabah_bildirim_dakika') ?? 30;
-
-      await BildirimServisi().gunlukSabahBildirimiKur(
-        saat: saat,
-        dakika: dakika,
-      );
-    } else {
-      await BildirimServisi().gunlukSabahBildiriminiIptalEt();
-    }
+    // Sabah + akşam serileri: haftalık plan varsa gövdede o günün gerçek
+    // kombini yazar, bildirime dokununca ilgili sekme açılır.
+    await BildirimZamanlayici.yenidenKur();
 
     final bool haftalikRaporAcik =
         prefs.getBool('haftalik_rapor_bildirimi') ?? true;

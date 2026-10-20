@@ -1042,5 +1042,25 @@
   "duelloSebepCokRenk": "Three vivid colours compete with each other.",
   "duelloSebepHavaUygun": "The pieces suit today's temperature.",
   "duelloSebepHavaAgir": "Too heavy for this weather.",
-  "duelloSebepHavaHafif": "Too light for this weather."
+  "duelloSebepHavaHafif": "Too light for this weather.",
+  "bildirimSabahKombin": "Today's outfit is ready: {kombin}. Tap to see it.",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "Tomorrow's outfit is ready",
+  "bildirimPlanKombin": "For tomorrow: {kombin}. Take a look now, no rush in the morning.",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "No outfit planned for tomorrow yet. Plan it in 2 minutes.",
+  "planHatirlatimiAyar": "Evening plan reminder",
+  "planHatirlatimiAyarAciklama": "Reminds you of tomorrow's outfit at 21:00"
 }

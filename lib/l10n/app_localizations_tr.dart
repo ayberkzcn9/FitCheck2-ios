@@ -3110,4 +3110,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get duelloSebepHavaHafif => 'İnce parçalar bu hava için yetersiz.';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return 'Bugünkü kombinin hazır: $kombin. Görmek için dokun.';
+  }
+
+  @override
+  String get bildirimPlanBaslik => 'Yarınki kombinin hazır';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return 'Yarın için: $kombin. Şimdi bak, sabah acele etme.';
+  }
+
+  @override
+  String get bildirimPlanBos =>
+      'Yarın için henüz kombin yok. 2 dakikada planla.';
+
+  @override
+  String get planHatirlatimiAyar => 'Akşam plan hatırlatıcısı';
+
+  @override
+  String get planHatirlatimiAyarAciklama =>
+      'Yarınki kombinini akşam 21:00\'de hatırlatır';
 }

@@ -1042,5 +1042,25 @@
   "duelloSebepCokRenk": "Три ярких цвета спорят друг с другом.",
   "duelloSebepHavaUygun": "Вещи подходят к сегодняшней температуре.",
   "duelloSebepHavaAgir": "Слишком тепло для такой погоды.",
-  "duelloSebepHavaHafif": "Слишком легко для такой погоды."
+  "duelloSebepHavaHafif": "Слишком легко для такой погоды.",
+  "bildirimSabahKombin": "Твой образ на сегодня готов: {kombin}. Нажми, чтобы посмотреть.",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "Твой образ на завтра готов",
+  "bildirimPlanKombin": "На завтра: {kombin}. Посмотри сейчас, утром не будет спешки.",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "На завтра образ ещё не запланирован. Спланируй за 2 минуты.",
+  "planHatirlatimiAyar": "Вечернее напоминание",
+  "planHatirlatimiAyarAciklama": "Напомнит об образе на завтра в 21:00"
 }

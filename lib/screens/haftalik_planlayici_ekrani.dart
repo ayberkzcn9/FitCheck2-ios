@@ -11,6 +11,7 @@ import '../services/ai_service.dart';
 import 'ai_chatbot_modal.dart';
 import '../services/analytics_servisi.dart';
 import '../services/reklam_servisi.dart';
+import '../services/bildirim_zamanlayici.dart';
 import '../utils/hava_uygunlugu.dart' show haftalikPlaniHavayaUygunlastir, haftalikTahminGunHavasi;
 import '../utils/helpers.dart';
 import '../utils/kategori_utils.dart';
@@ -221,6 +222,11 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
         await prefs.remove('haftalik_program_json');
         await prefs.remove('giyilmis_haftalik_gunler');
         await prefs.remove('haftalik_program_baslangic_tarihi');
+      }
+
+      // Plan değişti: akşam/sabah bildirimleri yeni kombini göstersin.
+      if (mounted) {
+        unawaited(BildirimZamanlayici.yenidenKur(context: context));
       }
     } catch (e) {
       debugPrint("Error saving schedule: $e");

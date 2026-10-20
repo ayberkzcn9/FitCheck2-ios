@@ -2938,4 +2938,26 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get duelloSebepHavaHafif => '这个天气穿得太薄了。';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return '今天的穿搭已就绪：$kombin。点击查看。';
+  }
+
+  @override
+  String get bildirimPlanBaslik => '明天的穿搭已就绪';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return '明天：$kombin。现在看看，早上不慌。';
+  }
+
+  @override
+  String get bildirimPlanBos => '明天还没有穿搭计划。两分钟就能安排。';
+
+  @override
+  String get planHatirlatimiAyar => '晚间计划提醒';
+
+  @override
+  String get planHatirlatimiAyarAciklama => '21:00 提醒你明天的穿搭';
 }

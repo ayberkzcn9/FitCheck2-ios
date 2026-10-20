@@ -2980,4 +2980,26 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get duelloSebepHavaHafif => 'この天気には薄すぎます。';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return '今日のコーデができました：$kombin。タップして見る。';
+  }
+
+  @override
+  String get bildirimPlanBaslik => '明日のコーデができました';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return '明日は：$kombin。今のうちにチェックして、朝はゆっくり。';
+  }
+
+  @override
+  String get bildirimPlanBos => '明日のコーデはまだ未定です。2分で計画しましょう。';
+
+  @override
+  String get planHatirlatimiAyar => '夜のプラン通知';
+
+  @override
+  String get planHatirlatimiAyarAciklama => '明日のコーデを21:00にお知らせします';
 }
