@@ -134,12 +134,41 @@ void main() {
     expect(find.text('Kaydet'), findsOneWidget);
     expect(find.text('2 haftadır giymediklerin'), findsOneWidget);
 
-    // Üçüncü raf ekranın altında kalıyor; kaydırınca çizilir.
+    // Aynı parça iki rafta birden görünmemeli: bu küçük dolapta "bugüne
+    // uygun" rafı tamamen boşaldığı için gizlenir.
     await tester.drag(find.byType(CustomScrollView), const Offset(0, -420));
     await tester.pumpAndSettle();
-    expect(find.text('Bugüne uygun'), findsOneWidget);
+    expect(find.text('Bugüne uygun'), findsNothing);
 
     // Taşma/çizim hatası olmamalı.
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('raflar aynı parçayı tekrarlamaz', (tester) async {
+    // Büyük dolap: "bugüne uygun" rafında kalan parçalar görünmeli.
+    final ekGiysi = List.generate(
+      6,
+      (i) => _kiyafet(
+        id: 'y$i',
+        kategori: i.isEven ? 'ust' : 'alt',
+        baslik: 'Yeni Parça $i',
+        sonGiyilme: DateTime.now().subtract(Duration(days: 1)),
+        eklenme: DateTime.now().subtract(Duration(days: 30)),
+      ),
+    );
+
+    await kur(
+      tester,
+      dolap: [ust, alt, kaban, ...ekGiysi],
+      kombinler: [kombin],
+    );
+
+    await tester.drag(find.byType(CustomScrollView), const Offset(0, -600));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Bugüne uygun'), findsOneWidget);
+    // "Yün Kaban" üstteki rafta var, altta tekrarlanmamalı.
+    expect(find.text('Yün Kaban'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 

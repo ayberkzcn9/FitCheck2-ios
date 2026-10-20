@@ -193,12 +193,24 @@ class _BugunEkraniState extends State<BugunEkrani> {
     final kahraman = gecerli.isEmpty ? null : gecerli.first;
     final digerleri = gecerli.length > 1 ? gecerli.sublist(1) : <BugunKombin>[];
 
+    // Aynı parça iki rafta birden görünmesin: raflar yukarıdan aşağıya
+    // öncelikli, üstteki rafta duran parça alttakilerde tekrarlanmaz.
     final giyilmedi = AkilliRaflar.ikiHaftadirGiymedikler(widget.gardirobum);
-    final yeniler = AkilliRaflar.yeniEklenenler(widget.gardirobum);
-    final havayaUygun = AkilliRaflar.havayaUygunlar(
+    final giyilmediIdler = giyilmedi.map((k) => k.id).toSet();
+
+    final yeniler = AkilliRaflar.yeniEklenenler(widget.gardirobum)
+        .where((k) => !giyilmediIdler.contains(k.id))
+        .toList();
+    final yenilerIdler = giyilmediIdler..addAll(yeniler.map((k) => k.id));
+
+    final havayaUygunTum = AkilliRaflar.havayaUygunlar(
       widget.gardirobum,
       widget.gunlukHava,
     );
+    // Aynı parça iki rafta birden görünmesin. Küçük dolapta "bugüne uygun"
+    // rafı tamamen boşalıyorsa raf gizlenir (üstteki rafta zaten görünüyor).
+    final havayaUygun =
+        havayaUygunTum.where((k) => !yenilerIdler.contains(k.id)).toList();
 
     return RefreshIndicator(
       color: widget.anaRenk,

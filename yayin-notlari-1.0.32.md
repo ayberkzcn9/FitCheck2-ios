@@ -116,8 +116,8 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+37.aab` (72.685.688 bayt,
-   SHA256 `06AC477E16E3A42890C3E2D24CD30411D21ABD4B9156DE70D7CB5D1A11D0CF53`).
+1. **AAB:** `build\FitCheck-1.0.32+37.aab` (72.687.174 bayt,
+   SHA256 `59901C07CEA3A235A4DF39971263F45D9ADC8CA3F289303BDE2918382C277556`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
 2. **Sürüm:** versionName 1.0.32 / versionCode 37 (mağazadaki 1.0.29+35'in üstü).
@@ -128,6 +128,6 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 5. **Data safety:** fotoğraf/veri paylaşımı bölümünü kontrol et (fotoğraflar
    işlenmek üzere üçüncü taraf AI servislerine gidiyor).
 6. **Cihaz testi:** `build\FitCheck-1.0.32+37.apk` (versionCode 37,
-   SHA256 `4DAF925B62D73870ED4E023AE62D2493E22F63D5A058FF12CEF02DB0B9422E8C`).
+   SHA256 `9223A833E7A16464599967A603B1DB2D3398AF028F100805A74FD998248718BE`).
    Yeni: 7. sekme "Düello", Bildirim → sekme yönlendirme, kombini paylaşma,
    raf aksiyonları, "Stil Günlüğüm" (takvim/günlük/rapor), "Seyahat Modu".

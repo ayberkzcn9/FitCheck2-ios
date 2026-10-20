@@ -2972,7 +2972,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bugunHavaRafi => 'Right for today';
 
   @override
-  String get bugunRafIpucu => 'Tap to open in your wardrobe';
+  String get bugunRafIpucu =>
+      'Tap: wear it, build an outfit or open it in the wardrobe';
 
   @override
   String get duelloSekmesi => 'Duel';

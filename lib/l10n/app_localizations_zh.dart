@@ -2805,7 +2805,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get bugunHavaRafi => '适合今天';
 
   @override
-  String get bugunRafIpucu => '点击在衣橱中打开';
+  String get bugunRafIpucu => '点击：标记今天穿了、搭配它或在衣橱中打开';
 
   @override
   String get duelloSekmesi => '对决';

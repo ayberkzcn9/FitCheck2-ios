@@ -162,7 +162,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         const SizedBox(height: 6),
         Row(
           children: [
-            for (final gun in yerel.narrowWeekdays)
+            for (final gun in _haftaEtiketleri(yerel))
               Expanded(
                 child: Center(
                   child: Text(
@@ -200,6 +200,17 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         ),
       ],
     );
+  }
+
+  /// Hafta günü başlıkları (pazartesi ile başlar).
+  ///
+  /// Flutter'ın [MaterialLocalizations.narrowWeekdays] listesi **pazar** günüyle
+  /// başlar; bizim ızgara ve plan eşlemesi pazartesi ile başladığı için liste
+  /// bir kaydırılır. Aksi halde her gün yanlış sütunda görünür.
+  static List<String> _haftaEtiketleri(MaterialLocalizations yerel) {
+    final dar = yerel.narrowWeekdays;
+    if (dar.length != 7) return dar;
+    return <String>[...dar.sublist(1), dar.first];
   }
 
   Widget _noktaGostergesi(

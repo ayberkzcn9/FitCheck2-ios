@@ -2973,7 +2973,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get bugunHavaRafi => 'Подходят на сегодня';
 
   @override
-  String get bugunRafIpucu => 'Нажмите, чтобы открыть в гардеробе';
+  String get bugunRafIpucu =>
+      'Нажмите: надето сегодня, собрать образ или открыть в гардеробе';
 
   @override
   String get duelloSekmesi => 'Дуэль';

@@ -2847,7 +2847,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get bugunHavaRafi => '今日に合う';
 
   @override
-  String get bugunRafIpucu => 'タップしてワードローブで開く';
+  String get bugunRafIpucu => 'タップ：着た記録・着合わせ作成・クローゼットで開く';
 
   @override
   String get duelloSekmesi => 'デュエル';

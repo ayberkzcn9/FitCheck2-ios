@@ -2999,7 +2999,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get bugunHavaRafi => 'Passend für heute';
 
   @override
-  String get bugunRafIpucu => 'Tippen, um in der Garderobe zu öffnen';
+  String get bugunRafIpucu =>
+      'Tippen: getragen, Outfit bauen oder im Kleiderschrank öffnen';
 
   @override
   String get duelloSekmesi => 'Duell';

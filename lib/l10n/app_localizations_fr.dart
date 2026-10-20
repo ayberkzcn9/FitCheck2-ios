@@ -3001,7 +3001,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get bugunHavaRafi => 'Adaptés à aujourd\'hui';
 
   @override
-  String get bugunRafIpucu => 'Touche pour ouvrir dans ton dressing';
+  String get bugunRafIpucu =>
+      'Touchez : portée aujourd\'hui, créer une tenue ou ouvrir';
 
   @override
   String get duelloSekmesi => 'Duo';

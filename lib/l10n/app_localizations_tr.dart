@@ -2974,7 +2974,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get bugunHavaRafi => 'Bugüne uygun';
 
   @override
-  String get bugunRafIpucu => 'Dolabında görmek için dokun';
+  String get bugunRafIpucu => 'Dokun: giydim, kombin kur veya dolapta aç';
 
   @override
   String get duelloSekmesi => 'Düello';

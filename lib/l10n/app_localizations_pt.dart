@@ -2989,7 +2989,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get bugunHavaRafi => 'Adequados para hoje';
 
   @override
-  String get bugunRafIpucu => 'Toca para abrir no guarda-roupa';
+  String get bugunRafIpucu =>
+      'Toque: usei hoje, criar look ou abrir no guarda-roupa';
 
   @override
   String get duelloSekmesi => 'Duelo';

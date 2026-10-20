@@ -2952,7 +2952,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bugunHavaRafi => 'مناسبة لليوم';
 
   @override
-  String get bugunRafIpucu => 'اضغط لفتحها في خزانتك';
+  String get bugunRafIpucu =>
+      'اضغط: ارتديها اليوم أو نسّق إطلالة أو افتحها في الخزانة';
 
   @override
   String get duelloSekmesi => 'مبارزة';

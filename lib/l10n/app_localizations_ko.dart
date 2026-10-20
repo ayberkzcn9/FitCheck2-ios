@@ -2861,7 +2861,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get bugunHavaRafi => '오늘에 어울리는';
 
   @override
-  String get bugunRafIpucu => '탭하여 옷장에서 열기';
+  String get bugunRafIpucu => '누르기: 오늘 입었어요, 코디 만들기, 옷장에서 열기';
 
   @override
   String get duelloSekmesi => '대결';

@@ -5509,7 +5509,7 @@ abstract class AppLocalizations {
   /// No description provided for @bugunRafIpucu.
   ///
   /// In tr, this message translates to:
-  /// **'Dolabında görmek için dokun'**
+  /// **'Dokun: giydim, kombin kur veya dolapta aç'**
   String get bugunRafIpucu;
 
   /// No description provided for @duelloSekmesi.
