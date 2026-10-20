@@ -13,8 +13,14 @@
 // Bu ekran hiçbir şeyi "sahiplenmez": dolap listesi ve favori/geçmiş kayıtları
 // AnaEkran'da tutulur, buradan callback ile bildirilir.
 
+import 'dart:io';
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/bugun_kombin.dart';
@@ -37,6 +43,8 @@ class BugunEkrani extends StatefulWidget {
     required this.onGecmiseEkle,
     required this.onStilistAc,
     required this.anaRenk,
+    this.onKiyafetGiyildi,
+    this.onKombinIstegi,
     this.feedServisi,
   });
 
@@ -54,6 +62,14 @@ class BugunEkrani extends StatefulWidget {
   final VoidCallback onStilistAc;
   final Color anaRenk;
 
+  /// Raftan tek parça için "bugün giydim" işaretlemesi.
+  ///
+  /// Opsiyonel: verilmezse bu aksiyon gizlenir (testler/önizleme).
+  final Future<void> Function(Kiyafet)? onKiyafetGiyildi;
+
+  /// Raftaki parçayla kombin kurma isteği (Kombin sekmesine odakla gider).
+  final void Function(Kiyafet)? onKombinIstegi;
+
   /// Testlerde sahte akış servisi vermek için; varsayılan gerçek servis.
   final BugunFeedServisi? feedServisi;
 
@@ -70,6 +86,10 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
   /// Dolap/hava imzası: değişirse akış kendini yeniler.
   String _imza = '';
+
+  /// Bugünün kombin kartını görsele çevirip paylaşmak için.
+  final GlobalKey _paylasKey = GlobalKey();
+  bool _paylasiliyor = false;
 
   @override
   void initState() {
@@ -385,6 +405,50 @@ class _BugunEkraniState extends State<BugunEkrani> {
   // Bugünün kombini
   // ---------------------------------------------------------------------------
 
+  /// Bugünün kombin kartını PNG'ye çevirip sistem paylaşım sayfasını açar.
+  Future<void> _kombiniPaylas() async {
+    if (_paylasiliyor) return;
+    final l10n = AppLocalizations.of(context)!;
+
+    setState(() => _paylasiliyor = true);
+
+    try {
+      final sinir = _paylasKey.currentContext?.findRenderObject();
+      if (sinir is! RenderRepaintBoundary) return;
+
+      final gorsel = await sinir.toImage(pixelRatio: 3);
+      final veri = await gorsel.toByteData(format: ui.ImageByteFormat.png);
+      if (veri == null) return;
+
+      final klasor = await getTemporaryDirectory();
+      final dosya = File(
+        '${klasor.path}/fitcheck-kombin-'
+        '${DateTime.now().millisecondsSinceEpoch}.png',
+      );
+      await dosya.writeAsBytes(veri.buffer.asUint8List(), flush: true);
+
+      if (!mounted) return;
+
+      await SharePlus.instance.share(
+        ShareParams(
+          files: [XFile(dosya.path, mimeType: 'image/png')],
+          text: l10n.bugunPaylasMetni,
+          subject: l10n.bugunBugununKombini,
+          sharePositionOrigin:
+              sinir.localToGlobal(Offset.zero) & sinir.size,
+        ),
+      );
+    } catch (e) {
+      debugPrint('Kombin paylaşılamadı: $e');
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.bugunPaylasHata)),
+      );
+    } finally {
+      if (mounted) setState(() => _paylasiliyor = false);
+    }
+  }
+
   Widget _heroKart(
     BuildContext context,
     AppLocalizations l10n,
@@ -392,69 +456,89 @@ class _BugunEkraniState extends State<BugunEkrani> {
     BugunKombin? kombin,
     Map<String, Kiyafet> indeks,
   ) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              colors.primaryContainer.withValues(alpha: 0.85),
-              colors.surfaceContainerHighest.withValues(alpha: 0.75),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(26),
-          border: Border.all(
-            color: colors.outlineVariant.withValues(alpha: 0.35),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(Icons.wb_sunny_outlined,
-                    size: 16, color: colors.onPrimaryContainer),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    l10n.bugunBugununKombini,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.4,
-                      color: colors.onPrimaryContainer,
-                    ),
-                  ),
-                ),
-                IconButton(
-                  visualDensity: VisualDensity.compact,
-                  tooltip: l10n.bugunYenile,
-                  onPressed: _yukleniyor ? null : () => _yukle(zorla: true),
-                  icon: _yukleniyor
-                      ? SizedBox(
-                          width: 16,
-                          height: 16,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: colors.onPrimaryContainer,
-                          ),
-                        )
-                      : Icon(Icons.refresh_rounded,
-                          size: 20, color: colors.onPrimaryContainer),
-                ),
+    return RepaintBoundary(
+      key: _paylasKey,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                colors.primaryContainer.withValues(alpha: 0.85),
+                colors.surfaceContainerHighest.withValues(alpha: 0.75),
               ],
             ),
-            const SizedBox(height: 4),
-            if (_yukleniyor && kombin == null)
-              _iskelet(context, colors)
-            else if (kombin == null)
-              _bosDurum(context, l10n, colors)
-            else
-              _kombinIcerik(context, l10n, colors, kombin, indeks, buyuk: true),
-          ],
+            borderRadius: BorderRadius.circular(26),
+            border: Border.all(
+              color: colors.outlineVariant.withValues(alpha: 0.35),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.wb_sunny_outlined,
+                      size: 16, color: colors.onPrimaryContainer),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      l10n.bugunBugununKombini,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 0.4,
+                        color: colors.onPrimaryContainer,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    visualDensity: VisualDensity.compact,
+                    tooltip: l10n.bugunPaylas,
+                    onPressed:
+                        (kombin == null || _paylasiliyor) ? null : _kombiniPaylas,
+                    icon: _paylasiliyor
+                        ? SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: colors.onPrimaryContainer,
+                            ),
+                          )
+                        : Icon(Icons.ios_share_rounded,
+                            size: 19, color: colors.onPrimaryContainer),
+                  ),
+                  IconButton(
+                    visualDensity: VisualDensity.compact,
+                    tooltip: l10n.bugunYenile,
+                    onPressed: _yukleniyor ? null : () => _yukle(zorla: true),
+                    icon: _yukleniyor
+                        ? SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: colors.onPrimaryContainer,
+                            ),
+                          )
+                        : Icon(Icons.refresh_rounded,
+                            size: 20, color: colors.onPrimaryContainer),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 4),
+              if (_yukleniyor && kombin == null)
+                _iskelet(context, colors)
+              else if (kombin == null)
+                _bosDurum(context, l10n, colors)
+              else
+                _kombinIcerik(context, l10n, colors, kombin, indeks, buyuk: true),
+            ],
+          ),
         ),
       ),
     );
@@ -849,6 +933,82 @@ class _BugunEkraniState extends State<BugunEkrani> {
   // Raflar
   // ---------------------------------------------------------------------------
 
+  /// Raftaki bir parçaya dokununca hızlı aksiyonlar.
+  ///
+  /// "Bugün giydim" parçayı sepete taşır (model: giyildiOlarakIsaretle), böylece
+  /// "2 haftadır giymediklerin" rafından düşer.
+  Future<void> _parcaMenusu(
+    BuildContext context,
+    AppLocalizations l10n,
+    Kiyafet parca,
+  ) async {
+    final colors = Theme.of(context).colorScheme;
+
+    await showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: colors.surfaceContainerHigh,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+      ),
+      builder: (sheetContext) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 18, 20, 6),
+                child: Text(
+                  parca.gorunenBaslik,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w900,
+                    color: colors.onSurface,
+                  ),
+                ),
+              ),
+              if (widget.onKiyafetGiyildi != null)
+                ListTile(
+                  leading: Icon(
+                    Icons.check_circle_outline_rounded,
+                    color: colors.primary,
+                  ),
+                  title: Text(l10n.bugunParcaGiydim),
+                  onTap: () {
+                    Navigator.pop(sheetContext);
+                    widget.onKiyafetGiyildi!.call(parca);
+                  },
+                ),
+              if (widget.onKombinIstegi != null)
+                ListTile(
+                  leading: Icon(
+                    Icons.auto_awesome_rounded,
+                    color: colors.primary,
+                  ),
+                  title: Text(l10n.bugunParcaKombin),
+                  onTap: () {
+                    Navigator.pop(sheetContext);
+                    widget.onKombinIstegi!(parca);
+                  },
+                ),
+              ListTile(
+                leading: Icon(Icons.checkroom_rounded, color: colors.primary),
+                title: Text(l10n.bugunParcaDolapta),
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  widget.onSekmeSec(1);
+                },
+              ),
+              const SizedBox(height: 8),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   Widget _raf(
     BuildContext context,
     AppLocalizations l10n, {
@@ -876,7 +1036,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
               return SizedBox(
                 width: 82,
                 child: GestureDetector(
-                  onTap: () => widget.onSekmeSec(1),
+                  onTap: () => _parcaMenusu(context, l10n, parca),
                   child: Column(
                     children: [
                       Container(

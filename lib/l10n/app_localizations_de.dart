@@ -3163,4 +3163,29 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get planHatirlatimiAyarAciklama =>
       'Erinnert dich um 21:00 an das Outfit für morgen';
+
+  @override
+  String get bugunPaylas => 'Outfit teilen';
+
+  @override
+  String get bugunPaylasMetni =>
+      'Mein heutiges Outfit habe ich mit FitCheck zusammengestellt ✨';
+
+  @override
+  String get bugunPaylasHata =>
+      'Teilen konnte nicht geöffnet werden. Versuch es erneut.';
+
+  @override
+  String get bugunParcaGiydim => 'Heute getragen';
+
+  @override
+  String get bugunParcaKombin => 'Outfit damit erstellen';
+
+  @override
+  String get bugunParcaDolapta => 'Im Kleiderschrank öffnen';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '„$parca“ wurde für heute als getragen markiert.';
+  }
 }

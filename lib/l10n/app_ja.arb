@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "明日のコーデはまだ未定です。2分で計画しましょう。",
   "planHatirlatimiAyar": "夜のプラン通知",
-  "planHatirlatimiAyarAciklama": "明日のコーデを21:00にお知らせします"
+  "planHatirlatimiAyarAciklama": "明日のコーデを21:00にお知らせします",
+  "bugunPaylas": "コーデをシェア",
+  "bugunPaylasMetni": "今日のコーデはFitCheckで組みました ✨",
+  "bugunPaylasHata": "共有を開けませんでした。もう一度お試しください。",
+  "bugunParcaGiydim": "今日着た",
+  "bugunParcaKombin": "これでコーデを作る",
+  "bugunParcaDolapta": "クローゼットで開く",
+  "bugunParcaGiydimIsaretlendi": "「{parca}」を今日着たものにしました。",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

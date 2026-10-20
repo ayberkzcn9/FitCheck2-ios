@@ -3109,4 +3109,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get planHatirlatimiAyarAciklama => 'يذكّرك بإطلالة الغد الساعة 21:00';
+
+  @override
+  String get bugunPaylas => 'شارك الإطلالة';
+
+  @override
+  String get bugunPaylasMetni => 'نسّقت إطلالة اليوم عبر FitCheck ✨';
+
+  @override
+  String get bugunPaylasHata => 'تعذّر فتح المشاركة. حاول مرة أخرى.';
+
+  @override
+  String get bugunParcaGiydim => 'ارتديتها اليوم';
+
+  @override
+  String get bugunParcaKombin => 'نسّق إطلالة بها';
+
+  @override
+  String get bugunParcaDolapta => 'افتح في الخزانة';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return 'تم وضع «$parca» كمرتدى اليوم.';
+  }
 }

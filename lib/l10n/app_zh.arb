@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "明天还没有穿搭计划。两分钟就能安排。",
   "planHatirlatimiAyar": "晚间计划提醒",
-  "planHatirlatimiAyarAciklama": "21:00 提醒你明天的穿搭"
+  "planHatirlatimiAyarAciklama": "21:00 提醒你明天的穿搭",
+  "bugunPaylas": "分享穿搭",
+  "bugunPaylasMetni": "今天的穿搭是用 FitCheck 搭配的 ✨",
+  "bugunPaylasHata": "无法打开分享，请重试。",
+  "bugunParcaGiydim": "今天穿了",
+  "bugunParcaKombin": "用它搭配穿搭",
+  "bugunParcaDolapta": "在衣橱中打开",
+  "bugunParcaGiydimIsaretlendi": "已将“{parca}”标记为今天穿过。",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

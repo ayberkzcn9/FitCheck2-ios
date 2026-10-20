@@ -3135,4 +3135,28 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get planHatirlatimiAyarAciklama =>
       'Напомнит об образе на завтра в 21:00';
+
+  @override
+  String get bugunPaylas => 'Поделиться образом';
+
+  @override
+  String get bugunPaylasMetni => 'Собрал(а) сегодняшний образ в FitCheck ✨';
+
+  @override
+  String get bugunPaylasHata =>
+      'Не удалось открыть меню «Поделиться». Попробуй ещё раз.';
+
+  @override
+  String get bugunParcaGiydim => 'Надел(а) сегодня';
+
+  @override
+  String get bugunParcaKombin => 'Собрать образ с этим';
+
+  @override
+  String get bugunParcaDolapta => 'Открыть в гардеробе';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '«$parca» отмечено как надетое сегодня.';
+  }
 }

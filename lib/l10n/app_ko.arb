@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "내일 코디가 아직 없어요. 2분이면 계획할 수 있어요.",
   "planHatirlatimiAyar": "저녁 플랜 알림",
-  "planHatirlatimiAyarAciklama": "내일의 코디를 21:00에 알려드려요"
+  "planHatirlatimiAyarAciklama": "내일의 코디를 21:00에 알려드려요",
+  "bugunPaylas": "코디 공유",
+  "bugunPaylasMetni": "오늘의 코디는 FitCheck로 완성했어요 ✨",
+  "bugunPaylasHata": "공유를 열 수 없어요. 다시 시도해 주세요.",
+  "bugunParcaGiydim": "오늘 입었어요",
+  "bugunParcaKombin": "이걸로 코디 만들기",
+  "bugunParcaDolapta": "옷장에서 열기",
+  "bugunParcaGiydimIsaretlendi": "‘{parca}’을(를) 오늘 입은 것으로 표시했어요.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

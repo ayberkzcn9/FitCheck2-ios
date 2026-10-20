@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "На завтра образ ещё не запланирован. Спланируй за 2 минуты.",
   "planHatirlatimiAyar": "Вечернее напоминание",
-  "planHatirlatimiAyarAciklama": "Напомнит об образе на завтра в 21:00"
+  "planHatirlatimiAyarAciklama": "Напомнит об образе на завтра в 21:00",
+  "bugunPaylas": "Поделиться образом",
+  "bugunPaylasMetni": "Собрал(а) сегодняшний образ в FitCheck ✨",
+  "bugunPaylasHata": "Не удалось открыть меню «Поделиться». Попробуй ещё раз.",
+  "bugunParcaGiydim": "Надел(а) сегодня",
+  "bugunParcaKombin": "Собрать образ с этим",
+  "bugunParcaDolapta": "Открыть в гардеробе",
+  "bugunParcaGiydimIsaretlendi": "«{parca}» отмечено как надетое сегодня.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

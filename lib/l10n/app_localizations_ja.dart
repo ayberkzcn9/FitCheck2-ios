@@ -3002,4 +3002,27 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get planHatirlatimiAyarAciklama => '明日のコーデを21:00にお知らせします';
+
+  @override
+  String get bugunPaylas => 'コーデをシェア';
+
+  @override
+  String get bugunPaylasMetni => '今日のコーデはFitCheckで組みました ✨';
+
+  @override
+  String get bugunPaylasHata => '共有を開けませんでした。もう一度お試しください。';
+
+  @override
+  String get bugunParcaGiydim => '今日着た';
+
+  @override
+  String get bugunParcaKombin => 'これでコーデを作る';
+
+  @override
+  String get bugunParcaDolapta => 'クローゼットで開く';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '「$parca」を今日着たものにしました。';
+  }
 }

@@ -3134,4 +3134,27 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get planHatirlatimiAyarAciklama =>
       'Yarınki kombinini akşam 21:00\'de hatırlatır';
+
+  @override
+  String get bugunPaylas => 'Kombini paylaş';
+
+  @override
+  String get bugunPaylasMetni => 'Bugünkü kombini FitCheck\'te hazırladım ✨';
+
+  @override
+  String get bugunPaylasHata => 'Paylaşım açılamadı. Tekrar dene.';
+
+  @override
+  String get bugunParcaGiydim => 'Bugün giydim';
+
+  @override
+  String get bugunParcaKombin => 'Bununla kombin kur';
+
+  @override
+  String get bugunParcaDolapta => 'Dolapta aç';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '«$parca» bugün giydim olarak işaretlendi.';
+  }
 }

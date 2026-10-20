@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "Für morgen ist noch kein Outfit geplant. In 2 Minuten planen.",
   "planHatirlatimiAyar": "Abend-Erinnerung",
-  "planHatirlatimiAyarAciklama": "Erinnert dich um 21:00 an das Outfit für morgen"
+  "planHatirlatimiAyarAciklama": "Erinnert dich um 21:00 an das Outfit für morgen",
+  "bugunPaylas": "Outfit teilen",
+  "bugunPaylasMetni": "Mein heutiges Outfit habe ich mit FitCheck zusammengestellt ✨",
+  "bugunPaylasHata": "Teilen konnte nicht geöffnet werden. Versuch es erneut.",
+  "bugunParcaGiydim": "Heute getragen",
+  "bugunParcaKombin": "Outfit damit erstellen",
+  "bugunParcaDolapta": "Im Kleiderschrank öffnen",
+  "bugunParcaGiydimIsaretlendi": "„{parca}“ wurde für heute als getragen markiert.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

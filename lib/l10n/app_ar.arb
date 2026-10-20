@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "لا توجد إطلالة مخطط لها لغد بعد. خططها في دقيقتين.",
   "planHatirlatimiAyar": "تذكير مسائي",
-  "planHatirlatimiAyarAciklama": "يذكّرك بإطلالة الغد الساعة 21:00"
+  "planHatirlatimiAyarAciklama": "يذكّرك بإطلالة الغد الساعة 21:00",
+  "bugunPaylas": "شارك الإطلالة",
+  "bugunPaylasMetni": "نسّقت إطلالة اليوم عبر FitCheck ✨",
+  "bugunPaylasHata": "تعذّر فتح المشاركة. حاول مرة أخرى.",
+  "bugunParcaGiydim": "ارتديتها اليوم",
+  "bugunParcaKombin": "نسّق إطلالة بها",
+  "bugunParcaDolapta": "افتح في الخزانة",
+  "bugunParcaGiydimIsaretlendi": "تم وضع «{parca}» كمرتدى اليوم.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -86,6 +86,8 @@ void main() {
     List<String>? gecmis,
     Map<String, List<Kiyafet>>? giyilenler,
     VoidCallback? onFotograf,
+    Future<void> Function(Kiyafet)? onGiydi,
+    void Function(Kiyafet)? onKombin,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -106,6 +108,8 @@ void main() {
               giyilenler?[baslik] = parcalar;
             },
             onStilistAc: () {},
+            onKiyafetGiyildi: onGiydi,
+            onKombinIstegi: onKombin,
             anaRenk: Colors.indigo,
             feedServisi: _SahteFeed(
               FeedSonucu(kombinler, FeedKaynagi.yapayZeka),
@@ -208,5 +212,61 @@ void main() {
     );
 
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('kombin varken paylas dugmesi etkin', (tester) async {
+    await kur(tester, dolap: [ust, alt], kombinler: [kombin]);
+
+    expect(find.byTooltip('Kombini payla\u015f'), findsOneWidget);
+    final dugme = find.widgetWithIcon(IconButton, Icons.ios_share_rounded);
+    expect(dugme, findsOneWidget);
+    expect(tester.widget<IconButton>(dugme).onPressed, isNotNull);
+  });
+
+  testWidgets('kombin yokken paylas dugmesi pasif', (tester) async {
+    await kur(tester, dolap: [ust, alt], kombinler: const <BugunKombin>[]);
+
+    expect(find.byTooltip('Kombini payla\u015f'), findsOneWidget);
+    final dugme = find.widgetWithIcon(IconButton, Icons.ios_share_rounded);
+    expect(dugme, findsOneWidget);
+    expect(tester.widget<IconButton>(dugme).onPressed, isNull);
+  });
+
+  testWidgets('raftaki parcaya dokununca hizli aksiyonlar acilir', (tester) async {
+    await kur(tester, dolap: [ust, alt, kaban], kombinler: [kombin]);
+
+    final parca = find.text('Yün Kaban').first;
+    await tester.ensureVisible(parca);
+    await tester.pumpAndSettle();
+    await tester.tap(parca);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Dolapta aç'), findsOneWidget);
+    // Geri cagri verilmediginde giydim/kombin aksiyonlari gizli.
+    expect(find.text('Bugün giydim'), findsNothing);
+  });
+
+  testWidgets('rafta bugun giydim parcayi yukari bildirir', (tester) async {
+    Kiyafet? giyilen;
+
+    await kur(
+      tester,
+      dolap: [ust, alt, kaban],
+      kombinler: [kombin],
+      onGiydi: (kiyafet) async => giyilen = kiyafet,
+      onKombin: (_) {},
+    );
+
+    final parca = find.text('Yün Kaban').first;
+    await tester.ensureVisible(parca);
+    await tester.pumpAndSettle();
+    await tester.tap(parca);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Bununla kombin kur'), findsOneWidget);
+    await tester.tap(find.text('Bugün giydim'));
+    await tester.pumpAndSettle();
+
+    expect(giyilen?.id, kaban.id);
   });
 }

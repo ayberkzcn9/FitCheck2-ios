@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "Nessun outfit pianificato per domani. Pianificalo in 2 minuti.",
   "planHatirlatimiAyar": "Promemoria serale",
-  "planHatirlatimiAyarAciklama": "Ti ricorda l'outfit di domani alle 21:00"
+  "planHatirlatimiAyarAciklama": "Ti ricorda l'outfit di domani alle 21:00",
+  "bugunPaylas": "Condividi outfit",
+  "bugunPaylasMetni": "Ho creato il mio outfit di oggi con FitCheck ✨",
+  "bugunPaylasHata": "Impossibile aprire la condivisione. Riprova.",
+  "bugunParcaGiydim": "Indossato oggi",
+  "bugunParcaKombin": "Crea un outfit con questo",
+  "bugunParcaDolapta": "Apri nel guardaroba",
+  "bugunParcaGiydimIsaretlendi": "«{parca}» segnato come indossato oggi.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

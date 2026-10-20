@@ -3161,4 +3161,28 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get planHatirlatimiAyarAciklama =>
       'Te recuerda el look de mañana a las 21:00';
+
+  @override
+  String get bugunPaylas => 'Compartir look';
+
+  @override
+  String get bugunPaylasMetni => 'He preparado mi look de hoy con FitCheck ✨';
+
+  @override
+  String get bugunPaylasHata =>
+      'No se pudo abrir compartir. Inténtalo de nuevo.';
+
+  @override
+  String get bugunParcaGiydim => 'Lo llevé hoy';
+
+  @override
+  String get bugunParcaKombin => 'Crear look con esta prenda';
+
+  @override
+  String get bugunParcaDolapta => 'Abrir en el armario';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '«$parca» marcada como usada hoy.';
+  }
 }

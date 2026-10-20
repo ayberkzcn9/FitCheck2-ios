@@ -2960,4 +2960,27 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get planHatirlatimiAyarAciklama => '21:00 提醒你明天的穿搭';
+
+  @override
+  String get bugunPaylas => '分享穿搭';
+
+  @override
+  String get bugunPaylasMetni => '今天的穿搭是用 FitCheck 搭配的 ✨';
+
+  @override
+  String get bugunPaylasHata => '无法打开分享，请重试。';
+
+  @override
+  String get bugunParcaGiydim => '今天穿了';
+
+  @override
+  String get bugunParcaKombin => '用它搭配穿搭';
+
+  @override
+  String get bugunParcaDolapta => '在衣橱中打开';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '已将“$parca”标记为今天穿过。';
+  }
 }

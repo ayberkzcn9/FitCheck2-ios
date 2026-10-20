@@ -5787,6 +5787,48 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Yarınki kombinini akşam 21:00\'de hatırlatır'**
   String get planHatirlatimiAyarAciklama;
+
+  /// No description provided for @bugunPaylas.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombini paylaş'**
+  String get bugunPaylas;
+
+  /// No description provided for @bugunPaylasMetni.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünkü kombini FitCheck\'te hazırladım ✨'**
+  String get bugunPaylasMetni;
+
+  /// No description provided for @bugunPaylasHata.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paylaşım açılamadı. Tekrar dene.'**
+  String get bugunPaylasHata;
+
+  /// No description provided for @bugunParcaGiydim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün giydim'**
+  String get bugunParcaGiydim;
+
+  /// No description provided for @bugunParcaKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bununla kombin kur'**
+  String get bugunParcaKombin;
+
+  /// No description provided for @bugunParcaDolapta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolapta aç'**
+  String get bugunParcaDolapta;
+
+  /// No description provided for @bugunParcaGiydimIsaretlendi.
+  ///
+  /// In tr, this message translates to:
+  /// **'«{parca}» bugün giydim olarak işaretlendi.'**
+  String bugunParcaGiydimIsaretlendi(String parca);
 }
 
 class _AppLocalizationsDelegate

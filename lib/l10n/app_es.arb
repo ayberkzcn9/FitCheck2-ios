@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "Aún no hay look para mañana. Planifícalo en 2 minutos.",
   "planHatirlatimiAyar": "Recordatorio de la tarde",
-  "planHatirlatimiAyarAciklama": "Te recuerda el look de mañana a las 21:00"
+  "planHatirlatimiAyarAciklama": "Te recuerda el look de mañana a las 21:00",
+  "bugunPaylas": "Compartir look",
+  "bugunPaylasMetni": "He preparado mi look de hoy con FitCheck ✨",
+  "bugunPaylasHata": "No se pudo abrir compartir. Inténtalo de nuevo.",
+  "bugunParcaGiydim": "Lo llevé hoy",
+  "bugunParcaKombin": "Crear look con esta prenda",
+  "bugunParcaDolapta": "Abrir en el armario",
+  "bugunParcaGiydimIsaretlendi": "«{parca}» marcada como usada hoy.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

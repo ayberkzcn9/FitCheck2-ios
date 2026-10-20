@@ -1062,5 +1062,19 @@
   },
   "bildirimPlanBos": "No outfit planned for tomorrow yet. Plan it in 2 minutes.",
   "planHatirlatimiAyar": "Evening plan reminder",
-  "planHatirlatimiAyarAciklama": "Reminds you of tomorrow's outfit at 21:00"
+  "planHatirlatimiAyarAciklama": "Reminds you of tomorrow's outfit at 21:00",
+  "bugunPaylas": "Share outfit",
+  "bugunPaylasMetni": "I put today's outfit together with FitCheck ✨",
+  "bugunPaylasHata": "Couldn't open sharing. Try again.",
+  "bugunParcaGiydim": "Wore it today",
+  "bugunParcaKombin": "Build an outfit with this",
+  "bugunParcaDolapta": "Open in wardrobe",
+  "bugunParcaGiydimIsaretlendi": "\"{parca}\" marked as worn today.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -915,6 +915,35 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     }
   }
 
+  /// Raftan tek parça "bugün giydim": parçayı sepete taşır ve kaydeder.
+  Future<void> _kiyafetGiydi(Kiyafet kiyafet) async {
+    await _dataLock.synchronized(() async {
+      if (_verilerYukleniyor) {
+        await _verilerHazir;
+        if (!mounted) return;
+      }
+
+      final index = _gardirobum.indexWhere((k) => k.id == kiyafet.id);
+      if (index < 0) return;
+
+      final l10n = AppLocalizations.of(context)!;
+      setState(() {
+        _gardirobum[index].giyildiOlarakIsaretle();
+      });
+      await _verileriKaydet();
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            l10n.bugunParcaGiydimIsaretlendi(_gardirobum[index].gorunenBaslik),
+          ),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    });
+  }
+
   Future<void> _kombinGecmisineEkle(
       String kombinAdi, dynamic detayOrList) async {
     await _dataLock.synchronized(() async {
@@ -1647,6 +1676,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         onFavoriEkle: _favoriKombinEkle,
         onGecmiseEkle: _kombinGecmisineEkle,
         onStilistAc: () => _aiChatbotModalAc(),
+        onKiyafetGiyildi: _kiyafetGiydi,
+        onKombinIstegi: _odakKiyafetIleKombinBaslat,
         anaRenk: _anaRenk,
       ),
       GardirobumEkrani(

@@ -1097,5 +1097,19 @@
   },
   "bildirimPlanBos": "Yarın için henüz kombin yok. 2 dakikada planla.",
   "planHatirlatimiAyar": "Akşam plan hatırlatıcısı",
-  "planHatirlatimiAyarAciklama": "Yarınki kombinini akşam 21:00'de hatırlatır"
+  "planHatirlatimiAyarAciklama": "Yarınki kombinini akşam 21:00'de hatırlatır",
+  "bugunPaylas": "Kombini paylaş",
+  "bugunPaylasMetni": "Bugünkü kombini FitCheck'te hazırladım ✨",
+  "bugunPaylasHata": "Paylaşım açılamadı. Tekrar dene.",
+  "bugunParcaGiydim": "Bugün giydim",
+  "bugunParcaKombin": "Bununla kombin kur",
+  "bugunParcaDolapta": "Dolapta aç",
+  "bugunParcaGiydimIsaretlendi": "«{parca}» bugün giydim olarak işaretlendi.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -3017,4 +3017,27 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get planHatirlatimiAyarAciklama => '내일의 코디를 21:00에 알려드려요';
+
+  @override
+  String get bugunPaylas => '코디 공유';
+
+  @override
+  String get bugunPaylasMetni => '오늘의 코디는 FitCheck로 완성했어요 ✨';
+
+  @override
+  String get bugunPaylasHata => '공유를 열 수 없어요. 다시 시도해 주세요.';
+
+  @override
+  String get bugunParcaGiydim => '오늘 입었어요';
+
+  @override
+  String get bugunParcaKombin => '이걸로 코디 만들기';
+
+  @override
+  String get bugunParcaDolapta => '옷장에서 열기';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '‘$parca’을(를) 오늘 입은 것으로 표시했어요.';
+  }
 }
