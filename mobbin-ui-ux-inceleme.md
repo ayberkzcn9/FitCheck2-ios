@@ -199,6 +199,26 @@ sonuç önizlemesi.
 | 6 | Çekim rehberi (silüet + "arka plan siliniyor") | Taking Photos | Orta | 0,5 gün |
 | 7 | Paywall deneme zaman çizelgesi | Subscribing & Upgrading | Düşük-orta | 3 saat |
 
+### 4.1 Bu turda yapılanlar (21.10.2026)
+
+Mobbin'den bağımsız, kendi denetimimizdeki "sistem disiplini" borcu azaltıldı:
+
+- **Rapor ekranı** yenilendi: 44 pt büyük sayı, geçen haftaya göre fark çipi,
+  4 haftalık çubuk grafik, en çok giyilen 3 parça (görselli), sıfır değerli
+  satırlar gizli. Paylaşılan PNG aynı karttan üretildiği için otomatik güncel.
+- **Bugün tek ızgara**: 4 hızlı işlem + "Stil Günlüğüm" + "Seyahat Modu"
+  3×2 ızgarada; sayfa sonundaki ayrı kart ikilisi kaldırıldı.
+- **Alt menü**: simge altına etiket (9–10 pt), seçim göstergesi nokta yerine
+  renk + kalınlık; 320 dp'de taşma testi eklendi.
+- **Tek cam bulanıklığı**: 7 farklı sigma (5–70) → `AppBlur.cam = 12`
+  (arka plan degradesi 70 olarak ayrıldı); 48 kullanım tek değere indi.
+- **Ölçek sadeleşti**: yarıçap 20 → 11 farklı değer (16/12/24/8/…),
+  yazı boyutu 19 → 15; `AppRadius`/`AppText` dışına taşan ara değerler temizlendi.
+
+Açık kalan en büyük borç: **113 tekil gömülü renk**. Değerler ekran ekran
+seçildiği için toplu değiştirme kontrastı bozar; ayrı bir tur + görsel kontrol
+gerekiyor.
+
 ---
 
 ## 5. Kopyalamayacağımız şeyler (bilinçli karar)
