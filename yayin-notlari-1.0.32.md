@@ -140,8 +140,8 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.861.801 bayt,
-   SHA256 `642BB7412794BF9DE768E876D1CEEF96FC25685DA6B22F96E02B43F21292B5B3`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.969.395 bayt,
+   SHA256 `E66C9A07AE986362C40D0F9F2D6BB356A15AD6BC8F01214A359F8B60E53E19AF`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
    (21.10.2026 dolap arama/filtre ve takvim planlama turlarından sonra yeniden
@@ -155,7 +155,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 5. **Data safety:** fotoğraf/veri paylaşımı bölümünü kontrol et (fotoğraflar
    işlenmek üzere üçüncü taraf AI servislerine gidiyor).
 6. **Cihaz testi:** `build\FitCheck-1.0.32+38.apk` (versionCode 38,
-   SHA256 `6270C8ABF37071FB987CD784A8310C70EA20BC4BEBCFEB4939A6C063D1D7EBE2`).
+   SHA256 `B84D39BCF08BD9E9FF536DF5B6CDD46BD4E5DE44E1B4E180EC95145CE5EEFDE7`).
    Yeni: 7. sekme "Düello", Bildirim → sekme yönlendirme, kombini paylaşma,
    raf aksiyonları, "Stil Günlüğüm" (takvim/günlük/rapor), "Seyahat Modu".
    Değişiklik: "Kendin Kombin Yap" sekmesi kaldırıldı → alt menüde 6 sekme
@@ -172,3 +172,6 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
    sayfası, haftalık plan CTA'sı marka rengine hizalandı.
    Son tur: Profil & Analiz ile Bugün, Rapor, Düello ve Dolap ekranlarına
    ölçütlerin ne anlama geldiğini anlatan bilgi (ⓘ) düğmeleri.
+   Son tur: dolaba eklerken "Arka plan ve yerleşim" düzenleyicisi (zemin seçimi,
+   sürükleme/ölçek) ve "Arka planda ekle" seçeneği (yükleme ekranı kilitlemiyor,
+   ilerleme çubuğu her sekmede görünüyor).
