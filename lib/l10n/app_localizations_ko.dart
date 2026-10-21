@@ -3182,4 +3182,42 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => '검색 지우기';
+
+  @override
+  String get planGuneKombinSec => '이 날의 코디 선택';
+
+  @override
+  String get planKombinSec => '코디 선택';
+
+  @override
+  String get planDegistir => '변경';
+
+  @override
+  String get planKaldir => '삭제';
+
+  @override
+  String get planFavoriYok => '아직 즐겨찾기 코디가 없습니다.';
+
+  @override
+  String get planKombinOlustur => '코디 만들기';
+
+  @override
+  String get planGuneEklendi => '코디를 이 날에 추가했습니다';
+
+  @override
+  String get planKaldirildi => '일정을 삭제했습니다';
+
+  @override
+  String get planHaftalikProgram => '주간 스케줄';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count개';
+  }
+
+  @override
+  String get planBugun => '오늘의 코디';
+
+  @override
+  String get planTakvimdenDegistir => '캘린더에서 변경';
 }

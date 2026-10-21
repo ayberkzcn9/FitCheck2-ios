@@ -1155,5 +1155,24 @@
   "navProfil": "マイページ",
   "dolapAra": "ワードローブを検索",
   "dolapEslesmeYok": "一致するアイテムがありません。",
-  "dolapAramayiTemizle": "検索をクリア"
+  "dolapAramayiTemizle": "検索をクリア",
+  "planGuneKombinSec": "この日のコーデを選ぶ",
+  "planKombinSec": "コーデを選ぶ",
+  "planDegistir": "変更",
+  "planKaldir": "削除",
+  "planFavoriYok": "お気に入りのコーデはまだありません。",
+  "planKombinOlustur": "コーデを作る",
+  "planGuneEklendi": "コーデをこの日に追加しました",
+  "planKaldirildi": "予定を削除しました",
+  "planHaftalikProgram": "週間スケジュール",
+  "planParcaSayisi": "{count} 点",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "今日のコーデ",
+  "planTakvimdenDegistir": "カレンダーで変更"
 }

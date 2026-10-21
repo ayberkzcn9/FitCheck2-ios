@@ -7,6 +7,7 @@
 // Plan gün adıyla tutulduğu için yalnızca bugünden itibaren 7 güne yansıtılır;
 // geçmiş günlere "plan" yazmak yanıltıcı olurdu.
 
+import '../models/planli_kombin.dart';
 import '../utils/takvim_gunleri.dart';
 
 /// Takvimdeki tek bir gün.
@@ -15,17 +16,22 @@ class TakvimGunu {
     required this.tarih,
     this.planlanan = const <String>[],
     this.giyilen = const <String>[],
+    this.planliKombin,
   });
 
   final DateTime tarih;
 
-  /// Planlanan kombin adları (bugünden itibaren en fazla 7 gün).
+  /// Haftalık programdan gelen plan (bugünden itibaren en fazla 7 gün).
   final List<String> planlanan;
 
   /// O gün giyildi olarak kaydedilen kombin adları.
   final List<String> giyilen;
 
-  bool get planVar => planlanan.isNotEmpty;
+  /// Tarihe özel plan (takvimde güne elle atanmış kombin). Varsa haftalık
+  /// programın önüne geçer.
+  final PlanliKombin? planliKombin;
+
+  bool get planVar => planliKombin != null || planlanan.isNotEmpty;
   bool get giyildi => giyilen.isNotEmpty;
   bool get bos => !planVar && !giyildi;
 }
@@ -42,6 +48,7 @@ class KombinTakvimi {
     required List<Map<String, String>> gecmis,
     required Map<String, dynamic>? program,
     required DateTime simdi,
+    Map<String, PlanliKombin> planliKombinler = const <String, PlanliKombin>{},
   }) {
     final ilk = DateTime(ay.year, ay.month, 1);
     final gunSayisi = DateTime(ay.year, ay.month + 1, 0).day;
@@ -64,6 +71,7 @@ class KombinTakvimi {
           tarih: tarih,
           giyilen: giyilenler[anahtar] ?? const <String>[],
           planlanan: plan[anahtar] ?? const <String>[],
+          planliKombin: planliKombinler[anahtar],
         ),
       );
     }

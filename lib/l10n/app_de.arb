@@ -1155,5 +1155,24 @@
   "navProfil": "Profil",
   "dolapAra": "Garderobe durchsuchen",
   "dolapEslesmeYok": "Keine passenden Teile gefunden.",
-  "dolapAramayiTemizle": "Suche löschen"
+  "dolapAramayiTemizle": "Suche löschen",
+  "planGuneKombinSec": "Outfit für diesen Tag wählen",
+  "planKombinSec": "Outfit wählen",
+  "planDegistir": "Ändern",
+  "planKaldir": "Entfernen",
+  "planFavoriYok": "Noch keine Lieblings-Outfits.",
+  "planKombinOlustur": "Outfit erstellen",
+  "planGuneEklendi": "Outfit zum Tag hinzugefügt",
+  "planKaldirildi": "Plan entfernt",
+  "planHaftalikProgram": "Wochenplan",
+  "planParcaSayisi": "{count} Teile",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "Dein Plan heute",
+  "planTakvimdenDegistir": "Im Kalender ändern"
 }

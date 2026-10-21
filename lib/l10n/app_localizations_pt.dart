@@ -3318,4 +3318,42 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => 'Limpar pesquisa';
+
+  @override
+  String get planGuneKombinSec => 'Escolher um look para este dia';
+
+  @override
+  String get planKombinSec => 'Escolher um look';
+
+  @override
+  String get planDegistir => 'Alterar';
+
+  @override
+  String get planKaldir => 'Remover';
+
+  @override
+  String get planFavoriYok => 'Ainda não tens looks favoritos.';
+
+  @override
+  String get planKombinOlustur => 'Criar um look';
+
+  @override
+  String get planGuneEklendi => 'Look adicionado ao dia';
+
+  @override
+  String get planKaldirildi => 'Plano removido';
+
+  @override
+  String get planHaftalikProgram => 'Programa semanal';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count peças';
+  }
+
+  @override
+  String get planBugun => 'O teu look de hoje';
+
+  @override
+  String get planTakvimdenDegistir => 'Alterar no calendário';
 }

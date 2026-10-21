@@ -192,7 +192,7 @@ sonuç önizlemesi.
 | # | İş | Referans | Etki | Emek |
 |---|---|---|---|---|
 | 1 | Dolap arama + filtre çipleri + sonuç sayısı ✅ (1.0.32) | Searching & Finding / Filtering & Sorting | Yüksek | 0,5 gün |
-| 2 | Takvimde güne "favoriden / AI öner" ile kombin ekle | Whering Assigning an outfit to a date | Yüksek | 1 gün |
+| 2 | Takvimde güne "favoriden / AI öner" ile kombin ekle ✅ (1.0.32) | Whering Assigning an outfit to a date | Yüksek | 1 gün |
 | 3 | İzin öncesi gerekçe ekranı | Enabling & Disabling | Orta-yüksek | 2 saat |
 | 4 | Silmede onay yerine "geri al" | Whering Archiving + undo | Orta | 2 saat |
 | 5 | Toplu ekleme sonunda checkmark özeti | Whering Item Added Confirmation | Orta | 0,5 gün |
@@ -241,6 +241,28 @@ Mobbin'deki **Searching & Finding** / **Filtering & Sorting** desenleri uyguland
 - Kurallar `lib/utils/dolap_filtresi.dart` içinde **saf fonksiyon**:
   11 birim testi + 4 widget testi (arama, çip, sayaç, boş durum).
 - Görsel kontrol: `build/ui-review/14_gardirobum.png`, `15_gardirobum_arama.png`.
+
+### 4.3 Takvimde güne kombin atama (bu tur)
+
+Whering'in **Assigning an outfit to a date** akışı: takvim artık bir "geçmiş
+okuma" ekranı değil, **planlama** ekranı.
+
+- **Tarihe özel plan**: `planli_kombinler` deposunda `tarih → {başlık, parçalar}`.
+  Haftalık program (gün adına bağlı) ile karışmaz; tarihe özel plan her zaman
+  önceliklidir.
+- **Gün hücresi** planlıysa parçanın küçük görselini taşır (nokta yerine).
+- **Gün detayı** artık eylem alan: plan kartı (başlık + parça sayısı + parça
+  görselleri) + **Değiştir** / **Kaldır**; plan yoksa ve gün geçmiş değilse
+  "Bu güne kombin seç".
+- **Seçim sayfası**: favoriler (görsel + ad + tarz). Favori yoksa boş durum ve
+  "Kombin oluştur" düğmesi doğrudan Kombin sekmesine gider.
+- **Bugün kartı**: bugüne atanmış plan varsa "BUGÜN PLANIN" kartı görünür;
+  dokununca Stil Günlüğü açılır. Plan değişince kart `planJetonu` ile tazelenir.
+- **Bildirimler**: sabah/akşam serileri tarihe özel planı okur; plan varsa
+  bildirimde o kombin adı yazar (haftalık program yedek olarak kalır).
+- Geçmiş günler salt okunur (yanlış kayıt yapılmasın).
+- **Test:** 15 test (model, depo, takvim birleşimi, bildirim eşlemesi, 4 arayüz
+  testi) + görsel kontrol `16_takvim_plan`, `17_gun_plani`, `18_kombin_secimi`.
 
 ---
 

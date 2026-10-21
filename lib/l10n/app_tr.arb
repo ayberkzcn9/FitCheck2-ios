@@ -1190,5 +1190,24 @@
   "navProfil": "Profil",
   "dolapAra": "Dolabında ara",
   "dolapEslesmeYok": "Aramanla eşleşen parça yok.",
-  "dolapAramayiTemizle": "Aramayı temizle"
+  "dolapAramayiTemizle": "Aramayı temizle",
+  "planGuneKombinSec": "Bu güne kombin seç",
+  "planKombinSec": "Kombin seç",
+  "planDegistir": "Değiştir",
+  "planKaldir": "Kaldır",
+  "planFavoriYok": "Henüz favori kombinin yok.",
+  "planKombinOlustur": "Kombin oluştur",
+  "planGuneEklendi": "Kombin güne eklendi",
+  "planKaldirildi": "Plan kaldırıldı",
+  "planHaftalikProgram": "Haftalık program",
+  "planParcaSayisi": "{count} parça",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "Bugün planın",
+  "planTakvimdenDegistir": "Takvimden değiştir"
 }

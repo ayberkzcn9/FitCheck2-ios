@@ -1155,5 +1155,24 @@
   "navProfil": "Profil",
   "dolapAra": "Rechercher dans votre garde-robe",
   "dolapEslesmeYok": "Aucune pièce ne correspond.",
-  "dolapAramayiTemizle": "Effacer la recherche"
+  "dolapAramayiTemizle": "Effacer la recherche",
+  "planGuneKombinSec": "Choisir une tenue pour ce jour",
+  "planKombinSec": "Choisir une tenue",
+  "planDegistir": "Modifier",
+  "planKaldir": "Retirer",
+  "planFavoriYok": "Aucune tenue favorite pour l'instant.",
+  "planKombinOlustur": "Créer une tenue",
+  "planGuneEklendi": "Tenue ajoutée au jour",
+  "planKaldirildi": "Plan retiré",
+  "planHaftalikProgram": "Programme hebdomadaire",
+  "planParcaSayisi": "{count} pièces",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "Ta tenue du jour",
+  "planTakvimdenDegistir": "Modifier dans le calendrier"
 }

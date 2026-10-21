@@ -3125,4 +3125,42 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => '清除搜索';
+
+  @override
+  String get planGuneKombinSec => '为此日选择穿搭';
+
+  @override
+  String get planKombinSec => '选择穿搭';
+
+  @override
+  String get planDegistir => '更换';
+
+  @override
+  String get planKaldir => '移除';
+
+  @override
+  String get planFavoriYok => '还没有收藏的穿搭。';
+
+  @override
+  String get planKombinOlustur => '创建穿搭';
+
+  @override
+  String get planGuneEklendi => '已将穿搭添加到该日';
+
+  @override
+  String get planKaldirildi => '已移除计划';
+
+  @override
+  String get planHaftalikProgram => '每周计划';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count 件';
+  }
+
+  @override
+  String get planBugun => '今日穿搭';
+
+  @override
+  String get planTakvimdenDegistir => '在日历中更换';
 }

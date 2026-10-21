@@ -3334,4 +3334,42 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => 'Effacer la recherche';
+
+  @override
+  String get planGuneKombinSec => 'Choisir une tenue pour ce jour';
+
+  @override
+  String get planKombinSec => 'Choisir une tenue';
+
+  @override
+  String get planDegistir => 'Modifier';
+
+  @override
+  String get planKaldir => 'Retirer';
+
+  @override
+  String get planFavoriYok => 'Aucune tenue favorite pour l\'instant.';
+
+  @override
+  String get planKombinOlustur => 'Créer une tenue';
+
+  @override
+  String get planGuneEklendi => 'Tenue ajoutée au jour';
+
+  @override
+  String get planKaldirildi => 'Plan retiré';
+
+  @override
+  String get planHaftalikProgram => 'Programme hebdomadaire';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count pièces';
+  }
+
+  @override
+  String get planBugun => 'Ta tenue du jour';
+
+  @override
+  String get planTakvimdenDegistir => 'Modifier dans le calendrier';
 }

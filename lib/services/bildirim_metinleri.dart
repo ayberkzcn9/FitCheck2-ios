@@ -9,6 +9,7 @@
 // gün önce kaydedilmiş olursa olsun "pazartesi kombini" doğru güne düşer.
 
 import '../l10n/app_localizations.dart';
+import '../models/planli_kombin.dart';
 import '../utils/takvim_gunleri.dart';
 
 /// Bildirimde kullanılacak tek bir gün.
@@ -34,9 +35,13 @@ class BildirimMetinleri {
   static String gunAdi(DateTime tarih) => ingilizceGunAdi(tarih);
 
   /// Bugünden başlayarak [gunSayisi] günü, planlanan kombin adlarıyla döndürür.
+  ///
+  /// [planliKombinler] tarihe özel planlardır ve haftalık programın önüne
+  /// geçer: kullanıcı takvimde bir güne kombin atadıysa bildirimde o ad yazar.
   static List<BildirimGunu> gunler({
     required Map<String, dynamic>? program,
     required DateTime simdi,
+    Map<String, PlanliKombin> planliKombinler = const <String, PlanliKombin>{},
     int gunSayisi = 7,
   }) {
     final planaGore = planKombinAdlari(program);
@@ -44,9 +49,12 @@ class BildirimMetinleri {
     final bugun = DateTime(simdi.year, simdi.month, simdi.day);
     return List<BildirimGunu>.generate(gunSayisi, (index) {
       final tarih = bugun.add(Duration(days: index));
+      final tariheOzel = planliKombinler[gunAnahtari(tarih)]?.baslik.trim();
       return BildirimGunu(
         tarih: tarih,
-        kombinAdi: planaGore[gunAdi(tarih)],
+        kombinAdi: (tariheOzel != null && tariheOzel.isNotEmpty)
+            ? tariheOzel
+            : planaGore[gunAdi(tarih)],
       );
     }, growable: false);
   }

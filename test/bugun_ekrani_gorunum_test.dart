@@ -17,6 +17,8 @@ import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
 import 'package:fitcheck/services/bugun_feed_servisi.dart';
+import 'package:fitcheck/services/planli_kombin_deposu.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// 1×1 saydam PNG: Image.memory'nin gerçekten çözebileceği en küçük görsel.
 final Uint8List _png = base64Decode(
@@ -311,5 +313,41 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(giyilen?.id, kaban.id);
+  });
+
+  testWidgets('bugüne atanmış plan kartı görünür', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{
+      PlanliKombinDeposu.anahtar: jsonEncode([
+        {
+          'tarih': BugunFeedServisi.gunAnahtari(DateTime.now()),
+          'baslik': 'Klasik Kombin',
+          'parcalar': ['Beyaz Tişört', 'Siyah Pantolon'],
+        }
+      ]),
+    });
+
+    await kur(
+      tester,
+      dolap: [ust, alt, kaban],
+      kombinler: [kombin],
+    );
+
+    expect(find.text('BUGÜN PLANIN'), findsOneWidget);
+    expect(find.text('Klasik Kombin'), findsOneWidget);
+    expect(find.text('Takvimden değiştir'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('plan yoksa plan kartı çizilmez', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+
+    await kur(
+      tester,
+      dolap: [ust, alt, kaban],
+      kombinler: [kombin],
+    );
+
+    expect(find.text('BUGÜN PLANIN'), findsNothing);
+    expect(tester.takeException(), isNull);
   });
 }

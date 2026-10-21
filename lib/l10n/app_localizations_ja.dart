@@ -3167,4 +3167,42 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => '検索をクリア';
+
+  @override
+  String get planGuneKombinSec => 'この日のコーデを選ぶ';
+
+  @override
+  String get planKombinSec => 'コーデを選ぶ';
+
+  @override
+  String get planDegistir => '変更';
+
+  @override
+  String get planKaldir => '削除';
+
+  @override
+  String get planFavoriYok => 'お気に入りのコーデはまだありません。';
+
+  @override
+  String get planKombinOlustur => 'コーデを作る';
+
+  @override
+  String get planGuneEklendi => 'コーデをこの日に追加しました';
+
+  @override
+  String get planKaldirildi => '予定を削除しました';
+
+  @override
+  String get planHaftalikProgram => '週間スケジュール';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count 点';
+  }
+
+  @override
+  String get planBugun => '今日のコーデ';
+
+  @override
+  String get planTakvimdenDegistir => 'カレンダーで変更';
 }

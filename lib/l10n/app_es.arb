@@ -1155,5 +1155,24 @@
   "navProfil": "Perfil",
   "dolapAra": "Buscar en tu armario",
   "dolapEslesmeYok": "Ninguna prenda coincide.",
-  "dolapAramayiTemizle": "Borrar búsqueda"
+  "dolapAramayiTemizle": "Borrar búsqueda",
+  "planGuneKombinSec": "Elegir un look para este día",
+  "planKombinSec": "Elegir un look",
+  "planDegistir": "Cambiar",
+  "planKaldir": "Quitar",
+  "planFavoriYok": "Aún no tienes looks favoritos.",
+  "planKombinOlustur": "Crear un look",
+  "planGuneEklendi": "Look añadido al día",
+  "planKaldirildi": "Plan eliminado",
+  "planHaftalikProgram": "Programa semanal",
+  "planParcaSayisi": "{count} prendas",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "Tu look de hoy",
+  "planTakvimdenDegistir": "Cambiar en el calendario"
 }

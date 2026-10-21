@@ -3300,4 +3300,42 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => 'Aramayı temizle';
+
+  @override
+  String get planGuneKombinSec => 'Bu güne kombin seç';
+
+  @override
+  String get planKombinSec => 'Kombin seç';
+
+  @override
+  String get planDegistir => 'Değiştir';
+
+  @override
+  String get planKaldir => 'Kaldır';
+
+  @override
+  String get planFavoriYok => 'Henüz favori kombinin yok.';
+
+  @override
+  String get planKombinOlustur => 'Kombin oluştur';
+
+  @override
+  String get planGuneEklendi => 'Kombin güne eklendi';
+
+  @override
+  String get planKaldirildi => 'Plan kaldırıldı';
+
+  @override
+  String get planHaftalikProgram => 'Haftalık program';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count parça';
+  }
+
+  @override
+  String get planBugun => 'Bugün planın';
+
+  @override
+  String get planTakvimdenDegistir => 'Takvimden değiştir';
 }

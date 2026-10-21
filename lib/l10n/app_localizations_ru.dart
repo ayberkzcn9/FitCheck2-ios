@@ -3303,4 +3303,42 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => 'Очистить поиск';
+
+  @override
+  String get planGuneKombinSec => 'Выбрать образ на этот день';
+
+  @override
+  String get planKombinSec => 'Выбрать образ';
+
+  @override
+  String get planDegistir => 'Изменить';
+
+  @override
+  String get planKaldir => 'Убрать';
+
+  @override
+  String get planFavoriYok => 'Пока нет избранных образов.';
+
+  @override
+  String get planKombinOlustur => 'Создать образ';
+
+  @override
+  String get planGuneEklendi => 'Образ добавлен на день';
+
+  @override
+  String get planKaldirildi => 'План убран';
+
+  @override
+  String get planHaftalikProgram => 'Недельный план';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count вещей';
+  }
+
+  @override
+  String get planBugun => 'Твой образ на сегодня';
+
+  @override
+  String get planTakvimdenDegistir => 'Изменить в календаре';
 }

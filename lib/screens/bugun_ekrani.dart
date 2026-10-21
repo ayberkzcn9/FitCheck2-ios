@@ -26,9 +26,11 @@ import '../l10n/app_localizations.dart';
 import '../models/bugun_kombin.dart';
 import '../models/favori_kombin.dart';
 import '../models/kiyafet.dart';
+import '../models/planli_kombin.dart';
 import '../services/akilli_raflar.dart';
 import '../services/analytics_servisi.dart';
 import '../services/bugun_feed_servisi.dart';
+import '../services/planli_kombin_deposu.dart';
 
 class BugunEkrani extends StatefulWidget {
   const BugunEkrani({
@@ -48,6 +50,7 @@ class BugunEkrani extends StatefulWidget {
     this.onStilGunluguAc,
     this.onSeyahatAc,
     this.feedServisi,
+    this.planJetonu = 0,
   });
 
   final List<Kiyafet> gardirobum;
@@ -81,6 +84,9 @@ class BugunEkrani extends StatefulWidget {
   /// Testlerde sahte akış servisi vermek için; varsayılan gerçek servis.
   final BugunFeedServisi? feedServisi;
 
+  /// Takvimde plan değiştiğinde artan sayaç: kartın tazelenmesini sağlar.
+  final int planJetonu;
+
   @override
   State<BugunEkrani> createState() => _BugunEkraniState();
 }
@@ -99,6 +105,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
   final GlobalKey _paylasKey = GlobalKey();
   bool _paylasiliyor = false;
 
+  /// Takvimde bugüne atanmış kombin (varsa).
+  PlanliKombin? _bugunPlani;
+
   @override
   void initState() {
     super.initState();
@@ -108,11 +117,22 @@ class _BugunEkraniState extends State<BugunEkrani> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) _yukle();
     });
+    _planiYukle();
+  }
+
+  Future<void> _planiYukle() async {
+    final planlar = await PlanliKombinDeposu().yukle();
+    if (!mounted) return;
+    setState(() => _bugunPlani = planlar[_bugun()]);
   }
 
   @override
   void didUpdateWidget(covariant BugunEkrani eski) {
     super.didUpdateWidget(eski);
+
+    if (eski.planJetonu != widget.planJetonu) {
+      _planiYukle();
+    }
 
     final yeniImza = _imzaHesapla();
     final gunDegisti =
@@ -224,6 +244,16 @@ class _BugunEkraniState extends State<BugunEkrani> {
           SliverToBoxAdapter(
             child: _hizliAksiyonlar(context, l10n, colors),
           ),
+          if (_bugunPlani != null)
+            SliverToBoxAdapter(
+              child: _planKarti(
+                context,
+                l10n,
+                colors,
+                _bugunPlani!,
+                widget.gardirobum,
+              ),
+            ),
           SliverToBoxAdapter(
             child: _heroKart(context, l10n, colors, kahraman, indeks),
           ),
@@ -419,6 +449,126 @@ class _BugunEkraniState extends State<BugunEkrani> {
             ),
           ],
         ],
+      ),
+    );
+  }
+
+  /// Takvimde bugüne atanmış kombin kartı.
+  Widget _planKarti(
+    BuildContext context,
+    AppLocalizations l10n,
+    ColorScheme colors,
+    PlanliKombin plan,
+    List<Kiyafet> gardirobum,
+  ) {
+    final indeks = <String, Kiyafet>{
+      for (final k in gardirobum) k.gorunenBaslik.trim().toLowerCase(): k,
+    };
+    final parcalar = plan.parcalar
+        .map((ad) => indeks[ad.trim().toLowerCase()])
+        .whereType<Kiyafet>()
+        .take(5)
+        .toList();
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+      child: Material(
+        color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
+        borderRadius: BorderRadius.circular(18),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: widget.onStilGunluguAc,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.planBugun.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.8,
+                          color: colors.onSurfaceVariant,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        plan.baslik,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: -0.3,
+                          color: colors.onSurface,
+                        ),
+                      ),
+                      if (parcalar.isNotEmpty) ...[
+                        const SizedBox(height: 8),
+                        SizedBox(
+                          height: 54,
+                          child: Row(
+                            children: [
+                              for (final parca in parcalar)
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 6),
+                                  child: SizedBox(
+                                    width: 42,
+                                    child: _planParcaGorseli(parca, colors),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month_rounded,
+                            size: 13,
+                            color: colors.onSurfaceVariant,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            l10n.planTakvimdenDegistir,
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: colors.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  color: colors.onSurfaceVariant,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _planParcaGorseli(Kiyafet kiyafet, ColorScheme colors) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        color: colors.surface,
+        child: Image.memory(
+          kiyafet.resimBytes,
+          fit: BoxFit.contain,
+          gaplessPlayback: true,
+        ),
       ),
     );
   }

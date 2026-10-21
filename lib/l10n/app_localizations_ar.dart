@@ -3276,4 +3276,42 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dolapAramayiTemizle => 'مسح البحث';
+
+  @override
+  String get planGuneKombinSec => 'اختر إطلالة لهذا اليوم';
+
+  @override
+  String get planKombinSec => 'اختر إطلالة';
+
+  @override
+  String get planDegistir => 'تغيير';
+
+  @override
+  String get planKaldir => 'إزالة';
+
+  @override
+  String get planFavoriYok => 'لا توجد إطلالات مفضلة بعد.';
+
+  @override
+  String get planKombinOlustur => 'أنشئ إطلالة';
+
+  @override
+  String get planGuneEklendi => 'تمت إضافة الإطلالة إلى اليوم';
+
+  @override
+  String get planKaldirildi => 'تمت إزالة الخطة';
+
+  @override
+  String get planHaftalikProgram => 'البرنامج الأسبوعي';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count قطع';
+  }
+
+  @override
+  String get planBugun => 'إطلالتك اليوم';
+
+  @override
+  String get planTakvimdenDegistir => 'تغيير في التقويم';
 }

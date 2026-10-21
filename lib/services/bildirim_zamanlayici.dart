@@ -11,6 +11,7 @@ import '../utils/helpers.dart';
 import '../utils/l10n_yardimcilari.dart';
 import 'bildirim_metinleri.dart';
 import 'bildirim_servisi.dart';
+import 'planli_kombin_deposu.dart';
 
 class BildirimZamanlayici {
   BildirimZamanlayici._();
@@ -44,7 +45,13 @@ class BildirimZamanlayici {
             .clamp(0, 59);
 
     final plan = program ?? _programiOku(prefs);
-    final gunler = BildirimMetinleri.gunler(program: plan, simdi: an);
+    final gunler = BildirimMetinleri.gunler(
+      program: plan,
+      simdi: an,
+      planliKombinler: PlanliKombinDeposu.coz(
+        prefs.getString(PlanliKombinDeposu.anahtar),
+      ),
+    );
 
     if (sabahAcik) {
       final bildirimler = <BildirimIcerigi>[

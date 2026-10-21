@@ -1155,5 +1155,24 @@
   "navProfil": "Профиль",
   "dolapAra": "Поиск в гардеробе",
   "dolapEslesmeYok": "Ничего не найдено.",
-  "dolapAramayiTemizle": "Очистить поиск"
+  "dolapAramayiTemizle": "Очистить поиск",
+  "planGuneKombinSec": "Выбрать образ на этот день",
+  "planKombinSec": "Выбрать образ",
+  "planDegistir": "Изменить",
+  "planKaldir": "Убрать",
+  "planFavoriYok": "Пока нет избранных образов.",
+  "planKombinOlustur": "Создать образ",
+  "planGuneEklendi": "Образ добавлен на день",
+  "planKaldirildi": "План убран",
+  "planHaftalikProgram": "Недельный план",
+  "planParcaSayisi": "{count} вещей",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "Твой образ на сегодня",
+  "planTakvimdenDegistir": "Изменить в календаре"
 }

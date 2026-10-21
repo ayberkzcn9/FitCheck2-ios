@@ -6093,6 +6093,78 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Aramayı temizle'**
   String get dolapAramayiTemizle;
+
+  /// No description provided for @planGuneKombinSec.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu güne kombin seç'**
+  String get planGuneKombinSec;
+
+  /// No description provided for @planKombinSec.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin seç'**
+  String get planKombinSec;
+
+  /// No description provided for @planDegistir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değiştir'**
+  String get planDegistir;
+
+  /// No description provided for @planKaldir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaldır'**
+  String get planKaldir;
+
+  /// No description provided for @planFavoriYok.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz favori kombinin yok.'**
+  String get planFavoriYok;
+
+  /// No description provided for @planKombinOlustur.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin oluştur'**
+  String get planKombinOlustur;
+
+  /// No description provided for @planGuneEklendi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin güne eklendi'**
+  String get planGuneEklendi;
+
+  /// No description provided for @planKaldirildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Plan kaldırıldı'**
+  String get planKaldirildi;
+
+  /// No description provided for @planHaftalikProgram.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftalık program'**
+  String get planHaftalikProgram;
+
+  /// No description provided for @planParcaSayisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} parça'**
+  String planParcaSayisi(int count);
+
+  /// No description provided for @planBugun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün planın'**
+  String get planBugun;
+
+  /// No description provided for @planTakvimdenDegistir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takvimden değiştir'**
+  String get planTakvimdenDegistir;
 }
 
 class _AppLocalizationsDelegate

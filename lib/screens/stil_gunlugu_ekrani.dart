@@ -13,26 +13,39 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
+import '../models/favori_kombin.dart';
 import '../models/kiyafet.dart';
+import '../models/planli_kombin.dart';
 import '../services/haftalik_rapor.dart';
 import '../services/kombin_takvimi.dart';
+import '../services/planli_kombin_deposu.dart';
 import '../theme/design_tokens.dart';
 import '../utils/helpers.dart';
+import '../utils/takvim_gunleri.dart';
 
 class StilGunluguEkrani extends StatefulWidget {
   const StilGunluguEkrani({
     super.key,
     required this.gardirobum,
     required this.gecmisKombinler,
+    this.favoriKombinler = const <FavoriKombin>[],
+    this.onKombinSekmesineGit,
   });
 
   final List<Kiyafet> gardirobum;
   final List<Map<String, String>> gecmisKombinler;
+
+  /// Takvimde güne kombin atarken seçilebilecek favori kombinler.
+  final List<FavoriKombin> favoriKombinler;
+
+  /// Favori kombin yoksa "Kombin oluştur" düğmesinin gideceği sekme.
+  final VoidCallback? onKombinSekmesineGit;
 
   @override
   State<StilGunluguEkrani> createState() => _StilGunluguEkraniState();
@@ -40,6 +53,9 @@ class StilGunluguEkrani extends StatefulWidget {
 
 class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     with SingleTickerProviderStateMixin {
+  /// Kombin seçicide "Kombin oluştur" seçildiğini taşıyan işaret.
+  static const Object _kombinOlusturSinyali = Object();
+
   late final TabController _tabController;
 
   /// Takvimde gösterilen ay.
@@ -47,6 +63,9 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
 
   /// Haftalık plan (hafta → gün adı → kombin adı).
   Map<String, dynamic>? _program;
+
+  /// Tarihe özel planlar: `YYYY-MM-DD` → kombin.
+  Map<String, PlanliKombin> _planlar = <String, PlanliKombin>{};
 
   /// Rapor kartının görsele çevrilmesi için.
   final GlobalKey _raporKey = GlobalKey();
@@ -57,12 +76,19 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _programiYukle();
+    _planlariYukle();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  Future<void> _planlariYukle() async {
+    final planlar = await PlanliKombinDeposu().yukle();
+    if (!mounted || planlar.isEmpty) return;
+    setState(() => _planlar = planlar);
   }
 
   Future<void> _programiYukle() async {
@@ -120,11 +146,13 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     ColorScheme colors,
   ) {
     final yerel = MaterialLocalizations.of(context);
+    final indeks = _parcaIndeksi();
     final gunler = KombinTakvimi.ay(
       ay: _ay,
       gecmis: widget.gecmisKombinler,
       program: _program,
       simdi: DateTime.now(),
+      planliKombinler: _planlar,
     );
 
     return ListView(
@@ -187,7 +215,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             for (final gun in gunler)
               gun == null
                   ? const SizedBox.shrink()
-                  : _takvimGunu(context, l10n, colors, gun),
+                  : _takvimGunu(context, l10n, colors, gun, indeks),
           ],
         ),
         const SizedBox(height: 18),
@@ -248,11 +276,13 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     AppLocalizations l10n,
     ColorScheme colors,
     TakvimGunu gun,
+    Map<String, Kiyafet> indeks,
   ) {
     final bugun = DateTime.now();
     final bugunMu = gun.tarih.year == bugun.year &&
         gun.tarih.month == bugun.month &&
         gun.tarih.day == bugun.day;
+    final planliParca = _plandanParca(gun.planliKombin, indeks);
 
     return GestureDetector(
       onTap: () => _gunDetayi(gun, l10n, colors),
@@ -276,26 +306,57 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               ),
             ),
             const SizedBox(height: 3),
-            SizedBox(
-              height: 6,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (gun.giyildi)
-                    _nokta(colors, AppAccents.success)
-                  else
-                    const SizedBox(width: 6),
-                  if (gun.planVar) ...[
-                    const SizedBox(width: 3),
-                    _nokta(colors, AppAccents.info),
+            if (planliParca != null)
+              // Tarihe özel planı olan gün, ilk parçanın küçük görselini taşır.
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Container(
+                  width: 18,
+                  height: 18,
+                  color: colors.surfaceContainerHighest,
+                  child: Image.memory(
+                    planliParca.resimBytes,
+                    fit: BoxFit.cover,
+                    gaplessPlayback: true,
+                    errorBuilder: (_, __, ___) => Icon(
+                      Icons.event_note_rounded,
+                      size: 12,
+                      color: colors.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              )
+            else
+              SizedBox(
+                height: 6,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (gun.giyildi)
+                      _nokta(colors, AppAccents.success)
+                    else
+                      const SizedBox(width: 6),
+                    if (gun.planVar) ...[
+                      const SizedBox(width: 3),
+                      _nokta(colors, AppAccents.info),
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
           ],
         ),
       ),
     );
+  }
+
+  /// Planın parçalarından dolapta bulunan ilk parçayı döndürür.
+  Kiyafet? _plandanParca(PlanliKombin? plan, Map<String, Kiyafet> indeks) {
+    if (plan == null) return null;
+    for (final ad in plan.parcalar) {
+      final parca = indeks[ad.trim().toLowerCase()];
+      if (parca != null) return parca;
+    }
+    return null;
   }
 
   Widget _nokta(ColorScheme colors, Color renk) {
@@ -306,14 +367,19 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     );
   }
 
-  void _gunDetayi(
+  Future<void> _gunDetayi(
     TakvimGunu gun,
     AppLocalizations l10n,
     ColorScheme colors,
-  ) {
+  ) async {
     final yerel = MaterialLocalizations.of(context);
+    final indeks = _parcaIndeksi();
+    final bugun = DateTime.now();
+    final gecmisGun = gun.tarih
+        .isBefore(DateTime(bugun.year, bugun.month, bugun.day));
+    final plan = gun.planliKombin;
 
-    showModalBottomSheet<void>(
+    await showModalBottomSheet<void>(
       context: context,
       backgroundColor: colors.surfaceContainerHigh,
       shape: const RoundedRectangleBorder(
@@ -336,16 +402,57 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   ),
                 ),
                 const SizedBox(height: 12),
-                if (gun.planlanan.isEmpty && gun.giyilen.isEmpty)
-                  Text(
-                    l10n.stilGunluguGunBos,
-                    style: TextStyle(color: colors.onSurfaceVariant),
+                if (plan != null) ...[
+                  _planKarti(plan, indeks, colors, l10n),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      FilledButton.icon(
+                        onPressed: () {
+                          HapticFeedback.selectionClick();
+                          Navigator.of(sheetContext).pop();
+                          _kombinSec(gun, l10n, colors);
+                        },
+                        icon: const Icon(Icons.swap_horiz_rounded, size: 18),
+                        label: Text(l10n.planDegistir),
+                      ),
+                      const SizedBox(width: 8),
+                      TextButton.icon(
+                        onPressed: () async {
+                          Navigator.of(sheetContext).pop();
+                          final yeni =
+                              await PlanliKombinDeposu().kaldir(gunAnahtari(gun.tarih));
+                          if (!mounted) return;
+                          setState(() => _planlar = yeni);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(l10n.planKaldirildi)),
+                          );
+                        },
+                        icon: const Icon(Icons.event_busy_rounded, size: 18),
+                        label: Text(l10n.planKaldir),
+                      ),
+                    ],
                   ),
+                ] else if (!gecmisGun) ...[
+                  SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      onPressed: () {
+                        HapticFeedback.selectionClick();
+                        Navigator.of(sheetContext).pop();
+                        _kombinSec(gun, l10n, colors);
+                      },
+                      icon: const Icon(Icons.add_rounded, size: 18),
+                      label: Text(l10n.planGuneKombinSec),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
                 for (final kombin in gun.planlanan)
                   _satir(
-                    icons: Icons.event_note_rounded,
+                    icons: Icons.repeat_rounded,
                     renk: AppAccents.info,
-                    baslik: l10n.stilGunluguPlanli,
+                    baslik: l10n.planHaftalikProgram,
                     metin: kombin,
                   ),
                 for (final kombin in gun.giyilen)
@@ -355,11 +462,269 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     baslik: l10n.stilGunluguGiyildi,
                     metin: kombin,
                   ),
+                if (gun.bos)
+                  Text(
+                    l10n.stilGunluguGunBos,
+                    style: TextStyle(color: colors.onSurfaceVariant),
+                  ),
               ],
             ),
           ),
         );
       },
+    );
+  }
+
+  /// Seçili günün plan kartı: başlık, parça sayısı ve parça görselleri.
+  Widget _planKarti(
+    PlanliKombin plan,
+    Map<String, Kiyafet> indeks,
+    ColorScheme colors,
+    AppLocalizations l10n,
+  ) {
+    final parcalar = plan.parcalar
+        .map((ad) => indeks[ad.trim().toLowerCase()])
+        .whereType<Kiyafet>()
+        .toList();
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  plan.baslik,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800,
+                    color: colors.onSurface,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                l10n.planParcaSayisi(plan.parcalar.length),
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: colors.onSurfaceVariant,
+                ),
+              ),
+            ],
+          ),
+          if (parcalar.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 58,
+              child: Row(
+                children: [
+                  for (final parca in parcalar.take(4))
+                    Padding(
+                      padding: const EdgeInsets.only(right: 6),
+                      child: SizedBox(
+                        width: 46,
+                        child: _parcaGorseli(parca),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  /// Favori kombinlerden birini seçip güne atar.
+  Future<void> _kombinSec(
+    TakvimGunu gun,
+    AppLocalizations l10n,
+    ColorScheme colors,
+  ) async {
+    final indeks = _parcaIndeksi();
+    final secim = await showModalBottomSheet<Object>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: colors.surfaceContainerHigh,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (secimContext) {
+        final favoriler = widget.favoriKombinler;
+        return SafeArea(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(secimContext).size.height * 0.72,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 18, 20, 8),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          l10n.planKombinSec,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w900,
+                            color: colors.onSurface,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: MaterialLocalizations.of(secimContext)
+                            .closeButtonTooltip,
+                        onPressed: () => Navigator.of(secimContext).pop(),
+                        icon: const Icon(Icons.close_rounded),
+                      ),
+                    ],
+                  ),
+                ),
+                if (favoriler.isEmpty)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.planFavoriYok,
+                          style: TextStyle(color: colors.onSurfaceVariant),
+                        ),
+                        const SizedBox(height: 12),
+                        FilledButton.icon(
+                          onPressed: () => Navigator.of(secimContext)
+                              .pop(_kombinOlusturSinyali),
+                          icon: const Icon(Icons.auto_awesome_rounded, size: 18),
+                          label: Text(l10n.planKombinOlustur),
+                        ),
+                      ],
+                    ),
+                  )
+                else
+                  Flexible(
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                      itemCount: favoriler.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 8),
+                      itemBuilder: (_, i) {
+                        final favori = favoriler[i];
+                        return _favoriSecenegi(
+                          favori,
+                          indeks,
+                          colors,
+                          onTap: () => Navigator.of(secimContext).pop(favori),
+                        );
+                      },
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+
+    if (!mounted || secim == null) return;
+
+    if (identical(secim, _kombinOlusturSinyali)) {
+      Navigator.of(context).maybePop();
+      widget.onKombinSekmesineGit?.call();
+      return;
+    }
+
+    final favori = secim as FavoriKombin;
+    final yeni = await PlanliKombinDeposu().ata(
+      PlanliKombin(
+        tarih: gunAnahtari(gun.tarih),
+        baslik: favori.baslik,
+        parcalar: favori.parcalar,
+      ),
+    );
+    if (!mounted) return;
+    HapticFeedback.lightImpact();
+    setState(() => _planlar = yeni);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(l10n.planGuneEklendi)),
+    );
+  }
+
+  /// Seçim listesindeki tek favori kombin satırı.
+  Widget _favoriSecenegi(
+    FavoriKombin favori,
+    Map<String, Kiyafet> indeks,
+    ColorScheme colors, {
+    required VoidCallback onTap,
+  }) {
+    final parcalar = favori.parcalar
+        .map((ad) => indeks[ad.trim().toLowerCase()])
+        .whereType<Kiyafet>()
+        .take(3)
+        .toList();
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            for (final parca in parcalar)
+              Padding(
+                padding: const EdgeInsets.only(right: 6),
+                child: SizedBox(width: 42, height: 52, child: _parcaGorseli(parca)),
+              ),
+            if (parcalar.isEmpty)
+              Icon(Icons.checkroom_rounded, color: colors.onSurfaceVariant),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    favori.baslik,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
+                      color: colors.onSurface,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    favori.tuyo,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: colors.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: colors.onSurfaceVariant),
+          ],
+        ),
+      ),
     );
   }
 

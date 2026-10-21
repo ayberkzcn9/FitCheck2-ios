@@ -1155,5 +1155,24 @@
   "navProfil": "حسابي",
   "dolapAra": "ابحث في خزانتك",
   "dolapEslesmeYok": "لا توجد قطع مطابقة.",
-  "dolapAramayiTemizle": "مسح البحث"
+  "dolapAramayiTemizle": "مسح البحث",
+  "planGuneKombinSec": "اختر إطلالة لهذا اليوم",
+  "planKombinSec": "اختر إطلالة",
+  "planDegistir": "تغيير",
+  "planKaldir": "إزالة",
+  "planFavoriYok": "لا توجد إطلالات مفضلة بعد.",
+  "planKombinOlustur": "أنشئ إطلالة",
+  "planGuneEklendi": "تمت إضافة الإطلالة إلى اليوم",
+  "planKaldirildi": "تمت إزالة الخطة",
+  "planHaftalikProgram": "البرنامج الأسبوعي",
+  "planParcaSayisi": "{count} قطع",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "إطلالتك اليوم",
+  "planTakvimdenDegistir": "تغيير في التقويم"
 }

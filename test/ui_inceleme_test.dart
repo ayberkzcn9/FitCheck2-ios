@@ -17,6 +17,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fitcheck/l10n/app_localizations.dart';
 import 'package:fitcheck/models/bugun_kombin.dart';
@@ -24,6 +25,7 @@ import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
 import 'package:fitcheck/screens/gardirobum_ekrani.dart';
+import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/widgets/alt_menu_cubugu.dart';
 import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
 import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
@@ -302,6 +304,52 @@ void main() {
     await tester.tap(find.text('Rapor'));
     await _bekle(tester);
     await _ekranGorusu(tester, '07_stil_rapor');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Stil gunlugu - takvimde plan ve gun detayi', (tester) async {
+    final bugun = DateTime.now();
+    final tarih =
+        '${bugun.year}-${bugun.month.toString().padLeft(2, '0')}-${bugun.day.toString().padLeft(2, '0')}';
+    SharedPreferences.setMockInitialValues(<String, Object>{
+      'planli_kombinler': jsonEncode([
+        {
+          'tarih': tarih,
+          'baslik': 'Ofis kombini',
+          'parcalar': ['Beyaz Tişört', 'Siyah Pantolon'],
+        }
+      ]),
+    });
+
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        StilGunluguEkrani(
+          gardirobum: dolap,
+          gecmisKombinler: gecmis,
+          favoriKombinler: [
+            FavoriKombin(
+              id: 'f1',
+              baslik: 'Ofis kombini',
+              parcalar: ['Beyaz Tişört', 'Siyah Pantolon'],
+              tuyo: 'Nötr renkler',
+              renkUyumuPuani: 92,
+            ),
+          ],
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '16_takvim_plan');
+
+    await tester.tap(find.text('${bugun.day}').first);
+    await _bekle(tester);
+    await _ekranGorusu(tester, '17_gun_plani');
+
+    await tester.tap(find.text('Değiştir'));
+    await _bekle(tester);
+    await _ekranGorusu(tester, '18_kombin_secimi');
+
     expect(tester.takeException(), isNull);
   });
 

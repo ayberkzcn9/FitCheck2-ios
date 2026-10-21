@@ -26,6 +26,7 @@ import 'izin_ekrani.dart';
 import '../l10n/app_localizations.dart';
 import '../services/analytics_servisi.dart';
 import '../services/bildirim_servisi.dart';
+import '../services/bildirim_zamanlayici.dart';
 import '../services/fcm_service.dart';
 import '../services/reklam_servisi.dart';
 import '../utils/helpers.dart';
@@ -63,6 +64,9 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   List<Kiyafet> _gardirobum = [];
   List<FavoriKombin> _favoriKombinler = [];
   List<Map<String, String>> _gecmisKombinler = [];
+
+  /// Takvimde plan değiştikçe artar; Bugün ekranındaki plan kartını tazeler.
+  int _planJetonu = 0;
   final Map<String, Set<String>> _bugunGiydimdeEklenenSepetIdleri = {};
 
   String _gunlukHavaDurumu = '';
@@ -924,14 +928,26 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   }
 
   /// "Stil Günlüğüm": takvim + günlük + haftalık rapor.
-  void _stilGunluguAc() {
-    Navigator.of(context).push(
+  Future<void> _stilGunluguAc() async {
+    await Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => StilGunluguEkrani(
           gardirobum: _gardirobum,
           gecmisKombinler: _gecmisKombinler,
+          favoriKombinler: _favoriKombinler,
+          onKombinSekmesineGit: () {
+            if (!mounted) return;
+            _sekmeSec(Sekmeler.kombin);
+          },
         ),
       ),
+    );
+    // Takvimde plan değişmiş olabilir; Bugün kartını tazele.
+    if (!mounted) return;
+    setState(() => _planJetonu++);
+    // Bildirim metinleri tarihe özel planı okuduğu için seriyi yeniden kur.
+    unawaited(
+      BildirimZamanlayici.yenidenKur(context: context).catchError((_) {}),
     );
   }
 
@@ -1621,6 +1637,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         onStilGunluguAc: _stilGunluguAc,
         onSeyahatAc: _seyahatAc,
         anaRenk: _anaRenk,
+        planJetonu: _planJetonu,
       ),
       GardirobumEkrani(
         key: _gardirobumKey,
