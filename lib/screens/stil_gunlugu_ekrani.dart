@@ -422,12 +422,27 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       TextButton.icon(
                         onPressed: () async {
                           Navigator.of(sheetContext).pop();
-                          final yeni =
-                              await PlanliKombinDeposu().kaldir(gunAnahtari(gun.tarih));
+                          final tarih = gunAnahtari(gun.tarih);
+                          final silinen = plan;
+                          final yeni = await PlanliKombinDeposu().kaldir(tarih);
                           if (!mounted) return;
                           setState(() => _planlar = yeni);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(l10n.planKaldirildi)),
+                            SnackBar(
+                              content: Text(l10n.planKaldirildi),
+                              behavior: SnackBarBehavior.floating,
+                              // Yanlışlıkla silinen plan geri alınabilsin.
+                              action: SnackBarAction(
+                                label: l10n.geriAl,
+                                onPressed: () async {
+                                  if (silinen == null) return;
+                                  final geri =
+                                      await PlanliKombinDeposu().ata(silinen);
+                                  if (!mounted) return;
+                                  setState(() => _planlar = geri);
+                                },
+                              ),
+                            ),
                           );
                         },
                         icon: const Icon(Icons.event_busy_rounded, size: 18),

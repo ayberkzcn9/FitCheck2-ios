@@ -363,7 +363,7 @@ void main() {
       expect(find.text('Bu güne kombin seç'), findsNothing);
     });
 
-    testWidgets('kaldır planı siler', (tester) async {
+    testWidgets('kaldır planı siler, geri al ile geri gelir', (tester) async {
       final bugun = gunAnahtari(DateTime.now());
       SharedPreferences.setMockInitialValues(<String, Object>{
         PlanliKombinDeposu.anahtar: jsonEncode([
@@ -382,11 +382,21 @@ void main() {
 
       expect(find.text('Plan kaldırıldı'), findsOneWidget);
 
-      final prefs = await SharedPreferences.getInstance();
-      final planlar = PlanliKombinDeposu.coz(
-        prefs.getString(PlanliKombinDeposu.anahtar),
+      var planlar = PlanliKombinDeposu.coz(
+        (await SharedPreferences.getInstance())
+            .getString(PlanliKombinDeposu.anahtar),
       );
       expect(planlar, isEmpty);
+
+      // "Geri al" planı yeniden yazar.
+      await tester.tap(find.text('Geri al'));
+      await tester.pumpAndSettle();
+
+      planlar = PlanliKombinDeposu.coz(
+        (await SharedPreferences.getInstance())
+            .getString(PlanliKombinDeposu.anahtar),
+      );
+      expect(planlar[bugun]?.baslik, 'Klasik Kombin');
     });
 
     testWidgets('son giyilenler de seçilebilir', (tester) async {
