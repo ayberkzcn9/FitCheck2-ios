@@ -140,8 +140,8 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.674.022 bayt,
-   SHA256 `A42D1F1F8562768BEB91BEFAEDB8CE01D9D917884D103193F923956D360C5ADB`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.709.458 bayt,
+   SHA256 `92939423F7DF51C43607951106D5871D3E4514794C395122E890D9C92B5823AD`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
    (21.10.2026 dolap arama/filtre ve takvim planlama turlarından sonra yeniden
@@ -155,7 +155,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 5. **Data safety:** fotoğraf/veri paylaşımı bölümünü kontrol et (fotoğraflar
    işlenmek üzere üçüncü taraf AI servislerine gidiyor).
 6. **Cihaz testi:** `build\FitCheck-1.0.32+38.apk` (versionCode 38,
-   SHA256 `3FDDE2007B181E500AB6FDBBFE458BF1531CE9D04AA9B205F627F54314EB0D1B`).
+   SHA256 `78CC42A795FBD00D3D59097A0A40B9A72C8FB7FD19188D81F830864F0CA9B04F`).
    Yeni: 7. sekme "Düello", Bildirim → sekme yönlendirme, kombini paylaşma,
    raf aksiyonları, "Stil Günlüğüm" (takvim/günlük/rapor), "Seyahat Modu".
    Değişiklik: "Kendin Kombin Yap" sekmesi kaldırıldı → alt menüde 6 sekme
@@ -166,5 +166,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
    Son tur: dolapta arama + kategori çipleri + sonuç sayacı; AI'nin
    döndürdüğü serbest kategori ('ceket', 'çanta'…) artık doğru rafa düşüyor
    (önceden bu parçalar dolapta görünmüyordu).
-   Son tur: takvimde güne kombin atama (favori seçimi, Değiştir/Kaldır),
-   Bugün'de "BUGÜN PLANIN" kartı, bildirimler tarihe özel planı okuyor.
+   Son tur: takvimde güne kombin atama (Öneriler/Favorilerim/Son giyilenler
+   seçimi, Değiştir/Kaldır + "Geri al"), Bugün'de "BUGÜN PLANIN" kartı,
+   bildirimler tarihe özel planı okuyor, kamera izninden önce gerekçe
+   sayfası, haftalık plan CTA'sı marka rengine hizalandı.
