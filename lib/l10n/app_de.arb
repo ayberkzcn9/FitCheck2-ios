@@ -1190,5 +1190,14 @@
   "bilgiAnlikDurum": "Der Sofort-Status gibt dir einen kurzen Hinweis passend zum Wetter deiner Stadt und deiner Garderobe.",
   "bilgiSeriBaslik": "Trage-Serie",
   "bilgiKahramanlar": "Deine Garderobenhelden sind die am häufigsten getragenen Teile. Oft getragene Teile tauchen in mehr Outfits auf und halten deine Garderobe in Bewegung.",
-  "bilgiUnutulanlar": "Die vergessenen Teile sind Stücke, die nie getragen wurden oder lange nicht getragen wurden. Ungenutzte Teile können durch neue Outfits wiederbelebt werden."
+  "bilgiUnutulanlar": "Die vergessenen Teile sind Stücke, die nie getragen wurden oder lange nicht getragen wurden. Ungenutzte Teile können durch neue Outfits wiederbelebt werden.",
+  "bilgiBugunKombini": "Dein Outfit des Tages wird aus deiner Garderobe und dem Wetter gewählt. Pro Tag wird höchstens eine KI-Anfrage gestellt und das Ergebnis für den Tag gespeichert; fällt die KI aus, übernehmen regelbasierte Vorschläge.",
+  "bilgiRaporHafta": "Die Anzahl der in den letzten 7 Tagen erfassten Outfits. Jedes „Heute getragen“ zählt als ein Outfit; du kannst an einem Tag mehrere Outfits erfassen.",
+  "bilgiRaporDortHafta": "Die Outfit-Zahlen der letzten 4 Wochen. Das Diagramm zeigt deinen Wochenrhythmus und ob er steigt oder fällt.",
+  "bilgiRaporEnCokParcalar": "Die in dieser Woche am häufigsten getragenen Teile. Oft getragene Teile sind das Rückgrat deiner Garderobe.",
+  "bilgiRaporKullanim": "Der Anteil deiner Garderobe, der in den letzten 7 Tagen genutzt wurde. Ein niedriger Wert heißt, dass manche Teile noch in keinem Outfit waren.",
+  "bilgiRaporSeri": "Die Zahl der Tage, an denen du hintereinander etwas getragen hast. Sie steigt bei jedem erfassten Outfit und setzt nach einem ausgelassenen Tag zurück.",
+  "bilgiRaporHicGiyilmemis": "Die Anzahl der Teile, die in den letzten 7 Tagen gar nicht getragen wurden. Mit neuen Outfits kannst du sie wieder einsetzen.",
+  "bilgiDueloPuan": "In jeder Runde siehst du zwei Outfits und wählst eines. Eine richtige Antwort bringt Punkte und eine Serie, eine falsche setzt die Serie zurück. Die Wertung ist regelbasiert: Farbharmonie, Kategoriebalance und Saisonkonsistenz werden gemessen. Hat deine Garderobe weniger als 4 Teile, wird eine Palette aus früheren Outfits gebildet.",
+  "bilgiDolapCalisma": "Wenn du ein Foto hinzufügst, wird der Hintergrund automatisch entfernt und Farbe, Kategorie, Stil und Saison werden von der KI erkannt. Deine Kleidung bleibt auf dem Gerät; Hintergrundentfernung und Analyse laufen auf unserem Server."
 }

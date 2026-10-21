@@ -32,6 +32,7 @@ import '../services/analytics_servisi.dart';
 import '../services/bugun_feed_servisi.dart';
 import '../services/planli_kombin_deposu.dart';
 import '../utils/helpers.dart';
+import '../widgets/bilgi_butonu.dart';
 
 class BugunEkrani extends StatefulWidget {
   const BugunEkrani({
@@ -703,6 +704,12 @@ class _BugunEkraniState extends State<BugunEkrani> {
                         color: colors.onPrimaryContainer,
                       ),
                     ),
+                  ),
+                  BilgiButonu(
+                    baslik: l10n.bugunBugununKombini,
+                    aciklama: l10n.bilgiBugunKombini,
+                    ikon: Icons.info_outline_rounded,
+                    renk: colors.onPrimaryContainer.withValues(alpha: 0.75),
                   ),
                   IconButton(
                     visualDensity: VisualDensity.compact,

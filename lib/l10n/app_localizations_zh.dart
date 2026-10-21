@@ -3213,4 +3213,34 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get bilgiUnutulanlar => '被遗忘的单品是你从未穿过或很久没穿的那些。未被使用的单品可以通过新搭配重新派上用场。';
+
+  @override
+  String get bilgiBugunKombini =>
+      '今日的穿搭会根据衣橱和天气挑选。每天最多请求一次 AI，结果当天保留；AI 不可用时改用规则生成的建议。';
+
+  @override
+  String get bilgiRaporHafta => '最近 7 天记录的穿搭数量。每次标记「今天穿了」算一套，同一天可以记录多套。';
+
+  @override
+  String get bilgiRaporDortHafta => '最近 4 周每周的穿搭数量。图表显示你的每周节奏是上升还是下降。';
+
+  @override
+  String get bilgiRaporEnCokParcalar => '本周穿得最多的单品。常穿的单品是衣橱的骨干。';
+
+  @override
+  String get bilgiRaporKullanim => '最近 7 天使用过的衣橱占比。数值偏低说明有些单品还没进入过任何搭配。';
+
+  @override
+  String get bilgiRaporSeri => '连续穿着的天数。每记录一套穿搭就增加，漏掉一天即归零。';
+
+  @override
+  String get bilgiRaporHicGiyilmemis => '最近 7 天一次都没穿过的单品数量。可以用新搭配重新让它们派上用场。';
+
+  @override
+  String get bilgiDueloPuan =>
+      '每轮给出两套穿搭，你选一套。选对得分并累计连胜，选错则连胜归零。评分基于规则：色彩协调、品类均衡与季节一致性。若衣橱少于 4 件，会用你以往的搭配生成调色盘。';
+
+  @override
+  String get bilgiDolapCalisma =>
+      '添加照片时背景会自动去除，AI 会识别颜色、品类、风格与季节。衣物保存在你的设备上，背景去除与分析在服务器完成。';
 }

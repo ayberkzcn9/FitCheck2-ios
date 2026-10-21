@@ -1225,5 +1225,14 @@
   "bilgiAnlikDurum": "Anlık durum, bulunduğun şehre göre hava durumuna ve dolabına uygun kısa bir öneri verir.",
   "bilgiSeriBaslik": "Giyme Serisi",
   "bilgiKahramanlar": "Dolabının kahramanları, dolabında en çok giyilen parçalardır. Sık giyilen parçalar kombinlerde daha çok yer alır ve gardırobunu sürdürür.",
-  "bilgiUnutulanlar": "Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir."
+  "bilgiUnutulanlar": "Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir.",
+  "bilgiBugunKombini": "Bugünün kombini, dolabın ve hava durumu dikkate alınarak seçilir. Günde en fazla bir yapay zekâ isteği yapılır ve sonuç gün boyunca saklanır; yapay zekâ kullanılamazsa kural bazlı öneriler devreye girer.",
+  "bilgiRaporHafta": "Son 7 günde kaydettiğin kombin sayısı. Her «bugün giydim» işaretlemen bir kombin olarak sayılır; aynı güne birden fazla kombin kaydedebilirsin.",
+  "bilgiRaporDortHafta": "Son 4 haftanın haftalık kombin sayıları. Grafik, haftalık düzeni ve artıp azalışı gösterir.",
+  "bilgiRaporEnCokParcalar": "Bu hafta en çok giyilen parçalar. Sık kullanılan parçalar gardırobunun omurgasıdır.",
+  "bilgiRaporKullanim": "Dolabındaki parçaların ne kadarının son 7 günde kullanıldığı. Düşükse bazı parçalar henüz kombine girmemiş demektir.",
+  "bilgiRaporSeri": "Üst üste giydiğin gün sayısı. Her gün bir kombin kaydedersen artar, bir gün boşluk bırakırsan sıfırlanır.",
+  "bilgiRaporHicGiyilmemis": "Son 7 günde hiç giyilmemiş parça sayısı. Bu parçalar yeni kombinlerle yeniden kullanılabilir.",
+  "bilgiDueloPuan": "Her soruda iki kombin arasından seçim yaparsın. Doğru cevap puan ve seri kazandırır, yanlış cevap seriyi sıfırlar. Puanlama kural tabanlıdır: renk uyumu, kategori dengesi ve mevsim tutarlılığı ölçülür. Dolabında 4'ten az parça varsa geçmiş kombinlerden bir palet oluşturulur.",
+  "bilgiDolapCalisma": "Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır."
 }

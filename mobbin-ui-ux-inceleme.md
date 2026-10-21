@@ -302,6 +302,17 @@ Dolabın Kahramanları · Derinlerde Unutulanlar.
 
 Bileşen: `lib/widgets/bilgi_butonu.dart` (`BilgiButonu` + `BilgiSayfasi`).
 
+Aynı desen diğer ekranlara da taşındı:
+
+- **Bugün**: "Bugünün kombini" başlığında ⓘ → kombin nasıl seçiliyor (günde
+  tek AI isteği, önbellek, kural bazlı yedek).
+- **Stil Günlüğü Raporu**: "Bu hafta giyilen kombin", "Son 4 hafta",
+  "En çok giydiklerin", "Dolap kullanımı", "Günlük seri", "Hiç giyilmemiş".
+- **Kombin Düellosu**: "Nasıl oynanır?" → puanlama kuralları (renk uyumu,
+  kategori dengesi, mevsim tutarlılığı, palet kuralı).
+- **Dolap**: başlıkta ⓘ → fotoğraf → arka plan silme → AI analizi akışı ve
+  verinin nerede işlendiği.
+
 ---
 
 ## 5. Kopyalamayacağımız şeyler (bilinçli karar)

@@ -239,6 +239,11 @@ void main() {
     await tester.pumpWidget(_uygulama(bugunEkrani()));
     await _bekle(tester);
     await _ekranGorusu(tester, '01_bugun_ust');
+
+    // Bilgi düğmesi: "Bugünün kombini nasıl seçiliyor?"
+    await tester.tap(find.byTooltip('Bugünün kombini'));
+    await _bekle(tester);
+    await _ekranGorusu(tester, '22_bugun_bilgi');
     expect(tester.takeException(), isNull);
   });
 

@@ -1190,5 +1190,14 @@
   "bilgiAnlikDurum": "Lo stato istantaneo dà un breve consiglio in base al meteo della tua città e al tuo guardaroba.",
   "bilgiSeriBaslik": "Serie di indossamento",
   "bilgiKahramanlar": "Gli eroi del tuo guardaroba sono i capi che indossi più spesso. I capi più frequenti compaiono in più outfit e tengono in movimento il guardaroba.",
-  "bilgiUnutulanlar": "I capi dimenticati sono quelli mai indossati o portati da molto tempo. I capi inutilizzati possono tornare utili con nuovi outfit."
+  "bilgiUnutulanlar": "I capi dimenticati sono quelli mai indossati o portati da molto tempo. I capi inutilizzati possono tornare utili con nuovi outfit.",
+  "bilgiBugunKombini": "L'outfit di oggi è scelto dal tuo guardaroba in base al meteo. Al massimo una richiesta all'IA al giorno e il risultato viene conservato per la giornata; se l'IA non è disponibile subentrano i suggerimenti a regole.",
+  "bilgiRaporHafta": "Il numero di outfit registrati negli ultimi 7 giorni. Ogni «indossato oggi» conta come un outfit; puoi registrarne più di uno lo stesso giorno.",
+  "bilgiRaporDortHafta": "Il numero di outfit a settimana nelle ultime 4 settimane. Il grafico mostra il tuo ritmo settimanale e se è in aumento o in calo.",
+  "bilgiRaporEnCokParcalar": "I capi più indossati questa settimana. I capi frequenti sono la spina dorsale del guardaroba.",
+  "bilgiRaporKullanim": "La quota del guardaroba usata negli ultimi 7 giorni. Un valore basso significa che alcuni capi non sono ancora entrati in un outfit.",
+  "bilgiRaporSeri": "Il numero di giorni consecutivi in cui ti sei vestito. Aumenta a ogni outfit registrato e si azzera dopo un giorno saltato.",
+  "bilgiRaporHicGiyilmemis": "Il numero di capi non indossati affatto negli ultimi 7 giorni. Puoi rimetterli in gioco con nuovi outfit.",
+  "bilgiDueloPuan": "In ogni round vedi due outfit e ne scegli uno. La risposta giusta dà punti e fa crescere la serie, quella sbagliata la azzera. Il punteggio segue regole: armonia dei colori, equilibrio delle categorie e coerenza stagionale. Se il guardaroba ha meno di 4 capi, la palette viene costruita dai vecchi outfit.",
+  "bilgiDolapCalisma": "Quando aggiungi una foto, lo sfondo viene rimosso automaticamente e colore, categoria, stile e stagione vengono letti dall'IA. I tuoi capi restano sul dispositivo; rimozione dello sfondo e analisi avvengono sul nostro server."
 }

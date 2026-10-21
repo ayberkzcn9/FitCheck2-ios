@@ -3260,4 +3260,37 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get bilgiUnutulanlar =>
       '忘れたアイテムは、着たことがない、または長く着ていないものです。使っていないアイテムも新しいコーデで復活します。';
+
+  @override
+  String get bilgiBugunKombini =>
+      '今日のコーデは、ワードローブと天気から選ばれます。1日につきAIへの問い合わせは最大1回で、結果は当日中保持されます。AIが使えない場合はルールベースの提案に切り替わります。';
+
+  @override
+  String get bilgiRaporHafta =>
+      '過去7日に記録した着数。「今日着た」を押すたびに1着として数え、同じ日に何着でも記録できます。';
+
+  @override
+  String get bilgiRaporDortHafta => '直近4週間の週ごとの着用数。グラフは週のリズムと増減を示します。';
+
+  @override
+  String get bilgiRaporEnCokParcalar => '今週いちばん着たアイテム。着回しの多いアイテムはワードローブの背骨です。';
+
+  @override
+  String get bilgiRaporKullanim =>
+      '直近7日に使ったワードローブの割合。低い場合は、まだ一度も着那した組み合わせに入っていないことを意味します。';
+
+  @override
+  String get bilgiRaporSeri => '続けて着た日数。着た組み合わせを記録するたびに増え、1日飛ばすとリセットされます。';
+
+  @override
+  String get bilgiRaporHicGiyilmemis =>
+      '直近7日に一度も着ていないアイテムの数。新しいの組み合わせで 다시着られます。';
+
+  @override
+  String get bilgiDueloPuan =>
+      '各ラウンドで2つのコーデから1つを選びます。正解なら得点と連続記録が増え、外すと連続記録はリセットされます。採点はルールベースで、色の調和・カテゴリのバランス・季節の整合性を測ります。ワードローブが4着未満の場合は過去のコーデからパレットを作ります。';
+
+  @override
+  String get bilgiDolapCalisma =>
+      '写真を追加すると背景が自動で取り除かれ、色・カテゴリ・スタイル・季節をAIが読み取ります。衣類は端末に保存され、背景除去と分析はサーバー側で処理されます。';
 }

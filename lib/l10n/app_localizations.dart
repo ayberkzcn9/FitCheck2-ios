@@ -6261,6 +6261,60 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir.'**
   String get bilgiUnutulanlar;
+
+  /// No description provided for @bilgiBugunKombini.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünün kombini, dolabın ve hava durumu dikkate alınarak seçilir. Günde en fazla bir yapay zekâ isteği yapılır ve sonuç gün boyunca saklanır; yapay zekâ kullanılamazsa kural bazlı öneriler devreye girer.'**
+  String get bilgiBugunKombini;
+
+  /// No description provided for @bilgiRaporHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 7 günde kaydettiğin kombin sayısı. Her «bugün giydim» işaretlemen bir kombin olarak sayılır; aynı güne birden fazla kombin kaydedebilirsin.'**
+  String get bilgiRaporHafta;
+
+  /// No description provided for @bilgiRaporDortHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 4 haftanın haftalık kombin sayıları. Grafik, haftalık düzeni ve artıp azalışı gösterir.'**
+  String get bilgiRaporDortHafta;
+
+  /// No description provided for @bilgiRaporEnCokParcalar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta en çok giyilen parçalar. Sık kullanılan parçalar gardırobunun omurgasıdır.'**
+  String get bilgiRaporEnCokParcalar;
+
+  /// No description provided for @bilgiRaporKullanim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabındaki parçaların ne kadarının son 7 günde kullanıldığı. Düşükse bazı parçalar henüz kombine girmemiş demektir.'**
+  String get bilgiRaporKullanim;
+
+  /// No description provided for @bilgiRaporSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Üst üste giydiğin gün sayısı. Her gün bir kombin kaydedersen artar, bir gün boşluk bırakırsan sıfırlanır.'**
+  String get bilgiRaporSeri;
+
+  /// No description provided for @bilgiRaporHicGiyilmemis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 7 günde hiç giyilmemiş parça sayısı. Bu parçalar yeni kombinlerle yeniden kullanılabilir.'**
+  String get bilgiRaporHicGiyilmemis;
+
+  /// No description provided for @bilgiDueloPuan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her soruda iki kombin arasından seçim yaparsın. Doğru cevap puan ve seri kazandırır, yanlış cevap seriyi sıfırlar. Puanlama kural tabanlıdır: renk uyumu, kategori dengesi ve mevsim tutarlılığı ölçülür. Dolabında 4\'ten az parça varsa geçmiş kombinlerden bir palet oluşturulur.'**
+  String get bilgiDueloPuan;
+
+  /// No description provided for @bilgiDolapCalisma.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır.'**
+  String get bilgiDolapCalisma;
 }
 
 class _AppLocalizationsDelegate

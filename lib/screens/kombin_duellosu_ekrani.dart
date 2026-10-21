@@ -21,6 +21,7 @@ import '../services/analytics_servisi.dart';
 import '../services/kombin_duellosu_motoru.dart';
 import '../services/kombin_duellosu_servisi.dart';
 import '../theme/design_tokens.dart';
+import '../widgets/bilgi_butonu.dart';
 
 class KombinDuellosuEkrani extends StatefulWidget {
   const KombinDuellosuEkrani({
@@ -393,11 +394,21 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  l10n.duelloNasilOynanir,
-                  style: text.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        l10n.duelloNasilOynanir,
+                        style: text.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    BilgiButonu(
+                      baslik: l10n.duelloNasilOynanir,
+                      aciklama: l10n.bilgiDueloPuan,
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 12),
                 _kural(context, 1, l10n.duelloKural1),

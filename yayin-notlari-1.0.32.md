@@ -140,8 +140,8 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.709.458 bayt,
-   SHA256 `92939423F7DF51C43607951106D5871D3E4514794C395122E890D9C92B5823AD`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.787.217 bayt,
+   SHA256 `E3DD53813648F4F5CC7B8CA5D80F0ACC0A2E04702E29B75C53EAA85C52182115`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
    (21.10.2026 dolap arama/filtre ve takvim planlama turlarından sonra yeniden

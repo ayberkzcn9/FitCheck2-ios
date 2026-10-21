@@ -3428,4 +3428,40 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get bilgiUnutulanlar =>
       'Die vergessenen Teile sind Stücke, die nie getragen wurden oder lange nicht getragen wurden. Ungenutzte Teile können durch neue Outfits wiederbelebt werden.';
+
+  @override
+  String get bilgiBugunKombini =>
+      'Dein Outfit des Tages wird aus deiner Garderobe und dem Wetter gewählt. Pro Tag wird höchstens eine KI-Anfrage gestellt und das Ergebnis für den Tag gespeichert; fällt die KI aus, übernehmen regelbasierte Vorschläge.';
+
+  @override
+  String get bilgiRaporHafta =>
+      'Die Anzahl der in den letzten 7 Tagen erfassten Outfits. Jedes „Heute getragen“ zählt als ein Outfit; du kannst an einem Tag mehrere Outfits erfassen.';
+
+  @override
+  String get bilgiRaporDortHafta =>
+      'Die Outfit-Zahlen der letzten 4 Wochen. Das Diagramm zeigt deinen Wochenrhythmus und ob er steigt oder fällt.';
+
+  @override
+  String get bilgiRaporEnCokParcalar =>
+      'Die in dieser Woche am häufigsten getragenen Teile. Oft getragene Teile sind das Rückgrat deiner Garderobe.';
+
+  @override
+  String get bilgiRaporKullanim =>
+      'Der Anteil deiner Garderobe, der in den letzten 7 Tagen genutzt wurde. Ein niedriger Wert heißt, dass manche Teile noch in keinem Outfit waren.';
+
+  @override
+  String get bilgiRaporSeri =>
+      'Die Zahl der Tage, an denen du hintereinander etwas getragen hast. Sie steigt bei jedem erfassten Outfit und setzt nach einem ausgelassenen Tag zurück.';
+
+  @override
+  String get bilgiRaporHicGiyilmemis =>
+      'Die Anzahl der Teile, die in den letzten 7 Tagen gar nicht getragen wurden. Mit neuen Outfits kannst du sie wieder einsetzen.';
+
+  @override
+  String get bilgiDueloPuan =>
+      'In jeder Runde siehst du zwei Outfits und wählst eines. Eine richtige Antwort bringt Punkte und eine Serie, eine falsche setzt die Serie zurück. Die Wertung ist regelbasiert: Farbharmonie, Kategoriebalance und Saisonkonsistenz werden gemessen. Hat deine Garderobe weniger als 4 Teile, wird eine Palette aus früheren Outfits gebildet.';
+
+  @override
+  String get bilgiDolapCalisma =>
+      'Wenn du ein Foto hinzufügst, wird der Hintergrund automatisch entfernt und Farbe, Kategorie, Stil und Saison werden von der KI erkannt. Deine Kleidung bleibt auf dem Gerät; Hintergrundentfernung und Analyse laufen auf unserem Server.';
 }

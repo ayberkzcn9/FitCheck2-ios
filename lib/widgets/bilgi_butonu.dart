@@ -17,6 +17,7 @@ class BilgiButonu extends StatelessWidget {
     required this.baslik,
     required this.aciklama,
     this.ikon = Icons.info_outline_rounded,
+    this.renk,
   });
 
   /// Açılacak sayfanın başlığı (ölçütün adı).
@@ -27,25 +28,33 @@ class BilgiButonu extends StatelessWidget {
 
   final IconData ikon;
 
+  /// Simgenin rengi; verilmezse kartın ikincil metin rengi kullanılır.
+  final Color? renk;
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
     return Tooltip(
       message: baslik,
-      child: InkResponse(
-        onTap: () => BilgiSayfasi.goster(
-          context,
-          baslik: baslik,
-          aciklama: aciklama,
-        ),
-        radius: 18,
-        child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Icon(
-            ikon,
-            size: 16,
-            color: colors.onSurfaceVariant.withValues(alpha: 0.8),
+      child: Material(
+        // Bazı ekranlarda düğme, Material olmayan bir Container içinde
+        // duruyor; InkResponse için Material atası şart.
+        type: MaterialType.transparency,
+        child: InkResponse(
+          onTap: () => BilgiSayfasi.goster(
+            context,
+            baslik: baslik,
+            aciklama: aciklama,
+          ),
+          radius: 18,
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: Icon(
+              ikon,
+              size: 16,
+              color: renk ?? colors.onSurfaceVariant.withValues(alpha: 0.8),
+            ),
           ),
         ),
       ),

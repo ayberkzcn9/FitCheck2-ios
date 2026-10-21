@@ -3425,4 +3425,40 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get bilgiUnutulanlar =>
       'Las piezas olvidadas son aquellas que nunca has lucido o que llevas mucho tiempo sin usar. Las piezas sin usar pueden revivir con nuevos looks.';
+
+  @override
+  String get bilgiBugunKombini =>
+      'Tu look del día se elige de tu armario según el tiempo. Se hace como máximo una petición a la IA al día y el resultado se guarda para el día; si la IA no está disponible, mandan las sugerencias por reglas.';
+
+  @override
+  String get bilgiRaporHafta =>
+      'El número de looks que has registrado en los últimos 7 días. Cada «me lo puse hoy» cuenta como un look; puedes registrar varios el mismo día.';
+
+  @override
+  String get bilgiRaporDortHafta =>
+      'El número de looks por semana de las últimas 4 semanas. El gráfico muestra tu ritmo semanal y si sube o baja.';
+
+  @override
+  String get bilgiRaporEnCokParcalar =>
+      'Las prendas que más llevas esta semana. Las prendas más usadas son la base de tu armario.';
+
+  @override
+  String get bilgiRaporKullanim =>
+      'La parte de tu armario usada en los últimos 7 días. Un valor bajo significa que algunas prendas aún no han entrado en ningún look.';
+
+  @override
+  String get bilgiRaporSeri =>
+      'El número de días seguidos que te has vestido. Aumenta cada vez que registras un look y se reinicia si se te pasa un día.';
+
+  @override
+  String get bilgiRaporHicGiyilmemis =>
+      'El número de prendas que no has lucido en los últimos 7 días. Puedes volver a usarlas con nuevos looks.';
+
+  @override
+  String get bilgiDueloPuan =>
+      'En cada ronda ves dos looks y eliges uno. Acertar da puntos y mantiene la racha; fallar la reinicia. La puntuación sigue reglas: armonía de color, equilibrio de categorías y coherencia de temporada. Si tu armario tiene menos de 4 prendas, se crea una paleta con tus looks anteriores.';
+
+  @override
+  String get bilgiDolapCalisma =>
+      'Cuando añades una foto, el fondo se recorta automáticamente y la IA lee el color, la categoría, el estilo y la temporada. Tu ropa se queda en el dispositivo; el recorte y el análisis se hacen en nuestro servidor.';
 }

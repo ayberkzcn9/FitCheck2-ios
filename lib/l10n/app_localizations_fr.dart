@@ -3431,4 +3431,40 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get bilgiUnutulanlar =>
       'Les pièces oubliées sont celles que vous n\'avez jamais portées ou portées très longtemps. Les pièces inutilisées peuvent revivre avec de nouvelles tenues.';
+
+  @override
+  String get bilgiBugunKombini =>
+      'La tenue du jour est choisie dans ta garde-robe selon la météo. Au plus une requête IA par jour est faite et le résultat est gardé pour la journée ; sans IA, des suggestions par règles prennent le relais.';
+
+  @override
+  String get bilgiRaporHafta =>
+      'Le nombre de tenues enregistrées sur les 7 derniers jours. Chaque « porté aujourd\'hui » compte pour une tenue ; tu peux en enregistrer plusieurs le même jour.';
+
+  @override
+  String get bilgiRaporDortHafta =>
+      'Le nombre de tenues par semaine sur les 4 dernières semaines. Le graphique montre ton rythme hebdomadaire et s\'il augmente ou diminue.';
+
+  @override
+  String get bilgiRaporEnCokParcalar =>
+      'Les pièces les plus portées cette semaine. Les pièces fréquentes sont la colonne vertébrale de ta garde-robe.';
+
+  @override
+  String get bilgiRaporKullanim =>
+      'La part de ta garde-robe utilisée sur les 7 derniers jours. Une valeur basse signifie que certaines pièces n\'ont pas encore intégré une tenue.';
+
+  @override
+  String get bilgiRaporSeri =>
+      'Le nombre de jours consécutifs où tu t\'es habillé. Il augmente à chaque tenue enregistrée et repart à zéro après un jour manqué.';
+
+  @override
+  String get bilgiRaporHicGiyilmemis =>
+      'Le nombre de pièces non portées du tout sur les 7 derniers jours. Tu peux les remettre en jeu avec de nouvelles tenues.';
+
+  @override
+  String get bilgiDueloPuan =>
+      'À chaque manche, deux tenues te sont proposées et tu en choisis une. Une bonne réponse rapporte des points et fait monter la série, une mauvaise la remet à zéro. Le score suit des règles : harmonie des couleurs, équilibre des catégories et cohérence de saison. Si ta garde-robe compte moins de 4 pièces, une palette est construite à partir de tes anciennes tenues.';
+
+  @override
+  String get bilgiDolapCalisma =>
+      'Quand tu ajoutes une photo, le fond est supprimé automatiquement et la couleur, la catégorie, le style et la saison sont lus par l\'IA. Tes vêtements restent sur ton appareil ; le traitement et l\'analyse se font sur notre serveur.';
 }

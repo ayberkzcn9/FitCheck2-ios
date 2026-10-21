@@ -3396,4 +3396,40 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get bilgiUnutulanlar =>
       'Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir.';
+
+  @override
+  String get bilgiBugunKombini =>
+      'Bugünün kombini, dolabın ve hava durumu dikkate alınarak seçilir. Günde en fazla bir yapay zekâ isteği yapılır ve sonuç gün boyunca saklanır; yapay zekâ kullanılamazsa kural bazlı öneriler devreye girer.';
+
+  @override
+  String get bilgiRaporHafta =>
+      'Son 7 günde kaydettiğin kombin sayısı. Her «bugün giydim» işaretlemen bir kombin olarak sayılır; aynı güne birden fazla kombin kaydedebilirsin.';
+
+  @override
+  String get bilgiRaporDortHafta =>
+      'Son 4 haftanın haftalık kombin sayıları. Grafik, haftalık düzeni ve artıp azalışı gösterir.';
+
+  @override
+  String get bilgiRaporEnCokParcalar =>
+      'Bu hafta en çok giyilen parçalar. Sık kullanılan parçalar gardırobunun omurgasıdır.';
+
+  @override
+  String get bilgiRaporKullanim =>
+      'Dolabındaki parçaların ne kadarının son 7 günde kullanıldığı. Düşükse bazı parçalar henüz kombine girmemiş demektir.';
+
+  @override
+  String get bilgiRaporSeri =>
+      'Üst üste giydiğin gün sayısı. Her gün bir kombin kaydedersen artar, bir gün boşluk bırakırsan sıfırlanır.';
+
+  @override
+  String get bilgiRaporHicGiyilmemis =>
+      'Son 7 günde hiç giyilmemiş parça sayısı. Bu parçalar yeni kombinlerle yeniden kullanılabilir.';
+
+  @override
+  String get bilgiDueloPuan =>
+      'Her soruda iki kombin arasından seçim yaparsın. Doğru cevap puan ve seri kazandırır, yanlış cevap seriyi sıfırlar. Puanlama kural tabanlıdır: renk uyumu, kategori dengesi ve mevsim tutarlılığı ölçülür. Dolabında 4\'ten az parça varsa geçmiş kombinlerden bir palet oluşturulur.';
+
+  @override
+  String get bilgiDolapCalisma =>
+      'Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır.';
 }

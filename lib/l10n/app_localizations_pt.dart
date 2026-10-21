@@ -3414,4 +3414,40 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get bilgiUnutulanlar =>
       'As peças esquecidas são as que nunca usaste ou que não usas há muito tempo. As peças por usar podem ressuscitar com novos looks.';
+
+  @override
+  String get bilgiBugunKombini =>
+      'O teu look do dia é escolhido no guarda-roupa com base no tempo. É feito no máximo um pedido à IA por dia e o resultado fica guardado para o dia; se a IA não estiver disponível, entram as sugestões por regras.';
+
+  @override
+  String get bilgiRaporHafta =>
+      'O número de looks que registaste nos últimos 7 dias. Cada «usei hoje» conta como um look; podes registar vários no mesmo dia.';
+
+  @override
+  String get bilgiRaporDortHafta =>
+      'O número de looks por semana nas últimas 4 semanas. O gráfico mostra o teu ritmo semanal e se está a subir ou a descer.';
+
+  @override
+  String get bilgiRaporEnCokParcalar =>
+      'As peças que mais usaste esta semana. As peças mais usadas são a espinha dorsal do guarda-roupa.';
+
+  @override
+  String get bilgiRaporKullanim =>
+      'A parte do guarda-roupa usada nos últimos 7 dias. Um valor baixo significa que algumas peças ainda não entraram num look.';
+
+  @override
+  String get bilgiRaporSeri =>
+      'O número de dias seguidos em que te vestiste. Aumenta sempre que registas um look e reinicia se saltares um dia.';
+
+  @override
+  String get bilgiRaporHicGiyilmemis =>
+      'O número de peças que não usaste nos últimos 7 dias. Podes voltar a usá-las com novos looks.';
+
+  @override
+  String get bilgiDueloPuan =>
+      'Em cada ronda vês dois looks e escolhes um. Acertar dá pontos e mantém a sequência; errar reinicia-a. A pontuação segue regras: harmonia de cores, equilíbrio de categorias e coerência de estação. Se o guarda-roupa tiver menos de 4 peças, a paleta é construída a partir de looks anteriores.';
+
+  @override
+  String get bilgiDolapCalisma =>
+      'Quando juntas uma foto, o fundo é removido automaticamente e a IA lê a cor, a categoria, o estilo e a estação. As tuas peças ficam no dispositivo; a remoção de fundo e a análise são feitas no nosso servidor.';
 }

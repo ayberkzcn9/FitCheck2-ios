@@ -23,6 +23,7 @@ import '../utils/hava_uygunlugu.dart';
 import '../utils/helpers.dart';
 import '../utils/dolap_filtresi.dart';
 import '../ai/ai_dil.dart';
+import '../widgets/bilgi_butonu.dart';
 import '../widgets/izin_gerekce_sayfasi.dart';
 import '../widgets/stroked_text.dart';
 import '../../theme/design_tokens.dart';
@@ -2169,14 +2170,26 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 surfaceTintColor: Colors.transparent,
                 elevation: 0,
                 centerTitle: false,
-                title: Text(
-                  l10n.gardirobumTitle,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: -0.5,
-                    fontSize: 18,
-                    color: colors.onSurface,
-                  ),
+                title: Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        l10n.gardirobumTitle,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -0.5,
+                          fontSize: 18,
+                          color: colors.onSurface,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    BilgiButonu(
+                      baslik: l10n.gardirobumTitle,
+                      aciklama: l10n.bilgiDolapCalisma,
+                    ),
+                  ],
                 ),
                 actions: [
                   IconButton(

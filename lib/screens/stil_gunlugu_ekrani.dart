@@ -30,6 +30,7 @@ import '../services/planli_kombin_deposu.dart';
 import '../theme/design_tokens.dart';
 import '../utils/helpers.dart';
 import '../utils/takvim_gunleri.dart';
+import '../widgets/bilgi_butonu.dart';
 
 class StilGunluguEkrani extends StatefulWidget {
   const StilGunluguEkrani({
@@ -1109,15 +1110,26 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          l10n.stilGunluguRaporSayiEtiketi,
-                          style: TextStyle(
-                            fontSize: AppText.body.fontSize,
-                            height: 1.25,
-                            fontWeight: FontWeight.w600,
-                            color: colors.onPrimaryContainer
-                                .withValues(alpha: 0.85),
-                          ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                l10n.stilGunluguRaporSayiEtiketi,
+                                style: TextStyle(
+                                  fontSize: AppText.body.fontSize,
+                                  height: 1.25,
+                                  fontWeight: FontWeight.w600,
+                                  color: colors.onPrimaryContainer
+                                      .withValues(alpha: 0.85),
+                                ),
+                              ),
+                            ),
+                            BilgiButonu(
+                              baslik: l10n.stilGunluguRaporSayiEtiketi,
+                              aciklama: l10n.bilgiRaporHafta,
+                              renk: colors.onPrimaryContainer.withValues(alpha: 0.7),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -1159,6 +1171,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   '%${rapor.kullanimYuzdesi}',
                   colors,
                   oran: rapor.kullanimYuzdesi / 100,
+                  bilgiBaslik: l10n.stilGunluguRaporKullanim,
+                  bilgiAciklama: l10n.bilgiRaporKullanim,
                 ),
                 // Sıfır değerli satırlar gösterilmez: bilgi taşımıyor.
                 if (rapor.seriGun > 0)
@@ -1166,12 +1180,16 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     l10n.stilGunluguRaporSeri,
                     '${rapor.seriGun}',
                     colors,
+                    bilgiBaslik: l10n.stilGunluguRaporSeri,
+                    bilgiAciklama: l10n.bilgiRaporSeri,
                   ),
                 if (rapor.hicGiyilmemis > 0)
                   _raporSatiri(
                     l10n.stilGunluguRaporHicGiyilmemis,
                     '${rapor.hicGiyilmemis}',
                     colors,
+                    bilgiBaslik: l10n.stilGunluguRaporHicGiyilmemis,
+                    bilgiAciklama: l10n.bilgiRaporHicGiyilmemis,
                   ),
               ],
             ),
@@ -1212,13 +1230,24 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10n.stilGunluguRaporDortHafta,
-          style: TextStyle(
-            fontSize: AppText.labelSmall.fontSize,
-            fontWeight: FontWeight.w700,
-            color: colors.onPrimaryContainer.withValues(alpha: 0.75),
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                l10n.stilGunluguRaporDortHafta,
+                style: TextStyle(
+                  fontSize: AppText.labelSmall.fontSize,
+                  fontWeight: FontWeight.w700,
+                  color: colors.onPrimaryContainer.withValues(alpha: 0.75),
+                ),
+              ),
+            ),
+            BilgiButonu(
+              baslik: l10n.stilGunluguRaporDortHafta,
+              aciklama: l10n.bilgiRaporDortHafta,
+              renk: colors.onPrimaryContainer.withValues(alpha: 0.7),
+            ),
+          ],
         ),
         const SizedBox(height: 8),
         SizedBox(
@@ -1274,13 +1303,24 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10n.stilGunluguRaporEnCokParcalar,
-          style: TextStyle(
-            fontSize: AppText.labelSmall.fontSize,
-            fontWeight: FontWeight.w700,
-            color: colors.onPrimaryContainer.withValues(alpha: 0.75),
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                l10n.stilGunluguRaporEnCokParcalar,
+                style: TextStyle(
+                  fontSize: AppText.labelSmall.fontSize,
+                  fontWeight: FontWeight.w700,
+                  color: colors.onPrimaryContainer.withValues(alpha: 0.75),
+                ),
+              ),
+            ),
+            BilgiButonu(
+              baslik: l10n.stilGunluguRaporEnCokParcalar,
+              aciklama: l10n.bilgiRaporEnCokParcalar,
+              renk: colors.onPrimaryContainer.withValues(alpha: 0.7),
+            ),
+          ],
         ),
         const SizedBox(height: 8),
         for (final parca in rapor.enCokParcalar)
@@ -1368,6 +1408,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     String deger,
     ColorScheme colors, {
     double? oran,
+    String? bilgiBaslik,
+    String? bilgiAciklama,
   }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -1384,6 +1426,12 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   ),
                 ),
               ),
+              if (bilgiBaslik != null && bilgiAciklama != null)
+                BilgiButonu(
+                  baslik: bilgiBaslik,
+                  aciklama: bilgiAciklama,
+                  renk: colors.onPrimaryContainer.withValues(alpha: 0.7),
+                ),
               Text(
                 deger,
                 style: TextStyle(

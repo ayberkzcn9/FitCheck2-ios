@@ -1190,5 +1190,14 @@
   "bilgiAnlikDurum": "Instant status gives you a short suggestion based on the weather in your city and your wardrobe.",
   "bilgiSeriBaslik": "Wearing Streak",
   "bilgiKahramanlar": "Your wardrobe heroes are the pieces you wear most often. Frequently worn pieces show up in more outfits and keep your wardrobe in rotation.",
-  "bilgiUnutulanlar": "Forgotten items are pieces you have never worn, or have not worn for a long time. Unused pieces can come back to life with new outfits."
+  "bilgiUnutulanlar": "Forgotten items are pieces you have never worn, or have not worn for a long time. Unused pieces can come back to life with new outfits.",
+  "bilgiBugunKombini": "Your outfit of the day is picked from your wardrobe and the weather. At most one AI request is made per day and the result is kept for the day; if the AI is unavailable, rule-based suggestions take over.",
+  "bilgiRaporHafta": "The number of outfits you recorded in the last 7 days. Every “worn today” mark counts as one outfit; you can record several outfits on the same day.",
+  "bilgiRaporDortHafta": "The number of outfits per week over the last 4 weeks. The chart shows your weekly rhythm and whether it is rising or falling.",
+  "bilgiRaporEnCokParcalar": "The pieces you wore most this week. Frequently worn pieces are the backbone of your wardrobe.",
+  "bilgiRaporKullanim": "The share of your wardrobe used in the last 7 days. A low value means some pieces have not made it into an outfit yet.",
+  "bilgiRaporSeri": "The number of days you have dressed in a row. It grows whenever you record an outfit and resets after a missed day.",
+  "bilgiRaporHicGiyilmemis": "The number of pieces not worn at all in the last 7 days. You can put these back to use with new outfits.",
+  "bilgiDueloPuan": "Each round shows two outfits and you pick one. A correct answer earns points and builds your streak; a wrong one resets the streak. Scoring is rule-based: colour harmony, category balance and seasonal consistency are measured. If your wardrobe has fewer than 4 pieces, a palette is built from your past outfits.",
+  "bilgiDolapCalisma": "When you add a photo, the background is removed automatically and the colour, category, style and season are read by AI. Your clothes stay on your device; background removal and analysis run on our server."
 }
