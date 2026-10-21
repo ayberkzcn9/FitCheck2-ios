@@ -3347,4 +3347,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get planSonGiyilenler => 'Недавно надетое';
+
+  @override
+  String get izinGerekceKameraBaslik => 'Добавляйте вещи камерой';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      'Мы используем камеру, чтобы добавить одежду в виде фото. Фото покидает устройство; удаление фона и анализ цвета/стиля выполняются на нашем сервере и не хранятся постоянно.';
+
+  @override
+  String get izinGerekceSimdiDegil => 'Не сейчас';
 }

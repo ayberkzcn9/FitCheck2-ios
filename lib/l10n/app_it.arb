@@ -1176,5 +1176,8 @@
   "planBugun": "Il tuo outfit di oggi",
   "planTakvimdenDegistir": "Cambia nel calendario",
   "planFavorilerim": "I miei preferiti",
-  "planSonGiyilenler": "Indossati di recente"
+  "planSonGiyilenler": "Indossati di recente",
+  "izinGerekceKameraBaslik": "Aggiungi capi con la fotocamera",
+  "izinGerekceKameraAciklama": "Usiamo la fotocamera per aggiungere i tuoi capi come foto. La foto lascia il dispositivo; rimozione dello sfondo e analisi di colore/stile avvengono sul nostro server e non vengono conservate.",
+  "izinGerekceSimdiDegil": "Non ora"
 }

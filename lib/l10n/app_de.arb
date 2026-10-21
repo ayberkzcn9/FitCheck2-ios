@@ -1176,5 +1176,8 @@
   "planBugun": "Dein Plan heute",
   "planTakvimdenDegistir": "Im Kalender ändern",
   "planFavorilerim": "Meine Favoriten",
-  "planSonGiyilenler": "Zuletzt getragen"
+  "planSonGiyilenler": "Zuletzt getragen",
+  "izinGerekceKameraBaslik": "Kleidung mit der Kamera hinzufügen",
+  "izinGerekceKameraAciklama": "Wir verwenden die Kamera, um deine Kleidung als Fotos hinzuzufügen. Das Foto verlässt dein Gerät; Hintergrundentfernung sowie Farb- und Stilanalyse erfolgen auf unserem Server und werden nicht dauerhaft gespeichert.",
+  "izinGerekceSimdiDegil": "Jetzt nicht"
 }

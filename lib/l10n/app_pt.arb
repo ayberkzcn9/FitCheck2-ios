@@ -1176,5 +1176,8 @@
   "planBugun": "O teu look de hoje",
   "planTakvimdenDegistir": "Alterar no calendário",
   "planFavorilerim": "Os meus favoritos",
-  "planSonGiyilenler": "Usados recentemente"
+  "planSonGiyilenler": "Usados recentemente",
+  "izinGerekceKameraBaslik": "Adiciona peças com a câmara",
+  "izinGerekceKameraAciklama": "Usamos a câmara para adicionar as suas peças em fotos. A foto sai do dispositivo; a remoção de fundo e a análise de cor/estilo são feitas no nosso servidor e não são guardadas.",
+  "izinGerekceSimdiDegil": "Agora não"
 }

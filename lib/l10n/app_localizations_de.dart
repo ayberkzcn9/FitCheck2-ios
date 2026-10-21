@@ -3376,4 +3376,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get planSonGiyilenler => 'Zuletzt getragen';
+
+  @override
+  String get izinGerekceKameraBaslik => 'Kleidung mit der Kamera hinzufügen';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      'Wir verwenden die Kamera, um deine Kleidung als Fotos hinzuzufügen. Das Foto verlässt dein Gerät; Hintergrundentfernung sowie Farb- und Stilanalyse erfolgen auf unserem Server und werden nicht dauerhaft gespeichert.';
+
+  @override
+  String get izinGerekceSimdiDegil => 'Jetzt nicht';
 }

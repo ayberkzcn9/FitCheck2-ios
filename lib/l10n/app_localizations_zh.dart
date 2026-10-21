@@ -3169,4 +3169,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get planSonGiyilenler => '最近穿过的';
+
+  @override
+  String get izinGerekceKameraBaslik => '用相机添加衣物';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      '我们使用相机把衣物添加为照片。照片会离开你的设备；背景去除与颜色/风格分析在服务器完成，不会永久保存。';
+
+  @override
+  String get izinGerekceSimdiDegil => '暂不';
 }

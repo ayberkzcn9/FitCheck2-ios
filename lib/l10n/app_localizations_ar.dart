@@ -3320,4 +3320,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get planSonGiyilenler => 'ارتدتها مؤخرًا';
+
+  @override
+  String get izinGerekceKameraBaslik => 'أضف الملابس بالكاميرا';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      'نستخدم الكاميرا لإضافة ملابسك كصور. تخرج الصورة من جهازك؛ تتم إزالة الخلفية وتحليل اللون والأسلوب على خادمنا ولا تُحفظ بشكل دائم.';
+
+  @override
+  String get izinGerekceSimdiDegil => 'ليس الآن';
 }

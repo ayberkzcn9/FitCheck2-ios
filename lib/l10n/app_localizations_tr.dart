@@ -3344,4 +3344,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get planSonGiyilenler => 'Son giyilenler';
+
+  @override
+  String get izinGerekceKameraBaslik => 'Kamerayla kıyafet ekle';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      'Kıyafetlerini fotoğraf olarak eklemek için kamerayı kullanıyoruz. Fotoğraf cihazından çıkar; arka plan silme ve renk/stil analizi sunucu üzerinde yapılır, kalıcı olarak saklanmaz.';
+
+  @override
+  String get izinGerekceSimdiDegil => 'Şimdi değil';
 }

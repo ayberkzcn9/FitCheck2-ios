@@ -23,6 +23,7 @@ import '../utils/hava_uygunlugu.dart';
 import '../utils/helpers.dart';
 import '../utils/dolap_filtresi.dart';
 import '../ai/ai_dil.dart';
+import '../widgets/izin_gerekce_sayfasi.dart';
 import '../widgets/stroked_text.dart';
 import '../../theme/design_tokens.dart';
 
@@ -941,6 +942,15 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       if (source == ImageSource.camera) {
         var cameraStatus = await Permission.camera.status;
         if (cameraStatus.isDenied) {
+          // Önce neden istediğimizi anlat, sonra sistem penceresini aç.
+          final kabul = await IzinGerekce.goster(
+            context,
+            baslik: l10n.izinGerekceKameraBaslik,
+            aciklama: l10n.izinGerekceKameraAciklama,
+            butonMetni: l10n.anaIzinVer,
+            vazgecMetni: l10n.izinGerekceSimdiDegil,
+          );
+          if (!kabul || !mounted) return;
           cameraStatus = await Permission.camera.request();
         }
 

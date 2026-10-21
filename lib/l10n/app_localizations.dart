@@ -6177,6 +6177,24 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Son giyilenler'**
   String get planSonGiyilenler;
+
+  /// No description provided for @izinGerekceKameraBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kamerayla kıyafet ekle'**
+  String get izinGerekceKameraBaslik;
+
+  /// No description provided for @izinGerekceKameraAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafetlerini fotoğraf olarak eklemek için kamerayı kullanıyoruz. Fotoğraf cihazından çıkar; arka plan silme ve renk/stil analizi sunucu üzerinde yapılır, kalıcı olarak saklanmaz.'**
+  String get izinGerekceKameraAciklama;
+
+  /// No description provided for @izinGerekceSimdiDegil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şimdi değil'**
+  String get izinGerekceSimdiDegil;
 }
 
 class _AppLocalizationsDelegate

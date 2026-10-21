@@ -1176,5 +1176,8 @@
   "planBugun": "Your plan today",
   "planTakvimdenDegistir": "Change in calendar",
   "planFavorilerim": "My favourites",
-  "planSonGiyilenler": "Recently worn"
+  "planSonGiyilenler": "Recently worn",
+  "izinGerekceKameraBaslik": "Add clothes with the camera",
+  "izinGerekceKameraAciklama": "We use the camera to add your clothes as photos. The photo leaves your device; background removal and colour/style analysis happen on our server and are not stored permanently.",
+  "izinGerekceSimdiDegil": "Not now"
 }

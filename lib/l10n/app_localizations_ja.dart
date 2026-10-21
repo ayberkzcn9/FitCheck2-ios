@@ -3211,4 +3211,14 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get planSonGiyilenler => '最近着たもの';
+
+  @override
+  String get izinGerekceKameraBaslik => 'カメラで衣類を追加';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      '衣類を写真として追加するためにカメラを使います。写真は端末から送信され、背景除去と色・スタイル解析はサーバー側で実行され、恒久的には保存されません。';
+
+  @override
+  String get izinGerekceSimdiDegil => '今は不要';
 }

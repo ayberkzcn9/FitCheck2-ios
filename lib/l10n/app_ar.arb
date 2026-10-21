@@ -1176,5 +1176,8 @@
   "planBugun": "إطلالتك اليوم",
   "planTakvimdenDegistir": "تغيير في التقويم",
   "planFavorilerim": "مفضلتي",
-  "planSonGiyilenler": "ارتدتها مؤخرًا"
+  "planSonGiyilenler": "ارتدتها مؤخرًا",
+  "izinGerekceKameraBaslik": "أضف الملابس بالكاميرا",
+  "izinGerekceKameraAciklama": "نستخدم الكاميرا لإضافة ملابسك كصور. تخرج الصورة من جهازك؛ تتم إزالة الخلفية وتحليل اللون والأسلوب على خادمنا ولا تُحفظ بشكل دائم.",
+  "izinGerekceSimdiDegil": "ليس الآن"
 }

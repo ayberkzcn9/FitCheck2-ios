@@ -263,6 +263,21 @@ okuma" ekranı değil, **planlama** ekranı.
 - Geçmiş günler salt okunur (yanlış kayıt yapılmasın).
 - **Test:** 15 test (model, depo, takvim birleşimi, bildirim eşlemesi, 4 arayüz
   testi) + görsel kontrol `16_takvim_plan`, `17_gun_plani`, `18_kombin_secimi`.
+- Seçim sayfası iki kaynak gösteriyor: **FAVORİLERİM** ve **SON GİYİLENLER**
+  (geçmiş kaydındaki parçalar virgülden ayrıştırılıyor, en fazla 5, tekrarsız).
+
+### 4.4 İzin öncesi gerekçe (Mobbin #3)
+
+"Fotoğraf çek"e basınca kullanıcı **sistem izin penceresini** boş bir
+istekle görüyordu. Artık önce kendi gerekçemiz gösteriliyor:
+
+- Yeni `IzinGerekce.goster()` (cam panel, ikon, başlık, açıklama, "İzin Ver" +
+  "Şimdi değil"): kamera isteğinden önce **neden** ve **verinin nereye gittiği**
+  anlatılıyor (fotoğraf cihazdan çıkar, arka plan silme ve analiz sunucuda,
+  kalıcı saklanmaz).
+- Kullanıcı "Şimdi değil" derse sistem izni hiç istenmiyor.
+- Bildirim izni **ayarlardaki anahtar ile** isteniyor (kullanıcı eylemi net),
+  orada ayrı gerekçe sayfasına gerek yok.
 
 ---
 

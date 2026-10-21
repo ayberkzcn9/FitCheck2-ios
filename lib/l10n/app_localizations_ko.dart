@@ -3226,4 +3226,14 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get planSonGiyilenler => '최근 입은 옷';
+
+  @override
+  String get izinGerekceKameraBaslik => '카메라로 옷 추가';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      '옷을 사진으로 추가하기 위해 카메라를 사용합니다. 사진은 기기를 벗어나며, 배경 제거와 색상·스타일 분석은 서버에서 처리되어 영구 저장되지 않습니다.';
+
+  @override
+  String get izinGerekceSimdiDegil => '나중에';
 }
