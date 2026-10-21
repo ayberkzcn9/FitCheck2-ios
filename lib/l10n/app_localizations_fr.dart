@@ -3310,4 +3310,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get geriAl => 'Annuler';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Tenues portées cette semaine';
+
+  @override
+  String get stilGunluguRaporDortHafta => '4 dernières semaines';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'Pièces les plus portées';
 }

@@ -1147,5 +1147,8 @@
   },
   "seyahatPaylas": "Condividi lista",
   "seyahatPaylasMetni": "Il mio piano valigia FitCheck ✨",
-  "geriAl": "Annulla"
+  "geriAl": "Annulla",
+  "stilGunluguRaporSayiEtiketi": "Outfit indossati questa settimana",
+  "stilGunluguRaporDortHafta": "Ultime 4 settimane",
+  "stilGunluguRaporEnCokParcalar": "Capi più indossati"
 }

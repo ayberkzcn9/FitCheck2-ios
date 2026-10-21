@@ -3252,4 +3252,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get geriAl => 'تراجع';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'إطلالات تم ارتداؤها هذا الأسبوع';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'آخر 4 أسابيع';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'القطع الأكثر ارتداءً';
 }

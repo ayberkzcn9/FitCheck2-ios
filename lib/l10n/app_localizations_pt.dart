@@ -3294,4 +3294,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get geriAl => 'Anular';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Looks usados esta semana';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'Últimas 4 semanas';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'Peças mais usadas';
 }

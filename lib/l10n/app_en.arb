@@ -1147,5 +1147,8 @@
   },
   "seyahatPaylas": "Share list",
   "seyahatPaylasMetni": "My FitCheck packing plan ✨",
-  "geriAl": "Undo"
+  "geriAl": "Undo",
+  "stilGunluguRaporSayiEtiketi": "Outfits worn this week",
+  "stilGunluguRaporDortHafta": "Last 4 weeks",
+  "stilGunluguRaporEnCokParcalar": "Most worn pieces"
 }

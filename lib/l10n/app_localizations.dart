@@ -6045,6 +6045,24 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Geri al'**
   String get geriAl;
+
+  /// No description provided for @stilGunluguRaporSayiEtiketi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta giyilen kombin'**
+  String get stilGunluguRaporSayiEtiketi;
+
+  /// No description provided for @stilGunluguRaporDortHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 4 hafta'**
+  String get stilGunluguRaporDortHafta;
+
+  /// No description provided for @stilGunluguRaporEnCokParcalar.
+  ///
+  /// In tr, this message translates to:
+  /// **'En çok giydiklerin'**
+  String get stilGunluguRaporEnCokParcalar;
 }
 
 class _AppLocalizationsDelegate

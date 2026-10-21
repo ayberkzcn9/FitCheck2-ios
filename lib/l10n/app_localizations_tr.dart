@@ -3276,4 +3276,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get geriAl => 'Geri al';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Bu hafta giyilen kombin';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'Son 4 hafta';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'En çok giydiklerin';
 }

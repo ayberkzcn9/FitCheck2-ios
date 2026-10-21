@@ -3303,4 +3303,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get geriAl => 'Annulla';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Outfit indossati questa settimana';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'Ultime 4 settimane';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'Capi più indossati';
 }

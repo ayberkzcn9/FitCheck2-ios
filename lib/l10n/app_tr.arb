@@ -1182,5 +1182,8 @@
   },
   "seyahatPaylas": "Listeyi paylaş",
   "seyahatPaylasMetni": "FitCheck valiz planım ✨",
-  "geriAl": "Geri al"
+  "geriAl": "Geri al",
+  "stilGunluguRaporSayiEtiketi": "Bu hafta giyilen kombin",
+  "stilGunluguRaporDortHafta": "Son 4 hafta",
+  "stilGunluguRaporEnCokParcalar": "En çok giydiklerin"
 }

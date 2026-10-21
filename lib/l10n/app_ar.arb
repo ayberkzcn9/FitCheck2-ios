@@ -1147,5 +1147,8 @@
   },
   "seyahatPaylas": "مشاركة القائمة",
   "seyahatPaylasMetni": "خطة حقيبتي في FitCheck ✨",
-  "geriAl": "تراجع"
+  "geriAl": "تراجع",
+  "stilGunluguRaporSayiEtiketi": "إطلالات تم ارتداؤها هذا الأسبوع",
+  "stilGunluguRaporDortHafta": "آخر 4 أسابيع",
+  "stilGunluguRaporEnCokParcalar": "القطع الأكثر ارتداءً"
 }

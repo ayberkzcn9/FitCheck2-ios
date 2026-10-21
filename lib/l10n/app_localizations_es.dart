@@ -3305,4 +3305,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get geriAl => 'Deshacer';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Conjuntos llevados esta semana';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'Últimas 4 semanas';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'Prendas más usadas';
 }

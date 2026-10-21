@@ -3101,4 +3101,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get geriAl => '撤销';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => '本周穿搭次数';
+
+  @override
+  String get stilGunluguRaporDortHafta => '最近4周';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => '最常穿的单品';
 }

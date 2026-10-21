@@ -1147,5 +1147,8 @@
   },
   "seyahatPaylas": "分享清单",
   "seyahatPaylasMetni": "我的 FitCheck 行李计划 ✨",
-  "geriAl": "撤销"
+  "geriAl": "撤销",
+  "stilGunluguRaporSayiEtiketi": "本周穿搭次数",
+  "stilGunluguRaporDortHafta": "最近4周",
+  "stilGunluguRaporEnCokParcalar": "最常穿的单品"
 }

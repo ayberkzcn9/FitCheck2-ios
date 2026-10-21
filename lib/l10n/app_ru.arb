@@ -1147,5 +1147,8 @@
   },
   "seyahatPaylas": "Поделиться списком",
   "seyahatPaylasMetni": "Мой план чемодана FitCheck ✨",
-  "geriAl": "Отменить"
+  "geriAl": "Отменить",
+  "stilGunluguRaporSayiEtiketi": "Образов надето за неделю",
+  "stilGunluguRaporDortHafta": "Последние 4 недели",
+  "stilGunluguRaporEnCokParcalar": "Самые носимые вещи"
 }

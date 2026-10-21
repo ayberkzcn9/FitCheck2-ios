@@ -21,6 +21,8 @@ class HaftalikRaporVerisi {
     required this.seriGun,
     required this.gunler,
     required this.hicGiyilmemis,
+    this.sonDortHafta = const <int>[],
+    this.enCokParcalar = const <ParcaSayisi>[],
   });
 
   /// Pencerenin ilk günü (bugün - 6).
@@ -54,6 +56,12 @@ class HaftalikRaporVerisi {
   /// Dolapta hiç giyilmemiş parça sayısı.
   final int hicGiyilmemis;
 
+  /// Son 4 haftanın kombin sayısı (en eskiden bugüne).
+  final List<int> sonDortHafta;
+
+  /// Pencerede en sık giyilen parçalar (adet büyükten küçüğe).
+  final List<ParcaSayisi> enCokParcalar;
+
   /// Bu hafta dolabın yüzde kaçı kullanıldı (0-100).
   int get kullanimYuzdesi {
     if (toplamParcaSayisi <= 0) return 0;
@@ -65,6 +73,12 @@ class HaftalikRaporVerisi {
   int get degisim => kombinSayisi - oncekiHaftaKombinSayisi;
 
   bool get bos => kombinSayisi == 0;
+
+  /// Son 4 haftanın en yüksek kombin sayısı (grafik ölçeklemesi için).
+  int get haftalikZirve {
+    if (sonDortHafta.isEmpty) return 0;
+    return sonDortHafta.reduce((a, b) => a > b ? a : b);
+  }
 
   static HaftalikRaporVerisi hesapla({
     required List<Map<String, String>> gecmis,
@@ -80,10 +94,17 @@ class HaftalikRaporVerisi {
     final giyilenGunler = <String>{};
     var kombinSayisi = 0;
     var oncekiHafta = 0;
+    final haftaSayaclari = List<int>.filled(4, 0);
 
     for (final kayit in gecmis) {
       final tarih = _tarihCoz(kayit['tarih']?.trim() ?? '');
       if (tarih == null) continue;
+
+      // Son 4 hafta (bu hafta dahil): 0 = üç hafta önce, 3 = bu hafta.
+      final gunFarki = bugun.difference(tarih).inDays;
+      if (gunFarki >= 0 && gunFarki < 28) {
+        haftaSayaclari[3 - (gunFarki ~/ 7)]++;
+      }
 
       final pencerede = !tarih.isBefore(baslangic) && !tarih.isAfter(bugun);
       final oncekiPencerede =
@@ -135,6 +156,15 @@ class HaftalikRaporVerisi {
       seriGun: seri,
       gunler: gunler,
       hicGiyilmemis: gardirobum.where((k) => k.giyilmeSayisi == 0).length,
+      sonDortHafta: haftaSayaclari,
+      enCokParcalar: (parcaSayaci.entries.toList()
+            ..sort((a, b) {
+              final fark = b.value.compareTo(a.value);
+              return fark != 0 ? fark : a.key.compareTo(b.key);
+            }))
+          .take(3)
+          .map((e) => ParcaSayisi(ad: e.key, adet: e.value))
+          .toList(),
     );
   }
 
@@ -156,4 +186,12 @@ class HaftalikRaporVerisi {
     if (yil == null || ay == null || gun == null) return null;
     return DateTime(yil, ay, gun);
   }
+}
+
+/// Rapor ekranında "en çok giyilen" listesi için tek satır.
+class ParcaSayisi {
+  const ParcaSayisi({required this.ad, required this.adet});
+
+  final String ad;
+  final int adet;
 }

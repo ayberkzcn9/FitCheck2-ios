@@ -92,9 +92,16 @@ void main() {
     await tester.tap(find.text('Rapor'));
     await tester.pumpAndSettle();
 
-    expect(find.textContaining('kombin giyindin'), findsOneWidget);
+    // Büyük sayı + etiketi (eski "3 kombin giyindin" cümlesi yerine).
+    expect(find.text('2'), findsWidgets);
+    expect(find.text('Bu hafta giyilen kombin'), findsOneWidget);
+    expect(find.text('Son 4 hafta'), findsOneWidget);
+    expect(find.text('En çok giydiklerin'), findsOneWidget);
+    // En çok giyilen parça listenin başında ve adediyle görünür.
+    expect(find.text('Siyah Pantolon'), findsOneWidget);
+    expect(find.text('×2'), findsOneWidget);
     expect(find.text('Dolap kullanımı'), findsOneWidget);
-    expect(find.text('En çok giyilen'), findsOneWidget);
+    expect(find.text('En çok giyilen'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 

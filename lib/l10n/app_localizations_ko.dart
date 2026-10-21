@@ -3158,4 +3158,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get geriAl => '실행 취소';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => '이번 주 착용한 코디';
+
+  @override
+  String get stilGunluguRaporDortHafta => '최근 4주';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => '가장 많이 입은 아이템';
 }

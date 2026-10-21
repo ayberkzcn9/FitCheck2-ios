@@ -567,6 +567,11 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         : rapor.degisim < 0
             ? '${rapor.degisim}'
             : '0';
+    final farkRengi = rapor.degisim > 0
+        ? AppAccents.success
+        : rapor.degisim < 0
+            ? AppAccents.error
+            : colors.onPrimaryContainer;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
@@ -584,51 +589,93 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   colors.surfaceContainerHighest.withValues(alpha: 0.75),
                 ],
               ),
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(AppRadius.xxl),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  l10n.stilGunluguRaporOzet('${rapor.kombinSayisi}'),
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
-                    color: colors.onPrimaryContainer,
-                  ),
+                // Büyük sayı: haftanın tek bakışta okunan değeri.
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      '${rapor.kombinSayisi}',
+                      style: TextStyle(
+                        fontSize: 44,
+                        height: 1.0,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -1.5,
+                        color: colors.onPrimaryContainer,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          l10n.stilGunluguRaporSayiEtiketi,
+                          style: TextStyle(
+                            fontSize: AppText.body.fontSize,
+                            height: 1.25,
+                            fontWeight: FontWeight.w600,
+                            color: colors.onPrimaryContainer
+                                .withValues(alpha: 0.85),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  l10n.stilGunluguRaporGecenHafta(fark),
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: colors.onPrimaryContainer
-                        .withValues(alpha: 0.75),
+                if (rapor.kombinSayisi > 0) ...[
+                  const SizedBox(height: 8),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: farkRengi.withValues(alpha: 0.14),
+                        borderRadius: BorderRadius.circular(AppRadius.sm),
+                      ),
+                      child: Text(
+                        l10n.stilGunluguRaporGecenHafta(fark),
+                        style: TextStyle(
+                          fontSize: AppText.labelSmall.fontSize,
+                          fontWeight: FontWeight.w700,
+                          color: farkRengi,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                _haftaSeridi(rapor, colors),
+                ],
                 const SizedBox(height: 18),
+                _haftaSeridi(rapor, colors),
+                const SizedBox(height: 20),
+                _dortHaftaGrafik(rapor, l10n, colors),
+                if (rapor.enCokParcalar.isNotEmpty) ...[
+                  const SizedBox(height: 18),
+                  _enCokParcalar(rapor, l10n, colors),
+                ],
+                const SizedBox(height: 16),
                 _raporSatiri(
                   l10n.stilGunluguRaporKullanim,
                   '%${rapor.kullanimYuzdesi}',
                   colors,
+                  oran: rapor.kullanimYuzdesi / 100,
                 ),
-                _raporSatiri(
-                  l10n.stilGunluguRaporEnCok,
-                  rapor.enCokParca ?? '-',
-                  colors,
-                ),
-                _raporSatiri(
-                  l10n.stilGunluguRaporSeri,
-                  '${rapor.seriGun}',
-                  colors,
-                ),
-                _raporSatiri(
-                  l10n.stilGunluguRaporHicGiyilmemis,
-                  '${rapor.hicGiyilmemis}',
-                  colors,
-                ),
+                // Sıfır değerli satırlar gösterilmez: bilgi taşımıyor.
+                if (rapor.seriGun > 0)
+                  _raporSatiri(
+                    l10n.stilGunluguRaporSeri,
+                    '${rapor.seriGun}',
+                    colors,
+                  ),
+                if (rapor.hicGiyilmemis > 0)
+                  _raporSatiri(
+                    l10n.stilGunluguRaporHicGiyilmemis,
+                    '${rapor.hicGiyilmemis}',
+                    colors,
+                  ),
               ],
             ),
           ),
@@ -654,6 +701,135 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         ),
       ],
     );
+  }
+
+  /// Son 4 haftanın mini çubuk grafiği (sayılar dile bağlı değil).
+  Widget _dortHaftaGrafik(
+    HaftalikRaporVerisi rapor,
+    AppLocalizations l10n,
+    ColorScheme colors,
+  ) {
+    final zirve = rapor.haftalikZirve;
+    final haftalar = rapor.sonDortHafta;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.stilGunluguRaporDortHafta,
+          style: TextStyle(
+            fontSize: AppText.labelSmall.fontSize,
+            fontWeight: FontWeight.w700,
+            color: colors.onPrimaryContainer.withValues(alpha: 0.75),
+          ),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 74,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              for (var i = 0; i < haftalar.length; i++)
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          '${haftalar[i]}',
+                          style: TextStyle(
+                            fontSize: AppText.labelSmall.fontSize,
+                            fontWeight: FontWeight.w800,
+                            color: colors.onPrimaryContainer,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Container(
+                          height: zirve == 0
+                              ? 4
+                              : 6 + (34 * (haftalar[i] / zirve)).clamp(0, 34),
+                          decoration: BoxDecoration(
+                            color: i == haftalar.length - 1
+                                ? AppAccents.success
+                                : colors.onPrimaryContainer
+                                    .withValues(alpha: 0.22),
+                            borderRadius: BorderRadius.circular(AppRadius.sm),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Haftanın en çok giyilen 3 parçası (görsel + adet).
+  Widget _enCokParcalar(
+    HaftalikRaporVerisi rapor,
+    AppLocalizations l10n,
+    ColorScheme colors,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.stilGunluguRaporEnCokParcalar,
+          style: TextStyle(
+            fontSize: AppText.labelSmall.fontSize,
+            fontWeight: FontWeight.w700,
+            color: colors.onPrimaryContainer.withValues(alpha: 0.75),
+          ),
+        ),
+        const SizedBox(height: 8),
+        for (final parca in rapor.enCokParcalar)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 32,
+                  height: 32,
+                  child: _parcaGorseli(_parcaBul(parca.ad)),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    parca.ad,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: AppText.bodySmall.fontSize,
+                      fontWeight: FontWeight.w600,
+                      color: colors.onPrimaryContainer,
+                    ),
+                  ),
+                ),
+                Text(
+                  '×${parca.adet}',
+                  style: TextStyle(
+                    fontSize: AppText.bodySmall.fontSize,
+                    fontWeight: FontWeight.w800,
+                    color: colors.onPrimaryContainer.withValues(alpha: 0.8),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+
+  /// Parça adından dolap kaydını bulur (rapor görselleri için).
+  Kiyafet? _parcaBul(String ad) {
+    for (final parca in widget.gardirobum) {
+      if (parca.gorunenBaslik == ad) return parca;
+    }
+    return null;
   }
 
   Widget _haftaSeridi(HaftalikRaporVerisi rapor, ColorScheme colors) {
@@ -690,28 +866,52 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     );
   }
 
-  Widget _raporSatiri(String etiket, String deger, ColorScheme colors) {
+  Widget _raporSatiri(
+    String etiket,
+    String deger,
+    ColorScheme colors, {
+    double? oran,
+  }) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Column(
         children: [
-          Expanded(
-            child: Text(
-              etiket,
-              style: TextStyle(
-                fontSize: 13,
-                color: colors.onPrimaryContainer.withValues(alpha: 0.8),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  etiket,
+                  style: TextStyle(
+                    fontSize: AppText.bodySmall.fontSize,
+                    color: colors.onPrimaryContainer.withValues(alpha: 0.8),
+                  ),
+                ),
+              ),
+              Text(
+                deger,
+                style: TextStyle(
+                  fontSize: AppText.body.fontSize,
+                  fontWeight: FontWeight.w900,
+                  color: colors.onPrimaryContainer,
+                ),
+              ),
+            ],
+          ),
+          if (oran != null) ...[
+            const SizedBox(height: 6),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(AppRadius.sm),
+              child: LinearProgressIndicator(
+                value: oran.clamp(0.0, 1.0),
+                minHeight: 6,
+                backgroundColor:
+                    colors.onPrimaryContainer.withValues(alpha: 0.14),
+                valueColor: const AlwaysStoppedAnimation<Color>(
+                  AppAccents.success,
+                ),
               ),
             ),
-          ),
-          Text(
-            deger,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w900,
-              color: colors.onPrimaryContainer,
-            ),
-          ),
+          ],
         ],
       ),
     );

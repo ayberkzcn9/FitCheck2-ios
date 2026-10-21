@@ -3143,4 +3143,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get geriAl => '元に戻す';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => '今週着たコーデ';
+
+  @override
+  String get stilGunluguRaporDortHafta => '過去4週間';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'よく着たアイテム';
 }

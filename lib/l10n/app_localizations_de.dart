@@ -3308,4 +3308,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get geriAl => 'Rückgängig';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Getragene Outfits diese Woche';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'Letzte 4 Wochen';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'Meistgetragene Teile';
 }

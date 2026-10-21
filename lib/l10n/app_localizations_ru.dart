@@ -3279,4 +3279,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get geriAl => 'Отменить';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Образов надето за неделю';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'Последние 4 недели';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'Самые носимые вещи';
 }
