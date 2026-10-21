@@ -1180,5 +1180,15 @@
   "izinGerekceKameraBaslik": "Kleidung mit der Kamera hinzufügen",
   "izinGerekceKameraAciklama": "Wir verwenden die Kamera, um deine Kleidung als Fotos hinzuzufügen. Das Foto verlässt dein Gerät; Hintergrundentfernung sowie Farb- und Stilanalyse erfolgen auf unserem Server und werden nicht dauerhaft gespeichert.",
   "izinGerekceSimdiDegil": "Jetzt nicht",
-  "planOneriler": "Vorschläge"
+  "planOneriler": "Vorschläge",
+  "bilgiVerimlilik": "Die Garderobe-Effizienz zeigt, wie viele deiner Teile mindestens einmal getragen wurden. Über 60 % gilt als gesund; niedrigere Werte bedeuten ungenutzte Teile oder zu viele Käufe.",
+  "bilgiStil": "Deine Stil-Identität wird aus den häufigsten Merkmalen deiner Garderobe abgeleitet: Farbe, Kategorie und Stil-Tags. Kombinvorschläge richten sich danach.",
+  "bilgiSeri": "Die Serie ist die Zahl der Tage, an denen du hintereinander etwas getragen hast. Jedes „Heute getragen“ erhöht sie; ein ausgelassener Tag setzt sie zurück.",
+  "bilgiSepet": "Der Wäschekorb enthält Teile, die du getragen hast und waschen möchtest. Sie werden für den nächsten Kombinvorschlag nicht verwendet.",
+  "bilgiRenkPaleti": "Deine Farbpalette zeigt die Verteilung der vier häufigsten Farben in deiner Garderobe. Ähnliche Töne wirken harmonischer.",
+  "bilgiKategoriDagilimi": "Die Kategorieverteilung zeigt das Verhältnis von Oberteilen, Hosen, Schuhen und Accessoires. Zu viele Teile in einer Kategorie machen Outfits schwerer.",
+  "bilgiAnlikDurum": "Der Sofort-Status gibt dir einen kurzen Hinweis passend zum Wetter deiner Stadt und deiner Garderobe.",
+  "bilgiSeriBaslik": "Trage-Serie",
+  "bilgiKahramanlar": "Deine Garderobenhelden sind die am häufigsten getragenen Teile. Oft getragene Teile tauchen in mehr Outfits auf und halten deine Garderobe in Bewegung.",
+  "bilgiUnutulanlar": "Die vergessenen Teile sind Stücke, die nie getragen wurden oder lange nicht getragen wurden. Ungenutzte Teile können durch neue Outfits wiederbelebt werden."
 }

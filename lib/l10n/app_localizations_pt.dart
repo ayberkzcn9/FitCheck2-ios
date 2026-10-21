@@ -3375,4 +3375,43 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get planOneriler => 'Sugestões';
+
+  @override
+  String get bilgiVerimlilik =>
+      'A eficiência do guarda-roupa mostra a percentagem de peças que já usaste pelo menos uma vez. Acima de 60% é considerado saudável; menos indica peças por usar ou peças a mais.';
+
+  @override
+  String get bilgiStil =>
+      'A tua identidade de estilo vem das traços mais comuns do guarda-roupa: cor, categoria e etiquetas de estilo. As recomendações de look seguem esse perfil.';
+
+  @override
+  String get bilgiSeri =>
+      'A sequência é o número de dias consecutivos em que te vestiste. Cada «usei hoje» aumenta-a; saltar um dia reinicia-a.';
+
+  @override
+  String get bilgiSepet =>
+      'O cesto da roupa tem as peças que usaste e queres lavar. Não entram na próxima recomendação de look.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'A tua paleta de cores mostra a distribuição das quatro cores mais frequentes no guarda-roupa. Tons parecidos combinam melhor.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'A distribuição por categorias mostra o equilíbrio entre tops, bottoms, calçados e acessórios. Ter muitas peças numa categoria torna mais difícil criar looks.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'O estado instantâneo dá-te uma sugestão curta com base no tempo da tua cidade e no teu guarda-roupa.';
+
+  @override
+  String get bilgiSeriBaslik => 'Sequência de uso';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Os heróis do teu guarda-roupa são as peças que usas mais. As peças mais usadas aparecem em mais looks e mantêm o guarda-roupa em movimento.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'As peças esquecidas são as que nunca usaste ou que não usas há muito tempo. As peças por usar podem ressuscitar com novos looks.';
 }

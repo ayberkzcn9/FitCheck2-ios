@@ -3357,4 +3357,43 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get planOneriler => 'Öneriler';
+
+  @override
+  String get bilgiVerimlilik =>
+      'Dolap verimliliği, dolabındaki parçaların ne kadarının en az bir kez giyildiğini gösterir. %60 üzeri sağlıklı bir dolap için iyidir; daha düşükse bazı parçalar henüz kullanılmamış ya da fazla almışsındır.';
+
+  @override
+  String get bilgiStil =>
+      'Stil kimliğin, dolabındaki parçaların çoğunluğunun ortak özelliklerinden çıkarılır: renk, kategori ve tarz etiketi. Kombin önerileri bu profile göre sıralanır.';
+
+  @override
+  String get bilgiSeri =>
+      'Seri, üst üste giydiğin gün sayısıdır. Her «bugün giydim» işaretlemen seriye ekler; bir gün atlayınca seri sıfırlanır.';
+
+  @override
+  String get bilgiSepet =>
+      'Çamaşır sepeti, giydiğin ama henüz yıkamak istediğin parçalardır. Sepete attığın parçalar bir sonraki kombin önerisinde kullanılmaz.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'Renk paletin, dolabında en çok bulunan dört rengin dağılımını gösterir. Birbirine yakın tonlar kombinde daha uyumlu görünür.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'Kategori dağılımı, dolabının üst, alt, ayakkabı ve aksesuar dengesini gösterir. Tek bir kategoride fazla parça varsa kombin kurmak zorlaşır.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'Anlık durum, bulunduğun şehre göre hava durumuna ve dolabına uygun kısa bir öneri verir.';
+
+  @override
+  String get bilgiSeriBaslik => 'Giyme Serisi';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Dolabının kahramanları, dolabında en çok giyilen parçalardır. Sık giyilen parçalar kombinlerde daha çok yer alır ve gardırobunu sürdürür.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir.';
 }

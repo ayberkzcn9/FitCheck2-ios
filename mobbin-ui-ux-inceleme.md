@@ -290,6 +290,18 @@ istekle görüyordu. Artık önce kendi gerekçemiz gösteriliyor:
   (#16A34A) kullanılıyor; böylece "gri/gri tonları" dışındaki gömülü
   `Color(0x…)` kullanımı ekranlarda 28'de sabit kalıyor.
 
+### 4.6 Profil ölçütlerinde bilgi düğmeleri
+
+"Verimlilik %60" gibi sayılar kullanıcı için belirsizdi. Artık ölçüt başlığının
+yanında küçük bir **ⓘ** düğmesi var; dokununca cam panel içinde o ölçütün
+ne anlama geldiği kendi dilimizle anlatılıyor (12 dil).
+
+Bilgi verilen ölçütler: Dolap Verimliliği · Stil Kimliğin · Giyme Serisi ·
+Anlık Durum · Çamaşır Sepeti · Renk Paleti · Kategori Dağılımı ·
+Dolabın Kahramanları · Derinlerde Unutulanlar.
+
+Bileşen: `lib/widgets/bilgi_butonu.dart` (`BilgiButonu` + `BilgiSayfasi`).
+
 ---
 
 ## 5. Kopyalamayacağımız şeyler (bilinçli karar)

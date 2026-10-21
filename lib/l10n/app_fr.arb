@@ -1180,5 +1180,15 @@
   "izinGerekceKameraBaslik": "Ajouter des vêtements avec l'appareil photo",
   "izinGerekceKameraAciklama": "Nous utilisons l'appareil photo pour ajouter vos vêtements en photos. La photo quitte votre appareil ; la suppression du fond et l'analyse des couleurs/styles sont faites sur notre serveur, sans stockage permanent.",
   "izinGerekceSimdiDegil": "Pas maintenant",
-  "planOneriler": "Suggestions"
+  "planOneriler": "Suggestions",
+  "bilgiVerimlilik": "L'efficacité de la garde-robe indique la part de vos pièces portées au moins une fois. Au-delà de 60 %, c'est sain ; en dessous, certaines pièces ne sont jamais portées ou vous en avez trop.",
+  "bilgiStil": "Votre identité de style vient des traits les plus fréquents de votre garde-robe : couleur, catégorie et etiquetas de style. Les tenues proposées sont classées selon ce profil.",
+  "bilgiSeri": "La série est le nombre de jours consécutifs où vous vous êtes habillé. Chaque « porté aujourd'hui » l'augmente ; un jour manqué la remet à zéro.",
+  "bilgiSepet": "Le panier à linge contient les pièces que vous avez portées et que vous voulez laver. Elles ne sont pas utilisées dans la tenue suivante proposée.",
+  "bilgiRenkPaleti": "Votre palette montre la répartition des quatre couleurs les plus présentes dans votre garde-robe. Des teintes proches s'accordent mieux.",
+  "bilgiKategoriDagilimi": "La répartition par catégories montre l'équilibre entre hauts, bas, chaussures et accessoires. Trop de pièces dans une catégorie complique la création de tenues.",
+  "bilgiAnlikDurum": "Le statut instantané donne un bref conseil selon la météo de votre ville et votre garde-robe.",
+  "bilgiSeriBaslik": "Série de port",
+  "bilgiKahramanlar": "Les héros de votre garde-robe sont les pièces que vous portez le plus souvent. Les pièces les plus portées apparaissent dans plus de tenues et font tourner votre garde-robe.",
+  "bilgiUnutulanlar": "Les pièces oubliées sont celles que vous n'avez jamais portées ou portées très longtemps. Les pièces inutilisées peuvent revivre avec de nouvelles tenues."
 }

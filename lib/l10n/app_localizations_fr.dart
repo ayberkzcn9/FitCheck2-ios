@@ -3392,4 +3392,43 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get planOneriler => 'Suggestions';
+
+  @override
+  String get bilgiVerimlilik =>
+      'L\'efficacité de la garde-robe indique la part de vos pièces portées au moins une fois. Au-delà de 60 %, c\'est sain ; en dessous, certaines pièces ne sont jamais portées ou vous en avez trop.';
+
+  @override
+  String get bilgiStil =>
+      'Votre identité de style vient des traits les plus fréquents de votre garde-robe : couleur, catégorie et etiquetas de style. Les tenues proposées sont classées selon ce profil.';
+
+  @override
+  String get bilgiSeri =>
+      'La série est le nombre de jours consécutifs où vous vous êtes habillé. Chaque « porté aujourd\'hui » l\'augmente ; un jour manqué la remet à zéro.';
+
+  @override
+  String get bilgiSepet =>
+      'Le panier à linge contient les pièces que vous avez portées et que vous voulez laver. Elles ne sont pas utilisées dans la tenue suivante proposée.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'Votre palette montre la répartition des quatre couleurs les plus présentes dans votre garde-robe. Des teintes proches s\'accordent mieux.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'La répartition par catégories montre l\'équilibre entre hauts, bas, chaussures et accessoires. Trop de pièces dans une catégorie complique la création de tenues.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'Le statut instantané donne un bref conseil selon la météo de votre ville et votre garde-robe.';
+
+  @override
+  String get bilgiSeriBaslik => 'Série de port';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Les héros de votre garde-robe sont les pièces que vous portez le plus souvent. Les pièces les plus portées apparaissent dans plus de tenues et font tourner votre garde-robe.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'Les pièces oubliées sont celles que vous n\'avez jamais portées ou portées très longtemps. Les pièces inutilisées peuvent revivre avec de nouvelles tenues.';
 }

@@ -1180,5 +1180,15 @@
   "izinGerekceKameraBaslik": "Añade prendas con la cámara",
   "izinGerekceKameraAciklama": "Usamos la cámara para añadir tu ropa en fotos. La foto sale de tu dispositivo; el recorte de fondo y el análisis de color/estilo se hacen en nuestro servidor y no se guardan de forma permanente.",
   "izinGerekceSimdiDegil": "Ahora no",
-  "planOneriler": "Sugerencias"
+  "planOneriler": "Sugerencias",
+  "bilgiVerimlilik": "La eficiencia del armario muestra cuántas prendas has lucido al menos una vez. Por encima del 60 % se considera saludable; menos indica prendas sin usar o demasiadas prendas.",
+  "bilgiStil": "Tu identidad de estilo se calcula a partir de las características más comunes de tu armario: color, categoría y etiquetas de estilo. Las recomendaciones se ordenan con ese perfil.",
+  "bilgiSeri": "La racha es el número de días seguidos que te has vestido. Cada «me lo puse hoy» la aumenta; saltarte un día la reinicia.",
+  "bilgiSepet": "El cesto de la ropa contiene las prendas que te has puesto y quieres lavar. No se usan en la siguiente recomendación de look.",
+  "bilgiRenkPaleti": "Tu paleta de colores muestra la distribución de los cuatro colores más habituales en tu armario. Los tonos parecidos combinan mejor.",
+  "bilgiKategoriDagilimi": "La distribución por categorías muestra el equilibrio entre partes de arriba, de abajo, calzado y accesorios. Si tienes muchas prendas de una categoría, crear looks cuesta más.",
+  "bilgiAnlikDurum": "El estado instantáneo te da un consejo breve según el tiempo de tu ciudad y tu armario.",
+  "bilgiSeriBaslik": "Racha de uso",
+  "bilgiKahramanlar": "Los héroes de tu armario son las prendas que más llevas. Las prendas más usadas aparecen en más looks y mantienen tu armario en movimiento.",
+  "bilgiUnutulanlar": "Las piezas olvidadas son aquellas que nunca has lucido o que llevas mucho tiempo sin usar. Las piezas sin usar pueden revivir con nuevos looks."
 }

@@ -25,6 +25,7 @@ import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
 import 'package:fitcheck/screens/gardirobum_ekrani.dart';
+import 'package:fitcheck/screens/profil_analiz_ekrani.dart';
 import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/widgets/alt_menu_cubugu.dart';
 import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
@@ -409,6 +410,35 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('Profil ve analiz - bilgi düğmeleri', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        ProfilVeAnalizEkrani(
+          gardirobum: dolap,
+          favoriKombinler: const <FavoriKombin>[],
+          gecmisKombinler: gecmis,
+          gunlukHava: 'İstanbul 21°C · Parçalı Bulutlu',
+          anaRenk: Colors.indigo,
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '19_profil_analiz');
+
+    final dugme = find.byTooltip('Dolap Verimliliği').first;
+    await tester.ensureVisible(dugme);
+    await _bekle(tester);
+    await _ekranGorusu(tester, '20_profil_bilgi_dugmesi');
+
+    await tester.tap(dugme);
+    await _bekle(tester);
+    await _ekranGorusu(tester, '21_bilgi_sayfasi');
+
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('Haftalik planlayici', (tester) async {
     SharedPreferences.setMockInitialValues(<String, Object>{});
     await telefon(tester);
@@ -451,8 +481,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('gardirobum arama', (tester) async {
-    // Ekran açılışta .env okuyor.
+  testWidgets('gardirobum arama', (tester) async {    // Ekran açılışta .env okuyor.
     dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
 
     await telefon(tester);

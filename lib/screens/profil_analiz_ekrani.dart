@@ -12,6 +12,7 @@ import '../l10n/app_localizations.dart';
 
 import 'profil_bilesenleri/profil_widgets.dart';
 import '../../theme/design_tokens.dart';
+import '../widgets/bilgi_butonu.dart';
 
 class ProfilVeAnalizEkrani extends StatefulWidget {
   final List<Kiyafet> gardirobum;
@@ -694,7 +695,12 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
     if (mounted) setState(() {});
   }
 
-  Widget _bolumBasligi(String text, {String? emoji}) {
+  Widget _bolumBasligi(
+    String text, {
+    String? emoji,
+    String? bilgiBaslik,
+    String? bilgiAciklama,
+  }) {
     final colors = Theme.of(context).colorScheme;
 
     return Padding(
@@ -716,6 +722,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
               ),
             ),
           ),
+          if (bilgiBaslik != null && bilgiAciklama != null)
+            BilgiButonu(baslik: bilgiBaslik, aciklama: bilgiAciklama),
         ],
       ),
     );
@@ -920,6 +928,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       ikonRenk: const Color(0xFFEA580C),
                       baslik: l10n.harikaGidiyorsun,
                       deger: l10n.gundurSeridesin(analiz.seri),
+                      bilgiBaslik: l10n.bilgiSeriBaslik,
+                      bilgiAciklama: l10n.bilgiSeri,
                     ),
                     const SizedBox(height: 16),
                   ],
@@ -931,6 +941,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                     ikonRenk: const Color(0xFF0284C7),
                     baslik: l10n.anlikDurum,
                     deger: _havayiFormatla(l10n),
+                    bilgiBaslik: l10n.anlikDurum,
+                    bilgiAciklama: l10n.bilgiAnlikDurum,
                   ),
                   const SizedBox(height: 16),
 
@@ -953,13 +965,23 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                l10n.camasirSepetiTitle,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w900,
-                                  color: colors.onSurface,
-                                ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      l10n.camasirSepetiTitle,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w900,
+                                        color: colors.onSurface,
+                                      ),
+                                    ),
+                                  ),
+                                  BilgiButonu(
+                                    baslik: l10n.camasirSepetiTitle,
+                                    aciklama: l10n.bilgiSepet,
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 4),
                               Text(
@@ -1008,6 +1030,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       ikonRenk: const Color(0xFF7C3AED),
                       deger: stil,
                       baslik: l10n.stilKimligin,
+                      bilgiBaslik: l10n.stilKimligin,
+                      bilgiAciklama: l10n.bilgiStil,
                     ),
                     sag: _ProfilOzetKarti(
                       icon: Icons.eco_rounded,
@@ -1015,6 +1039,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       ikonRenk: AppAccents.success,
                       deger: '%${(analiz.verimlilik * 100).toStringAsFixed(0)}',
                       baslik: l10n.dolapVerimliligi,
+                      bilgiBaslik: l10n.dolapVerimliligi,
+                      bilgiAciklama: l10n.bilgiVerimlilik,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -1038,7 +1064,12 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
 
                   // RENK PALETI BOLUMU
                   if (analiz.renkler.isNotEmpty) ...[
-                    _bolumBasligi(l10n.renkPaletin, emoji: '🎨'),
+                    _bolumBasligi(
+                      l10n.renkPaletin,
+                      emoji: '🎨',
+                      bilgiBaslik: l10n.renkPaletin,
+                      bilgiAciklama: l10n.bilgiRenkPaleti,
+                    ),
                     _ProfilKart(
                       child: LayoutBuilder(
                         builder: (context, constraints) {
@@ -1129,6 +1160,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                     _bolumBasligi(
                       l10n.dolabinKahramanlari,
                       emoji: '🦸‍♂️',
+                      bilgiBaslik: l10n.dolabinKahramanlari,
+                      bilgiAciklama: l10n.bilgiKahramanlar,
                     ),
                     _kiyafetSeridi(
                       analiz.kahramanlar,
@@ -1141,6 +1174,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                     _bolumBasligi(
                       l10n.derinlerdeUnutulanlar,
                       emoji: '👻',
+                      bilgiBaslik: l10n.derinlerdeUnutulanlar,
+                      bilgiAciklama: l10n.bilgiUnutulanlar,
                     ),
                     _kiyafetSeridi(
                       analiz.unutulanlar,
@@ -1149,7 +1184,12 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   ],
 
                   // KATEGORI DAGILIMI
-                  _bolumBasligi(l10n.kategoriDagilimi, emoji: '📊'),
+                  _bolumBasligi(
+                    l10n.kategoriDagilimi,
+                    emoji: '📊',
+                    bilgiBaslik: l10n.kategoriDagilimi,
+                    bilgiAciklama: l10n.bilgiKategoriDagilimi,
+                  ),
                   _ProfilKart(
                     child: Column(
                       children: [
@@ -1368,12 +1408,18 @@ class _ProfilBilgiKarti extends StatelessWidget {
   final String baslik;
   final String deger;
 
+  /// Başlığın yanındaki bilgi düğmesi (ölçütün ne anlama geldiği).
+  final String? bilgiBaslik;
+  final String? bilgiAciklama;
+
   const _ProfilBilgiKarti({
     required this.icon,
     this.bgRenk,
     this.ikonRenk,
     required this.baslik,
     required this.deger,
+    this.bilgiBaslik,
+    this.bilgiAciklama,
   });
 
   @override
@@ -1393,13 +1439,24 @@ class _ProfilBilgiKarti extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  baslik,
-                  style: TextStyle(
-                    color: colors.onSurfaceVariant,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w800,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        baslik,
+                        style: TextStyle(
+                          color: colors.onSurfaceVariant,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    if (bilgiBaslik != null && bilgiAciklama != null)
+                      BilgiButonu(
+                        baslik: bilgiBaslik!,
+                        aciklama: bilgiAciklama!,
+                      ),
+                  ],
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -1427,12 +1484,18 @@ class _ProfilOzetKarti extends StatelessWidget {
   final String deger;
   final String baslik;
 
+  /// Başlığın yanındaki bilgi düğmesi (ölçütün ne anlama geldiği).
+  final String? bilgiBaslik;
+  final String? bilgiAciklama;
+
   const _ProfilOzetKarti({
     required this.icon,
     this.bgRenk,
     this.ikonRenk,
     required this.deger,
     required this.baslik,
+    this.bilgiBaslik,
+    this.bilgiAciklama,
   });
 
   @override
@@ -1460,13 +1523,21 @@ class _ProfilOzetKarti extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          Text(
-            baslik,
-            style: TextStyle(
-              color: colors.onSurfaceVariant,
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  baslik,
+                  style: TextStyle(
+                    color: colors.onSurfaceVariant,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              if (bilgiBaslik != null && bilgiAciklama != null)
+                BilgiButonu(baslik: bilgiBaslik!, aciklama: bilgiAciklama!),
+            ],
           ),
         ],
       ),

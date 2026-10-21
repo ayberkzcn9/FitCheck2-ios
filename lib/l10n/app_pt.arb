@@ -1180,5 +1180,15 @@
   "izinGerekceKameraBaslik": "Adiciona peças com a câmara",
   "izinGerekceKameraAciklama": "Usamos a câmara para adicionar as suas peças em fotos. A foto sai do dispositivo; a remoção de fundo e a análise de cor/estilo são feitas no nosso servidor e não são guardadas.",
   "izinGerekceSimdiDegil": "Agora não",
-  "planOneriler": "Sugestões"
+  "planOneriler": "Sugestões",
+  "bilgiVerimlilik": "A eficiência do guarda-roupa mostra a percentagem de peças que já usaste pelo menos uma vez. Acima de 60% é considerado saudável; menos indica peças por usar ou peças a mais.",
+  "bilgiStil": "A tua identidade de estilo vem das traços mais comuns do guarda-roupa: cor, categoria e etiquetas de estilo. As recomendações de look seguem esse perfil.",
+  "bilgiSeri": "A sequência é o número de dias consecutivos em que te vestiste. Cada «usei hoje» aumenta-a; saltar um dia reinicia-a.",
+  "bilgiSepet": "O cesto da roupa tem as peças que usaste e queres lavar. Não entram na próxima recomendação de look.",
+  "bilgiRenkPaleti": "A tua paleta de cores mostra a distribuição das quatro cores mais frequentes no guarda-roupa. Tons parecidos combinam melhor.",
+  "bilgiKategoriDagilimi": "A distribuição por categorias mostra o equilíbrio entre tops, bottoms, calçados e acessórios. Ter muitas peças numa categoria torna mais difícil criar looks.",
+  "bilgiAnlikDurum": "O estado instantâneo dá-te uma sugestão curta com base no tempo da tua cidade e no teu guarda-roupa.",
+  "bilgiSeriBaslik": "Sequência de uso",
+  "bilgiKahramanlar": "Os heróis do teu guarda-roupa são as peças que usas mais. As peças mais usadas aparecem em mais looks e mantêm o guarda-roupa em movimento.",
+  "bilgiUnutulanlar": "As peças esquecidas são as que nunca usaste ou que não usas há muito tempo. As peças por usar podem ressuscitar com novos looks."
 }

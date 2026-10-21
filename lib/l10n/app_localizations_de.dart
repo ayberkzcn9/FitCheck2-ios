@@ -3389,4 +3389,43 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get planOneriler => 'Vorschläge';
+
+  @override
+  String get bilgiVerimlilik =>
+      'Die Garderobe-Effizienz zeigt, wie viele deiner Teile mindestens einmal getragen wurden. Über 60 % gilt als gesund; niedrigere Werte bedeuten ungenutzte Teile oder zu viele Käufe.';
+
+  @override
+  String get bilgiStil =>
+      'Deine Stil-Identität wird aus den häufigsten Merkmalen deiner Garderobe abgeleitet: Farbe, Kategorie und Stil-Tags. Kombinvorschläge richten sich danach.';
+
+  @override
+  String get bilgiSeri =>
+      'Die Serie ist die Zahl der Tage, an denen du hintereinander etwas getragen hast. Jedes „Heute getragen“ erhöht sie; ein ausgelassener Tag setzt sie zurück.';
+
+  @override
+  String get bilgiSepet =>
+      'Der Wäschekorb enthält Teile, die du getragen hast und waschen möchtest. Sie werden für den nächsten Kombinvorschlag nicht verwendet.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'Deine Farbpalette zeigt die Verteilung der vier häufigsten Farben in deiner Garderobe. Ähnliche Töne wirken harmonischer.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'Die Kategorieverteilung zeigt das Verhältnis von Oberteilen, Hosen, Schuhen und Accessoires. Zu viele Teile in einer Kategorie machen Outfits schwerer.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'Der Sofort-Status gibt dir einen kurzen Hinweis passend zum Wetter deiner Stadt und deiner Garderobe.';
+
+  @override
+  String get bilgiSeriBaslik => 'Trage-Serie';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Deine Garderobenhelden sind die am häufigsten getragenen Teile. Oft getragene Teile tauchen in mehr Outfits auf und halten deine Garderobe in Bewegung.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'Die vergessenen Teile sind Stücke, die nie getragen wurden oder lange nicht getragen wurden. Ungenutzte Teile können durch neue Outfits wiederbelebt werden.';
 }

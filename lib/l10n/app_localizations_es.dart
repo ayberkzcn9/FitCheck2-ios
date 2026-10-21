@@ -3386,4 +3386,43 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get planOneriler => 'Sugerencias';
+
+  @override
+  String get bilgiVerimlilik =>
+      'La eficiencia del armario muestra cuántas prendas has lucido al menos una vez. Por encima del 60 % se considera saludable; menos indica prendas sin usar o demasiadas prendas.';
+
+  @override
+  String get bilgiStil =>
+      'Tu identidad de estilo se calcula a partir de las características más comunes de tu armario: color, categoría y etiquetas de estilo. Las recomendaciones se ordenan con ese perfil.';
+
+  @override
+  String get bilgiSeri =>
+      'La racha es el número de días seguidos que te has vestido. Cada «me lo puse hoy» la aumenta; saltarte un día la reinicia.';
+
+  @override
+  String get bilgiSepet =>
+      'El cesto de la ropa contiene las prendas que te has puesto y quieres lavar. No se usan en la siguiente recomendación de look.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'Tu paleta de colores muestra la distribución de los cuatro colores más habituales en tu armario. Los tonos parecidos combinan mejor.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'La distribución por categorías muestra el equilibrio entre partes de arriba, de abajo, calzado y accesorios. Si tienes muchas prendas de una categoría, crear looks cuesta más.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'El estado instantáneo te da un consejo breve según el tiempo de tu ciudad y tu armario.';
+
+  @override
+  String get bilgiSeriBaslik => 'Racha de uso';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Los héroes de tu armario son las prendas que más llevas. Las prendas más usadas aparecen en más looks y mantienen tu armario en movimiento.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'Las piezas olvidadas son aquellas que nunca has lucido o que llevas mucho tiempo sin usar. Las piezas sin usar pueden revivir con nuevos looks.';
 }

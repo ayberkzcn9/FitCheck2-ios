@@ -3182,4 +3182,35 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get planOneriler => '推荐';
+
+  @override
+  String get bilgiVerimlilik =>
+      '衣橱效率表示至少穿过一次的衣物占比。超过 60% 视为健康；低于此说明有衣物闲置或购买过多。';
+
+  @override
+  String get bilgiStil => '风格画像根据衣橱中最常见的特征计算：颜色、品类与风格标签。穿搭推荐按该画像排序。';
+
+  @override
+  String get bilgiSeri => '连续记录指连续穿着的天数。每次标记「今天穿了」都会增加，漏掉一天即归零。';
+
+  @override
+  String get bilgiSepet => '洗衣篮存放已穿过但想清洗的衣物。篮中衣物不会用于下一次穿搭推荐。';
+
+  @override
+  String get bilgiRenkPaleti => '配色板显示衣橱中出现最多的四种颜色的分布。相近色调搭配更协调。';
+
+  @override
+  String get bilgiKategoriDagilimi => '品类分布显示上衣、下装、鞋履与配饰的均衡情况。某一品类过多会难以搭配。';
+
+  @override
+  String get bilgiAnlikDurum => '即时状态根据所在城市的天气与你的衣橱给出简短建议。';
+
+  @override
+  String get bilgiSeriBaslik => '连续穿着记录';
+
+  @override
+  String get bilgiKahramanlar => '衣橱英雄是你最常穿的那些单品。常穿的单品会出现在更多搭配中，让衣橱保持流转。';
+
+  @override
+  String get bilgiUnutulanlar => '被遗忘的单品是你从未穿过或很久没穿的那些。未被使用的单品可以通过新搭配重新派上用场。';
 }

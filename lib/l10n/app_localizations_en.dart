@@ -3360,4 +3360,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get planOneriler => 'Suggestions';
+
+  @override
+  String get bilgiVerimlilik =>
+      'Wardrobe efficiency shows how many of your pieces have been worn at least once. Above 60% is considered healthy for a wardrobe; lower means some pieces are unused or you own too many.';
+
+  @override
+  String get bilgiStil =>
+      'Your style identity is derived from the most common traits of your wardrobe: colour, category and style tags. Outfit suggestions are ranked using this profile.';
+
+  @override
+  String get bilgiSeri =>
+      'The streak is the number of consecutive days you have dressed. Each “worn today” adds to it; skipping a day resets it.';
+
+  @override
+  String get bilgiSepet =>
+      'The laundry basket holds pieces you have worn but want to wash. Items in the basket are not used in the next outfit suggestion.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'Your colour palette shows the distribution of the four colours that appear most in your wardrobe. Similar shades look more harmonious together.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'Category distribution shows the balance between tops, bottoms, shoes and accessories. Too many pieces in one category makes outfits harder to build.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'Instant status gives you a short suggestion based on the weather in your city and your wardrobe.';
+
+  @override
+  String get bilgiSeriBaslik => 'Wearing Streak';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Your wardrobe heroes are the pieces you wear most often. Frequently worn pieces show up in more outfits and keep your wardrobe in rotation.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'Forgotten items are pieces you have never worn, or have not worn for a long time. Unused pieces can come back to life with new outfits.';
 }

@@ -1180,5 +1180,15 @@
   "izinGerekceKameraBaslik": "用相机添加衣物",
   "izinGerekceKameraAciklama": "我们使用相机把衣物添加为照片。照片会离开你的设备；背景去除与颜色/风格分析在服务器完成，不会永久保存。",
   "izinGerekceSimdiDegil": "暂不",
-  "planOneriler": "推荐"
+  "planOneriler": "推荐",
+  "bilgiVerimlilik": "衣橱效率表示至少穿过一次的衣物占比。超过 60% 视为健康；低于此说明有衣物闲置或购买过多。",
+  "bilgiStil": "风格画像根据衣橱中最常见的特征计算：颜色、品类与风格标签。穿搭推荐按该画像排序。",
+  "bilgiSeri": "连续记录指连续穿着的天数。每次标记「今天穿了」都会增加，漏掉一天即归零。",
+  "bilgiSepet": "洗衣篮存放已穿过但想清洗的衣物。篮中衣物不会用于下一次穿搭推荐。",
+  "bilgiRenkPaleti": "配色板显示衣橱中出现最多的四种颜色的分布。相近色调搭配更协调。",
+  "bilgiKategoriDagilimi": "品类分布显示上衣、下装、鞋履与配饰的均衡情况。某一品类过多会难以搭配。",
+  "bilgiAnlikDurum": "即时状态根据所在城市的天气与你的衣橱给出简短建议。",
+  "bilgiSeriBaslik": "连续穿着记录",
+  "bilgiKahramanlar": "衣橱英雄是你最常穿的那些单品。常穿的单品会出现在更多搭配中，让衣橱保持流转。",
+  "bilgiUnutulanlar": "被遗忘的单品是你从未穿过或很久没穿的那些。未被使用的单品可以通过新搭配重新派上用场。"
 }

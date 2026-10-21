@@ -1180,5 +1180,15 @@
   "izinGerekceKameraBaslik": "Aggiungi capi con la fotocamera",
   "izinGerekceKameraAciklama": "Usiamo la fotocamera per aggiungere i tuoi capi come foto. La foto lascia il dispositivo; rimozione dello sfondo e analisi di colore/stile avvengono sul nostro server e non vengono conservate.",
   "izinGerekceSimdiDegil": "Non ora",
-  "planOneriler": "Suggerimenti"
+  "planOneriler": "Suggerimenti",
+  "bilgiVerimlilik": "L'efficienza del guardaroba indica la percentuale di capi indossati almeno una volta. Oltre il 60% è considerata sana; valori più bassi indicano capi mai usati o troppi acquisti.",
+  "bilgiStil": "La tua identità di stile deriva dalle caratteristiche più comuni del guardaroba: colore, categoria e tag di stile. I suggerimenti di outfit seguono questo profilo.",
+  "bilgiSeri": "La serie è il numero di giorni consecutivi in cui ti sei vestito. Ogni «indossato oggi» la aumenta; saltare un giorno la azzera.",
+  "bilgiSepet": "Il cesto della lavanderia contiene i capi che hai indossato e che vuoi lavare. Non vengono usati nel prossimo outfit suggerito.",
+  "bilgiRenkPaleti": "La tua palette mostra la distribuzione dei quattro colori più presenti nel guardaroba. Tonalità simili si abbinano meglio.",
+  "bilgiKategoriDagilimi": "La distribuzione per categorie mostra l'equilibrio tra maglie, pantaloni, scarpe e accessori. Troppi capi in una categoria rendono più difficile creare outfit.",
+  "bilgiAnlikDurum": "Lo stato istantaneo dà un breve consiglio in base al meteo della tua città e al tuo guardaroba.",
+  "bilgiSeriBaslik": "Serie di indossamento",
+  "bilgiKahramanlar": "Gli eroi del tuo guardaroba sono i capi che indossi più spesso. I capi più frequenti compaiono in più outfit e tengono in movimento il guardaroba.",
+  "bilgiUnutulanlar": "I capi dimenticati sono quelli mai indossati o portati da molto tempo. I capi inutilizzati possono tornare utili con nuovi outfit."
 }

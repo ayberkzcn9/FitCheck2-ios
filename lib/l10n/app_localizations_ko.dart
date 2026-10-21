@@ -3239,4 +3239,41 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get planOneriler => '추천';
+
+  @override
+  String get bilgiVerimlilik =>
+      '옷장 효율은 한 번이라도 입은 아이템의 비율입니다. 60%를 넘으면 건강한 상태로 봅니다. 더 낮으면 입지 않은 아이템이 있거나 너무 많이 산했다는 뜻입니다.';
+
+  @override
+  String get bilgiStil =>
+      '스타일 정체성은 옷장에 가장 많은 색상, 카테고리, 스타일 태그를 바탕으로 계산됩니다. 코디 제안도 이 프로필을 따릅니다.';
+
+  @override
+  String get bilgiSeri =>
+      '연속 기록은 연속으로 입은 날짜 수입니다. ‘오늘 입었어요’를 누를 때마다 늘어나고, 하루를 건너뛰면 초기화됩니다.';
+
+  @override
+  String get bilgiSepet => '세탁 바구니는 입었지만 아직 빨고 싶은 아이템입니다. 다음 코디 제안에는 쓰이지 않습니다.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      '컬러 팔레트는 옷장에서 가장 많이 있는 네 가지 색의 분포를 보여줍니다. 비슷한 색조끼리 더 잘 어울립니다.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      '카테고리 분포는 상의, 하의, 신발, 액세서리 균형을 보여줍니다. 한 카테고리가 몰리면 코디를 만들기 어려워집니다.';
+
+  @override
+  String get bilgiAnlikDurum => '즉시 상태는 도시의 날씨와 옷장을 바탕으로 짧은 조언을 제공합니다.';
+
+  @override
+  String get bilgiSeriBaslik => '착용 연속 기록';
+
+  @override
+  String get bilgiKahramanlar =>
+      '옱장의 히어로는 가장 자주 입는 아이템입니다. 자주 입는 아이템은 코디에 더 많이 등장하고 옷장을 계속 돌게 합니다.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      '잊힌 아이템은 한 번도 입지 않았거나 오랫동안 입지 않은 것입니다. 쓰지 않는 아이템도 새 코디로 다시 살릴 수 있습니다.';
 }

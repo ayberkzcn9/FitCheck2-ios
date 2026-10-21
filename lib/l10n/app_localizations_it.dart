@@ -3384,4 +3384,43 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get planOneriler => 'Suggerimenti';
+
+  @override
+  String get bilgiVerimlilik =>
+      'L\'efficienza del guardaroba indica la percentuale di capi indossati almeno una volta. Oltre il 60% è considerata sana; valori più bassi indicano capi mai usati o troppi acquisti.';
+
+  @override
+  String get bilgiStil =>
+      'La tua identità di stile deriva dalle caratteristiche più comuni del guardaroba: colore, categoria e tag di stile. I suggerimenti di outfit seguono questo profilo.';
+
+  @override
+  String get bilgiSeri =>
+      'La serie è il numero di giorni consecutivi in cui ti sei vestito. Ogni «indossato oggi» la aumenta; saltare un giorno la azzera.';
+
+  @override
+  String get bilgiSepet =>
+      'Il cesto della lavanderia contiene i capi che hai indossato e che vuoi lavare. Non vengono usati nel prossimo outfit suggerito.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'La tua palette mostra la distribuzione dei quattro colori più presenti nel guardaroba. Tonalità simili si abbinano meglio.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'La distribuzione per categorie mostra l\'equilibrio tra maglie, pantaloni, scarpe e accessori. Troppi capi in una categoria rendono più difficile creare outfit.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'Lo stato istantaneo dà un breve consiglio in base al meteo della tua città e al tuo guardaroba.';
+
+  @override
+  String get bilgiSeriBaslik => 'Serie di indossamento';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Gli eroi del tuo guardaroba sono i capi che indossi più spesso. I capi più frequenti compaiono in più outfit e tengono in movimento il guardaroba.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'I capi dimenticati sono quelli mai indossati o portati da molto tempo. I capi inutilizzati possono tornare utili con nuovi outfit.';
 }

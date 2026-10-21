@@ -1180,5 +1180,15 @@
   "izinGerekceKameraBaslik": "Add clothes with the camera",
   "izinGerekceKameraAciklama": "We use the camera to add your clothes as photos. The photo leaves your device; background removal and colour/style analysis happen on our server and are not stored permanently.",
   "izinGerekceSimdiDegil": "Not now",
-  "planOneriler": "Suggestions"
+  "planOneriler": "Suggestions",
+  "bilgiVerimlilik": "Wardrobe efficiency shows how many of your pieces have been worn at least once. Above 60% is considered healthy for a wardrobe; lower means some pieces are unused or you own too many.",
+  "bilgiStil": "Your style identity is derived from the most common traits of your wardrobe: colour, category and style tags. Outfit suggestions are ranked using this profile.",
+  "bilgiSeri": "The streak is the number of consecutive days you have dressed. Each “worn today” adds to it; skipping a day resets it.",
+  "bilgiSepet": "The laundry basket holds pieces you have worn but want to wash. Items in the basket are not used in the next outfit suggestion.",
+  "bilgiRenkPaleti": "Your colour palette shows the distribution of the four colours that appear most in your wardrobe. Similar shades look more harmonious together.",
+  "bilgiKategoriDagilimi": "Category distribution shows the balance between tops, bottoms, shoes and accessories. Too many pieces in one category makes outfits harder to build.",
+  "bilgiAnlikDurum": "Instant status gives you a short suggestion based on the weather in your city and your wardrobe.",
+  "bilgiSeriBaslik": "Wearing Streak",
+  "bilgiKahramanlar": "Your wardrobe heroes are the pieces you wear most often. Frequently worn pieces show up in more outfits and keep your wardrobe in rotation.",
+  "bilgiUnutulanlar": "Forgotten items are pieces you have never worn, or have not worn for a long time. Unused pieces can come back to life with new outfits."
 }

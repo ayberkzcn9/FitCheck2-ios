@@ -1,0 +1,146 @@
+// Küçük "bilgi" butonu ve açtığı açıklama sayfası.
+//
+// Profil & Analiz ekranındaki ölçütler (verimlilik, seri, renk paleti...)
+// kullanıcı için ne anlama geldiği açık değildi. Başlığın yanına konan bu
+// küçük düğme, dokununca o metriği kendi dilimizle anlatır.
+
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+
+import '../theme/design_tokens.dart';
+
+/// Başlıkların yanında görünen bilgi düğmesi.
+class BilgiButonu extends StatelessWidget {
+  const BilgiButonu({
+    super.key,
+    required this.baslik,
+    required this.aciklama,
+    this.ikon = Icons.info_outline_rounded,
+  });
+
+  /// Açılacak sayfanın başlığı (ölçütün adı).
+  final String baslik;
+
+  /// Açılacak sayfanın metni.
+  final String aciklama;
+
+  final IconData ikon;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return Tooltip(
+      message: baslik,
+      child: InkResponse(
+        onTap: () => BilgiSayfasi.goster(
+          context,
+          baslik: baslik,
+          aciklama: aciklama,
+        ),
+        radius: 18,
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Icon(
+            ikon,
+            size: 16,
+            color: colors.onSurfaceVariant.withValues(alpha: 0.8),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Ölçütün ne anlama geldiğini anlatan alt sayfa.
+class BilgiSayfasi {
+  const BilgiSayfasi._();
+
+  static Future<void> goster(
+    BuildContext context, {
+    required String baslik,
+    required String aciklama,
+  }) {
+    final colors = Theme.of(context).colorScheme;
+
+    return showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (sheetContext) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: AppBlur.cam,
+                  sigmaY: AppBlur.cam,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  padding: const EdgeInsets.fromLTRB(20, 22, 20, 14),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: colors.primary.withValues(alpha: 0.08),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.info_outline_rounded,
+                              size: 22,
+                              color: colors.primary,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              baslik,
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: -0.3,
+                                color: colors.onSurface,
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            tooltip: MaterialLocalizations.of(sheetContext)
+                                .closeButtonTooltip,
+                            onPressed: () => Navigator.of(sheetContext).pop(),
+                            icon: const Icon(Icons.close_rounded),
+                            visualDensity: VisualDensity.compact,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        aciklama,
+                        style: TextStyle(
+                          fontSize: 14,
+                          height: 1.4,
+                          color: colors.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

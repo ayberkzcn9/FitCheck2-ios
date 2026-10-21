@@ -3224,4 +3224,40 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get planOneriler => 'おすすめ';
+
+  @override
+  String get bilgiVerimlilik =>
+      'ワードローブ効率は、少なくとも一度でも着たアイテムの割合を示します。60%を超えると健全な状態とみなされ、下回ると着ていないアイテムや買いすぎの兆候があります。';
+
+  @override
+  String get bilgiStil =>
+      'スタイル身元は、ワードローブに多い色・カテゴリ・スタイルタグから計算されます。单品の提案はこのプロファイルに合わせて並び替わります。';
+
+  @override
+  String get bilgiSeri => '連続記録は、続けて着た日数です。「今日着た」を押すたびに増え、1日飛ばすとリセットされます。';
+
+  @override
+  String get bilgiSepet => '洗濯かごは、着たが洗いたいアイテムの置き場です。かごにあるアイテムは次の单品提案には使われません。';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'カラーパレットは、ワードローブで最も多い4色の分布を示します。似た色味どうしは相性がよく見えます。';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'カテゴリ分布は、トップス・ボトムス・靴・アクセソリーのバランスを示します。1つのカテゴリに偏ると、单品が作りにくくなります。';
+
+  @override
+  String get bilgiAnlikDurum => 'インスタント状態は、お住まいの天気とワードローブにもとづく短い提案を出します。';
+
+  @override
+  String get bilgiSeriBaslik => '着た連続記録';
+
+  @override
+  String get bilgiKahramanlar =>
+      'ワードローブのヒーローは、よく着ているアイテムです。着回しの多いアイテムは多くの提案に登場し、ワードローブを活着させます。';
+
+  @override
+  String get bilgiUnutulanlar =>
+      '忘れたアイテムは、着たことがない、または長く着ていないものです。使っていないアイテムも新しいコーデで復活します。';
 }

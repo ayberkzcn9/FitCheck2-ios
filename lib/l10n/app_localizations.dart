@@ -6201,6 +6201,66 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Öneriler'**
   String get planOneriler;
+
+  /// No description provided for @bilgiVerimlilik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolap verimliliği, dolabındaki parçaların ne kadarının en az bir kez giyildiğini gösterir. %60 üzeri sağlıklı bir dolap için iyidir; daha düşükse bazı parçalar henüz kullanılmamış ya da fazla almışsındır.'**
+  String get bilgiVerimlilik;
+
+  /// No description provided for @bilgiStil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stil kimliğin, dolabındaki parçaların çoğunluğunun ortak özelliklerinden çıkarılır: renk, kategori ve tarz etiketi. Kombin önerileri bu profile göre sıralanır.'**
+  String get bilgiStil;
+
+  /// No description provided for @bilgiSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seri, üst üste giydiğin gün sayısıdır. Her «bugün giydim» işaretlemen seriye ekler; bir gün atlayınca seri sıfırlanır.'**
+  String get bilgiSeri;
+
+  /// No description provided for @bilgiSepet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çamaşır sepeti, giydiğin ama henüz yıkamak istediğin parçalardır. Sepete attığın parçalar bir sonraki kombin önerisinde kullanılmaz.'**
+  String get bilgiSepet;
+
+  /// No description provided for @bilgiRenkPaleti.
+  ///
+  /// In tr, this message translates to:
+  /// **'Renk paletin, dolabında en çok bulunan dört rengin dağılımını gösterir. Birbirine yakın tonlar kombinde daha uyumlu görünür.'**
+  String get bilgiRenkPaleti;
+
+  /// No description provided for @bilgiKategoriDagilimi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kategori dağılımı, dolabının üst, alt, ayakkabı ve aksesuar dengesini gösterir. Tek bir kategoride fazla parça varsa kombin kurmak zorlaşır.'**
+  String get bilgiKategoriDagilimi;
+
+  /// No description provided for @bilgiAnlikDurum.
+  ///
+  /// In tr, this message translates to:
+  /// **'Anlık durum, bulunduğun şehre göre hava durumuna ve dolabına uygun kısa bir öneri verir.'**
+  String get bilgiAnlikDurum;
+
+  /// No description provided for @bilgiSeriBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giyme Serisi'**
+  String get bilgiSeriBaslik;
+
+  /// No description provided for @bilgiKahramanlar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabının kahramanları, dolabında en çok giyilen parçalardır. Sık giyilen parçalar kombinlerde daha çok yer alır ve gardırobunu sürdürür.'**
+  String get bilgiKahramanlar;
+
+  /// No description provided for @bilgiUnutulanlar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir.'**
+  String get bilgiUnutulanlar;
 }
 
 class _AppLocalizationsDelegate
