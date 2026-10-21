@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "Grigio chiaro",
   "duzenleZeminSaydam": "Trasparente",
   "duzenleKaydet": "Salva",
-  "duzenleVarsayilan": "Predefinito"
+  "duzenleVarsayilan": "Predefinito",
+  "arkaPlandaEkle": "Aggiungi in background",
+  "arkaPlandaEkleAciklama": "Puoi continuare a usare l'app; i tuoi capi vengono aggiunti in background.",
+  "arkaPlandaBasladi": "{count} foto vengono aggiunte in background",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "{count} di {toplam} elaborati",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "{count} capi aggiunti al tuo guardaroba",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} foto non sono stati elaborati",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

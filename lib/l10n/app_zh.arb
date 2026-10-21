@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "浅灰",
   "duzenleZeminSaydam": "透明",
   "duzenleKaydet": "保存",
-  "duzenleVarsayilan": "默认"
+  "duzenleVarsayilan": "默认",
+  "arkaPlandaEkle": "后台添加",
+  "arkaPlandaEkleAciklama": "你可以继续使用应用，衣物会在后台添加。",
+  "arkaPlandaBasladi": "正在后台添加 {count} 张照片",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "已处理 {count}/{toplam}",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "已向衣橱添加 {count} 件单品",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} 张照片无法处理",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

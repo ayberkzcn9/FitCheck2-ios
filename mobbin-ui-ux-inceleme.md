@@ -290,7 +290,33 @@ istekle görüyordu. Artık önce kendi gerekçemiz gösteriliyor:
   (#16A34A) kullanılıyor; böylece "gri/gri tonları" dışındaki gömülü
   `Color(0x…)` kullanımı ekranlarda 28'de sabit kalıyor.
 
-### 4.6 Profil ölçütlerinde bilgi düğmeleri
+### 4.6 Arka planda kıyafet yükleme
+
+Fotoğraf ekleme akışı ekranı kilitliyordu: 10 fotoğraf yüklenirken kullanıcı
+hiçbir şey yapamıyordu. Artık iki yol var:
+
+- **Ön plan** (mevcut): her fotoğraf için arka plan silme, **yerleşim
+  düzenleyicisi** ve kalite uyarıları; kullanıcı adım adım kontrol eder.
+- **Arka planda ekle** (yeni): seçilen fotoğraflar ekrandan bağımsız bir
+  serviste işlenir; kullanıcı uygulamayı kullanmaya devam eder.
+
+Teknik:
+- `lib/services/kilyafet_yukleme_servisi.dart` — tek kuyruk, `ValueNotifier`
+  ile ilerleme; arka plan silici ve analiz **enjekte edilebilir** (testler ağa
+  çıkmaz).
+- `lib/services/kiyafet_analiz_servisi.dart` — prompt + cevap ayrıştırma tek
+  yerde; ön plan ve arka plan akışı **aynı sonucu** verir.
+- AnaEkran'da ince ilerleme çubuğu (her sekmede görünür) + bitiş özeti.
+- Arka plan modunda kullanıcıya **soru sorulmaz**: kesim tutmazsa fotoğraf
+  atlanır ve özette bildirilir.
+
+### 4.7 Yerleşim düzenleyicisi (bu tur)
+
+Kesilmiş parça, dolaba eklenmeden önce kullanıcı tarafından tuvale yerleştirilebilir:
+zemin (beyaz / kırık beyaz / açık gri / saydam) + sürükleme + iki parmakla
+boyutlandırma. Birleştirme `image` paketiyle **ayrı izolasyonda** yapılır.
+
+### 4.8 Profil ölçütlerinde bilgi düğmeleri
 
 "Verimlilik %60" gibi sayılar kullanıcı için belirsizdi. Artık ölçüt başlığının
 yanında küçük bir **ⓘ** düğmesi var; dokununca cam panel içinde o ölçütün

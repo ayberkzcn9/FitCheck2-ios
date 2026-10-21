@@ -3459,4 +3459,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => 'Default';
+
+  @override
+  String get arkaPlandaEkle => 'Add in background';
+
+  @override
+  String get arkaPlandaEkleAciklama =>
+      'You can keep using the app; your pieces are added in the background.';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '$count photos are being added in the background';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return '$count of $toplam processed';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '$count pieces added to your wardrobe';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '$count photos could not be processed';
+  }
 }

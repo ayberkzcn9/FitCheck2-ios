@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "Gris clair",
   "duzenleZeminSaydam": "Transparent",
   "duzenleKaydet": "Enregistrer",
-  "duzenleVarsayilan": "Par défaut"
+  "duzenleVarsayilan": "Par défaut",
+  "arkaPlandaEkle": "Ajouter en arrière-plan",
+  "arkaPlandaEkleAciklama": "Tu peux continuer à utiliser l'application ; tes pièces sont ajoutées en arrière-plan.",
+  "arkaPlandaBasladi": "{count} photos sont ajoutées en arrière-plan",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "{count} sur {toplam} traités",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "{count} pièces ajoutées à ta garde-robe",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} photos n'ont pas pu être traitées",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

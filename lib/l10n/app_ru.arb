@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "Светло-серый",
   "duzenleZeminSaydam": "Прозрачный",
   "duzenleKaydet": "Сохранить",
-  "duzenleVarsayilan": "По умолчанию"
+  "duzenleVarsayilan": "По умолчанию",
+  "arkaPlandaEkle": "Добавить в фоне",
+  "arkaPlandaEkleAciklama": "Продолжай пользоваться приложением — вещи добавляются в фоне.",
+  "arkaPlandaBasladi": "{count} фото добавляются в фоне",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "Обработано {count} из {toplam}",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "{count} вещей добавлено в гардероб",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} фото не удалось обработать",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

@@ -3433,4 +3433,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => 'افتراضي';
+
+  @override
+  String get arkaPlandaEkle => 'أضِف في الخلفية';
+
+  @override
+  String get arkaPlandaEkleAciklama =>
+      'يمكنك متابعة استخدام التطبيق؛ تُضاف قطعك في الخلفية.';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return 'يتم إضافة $count صور في الخلفية';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return 'تمت معالجة $count من $toplam';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return 'تمت إضافة $count قطع إلى خزانتك';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return 'تعذّرت معالجة $count صور';
+  }
 }

@@ -6363,6 +6363,42 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Varsayılan'**
   String get duzenleVarsayilan;
+
+  /// No description provided for @arkaPlandaEkle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arka planda ekle'**
+  String get arkaPlandaEkle;
+
+  /// No description provided for @arkaPlandaEkleAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulamayı kullanmaya devam edebilirsin; parçalar arka planda eklenir.'**
+  String get arkaPlandaEkleAciklama;
+
+  /// No description provided for @arkaPlandaBasladi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} fotoğraf arka planda ekleniyor'**
+  String arkaPlandaBasladi(int count);
+
+  /// No description provided for @arkaPlandaIlerleme.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count}/{toplam} işlendi'**
+  String arkaPlandaIlerleme(int count, int toplam);
+
+  /// No description provided for @arkaPlandaTamamlandi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} parça dolabına eklendi'**
+  String arkaPlandaTamamlandi(int count);
+
+  /// No description provided for @arkaPlandaBaziAtlandi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} fotoğraf işlenemedi'**
+  String arkaPlandaBaziAtlandi(int count);
 }
 
 class _AppLocalizationsDelegate

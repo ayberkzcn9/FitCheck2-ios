@@ -3484,4 +3484,31 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => 'Predefinito';
+
+  @override
+  String get arkaPlandaEkle => 'Aggiungi in background';
+
+  @override
+  String get arkaPlandaEkleAciklama =>
+      'Puoi continuare a usare l\'app; i tuoi capi vengono aggiunti in background.';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '$count foto vengono aggiunte in background';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return '$count di $toplam elaborati';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '$count capi aggiunti al tuo guardaroba';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '$count foto non sono stati elaborati';
+  }
 }

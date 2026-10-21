@@ -281,6 +281,32 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('dolap - ekleme secenekleri (arka planda ekle)', (tester) async {
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        GardirobumEkrani(
+          gardirobum: const <Kiyafet>[],
+          onKiyafetEkle: (_) {},
+          onKiyafetSil: (_) {},
+          onGardirobuTemizle: () {},
+          onSepetToggle: (_) {},
+          anaRenk: Colors.indigo,
+        ),
+      ),
+    );
+    await _bekle(tester);
+
+    // Boş dolapta ortadaki "fotoğraf ekle" düğmesi seçenekleri açar.
+    await tester.tap(find.byIcon(Icons.add_a_photo_outlined));
+    await _bekle(tester);
+
+    await _ekranGorusu(tester, '24_dolap_ekleme_secenekleri');
+    expect(find.text('Arka planda ekle'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('Stil gunlugu - takvim', (tester) async {
     await telefon(tester);
     await tester.pumpWidget(

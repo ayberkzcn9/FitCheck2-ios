@@ -3336,4 +3336,30 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => '기본값';
+
+  @override
+  String get arkaPlandaEkle => '백그라운드에서 추가';
+
+  @override
+  String get arkaPlandaEkleAciklama => '앱을 계속 사용하세요. 아이템은 백그라운드에서 추가됩니다.';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '사진 $count장을 백그라운드에서 추가합니다';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return '$toplam개 중 $count개 처리';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '옷장에 $count개 아이템을 추가했습니다';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '사진 $count장을 처리하지 못했습니다';
+  }
 }

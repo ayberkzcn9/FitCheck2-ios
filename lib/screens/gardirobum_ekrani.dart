@@ -16,6 +16,8 @@ import '../services/background_removal_service.dart';
 import '../services/background_remover_service.dart';
 import '../services/gorsel_yon_service.dart';
 import '../services/kesim_kalite_denetimi.dart';
+import '../services/kiyafet_analiz_servisi.dart';
+import '../services/kilyafet_yukleme_servisi.dart';
 import '../services/reklam_servisi.dart';
 import '../services/satin_alma_servisi.dart';
 import '../utils/ana_ekran_dialoglar.dart';
@@ -763,7 +765,11 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               // İçerik küçük ekran/yatay modda taşmasın: çekim ipuçları
               // pencereye eklendiği için kaydırma gerekli.
               child: SingleChildScrollView(
-                child: Column(
+                child: // ListTile'lar kendi zeminini çizer; aralarında
+                    // Material olmazsa mürekkep sıçramaları görünmez.
+                    Material(
+                      type: MaterialType.transparency,
+                      child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -879,11 +885,43 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         _kiyafetEkleIslemi(ImageSource.gallery);
                       },
                     ),
+                    ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                      leading: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: colors.surfaceContainerHighest,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(Icons.cloud_upload_outlined, color: colors.onSurface, size: 22),
+                      ),
+                      title: Text(
+                        l10n.arkaPlandaEkle,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: colors.onSurface,
+                        ),
+                      ),
+                      subtitle: Text(
+                        l10n.arkaPlandaEkleAciklama,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: colors.onSurfaceVariant,
+                        ),
+                      ),
+                      onTap: () {
+                        HapticFeedback.selectionClick();
+                        Navigator.pop(bottomContext);
+                        _arkaPlandaEkleIslemi();
+                      },
+                    ),
                   ],
+                      ),
+                    ),
                 ),
               ),
             ),
-          ),
         );
       },
     );
@@ -911,6 +949,53 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  /// Fotoğrafları **arka planda** ekler: ekran kilitlenmez, kullanıcı
+  /// uygulamayı kullanmaya devam eder. İlerleme uygulamanın her yerinde
+  /// ince bir çubuk olarak görünür.
+  Future<void> _arkaPlandaEkleIslemi() async {
+    final l10n = AppLocalizations.of(context)!;
+    final colors = Theme.of(context).colorScheme;
+
+    final maxLimit = await ReklamServisi().maxKiyafetLimitiniGetir();
+    if (!mounted) return;
+
+    final kalanSlot = maxLimit - widget.gardirobum.length;
+    if (kalanSlot <= 0) {
+      AnaEkranDialoglar.gardiropLimitiDolduDiyaloguGoster(
+        context: context,
+        anaRenk: widget.anaRenk,
+        maxLimit: maxLimit,
+      );
+      return;
+    }
+
+    final files = await _picker.pickMultiImage(
+      maxWidth: 1600,
+      maxHeight: 1600,
+      imageQuality: 90,
+    );
+    if (files.isEmpty || !mounted) return;
+
+    final dil = aiHedefDil(Localizations.localeOf(context).languageCode);
+
+    // İş ekrandan bağımsız sürer; ekran kapansa da parçalar eklenir.
+    await KilyafetYuklemeServisi().baslat(
+      dosyalar: files,
+      dil: dil,
+      parcaEklendi: (kiyafet) async => widget.onKiyafetEkle(kiyafet),
+    );
+
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(l10n.arkaPlandaBasladi(files.length)),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        backgroundColor: colors.primary,
       ),
     );
   }
@@ -1114,38 +1199,10 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             _currentStep = 'ai_analysis';
           });
 
-          final analiz = await _gorselAnaliziniTekrarDene(
-            sistemPromptu: "Sen uzman bir moda analiz sistemisin. Görseli KUMAŞ KESİMİ, SİLÜETİ VE TÜRÜNE göre incele.\n"
-                "ETEK vs PANTOLON: Bacak arası ağ dikişi VARSA 'alt' (pantolon/şort). Bacak ayrımı YOKSA ve tek parça aşağı iniyorsa ETEKtir ('alt').\n\n"
-                "ÜRÜN İSİMLENDİRME KURALI (ÇOK ÖNEMLİ):\n"
-                "Ürün adını ('baslik') KESİNLİKLE VE SADECE 3 KELİME olarak yaz. Ne eksik, ne fazla.\n"
-                "Format: [Renk] [Desen veya Kumaş] [Tür].\n"
-                "Doğru Örnekler: 'Mavi Kot Pantolon', 'Siyah Deri Ceket', 'Beyaz Spor Ayakkabı'.\n"
-                "Yanlış Örnekler: 'Çok Şık Siyah Elbise' (4 kelime - YASAK), 'Kırmızı Tişört' (2 kelime - YASAK).\n"
-                "ASLA 'Şık', 'Güzel', 'Modern' gibi sıfatlar kullanma!\n\n"
-                "MEVSİM KURALI: Kıyafetin kalınlığına ve kumaşına göre 'mevsim' alanına SADECE şu üç değerden birini yaz: 'kislik' (mont, kaban, yün, kalın triko, bot gibi soğuk hava parçaları), 'yazlik' (şort, keten, askılı, sandalet gibi ince yaz parçaları), 'dort_mevsim' (tişört, kot, spor ayakkabı gibi her mevsim giyilebilen parçalar). Bu değerleri ÇEVİRME, aynen yaz.\n\n"
-                "SADECE şu JSON formatında ver ($aiDili dilinde):\n"
-                "{\n  \"baslik\": \"3 Kelimelik Ürün Adı\",\n  \"kategori\": \"ust veya alt veya ayakkabi veya aksesuar\",\n  \"renk\": \"Renk\",\n  \"stil\": \"Tarz\",\n  \"mevsim\": \"kislik veya yazlik veya dort_mevsim\"\n}",
-            kullaniciMesaji: "Bu kıyafeti detaylı analiz et ve JSON ver.",
-            // AI daima temiz kesimi görür (zemin rengi analizi etkilemesin).
-            resimBytes: kesimBytes,
+          final analiz = await KiyafetAnalizServisi.analizEt(
+            resim: kesimBytes,
+            dil: aiDili,
           );
-
-          String clean = analiz.replaceAll(RegExp(r'```json\s*|```\s*'), '').trim();
-          final int firstBrace = clean.indexOf('{');
-          final int lastBrace = clean.lastIndexOf('}');
-          if (firstBrace != -1 && lastBrace != -1) {
-            clean = clean.substring(firstBrace, lastBrace + 1);
-          }
-
-          final Map<String, dynamic> parsed = safeJsonDecodeMap(clean, tag: 'ai_analiz');
-
-          String aiBaslik = metniGuvenliYap(parsed['baslik'] ?? 'Yeni Giyim Parçası');
-          List<String> kelimeler = aiBaslik.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
-
-          if (kelimeler.length > 3) {
-            aiBaslik = kelimeler.take(3).join(" ");
-          }
 
           // 🔧 Benzersiz ID: timestamp + static counter + random + bytes length
           _idCounter++;
@@ -1159,12 +1216,12 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           widget.onKiyafetEkle(
             Kiyafet(
               id: uniqueId,
-              baslik: aiBaslik,
-              kategori: (parsed['kategori'] ?? 'ust').toString().toLowerCase(),
+              baslik: analiz.baslik,
+              kategori: analiz.kategori,
               resimBytes: kaydedilecekBytes,
-              renk: metniGuvenliYap(parsed['renk'] ?? 'Bilinmiyor'),
-              stil: metniGuvenliYap(parsed['stil'] ?? 'Casual'),
-              mevsim: mevsimEtiketiniNormallestir(parsed['mevsim']),
+              renk: analiz.renk,
+              stil: analiz.stil,
+              mevsim: analiz.mevsim,
               fiyat: 0.0,
             ),
           );

@@ -3460,4 +3460,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => 'По умолчанию';
+
+  @override
+  String get arkaPlandaEkle => 'Добавить в фоне';
+
+  @override
+  String get arkaPlandaEkleAciklama =>
+      'Продолжай пользоваться приложением — вещи добавляются в фоне.';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '$count фото добавляются в фоне';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return 'Обработано $count из $toplam';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '$count вещей добавлено в гардероб';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '$count фото не удалось обработать';
+  }
 }

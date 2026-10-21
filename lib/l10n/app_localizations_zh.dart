@@ -3267,4 +3267,30 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => '默认';
+
+  @override
+  String get arkaPlandaEkle => '后台添加';
+
+  @override
+  String get arkaPlandaEkleAciklama => '你可以继续使用应用，衣物会在后台添加。';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '正在后台添加 $count 张照片';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return '已处理 $count/$toplam';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '已向衣橱添加 $count 件单品';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '$count 张照片无法处理';
+  }
 }

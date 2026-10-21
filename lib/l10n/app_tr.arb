@@ -1242,5 +1242,42 @@
   "duzenleZeminGri": "Açık gri",
   "duzenleZeminSaydam": "Saydam",
   "duzenleKaydet": "Kaydet",
-  "duzenleVarsayilan": "Varsayılan"
+  "duzenleVarsayilan": "Varsayılan",
+  "arkaPlandaEkle": "Arka planda ekle",
+  "arkaPlandaEkleAciklama": "Uygulamayı kullanmaya devam edebilirsin; parçalar arka planda eklenir.",
+  "arkaPlandaBasladi": "{count} fotoğraf arka planda ekleniyor",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "{count}/{toplam} işlendi",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "{count} parça dolabına eklendi",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} fotoğraf işlenemedi",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

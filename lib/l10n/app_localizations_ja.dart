@@ -3317,4 +3317,30 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => 'そのまま';
+
+  @override
+  String get arkaPlandaEkle => 'バックグラウンドで追加';
+
+  @override
+  String get arkaPlandaEkleAciklama => 'アプリを使い続けたまま、アイテムはバックグラウンドで追加されます。';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '$count 枚の写真をバックグラウンドで追加しています';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return '$toplam 件中 $count 件を処理';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '$count 点をワードローブに追加しました';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '$count 枚を処理できませんでした';
+  }
 }

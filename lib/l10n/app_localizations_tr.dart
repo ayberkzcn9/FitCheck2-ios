@@ -3457,4 +3457,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get duzenleVarsayilan => 'Varsayılan';
+
+  @override
+  String get arkaPlandaEkle => 'Arka planda ekle';
+
+  @override
+  String get arkaPlandaEkleAciklama =>
+      'Uygulamayı kullanmaya devam edebilirsin; parçalar arka planda eklenir.';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '$count fotoğraf arka planda ekleniyor';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return '$count/$toplam işlendi';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '$count parça dolabına eklendi';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '$count fotoğraf işlenemedi';
+  }
 }

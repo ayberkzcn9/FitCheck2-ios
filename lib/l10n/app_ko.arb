@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "연회색",
   "duzenleZeminSaydam": "투명",
   "duzenleKaydet": "저장",
-  "duzenleVarsayilan": "기본값"
+  "duzenleVarsayilan": "기본값",
+  "arkaPlandaEkle": "백그라운드에서 추가",
+  "arkaPlandaEkleAciklama": "앱을 계속 사용하세요. 아이템은 백그라운드에서 추가됩니다.",
+  "arkaPlandaBasladi": "사진 {count}장을 백그라운드에서 추가합니다",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "{toplam}개 중 {count}개 처리",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "옷장에 {count}개 아이템을 추가했습니다",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "사진 {count}장을 처리하지 못했습니다",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

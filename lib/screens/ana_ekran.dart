@@ -27,6 +27,7 @@ import '../l10n/app_localizations.dart';
 import '../services/analytics_servisi.dart';
 import '../services/bildirim_servisi.dart';
 import '../services/bildirim_zamanlayici.dart';
+import '../services/kilyafet_yukleme_servisi.dart';
 import '../services/fcm_service.dart';
 import '../services/reklam_servisi.dart';
 import '../utils/helpers.dart';
@@ -67,6 +68,12 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
 
   /// Takvimde plan değiştikçe artar; Bugün ekranındaki plan kartını tazeler.
   int _planJetonu = 0;
+
+  /// Arka plan yükleme durumu dinleyicisi.
+  late final ValueNotifier<KilyafetYuklemeDurumu> _yuklemeListener;
+
+  /// Arka plan işi daha önce çalışıyordu mu (bitiş bildirimini bir kez vermek için).
+  bool _arkaPlanCalisiyordu = false;
   final Map<String, Set<String>> _bugunGiydimdeEklenenSepetIdleri = {};
 
   String _gunlukHavaDurumu = '';
@@ -122,6 +129,10 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     _speechInit();
     _hakSayaciniGuncelle();
 
+    // Arka planda kıyafet yükleme durumu (ilerleme + bitiş bildirimi).
+    _yuklemeListener = KilyafetYuklemeServisi().durum;
+    _yuklemeListener.addListener(_arkaPlanDurumuDegisti);
+
     ReklamServisi().odulluReklamYukle();
     ReklamServisi().gecisReklamiYukle();
 
@@ -154,9 +165,47 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   @override
   void dispose() {
     _hakListener.removeListener(_onHakChanged);
+    _yuklemeListener.removeListener(_arkaPlanDurumuDegisti);
     BildirimServisi().hedefSekme.removeListener(_bildirimYonlendirmesi);
     _speechToText.stop();
     super.dispose();
+  }
+
+  /// Arka plan yükleme bittiğinde kullanıcıya özet gösterir.
+  void _arkaPlanDurumuDegisti() {
+    final durum = _yuklemeListener.value;
+
+    if (durum.calisiyor) {
+      _arkaPlanCalisiyordu = true;
+      return;
+    }
+    if (!_arkaPlanCalisiyordu) return;
+    _arkaPlanCalisiyordu = false;
+    if (!mounted) return;
+
+    final l10n = AppLocalizations.of(context)!;
+    final colors = Theme.of(context).colorScheme;
+
+    if (durum.eklenen > 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.arkaPlandaTamamlandi(durum.eklenen)),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        ),
+      );
+    }
+
+    if (durum.atlanan > 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.arkaPlandaBaziAtlandi(durum.atlanan)),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: colors.error,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        ),
+      );
+    }
   }
 
   Future<void> _izinKontrolEtVeGoster() async {
@@ -1706,12 +1755,74 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     return Scaffold(
       extendBody: true,
       appBar: _buildPremiumAppBar(l10n),
-      body: FadeIndexedStack(
-        index: _seciliSekme,
-        duration: const Duration(milliseconds: 300),
-        children: ekranlar,
+      body: Column(
+        children: [
+          // Arka planda kıyafet yükleniyorsa ince ilerleme çubuğu; ekran
+          // kilitlenmez, kullanıcı uygulamayı kullanmaya devam eder.
+          _arkaPlanIlerlemeCubugu(l10n),
+          Expanded(
+            child: FadeIndexedStack(
+              index: _seciliSekme,
+              duration: const Duration(milliseconds: 300),
+              children: ekranlar,
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: _buildCustomBottomNav(),
+    );
+  }
+
+  /// Arka plan yükleme durumu (varsa) ince bir çubuk olarak gösterilir.
+  Widget _arkaPlanIlerlemeCubugu(AppLocalizations l10n) {
+    return ValueListenableBuilder<KilyafetYuklemeDurumu>(
+      valueListenable: KilyafetYuklemeServisi().durum,
+      builder: (context, durum, _) {
+        if (!durum.calisiyor) return const SizedBox.shrink();
+        final colors = Theme.of(context).colorScheme;
+        return Container(
+          width: double.infinity,
+          color: colors.surfaceContainerHigh,
+          padding: const EdgeInsets.fromLTRB(16, 6, 16, 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      l10n.arkaPlandaIlerleme(durum.islenen, durum.toplam),
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    l10n.arkaPlandaEkle,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w800,
+                      color: colors.onSurface,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 4),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: LinearProgressIndicator(
+                  value: durum.oran,
+                  minHeight: 4,
+                  backgroundColor: colors.outlineVariant.withValues(alpha: 0.3),
+                  color: colors.primary,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

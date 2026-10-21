@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "Hellgrau",
   "duzenleZeminSaydam": "Transparent",
   "duzenleKaydet": "Speichern",
-  "duzenleVarsayilan": "Standard"
+  "duzenleVarsayilan": "Standard",
+  "arkaPlandaEkle": "Im Hintergrund hinzufügen",
+  "arkaPlandaEkleAciklama": "Du kannst die App weiter nutzen; deine Teile werden im Hintergrund hinzugefügt.",
+  "arkaPlandaBasladi": "{count} Fotos werden im Hintergrund hinzugefügt",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "{count} von {toplam} verarbeitet",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "{count} Teile wurden deiner Garderobe hinzugefügt",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} Fotos konnten nicht verarbeitet werden",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

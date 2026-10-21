@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "رمادي فاتح",
   "duzenleZeminSaydam": "شفاف",
   "duzenleKaydet": "حفظ",
-  "duzenleVarsayilan": "افتراضي"
+  "duzenleVarsayilan": "افتراضي",
+  "arkaPlandaEkle": "أضِف في الخلفية",
+  "arkaPlandaEkleAciklama": "يمكنك متابعة استخدام التطبيق؛ تُضاف قطعك في الخلفية.",
+  "arkaPlandaBasladi": "يتم إضافة {count} صور في الخلفية",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "تمت معالجة {count} من {toplam}",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "تمت إضافة {count} قطع إلى خزانتك",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "تعذّرت معالجة {count} صور",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

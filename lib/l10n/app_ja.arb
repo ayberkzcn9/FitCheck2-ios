@@ -1207,5 +1207,42 @@
   "duzenleZeminGri": "ライトグレー",
   "duzenleZeminSaydam": "透明",
   "duzenleKaydet": "保存",
-  "duzenleVarsayilan": "そのまま"
+  "duzenleVarsayilan": "そのまま",
+  "arkaPlandaEkle": "バックグラウンドで追加",
+  "arkaPlandaEkleAciklama": "アプリを使い続けたまま、アイテムはバックグラウンドで追加されます。",
+  "arkaPlandaBasladi": "{count} 枚の写真をバックグラウンドで追加しています",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "{toplam} 件中 {count} 件を処理",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "{count} 点をワードローブに追加しました",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} 枚を処理できませんでした",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }
