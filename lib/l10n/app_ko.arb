@@ -1150,5 +1150,7 @@
   "geriAl": "실행 취소",
   "stilGunluguRaporSayiEtiketi": "이번 주 착용한 코디",
   "stilGunluguRaporDortHafta": "최근 4주",
-  "stilGunluguRaporEnCokParcalar": "가장 많이 입은 아이템"
+  "stilGunluguRaporEnCokParcalar": "가장 많이 입은 아이템",
+  "navKombin": "코디",
+  "navProfil": "프로필"
 }

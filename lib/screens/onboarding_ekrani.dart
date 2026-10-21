@@ -353,7 +353,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           return SafeArea(
             bottom: true,
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+              filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.82,
                 decoration: BoxDecoration(
@@ -372,7 +372,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       height: 5,
                       decoration: BoxDecoration(
                         color: AppAccents.celebration.withValues(alpha: 0.6),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                     Padding(
@@ -1210,7 +1210,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               Container(
                                 decoration: BoxDecoration(
                                   color: colors.surfaceContainerLow,
-                                  borderRadius: BorderRadius.circular(18),
+                                  borderRadius: BorderRadius.circular(16),
                                   border: Border.all(
                                     color: _kosullariKabulEtti
                                         ? sayfaIkonRengi
@@ -1415,7 +1415,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? effectiveAccent : colors.surfaceContainerLow,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
               color: isSelected
                   ? effectiveAccent

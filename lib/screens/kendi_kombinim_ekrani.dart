@@ -285,7 +285,7 @@ SADECE bu JSON formatında dön:
       barrierColor: Colors.black.withValues(alpha: 0.6),
       builder: (bottomContext) {
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Container(
             height: MediaQuery.of(context).size.height * 0.75,
             decoration: BoxDecoration(
@@ -302,7 +302,7 @@ SADECE bu JSON formatında dön:
                     height: 5, 
                     decoration: BoxDecoration(
                       color: colors.onSurfaceVariant.withValues(alpha: 0.4), 
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -414,7 +414,7 @@ SADECE bu JSON formatında dön:
                                     color: colors.surfaceContainerLow,
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(18.5),
+                                    borderRadius: BorderRadius.circular(16),
                                     child: Image.memory(
                                       item.resimBytes,
                                       fit: BoxFit.cover,

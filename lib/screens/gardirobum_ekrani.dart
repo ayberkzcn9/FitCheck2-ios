@@ -176,7 +176,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       context: context,
       barrierColor: Colors.black.withValues(alpha: 0.6),
       builder: (ctx) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
         child: AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           elevation: 0,
@@ -235,7 +235,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       context: context,
       barrierColor: Colors.black.withValues(alpha: 0.6),
       builder: (ctx) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
         child: AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           elevation: 0,
@@ -304,7 +304,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       context: context,
       barrierColor: Colors.black.withValues(alpha: 0.6),
       builder: (ctx) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
         child: AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           elevation: 0,
@@ -366,7 +366,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   backgroundColor: AppAccents.successDark,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
                 onPressed: () {
@@ -398,7 +398,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     side: BorderSide(color: colors.onSurfaceVariant),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
+                        borderRadius: BorderRadius.circular(16)),
                   ),
                   onPressed: () {
                     HapticFeedback.selectionClick();
@@ -672,7 +672,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       context: context,
       barrierColor: Colors.black.withValues(alpha: 0.6),
       builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
         child: AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           elevation: 0,
@@ -710,7 +710,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors.primary,
                 foregroundColor: colors.onPrimary,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               ),
@@ -738,7 +738,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       isScrollControlled: true,
       builder: (bottomContext) {
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Container(
             padding: const EdgeInsets.only(top: 16, bottom: 24),
             decoration: BoxDecoration(
@@ -761,7 +761,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         margin: const EdgeInsets.only(bottom: 16),
                         decoration: BoxDecoration(
                           color: colors.outlineVariant,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),
@@ -894,7 +894,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           Expanded(
             child: Text(
               metin,
-              style: TextStyle(fontSize: 12.5, height: 1.35, color: colors.onSurfaceVariant),
+              style: TextStyle(fontSize: 12, height: 1.35, color: colors.onSurfaceVariant),
             ),
           ),
         ],
@@ -1219,7 +1219,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       useSafeArea: true,
       backgroundColor: Colors.transparent,
       builder: (sheetContext) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
         child: StatefulBuilder(
           builder: (context, setDialogState) => Container(
             decoration: BoxDecoration(
@@ -1337,7 +1337,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                 padding: const EdgeInsets.symmetric(vertical: 14),
                                 side: BorderSide(color: colors.outlineVariant),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14),
+                                  borderRadius: BorderRadius.circular(16),
                                 ),
                               ),
                             ),
@@ -1417,7 +1417,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             },
                             style: TextButton.styleFrom(
                               padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                             ),
                             child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: 14, fontWeight: FontWeight.bold)),
                           ),
@@ -1428,7 +1428,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             style: ElevatedButton.styleFrom(
                               backgroundColor: colors.primary,
                               foregroundColor: colors.onPrimary,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                               elevation: 0,
                               padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
@@ -1470,7 +1470,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       context: context,
       barrierColor: Colors.black.withValues(alpha: 0.6),
       builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+        filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
         child: AlertDialog(
           backgroundColor: colors.surfaceContainerHigh,
           elevation: 0,
@@ -1507,7 +1507,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors.error,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               ),
@@ -1549,7 +1549,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           ),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(23),
+          borderRadius: BorderRadius.circular(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -1750,7 +1750,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                       : colors.surface,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(12),
                                     side: item.sepetteMi
                                         ? BorderSide(color: colors.error.withValues(alpha: 0.4), width: 1.2)
                                         : BorderSide.none,
@@ -1812,7 +1812,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                   foregroundColor: AppAccents.styleist,
                                   padding: EdgeInsets.zero,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(12),
                                     side: const BorderSide(color: AppMiscColors.lightPurpleBorder, width: 1.0),
                                   ),
                                   elevation: 0,
@@ -2117,7 +2117,7 @@ class _YuklemeOverlay extends StatelessWidget {
     final stepInfo = _getStepInfo(context);
 
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+      filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
       child: Container(
         color: Colors.black.withValues(alpha: 0.4),
         child: Center(

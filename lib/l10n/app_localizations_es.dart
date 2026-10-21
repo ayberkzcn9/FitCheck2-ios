@@ -3314,4 +3314,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'Prendas más usadas';
+
+  @override
+  String get navKombin => 'Conjunto';
+
+  @override
+  String get navProfil => 'Perfil';
 }

@@ -3285,4 +3285,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'En çok giydiklerin';
+
+  @override
+  String get navKombin => 'Kombin';
+
+  @override
+  String get navProfil => 'Profil';
 }

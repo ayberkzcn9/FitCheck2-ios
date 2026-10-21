@@ -20,7 +20,7 @@ class ZarSallaDialog extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
       child: Dialog(
         backgroundColor: colors.surfaceContainerHigh,
         elevation: 0,

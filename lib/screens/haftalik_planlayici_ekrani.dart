@@ -2201,8 +2201,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                            child: BackdropFilter(
                                                              filter: ImageFilter
                                                                  .blur(
-                                                               sigmaX: 6,
-                                                               sigmaY: 6,
+                                                               sigmaX: AppBlur.cam, sigmaY: AppBlur.cam,
                                                              ),
                                                              child: Container(
                                                                padding:

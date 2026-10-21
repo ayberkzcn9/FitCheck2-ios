@@ -374,7 +374,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               ),
               style: FilledButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
             ),
@@ -384,7 +384,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             padding: const EdgeInsets.fromLTRB(18, 16, 18, 18),
             decoration: BoxDecoration(
               color: colors.surfaceContainerLow,
-              borderRadius: BorderRadius.circular(22),
+              borderRadius: BorderRadius.circular(24),
               border: Border.all(
                 color: colors.outlineVariant.withValues(alpha: 0.4),
               ),
@@ -743,7 +743,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         color: colors.primary.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
         children: [
@@ -955,7 +955,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         color: dogruMu
             ? const Color(0xFF2E7D5B).withValues(alpha: 0.09)
             : colors.error.withValues(alpha: 0.07),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: dogruMu
               ? const Color(0xFF2E7D5B).withValues(alpha: 0.4)
@@ -1013,7 +1013,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               style: FilledButton.styleFrom(
                 backgroundColor: dogruMu ? const Color(0xFF2E7D5B) : null,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
               child: Text(
@@ -1228,7 +1228,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               ),
               style: FilledButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
             ),

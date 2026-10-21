@@ -83,6 +83,19 @@ class AppRadius {
 }
 
 // ===========================================================================
+// BULANIKLIK (BLUR) — cam yüzeyler için tek değer
+// ===========================================================================
+class AppBlur {
+  const AppBlur._();
+
+  /// Cam yüzeyler (alt menü, sayfa altlığı, diyalog arkası) — tek değer.
+  static const double cam = 12;
+
+  /// Uygulama arka planındaki yumuşak degrade.
+  static const double arkaPlan = 70;
+}
+
+// ===========================================================================
 // TİPOGRAFİ — Metin stilleri (az sayıda, tutarlı)
 // ===========================================================================
 class AppText {

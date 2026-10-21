@@ -191,7 +191,7 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
   /// İnce, yuvarlatılmış ve sürekli akan ilerleme çubuğu.
   Widget _ilerlemeCubugu(ColorScheme colors) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(99),
+      borderRadius: BorderRadius.circular(999),
       child: SizedBox(
         width: 132,
         height: 4,

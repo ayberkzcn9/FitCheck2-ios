@@ -1172,14 +1172,14 @@ class SadeKiyafetKarti extends StatelessWidget {
       margin: const EdgeInsets.only(right: 16, top: 4, bottom: 4),
       decoration: BoxDecoration(
         color: colors.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(
           color: colors.outlineVariant.withValues(alpha: 0.4),
           width: 1.2,
         ),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(24),
         child: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -1225,7 +1225,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: AppRadius.xlRadius,
                             child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                               child: Container(
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
@@ -1308,7 +1308,7 @@ class ZarSallaDialog extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
       child: Dialog(
         backgroundColor: colors.surfaceContainerHigh,
         elevation: 0,

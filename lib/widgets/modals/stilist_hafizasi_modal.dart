@@ -124,7 +124,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: AppAccents.styleist.withValues(alpha: 0.15),
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Icon(
                     Icons.psychology_rounded,
@@ -149,7 +149,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
             Text(
               l10n.stilistHafizasiAciklama,
               style: TextStyle(
-                fontSize: 12.5,
+                fontSize: 12,
                 height: 1.45,
                 fontWeight: FontWeight.w500,
                 color: colors.onSurfaceVariant,
@@ -183,7 +183,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                       child: Text(
                         l10n.stilistHafizasiBos,
                         style: TextStyle(
-                          fontSize: 12.5,
+                          fontSize: 12,
                           height: 1.4,
                           fontWeight: FontWeight.w600,
                           color: colors.onSurfaceVariant,
@@ -212,7 +212,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: colors.surfaceContainerHighest,
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,7 +227,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                           child: Text(
                             not,
                             style: TextStyle(
-                              fontSize: 12.5,
+                              fontSize: 12,
                               height: 1.35,
                               fontWeight: FontWeight.w600,
                               color: colors.onSurface,
@@ -256,12 +256,12 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: colors.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   child: Text(
                     _ozet.trim(),
                     style: TextStyle(
-                      fontSize: 12.5,
+                      fontSize: 12,
                       height: 1.4,
                       fontWeight: FontWeight.w500,
                       color: colors.onSurface,
@@ -283,7 +283,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                 ),

@@ -3261,4 +3261,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'القطع الأكثر ارتداءً';
+
+  @override
+  String get navKombin => 'إطلالة';
+
+  @override
+  String get navProfil => 'حسابي';
 }

@@ -3110,4 +3110,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => '最常穿的单品';
+
+  @override
+  String get navKombin => '穿搭';
+
+  @override
+  String get navProfil => '我的';
 }

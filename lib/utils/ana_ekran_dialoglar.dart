@@ -31,7 +31,7 @@ class AnaEkranDialoglar {
         final colors = Theme.of(ctx).colorScheme;
 
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Padding(
             padding: EdgeInsets.only(
               bottom: MediaQuery.of(ctx).viewInsets.bottom,
@@ -137,7 +137,7 @@ class AnaEkranDialoglar {
                             backgroundColor: Colors.green,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(16),
                             ),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 22,
@@ -243,7 +243,7 @@ class AnaEkranDialoglar {
         final colors = Theme.of(ctx).colorScheme;
 
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Container(
             decoration: BoxDecoration(
               color: colors.surfaceContainerHigh,
@@ -317,7 +317,7 @@ class AnaEkranDialoglar {
                             ),
                             side: BorderSide(color: context.uygunMetin),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(16),
                             ),
                           ),
                           icon: Icon(
@@ -358,7 +358,7 @@ class AnaEkranDialoglar {
                               backgroundColor: Colors.orange,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(14),
+                                borderRadius: BorderRadius.circular(16),
                               ),
                             ),
                             icon: const Icon(
@@ -427,7 +427,7 @@ class AnaEkranDialoglar {
                           backgroundColor: anaRenk,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                         ),
                         icon: const Icon(

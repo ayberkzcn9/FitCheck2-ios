@@ -22,6 +22,7 @@ import 'package:fitcheck/models/bugun_kombin.dart';
 import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
+import 'package:fitcheck/widgets/alt_menu_cubugu.dart';
 import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
 import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
 import 'package:fitcheck/screens/seyahat_ekrani.dart';
@@ -377,6 +378,26 @@ void main() {
     );
     await _bekle(tester);
     await _ekranGorusu(tester, '12_haftalik_plan');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('alt menu', (tester) async {
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        Scaffold(
+          body: const SizedBox.expand(),
+          bottomNavigationBar: AltMenuCubugu(
+            seciliSekme: Sekmeler.bugun,
+            gorunur: true,
+            onSec: (_) {},
+            anahtarlar: const <int, Key>{},
+          ),
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '13_alt_menu');
     expect(tester.takeException(), isNull);
   });
 }

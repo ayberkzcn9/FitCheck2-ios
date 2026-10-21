@@ -3152,4 +3152,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'よく着たアイテム';
+
+  @override
+  String get navKombin => 'コーデ';
+
+  @override
+  String get navProfil => 'マイページ';
 }

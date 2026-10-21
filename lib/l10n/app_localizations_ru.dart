@@ -3288,4 +3288,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'Самые носимые вещи';
+
+  @override
+  String get navKombin => 'Образ';
+
+  @override
+  String get navProfil => 'Профиль';
 }

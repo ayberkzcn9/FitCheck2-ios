@@ -31,6 +31,7 @@ import '../services/reklam_servisi.dart';
 import '../utils/helpers.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/ana_ekran_rehber.dart';
+import '../widgets/alt_menu_cubugu.dart';
 import 'bugun_ekrani.dart';
 import 'seyahat_ekrani.dart';
 import 'stil_gunlugu_ekrani.dart';
@@ -52,13 +53,13 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   // ---- Sekme indeksleri -------------------------------------------------
   // Sihirli sayı yerine ad kullanılıyor: başa yeni bir sekme eklendiğinde
   // (Bugün gibi) çağrıların tek tek düzeltilmesi gerekmiyor.
-  static const int _sekmeBugun = 0;
-  static const int _sekmeDolap = 1;
-  static const int _sekmePlan = 2;
-  static const int _sekmeKombin = 3;
-  static const int _sekmeKendi = 4;
-  static const int _sekmeProfil = 5;
-  static const int _sekmeOyun = 6;
+  static const int _sekmeBugun = Sekmeler.bugun;
+  static const int _sekmeDolap = Sekmeler.dolap;
+  static const int _sekmePlan = Sekmeler.plan;
+  static const int _sekmeKombin = Sekmeler.kombin;
+  static const int _sekmeKendi = Sekmeler.kendi;
+  static const int _sekmeProfil = Sekmeler.profil; // ignore: unused_field
+  static const int _sekmeOyun = Sekmeler.oyun;
   List<Kiyafet> _gardirobum = [];
   List<FavoriKombin> _favoriKombinler = [];
   List<Map<String, String>> _gecmisKombinler = [];
@@ -1555,70 +1556,17 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   }
 
   Widget _buildCustomBottomNav() {
-    final colorScheme = Theme.of(context).colorScheme;
-    final double altBosluk = MediaQuery.of(context).padding.bottom;
-    final double normalYukseklik = 62.0 + altBosluk;
-
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 280),
-      curve: Curves.easeInOut,
-      height: _isBarsVisible ? normalYukseklik : 0.0,
-      child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 200),
-        opacity: _isBarsVisible ? 1.0 : 0.0,
-        child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(24)),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
-              child: Container(
-                height: normalYukseklik,
-                padding: EdgeInsets.fromLTRB(
-                    8, 8, 8, altBosluk > 0 ? altBosluk : 8),
-                decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerLow.withValues(alpha: 0.90),
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(24)),
-                  border: Border(
-                    top: BorderSide(
-                      color:
-                          colorScheme.outlineVariant.withValues(alpha: 0.4),
-                      width: 1,
-                    ),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    _buildNavItem(
-                        Icons.wb_sunny_outlined, Icons.wb_sunny_rounded,
-                        _sekmeBugun,
-                        key: _bugunNavKey),
-                    _buildNavItem(
-                        Icons.door_sliding_outlined, Icons.door_sliding_rounded,
-                        _sekmeDolap,
-                        key: _gardirobumNavKey),
-                    _buildNavItem(Icons.calendar_month_outlined,
-                        Icons.calendar_month_rounded, _sekmePlan,
-                        key: _haftalikNavKey),
-                    _buildNavItem(Icons.casino_outlined, Icons.casino_rounded,
-                        _sekmeKombin,
-                        key: _dolaptanNavKey),
-                    // "Kendin Kombin Yap" (_sekmeKendi) bilinçli olarak kapalı.
-                    _buildNavItem(Icons.insights_outlined,
-                        Icons.insights_rounded, _sekmeProfil,
-                        key: _profilNavKey),
-                    _buildNavItem(
-                        Icons.style_outlined, Icons.style_rounded, _sekmeOyun),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+    return AltMenuCubugu(
+      seciliSekme: _seciliSekme,
+      gorunur: _isBarsVisible,
+      onSec: _sekmeSec,
+      anahtarlar: <int, Key>{
+        Sekmeler.bugun: _bugunNavKey,
+        Sekmeler.dolap: _gardirobumNavKey,
+        Sekmeler.plan: _haftalikNavKey,
+        Sekmeler.kombin: _dolaptanNavKey,
+        Sekmeler.profil: _profilNavKey,
+      },
     );
   }
 
@@ -1651,76 +1599,6 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     final index = _bildirimSekmeleri[hedef];
     if (index == null || !mounted) return;
     _sekmeSec(index);
-  }
-
-  Widget _buildNavItem(
-      IconData unselectedIcon, IconData selectedIcon, int index,
-      {Key? key}) {
-    final isSelected = _seciliSekme == index;
-    final colorScheme = Theme.of(context).colorScheme;
-    final l10n = AppLocalizations.of(context)!;
-    final labels = [
-      l10n.bugunSekmesi,
-      l10n.anaSekmeGardirop,
-      l10n.anaSekmeHaftalik,
-      l10n.anaSekmeAnlik,
-      l10n.kendiKombininiTasarlaTitle,
-      l10n.anaSekmeProfil,
-      l10n.duelloSekmesi,
-    ];
-
-    final iconColor = isSelected ? colorScheme.primary : colorScheme.onSurfaceVariant;
-
-    return Expanded(
-      child: Semantics(
-        label: labels[index],
-        selected: isSelected,
-        button: true,
-        child: InkWell(
-          key: key,
-          onTap: () {
-            if (_seciliSekme != index) {
-              HapticFeedback.selectionClick();
-              _sekmeSec(index);
-            }
-          },
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 220),
-                  curve: Curves.easeOutCubic,
-                  transform: isSelected
-                      ? Matrix4.diagonal3Values(1.1, 1.1, 1.0)
-                      : Matrix4.identity(),
-                  child: Icon(
-                    isSelected ? selectedIcon : unselectedIcon,
-                    color: iconColor,
-                    size: 25,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 220),
-                  curve: Curves.easeOutCubic,
-                  width: isSelected ? 5 : 0,
-                  height: isSelected ? 5 : 0,
-                  decoration: BoxDecoration(
-                    color: colorScheme.primary,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
   }
 
   @override

@@ -54,7 +54,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
       barrierColor: Colors.black.withValues(alpha: 0.6),
       barrierDismissible: false,
       builder: (dialogContext) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+        filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
         child: AlertDialog(
           backgroundColor: colors.surfaceContainerHigh.withValues(alpha: 0.95),
           elevation: 0,
@@ -119,7 +119,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
             ),
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(16),
                 gradient: const LinearGradient(
                   colors: [AppAccents.celebration, AppPermissionColors.location],
                 ),
@@ -130,7 +130,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   shadowColor: Colors.transparent,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 18,
@@ -165,7 +165,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
     final l10n = AppLocalizations.of(context)!;
 
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+      filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
       child: Container(
         constraints: BoxConstraints(
           maxHeight: MediaQuery.of(context).size.height * 0.85,

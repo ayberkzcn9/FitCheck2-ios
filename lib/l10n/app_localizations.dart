@@ -6063,6 +6063,18 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'En çok giydiklerin'**
   String get stilGunluguRaporEnCokParcalar;
+
+  /// No description provided for @navKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin'**
+  String get navKombin;
+
+  /// No description provided for @navProfil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profil'**
+  String get navProfil;
 }
 
 class _AppLocalizationsDelegate

@@ -73,7 +73,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.45),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,7 +222,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             colors.surfaceContainerHighest.withValues(alpha: 0.6),
           ],
         ),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -379,7 +379,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 10,
                           color: colors.onPrimaryContainer
                               .withValues(alpha: 0.85),
                         ),

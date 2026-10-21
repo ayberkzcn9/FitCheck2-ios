@@ -3167,4 +3167,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => '가장 많이 입은 아이템';
+
+  @override
+  String get navKombin => '코디';
+
+  @override
+  String get navProfil => '프로필';
 }

@@ -259,10 +259,6 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 parcalar: havayaUygun,
               ),
             ),
-          if (widget.onStilGunluguAc != null || widget.onSeyahatAc != null)
-            SliverToBoxAdapter(
-              child: _stilVeSeyahat(context, l10n, colors),
-            ),
           const SliverToBoxAdapter(child: SizedBox(height: 120)),
         ],
       ),
@@ -315,7 +311,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(999),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -349,6 +345,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
     AppLocalizations l10n,
     ColorScheme colors,
   ) {
+    // Tek ızgara: 4 hızlı işlem + 2 araç (günlük, seyahat). Daha önce araçlar
+    // sayfanın en altında ayrı bir kart ikilisiydi; artık aynı dil.
     final aksiyonlar = <_HizliAksiyon>[
       _HizliAksiyon(
         ikon: Icons.add_photo_alternate_outlined,
@@ -359,30 +357,66 @@ class _BugunEkraniState extends State<BugunEkrani> {
       _HizliAksiyon(
         ikon: Icons.casino_outlined,
         etiket: l10n.bugunHizliKombin,
-        renk: colors.tertiary,
+        renk: colors.primary,
         onTap: () => widget.onSekmeSec(3),
       ),
       _HizliAksiyon(
         ikon: Icons.auto_awesome_rounded,
         etiket: l10n.bugunHizliStilist,
-        renk: colors.secondary,
+        renk: colors.primary,
         onTap: widget.onStilistAc,
       ),
       _HizliAksiyon(
         ikon: Icons.calendar_month_outlined,
         etiket: l10n.bugunHizliPlan,
-        renk: colors.error,
+        renk: colors.primary,
         onTap: () => widget.onSekmeSec(2),
       ),
+      if (widget.onStilGunluguAc != null)
+        _HizliAksiyon(
+          ikon: Icons.auto_stories_rounded,
+          etiket: l10n.stilGunluguBaslik,
+          renk: colors.primary,
+          onTap: widget.onStilGunluguAc!,
+        ),
+      if (widget.onSeyahatAc != null)
+        _HizliAksiyon(
+          ikon: Icons.luggage_rounded,
+          etiket: l10n.seyahatBaslik,
+          renk: colors.primary,
+          onTap: widget.onSeyahatAc!,
+        ),
     ];
+
+    const sutun = 3;
+    final satirlar = <List<_HizliAksiyon>>[];
+    for (var i = 0; i < aksiyonlar.length; i += sutun) {
+      satirlar.add(
+        aksiyonlar.sublist(
+          i,
+          i + sutun > aksiyonlar.length ? aksiyonlar.length : i + sutun,
+        ),
+      );
+    }
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-      child: Row(
+      child: Column(
         children: [
-          for (final aksiyon in aksiyonlar) ...[
-            Expanded(child: _aksiyonKutusu(context, aksiyon)),
-            if (aksiyon != aksiyonlar.last) const SizedBox(width: 8),
+          for (var s = 0; s < satirlar.length; s++) ...[
+            if (s > 0) const SizedBox(height: 8),
+            Row(
+              children: [
+                for (var i = 0; i < sutun; i++) ...[
+                  if (i > 0) const SizedBox(width: 8),
+                  Expanded(
+                    child: i < satirlar[s].length
+                        ? _aksiyonKutusu(context, satirlar[s][i])
+                        : const SizedBox.shrink(),
+                  ),
+                ],
+              ],
+            ),
           ],
         ],
       ),
@@ -393,9 +427,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
     final colors = Theme.of(context).colorScheme;
     return Material(
       color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(16),
       child: InkWell(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(16),
         onTap: () {
           HapticFeedback.lightImpact();
           aksiyon.onTap();
@@ -412,7 +446,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 10.5,
+                  fontSize: 10,
                   height: 1.15,
                   fontWeight: FontWeight.w700,
                   color: colors.onSurfaceVariant,
@@ -495,7 +529,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 colors.surfaceContainerHighest.withValues(alpha: 0.75),
               ],
             ),
-            borderRadius: BorderRadius.circular(26),
+            borderRadius: BorderRadius.circular(24),
             border: Border.all(
               color: colors.outlineVariant.withValues(alpha: 0.35),
             ),
@@ -765,9 +799,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 width: 172,
                 child: Material(
                   color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(24),
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(22),
+                    borderRadius: BorderRadius.circular(24),
                     onTap: () =>
                         _detayPenceresi(context, l10n, kombin, parcalar),
                     child: Padding(
@@ -787,7 +821,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                                   decoration: BoxDecoration(
                                     color:
                                         colors.surface.withValues(alpha: 0.7),
-                                    borderRadius: BorderRadius.circular(14),
+                                    borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: Image.memory(
                                     parca.resimBytes,
@@ -804,7 +838,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 12.5,
+                              fontSize: 12,
                               height: 1.2,
                               fontWeight: FontWeight.w800,
                               color: colors.onSurface,
@@ -910,7 +944,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 10.5,
+                                fontSize: 10,
                                 color: colors.onSurfaceVariant,
                               ),
                             ),
@@ -972,7 +1006,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
       context: context,
       backgroundColor: colors.surfaceContainerHigh,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (sheetContext) {
         return SafeArea(
@@ -1070,7 +1104,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                         decoration: BoxDecoration(
                           color:
                               colors.surfaceContainerHighest.withValues(alpha: 0.55),
-                          borderRadius: BorderRadius.circular(18),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.memory(
                           parca.resimBytes,
@@ -1097,95 +1131,6 @@ class _BugunEkraniState extends State<BugunEkrani> {
           ),
         ),
       ],
-    );
-  }
-
-  /// "Stil Günlüğüm" ve "Seyahat Modu" kartları.
-  Widget _stilVeSeyahat(
-    BuildContext context,
-    AppLocalizations l10n,
-    ColorScheme colors,
-  ) {
-    final kartlar = <Widget>[];
-
-    if (widget.onStilGunluguAc != null) {
-      kartlar.add(
-        _miniKart(
-          context,
-          ikon: Icons.auto_stories_rounded,
-          baslik: l10n.stilGunluguBaslik,
-          onTap: widget.onStilGunluguAc!,
-        ),
-      );
-    }
-
-    if (widget.onSeyahatAc != null) {
-      kartlar.add(
-        _miniKart(
-          context,
-          ikon: Icons.luggage_rounded,
-          baslik: l10n.seyahatBaslik,
-          onTap: widget.onSeyahatAc!,
-        ),
-      );
-    }
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 18, 16, 0),
-      child: Row(
-        children: [
-          for (final kart in kartlar) ...[
-            Expanded(child: kart),
-            if (kart != kartlar.last) const SizedBox(width: 10),
-          ],
-        ],
-      ),
-    );
-  }
-
-  Widget _miniKart(
-    BuildContext context, {
-    required IconData ikon,
-    required String baslik,
-    required VoidCallback onTap,
-  }) {
-    final colors = Theme.of(context).colorScheme;
-    return Material(
-      color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
-      borderRadius: BorderRadius.circular(18),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(18),
-        onTap: () {
-          HapticFeedback.lightImpact();
-          onTap();
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
-          child: Row(
-            children: [
-              Icon(ikon, size: 20, color: colors.primary),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Text(
-                  baslik,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w800,
-                    color: colors.onSurface,
-                  ),
-                ),
-              ),
-              Icon(
-                Icons.chevron_right_rounded,
-                size: 18,
-                color: colors.onSurfaceVariant,
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 

@@ -38,7 +38,7 @@ class KiyafetKartcigi extends StatelessWidget {
       width: 115,
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           width: 1.0,
@@ -256,7 +256,7 @@ class KategoriSatiri extends StatelessWidget {
           backgroundColor: colorScheme.surfaceContainerHighest,
           color: colorScheme.onSurfaceVariant,
           minHeight: 8,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(12),
         ),
       ],
     );

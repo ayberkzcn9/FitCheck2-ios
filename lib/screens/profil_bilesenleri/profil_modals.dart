@@ -284,7 +284,7 @@ class _ModalCercevesi extends StatelessWidget {
                       margin: const EdgeInsets.only(bottom: 16),
                       decoration: BoxDecoration(
                         color: colorScheme.outline.withValues(alpha: 0.4),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                     ),
                     Row(
@@ -481,7 +481,7 @@ class _ParcaGorunumu extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: colorScheme.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           ),
@@ -824,7 +824,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             color: colorScheme.surfaceContainerHighest,
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

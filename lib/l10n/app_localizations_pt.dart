@@ -3303,4 +3303,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'Peças mais usadas';
+
+  @override
+  String get navKombin => 'Look';
+
+  @override
+  String get navProfil => 'Perfil';
 }

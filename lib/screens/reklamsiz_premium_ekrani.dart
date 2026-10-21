@@ -102,7 +102,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
                 l10n.premiumDenemeSonrasi(_seciliFiyat),
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 12.5,
+                  fontSize: 12,
                   color: colors.onSurfaceVariant,
                   fontWeight: FontWeight.w600,
                 ),
@@ -404,7 +404,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
         metin,
         style: TextStyle(
           color: onArka,
-          fontSize: 10.5,
+          fontSize: 10,
           fontWeight: FontWeight.w900,
           letterSpacing: _harfAraligi(0.4),
         ),
@@ -481,7 +481,7 @@ class _OzellikSatiri extends StatelessWidget {
           Expanded(
             child: Text(
               metin,
-              style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ),
         ],

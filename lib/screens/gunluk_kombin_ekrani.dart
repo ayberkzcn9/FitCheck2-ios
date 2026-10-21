@@ -1043,7 +1043,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 child: ClipRRect(
                   borderRadius: AppRadius.xlRadius,
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                    filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(

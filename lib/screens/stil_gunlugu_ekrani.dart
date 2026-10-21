@@ -317,7 +317,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       context: context,
       backgroundColor: colors.surfaceContainerHigh,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (sheetContext) {
         return SafeArea(
@@ -525,7 +525,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     return Container(
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.6),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
       ),
       clipBehavior: Clip.antiAlias,
       child: kiyafet == null

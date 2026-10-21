@@ -169,7 +169,7 @@ class HaftalikDialoglar {
         final colors = Theme.of(ctx).colorScheme;
 
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: AlertDialog(
             backgroundColor: colors.surfaceContainerHigh,
             elevation: 0,
@@ -210,7 +210,7 @@ class HaftalikDialoglar {
                 style: FilledButton.styleFrom(
                   backgroundColor: anaRenk,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -264,7 +264,7 @@ class HaftalikDialoglar {
             final bilgi = parcaBilgisiAyristir(mevcutMetin, l10n);
 
             return BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+              filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
               child: Dialog(
                 backgroundColor: colors.surfaceContainerHigh,
                 elevation: 0,
@@ -331,7 +331,7 @@ class HaftalikDialoglar {
                             child: ClipRRect(
                               borderRadius: AppRadius.xlRadius,
                               child: BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                                filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: colors.surfaceContainerHighest
@@ -380,7 +380,7 @@ class HaftalikDialoglar {
                                         color: isActive
                                             ? colors.primary
                                             : colors.outlineVariant,
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(12),
                                       ),
                                     );
                                   },
@@ -540,7 +540,7 @@ class HaftalikDialoglar {
         final colors = Theme.of(ctx).colorScheme;
 
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Container(
             padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
             height: MediaQuery.of(context).size.height * 0.65,
@@ -559,7 +559,7 @@ class HaftalikDialoglar {
                     height: 5,
                     decoration: BoxDecoration(
                       color: colors.outlineVariant,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),
@@ -663,7 +663,7 @@ class HaftalikDialoglar {
                               color: colors.surfaceContainer,
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(14.5),
+                              borderRadius: BorderRadius.circular(16),
                               child: Image.memory(
                                 item.resimBytes,
                                 width: double.infinity,

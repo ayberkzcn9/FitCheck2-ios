@@ -3312,4 +3312,10 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'Capi più indossati';
+
+  @override
+  String get navKombin => 'Outfit';
+
+  @override
+  String get navProfil => 'Profilo';
 }

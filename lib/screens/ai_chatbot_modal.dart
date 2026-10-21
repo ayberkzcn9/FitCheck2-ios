@@ -790,7 +790,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                           margin: const EdgeInsets.only(bottom: 10),
                           decoration: BoxDecoration(
                             color: colorScheme.outline.withValues(alpha: 0.4),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                         ),
                       ),
@@ -880,8 +880,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                 ? colorScheme.surfaceContainerHighest
                                 : colorScheme.surfaceContainerHigh,
                             borderRadius: BorderRadius.only(
-                              topLeft: const Radius.circular(18),
-                              topRight: const Radius.circular(18),
+                              topLeft: const Radius.circular(16),
+                              topRight: const Radius.circular(16),
                               bottomLeft: Radius.circular(m.isUser ? 18 : 4),
                               bottomRight: Radius.circular(m.isUser ? 4 : 18),
                             ),
@@ -998,7 +998,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainer,
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(16),
                       border: Border.all(
                         color:
                             colorScheme.outlineVariant.withValues(alpha: 0.5),

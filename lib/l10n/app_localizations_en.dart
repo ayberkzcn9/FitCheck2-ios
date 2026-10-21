@@ -3288,4 +3288,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'Most worn pieces';
+
+  @override
+  String get navKombin => 'Outfits';
+
+  @override
+  String get navProfil => 'Profile';
 }

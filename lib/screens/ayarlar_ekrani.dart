@@ -824,7 +824,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                               foregroundColor: Colors.white,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14)),
+                                  borderRadius: BorderRadius.circular(16)),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 14, vertical: 8),
                             ),
@@ -872,7 +872,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                         : colors.outlineVariant,
                                     width: 1.5),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14)),
+                                    borderRadius: BorderRadius.circular(16)),
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 12, horizontal: 8),
                               ),
@@ -1359,7 +1359,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
                         color: colors.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -1950,7 +1950,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                             horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
                           _surumMetni,

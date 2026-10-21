@@ -3319,4 +3319,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get stilGunluguRaporEnCokParcalar => 'Pièces les plus portées';
+
+  @override
+  String get navKombin => 'Tenue';
+
+  @override
+  String get navProfil => 'Profil';
 }
