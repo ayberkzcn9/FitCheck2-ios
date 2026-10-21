@@ -1565,8 +1565,10 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
           ),
         ),
         style: FilledButton.styleFrom(
-          backgroundColor: Colors.green.shade600,
-          foregroundColor: Colors.white,
+          // Diğer ekranlardaki birincil düğmeler gibi markanın koyu rengi
+          // (yeşil yerine) — renk sistemi tek kaynaktan gelsin.
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           elevation: 0,
@@ -1976,7 +1978,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                 borderRadius: AppRadius.dialogRadius,
                                 side: BorderSide(
                                   color: isGiyildi
-                                      ? Colors.green
+                                      ? AppAccents.success
                                       : colorScheme.outlineVariant,
                                   width: isGiyildi ? 2.0 : 1.0,
                                 ),
@@ -2007,7 +2009,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                             ?.copyWith(
                                           fontWeight: FontWeight.bold,
                                           color: isGiyildi
-                                              ? Colors.green
+                                              ? AppAccents.success
                                               : widget.anaRenk,
                                         ),
                                       ),

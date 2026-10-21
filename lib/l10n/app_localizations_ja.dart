@@ -3221,4 +3221,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => '今は不要';
+
+  @override
+  String get planOneriler => 'おすすめ';
 }

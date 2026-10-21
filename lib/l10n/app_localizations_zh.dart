@@ -3179,4 +3179,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => '暂不';
+
+  @override
+  String get planOneriler => '推荐';
 }

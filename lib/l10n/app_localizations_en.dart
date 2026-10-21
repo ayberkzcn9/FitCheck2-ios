@@ -3357,4 +3357,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => 'Not now';
+
+  @override
+  String get planOneriler => 'Suggestions';
 }

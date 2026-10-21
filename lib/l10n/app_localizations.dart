@@ -6195,6 +6195,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Şimdi değil'**
   String get izinGerekceSimdiDegil;
+
+  /// No description provided for @planOneriler.
+  ///
+  /// In tr, this message translates to:
+  /// **'Öneriler'**
+  String get planOneriler;
 }
 
 class _AppLocalizationsDelegate

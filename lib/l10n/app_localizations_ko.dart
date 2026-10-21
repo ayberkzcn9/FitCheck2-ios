@@ -3236,4 +3236,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => '나중에';
+
+  @override
+  String get planOneriler => '추천';
 }

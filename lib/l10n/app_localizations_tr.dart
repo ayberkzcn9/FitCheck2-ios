@@ -3354,4 +3354,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => 'Şimdi değil';
+
+  @override
+  String get planOneriler => 'Öneriler';
 }

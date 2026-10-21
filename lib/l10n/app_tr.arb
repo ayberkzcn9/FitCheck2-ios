@@ -1214,5 +1214,6 @@
   "planSonGiyilenler": "Son giyilenler",
   "izinGerekceKameraBaslik": "Kamerayla kıyafet ekle",
   "izinGerekceKameraAciklama": "Kıyafetlerini fotoğraf olarak eklemek için kamerayı kullanıyoruz. Fotoğraf cihazından çıkar; arka plan silme ve renk/stil analizi sunucu üzerinde yapılır, kalıcı olarak saklanmaz.",
-  "izinGerekceSimdiDegil": "Şimdi değil"
+  "izinGerekceSimdiDegil": "Şimdi değil",
+  "planOneriler": "Öneriler"
 }

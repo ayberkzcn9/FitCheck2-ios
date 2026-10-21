@@ -265,6 +265,7 @@ void main() {
 
     Future<void> kur(
       WidgetTester tester, {
+      List<Kiyafet>? dolapListesi,
       List<FavoriKombin>? favoriListesi,
       VoidCallback? kombinSekmesi,
       List<Map<String, String>> gecmis = const <Map<String, String>>[],
@@ -290,7 +291,7 @@ void main() {
                   onPressed: () => Navigator.of(baglam).push(
                     MaterialPageRoute<void>(
                       builder: (_) => StilGunluguEkrani(
-                        gardirobum: dolap,
+                        gardirobum: dolapListesi ?? dolap,
                         gecmisKombinler: gecmis,
                         favoriKombinler: favoriListesi ?? favoriler,
                         onKombinSekmesineGit: kombinSekmesi,
@@ -421,10 +422,39 @@ void main() {
       expect(planlar[bugun]?.parcalar, ['Beyaz Gömlek', 'Siyah Pantolon']);
     });
 
-    testWidgets('favori yoksa kombin oluştur sekmesine yönlendirir', (tester) async {      SharedPreferences.setMockInitialValues(<String, Object>{});
+    testWidgets('öneriler bölümü kural bazlı kombini önerir', (tester) async {
+      SharedPreferences.setMockInitialValues(<String, Object>{});
+      await kur(
+        tester,
+        favoriListesi: const <FavoriKombin>[],
+      );
+
+      await buguneDokun(tester);
+      await tester.tap(find.text('Bu güne kombin seç'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('ÖNERİLER'), findsOneWidget);
+
+      // Öneri satırı seçilip güne atanmalı.
+      await tester.tap(find.text('Beyaz Gömlek + Siyah Pantolon'));
+      await tester.pumpAndSettle();
+
+      final prefs = await SharedPreferences.getInstance();
+      final planlar = PlanliKombinDeposu.coz(
+        prefs.getString(PlanliKombinDeposu.anahtar),
+      );
+      final bugun = gunAnahtari(DateTime.now());
+      expect(planlar[bugun], isNotNull);
+      expect(planlar[bugun]!.parcalar, isNotEmpty);
+    });
+
+    testWidgets('favori yoksa kombin oluştur sekmesine yönlendirir', (tester) async {
+      SharedPreferences.setMockInitialValues(<String, Object>{});
       var yonlendirildi = false;
       await kur(
         tester,
+        // Boş dolap: öneri de üretilemiyor, tek yol "Kombin oluştur".
+        dolapListesi: const <Kiyafet>[],
         favoriListesi: const <FavoriKombin>[],
         kombinSekmesi: () => yonlendirildi = true,
       );

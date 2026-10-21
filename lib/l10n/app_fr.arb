@@ -1179,5 +1179,6 @@
   "planSonGiyilenler": "Récemment portées",
   "izinGerekceKameraBaslik": "Ajouter des vêtements avec l'appareil photo",
   "izinGerekceKameraAciklama": "Nous utilisons l'appareil photo pour ajouter vos vêtements en photos. La photo quitte votre appareil ; la suppression du fond et l'analyse des couleurs/styles sont faites sur notre serveur, sans stockage permanent.",
-  "izinGerekceSimdiDegil": "Pas maintenant"
+  "izinGerekceSimdiDegil": "Pas maintenant",
+  "planOneriler": "Suggestions"
 }

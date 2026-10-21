@@ -19,9 +19,11 @@ import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
+import '../models/bugun_kombin.dart';
 import '../models/favori_kombin.dart';
 import '../models/kiyafet.dart';
 import '../models/planli_kombin.dart';
+import '../services/akilli_raflar.dart';
 import '../services/haftalik_rapor.dart';
 import '../services/kombin_takvimi.dart';
 import '../services/planli_kombin_deposu.dart';
@@ -562,6 +564,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       builder: (secimContext) {
         final favoriler = widget.favoriKombinler;
         final sonGiyilenler = _sonGiyilenler();
+        final oneriler = _oneriler(gun.tarih);
         return SafeArea(
           child: ConstrainedBox(
             constraints: BoxConstraints(
@@ -594,7 +597,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     ],
                   ),
                 ),
-                if (favoriler.isEmpty && sonGiyilenler.isEmpty)
+                if (favoriler.isEmpty && sonGiyilenler.isEmpty && oneriler.isEmpty)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
                     child: Column(
@@ -620,6 +623,22 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       shrinkWrap: true,
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                       children: [
+                        if (oneriler.isNotEmpty) ...[
+                          _secimBasligi(l10n.planOneriler, colors),
+                          const SizedBox(height: 8),
+                          for (final oneri in oneriler)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: _kombinSatiri(
+                                baslik: oneri.baslik,
+                                altBaslik: null,
+                                parcalar: oneri.parcalar,
+                                indeks: indeks,
+                                colors: colors,
+                                onTap: () => Navigator.of(secimContext).pop(oneri),
+                              ),
+                            ),
+                        ],
                         if (favoriler.isNotEmpty) ...[
                           _secimBasligi(l10n.planFavorilerim, colors),
                           const SizedBox(height: 8),
@@ -686,6 +705,32 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(l10n.planGuneEklendi)),
     );
+  }
+
+  /// Kural bazlı öneriler (çevrimdışı ve anında): o güne uygun kombiler.
+  ///
+  /// Aynı üretici Bugün akışının yedek yolu; böylece seçim sayfası ağ
+  /// çağrısı yapmadan da dolu görünür.
+  List<PlanliKombin> _oneriler(DateTime tarih) {
+    final idIndeks = {for (final k in widget.gardirobum) k.id: k};
+    final kombinler = AkilliRaflar.kurallIleKombinler(
+      widget.gardirobum,
+      adet: 2,
+      gun: tarih,
+    );
+    return kombinler
+        .where((k) => k.gecerliMi)
+        .map(
+          (k) => PlanliKombin(
+            tarih: '',
+            baslik: k.baslik,
+            parcalar: k
+                .parcalar(idIndeks)
+                .map((p) => p.gorunenBaslik)
+                .toList(),
+          ),
+        )
+        .toList();
   }
 
   /// Seçim sayfasındaki bölüm başlığı.

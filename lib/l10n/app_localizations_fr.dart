@@ -3389,4 +3389,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => 'Pas maintenant';
+
+  @override
+  String get planOneriler => 'Suggestions';
 }

@@ -3386,4 +3386,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => 'Jetzt nicht';
+
+  @override
+  String get planOneriler => 'Vorschläge';
 }

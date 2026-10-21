@@ -3330,4 +3330,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => 'ليس الآن';
+
+  @override
+  String get planOneriler => 'اقتراحات';
 }

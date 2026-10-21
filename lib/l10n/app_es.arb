@@ -1179,5 +1179,6 @@
   "planSonGiyilenler": "Usados recientemente",
   "izinGerekceKameraBaslik": "Añade prendas con la cámara",
   "izinGerekceKameraAciklama": "Usamos la cámara para añadir tu ropa en fotos. La foto sale de tu dispositivo; el recorte de fondo y el análisis de color/estilo se hacen en nuestro servidor y no se guardan de forma permanente.",
-  "izinGerekceSimdiDegil": "Ahora no"
+  "izinGerekceSimdiDegil": "Ahora no",
+  "planOneriler": "Sugerencias"
 }

@@ -3357,4 +3357,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get izinGerekceSimdiDegil => 'Не сейчас';
+
+  @override
+  String get planOneriler => 'Предложения';
 }
