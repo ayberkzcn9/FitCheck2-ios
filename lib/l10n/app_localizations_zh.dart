@@ -3116,4 +3116,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get navProfil => '我的';
+
+  @override
+  String get dolapAra => '搜索衣橱';
+
+  @override
+  String get dolapEslesmeYok => '没有匹配的单品。';
+
+  @override
+  String get dolapAramayiTemizle => '清除搜索';
 }

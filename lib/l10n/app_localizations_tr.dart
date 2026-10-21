@@ -3291,4 +3291,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get navProfil => 'Profil';
+
+  @override
+  String get dolapAra => 'Dolabında ara';
+
+  @override
+  String get dolapEslesmeYok => 'Aramanla eşleşen parça yok.';
+
+  @override
+  String get dolapAramayiTemizle => 'Aramayı temizle';
 }

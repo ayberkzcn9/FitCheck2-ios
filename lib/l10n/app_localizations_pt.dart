@@ -3309,4 +3309,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get navProfil => 'Perfil';
+
+  @override
+  String get dolapAra => 'Pesquisar no guarda-roupa';
+
+  @override
+  String get dolapEslesmeYok => 'Nenhuma peça corresponde.';
+
+  @override
+  String get dolapAramayiTemizle => 'Limpar pesquisa';
 }

@@ -1152,5 +1152,8 @@
   "stilGunluguRaporDortHafta": "Последние 4 недели",
   "stilGunluguRaporEnCokParcalar": "Самые носимые вещи",
   "navKombin": "Образ",
-  "navProfil": "Профиль"
+  "navProfil": "Профиль",
+  "dolapAra": "Поиск в гардеробе",
+  "dolapEslesmeYok": "Ничего не найдено.",
+  "dolapAramayiTemizle": "Очистить поиск"
 }

@@ -3325,4 +3325,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get navProfil => 'Profil';
+
+  @override
+  String get dolapAra => 'Rechercher dans votre garde-robe';
+
+  @override
+  String get dolapEslesmeYok => 'Aucune pièce ne correspond.';
+
+  @override
+  String get dolapAramayiTemizle => 'Effacer la recherche';
 }

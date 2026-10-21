@@ -3294,4 +3294,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get navProfil => 'Профиль';
+
+  @override
+  String get dolapAra => 'Поиск в гардеробе';
+
+  @override
+  String get dolapEslesmeYok => 'Ничего не найдено.';
+
+  @override
+  String get dolapAramayiTemizle => 'Очистить поиск';
 }

@@ -1152,5 +1152,8 @@
   "stilGunluguRaporDortHafta": "過去4週間",
   "stilGunluguRaporEnCokParcalar": "よく着たアイテム",
   "navKombin": "コーデ",
-  "navProfil": "マイページ"
+  "navProfil": "マイページ",
+  "dolapAra": "ワードローブを検索",
+  "dolapEslesmeYok": "一致するアイテムがありません。",
+  "dolapAramayiTemizle": "検索をクリア"
 }

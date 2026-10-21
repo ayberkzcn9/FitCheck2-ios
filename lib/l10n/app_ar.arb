@@ -1152,5 +1152,8 @@
   "stilGunluguRaporDortHafta": "آخر 4 أسابيع",
   "stilGunluguRaporEnCokParcalar": "القطع الأكثر ارتداءً",
   "navKombin": "إطلالة",
-  "navProfil": "حسابي"
+  "navProfil": "حسابي",
+  "dolapAra": "ابحث في خزانتك",
+  "dolapEslesmeYok": "لا توجد قطع مطابقة.",
+  "dolapAramayiTemizle": "مسح البحث"
 }

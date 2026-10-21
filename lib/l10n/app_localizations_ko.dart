@@ -3173,4 +3173,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get navProfil => '프로필';
+
+  @override
+  String get dolapAra => '옷장 검색';
+
+  @override
+  String get dolapEslesmeYok => '일치하는 아이템이 없습니다.';
+
+  @override
+  String get dolapAramayiTemizle => '검색 지우기';
 }

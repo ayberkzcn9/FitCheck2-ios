@@ -1152,5 +1152,8 @@
   "stilGunluguRaporDortHafta": "최근 4주",
   "stilGunluguRaporEnCokParcalar": "가장 많이 입은 아이템",
   "navKombin": "코디",
-  "navProfil": "프로필"
+  "navProfil": "프로필",
+  "dolapAra": "옷장 검색",
+  "dolapEslesmeYok": "일치하는 아이템이 없습니다.",
+  "dolapAramayiTemizle": "검색 지우기"
 }

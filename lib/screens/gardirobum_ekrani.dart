@@ -21,6 +21,7 @@ import '../services/satin_alma_servisi.dart';
 import '../utils/ana_ekran_dialoglar.dart';
 import '../utils/hava_uygunlugu.dart';
 import '../utils/helpers.dart';
+import '../utils/dolap_filtresi.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/stroked_text.dart';
 import '../../theme/design_tokens.dart';
@@ -69,6 +70,14 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
   bool _otomatikYukleniyor = false;
   bool _gizlendi = false;
 
+  /// Dolap araması ve kategori filtresi (rafların üstünde).
+  final TextEditingController _aramaDenetleyici = TextEditingController();
+  String _aramaMetni = '';
+  String _kategoriFiltresi = 'tumu';
+
+  bool get _filtreAktif =>
+      _aramaMetni.trim().isNotEmpty || _kategoriFiltresi != 'tumu';
+
   /// Kullanıcı "kesim hatalı olabilir → tekrar çek" dediyse, fotoğraf ekleme
   /// turu bittiğinde kamera yeniden açılır.
   bool _yenidenCekIstendi = false;
@@ -106,6 +115,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
   void dispose() {
     _aiMesajTimer?.cancel();
     _pulseController.dispose();
+    _aramaDenetleyici.dispose();
     super.dispose();
   }
 
@@ -1836,9 +1846,202 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
     );
   }
 
-  Widget _yatayKategoriRafi(String kategoriAnahtari, String kategoriBasligi, AppLocalizations l10n) {
+  // ---------------------------------------------------------------------------
+  // Arama + kategori filtresi
+  // ---------------------------------------------------------------------------
+
+  /// Kayıtlı kategori ne olursa olsun parçayı doğru rafa yerleştirir.
+  /// AI bazen 'ceket', 'üst', 'pantolon' gibi serbest metin döndürüyor;
+  /// bunlar eskiden hiçbir rafta görünmüyordu (kayıp parça).
+  String _rafKategorisi(Kiyafet kiyafet) => dolapRafKategorisi(kiyafet);
+
+  List<Kiyafet> _gorunenParcalar() {
+    return dolapFiltrele(
+      widget.gardirobum,
+      sorgu: _aramaMetni,
+      kategori: _kategoriFiltresi,
+    );
+  }
+
+  void _aramayiTemizle() {
+    _aramaDenetleyici.clear();
+    setState(() {
+      _aramaMetni = '';
+      _kategoriFiltresi = 'tumu';
+    });
+  }
+
+  Widget _aramaVeFiltre(AppLocalizations l10n, ColorScheme colors) {
+    final cipler = <MapEntry<String, String>>[
+      MapEntry('tumu', l10n.gardirobumKategoriTumu),
+      MapEntry('ust', l10n.gardirobumKategoriUst),
+      MapEntry('alt', l10n.gardirobumKategoriAlt),
+      MapEntry('ayakkabi', l10n.gardirobumKategoriAyakkabi),
+      MapEntry('aksesuar', l10n.gardirobumKategoriAksesuar),
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+          child: TextField(
+            controller: _aramaDenetleyici,
+            onChanged: (deger) => setState(() => _aramaMetni = deger),
+            textInputAction: TextInputAction.search,
+            style: const TextStyle(fontSize: 14),
+            decoration: InputDecoration(
+              hintText: l10n.dolapAra,
+              isDense: true,
+              filled: true,
+              fillColor: colors.surfaceContainerHighest.withValues(alpha: 0.55),
+              prefixIcon: Icon(
+                Icons.search_rounded,
+                size: 20,
+                color: colors.onSurfaceVariant,
+              ),
+              suffixIcon: _aramaMetni.isEmpty
+                  ? null
+                  : IconButton(
+                      tooltip: l10n.dolapAramayiTemizle,
+                      icon: Icon(
+                        Icons.close_rounded,
+                        size: 18,
+                        color: colors.onSurfaceVariant,
+                      ),
+                      onPressed: _aramayiTemizle,
+                    ),
+              hintStyle: TextStyle(
+                fontSize: 14,
+                color: colors.onSurfaceVariant,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(AppRadius.lg),
+                borderSide: BorderSide.none,
+              ),
+              contentPadding: const EdgeInsets.symmetric(vertical: 14),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 56,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.fromLTRB(16, 10, 16, 8),
+            itemCount: cipler.length,
+            separatorBuilder: (_, __) => const SizedBox(width: 8),
+            itemBuilder: (context, i) {
+              final cip = cipler[i];
+              final secili = _kategoriFiltresi == cip.key;
+              return ChoiceChip(
+                label: Text(cip.value),
+                selected: secili,
+                onSelected: (_) {
+                  HapticFeedback.selectionClick();
+                  setState(() => _kategoriFiltresi = cip.key);
+                },
+                showCheckmark: false,
+                visualDensity: VisualDensity.compact,
+                backgroundColor:
+                    colors.surfaceContainerHighest.withValues(alpha: 0.55),
+                selectedColor: colors.onSurface,
+                side: BorderSide.none,
+                labelStyle: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: secili ? colors.surface : colors.onSurfaceVariant,
+                ),
+              );
+            },
+          ),
+        ),
+        if (_filtreAktif)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 4),
+            child: Text(
+              l10n.gardirobumUrunSayisi(_gorunenParcalar().length),
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: colors.onSurfaceVariant,
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _eslesmeYok(AppLocalizations l10n, ColorScheme colors) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(32, 40, 32, 16),
+      child: Column(
+        children: [
+          Icon(
+            Icons.search_off_rounded,
+            size: 40,
+            color: colors.onSurfaceVariant.withValues(alpha: 0.6),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            l10n.dolapEslesmeYok,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 14, color: colors.onSurfaceVariant),
+          ),
+          const SizedBox(height: 8),
+          TextButton.icon(
+            onPressed: _aramayiTemizle,
+            icon: const Icon(Icons.close_rounded, size: 16),
+            label: Text(l10n.dolapAramayiTemizle),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Arama kutusu + raflar. Filtre açıkken boş raflar gizlenir.
+  List<Widget> _dolapIcerigi(AppLocalizations l10n, ColorScheme colors) {
+    final parcalar = _gorunenParcalar();
+    final raflar = <MapEntry<String, String>>[
+      MapEntry('ust', l10n.gardirobumKategoriUst),
+      MapEntry('alt', l10n.gardirobumKategoriAlt),
+      MapEntry('ayakkabi', l10n.gardirobumKategoriAyakkabi),
+      MapEntry('aksesuar', l10n.gardirobumKategoriAksesuar),
+    ];
+
+    final icerik = <Widget>[_aramaVeFiltre(l10n, colors)];
+    var gosterilenRaf = 0;
+
+    for (final raf in raflar) {
+      final rafParcalari =
+          parcalar.where((k) => _rafKategorisi(k) == raf.key).toList();
+      if (_filtreAktif && rafParcalari.isEmpty) continue;
+      gosterilenRaf++;
+      icerik.add(_yatayKategoriRafi(
+        raf.key,
+        raf.value,
+        l10n,
+        rafParcalari,
+        sayiGoster: !_filtreAktif,
+      ));
+    }
+
+    if (_filtreAktif && gosterilenRaf == 0) {
+      icerik.add(_eslesmeYok(l10n, colors));
+    }
+
+    return icerik;
+  }
+
+  Widget _yatayKategoriRafi(
+    String kategoriAnahtari,
+    String kategoriBasligi,
+    AppLocalizations l10n,
+    List<Kiyafet> kategoriListesi, {
+    /// Filtre açıkken toplam sayı zaten üstte yazıyor; raf başlığındaki
+    /// sayıyı tekrarlamıyoruz.
+    bool sayiGoster = true,
+  }) {
     final colors = Theme.of(context).colorScheme;
-    final kategoriListesi = widget.gardirobum.where((k) => k.kategori.toLowerCase() == kategoriAnahtari).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1865,14 +2068,15 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 ),
               ),
               const SizedBox(width: 12),
-              Text(
-                l10n.gardirobumUrunSayisi(kategoriListesi.length),
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: colors.onSurfaceVariant,
+              if (sayiGoster)
+                Text(
+                  l10n.gardirobumUrunSayisi(kategoriListesi.length),
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: colors.onSurfaceVariant,
+                  ),
                 ),
-              ),
             ],
           ),
         ),
@@ -2061,12 +2265,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   child: Padding(
                     padding: const EdgeInsets.only(top: 8, bottom: 100),
                     child: Column(
-                      children: [
-                        _yatayKategoriRafi('ust', l10n.gardirobumKategoriUst, l10n),
-                        _yatayKategoriRafi('alt', l10n.gardirobumKategoriAlt, l10n),
-                        _yatayKategoriRafi('ayakkabi', l10n.gardirobumKategoriAyakkabi, l10n),
-                        _yatayKategoriRafi('aksesuar', l10n.gardirobumKategoriAksesuar, l10n),
-                      ],
+                      children: _dolapIcerigi(l10n, colors),
                     ),
                   ),
                 ),

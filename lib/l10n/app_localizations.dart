@@ -6075,6 +6075,24 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Profil'**
   String get navProfil;
+
+  /// No description provided for @dolapAra.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabında ara'**
+  String get dolapAra;
+
+  /// No description provided for @dolapEslesmeYok.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aramanla eşleşen parça yok.'**
+  String get dolapEslesmeYok;
+
+  /// No description provided for @dolapAramayiTemizle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aramayı temizle'**
+  String get dolapAramayiTemizle;
 }
 
 class _AppLocalizationsDelegate

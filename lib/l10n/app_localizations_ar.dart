@@ -3267,4 +3267,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get navProfil => 'حسابي';
+
+  @override
+  String get dolapAra => 'ابحث في خزانتك';
+
+  @override
+  String get dolapEslesmeYok => 'لا توجد قطع مطابقة.';
+
+  @override
+  String get dolapAramayiTemizle => 'مسح البحث';
 }

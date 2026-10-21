@@ -1187,5 +1187,8 @@
   "stilGunluguRaporDortHafta": "Son 4 hafta",
   "stilGunluguRaporEnCokParcalar": "En çok giydiklerin",
   "navKombin": "Kombin",
-  "navProfil": "Profil"
+  "navProfil": "Profil",
+  "dolapAra": "Dolabında ara",
+  "dolapEslesmeYok": "Aramanla eşleşen parça yok.",
+  "dolapAramayiTemizle": "Aramayı temizle"
 }

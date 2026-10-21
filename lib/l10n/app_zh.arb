@@ -1152,5 +1152,8 @@
   "stilGunluguRaporDortHafta": "最近4周",
   "stilGunluguRaporEnCokParcalar": "最常穿的单品",
   "navKombin": "穿搭",
-  "navProfil": "我的"
+  "navProfil": "我的",
+  "dolapAra": "搜索衣橱",
+  "dolapEslesmeYok": "没有匹配的单品。",
+  "dolapAramayiTemizle": "清除搜索"
 }

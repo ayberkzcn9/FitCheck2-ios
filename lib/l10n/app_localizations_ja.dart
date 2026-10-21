@@ -3158,4 +3158,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get navProfil => 'マイページ';
+
+  @override
+  String get dolapAra => 'ワードローブを検索';
+
+  @override
+  String get dolapEslesmeYok => '一致するアイテムがありません。';
+
+  @override
+  String get dolapAramayiTemizle => '検索をクリア';
 }

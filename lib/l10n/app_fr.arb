@@ -1152,5 +1152,8 @@
   "stilGunluguRaporDortHafta": "4 dernières semaines",
   "stilGunluguRaporEnCokParcalar": "Pièces les plus portées",
   "navKombin": "Tenue",
-  "navProfil": "Profil"
+  "navProfil": "Profil",
+  "dolapAra": "Rechercher dans votre garde-robe",
+  "dolapEslesmeYok": "Aucune pièce ne correspond.",
+  "dolapAramayiTemizle": "Effacer la recherche"
 }

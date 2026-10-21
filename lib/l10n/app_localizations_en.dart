@@ -3294,4 +3294,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navProfil => 'Profile';
+
+  @override
+  String get dolapAra => 'Search your wardrobe';
+
+  @override
+  String get dolapEslesmeYok => 'No pieces match your search.';
+
+  @override
+  String get dolapAramayiTemizle => 'Clear search';
 }

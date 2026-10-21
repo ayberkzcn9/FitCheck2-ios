@@ -15,6 +15,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fitcheck/l10n/app_localizations.dart';
@@ -22,6 +23,7 @@ import 'package:fitcheck/models/bugun_kombin.dart';
 import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
+import 'package:fitcheck/screens/gardirobum_ekrani.dart';
 import 'package:fitcheck/widgets/alt_menu_cubugu.dart';
 import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
 import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
@@ -398,6 +400,33 @@ void main() {
     );
     await _bekle(tester);
     await _ekranGorusu(tester, '13_alt_menu');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('gardirobum arama', (tester) async {
+    // Ekran açılışta .env okuyor.
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        GardirobumEkrani(
+          gardirobum: dolap,
+          onKiyafetEkle: (_) {},
+          onKiyafetSil: (_) {},
+          onGardirobuTemizle: () {},
+          onSepetToggle: (_) {},
+          onKombinIstegi: (_) {},
+          anaRenk: Colors.indigo,
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '14_gardirobum');
+
+    await tester.enterText(find.byType(TextField), 'beyaz');
+    await _bekle(tester);
+    await _ekranGorusu(tester, '15_gardirobum_arama');
     expect(tester.takeException(), isNull);
   });
 }

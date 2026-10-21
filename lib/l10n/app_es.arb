@@ -1152,5 +1152,8 @@
   "stilGunluguRaporDortHafta": "Últimas 4 semanas",
   "stilGunluguRaporEnCokParcalar": "Prendas más usadas",
   "navKombin": "Conjunto",
-  "navProfil": "Perfil"
+  "navProfil": "Perfil",
+  "dolapAra": "Buscar en tu armario",
+  "dolapEslesmeYok": "Ninguna prenda coincide.",
+  "dolapAramayiTemizle": "Borrar búsqueda"
 }
