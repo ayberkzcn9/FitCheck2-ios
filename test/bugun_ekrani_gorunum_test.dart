@@ -108,6 +108,8 @@ void main() {
               giyilenler?[baslik] = parcalar;
             },
             onStilistAc: () {},
+            onStilGunluguAc: () {},
+            onSeyahatAc: () {},
             onKiyafetGiyildi: onGiydi,
             onKombinIstegi: onKombin,
             anaRenk: Colors.indigo,
@@ -241,6 +243,18 @@ void main() {
     );
 
     expect(tester.takeException(), isNull);
+
+    // 3 sütunlu ızgara dar ekranda da altı aracı gösterir.
+    for (final etiket in [
+      'Fotoğrafla ekle',
+      'Kombin üret',
+      'Stiliste sor',
+      'Haftayı planla',
+      'Stil Günlüğüm',
+      'Seyahat Modu',
+    ]) {
+      expect(find.text(etiket), findsOneWidget, reason: '$etiket görünmüyor');
+    }
   });
 
   testWidgets('kombin varken paylas dugmesi etkin', (tester) async {
