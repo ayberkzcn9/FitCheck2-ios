@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "إطلالتك اليوم",
-  "planTakvimdenDegistir": "تغيير في التقويم"
+  "planTakvimdenDegistir": "تغيير في التقويم",
+  "planFavorilerim": "مفضلتي",
+  "planSonGiyilenler": "ارتدتها مؤخرًا"
 }

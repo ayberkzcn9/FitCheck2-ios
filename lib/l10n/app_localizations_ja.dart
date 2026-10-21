@@ -3205,4 +3205,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => 'カレンダーで変更';
+
+  @override
+  String get planFavorilerim => 'お気に入り';
+
+  @override
+  String get planSonGiyilenler => '最近着たもの';
 }

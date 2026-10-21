@@ -6165,6 +6165,18 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Takvimden değiştir'**
   String get planTakvimdenDegistir;
+
+  /// No description provided for @planFavorilerim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Favorilerim'**
+  String get planFavorilerim;
+
+  /// No description provided for @planSonGiyilenler.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son giyilenler'**
+  String get planSonGiyilenler;
 }
 
 class _AppLocalizationsDelegate

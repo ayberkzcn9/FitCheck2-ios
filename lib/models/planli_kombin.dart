@@ -39,9 +39,9 @@ class PlanliKombin {
     );
   }
 
-  PlanliKombin kopya({String? baslik, List<String>? parcalar}) {
+  PlanliKombin kopya({String? tarih, String? baslik, List<String>? parcalar}) {
     return PlanliKombin(
-      tarih: tarih,
+      tarih: tarih ?? this.tarih,
       baslik: baslik ?? this.baslik,
       parcalar: parcalar ?? this.parcalar,
     );

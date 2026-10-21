@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "今日のコーデ",
-  "planTakvimdenDegistir": "カレンダーで変更"
+  "planTakvimdenDegistir": "カレンダーで変更",
+  "planFavorilerim": "お気に入り",
+  "planSonGiyilenler": "最近着たもの"
 }

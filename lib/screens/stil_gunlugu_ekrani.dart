@@ -561,6 +561,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       ),
       builder: (secimContext) {
         final favoriler = widget.favoriKombinler;
+        final sonGiyilenler = _sonGiyilenler();
         return SafeArea(
           child: ConstrainedBox(
             constraints: BoxConstraints(
@@ -593,7 +594,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     ],
                   ),
                 ),
-                if (favoriler.isEmpty)
+                if (favoriler.isEmpty && sonGiyilenler.isEmpty)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
                     child: Column(
@@ -615,20 +616,49 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   )
                 else
                   Flexible(
-                    child: ListView.separated(
+                    child: ListView(
                       shrinkWrap: true,
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                      itemCount: favoriler.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 8),
-                      itemBuilder: (_, i) {
-                        final favori = favoriler[i];
-                        return _favoriSecenegi(
-                          favori,
-                          indeks,
-                          colors,
-                          onTap: () => Navigator.of(secimContext).pop(favori),
-                        );
-                      },
+                      children: [
+                        if (favoriler.isNotEmpty) ...[
+                          _secimBasligi(l10n.planFavorilerim, colors),
+                          const SizedBox(height: 8),
+                          for (final favori in favoriler)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: _kombinSatiri(
+                                baslik: favori.baslik,
+                                altBaslik: favori.tuyo,
+                                parcalar: favori.parcalar,
+                                indeks: indeks,
+                                colors: colors,
+                                onTap: () => Navigator.of(secimContext).pop(
+                                  PlanliKombin(
+                                    tarih: '',
+                                    baslik: favori.baslik,
+                                    parcalar: favori.parcalar,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                        if (sonGiyilenler.isNotEmpty) ...[
+                          _secimBasligi(l10n.planSonGiyilenler, colors),
+                          const SizedBox(height: 8),
+                          for (final gecmis in sonGiyilenler)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: _kombinSatiri(
+                                baslik: gecmis.baslik,
+                                altBaslik: null,
+                                parcalar: gecmis.parcalar,
+                                indeks: indeks,
+                                colors: colors,
+                                onTap: () => Navigator.of(secimContext).pop(gecmis),
+                              ),
+                            ),
+                        ],
+                      ],
                     ),
                   ),
               ],
@@ -646,13 +676,9 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       return;
     }
 
-    final favori = secim as FavoriKombin;
+    final secilen = secim as PlanliKombin;
     final yeni = await PlanliKombinDeposu().ata(
-      PlanliKombin(
-        tarih: gunAnahtari(gun.tarih),
-        baslik: favori.baslik,
-        parcalar: favori.parcalar,
-      ),
+      secilen.kopya(tarih: gunAnahtari(gun.tarih)),
     );
     if (!mounted) return;
     HapticFeedback.lightImpact();
@@ -662,14 +688,58 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     );
   }
 
-  /// Seçim listesindeki tek favori kombin satırı.
-  Widget _favoriSecenegi(
-    FavoriKombin favori,
-    Map<String, Kiyafet> indeks,
-    ColorScheme colors, {
+  /// Seçim sayfasındaki bölüm başlığı.
+  Widget _secimBasligi(String metin, ColorScheme colors) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 6),
+      child: Text(
+        turkceBuyukHarf(metin),
+        style: TextStyle(
+          fontSize: 10,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 0.8,
+          color: colors.onSurfaceVariant,
+        ),
+      ),
+    );
+  }
+
+  /// Geçmişten türetilen, son giyilen kombinler (en fazla 5, tekrarsız).
+  ///
+  /// Geçmiş kaydında parçalar virgülle birleşik yazılır; burada tekrar ayrılır.
+  List<PlanliKombin> _sonGiyilenler() {
+    final sonuc = <PlanliKombin>[];
+    final gorulenler = <String>{};
+    for (final kayit in widget.gecmisKombinler) {
+      final baslik = (kayit['baslik'] ?? '').trim();
+      if (baslik.isEmpty) continue;
+      if (!gorulenler.add(baslik.toLowerCase())) continue;
+      final detay = (kayit['detay'] ?? '').trim();
+      final parcalar = detay.isEmpty
+          ? const <String>[]
+          : detay
+              .split(',')
+              .map((e) => e.trim())
+              .where((e) => e.isNotEmpty)
+              .toList();
+      sonuc.add(
+        PlanliKombin(tarih: '', baslik: baslik, parcalar: parcalar),
+      );
+      if (sonuc.length >= 5) break;
+    }
+    return sonuc;
+  }
+
+  /// Seçim listesindeki tek kombin satırı.
+  Widget _kombinSatiri({
+    required String baslik,
+    required String? altBaslik,
+    required List<String> parcalar,
+    required Map<String, Kiyafet> indeks,
+    required ColorScheme colors,
     required VoidCallback onTap,
   }) {
-    final parcalar = favori.parcalar
+    final gorseller = parcalar
         .map((ad) => indeks[ad.trim().toLowerCase()])
         .whereType<Kiyafet>()
         .take(3)
@@ -686,12 +756,12 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         ),
         child: Row(
           children: [
-            for (final parca in parcalar)
+            for (final parca in gorseller)
               Padding(
                 padding: const EdgeInsets.only(right: 6),
                 child: SizedBox(width: 42, height: 52, child: _parcaGorseli(parca)),
               ),
-            if (parcalar.isEmpty)
+            if (gorseller.isEmpty)
               Icon(Icons.checkroom_rounded, color: colors.onSurfaceVariant),
             const SizedBox(width: 6),
             Expanded(
@@ -699,7 +769,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    favori.baslik,
+                    baslik,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -708,16 +778,18 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       color: colors.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 2),
-                  Text(
-                    favori.tuyo,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: colors.onSurfaceVariant,
+                  if (altBaslik != null && altBaslik.isNotEmpty) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      altBaslik,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: colors.onSurfaceVariant,
+                      ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),

@@ -33,8 +33,26 @@ Map<String, dynamic> safeJsonDecodeMap(String? jsonString, {String? tag}) {
   return safeJsonDecode<Map<String, dynamic>>(jsonString, fallback: <String, dynamic>{}, tag: tag) ?? <String, dynamic>{};
 }
 
-String metniGuvenliYap(String text) {
-  // Markdown işaretlerini ve kontrol karakterlerini temizler.
+/// Türkçe'ye uygun büyük harf dönüşümü.
+///
+/// Dart'ın `toUpperCase()` metodu 'i' harfini 'I' yapar; Türkçede doğrusu
+/// 'İ'dir. Başlık etiketlerinde ("SON GİYİLENLER") doğru görünmesi için
+/// bu yardımcı kullanılır.
+String turkceBuyukHarf(String metin) {
+  final sonuc = StringBuffer();
+  for (final karakter in metin.split('')) {
+    if (karakter == 'i') {
+      sonuc.write('İ');
+    } else if (karakter == 'ı') {
+      sonuc.write('I');
+    } else {
+      sonuc.write(karakter.toUpperCase());
+    }
+  }
+  return sonuc.toString();
+}
+
+String metniGuvenliYap(String text) {  // Markdown işaretlerini ve kontrol karakterlerini temizler.
   // ÖNEMLİ: Tüm Unicode alfabeler (Kiril, Arapça, Japonca, Korece, Çince...)
   // ve emojiler KORUNUR; yalnızca kontrol karakterleri atılır.
   return text

@@ -3372,4 +3372,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => 'Modifier dans le calendrier';
+
+  @override
+  String get planFavorilerim => 'Mes favoris';
+
+  @override
+  String get planSonGiyilenler => 'Récemment portées';
 }

@@ -140,12 +140,13 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.575.334 bayt,
-   SHA256 `2E13DF0BF5EA95DF0629B3A9AA04A0606A72EF723676AC5AFED56BDFC5BF799B`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.666.608 bayt,
+   SHA256 `A0B5DB410C79B88E3A40811A76392DE6ACB919EA6F12C58F34F0D01C8F6CE123`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
-   (21.10.2026 dolap arama/filtre turundan sonra yeniden üretildi. Önceki
-   derleme 37'ydi; bu paket versionCode 38 olduğu için yükleme çakışmaz.)
+   (21.10.2026 dolap arama/filtre ve takvim planlama turlarından sonra yeniden
+   üretildi. Önceki derleme 37'ydi; bu paket versionCode 38 olduğu için yükleme
+   çakışmaz.)
 2. **Sürüm:** versionName 1.0.32 / versionCode 38 (mağazadaki 1.0.29+35'in üstü).
 3. **Yayın notu:** yukarıdaki 12 dilden ilgili olanı yapıştır.
 4. **Gizlilik politikası URL'si:** Play Console'daki politika metnine de "kıyafet
@@ -154,7 +155,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 5. **Data safety:** fotoğraf/veri paylaşımı bölümünü kontrol et (fotoğraflar
    işlenmek üzere üçüncü taraf AI servislerine gidiyor).
 6. **Cihaz testi:** `build\FitCheck-1.0.32+38.apk` (versionCode 38,
-   SHA256 `64B0E046B28B8FED26BC796F8BE299C4301081D1169481EBCEA05C3FF4F33AB7`).
+   SHA256 `D214CF93E3DE065FE9C279C5AA4AC38213CB62D3B1D5B8B69063F161F5CAEEBB`).
    Yeni: 7. sekme "Düello", Bildirim → sekme yönlendirme, kombini paylaşma,
    raf aksiyonları, "Stil Günlüğüm" (takvim/günlük/rapor), "Seyahat Modu".
    Değişiklik: "Kendin Kombin Yap" sekmesi kaldırıldı → alt menüde 6 sekme
@@ -165,3 +166,5 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
    Son tur: dolapta arama + kategori çipleri + sonuç sayacı; AI'nin
    döndürdüğü serbest kategori ('ceket', 'çanta'…) artık doğru rafa düşüyor
    (önceden bu parçalar dolapta görünmüyordu).
+   Son tur: takvimde güne kombin atama (favori seçimi, Değiştir/Kaldır),
+   Bugün'de "BUGÜN PLANIN" kartı, bildirimler tarihe özel planı okuyor.

@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "Твой образ на сегодня",
-  "planTakvimdenDegistir": "Изменить в календаре"
+  "planTakvimdenDegistir": "Изменить в календаре",
+  "planFavorilerim": "Мои избранное",
+  "planSonGiyilenler": "Недавно надетое"
 }

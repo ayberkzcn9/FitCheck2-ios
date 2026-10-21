@@ -31,6 +31,7 @@ import '../services/akilli_raflar.dart';
 import '../services/analytics_servisi.dart';
 import '../services/bugun_feed_servisi.dart';
 import '../services/planli_kombin_deposu.dart';
+import '../utils/helpers.dart';
 
 class BugunEkrani extends StatefulWidget {
   const BugunEkrani({
@@ -487,7 +488,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        l10n.planBugun.toUpperCase(),
+                        turkceBuyukHarf(l10n.planBugun),
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w800,

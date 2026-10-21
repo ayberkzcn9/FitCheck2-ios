@@ -3163,4 +3163,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => '在日历中更换';
+
+  @override
+  String get planFavorilerim => '我的收藏';
+
+  @override
+  String get planSonGiyilenler => '最近穿过的';
 }

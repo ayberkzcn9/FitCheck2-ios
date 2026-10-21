@@ -3356,4 +3356,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => 'Alterar no calendário';
+
+  @override
+  String get planFavorilerim => 'Os meus favoritos';
+
+  @override
+  String get planSonGiyilenler => 'Usados recentemente';
 }

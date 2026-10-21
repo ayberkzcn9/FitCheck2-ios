@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "O teu look de hoje",
-  "planTakvimdenDegistir": "Alterar no calendário"
+  "planTakvimdenDegistir": "Alterar no calendário",
+  "planFavorilerim": "Os meus favoritos",
+  "planSonGiyilenler": "Usados recentemente"
 }

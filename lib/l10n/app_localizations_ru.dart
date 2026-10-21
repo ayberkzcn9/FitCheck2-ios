@@ -3341,4 +3341,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => 'Изменить в календаре';
+
+  @override
+  String get planFavorilerim => 'Мои избранное';
+
+  @override
+  String get planSonGiyilenler => 'Недавно надетое';
 }

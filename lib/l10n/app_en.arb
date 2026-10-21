@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "Your plan today",
-  "planTakvimdenDegistir": "Change in calendar"
+  "planTakvimdenDegistir": "Change in calendar",
+  "planFavorilerim": "My favourites",
+  "planSonGiyilenler": "Recently worn"
 }

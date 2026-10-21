@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "Dein Plan heute",
-  "planTakvimdenDegistir": "Im Kalender ändern"
+  "planTakvimdenDegistir": "Im Kalender ändern",
+  "planFavorilerim": "Meine Favoriten",
+  "planSonGiyilenler": "Zuletzt getragen"
 }

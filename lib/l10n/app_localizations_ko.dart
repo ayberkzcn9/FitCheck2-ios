@@ -3220,4 +3220,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => '캘린더에서 변경';
+
+  @override
+  String get planFavorilerim => '즐겨찾기';
+
+  @override
+  String get planSonGiyilenler => '최근 입은 옷';
 }

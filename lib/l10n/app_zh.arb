@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "今日穿搭",
-  "planTakvimdenDegistir": "在日历中更换"
+  "planTakvimdenDegistir": "在日历中更换",
+  "planFavorilerim": "我的收藏",
+  "planSonGiyilenler": "最近穿过的"
 }

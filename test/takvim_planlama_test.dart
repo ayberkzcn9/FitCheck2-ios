@@ -267,6 +267,7 @@ void main() {
       WidgetTester tester, {
       List<FavoriKombin>? favoriListesi,
       VoidCallback? kombinSekmesi,
+      List<Map<String, String>> gecmis = const <Map<String, String>>[],
     }) async {
       // Telefon boyutu: 800×600 varsayılanında takvimin alt satırları ekran
       // dışında kalıyor.
@@ -290,7 +291,7 @@ void main() {
                     MaterialPageRoute<void>(
                       builder: (_) => StilGunluguEkrani(
                         gardirobum: dolap,
-                        gecmisKombinler: const <Map<String, String>>[],
+                        gecmisKombinler: gecmis,
                         favoriKombinler: favoriListesi ?? favoriler,
                         onKombinSekmesineGit: kombinSekmesi,
                       ),
@@ -387,8 +388,40 @@ void main() {
       expect(planlar, isEmpty);
     });
 
-    testWidgets('favori yoksa kombin oluştur sekmesine yönlendirir', (tester) async {
+    testWidgets('son giyilenler de seçilebilir', (tester) async {
       SharedPreferences.setMockInitialValues(<String, Object>{});
+      await kur(
+        tester,
+        favoriListesi: const <FavoriKombin>[],
+        gecmis: const [
+          {
+            'tarih': '2026-10-18',
+            'baslik': 'Ofis kombini',
+            'detay': 'Beyaz Gömlek, Siyah Pantolon',
+          },
+        ],
+      );
+
+      await buguneDokun(tester);
+      await tester.tap(find.text('Bu güne kombin seç'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('SON GİYİLENLER'), findsOneWidget);
+      expect(find.text('Ofis kombini'), findsOneWidget);
+
+      await tester.tap(find.text('Ofis kombini'));
+      await tester.pumpAndSettle();
+
+      final prefs = await SharedPreferences.getInstance();
+      final planlar = PlanliKombinDeposu.coz(
+        prefs.getString(PlanliKombinDeposu.anahtar),
+      );
+      final bugun = gunAnahtari(DateTime.now());
+      expect(planlar[bugun]?.baslik, 'Ofis kombini');
+      expect(planlar[bugun]?.parcalar, ['Beyaz Gömlek', 'Siyah Pantolon']);
+    });
+
+    testWidgets('favori yoksa kombin oluştur sekmesine yönlendirir', (tester) async {      SharedPreferences.setMockInitialValues(<String, Object>{});
       var yonlendirildi = false;
       await kur(
         tester,

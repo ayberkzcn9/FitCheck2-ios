@@ -1209,5 +1209,7 @@
     }
   },
   "planBugun": "Bugün planın",
-  "planTakvimdenDegistir": "Takvimden değiştir"
+  "planTakvimdenDegistir": "Takvimden değiştir",
+  "planFavorilerim": "Favorilerim",
+  "planSonGiyilenler": "Son giyilenler"
 }

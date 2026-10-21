@@ -1174,5 +1174,7 @@
     }
   },
   "planBugun": "오늘의 코디",
-  "planTakvimdenDegistir": "캘린더에서 변경"
+  "planTakvimdenDegistir": "캘린더에서 변경",
+  "planFavorilerim": "즐겨찾기",
+  "planSonGiyilenler": "최근 입은 옷"
 }

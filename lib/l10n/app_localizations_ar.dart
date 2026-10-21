@@ -3314,4 +3314,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => 'تغيير في التقويم';
+
+  @override
+  String get planFavorilerim => 'مفضلتي';
+
+  @override
+  String get planSonGiyilenler => 'ارتدتها مؤخرًا';
 }

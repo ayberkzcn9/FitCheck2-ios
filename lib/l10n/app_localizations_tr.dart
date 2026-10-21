@@ -3338,4 +3338,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get planTakvimdenDegistir => 'Takvimden değiştir';
+
+  @override
+  String get planFavorilerim => 'Favorilerim';
+
+  @override
+  String get planSonGiyilenler => 'Son giyilenler';
 }
