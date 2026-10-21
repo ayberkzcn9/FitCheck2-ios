@@ -16,7 +16,8 @@ import '../models/favori_kombin.dart';
 import 'gardirobum_ekrani.dart';
 import 'haftalik_planlayici_ekrani.dart';
 import 'gunluk_kombin_ekrani.dart';
-import 'kendi_kombinim_ekrani.dart';
+// "Kendin Kombin Yap" sekmesi devre dışı bırakıldı; ekran dosyası
+// (kendi_kombinim_ekrani.dart) repoda duruyor, sekme açılınca import geri gelir.
 import 'profil_analiz_ekrani.dart';
 import 'kombin_duellosu_ekrani.dart';
 import 'ai_chatbot_modal.dart';
@@ -93,7 +94,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   final GlobalKey _gardirobumNavKey = GlobalKey();
   final GlobalKey _haftalikNavKey = GlobalKey();
   final GlobalKey _dolaptanNavKey = GlobalKey();
-  final GlobalKey _kendiNavKey = GlobalKey();
+  // "Kendin Kombin Yap" sekmesi devre dışı: alt menüde ve rehberde yok.
   final GlobalKey _profilNavKey = GlobalKey();
 
   String _varsayilanCinsiyet = 'Kadın';
@@ -320,7 +321,6 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
           gardirobumNavKey: _gardirobumNavKey,
           haftalikNavKey: _haftalikNavKey,
           dolaptanNavKey: _dolaptanNavKey,
-          kendiNavKey: _kendiNavKey,
           profilNavKey: _profilNavKey,
           onFinish: () async {
             final p = await SharedPreferences.getInstance();
@@ -848,6 +848,10 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     });
   }
 
+  // NOT: Aşağıdaki iki yardımcı yalnızca "Kendin Kombin Yap" ekranı için
+  // kullanılıyordu; sekme devre dışı olduğu için şimdilik çağrılmıyorlar.
+  // Sekme yeniden açıldığında bağlantılar da geri gelecek.
+  // ignore: unused_element
   Future<void> _favoriKombinBaslikIleSil(String baslik) async {
     await _dataLock.synchronized(() async {
       if (_verilerYukleniyor) return;
@@ -858,6 +862,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     });
   }
 
+  // ignore: unused_element
   bool _isKombinFavoride(List<String> parcaBasliklari) {
     if (parcaBasliklari.isEmpty) return false;
 
@@ -1601,9 +1606,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                     _buildNavItem(Icons.casino_outlined, Icons.casino_rounded,
                         _sekmeKombin,
                         key: _dolaptanNavKey),
-                    _buildNavItem(Icons.add_box_outlined,
-                        Icons.add_box_rounded, _sekmeKendi,
-                        key: _kendiNavKey),
+                    // "Kendin Kombin Yap" (_sekmeKendi) bilinçli olarak kapalı.
                     _buildNavItem(Icons.insights_outlined,
                         Icons.insights_rounded, _sekmeProfil,
                         key: _profilNavKey),
@@ -1621,6 +1624,10 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
 
   /// Sekmeyi değiştirir ve analitik için ekran görüntülemesi gönderir.
   void _sekmeSec(int index) {
+    // Devre dışı sekme: yanlışlıkla bir yönlendirme olursa Bugün'e düş.
+    if (index == _sekmeKendi) {
+      index = _sekmeBugun;
+    }
     if (_seciliSekme == index) return;
     setState(() => _seciliSekme = index);
     AnalyticsServisi().ekranGoruntule(AnalyticsServisi.sekmeAdlari[index]);
@@ -1776,15 +1783,11 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         anaRenk: _anaRenk,
         isAktifSekme: _seciliSekme == _sekmeKombin,
       ),
-      KendiKombinimEkrani(
-        gardirobum: _gardirobum,
-        anaRenk: _anaRenk,
-        onFavoriEkle: _favoriKombinEkle,
-        onFavoriCikar: _favoriKombinBaslikIleSil,
-        isFavoriKontrol: (parcaBasliklari) =>
-            _isKombinFavoride(parcaBasliklari),
-        onGecmiseEkle: _kombinGecmisineEkle,
-      ),
+      // 4) "Kendin Kombin Yap" sekmesi devre dışı bırakıldı.
+      // Ekran kodu `kendi_kombinim_ekrani.dart` içinde duruyor; sekme
+      // yeniden açılacaksa buradaki yer tutucu silinip ekran geri konur.
+      // İndeksler (profil = 5, düello = 6) bozulmasın diye yer tutucu var.
+      const SizedBox.shrink(),
       ProfilVeAnalizEkrani(
         gardirobum: _gardirobum,
         favoriKombinler: _favoriKombinler,
