@@ -20,6 +20,7 @@ import '../models/kiyafet.dart';
 import '../services/analytics_servisi.dart';
 import '../services/kombin_duellosu_motoru.dart';
 import '../services/kombin_duellosu_servisi.dart';
+import '../theme/design_tokens.dart';
 
 class KombinDuellosuEkrani extends StatefulWidget {
   const KombinDuellosuEkrani({
@@ -801,7 +802,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     final colors = Theme.of(context).colorScheme;
     final cevaplandi = _cevaplandi;
 
-    const dogruRenk = Color(0xFF2E7D5B);
+    const dogruRenk = AppAccents.successDeep;
     final kenar = !cevaplandi
         ? colors.outlineVariant.withValues(alpha: 0.5)
         : dogruKart
@@ -953,12 +954,12 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
       decoration: BoxDecoration(
         color: dogruMu
-            ? const Color(0xFF2E7D5B).withValues(alpha: 0.09)
+            ? AppAccents.successDeep.withValues(alpha: 0.09)
             : colors.error.withValues(alpha: 0.07),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: dogruMu
-              ? const Color(0xFF2E7D5B).withValues(alpha: 0.4)
+              ? AppAccents.successDeep.withValues(alpha: 0.4)
               : colors.error.withValues(alpha: 0.35),
         ),
       ),
@@ -970,7 +971,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               Icon(
                 dogruMu ? Icons.check_circle_rounded : Icons.cancel_rounded,
                 size: 20,
-                color: dogruMu ? const Color(0xFF2E7D5B) : colors.error,
+                color: dogruMu ? AppAccents.successDeep : colors.error,
               ),
               const SizedBox(width: 8),
               Text(
@@ -978,7 +979,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w800,
                       color: dogruMu
-                          ? const Color(0xFF2E7D5B)
+                          ? AppAccents.successDeep
                           : colors.error,
                     ),
               ),
@@ -1011,7 +1012,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             child: FilledButton(
               onPressed: _devam,
               style: FilledButton.styleFrom(
-                backgroundColor: dogruMu ? const Color(0xFF2E7D5B) : null,
+                backgroundColor: dogruMu ? AppAccents.successDeep : null,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -1041,7 +1042,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           child: Icon(
             olumlu ? Icons.check_rounded : Icons.close_rounded,
             size: 15,
-            color: olumlu ? const Color(0xFF2E7D5B) : colors.error,
+            color: olumlu ? AppAccents.successDeep : colors.error,
           ),
         ),
         const SizedBox(width: 6),
@@ -1111,7 +1112,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                       backgroundColor:
                           colors.outlineVariant.withValues(alpha: 0.35),
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        basarili ? const Color(0xFF2E7D5B) : colors.primary,
+                        basarili ? AppAccents.successDeep : colors.primary,
                       ),
                       strokeCap: StrokeCap.round,
                     ),

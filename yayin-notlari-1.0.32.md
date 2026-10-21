@@ -1,10 +1,11 @@
-# FitCheck 1.0.32 (37) — Play Store yayın notları
+# FitCheck 1.0.32 (38) — Play Store yayın notları
 
 Her dilde "What's new" alanına yapıştırılabilir (Play sınırı: 500 karakter).
 Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 `yayin-notlari-1.0.30.md` içinde duruyor.
 
 ## tr
+• Dolapta ara, kategoriye göre filtrele; sonuç sayısı anında güncellenir
 • Kesim kalitesi arttı, yapay zekâ modeli yenilendi
 • Yeni "Bugün" ekranı ve Kombin Düellosu
 • Bildirimler o günün gerçek kombinini yazar, dokununca doğru sekmeyi açar
@@ -14,6 +15,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • Yeni "Seyahat Modu": kapsül valiz planı
 
 ## en
+• Search your wardrobe and filter by category; results update instantly
 • Better cutouts with a new AI model
 • New "Today" screen and Outfit Duel
 • Notifications show your real outfit of the day and open the right tab
@@ -23,6 +25,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • New "Travel Mode": capsule packing plan
 
 ## it
+• Cerca nel guardaroba e filtra per categoria; risultati immediati
 • Ritaglio più pulito con un nuovo modello IA
 • Nuove schermate "Oggi" e Duello di outfit
 • Le notifiche mostrano il look del giorno e aprono la scheda giusta
@@ -32,6 +35,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • Nuova "Modalità viaggio": piano valigia a capsula
 
 ## es
+• Busca en tu armario y filtra por categoría; resultados al instante
 • Mejor recorte con un nuevo modelo de IA
 • Nuevas pantallas "Hoy" y Duelo de conjuntos
 • Las notificaciones muestran tu look del día y abren la pestaña correcta
@@ -41,6 +45,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • Nuevo "Modo viaje": plan de maleta cápsula
 
 ## zh
+• 支持衣橱搜索与分类筛选，结果即时更新
 • 抠图质量提升，全新 AI 模型
 • 全新"今天"页面与穿搭对决
 • 通知显示当天真实搭配，点击直达对应页面
@@ -50,6 +55,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • 全新"旅行模式"：短途旅行胶囊打包方案
 
 ## ar
+• ابحث في خزانتك وفلتر حسب الفئة، مع تحديث فوري للنتائج
 • قص أنظف بنموذج ذكاء اصطناعي جديد
 • شاشتان جديدتان: «اليوم» ومبارزة الإطلالات
 • الإشعارات تعرض إطلالة اليوم وتفتح التبويب الصحيح
@@ -59,6 +65,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • جديد «وضع السفر»: خطة حقيبة كبسولة
 
 ## fr
+• Recherche et filtres dans votre garde-robe
 • Détourage plus net avec un nouveau modèle d'IA
 • Nouveaux écrans « Aujourd'hui » et Duel de tenues
 • Les notifications montrent la tenue du jour et ouvrent le bon onglet
@@ -68,6 +75,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • Nouveau « Mode voyage » : plan de valise capsule
 
 ## de
+• Garderobe durchsuchen und nach Kategorie filtern, Treffer sofort
 • Bessere Freistellung mit neuem KI-Modell
 • Neue Bildschirme „Heute“ und Outfit-Duell
 • Benachrichtigungen zeigen dein Outfit des Tages und öffnen den richtigen Tab
@@ -77,6 +85,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • Neuer „Reisemodus“: Capsule-Packplan
 
 ## pt
+• Pesquise no guarda-roupa e filtre por categoria, resultados imediatos
 • Recorte melhor com novo modelo de IA
 • Novos ecrãs "Hoje" e Duelo de looks
 • As notificações mostram o look do dia e abrem o separador certo
@@ -86,6 +95,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • Novo "Modo viagem": plano de mala cápsula
 
 ## ja
+• ワードローブの検索とカテゴリ絞り込み、結果はすぐ更新
 • 切り抜き品質が向上。新しい AI モデル
 • 新しい「今日」画面とコーデ対決
 • 通知にその日の着合わせを表示し、該当タブへ
@@ -95,6 +105,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • 新しい「トラベルモード」：短期旅行のパッキング
 
 ## ko
+• 옷장 검색과 카테고리 필터, 결과 즉시 반영
 • 누끼 품질 향상, 새로운 AI 모델
 • 새로운 "오늘" 화면과 코디 대결
 • 알림에 그날 코디를 표시하고 해당 탭으로 이동
@@ -104,6 +115,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 • 새로운 "여행 모드": 짧은 여행 짐 계획
 
 ## ru
+• Поиск по гардеробу и фильтр по категориям, результат сразу
 • Более чистое вырезание с новой моделью ИИ
 • Новые экраны «Сегодня» и «Дуэль образов»
 • Уведомления показывают образ дня и открывают нужную вкладку
@@ -116,25 +128,28 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+37.aab` (72.599.508 bayt,
-   SHA256 `4BDDFC378F001AC0EADBA8CD2A4EDDA65159E84F9E15CA9E9EC0C46693A1B7B8`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.575.334 bayt,
+   SHA256 `2E13DF0BF5EA95DF0629B3A9AA04A0606A72EF723676AC5AFED56BDFC5BF799B`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
-   (21.10.2026 UI turundan sonra yeniden üretildi; 37 hâlâ yüklenmediyse aynı
-   sürüm kullanılır. Yüklendiyse versionCode 38'e çıkılmalı.)
-2. **Sürüm:** versionName 1.0.32 / versionCode 37 (mağazadaki 1.0.29+35'in üstü).
+   (21.10.2026 dolap arama/filtre turundan sonra yeniden üretildi. Önceki
+   derleme 37'ydi; bu paket versionCode 38 olduğu için yükleme çakışmaz.)
+2. **Sürüm:** versionName 1.0.32 / versionCode 38 (mağazadaki 1.0.29+35'in üstü).
 3. **Yayın notu:** yukarıdaki 12 dilden ilgili olanı yapıştır.
 4. **Gizlilik politikası URL'si:** Play Console'daki politika metnine de "kıyafet
    fotoğrafları Gemini/Groq'a gönderilir, kalıcı saklanmaz" cümlesi eklenmeli.
    (Uygulama içi metin güncellendi; Play'deki URL ayrı bir sayfa.)
 5. **Data safety:** fotoğraf/veri paylaşımı bölümünü kontrol et (fotoğraflar
    işlenmek üzere üçüncü taraf AI servislerine gidiyor).
-6. **Cihaz testi:** `build\FitCheck-1.0.32+37.apk` (versionCode 37,
-   SHA256 `BA1FE427E0495CAF64ACCF11A3B0DDE55468071F13B3E0421F154A3F5426A1C5`).
+6. **Cihaz testi:** `build\FitCheck-1.0.32+38.apk` (versionCode 38,
+   SHA256 `64B0E046B28B8FED26BC796F8BE299C4301081D1169481EBCEA05C3FF4F33AB7`).
    Yeni: 7. sekme "Düello", Bildirim → sekme yönlendirme, kombini paylaşma,
    raf aksiyonları, "Stil Günlüğüm" (takvim/günlük/rapor), "Seyahat Modu".
    Değişiklik: "Kendin Kombin Yap" sekmesi kaldırıldı → alt menüde 6 sekme
    (Bugün, Dolap, Plan, Kombin, Profil, Düello).
-   Son tur: alt menüde simge + etiket, Bugün'de 6'lı tek araç ızgarası,
+   Önceki tur: alt menüde simge + etiket, Bugün'de 6'lı tek araç ızgarası,
    Rapor yenilendi (büyük sayı, 4 haftalık grafik, en çok giyilen 3 parça),
    tek cam bulanıklığı (blur 12) ve sadeleşmiş yarıçap/yazı ölçeği.
+   Son tur: dolapta arama + kategori çipleri + sonuç sayacı; AI'nin
+   döndürdüğü serbest kategori ('ceket', 'çanta'…) artık doğru rafa düşüyor
+   (önceden bu parçalar dolapta görünmüyordu).

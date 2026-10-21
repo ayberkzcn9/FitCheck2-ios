@@ -291,7 +291,7 @@ class BildirimServisi {
         channelDescription: l10n.bildirimKanalGenelAciklama,
         importance: Importance.max,
         priority: Priority.high,
-        color: const Color(0xFF3B3B3B),
+        color: AppAccents.primary,
       );
 
       const DarwinNotificationDetails iosDetay = DarwinNotificationDetails(
@@ -374,7 +374,7 @@ class BildirimServisi {
           channelDescription: kanalAciklama,
           importance: Importance.high,
           priority: Priority.high,
-          color: const Color(0xFF3B3B3B),
+          color: AppAccents.primary,
         ),
         iOS: const DarwinNotificationDetails(
           presentAlert: true,
@@ -488,7 +488,7 @@ class BildirimServisi {
           channelDescription: l10n.bildirimKanalRaporAciklama,
           importance: Importance.high,
           priority: Priority.high,
-        color: const Color(0xFF3B3B3B),
+        color: AppAccents.primary,
         ),
         iOS: const DarwinNotificationDetails(
           presentAlert: true,

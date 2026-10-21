@@ -185,6 +185,10 @@ class AppAccents {
 
   /// Mavi vurgu (bilgi, uyum puanı)
   static const Color info = Color(0xFF2563EB);
+
+  /// "Doğru cevap" yeşili (Kombin Düellosu sonuç ekranı).
+  /// [success]'ten daha koyu; aynı değer 8 yerde tekrar ediyordu.
+  static const Color successDeep = Color(0xFF2E7D5B);
 }
 
 // ===========================================================================

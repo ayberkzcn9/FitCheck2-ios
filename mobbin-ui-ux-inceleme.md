@@ -191,7 +191,7 @@ sonuç önizlemesi.
 
 | # | İş | Referans | Etki | Emek |
 |---|---|---|---|---|
-| 1 | Dolap arama + filtre çipleri + sonuç sayısı | Searching & Finding / Filtering & Sorting | Yüksek | 0,5 gün |
+| 1 | Dolap arama + filtre çipleri + sonuç sayısı ✅ (1.0.32) | Searching & Finding / Filtering & Sorting | Yüksek | 0,5 gün |
 | 2 | Takvimde güne "favoriden / AI öner" ile kombin ekle | Whering Assigning an outfit to a date | Yüksek | 1 gün |
 | 3 | İzin öncesi gerekçe ekranı | Enabling & Disabling | Orta-yüksek | 2 saat |
 | 4 | Silmede onay yerine "geri al" | Whering Archiving + undo | Orta | 2 saat |
@@ -215,9 +215,32 @@ Mobbin'den bağımsız, kendi denetimimizdeki "sistem disiplini" borcu azaltıld
 - **Ölçek sadeleşti**: yarıçap 20 → 11 farklı değer (16/12/24/8/…),
   yazı boyutu 19 → 15; `AppRadius`/`AppText` dışına taşan ara değerler temizlendi.
 
-Açık kalan en büyük borç: **113 tekil gömülü renk**. Değerler ekran ekran
-seçildiği için toplu değiştirme kontrastı bozar; ayrı bir tur + görsel kontrol
-gerekiyor.
+Açık kalan en büyük borç: **gömülü renkler**. İlk sayım (113) yanıltıcıydı;
+kırılımı: 57 kullanım `design_tokens.dart` (paletin kendisi), 42 kullanım
+`main.dart` (açık/koyu `ColorScheme`). Ekranlarda kalan 39 kullanımın 11'i
+token'a bağlandı (`AppAccents.successDeep` = Düello "doğru" yeşili,
+`AppAccents.primary` = bildirim metni). Kalan 28 değer bilinçli yerel:
+onboarding degrade çiftleri, profil renk kartelası (ten/saç/göz tonları),
+koyu mod amber metin tonları.
+
+### 4.2 Dolap arama + filtre (bu tur)
+
+Mobbin'deki **Searching & Finding** / **Filtering & Sorting** desenleri uygulandı:
+
+- Rafların üstünde **arama kutusu**: başlık, renk, stil ve kategori metninde
+  büyük/küçük harf duyarsız arar; sağda "temizle" düğmesi.
+- **Kategori çipleri**: Tümü / Üst / Alt / Ayakkabı / Aksesuar; seçili çip koyu
+  dolgulu, yatay kaydırmalı (320 dp'de taşmaz).
+- Filtre açıkken **eşleşmeyen raflar gizlenir** ve tek bir "N Ürün" sayacı
+  kalır (raf başlıklarındaki sayı tekrarı bastırıldı).
+- Eşleşme yoksa "Aramanla eşleşen parça yok." + "Aramayı temizle" düğmesi.
+- **Veri hatası düzeltmesi (kayıp parça):** AI'nin döndürdüğü serbest kategori
+  ('ceket', 'pantolon', 'çanta'…) rafta `==` ile karşılaştırılıyordu; bu parçalar
+  hiçbir rafta görünmüyordu. Artık `kategoriModeldenCikar` + aksesuar kelime
+  listesiyle çözülüyor, tanınmayan değerler üst rafına düşüyor (kaybolmuyor).
+- Kurallar `lib/utils/dolap_filtresi.dart` içinde **saf fonksiyon**:
+  11 birim testi + 4 widget testi (arama, çip, sayaç, boş durum).
+- Görsel kontrol: `build/ui-review/14_gardirobum.png`, `15_gardirobum_arama.png`.
 
 ---
 
@@ -266,8 +289,8 @@ eklenir, OAuth ile yetkilendirilir. (Senin hesabında Pro yoksa bu adım atlanı
 
 ## 7. Bu incelemeden çıkan net kararlar
 
-1. Ürünümüzde **en büyük UX açığı arama/filtre**: Mobbin'de bu desende 5.691 akış
-   var, bizde sıfır. İlk iş bu.
+1. Ürünümüzde **en büyük UX açığı arama/filtre**ydi: Mobbin'de bu desende 5.691 akış
+   var, bizde sıfırdı. 1.0.32'de eklendi (bkz. §4.2).
 2. Stil Günlüğü takvimi şu an "okuma" ekranı; Whering deseniyle **"planlama"**
    ekranına çevirmek en yüksek ürün değeri.
 3. Geri alma deseni (Whering) bizde yarım uygulanmış; silme akışlarında tamamlanmalı.

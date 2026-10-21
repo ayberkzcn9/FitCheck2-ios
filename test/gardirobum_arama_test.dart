@@ -43,9 +43,9 @@ void main() {
     _kiyafet('Hasır Çanta', 'aksesuar', renk: 'Bej'),
   ];
 
-  Future<void> kur(WidgetTester tester) async {
+  Future<void> kur(WidgetTester tester, {double genislik = 390}) async {
     SharedPreferences.setMockInitialValues(<String, Object>{});
-    tester.view.physicalSize = const Size(390 * 3, 844 * 3);
+    tester.view.physicalSize = Size(genislik * 3, 844 * 3);
     tester.view.devicePixelRatio = 3.0;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
@@ -117,5 +117,18 @@ void main() {
 
     expect(find.text('Beyaz Tişört'), findsWidgets);
     expect(find.text('Aramanla eşleşen parça yok.'), findsNothing);
+  });
+
+  testWidgets('320 dp genişlikte arama ve çipler taşmaz', (tester) async {
+    await kur(tester, genislik: 320);
+
+    expect(find.text('Dolabında ara'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+
+    await tester.enterText(find.byType(TextField), 'beyaz');
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(find.text('2 Ürün'), findsOneWidget);
+    expect(tester.takeException(), isNull);
   });
 }
