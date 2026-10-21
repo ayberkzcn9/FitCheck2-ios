@@ -3307,4 +3307,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'Mon plan de valise FitCheck ✨';
+
+  @override
+  String get geriAl => 'Annuler';
 }

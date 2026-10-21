@@ -3140,4 +3140,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'FitCheck のパッキングプラン ✨';
+
+  @override
+  String get geriAl => '元に戻す';
 }

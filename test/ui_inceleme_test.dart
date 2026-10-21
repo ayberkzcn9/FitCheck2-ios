@@ -22,9 +22,14 @@ import 'package:fitcheck/models/bugun_kombin.dart';
 import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
+import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
+import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
 import 'package:fitcheck/screens/seyahat_ekrani.dart';
 import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/services/bugun_feed_servisi.dart';
+import 'package:fitcheck/services/kombin_duellosu_motoru.dart';
+import 'package:fitcheck/services/kombin_duellosu_servisi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const String _yaziTipi = 'ReviewFont';
 
@@ -302,6 +307,76 @@ void main() {
     await tester.pumpWidget(_uygulama(SeyahatEkrani(gardirobum: dolap)));
     await _bekle(tester);
     await _ekranGorusu(tester, '08_seyahat');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Kombin Dueslosu - lobi', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        KombinDuellosuEkrani(
+          gardirobum: dolap,
+          gunlukHava: 'İstanbul 21°C · Parçalı Bulutlu',
+          motor: DuelMotoru(),
+          servisi: KombinDuellosuServisi(),
+          tohum: 7,
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '09_duello_lobi');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Kombin Dueslosu - tur ve geri bildirim', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        KombinDuellosuEkrani(
+          gardirobum: dolap,
+          motor: DuelMotoru(),
+          servisi: KombinDuellosuServisi(),
+          tohum: 7,
+        ),
+      ),
+    );
+    await _bekle(tester);
+
+    await tester.tap(find.text('Düelloya başla'));
+    await _bekle(tester);
+    await _ekranGorusu(tester, '10_duello_tur');
+    // ignore: avoid_print
+    print('DIAG once: check=' + find.byIcon(Icons.check_circle_rounded).evaluate().length.toString() + ' dogruYazi=' + find.text('Doğru!').evaluate().length.toString() + ' ipucu=' + find.text('Bir kombine dokun').evaluate().length.toString());
+
+    final beklenen =
+        DuelMotoru().uret(gardirobum: dolap, adet: 10, tohum: 7).sorular.first;
+    await tester.tap(find.text(beklenen.solDogru ? 'A' : 'B'));
+    await _bekle(tester);
+    await _ekranGorusu(tester, '11_duello_geribildirim');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Haftalik planlayici', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    await telefon(tester);
+    await tester.pumpWidget(
+      _uygulama(
+        HaftalikPlanlayiciEkrani(
+          gardirobum: dolap,
+          gunlukHava: 'İstanbul 21°C · Parçalı Bulutlu',
+          detayliHaftalikHava: 'Pazartesi 22°C, Salı 24°C',
+          havaYukleniyor: false,
+          onFavoriEkle: (FavoriKombin f) {},
+          onGecmiseEkle: (String b, String d) {},
+          onKonumuYenile: () {},
+          anaRenk: Colors.indigo,
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '12_haftalik_plan');
     expect(tester.takeException(), isNull);
   });
 }

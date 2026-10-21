@@ -6039,6 +6039,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'FitCheck valiz planım ✨'**
   String get seyahatPaylasMetni;
+
+  /// No description provided for @geriAl.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geri al'**
+  String get geriAl;
 }
 
 class _AppLocalizationsDelegate

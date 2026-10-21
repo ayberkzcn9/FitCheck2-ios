@@ -3098,4 +3098,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => '我的 FitCheck 行李计划 ✨';
+
+  @override
+  String get geriAl => '撤销';
 }

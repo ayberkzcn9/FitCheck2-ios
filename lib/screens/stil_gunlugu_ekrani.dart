@@ -198,6 +198,14 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             _noktaGostergesi(colors, AppAccents.info, l10n.stilGunluguPlanli),
           ],
         ),
+        if (widget.gecmisKombinler.isEmpty && _program == null) ...[
+          const SizedBox(height: 18),
+          Text(
+            l10n.gecmisKombinYok,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: colors.onSurfaceVariant),
+          ),
+        ],
       ],
     );
   }
@@ -634,7 +642,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
           ),
         const SizedBox(height: 10),
         FilledButton.icon(
-          onPressed: _paylasiliyor ? null : _raporuPaylas,
+          onPressed: (_paylasiliyor || rapor.bos) ? null : _raporuPaylas,
           icon: _paylasiliyor
               ? const SizedBox(
                   width: 16,

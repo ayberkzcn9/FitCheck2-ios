@@ -3249,4 +3249,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'خطة حقيبتي في FitCheck ✨';
+
+  @override
+  String get geriAl => 'تراجع';
 }

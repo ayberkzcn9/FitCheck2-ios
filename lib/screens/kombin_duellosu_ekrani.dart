@@ -823,7 +823,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       child: Semantics(
         button: true,
         selected: secildi,
-        label: etiket,
+        label: _kartEtiketi(etiket, kart),
         child: GestureDetector(
           onTap: cevaplandi ? null : () => _sec(etiket == 'A'),
           child: AnimatedContainer(
@@ -893,6 +893,18 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         ),
       ),
     );
+  }
+
+  /// Ekran okuyucu için kart açıklaması: "A: Beyaz Tişört, Siyah Pantolon".
+  ///
+  /// Parça adı yoksa (renk kartı düellosu) rengi kullanılır.
+  static String _kartEtiketi(String etiket, DuelKarti kart) {
+    final parcalar = kart.parcalar
+        .map((p) => p.kiyafet?.gorunenBaslik ?? p.renk)
+        .where((ad) => ad.trim().isNotEmpty)
+        .toList();
+    if (parcalar.isEmpty) return etiket;
+    return '$etiket: ${parcalar.join(', ')}';
   }
 
   Widget _parca(BuildContext context, DuelParca parca) {

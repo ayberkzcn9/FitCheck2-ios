@@ -3291,4 +3291,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'O meu plano de mala FitCheck ✨';
+
+  @override
+  String get geriAl => 'Anular';
 }

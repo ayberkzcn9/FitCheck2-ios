@@ -3155,4 +3155,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'FitCheck 여행 짐 계획 ✨';
+
+  @override
+  String get geriAl => '실행 취소';
 }

@@ -3302,4 +3302,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'Mi plan de maleta de FitCheck ✨';
+
+  @override
+  String get geriAl => 'Deshacer';
 }

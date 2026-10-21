@@ -98,6 +98,55 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('bos raporda paylas dugmesi pasif olur', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('tr'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: StilGunluguEkrani(
+          gardirobum: dolap,
+          gecmisKombinler: const <Map<String, String>>[],
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Rapor'));
+    await tester.pumpAndSettle();
+
+    final dugme = find.widgetWithIcon(FilledButton, Icons.ios_share_rounded);
+    expect(dugme, findsOneWidget);
+    expect(tester.widget<FilledButton>(dugme).onPressed, isNull);
+    expect(find.textContaining('kaydın yok'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('takvim kayit yokken ipucu gosterir', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('tr'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: StilGunluguEkrani(
+          gardirobum: dolap,
+          gecmisKombinler: const <Map<String, String>>[],
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // İpucu takvimin altında; kaydırınca görünür.
+    await tester.drag(find.byType(ListView).first, const Offset(0, -600));
+    await tester.pumpAndSettle();
+
+    expect(
+      find.text(lookupAppLocalizations(const Locale('tr')).gecmisKombinYok),
+      findsOneWidget,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('seyahat modu valiz planını hesaplar', (tester) async {
     await tester.pumpWidget(
       MaterialApp(

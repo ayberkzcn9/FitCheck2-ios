@@ -950,6 +950,9 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       if (index < 0) return;
 
       final l10n = AppLocalizations.of(context)!;
+      final eskiGiyilme = _gardirobum[index].sonGiyilmeTarihi;
+      final eskiSayi = _gardirobum[index].giyilmeSayisi;
+
       setState(() {
         _gardirobum[index].giyildiOlarakIsaretle();
       });
@@ -962,8 +965,37 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
             l10n.bugunParcaGiydimIsaretlendi(_gardirobum[index].gorunenBaslik),
           ),
           behavior: SnackBarBehavior.floating,
+          // Yanlışlıkla işaretlenen parça geri alınabilsin.
+          action: SnackBarAction(
+            label: l10n.geriAl,
+            onPressed: () => _kiyafetGiydimiGeriAl(
+              kiyafet.id,
+              eskiGiyilme,
+              eskiSayi,
+            ),
+          ),
         ),
       );
+    });
+  }
+
+  /// "Bugün giydim" işlemini geri alır: parça tekrar temiz olur.
+  Future<void> _kiyafetGiydimiGeriAl(
+    String id,
+    DateTime? eskiGiyilme,
+    int eskiSayi,
+  ) async {
+    await _dataLock.synchronized(() async {
+      final index = _gardirobum.indexWhere((k) => k.id == id);
+      if (index < 0) return;
+
+      setState(() {
+        _gardirobum[index]
+          ..sepetteMi = false
+          ..giyilmeSayisi = eskiSayi
+          ..sonGiyilmeTarihi = eskiGiyilme;
+      });
+      await _verileriKaydet();
     });
   }
 

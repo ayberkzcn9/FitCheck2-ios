@@ -3273,4 +3273,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'FitCheck valiz planım ✨';
+
+  @override
+  String get geriAl => 'Geri al';
 }

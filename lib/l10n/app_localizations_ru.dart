@@ -3276,4 +3276,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get seyahatPaylasMetni => 'Мой план чемодана FitCheck ✨';
+
+  @override
+  String get geriAl => 'Отменить';
 }
