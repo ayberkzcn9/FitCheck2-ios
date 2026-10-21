@@ -3450,4 +3450,29 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'Quando juntas uma foto, o fundo é removido automaticamente e a IA lê a cor, a categoria, o estilo e a estação. As tuas peças ficam no dispositivo; a remoção de fundo e a análise são feitas no nosso servidor.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Fundo e posicionamento';
+
+  @override
+  String get duzenleIpucu =>
+      'Arrasta a peça para a posicionar e faz pinça para redimensionar.';
+
+  @override
+  String get duzenleZeminBeyaz => 'Branco';
+
+  @override
+  String get duzenleZeminKirik => 'Branco quente';
+
+  @override
+  String get duzenleZeminGri => 'Cinzento claro';
+
+  @override
+  String get duzenleZeminSaydam => 'Transparente';
+
+  @override
+  String get duzenleKaydet => 'Guardar';
+
+  @override
+  String get duzenleVarsayilan => 'Predefinido';
 }

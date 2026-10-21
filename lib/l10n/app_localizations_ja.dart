@@ -3293,4 +3293,28 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       '写真を追加すると背景が自動で取り除かれ、色・カテゴリ・スタイル・季節をAIが読み取ります。衣類は端末に保存され、背景除去と分析はサーバー側で処理されます。';
+
+  @override
+  String get duzenleArkaPlanBaslik => '背景と配置';
+
+  @override
+  String get duzenleIpucu => 'ドラッグで配置し、ピンチでサイズを変更できます。';
+
+  @override
+  String get duzenleZeminBeyaz => '白';
+
+  @override
+  String get duzenleZeminKirik => 'オフホワイト';
+
+  @override
+  String get duzenleZeminGri => 'ライトグレー';
+
+  @override
+  String get duzenleZeminSaydam => '透明';
+
+  @override
+  String get duzenleKaydet => '保存';
+
+  @override
+  String get duzenleVarsayilan => 'そのまま';
 }

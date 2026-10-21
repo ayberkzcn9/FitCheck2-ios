@@ -1199,5 +1199,13 @@
   "bilgiRaporSeri": "연속으로 입은 날짜 수예요. 코디를 기록할 때마다 늘어나고 하루를 건너뛰면 초기화됩니다.",
   "bilgiRaporHicGiyilmemis": "최근 7일 동안 한 번도 입지 않은 아이템 수예요. 새 코디로 다시 입어볼 수 있습니다.",
   "bilgiDueloPuan": "매 라운드마다 코디 두 개가 나오고 하나를 고릅니다. 맞히면 점수와 연속 기록이 늘고, 틀리면 연속 기록이 초기화됩니다. 점수는 규칙 기반이라 색 조화, 카테고리 균형, 계절 일관성을 봅니다. 옷장이 4개 미만이면 예전 코디로 팔레트를 만듭니다.",
-  "bilgiDolapCalisma": "사진을 추가하면 배경이 자동으로 제거되고 AI가 색상, 카테고리, 스타일, 계절을 읽습니다. 옷은 기기에 저장되며 배경 제거와 분석은 서버에서 처리됩니다."
+  "bilgiDolapCalisma": "사진을 추가하면 배경이 자동으로 제거되고 AI가 색상, 카테고리, 스타일, 계절을 읽습니다. 옷은 기기에 저장되며 배경 제거와 분석은 서버에서 처리됩니다.",
+  "duzenleArkaPlanBaslik": "배경과 배치",
+  "duzenleIpucu": "드래그해서 위치를 정하고, 두 손가락으로 크기를 조절하세요.",
+  "duzenleZeminBeyaz": "흰색",
+  "duzenleZeminKirik": "아이보리",
+  "duzenleZeminGri": "연회색",
+  "duzenleZeminSaydam": "투명",
+  "duzenleKaydet": "저장",
+  "duzenleVarsayilan": "기본값"
 }

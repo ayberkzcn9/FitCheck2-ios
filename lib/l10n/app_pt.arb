@@ -1199,5 +1199,13 @@
   "bilgiRaporSeri": "O número de dias seguidos em que te vestiste. Aumenta sempre que registas um look e reinicia se saltares um dia.",
   "bilgiRaporHicGiyilmemis": "O número de peças que não usaste nos últimos 7 dias. Podes voltar a usá-las com novos looks.",
   "bilgiDueloPuan": "Em cada ronda vês dois looks e escolhes um. Acertar dá pontos e mantém a sequência; errar reinicia-a. A pontuação segue regras: harmonia de cores, equilíbrio de categorias e coerência de estação. Se o guarda-roupa tiver menos de 4 peças, a paleta é construída a partir de looks anteriores.",
-  "bilgiDolapCalisma": "Quando juntas uma foto, o fundo é removido automaticamente e a IA lê a cor, a categoria, o estilo e a estação. As tuas peças ficam no dispositivo; a remoção de fundo e a análise são feitas no nosso servidor."
+  "bilgiDolapCalisma": "Quando juntas uma foto, o fundo é removido automaticamente e a IA lê a cor, a categoria, o estilo e a estação. As tuas peças ficam no dispositivo; a remoção de fundo e a análise são feitas no nosso servidor.",
+  "duzenleArkaPlanBaslik": "Fundo e posicionamento",
+  "duzenleIpucu": "Arrasta a peça para a posicionar e faz pinça para redimensionar.",
+  "duzenleZeminBeyaz": "Branco",
+  "duzenleZeminKirik": "Branco quente",
+  "duzenleZeminGri": "Cinzento claro",
+  "duzenleZeminSaydam": "Transparente",
+  "duzenleKaydet": "Guardar",
+  "duzenleVarsayilan": "Predefinido"
 }

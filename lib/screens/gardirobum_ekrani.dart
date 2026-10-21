@@ -25,6 +25,7 @@ import '../utils/dolap_filtresi.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/bilgi_butonu.dart';
 import '../widgets/izin_gerekce_sayfasi.dart';
+import '../widgets/kiyafet_duzenleyici.dart';
 import '../widgets/stroked_text.dart';
 import '../../theme/design_tokens.dart';
 
@@ -1026,7 +1027,6 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           // olmazsa bulut (remove.bg). İkisi de olmazsa kullanıcıya sorulur;
           // sessizce arka planlı kaydetmek "arka plan silinmiyor" izlenimi
           // veriyordu.
-          Uint8List kaydedilecekBytes = orijinalBytes;
           if (!mounted) return;
           setState(() {
             _currentStep = 'bg_removal';
@@ -1061,6 +1061,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             continue;
           }
 
+          // Temiz kesim: AI analizi ve kalite denetimi bunu görür.
+          Uint8List kesimBytes = orijinalBytes;
           if (bgRemoved != null) {
             // 🧭 Yön + çerçeve standardı: arka planı silinmiş görsel hâlâ
             // YATAYSA dikeyleştir (EXIF yönünü sunucu zaten uygular; burada
@@ -1068,7 +1070,23 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             // döndürme olmaz), ardından çevresindeki boş alanı kırp ki kıyafet
             // ızgarada tüm kutuyu doldursun. Maske temizliği (leke/delik) da
             // aynı turda yapılır.
-            kaydedilecekBytes = await GorselYonService.duzenle(bgRemoved) ?? bgRemoved;
+            kesimBytes = await GorselYonService.duzenle(bgRemoved) ?? bgRemoved;
+          }
+
+          // Kaydedilecek görsel: başta temiz kesim, kullanıcı yerleştirme
+          // yaparsa zeminli hâli.
+          Uint8List kaydedilecekBytes = kesimBytes;
+
+          // 🎛️ Yerleşim: kullanıcı parçanın arka planını ve konumunu seçer.
+          // (AI analizi daima temiz kesimi görür; düzenleme yalnızca kaydedilen
+          //  görseli etkiler.)
+          if (bgRemoved != null && mounted) {
+            final duzenlenmis = await KiyafetDuzenleyici.ac(
+              context,
+              kesim: kesimBytes,
+            );
+            if (!mounted) return;
+            if (duzenlenmis != null) kaydedilecekBytes = duzenlenmis;
           }
 
           // 🎨 Zemin denetimi: kıyafet zemine çok yakın renkteyse hiçbir model
@@ -1078,7 +1096,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           if (bgRemoved != null && mounted) {
             final zeminBenzer = await KesimKaliteDenetimi.zeminBenzerMi(
               orijinalBytes,
-              kaydedilecekBytes,
+              kesimBytes,
             );
             if (!mounted) return;
             if (zeminBenzer) {
@@ -1109,7 +1127,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 "SADECE şu JSON formatında ver ($aiDili dilinde):\n"
                 "{\n  \"baslik\": \"3 Kelimelik Ürün Adı\",\n  \"kategori\": \"ust veya alt veya ayakkabi veya aksesuar\",\n  \"renk\": \"Renk\",\n  \"stil\": \"Tarz\",\n  \"mevsim\": \"kislik veya yazlik veya dort_mevsim\"\n}",
             kullaniciMesaji: "Bu kıyafeti detaylı analiz et ve JSON ver.",
-            resimBytes: kaydedilecekBytes,
+            // AI daima temiz kesimi görür (zemin rengi analizi etkilemesin).
+            resimBytes: kesimBytes,
           );
 
           String clean = analiz.replaceAll(RegExp(r'```json\s*|```\s*'), '').trim();

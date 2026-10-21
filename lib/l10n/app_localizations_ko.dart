@@ -3312,4 +3312,28 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       '사진을 추가하면 배경이 자동으로 제거되고 AI가 색상, 카테고리, 스타일, 계절을 읽습니다. 옷은 기기에 저장되며 배경 제거와 분석은 서버에서 처리됩니다.';
+
+  @override
+  String get duzenleArkaPlanBaslik => '배경과 배치';
+
+  @override
+  String get duzenleIpucu => '드래그해서 위치를 정하고, 두 손가락으로 크기를 조절하세요.';
+
+  @override
+  String get duzenleZeminBeyaz => '흰색';
+
+  @override
+  String get duzenleZeminKirik => '아이보리';
+
+  @override
+  String get duzenleZeminGri => '연회색';
+
+  @override
+  String get duzenleZeminSaydam => '투명';
+
+  @override
+  String get duzenleKaydet => '저장';
+
+  @override
+  String get duzenleVarsayilan => '기본값';
 }

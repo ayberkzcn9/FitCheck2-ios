@@ -6315,6 +6315,54 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır.'**
   String get bilgiDolapCalisma;
+
+  /// No description provided for @duzenleArkaPlanBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arka plan ve yerleşim'**
+  String get duzenleArkaPlanBaslik;
+
+  /// No description provided for @duzenleIpucu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parçayı sürükleyerek yerleştirebilir, iki parmakla büyütebilirsin.'**
+  String get duzenleIpucu;
+
+  /// No description provided for @duzenleZeminBeyaz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Beyaz'**
+  String get duzenleZeminBeyaz;
+
+  /// No description provided for @duzenleZeminKirik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kırık beyaz'**
+  String get duzenleZeminKirik;
+
+  /// No description provided for @duzenleZeminGri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açık gri'**
+  String get duzenleZeminGri;
+
+  /// No description provided for @duzenleZeminSaydam.
+  ///
+  /// In tr, this message translates to:
+  /// **'Saydam'**
+  String get duzenleZeminSaydam;
+
+  /// No description provided for @duzenleKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get duzenleKaydet;
+
+  /// No description provided for @duzenleVarsayilan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Varsayılan'**
+  String get duzenleVarsayilan;
 }
 
 class _AppLocalizationsDelegate

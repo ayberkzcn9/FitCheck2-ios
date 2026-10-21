@@ -3435,4 +3435,29 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'Когда ты добавляешь фото, фон удаляется автоматически, а цвет, категория, стиль и сезон определяет ИИ. Одежда остаётся на устройстве; удаление фона и анализ выполняются на нашем сервере.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Фон и размещение';
+
+  @override
+  String get duzenleIpucu =>
+      'Перетащите вещь, чтобы разместить её, и сожмите двумя пальцами, чтобы изменить размер.';
+
+  @override
+  String get duzenleZeminBeyaz => 'Белый';
+
+  @override
+  String get duzenleZeminKirik => 'Молочный';
+
+  @override
+  String get duzenleZeminGri => 'Светло-серый';
+
+  @override
+  String get duzenleZeminSaydam => 'Прозрачный';
+
+  @override
+  String get duzenleKaydet => 'Сохранить';
+
+  @override
+  String get duzenleVarsayilan => 'По умолчанию';
 }

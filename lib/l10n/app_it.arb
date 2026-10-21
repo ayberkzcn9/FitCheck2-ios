@@ -1199,5 +1199,13 @@
   "bilgiRaporSeri": "Il numero di giorni consecutivi in cui ti sei vestito. Aumenta a ogni outfit registrato e si azzera dopo un giorno saltato.",
   "bilgiRaporHicGiyilmemis": "Il numero di capi non indossati affatto negli ultimi 7 giorni. Puoi rimetterli in gioco con nuovi outfit.",
   "bilgiDueloPuan": "In ogni round vedi due outfit e ne scegli uno. La risposta giusta dà punti e fa crescere la serie, quella sbagliata la azzera. Il punteggio segue regole: armonia dei colori, equilibrio delle categorie e coerenza stagionale. Se il guardaroba ha meno di 4 capi, la palette viene costruita dai vecchi outfit.",
-  "bilgiDolapCalisma": "Quando aggiungi una foto, lo sfondo viene rimosso automaticamente e colore, categoria, stile e stagione vengono letti dall'IA. I tuoi capi restano sul dispositivo; rimozione dello sfondo e analisi avvengono sul nostro server."
+  "bilgiDolapCalisma": "Quando aggiungi una foto, lo sfondo viene rimosso automaticamente e colore, categoria, stile e stagione vengono letti dall'IA. I tuoi capi restano sul dispositivo; rimozione dello sfondo e analisi avvengono sul nostro server.",
+  "duzenleArkaPlanBaslik": "Sfondo e posizione",
+  "duzenleIpucu": "Trascina il capo per posizionarlo, pizzica per ridimensionarlo.",
+  "duzenleZeminBeyaz": "Bianco",
+  "duzenleZeminKirik": "Bianco caldo",
+  "duzenleZeminGri": "Grigio chiaro",
+  "duzenleZeminSaydam": "Trasparente",
+  "duzenleKaydet": "Salva",
+  "duzenleVarsayilan": "Predefinito"
 }

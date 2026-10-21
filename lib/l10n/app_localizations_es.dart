@@ -3461,4 +3461,29 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'Cuando añades una foto, el fondo se recorta automáticamente y la IA lee el color, la categoría, el estilo y la temporada. Tu ropa se queda en el dispositivo; el recorte y el análisis se hacen en nuestro servidor.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Fondo y colocación';
+
+  @override
+  String get duzenleIpucu =>
+      'Arrastra la prenda para colocarla y pellizca para cambiar su tamaño.';
+
+  @override
+  String get duzenleZeminBeyaz => 'Blanco';
+
+  @override
+  String get duzenleZeminKirik => 'Blanco roto';
+
+  @override
+  String get duzenleZeminGri => 'Gris claro';
+
+  @override
+  String get duzenleZeminSaydam => 'Transparente';
+
+  @override
+  String get duzenleKaydet => 'Guardar';
+
+  @override
+  String get duzenleVarsayilan => 'Predeterminado';
 }

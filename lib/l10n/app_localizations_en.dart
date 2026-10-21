@@ -3435,4 +3435,28 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'When you add a photo, the background is removed automatically and the colour, category, style and season are read by AI. Your clothes stay on your device; background removal and analysis run on our server.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Background and placement';
+
+  @override
+  String get duzenleIpucu => 'Drag to place the item, pinch to resize it.';
+
+  @override
+  String get duzenleZeminBeyaz => 'White';
+
+  @override
+  String get duzenleZeminKirik => 'Off-white';
+
+  @override
+  String get duzenleZeminGri => 'Light grey';
+
+  @override
+  String get duzenleZeminSaydam => 'Transparent';
+
+  @override
+  String get duzenleKaydet => 'Save';
+
+  @override
+  String get duzenleVarsayilan => 'Default';
 }

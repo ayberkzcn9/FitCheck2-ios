@@ -3464,4 +3464,29 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'Wenn du ein Foto hinzufügst, wird der Hintergrund automatisch entfernt und Farbe, Kategorie, Stil und Saison werden von der KI erkannt. Deine Kleidung bleibt auf dem Gerät; Hintergrundentfernung und Analyse laufen auf unserem Server.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Hintergrund und Platzierung';
+
+  @override
+  String get duzenleIpucu =>
+      'Ziehe das Teil an die Stelle und pinch zum Skalieren.';
+
+  @override
+  String get duzenleZeminBeyaz => 'Weiß';
+
+  @override
+  String get duzenleZeminKirik => 'Creme';
+
+  @override
+  String get duzenleZeminGri => 'Hellgrau';
+
+  @override
+  String get duzenleZeminSaydam => 'Transparent';
+
+  @override
+  String get duzenleKaydet => 'Speichern';
+
+  @override
+  String get duzenleVarsayilan => 'Standard';
 }

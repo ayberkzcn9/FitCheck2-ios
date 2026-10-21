@@ -3432,4 +3432,29 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Arka plan ve yerleşim';
+
+  @override
+  String get duzenleIpucu =>
+      'Parçayı sürükleyerek yerleştirebilir, iki parmakla büyütebilirsin.';
+
+  @override
+  String get duzenleZeminBeyaz => 'Beyaz';
+
+  @override
+  String get duzenleZeminKirik => 'Kırık beyaz';
+
+  @override
+  String get duzenleZeminGri => 'Açık gri';
+
+  @override
+  String get duzenleZeminSaydam => 'Saydam';
+
+  @override
+  String get duzenleKaydet => 'Kaydet';
+
+  @override
+  String get duzenleVarsayilan => 'Varsayılan';
 }

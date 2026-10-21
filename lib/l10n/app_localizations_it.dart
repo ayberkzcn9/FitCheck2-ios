@@ -3459,4 +3459,29 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'Quando aggiungi una foto, lo sfondo viene rimosso automaticamente e colore, categoria, stile e stagione vengono letti dall\'IA. I tuoi capi restano sul dispositivo; rimozione dello sfondo e analisi avvengono sul nostro server.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Sfondo e posizione';
+
+  @override
+  String get duzenleIpucu =>
+      'Trascina il capo per posizionarlo, pizzica per ridimensionarlo.';
+
+  @override
+  String get duzenleZeminBeyaz => 'Bianco';
+
+  @override
+  String get duzenleZeminKirik => 'Bianco caldo';
+
+  @override
+  String get duzenleZeminGri => 'Grigio chiaro';
+
+  @override
+  String get duzenleZeminSaydam => 'Trasparente';
+
+  @override
+  String get duzenleKaydet => 'Salva';
+
+  @override
+  String get duzenleVarsayilan => 'Predefinito';
 }

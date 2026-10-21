@@ -17,6 +17,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:image/image.dart' as img;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fitcheck/l10n/app_localizations.dart';
@@ -28,6 +29,7 @@ import 'package:fitcheck/screens/gardirobum_ekrani.dart';
 import 'package:fitcheck/screens/profil_analiz_ekrani.dart';
 import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/widgets/alt_menu_cubugu.dart';
+import 'package:fitcheck/widgets/kiyafet_duzenleyici.dart';
 import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
 import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
 import 'package:fitcheck/screens/seyahat_ekrani.dart';
@@ -412,6 +414,38 @@ void main() {
     await tester.tap(find.text(beklenen.solDogru ? 'A' : 'B'));
     await _bekle(tester);
     await _ekranGorusu(tester, '11_duello_geribildirim');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Kiyafet duzenleyici - arka plan ve yerlesim', (tester) async {
+    await telefon(tester);
+
+    // Örnek kesim: yarı saydam kırmızı kare.
+    final gorsel = img.Image(width: 200, height: 200, numChannels: 4);
+    img.fill(gorsel, color: img.ColorRgba8(0, 0, 0, 0));
+    img.fillRect(
+      gorsel,
+      x1: 50,
+      y1: 50,
+      x2: 150,
+      y2: 150,
+      color: img.ColorRgba8(214, 62, 62, 255),
+    );
+
+    await tester.pumpWidget(
+      _uygulama(
+        Scaffold(
+          body: KiyafetDuzenleyici(kesim: img.encodePng(gorsel)),
+        ),
+      ),
+    );
+    await _bekle(tester);
+    // Görsel asenkron çözülür; çözülmesini bekle.
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 400)),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '23_kiyfet_duzenleyici');
     expect(tester.takeException(), isNull);
   });
 

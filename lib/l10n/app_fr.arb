@@ -1199,5 +1199,13 @@
   "bilgiRaporSeri": "Le nombre de jours consécutifs où tu t'es habillé. Il augmente à chaque tenue enregistrée et repart à zéro après un jour manqué.",
   "bilgiRaporHicGiyilmemis": "Le nombre de pièces non portées du tout sur les 7 derniers jours. Tu peux les remettre en jeu avec de nouvelles tenues.",
   "bilgiDueloPuan": "À chaque manche, deux tenues te sont proposées et tu en choisis une. Une bonne réponse rapporte des points et fait monter la série, une mauvaise la remet à zéro. Le score suit des règles : harmonie des couleurs, équilibre des catégories et cohérence de saison. Si ta garde-robe compte moins de 4 pièces, une palette est construite à partir de tes anciennes tenues.",
-  "bilgiDolapCalisma": "Quand tu ajoutes une photo, le fond est supprimé automatiquement et la couleur, la catégorie, le style et la saison sont lus par l'IA. Tes vêtements restent sur ton appareil ; le traitement et l'analyse se font sur notre serveur."
+  "bilgiDolapCalisma": "Quand tu ajoutes une photo, le fond est supprimé automatiquement et la couleur, la catégorie, le style et la saison sont lus par l'IA. Tes vêtements restent sur ton appareil ; le traitement et l'analyse se font sur notre serveur.",
+  "duzenleArkaPlanBaslik": "Arrière-plan et placement",
+  "duzenleIpucu": "Glisse l'article pour le placer, pince pour le redimensionner.",
+  "duzenleZeminBeyaz": "Blanc",
+  "duzenleZeminKirik": "Blanc cassé",
+  "duzenleZeminGri": "Gris clair",
+  "duzenleZeminSaydam": "Transparent",
+  "duzenleKaydet": "Enregistrer",
+  "duzenleVarsayilan": "Par défaut"
 }

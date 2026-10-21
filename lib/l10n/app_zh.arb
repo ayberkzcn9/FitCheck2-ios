@@ -1199,5 +1199,13 @@
   "bilgiRaporSeri": "连续穿着的天数。每记录一套穿搭就增加，漏掉一天即归零。",
   "bilgiRaporHicGiyilmemis": "最近 7 天一次都没穿过的单品数量。可以用新搭配重新让它们派上用场。",
   "bilgiDueloPuan": "每轮给出两套穿搭，你选一套。选对得分并累计连胜，选错则连胜归零。评分基于规则：色彩协调、品类均衡与季节一致性。若衣橱少于 4 件，会用你以往的搭配生成调色盘。",
-  "bilgiDolapCalisma": "添加照片时背景会自动去除，AI 会识别颜色、品类、风格与季节。衣物保存在你的设备上，背景去除与分析在服务器完成。"
+  "bilgiDolapCalisma": "添加照片时背景会自动去除，AI 会识别颜色、品类、风格与季节。衣物保存在你的设备上，背景去除与分析在服务器完成。",
+  "duzenleArkaPlanBaslik": "背景与摆放",
+  "duzenleIpucu": "拖动可摆放位置，双指可调整大小。",
+  "duzenleZeminBeyaz": "白色",
+  "duzenleZeminKirik": "米白",
+  "duzenleZeminGri": "浅灰",
+  "duzenleZeminSaydam": "透明",
+  "duzenleKaydet": "保存",
+  "duzenleVarsayilan": "默认"
 }

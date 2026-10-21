@@ -3408,4 +3408,29 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       'عند إضافة صورة يُزال الخلفية تلقائيًا ويقرأ الذكاء الاصطناعي اللون والفئة والأسلوب والموسم. تبقى ملابسك على جهازك، بينما تتم إزالة الخلفية والتحليل على خادمنا.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'الخلفية والتموضع';
+
+  @override
+  String get duzenleIpucu =>
+      'اسحب القطعة لتحديد موضعها وضم إصبعين لتغيير حجمها.';
+
+  @override
+  String get duzenleZeminBeyaz => 'أبيض';
+
+  @override
+  String get duzenleZeminKirik => 'أبيض مائل';
+
+  @override
+  String get duzenleZeminGri => 'رمادي فاتح';
+
+  @override
+  String get duzenleZeminSaydam => 'شفاف';
+
+  @override
+  String get duzenleKaydet => 'حفظ';
+
+  @override
+  String get duzenleVarsayilan => 'افتراضي';
 }

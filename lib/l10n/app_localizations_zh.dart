@@ -3243,4 +3243,28 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get bilgiDolapCalisma =>
       '添加照片时背景会自动去除，AI 会识别颜色、品类、风格与季节。衣物保存在你的设备上，背景去除与分析在服务器完成。';
+
+  @override
+  String get duzenleArkaPlanBaslik => '背景与摆放';
+
+  @override
+  String get duzenleIpucu => '拖动可摆放位置，双指可调整大小。';
+
+  @override
+  String get duzenleZeminBeyaz => '白色';
+
+  @override
+  String get duzenleZeminKirik => '米白';
+
+  @override
+  String get duzenleZeminGri => '浅灰';
+
+  @override
+  String get duzenleZeminSaydam => '透明';
+
+  @override
+  String get duzenleKaydet => '保存';
+
+  @override
+  String get duzenleVarsayilan => '默认';
 }

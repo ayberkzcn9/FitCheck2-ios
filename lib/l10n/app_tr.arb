@@ -1234,5 +1234,13 @@
   "bilgiRaporSeri": "Üst üste giydiğin gün sayısı. Her gün bir kombin kaydedersen artar, bir gün boşluk bırakırsan sıfırlanır.",
   "bilgiRaporHicGiyilmemis": "Son 7 günde hiç giyilmemiş parça sayısı. Bu parçalar yeni kombinlerle yeniden kullanılabilir.",
   "bilgiDueloPuan": "Her soruda iki kombin arasından seçim yaparsın. Doğru cevap puan ve seri kazandırır, yanlış cevap seriyi sıfırlar. Puanlama kural tabanlıdır: renk uyumu, kategori dengesi ve mevsim tutarlılığı ölçülür. Dolabında 4'ten az parça varsa geçmiş kombinlerden bir palet oluşturulur.",
-  "bilgiDolapCalisma": "Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır."
+  "bilgiDolapCalisma": "Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır.",
+  "duzenleArkaPlanBaslik": "Arka plan ve yerleşim",
+  "duzenleIpucu": "Parçayı sürükleyerek yerleştirebilir, iki parmakla büyütebilirsin.",
+  "duzenleZeminBeyaz": "Beyaz",
+  "duzenleZeminKirik": "Kırık beyaz",
+  "duzenleZeminGri": "Açık gri",
+  "duzenleZeminSaydam": "Saydam",
+  "duzenleKaydet": "Kaydet",
+  "duzenleVarsayilan": "Varsayılan"
 }
