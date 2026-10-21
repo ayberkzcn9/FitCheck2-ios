@@ -265,6 +265,8 @@ okuma" ekranı değil, **planlama** ekranı.
   testi) + görsel kontrol `16_takvim_plan`, `17_gun_plani`, `18_kombin_secimi`.
 - Seçim sayfası iki kaynak gösteriyor: **FAVORİLERİM** ve **SON GİYİLENLER**
   (geçmiş kaydındaki parçalar virgülden ayrıştırılıyor, en fazla 5, tekrarsız).
+- Üçüncü kaynak **ÖNERİLER**: kural bazlı üretici (aynı motor Bugün akışının
+  yedek yolu) — çevrimdışı, anında, ücretsiz; ağ çağrısı yok.
 
 ### 4.4 İzin öncesi gerekçe (Mobbin #3)
 
@@ -278,6 +280,15 @@ istekle görüyordu. Artık önce kendi gerekçemiz gösteriliyor:
 - Kullanıcı "Şimdi değil" derse sistem izni hiç istenmiyor.
 - Bildirim izni **ayarlardaki anahtar ile** isteniyor (kullanıcı eylemi net),
   orada ayrı gerekçe sayfasına gerek yok.
+
+### 4.5 Renk tutarlılığı (bu tur)
+
+- Haftalık plan ekranındaki ana CTA **yeşildi** (`Colors.green.shade600`),
+  uygulamadaki diğer birincil düğmeler koyu/siyah. Artık `colorScheme.primary`
+  (aynı token ailesi) — birincil eylem rengi tek kaynaktan geliyor.
+- "Giyildi" rozetlerindeki ham `Colors.green` yerine `AppAccents.success`
+  (#16A34A) kullanılıyor; böylece "gri/gri tonları" dışındaki gömülü
+  `Color(0x…)` kullanımı ekranlarda 28'de sabit kalıyor.
 
 ---
 
