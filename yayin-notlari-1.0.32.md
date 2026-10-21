@@ -140,8 +140,8 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.787.217 bayt,
-   SHA256 `E3DD53813648F4F5CC7B8CA5D80F0ACC0A2E04702E29B75C53EAA85C52182115`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.861.801 bayt,
+   SHA256 `642BB7412794BF9DE768E876D1CEEF96FC25685DA6B22F96E02B43F21292B5B3`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
    (21.10.2026 dolap arama/filtre ve takvim planlama turlarından sonra yeniden
@@ -170,3 +170,5 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
    seçimi, Değiştir/Kaldır + "Geri al"), Bugün'de "BUGÜN PLANIN" kartı,
    bildirimler tarihe özel planı okuyor, kamera izninden önce gerekçe
    sayfası, haftalık plan CTA'sı marka rengine hizalandı.
+   Son tur: Profil & Analiz ile Bugün, Rapor, Düello ve Dolap ekranlarına
+   ölçütlerin ne anlama geldiğini anlatan bilgi (ⓘ) düğmeleri.
