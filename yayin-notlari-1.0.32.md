@@ -5,137 +5,153 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 `yayin-notlari-1.0.30.md` içinde duruyor.
 
 ## tr
-• Takvimde bir güne kombin atayın; Bugün kartında planınız görünür
-• Dolapta ara ve kategoriye göre filtrele
-• Kesim kalitesi arttı, yapay zekâ modeli yenilendi
+• Kesim kalitesi arttı, yeni AI modeli
 • Yeni "Bugün" ekranı ve Kombin Düellosu
-• Bildirimler o günün gerçek kombinini yazar, dokununca doğru sekmeyi açar
-• Akşam 21:00'de yarınki kombin hatırlatıcısı
-• Kombini paylaş; raf parçasına dokun: bugün giydim
-• Yeni "Stil Günlüğüm": takvim, günlük, paylaşılabilir haftalık rapor
+• Dolapta ara, kategoriye göre filtrele
+• Takvimde bir güne kombin ata
+• Planın Bugün kartında görünür, bildirimler onu okur
+• Dolaba eklerken arka planı ve yerleşimi sen seç
+• "Arka planda ekle": yükleme ekranı seni kilitlemez
+• Bilgi düğmeleri her ölçütün ne anlama geldiğini anlatır
+• Yeni "Stil Günlüğüm": takvim, günlük, haftalık rapor
 • Yeni "Seyahat Modu": kapsül valiz planı
 
 ## en
-• Assign an outfit to a day in the calendar; your plan shows on Today
-• Search and filter your wardrobe by category
-• Better cutouts with a new AI model
+• Better cutouts, new AI model
 • New "Today" screen and Outfit Duel
-• Notifications show your real outfit of the day and open the right tab
-• 21:00 reminder: "tomorrow's outfit is ready"
-• Share today's outfit; tap a shelf item to wear it
-• New "My Style Diary": calendar, diary, shareable weekly report
+• Search your wardrobe and filter by category
+• Assign an outfit to a day in the calendar
+• Your plan shows on Today and in notifications
+• Choose the background and placement when adding clothes
+• "Add in background": the loading screen no longer blocks you
+• Info buttons explain every metric
+• New "My Style Diary": calendar, diary, weekly report
 • New "Travel Mode": capsule packing plan
 
 ## it
-• Assegna un outfit a un giorno nel calendario
-• Cerca e filtra il guardaroba per categoria
-• Ritaglio più pulito con un nuovo modello IA
+• Ritaglio più pulito, nuovo modello IA
 • Nuove schermate "Oggi" e Duello di outfit
-• Le notifiche mostrano il look del giorno e aprono la scheda
-• Promemoria alle 21:00: "il look di domani è pronto"
-• Condividi il look; tocca un capo: indossalo oggi
-• Nuovo "Il mio diario di stile": calendario e rapporto settimanale
+• Cerca nel guardaroba e filtra per categoria
+• Assegna un outfit a un giorno nel calendario
+• Il piano compare su Oggi e nelle notifiche
+• Scegli sfondo e posizione quando aggiungi un capo
+• "Aggiungi in background" non blocca lo schermo
+• Le icone informazione spiegano ogni metrica
+• Nuovo "Il mio diario di stile": calendario, diario, rapporto
 • Nuova "Modalità viaggio": piano valigia a capsula
 
 ## es
-• Asigna un look a un día del calendario
-• Busca y filtra tu armario por categoría
-• Mejor recorte con un nuevo modelo de IA
+• Mejor recorte, nuevo modelo de IA
 • Nuevas pantallas "Hoy" y Duelo de conjuntos
-• Las notificaciones muestran tu look del día y abren la pestaña correcta
-• Recordatorio a las 21:00: "el look de mañana está listo"
-• Comparte el look; toca una prenda: me la puse hoy
-• Nuevo "Mi diario de estilo": calendario, diario, informe semanal
+• Busca en tu armario y filtra por categoría
+• Asigna un look a un día del calendario
+• Tu plan aparece en Hoy y en las notificaciones
+• Elige fondo y colocación al añadir prendas
+• "Añadir en segundo plano" no bloquea la pantalla
+• Los botones de información explican cada métrica
+• Nuevo "Mi diario de estilo": calendario, diario, informe
 • Nuevo "Modo viaje": plan de maleta cápsula
 
 ## zh
-• 可在日历中为某一天指定穿搭，计划会显示在“今天”
-• 支持衣橱搜索与分类筛选，结果即时更新
 • 抠图质量提升，全新 AI 模型
 • 全新"今天"页面与穿搭对决
-• 通知显示当天真实搭配，点击直达对应页面
-• 21:00 提醒"明天的搭配已准备好"
-• 今日搭配可分享为图片，点击衣架单品可标记"今天穿了"或搭配它
-• 全新"我的风格日记"：日历、日记、可分享的每周报告
-• 全新"旅行模式"：短途旅行胶囊打包方案
+• 衣橱支持搜索与分类筛选
+• 可在日历中为某一天指定穿搭
+• 计划显示在"今天"并用于通知
+• 添加衣物时可选择背景与摆放位置
+• "后台添加"不再卡住加载界面
+• 信息按钮解释每项指标的含义
+• 请求相机权限前会先说明原因
+• 全新"我的风格日记"：日历、日记、周报
+• 全新"旅行模式"：胶囊打包方案
 
 ## ar
-• عيّن إطلالة ليوم في التقويم؛ ستظهر خطتك في «اليوم»
-• ابحث في خزانتك وفلتر حسب الفئة، مع تحديث فوري للنتائج
 • قص أنظف بنموذج ذكاء اصطناعي جديد
 • شاشتان جديدتان: «اليوم» ومبارزة الإطلالات
-• الإشعارات تعرض إطلالة اليوم وتفتح التبويب الصحيح
-• تذكير الساعة 21:00: «إطلالة الغد جاهزة»
-• شارك الإطلالة كصورة؛ اضغط على قطعة: ارتديتها اليوم أو نسّق إطلالة
-• جديد «مجلد أسلوبي»: تقويم ويوميات وتقرير أسبوعي
+• ابحث في خزانتك وفلتر حسب الفئة
+• عيّن إطلالة ليوم في التقويم
+• تظهر خطتك في «اليوم» وتستخدمها الإشعارات
+• اختر الخلفية والتموضع عند إضافة الملابس
+• «أضِف في الخلفية» لم يعد يجمّد الشاشة
+• أزرار المعلومات تشرح كل مقياس
+• نشرح لماذا نحتاج الكاميرا قبل طلبها
+• جديد «مجلد أسلوبي»: تقويم ويوميات وتقرير
 • جديد «وضع السفر»: خطة حقيبة كبسولة
 
 ## fr
-• Attribuez une tenue à un jour du calendrier
-• Recherche dans votre garde-robe
-• Détourage plus net avec un nouveau modèle d'IA
+• Détourage plus net, nouveau modèle d'IA
 • Nouveaux écrans « Aujourd'hui » et Duel de tenues
-• Les notifications montrent la tenue du jour
-• Rappel à 21h00 : « la tenue de demain est prête »
-• Partagez la tenue ; touchez un article : porté aujourd'hui
-• Nouveau « Mon carnet de style » : calendrier, journal, rapport hebdomadaire
+• Recherchez dans votre garde-robe, filtrez par catégorie
+• Attribuez une tenue à un jour du calendrier
+• Votre plan s'affiche sur Aujourd'hui et dans les notifs
+• Choisissez fond et placement à l'ajout
+• « Ajouter en arrière-plan » ne bloque rien
+• Les boutons d'info expliquent les indicateurs
+• « Mon carnet de style » : calendrier, journal, rapport
 • Nouveau « Mode voyage » : plan de valise capsule
 
 ## de
-• Outfit im Kalender einem Tag zuweisen
-• Garderobe durchsuchen und filtern
-• Bessere Freistellung mit neuem KI-Modell
+• Bessere Freistellung, neues KI-Modell
 • Neue Bildschirme „Heute“ und Outfit-Duell
-• Benachrichtigungen zeigen dein Outfit des Tages
-• Erinnerung um 21:00 Uhr: „Das Outfit für morgen ist fertig“
-• Outfit teilen; Regal-Teil antippen: heute getragen
-• Neues „Mein Stil-Tagebuch“: Kalender, Tagebuch, Wochenbericht
+• Garderobe durchsuchen und filtern
+• Outfit einem Kalendertag zuweisen
+• Dein Plan erscheint auf Heute und in Benachrichtigungen
+• Hintergrund und Platzierung beim Hinzufügen wählen
+• „Im Hintergrund hinzufügen“ blockiert nicht mehr
+• Info-Symbole erklären jede Kennzahl
+• Neues „Mein Stil-Tagebuch“: Kalender, Tagebuch, Bericht
 • Neuer „Reisemodus“: Capsule-Packplan
 
 ## pt
-• Atribui um look a um dia no calendário
-• Pesquise e filtre o guarda-roupa por categoria
-• Recorte melhor com novo modelo de IA
+• Recorte melhor, novo modelo de IA
 • Novos ecrãs "Hoje" e Duelo de looks
-• As notificações mostram o look do dia e abrem o separador certo
-• Lembrete às 21:00: "o look de amanhã está pronto"
-• Partilhe o look; toque numa peça: usei hoje
-• Novo "O meu diário de estilo": calendário, diário, relatório semanal
+• Pesquise e filtre o guarda-roupa por categoria
+• Atribua um look a um dia no calendário
+• O teu plano aparece em Hoje e nas notificações
+• Escolhe fundo e colocação ao adicionar peças
+• "Adicionar em segundo plano" não bloqueia o ecrã
+• Os botões de informação explicam cada métrica
+• Novo "O meu diário de estilo": calendário, diário, relatório
 • Novo "Modo viagem": plano de mala cápsula
 
 ## ja
-• カレンダーで日付にコーデを割り当てると「今日」に表示されます
-• ワードローブの検索とカテゴリ絞り込み、結果はすぐ更新
 • 切り抜き品質が向上。新しい AI モデル
 • 新しい「今日」画面とコーデ対決
-• 通知にその日の着合わせを表示し、該当タブへ
-• 21:00 にお知らせ「明日の着合わせ」
-• 今日の着合わせを画像で共有、棚のアイテムで着た記録や搭配作成
+• ワードローブの検索とカテゴリ絞り込み
+• カレンダーで日付にコーデを割り当て
+• 計画は「今日」と通知に反映
+• 追加時に背景と配置を選べます
+• 「バックグラウンドで追加」で画面が止まらない
+• 情報アイコンが指標の意味を説明
+• カメラ権限の前に理由を説明します
 • 新しい「マイスタイル日記」：カレンダー、日記、週次レポート
 • 新しい「トラベルモード」：短期旅行のパッキング
 
 ## ko
-• 캘린더에서 날짜에 코디를 지정하면 오늘에 표시됩니다
-• 옷장 검색과 카테고리 필터, 결과 즉시 반영
 • 누끼 품질 향상, 새로운 AI 모델
 • 새로운 "오늘" 화면과 코디 대결
-• 알림에 그날 코디를 표시하고 해당 탭으로 이동
-• 21:00 알림: "내일의 코디가 준비됐어요"
-• 오늘의 코디를 이미지로 공유, 선반 아이템으로 코디 만들기
+• 옷장 검색과 카테고리 필터
+• 캘린더에서 날짜에 코디 배정
+• 계획이 "오늘"과 알림에 반영
+• 추가할 때 배경과 위치를 선택
+• "백그라운드에서 추가"로 화면이 멈추지 않음
+• 정보 버튼이 각 지표를 설명
+• 카메라 권한 전에 이유를 알려드림
 • 새로운 "나의 스타일 다이어리": 달력, 일지, 주간 리포트
 • 새로운 "여행 모드": 짧은 여행 짐 계획
 
 ## ru
-• Назначь образ на день в календаре
-• Поиск и фильтр по гардеробу
 • Более чистое вырезание с новой моделью ИИ
 • Новые экраны «Сегодня» и «Дуэль образов»
-• Уведомления показывают образ дня и открывают нужную вкладку
-• Напоминание в 21:00: «образ на завтра готов»
-• Поделитесь образом; нажмите на вещь: надето сегодня
-• Новый «Мой дневник стиля»: календарь, дневник, недельный отчёт
+• Поиск по гардеробу и фильтр по категориям
+• Назначь образ на день в календаре
+• План виден в «Сегодня» и в уведомлениях
+• Фон и расположение выбираются при добавлении
+• «Добавить в фоне» больше не блокирует экран
+• Кнопки-подсказки объясняют показатели
+• Мы объясняем, зачем нужен доступ к камере
+• Новый «Мой дневник стиля»: календарь, дневник, отчёт
 • Новый «Режим путешествия»: капсульный план чемодана
-
 ---
 
 ## Play Console'da yapılacaklar
