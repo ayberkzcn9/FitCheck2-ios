@@ -1263,6 +1263,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get kendiTasarimimBaslik => 'マイオリジナルコーデ';
 
   @override
+  String get kendiTasarimimParcaSec => 'アイテムを選択';
+
+  @override
   String parcaSecModalBaslik(Object kategori) {
     return '$kategoriを選択';
   }

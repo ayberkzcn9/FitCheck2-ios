@@ -1243,6 +1243,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get kendiTasarimimBaslik => '我的原创搭配';
 
   @override
+  String get kendiTasarimimParcaSec => '选择单品';
+
+  @override
   String parcaSecModalBaslik(Object kategori) {
     return '选择 $kategori';
   }

@@ -2530,6 +2530,12 @@ abstract class AppLocalizations {
   /// **'Kendi Tasarımım'**
   String get kendiTasarimimBaslik;
 
+  /// No description provided for @kendiTasarimimParcaSec.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parça seç'**
+  String get kendiTasarimimParcaSec;
+
   /// No description provided for @parcaSecModalBaslik.
   ///
   /// In tr, this message translates to:

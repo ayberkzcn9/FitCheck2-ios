@@ -1321,6 +1321,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kendiTasarimimBaslik => 'تصميمي الخاص';
 
   @override
+  String get kendiTasarimimParcaSec => 'اختر قطعة';
+
+  @override
   String parcaSecModalBaslik(Object kategori) {
     return 'اختر $kategori';
   }

@@ -1331,6 +1331,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get kendiTasarimimBaslik => 'Kendi Tasarımım';
 
   @override
+  String get kendiTasarimimParcaSec => 'Parça seç';
+
+  @override
   String parcaSecModalBaslik(Object kategori) {
     return '$kategori Seç';
   }

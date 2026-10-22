@@ -1331,6 +1331,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get kendiTasarimimBaslik => 'Мой собственный образ';
 
   @override
+  String get kendiTasarimimParcaSec => 'Выберите вещь';
+
+  @override
   String parcaSecModalBaslik(Object kategori) {
     return 'Выбрать $kategori';
   }

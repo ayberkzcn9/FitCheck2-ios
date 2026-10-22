@@ -1269,6 +1269,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kendiTasarimimBaslik => '나만의 스타일 연출';
 
   @override
+  String get kendiTasarimimParcaSec => '아이템 선택';
+
+  @override
   String parcaSecModalBaslik(Object kategori) {
     return '$kategori 선택';
   }

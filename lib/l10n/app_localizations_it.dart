@@ -1344,6 +1344,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get kendiTasarimimBaslik => 'Il Mio Design';
 
   @override
+  String get kendiTasarimimParcaSec => 'Scegli un capo';
+
+  @override
   String parcaSecModalBaslik(Object kategori) {
     return 'Seleziona $kategori';
   }
