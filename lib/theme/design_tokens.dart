@@ -14,8 +14,53 @@ import 'package:flutter/material.dart';
 // ===========================================================================
 // SPACING — 4'ün katları (tutarlı boşluk ölçeği)
 // ===========================================================================
+/// ANİMASYON — süre ve eğri ölçeği.
+///
+/// Material 3 hareket kurallarına göre üç kademe: kısa (200 ms), orta
+/// (400 ms), uzun (600 ms). Eğriler de aynı mantıkla: ekrana girerken
+/// yavaşlayan (decelerate), çıkarken hızlanan (accelerate), ekranda
+/// kalırken standart.
+class AppMotion {
+  const AppMotion._();
+
+  // Süreler
+  /// 150 ms — anlık geri bildirim (basma, rozet)
+  static const Duration hizli = Duration(milliseconds: 150);
+
+  /// 200 ms — küçük durum değişimi (seçim, vurgu)
+  static const Duration kisa = Duration(milliseconds: 200);
+
+  /// 300 ms — liste/kart geçişi
+  static const Duration normal = Duration(milliseconds: 300);
+
+  /// 400 ms — kart/liste geçişi, panel açılışı
+  static const Duration orta = Duration(milliseconds: 400);
+
+  /// 600 ms — büyük geçiş (sayfa, açılır pencere)
+  static const Duration uzun = Duration(milliseconds: 600);
+
+  // Eğriler
+  /// Ekrana girerken (yavaşlayan)
+  static const Curve giris = Curves.easeOutCubic;
+
+  /// Ekrandan çıkarken (hızlanan)
+  static const Curve cikis = Curves.easeInCubic;
+
+  /// Ekranda kalırken (standart)
+  static const Curve standart = Curves.easeInOutCubic;
+
+  /// Geri tepki (hafif aşma) — vurgu rozetleri
+  static const Curve tepki = Curves.elasticOut;
+
+  /// Geri tepki (yumuşak aşma) — kart açılışı
+  static const Curve standartBack = Curves.easeOutBack;
+}
+
 class AppSpacing {
   const AppSpacing._();
+
+  /// 2
+  static const double xxs = 2;
 
   /// 4
   static const double xs = 4;
@@ -75,6 +120,9 @@ class AppRadius {
   /// 4 — mikro (nokta, küçük işaret)
   static const double xs = 4;
 
+  /// 2 — çok mikro (nokta göstergesi)
+  static const double xxs = 2;
+
   /// 999 — tam yuvarlak (daire, rozet)
   static const double full = 999;
 
@@ -88,6 +136,7 @@ class AppRadius {
       BorderRadius.all(Radius.circular(dialog));
   static const BorderRadius modalRadius =
       BorderRadius.all(Radius.circular(modal));
+  static const BorderRadius xxsRadius = BorderRadius.all(Radius.circular(xxs));
   static const BorderRadius xsRadius = BorderRadius.all(Radius.circular(xs));
   static const BorderRadius fullRadius =
       BorderRadius.all(Radius.circular(full));

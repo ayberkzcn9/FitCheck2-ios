@@ -105,7 +105,7 @@ class BilgiSayfasi {
                           margin: const EdgeInsets.only(bottom: 12),
                           decoration: BoxDecoration(
                             color: colors.onSurfaceVariant.withValues(alpha: 0.3),
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: AppRadius.xxsRadius,
                           ),
                         ),
                       ),

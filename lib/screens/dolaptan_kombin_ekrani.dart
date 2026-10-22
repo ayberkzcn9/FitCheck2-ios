@@ -87,15 +87,15 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
   @override
   void initState() {
     super.initState();
-    _animController = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
+    _animController = AnimationController(vsync: this, duration: AppMotion.uzun);
 
     _donmeAnimasyonu = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _animController, curve: Curves.easeInOutBack),
+      CurvedAnimation(parent: _animController, curve: AppMotion.standartBack),
     );
 
     _buyumeAnimasyonu = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.2).chain(CurveTween(curve: Curves.easeOutCubic)), weight: 50),
-      TweenSequenceItem(tween: Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: Curves.easeInCubic)), weight: 50),
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.2).chain(CurveTween(curve: AppMotion.giris)), weight: 50),
+      TweenSequenceItem(tween: Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: AppMotion.cikis)), weight: 50),
     ]).animate(_animController);
 
     _kayitliGiyilmeDurumunuYukle();
@@ -390,7 +390,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text('Bu özellik yakında eklenecek'),
+        content: Text(AppLocalizations.of(context)!.ozellikYakinda),
         backgroundColor: widget.anaRenk,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
@@ -440,7 +440,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     }
 
     _kombiniTemizle();
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(AppMotion.normal);
 
     if (!mounted) return;
 
@@ -752,7 +752,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
           Flexible(
             child: FittedBox(
               fit: BoxFit.scaleDown,
-              alignment: Alignment.centerLeft,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(
                 kombinVarMi ? l10n.yenidenZarAt : l10n.zarAtKaristir,
                 style: const TextStyle(
@@ -992,9 +992,9 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             ),
                             const SizedBox(height: 8),
                             Align(
-                              alignment: Alignment.centerLeft,
+                              alignment: AlignmentDirectional.centerStart,
                               child: AnimatedSwitcher(
-                                duration: const Duration(milliseconds: 250),
+                                duration: AppMotion.kisa,
                                 child: Text(
                                   l10n.stilistKombininTitle(_kombinTuru),
                                   key: ValueKey<String>(_kombinTuru),
@@ -1170,7 +1170,7 @@ class SadeKiyafetKarti extends StatelessWidget {
 
     return Container(
       width: 145,
-      margin: const EdgeInsets.only(right: 16, top: 4, bottom: 4),
+      margin: const EdgeInsetsDirectional.only(end: 16, top: 4, bottom: 4),
       decoration: BoxDecoration(
         color: colors.surfaceContainerLow,
         borderRadius: AppRadius.xxlRadius,

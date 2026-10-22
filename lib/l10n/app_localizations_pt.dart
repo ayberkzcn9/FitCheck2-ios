@@ -3513,5 +3513,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get bugunGiydildi => 'Usado';
 
   @override
+  String get ozellikYakinda => 'Este recurso chegará em breve';
+
+  @override
   String get duelloGeri => 'Voltar';
 }

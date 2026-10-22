@@ -87,7 +87,7 @@ class IzinGerekce {
                           style: FilledButton.styleFrom(
                             minimumSize: const Size(0, 48),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
+                              borderRadius: AppRadius.mdRadius,
                             ),
                           ),
                           child: Text(butonMetni),

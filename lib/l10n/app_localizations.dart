@@ -6418,6 +6418,12 @@ abstract class AppLocalizations {
   /// **'Giydildi'**
   String get bugunGiydildi;
 
+  /// No description provided for @ozellikYakinda.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu özellik yakında eklenecek'**
+  String get ozellikYakinda;
+
   /// No description provided for @duelloGeri.
   ///
   /// In tr, this message translates to:

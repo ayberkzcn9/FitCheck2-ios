@@ -2473,9 +2473,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                         ),
                         const SizedBox(height: 24),
                         AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 240),
-                          switchInCurve: Curves.easeOutCubic,
-                          switchOutCurve: Curves.easeInCubic,
+                          duration: AppMotion.kisa,
+                          switchInCurve: AppMotion.giris,
+                          switchOutCurve: AppMotion.cikis,
                           child: Text(
                             _yuklemeMesajlari.isNotEmpty
                                 ? _yuklemeMesajlari[_yuklemeMesajiIndex]

@@ -3495,5 +3495,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get bugunGiydildi => 'Giydildi';
 
   @override
+  String get ozellikYakinda => 'Bu özellik yakında eklenecek';
+
+  @override
   String get duelloGeri => 'Geri';
 }

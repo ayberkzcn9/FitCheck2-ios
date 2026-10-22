@@ -300,9 +300,9 @@ class _GirisEkraniState extends State<GirisEkrani> {
               children: [
                 // ÜST BAR: ATLA / MİSAFİR GİRİŞİ BUTONU
                 Padding(
-                  padding: const EdgeInsets.only(right: 16, top: 8),
+                  padding: const EdgeInsetsDirectional.only(end: 16, top: 8),
                   child: Align(
-                    alignment: Alignment.centerRight,
+                    alignment: AlignmentDirectional.centerEnd,
                     child: TextButton.icon(
                       onPressed: _yukleniyor ? null : _anonimGirisTetikle,
                       icon: Icon(
@@ -383,7 +383,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                           setState(() => _girisModu = true),
                                       child: AnimatedContainer(
                                         duration:
-                                            const Duration(milliseconds: 200),
+                                            AppMotion.kisa,
                                         padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                         decoration: BoxDecoration(
                                           color: _girisModu
@@ -412,7 +412,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                           setState(() => _girisModu = false),
                                       child: AnimatedContainer(
                                         duration:
-                                            const Duration(milliseconds: 200),
+                                            AppMotion.kisa,
                                         padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                         decoration: BoxDecoration(
                                           color: !_girisModu
@@ -547,14 +547,14 @@ class _GirisEkraniState extends State<GirisEkrani> {
                             // Şifremi unuttum bağlantısı (yalnızca giriş modunda)
                             if (_girisModu)
                               Align(
-                                alignment: Alignment.centerRight,
+                                alignment: AlignmentDirectional.centerEnd,
                                 child: TextButton(
                                   onPressed: _yukleniyor
                                       ? null
                                       : _sifreSifirlamaTetikle,
                                   style: TextButton.styleFrom(
                                     padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                                    minimumSize: const Size(0, 36),
+                                    minimumSize: const Size(0, 44),
                                     tapTargetSize:
                                         MaterialTapTargetSize.shrinkWrap,
                                   ),

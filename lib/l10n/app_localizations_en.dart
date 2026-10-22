@@ -3497,5 +3497,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bugunGiydildi => 'Worn';
 
   @override
+  String get ozellikYakinda => 'This feature is coming soon';
+
+  @override
   String get duelloGeri => 'Back';
 }

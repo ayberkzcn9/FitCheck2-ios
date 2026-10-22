@@ -299,7 +299,7 @@ class AnaEkranRehber {
           ),
           const SizedBox(height: 16),
           Align(
-            alignment: Alignment.centerRight,
+            alignment: AlignmentDirectional.centerEnd,
             child: FilledButton(
               style: FilledButton.styleFrom(
                 backgroundColor: colors.primary,

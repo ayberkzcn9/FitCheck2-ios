@@ -671,9 +671,9 @@ class _BaslangicKapisiState extends State<_BaslangicKapisi> {
     final sonuc = _sonuc;
 
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 450),
-      switchInCurve: Curves.easeOutCubic,
-      switchOutCurve: Curves.easeInCubic,
+      duration: AppMotion.orta,
+      switchInCurve: AppMotion.giris,
+      switchOutCurve: AppMotion.cikis,
       layoutBuilder: (mevcut, onceki) => Stack(
         fit: StackFit.expand,
         children: [...onceki, if (mevcut != null) mevcut],

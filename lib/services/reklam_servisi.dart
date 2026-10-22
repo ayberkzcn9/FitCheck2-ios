@@ -1,3 +1,4 @@
+import '../theme/design_tokens.dart';
 import 'dart:async';
 import 'dart:io';
 
@@ -122,7 +123,7 @@ class ReklamServisi {
               await AppTrackingTransparency.trackingAuthorizationStatus;
           if (attDurum == TrackingStatus.notDetermined) {
             // iOS, uygulama tam aktif olmadan diyaloğu göstermez; kısa bekle.
-            await Future.delayed(const Duration(milliseconds: 600));
+            await Future.delayed(AppMotion.uzun);
             await AppTrackingTransparency.requestTrackingAuthorization();
           }
         } catch (e) {

@@ -162,8 +162,8 @@ class _AiChatbotPenceresiState extends State<AiChatbotPenceresi> {
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
           _scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOutCubic,
+          duration: AppMotion.normal,
+          curve: AppMotion.giris,
         );
       }
     });
@@ -664,7 +664,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.only(right: 8),
+      padding: const EdgeInsetsDirectional.only(end: 8),
       child: Semantics(
         button: true,
         label: etiket,
@@ -865,8 +865,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
 
                       return Align(
                         alignment: m.isUser
-                            ? Alignment.centerRight
-                            : Alignment.centerLeft,
+                            ? AlignmentDirectional.centerEnd
+                            : AlignmentDirectional.centerStart,
                         child: Container(
                           margin: const EdgeInsets.only(bottom: 12),
                           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
@@ -939,9 +939,9 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 // AI İŞLEMDE GÖSTERGESİ
                 if (_aiIslemde)
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, bottom: 8),
+                    padding: const EdgeInsetsDirectional.only(start: 20, bottom: 8),
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: AlignmentDirectional.centerStart,
                       child: Row(
                         children: [
                           SizedBox(
@@ -970,9 +970,9 @@ You MUST write your ENTIRE response in **$hedefDil**!
 
                 if (_tekrarDeneHazir && !_aiIslemde)
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 16, bottom: 6),
+                      padding: const EdgeInsetsDirectional.only(start: 16, bottom: 6),
                       child: TextButton.icon(
                         onPressed: () => _mesajGonder(
                           mesaj: _sonMesaj,
@@ -1062,7 +1062,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(left: 16, right: 8, bottom: 8),
+                  padding: const EdgeInsetsDirectional.only(start: 16, end: 8, bottom: 8),
                   child: Row(
                     children: [
                       _hizliOneriCipi(l10n.chatOneriYagmur),

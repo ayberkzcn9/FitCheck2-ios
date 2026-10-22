@@ -173,7 +173,7 @@ class IstatistikKutusu extends StatelessWidget {
               const SizedBox(height: 16),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
+                alignment: AlignmentDirectional.centerStart,
                 child: Text(
                   deger,
                   maxLines: 1,

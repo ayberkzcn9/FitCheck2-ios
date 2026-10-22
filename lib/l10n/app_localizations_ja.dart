@@ -3354,5 +3354,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get bugunGiydildi => '着用済み';
 
   @override
+  String get ozellikYakinda => 'この機能は近日公開予定です';
+
+  @override
   String get duelloGeri => '戻る';
 }

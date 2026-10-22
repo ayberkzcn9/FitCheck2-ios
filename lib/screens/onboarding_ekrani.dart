@@ -721,7 +721,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                             setState(() => _girisModu = true),
                                         child: AnimatedContainer(
                                           duration:
-                                              const Duration(milliseconds: 200),
+                                              AppMotion.kisa,
                                           padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                           decoration: BoxDecoration(
                                             color: _girisModu
@@ -757,7 +757,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                             setState(() => _girisModu = false),
                                         child: AnimatedContainer(
                                           duration:
-                                              const Duration(milliseconds: 200),
+                                              AppMotion.kisa,
                                           padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                           decoration: BoxDecoration(
                                             color: !_girisModu
@@ -1296,8 +1296,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       bool isActive = _mevcutSayfa == i;
                       final sayfaRenk = _getSayfaRenkPaleti(i)[0];
                       return AnimatedContainer(
-                        duration: const Duration(milliseconds: 400),
-                        curve: Curves.easeOutCubic,
+                        duration: AppMotion.orta,
+                        curve: AppMotion.giris,
                         margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                         height: 8,
                         width: isActive ? 28 : 8,
@@ -1350,8 +1350,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                           }
                           HapticFeedback.mediumImpact();
                           _pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeOutCubic);
+                              duration: AppMotion.orta,
+                              curve: AppMotion.giris);
                         },
                         child: Text(
                           l10n.onboardingDevamEt,
@@ -1405,8 +1405,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         onTap();
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeOutCubic,
+        duration: AppMotion.kisa,
+        curve: AppMotion.giris,
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected ? effectiveAccent : colors.surfaceContainerLow,
@@ -1430,9 +1430,9 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
   Widget _buildSectionLabel(String text, ColorScheme colors,
       [Color? labelColor]) {
     return Align(
-      alignment: Alignment.centerLeft,
+      alignment: AlignmentDirectional.centerStart,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 12.0, left: 4),
+        padding: const EdgeInsetsDirectional.only(bottom: 12.0, start: 4),
         child: Text(
           text,
           style: TextStyle(

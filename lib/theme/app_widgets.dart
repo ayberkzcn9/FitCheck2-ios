@@ -231,8 +231,8 @@ class AppChip extends StatelessWidget {
               }
             : null,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeOutCubic,
+          duration: AppMotion.kisa,
+          curve: AppMotion.giris,
           constraints: const BoxConstraints(minHeight: 44),
           padding: const EdgeInsets.symmetric(
               horizontal: AppSpacing.lg, vertical: AppSpacing.md),

@@ -3471,5 +3471,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bugunGiydildi => 'تم الارتداء';
 
   @override
+  String get ozellikYakinda => 'هذه الميزة قادمة قريبًا';
+
+  @override
   String get duelloGeri => 'رجوع';
 }

@@ -196,7 +196,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                   color: colors.outlineVariant.withValues(alpha: 0.6),
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: AppRadius.xxsRadius,
                 ),
               ),
               Container(

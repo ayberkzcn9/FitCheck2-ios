@@ -507,7 +507,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
       padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.xs, AppSpacing.lg, AppSpacing.xs),
       child: Material(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: AppRadius.lgRadius,
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: widget.onStilGunluguAc,
@@ -548,7 +548,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                             children: [
                               for (final parca in parcalar)
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 6),
+                                  padding: const EdgeInsetsDirectional.only(end: 6),
                                   child: SizedBox(
                                     width: 42,
                                     child: _planParcaGorseli(parca, colors),
@@ -594,7 +594,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
   Widget _planParcaGorseli(Kiyafet kiyafet, ColorScheme colors) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: AppRadius.mdRadius,
       child: Container(
         color: colors.surface,
         child: Image.memory(
@@ -611,11 +611,11 @@ class _BugunEkraniState extends State<BugunEkrani> {
     return Material(
       color: colors.surfaceContainerLow,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: AppRadius.lgRadius,
         side: BorderSide(color: colors.outlineVariant),
       ),
       child: InkWell(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: AppRadius.lgRadius,
         onTap: () {
           HapticFeedback.lightImpact();
           aksiyon.onTap();
@@ -900,7 +900,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: Container(
-                      margin: const EdgeInsets.only(right: 8),
+                      margin: const EdgeInsetsDirectional.only(end: 8),
                       padding: const EdgeInsets.all(AppSpacing.xs),
                       decoration: BoxDecoration(
                         color: colors.surface.withValues(alpha: 0.65),

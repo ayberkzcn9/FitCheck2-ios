@@ -364,7 +364,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     final bool rehberGosterildi = prefs.getBool('rehber_gosterildi') ?? false;
 
     if (!rehberGosterildi) {
-      await Future.delayed(const Duration(milliseconds: 600));
+      await Future.delayed(AppMotion.uzun);
       if (!mounted) return;
 
       if (_topluFotografEkleKey.currentContext != null) {
@@ -1178,7 +1178,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
           }
 
           if (yikanmasiGerekenler.isNotEmpty) {
-            Future.delayed(const Duration(milliseconds: 500), () {
+            Future.delayed(AppMotion.orta, () {
               if (!mounted) return;
               showDialog(
                 context: context,
@@ -1451,13 +1451,13 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
     return PreferredSize(
       preferredSize: const Size.fromHeight(barHeight),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeOutCubic,
+        duration: AppMotion.kisa,
+        curve: AppMotion.giris,
         height: _isBarsVisible
             ? barHeight + MediaQuery.of(context).padding.top
             : 0.0,
         child: AnimatedOpacity(
-          duration: const Duration(milliseconds: 220),
+          duration: AppMotion.kisa,
           opacity: _isBarsVisible ? 1.0 : 0.0,
           child: ClipRect(
             child: BackdropFilter(
@@ -1491,8 +1491,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                 onHakGuncelle: _hakSayaciniGuncelle);
                           },
                           child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 240),
-                            curve: Curves.easeOutCubic,
+                            duration: AppMotion.kisa,
+                            curve: AppMotion.giris,
                             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                             decoration: BoxDecoration(
                               color: _kalanHak > 0
@@ -1788,7 +1788,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
           Expanded(
             child: FadeIndexedStack(
               index: _seciliSekme,
-              duration: const Duration(milliseconds: 300),
+              duration: AppMotion.normal,
               children: ekranlar,
             ),
           ),

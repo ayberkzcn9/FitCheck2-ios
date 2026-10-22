@@ -370,7 +370,7 @@ class HaftalikDialoglar {
                                     bool isActive = dotIdx == mevcutIndex;
                                     return AnimatedContainer(
                                       duration:
-                                          const Duration(milliseconds: 300),
+                                          AppMotion.normal,
                                       margin: const EdgeInsets.symmetric(
                                         horizontal: AppSpacing.xs,
                                       ),
@@ -542,7 +542,7 @@ class HaftalikDialoglar {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Container(
-            padding: const EdgeInsets.only(top: 20, left: 24, right: 24),
+            padding: const EdgeInsetsDirectional.only(top: 20, start: 24, end: 24),
             height: MediaQuery.of(context).size.height * 0.65,
             decoration: BoxDecoration(
               color: colors.surfaceContainerHigh,

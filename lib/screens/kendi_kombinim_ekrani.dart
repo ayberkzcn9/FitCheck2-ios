@@ -446,8 +446,8 @@ SADECE bu JSON formatında dön:
     return GestureDetector(
       onTap: () => _parcaSecimEkraniAc(kategoriKodu, baslik),
       child: AnimatedContainer( 
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOutCubic,
+        duration: AppMotion.normal,
+        curve: AppMotion.giris,
         height: 110,
         margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
@@ -548,7 +548,7 @@ SADECE bu JSON formatında dön:
             ),
             if (doluMu)
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsetsDirectional.only(end: 8.0),
                 child: IconButton(
                   icon: const Icon(
                     Icons.close_rounded, 
@@ -558,7 +558,7 @@ SADECE bu JSON formatında dön:
                     backgroundColor: colors.errorContainer,
                     foregroundColor: colors.onErrorContainer,
                     padding: const EdgeInsets.all(AppSpacing.sm),
-                    minimumSize: const Size(32, 32),
+                    minimumSize: const Size(44, 44),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                   onPressed: () {
@@ -578,7 +578,7 @@ SADECE bu JSON formatında dön:
               )
             else
               Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+                padding: const EdgeInsetsDirectional.only(end: 16.0),
                 child: Icon(
                   Icons.add_circle_rounded, 
                   // Koyu modda görünür kalsın diye temaya duyarlı renk.
@@ -631,7 +631,7 @@ SADECE bu JSON formatında dön:
         actions: [
           if (enAzBirParcaSecili)
             Padding(
-              padding: const EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsetsDirectional.only(end: 12.0),
               child: IconButton(
                 tooltip: l10n.secimleriSifirla,
                 icon: const Icon(
@@ -710,7 +710,7 @@ SADECE bu JSON formatında dön:
                         });
                       },
                       child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
+                        duration: AppMotion.kisa,
                         padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         decoration: BoxDecoration(
                           color: !_tekParcaMi ? AppAccents.primary : Colors.transparent,
@@ -743,7 +743,7 @@ SADECE bu JSON formatında dön:
                         });
                       },
                       child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
+                        duration: AppMotion.kisa,
                         padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         decoration: BoxDecoration(
                           color: _tekParcaMi ? AppAccents.primary : Colors.transparent,
@@ -778,8 +778,8 @@ SADECE bu JSON formatında dön:
             if (_sonRenkPuani != null && _sonTuyo != null) ...[
               const SizedBox(height: 8),
               AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeOutBack,
+                duration: AppMotion.orta,
+                curve: AppMotion.standartBack,
                 padding: const EdgeInsets.all(AppSpacing.xxl),
                 margin: const EdgeInsets.only(bottom: 24),
                 decoration: BoxDecoration(
@@ -883,7 +883,7 @@ SADECE bu JSON formatında dön:
               children: [
                 Expanded(
                   child: AnimatedOpacity( 
-                    duration: const Duration(milliseconds: 300),
+                    duration: AppMotion.normal,
                     opacity: kombinHazirMi ? 1.0 : 0.5,
                     child: SizedBox(
                       height: 52, 

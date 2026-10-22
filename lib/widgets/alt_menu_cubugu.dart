@@ -60,11 +60,11 @@ class AltMenuCubugu extends StatelessWidget {
     final double normalYukseklik = icerikYuksekligi + altBosluk;
 
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 280),
-      curve: Curves.easeInOut,
+      duration: AppMotion.kisa,
+      curve: AppMotion.standart,
       height: gorunur ? normalYukseklik : 0.0,
       child: AnimatedOpacity(
-        duration: const Duration(milliseconds: 200),
+        duration: AppMotion.kisa,
         opacity: gorunur ? 1.0 : 0.0,
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
@@ -164,8 +164,8 @@ class AltMenuCubugu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AnimatedContainer(
-                  duration: const Duration(milliseconds: 220),
-                  curve: Curves.easeOutCubic,
+                  duration: AppMotion.kisa,
+                  curve: AppMotion.giris,
                   transform: isSelected
                       ? Matrix4.diagonal3Values(1.1, 1.1, 1.0)
                       : Matrix4.identity(),

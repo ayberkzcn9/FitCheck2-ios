@@ -1154,8 +1154,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 },
                                 borderRadius: AppRadius.lgRadius,
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 240),
-                                  curve: Curves.easeOutCubic,
+                                  duration: AppMotion.kisa,
+                                  curve: AppMotion.giris,
                                   padding: const EdgeInsets.all(AppSpacing.md),
                                   decoration: BoxDecoration(
                                     color: secili
@@ -2018,8 +2018,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       },
       borderRadius: AppRadius.mdRadius,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 240),
-        curve: Curves.easeOutCubic,
+        duration: AppMotion.kisa,
+        curve: AppMotion.giris,
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected
@@ -2067,7 +2067,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     final colors = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 8, bottom: 8),
+      padding: const EdgeInsetsDirectional.only(start: 8, bottom: 8),
       child: Text(
         title,
         style: TextStyle(

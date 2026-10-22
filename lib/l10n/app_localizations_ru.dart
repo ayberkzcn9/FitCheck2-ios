@@ -3498,5 +3498,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get bugunGiydildi => 'Надето';
 
   @override
+  String get ozellikYakinda => 'Эта функция скоро появится';
+
+  @override
   String get duelloGeri => 'Назад';
 }

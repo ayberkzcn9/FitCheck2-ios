@@ -853,7 +853,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       )
                           case final Kiyafet k)
                         Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: const EdgeInsetsDirectional.only(end: 10),
                           child: ProfilKiyafetGorseli(
                             kiyafet: k,
                             boyut: 44,

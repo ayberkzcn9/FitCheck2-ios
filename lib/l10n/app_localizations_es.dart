@@ -3524,5 +3524,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get bugunGiydildi => 'Puesto';
 
   @override
+  String get ozellikYakinda => 'Esta función llegará pronto';
+
+  @override
   String get duelloGeri => 'Atrás';
 }

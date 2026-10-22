@@ -58,7 +58,7 @@ class AnaEkranDialoglar {
                         margin: const EdgeInsets.only(bottom: 16),
                         decoration: BoxDecoration(
                           color: colors.outlineVariant,
-                          borderRadius: BorderRadius.circular(2),
+                          borderRadius: AppRadius.xxsRadius,
                         ),
                       ),
                     ),
@@ -264,7 +264,7 @@ class AnaEkranDialoglar {
                     margin: const EdgeInsets.only(bottom: 16),
                     decoration: BoxDecoration(
                       color: colors.outlineVariant,
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: AppRadius.xxsRadius,
                     ),
                   ),
                   Row(

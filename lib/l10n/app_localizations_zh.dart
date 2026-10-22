@@ -3304,5 +3304,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get bugunGiydildi => '已穿着';
 
   @override
+  String get ozellikYakinda => '此功能即将推出';
+
+  @override
   String get duelloGeri => '返回';
 }

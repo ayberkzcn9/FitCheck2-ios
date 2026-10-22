@@ -807,7 +807,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                             children: [
                               for (final parca in parcalar)
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 12),
+                                  padding: const EdgeInsetsDirectional.only(end: 12),
                                   child: _ParcaGorunumu(
                                     gardirobum: gardirobum,
                                     parcaAdi: parca,

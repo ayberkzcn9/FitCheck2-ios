@@ -3522,5 +3522,8 @@ class AppLocalizationsIt extends AppLocalizations {
   String get bugunGiydildi => 'Indossato';
 
   @override
+  String get ozellikYakinda => 'Questa funzionalità sarà presto disponibile';
+
+  @override
   String get duelloGeri => 'Indietro';
 }

@@ -91,10 +91,10 @@ void _donanimKanallariniSustur() {
   }
 }
 
-Widget _uygulama(Widget child) {
+Widget _uygulama(Widget child, {Locale? dil}) {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
-    locale: const Locale('tr'),
+    locale: dil ?? const Locale('tr'),
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
     theme: _tema(parlaklik: _parlaklik),
@@ -803,5 +803,62 @@ void main() {
     await bekle(tester);
     await goruntu(tester, '43_koyu_giris');
     _yerlesimHatasiniBildir(tester, 'Koyu giriş');
+  });
+
+  testWidgets('Cok dilli kontrol: ar (RTL), de, ru - tasma ve yon denetimi', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    await telefon(tester);
+
+    for (final dil in ['ar', 'de', 'ru']) {
+      tester.view.physicalSize = const Size(390 * 2, 844 * 2);
+
+      await tester.pumpWidget(_uygulama(bugunEkrani(), dil: Locale(dil)));
+      await bekle(tester);
+      await goruntu(tester, '44_dil_' + dil + '_bugun');
+      _yerlesimHatasiniBildir(tester, 'Bugun/' + dil);
+
+      await tester.pumpWidget(
+        _uygulama(
+          GardirobumEkrani(
+            gardirobum: dolap,
+            onKiyafetEkle: (_) {},
+            onKiyafetSil: (_) {},
+            onGardirobuTemizle: () {},
+            onSepetToggle: (_) {},
+            onKombinIstegi: (_) {},
+            anaRenk: const Color(0xFF0F5F4A),
+          ),
+          dil: Locale(dil),
+        ),
+      );
+      await bekle(tester);
+      await goruntu(tester, '45_dil_' + dil + '_dolap');
+      _yerlesimHatasiniBildir(tester, 'Dolap/' + dil);
+
+      await tester.pumpWidget(_uygulama(const GirisEkrani(), dil: Locale(dil)));
+      await bekle(tester);
+      await goruntu(tester, '46_dil_' + dil + '_giris');
+      _yerlesimHatasiniBildir(tester, 'Giris/' + dil);
+
+      tester.view.physicalSize = const Size(320 * 2, 700 * 2);
+      await tester.pumpWidget(_uygulama(const GirisEkrani(), dil: Locale(dil)));
+      await bekle(tester);
+      await goruntu(tester, '47_dil_' + dil + '_giris_dar');
+      _yerlesimHatasiniBildir(tester, 'Giris dar/' + dil);
+    }
+  });
+
+  test('Tasarim butunlugu kalite kapisi', () {
+    final sonuc = Process.runSync(
+      Platform.isWindows ? 'python' : 'python3',
+      ['tool/tasarim_kapisi.py'],
+      workingDirectory: Directory.current.path,
+    );
+    final cikti = (sonuc.stdout as String) + (sonuc.stderr as String);
+    // ignore: avoid_print
+    print(cikti);
+    expect(sonuc.exitCode, 0,
+        reason: 'Tasarim butunlugu kapisi gecti:\n' + cikti);
   });
 }

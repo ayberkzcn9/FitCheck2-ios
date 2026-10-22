@@ -44,7 +44,7 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
 
     _girisKontrolcusu = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 700),
+      duration: AppMotion.uzun,
     );
 
     _nefesKontrolcusu = AnimationController(
@@ -54,24 +54,24 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
 
     _girisOpaklik = CurvedAnimation(
       parent: _girisKontrolcusu,
-      curve: const Interval(0.0, 0.8, curve: Curves.easeOut),
+      curve: const Interval(0.0, 0.8, curve: AppMotion.standart),
     );
 
     _icerikOpaklik = CurvedAnimation(
       parent: _girisKontrolcusu,
-      curve: const Interval(0.35, 1.0, curve: Curves.easeOut),
+      curve: const Interval(0.35, 1.0, curve: AppMotion.standart),
     );
 
     _girisKayma = Tween<Offset>(
       begin: const Offset(0, 0.08),
       end: Offset.zero,
     ).animate(
-      CurvedAnimation(parent: _girisKontrolcusu, curve: Curves.easeOutCubic),
+      CurvedAnimation(parent: _girisKontrolcusu, curve: AppMotion.giris),
     );
 
     final nefesEgrisi = CurvedAnimation(
       parent: _nefesKontrolcusu,
-      curve: Curves.easeInOut,
+      curve: AppMotion.standart,
     );
     _logoOlcek = Tween<double>(begin: 0.94, end: 1.03).animate(nefesEgrisi);
     _logoParlaklik = Tween<double>(begin: 0.0, end: 1.0).animate(nefesEgrisi);

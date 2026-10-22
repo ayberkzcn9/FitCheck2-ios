@@ -1,3 +1,4 @@
+import '../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 
 /// Sekme/ekran geçişlerinde fade + hafif kayma animasyonu.
@@ -17,8 +18,8 @@ class FadeIndexedStack extends StatefulWidget {
     super.key,
     required this.index,
     required this.children,
-    this.duration = const Duration(milliseconds: 260),
-    this.curve = Curves.easeOutCubic,
+    this.duration = AppMotion.kisa,
+    this.curve = AppMotion.giris,
     this.slideOffset = 8.0,
   });
 

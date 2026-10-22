@@ -55,7 +55,7 @@ class GunSecici extends StatelessWidget {
                   : colorScheme.onSurfaceVariant;
 
           return Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsetsDirectional.only(end: 8),
             child: InkWell(
               borderRadius: AppRadius.xxlRadius,
               onTap: () {
@@ -63,7 +63,7 @@ class GunSecici extends StatelessWidget {
                 onGunSecildi(index);
               },
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
+                duration: AppMotion.kisa,
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: 0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(

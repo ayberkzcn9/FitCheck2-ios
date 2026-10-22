@@ -103,7 +103,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
                 height: 4,
                 decoration: BoxDecoration(
                   color: colors.outlineVariant,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: AppRadius.xxsRadius,
                 ),
               ),
             ),
@@ -199,8 +199,8 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
       },
       borderRadius: AppRadius.mdRadius,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 240),
-        curve: Curves.easeOutCubic,
+        duration: AppMotion.kisa,
+        curve: AppMotion.giris,
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected

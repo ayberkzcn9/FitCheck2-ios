@@ -3373,5 +3373,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get bugunGiydildi => '착용함';
 
   @override
+  String get ozellikYakinda => '이 기능은 곧 제공됩니다';
+
+  @override
   String get duelloGeri => '이전';
 }

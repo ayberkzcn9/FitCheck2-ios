@@ -320,7 +320,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             if (planliParca != null)
               // Tarihe özel planı olan gün, ilk parçanın küçük görselini taşır.
               ClipRRect(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: AppRadius.xsRadius,
                 child: Container(
                   width: 18,
                   height: 18,
@@ -556,7 +556,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 children: [
                   for (final parca in parcalar.take(4))
                     Padding(
-                      padding: const EdgeInsets.only(right: 6),
+                      padding: const EdgeInsetsDirectional.only(end: 6),
                       child: SizedBox(
                         width: 46,
                         child: _parcaGorseli(parca),
@@ -827,7 +827,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
           children: [
             for (final parca in gorseller)
               Padding(
-                padding: const EdgeInsets.only(right: 6),
+                padding: const EdgeInsetsDirectional.only(end: 6),
                 child: SizedBox(width: 34, height: 44, child: _parcaGorseli(parca)),
               ),
             if (gorseller.isEmpty)
@@ -1012,7 +1012,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       for (final ad in parcalar.take(3))
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 4),
+                            padding: const EdgeInsetsDirectional.only(end: 4),
                             child: _parcaGorseli(indeks[ad.toLowerCase()]),
                           ),
                         ),
@@ -1146,7 +1146,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 if (rapor.kombinSayisi > 0) ...[
                   const SizedBox(height: 8),
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
                       decoration: BoxDecoration(

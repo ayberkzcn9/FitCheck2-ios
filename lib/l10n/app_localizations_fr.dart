@@ -3530,5 +3530,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get bugunGiydildi => 'Porté';
 
   @override
+  String get ozellikYakinda => 'Cette fonctionnalité arrive bientôt';
+
+  @override
   String get duelloGeri => 'Retour';
 }

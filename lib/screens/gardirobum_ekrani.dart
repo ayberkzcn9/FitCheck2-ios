@@ -134,7 +134,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       vsync: this,
     )..repeat(reverse: true);
     _pulseAnimation = Tween<double>(begin: 0.6, end: 1.0).animate(
-      CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
+      CurvedAnimation(parent: _pulseController, curve: AppMotion.standart),
     );
   }
 
@@ -935,7 +935,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 6, right: 8),
+            padding: const EdgeInsetsDirectional.only(top: 6, end: 8),
             child: Container(
               width: 5,
               height: 5,
@@ -1340,7 +1340,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       height: 4,
                       decoration: BoxDecoration(
                         color: colors.onSurfaceVariant.withValues(alpha: 0.4),
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: AppRadius.xxsRadius,
                       ),
                     ),
                   ),
@@ -1634,8 +1634,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       },
       child: AnimatedContainer(
         width: 155,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.fastOutSlowIn,
+        duration: AppMotion.normal,
+        curve: AppMotion.standart,
         key: ValueKey(item.id),
         decoration: BoxDecoration(
           color: colors.surfaceContainerLow,
@@ -1659,7 +1659,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     ),
                     TweenAnimationBuilder<double>(
                       tween: Tween<double>(begin: 0, end: item.sepetteMi ? 1 : 0),
-                      duration: const Duration(milliseconds: 400),
+                      duration: AppMotion.orta,
                       builder: (context, value, child) {
                         return ColorFiltered(
                           colorFilter: ColorFilter.matrix(<double>[
@@ -1742,12 +1742,12 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
 
                     // Sepette Mi Rozeti (Kırmızı Devre Dışı/Kirli Vurgusu)
                     AnimatedPositioned(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.elasticOut,
+                      duration: AppMotion.normal,
+                      curve: AppMotion.tepki,
                       top: item.sepetteMi ? 8 : -30,
                       left: 8,
                       child: AnimatedOpacity(
-                        duration: const Duration(milliseconds: 200),
+                        duration: AppMotion.kisa,
                         opacity: item.sepetteMi ? 1.0 : 0.0,
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
@@ -1876,7 +1876,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                     Flexible(
                                       child: FittedBox(
                                         fit: BoxFit.scaleDown,
-                                        alignment: Alignment.centerLeft,
+                                        alignment: AlignmentDirectional.centerStart,
                                         child: Text(
                                           item.sepetteMi ? l10n.gardirobumDolabaAl : l10n.gardirobumSepeteAt,
                                           style: TextStyle(
@@ -1931,7 +1931,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   ),
                 ),
                 crossFadeState: acik ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-                duration: const Duration(milliseconds: 250),
+                duration: AppMotion.kisa,
               ),
             ],
           ),
@@ -2149,7 +2149,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               Expanded(
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Text(
                     kategoriBasligi,
                     style: TextStyle(
@@ -2221,7 +2221,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   itemBuilder: (context, index) {
                     final item = kategoriListesi[index];
                     return Padding(
-                      padding: const EdgeInsets.only(right: 16),
+                      padding: const EdgeInsetsDirectional.only(end: 16),
                       child: _kiyafetKartiOlustur(item, index, kategoriListesi, l10n),
                     );
                   },
@@ -2427,8 +2427,8 @@ class _YuklemeOverlay extends StatelessWidget {
         color: Colors.black.withValues(alpha: 0.4),
         child: Center(
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.easeOutCubic,
+            duration: AppMotion.orta,
+            curve: AppMotion.giris,
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: 36),
             margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
             decoration: BoxDecoration(
@@ -2539,19 +2539,19 @@ class _YuklemeOverlay extends StatelessWidget {
                               height: 6,
                               decoration: BoxDecoration(
                                 color: colors.surfaceContainerHighest,
-                                borderRadius: BorderRadius.circular(3),
+                                borderRadius: AppRadius.xxsRadius,
                               ),
                             ),
                             AnimatedContainer(
-                              duration: const Duration(milliseconds: 600),
-                              curve: Curves.easeOutCubic,
+                              duration: AppMotion.uzun,
+                              curve: AppMotion.giris,
                               width: (currentPhotoIndex / totalPhotos.clamp(1, 999)) * 200,
                               height: 6,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [anaRenk, anaRenk.withValues(alpha: 0.7)],
                                 ),
-                                borderRadius: BorderRadius.circular(3),
+                                borderRadius: AppRadius.xxsRadius,
                                 boxShadow: [
                                   BoxShadow(
                                     color: anaRenk.withValues(alpha: 0.4),
@@ -2581,9 +2581,9 @@ class _YuklemeOverlay extends StatelessWidget {
 
                 // 💬 AI mesajları (alt kısım)
                 AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 400),
-                  switchInCurve: Curves.easeOutCubic,
-                  switchOutCurve: Curves.easeInCubic,
+                  duration: AppMotion.orta,
+                  switchInCurve: AppMotion.giris,
+                  switchOutCurve: AppMotion.cikis,
                   child: aiMessages.isNotEmpty
                       ? Text(
                           aiMessages[aiMessageIndex % aiMessages.length],
@@ -2674,13 +2674,13 @@ class _StepIndicator extends StatelessWidget {
         return Row(
           children: [
             AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeOutCubic,
+              duration: AppMotion.orta,
+              curve: AppMotion.giris,
               width: isCurrent ? 28 : 12,
               height: 12,
               decoration: BoxDecoration(
                 color: isActive ? anaRenk : colors.outlineVariant.withValues(alpha: 0.4),
-                borderRadius: BorderRadius.circular(6),
+                borderRadius: AppRadius.xsRadius,
                 boxShadow: isCurrent && isActive
                     ? [
                         BoxShadow(

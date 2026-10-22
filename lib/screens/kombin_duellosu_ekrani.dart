@@ -190,8 +190,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       if (_kaydirici.offset >= hedef - 1) return;
       _kaydirici.animateTo(
         hedef,
-        duration: const Duration(milliseconds: 220),
-        curve: Curves.easeOutCubic,
+        duration: AppMotion.kisa,
+        curve: AppMotion.giris,
       );
     });
   }
@@ -262,8 +262,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       top: false,
       bottom: false,
       child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 260),
-        switchInCurve: Curves.easeOutCubic,
+        duration: AppMotion.kisa,
+        switchInCurve: AppMotion.giris,
         child: switch (_asama) {
           _Asama.lobi => _lobi(context),
           _Asama.oyun => _oyun(context),
@@ -787,16 +787,16 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         final simdiki = index == _soruIndex;
         return Expanded(
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 220),
+            duration: AppMotion.kisa,
             height: 5,
-            margin: EdgeInsets.only(right: index == _sorular.length - 1 ? 0 : 4),
+            margin: EdgeInsetsDirectional.only(end: index == _sorular.length - 1 ? 0 : 4),
             decoration: BoxDecoration(
               color: gecti
                   ? colors.primary
                   : simdiki
                       ? colors.primary.withValues(alpha: 0.5)
                       : colors.outlineVariant.withValues(alpha: 0.45),
-              borderRadius: BorderRadius.circular(3),
+              borderRadius: AppRadius.xxsRadius,
             ),
           ),
         );
@@ -897,8 +897,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         child: GestureDetector(
           onTap: cevaplandi ? null : () => _sec(etiket == 'A'),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 220),
-            curve: Curves.easeOutCubic,
+            duration: AppMotion.kisa,
+            curve: AppMotion.giris,
             padding: const EdgeInsets.fromLTRB(AppSpacing.sm, AppSpacing.sm, AppSpacing.sm, AppSpacing.md),
             decoration: BoxDecoration(
               color: zemin,
@@ -913,7 +913,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                       Expanded(
                         flex: i == 0 ? 42 : (i == 1 ? 36 : 24),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs),
                           child: _parca(context, kart.parcalar[i]),
                         ),
                       ),
@@ -1277,7 +1277,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 ),
                 const SizedBox(height: 10),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: AppRadius.xsRadius,
                   child: LinearProgressIndicator(
                     value: _durum.seviyeIlerlemesi,
                     minHeight: 8,

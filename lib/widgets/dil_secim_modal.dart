@@ -118,7 +118,7 @@ class DilSecimModal extends StatelessWidget {
               height: 4,
               decoration: BoxDecoration(
                 color: colors.outlineVariant,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: AppRadius.xxsRadius,
               ),
             ),
 
@@ -170,7 +170,7 @@ class DilSecimModal extends StatelessWidget {
                   return ListTile(
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.sm,
-                      vertical: 2,
+                      vertical: AppSpacing.xxs,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.mdRadius,

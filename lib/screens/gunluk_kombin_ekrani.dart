@@ -91,7 +91,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     if (temizKiyafetler.isEmpty) return;
 
     _kombiniTemizle();
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(AppMotion.normal);
     if (!mounted) return;
 
     if (hedefOrtam != null && hedefOrtam.contains('[ZORUNLU_PARCA:')) {
@@ -190,7 +190,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
   void initState() {
     super.initState();
     _animController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 600));
+        vsync: this, duration: AppMotion.uzun);
 
     // Zar butonu için sürekli yanıp sönen glow animasyonu
     _pulseController = AnimationController(
@@ -589,7 +589,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 child: RotationTransition(
                   turns: Tween<double>(begin: 0, end: 2).animate(
                     CurvedAnimation(
-                        parent: _animController, curve: Curves.easeInOut),
+                        parent: _animController, curve: AppMotion.standart),
                   ),
                   child: Icon(
                     Icons.casino_rounded,

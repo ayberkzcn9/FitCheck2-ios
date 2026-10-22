@@ -106,7 +106,7 @@ class AiOneriKutusu extends StatelessWidget {
                       onPressed: onTekrarDene,
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
-                        minimumSize: const Size(0, 32),
+                        minimumSize: const Size(0, 44),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         foregroundColor: baslikRenk,
                       ),
