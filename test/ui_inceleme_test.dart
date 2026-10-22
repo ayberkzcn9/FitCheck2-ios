@@ -33,6 +33,8 @@ import 'package:fitcheck/widgets/alt_menu_cubugu.dart';
 import 'package:fitcheck/widgets/kiyafet_duzenleyici.dart';
 import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
 import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
+import 'package:fitcheck/screens/giris_ekrani.dart';
+import 'package:fitcheck/screens/onboarding_ekrani.dart';
 import 'package:fitcheck/screens/seyahat_ekrani.dart';
 import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/services/bugun_feed_servisi.dart';
@@ -73,6 +75,7 @@ ThemeData _tema({Brightness parlaklik = Brightness.light}) {
 
 Widget _uygulama(Widget child) {
   return MaterialApp(
+    debugShowCheckedModeBanner: false,
     locale: const Locale('tr'),
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
@@ -118,7 +121,7 @@ class _SahteFeed extends BugunFeedServisi {
   }
 }
 
-Future<void> _ekranGorusu(WidgetTester tester, String ad) async {
+Future<void> goruntu(WidgetTester tester, String ad) async {
   // Tüm ekranı (alt sayfa/overlay dahil) yakala.
   final renderView = tester.binding.renderViews.first;
   final layer = renderView.debugLayer;
@@ -137,7 +140,21 @@ Future<void> _ekranGorusu(WidgetTester tester, String ad) async {
 }
 
 /// Döngüsel animasyonlar (yükleniyor göstergesi) pumpAndSettle'i kilitler.
-Future<void> _bekle(WidgetTester tester) async {
+/// Firebase gibi servisler testte hazır olmadığı için fırlatılan hataları
+/// yutar; yalnızca yerleşim (taşma) hataları testi düşürür.
+void _yerlesimHatasiniBildir(WidgetTester tester, String ekran) {
+  Object? hata;
+  while ((hata = tester.takeException()) != null) {
+    final metin = '$hata';
+    if (metin.contains('overflowed') || metin.contains('RenderFlex')) {
+      fail('$ekran: yerleşim hatası -> $metin');
+    }
+    // ignore: avoid_print
+    print('[ATLANDI/$ekran] ${metin.split('\n').first}');
+  }
+}
+
+Future<void> bekle(WidgetTester tester) async {
   await tester.pump();
   await tester.pump(const Duration(milliseconds: 400));
   // Dokunma dalgası (ink splash) sönmeden görüntü alınırsa seçili sekmenin
@@ -223,25 +240,25 @@ void main() {
   testWidgets('Bugun ekrani', (tester) async {
     await telefon(tester);
     await tester.pumpWidget(_uygulama(bugunEkrani()));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '01_bugun_ust');
+    await bekle(tester);
+    await goruntu(tester, '01_bugun_ust');
 
     // Bilgi düğmesi: "Bugünün kombini nasıl seçiliyor?"
     await tester.tap(find.byTooltip('Bugünün kombini'));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '22_bugun_bilgi');
+    await bekle(tester);
+    await goruntu(tester, '22_bugun_bilgi');
     expect(tester.takeException(), isNull);
   });
 
   testWidgets('Bugun ekrani - giydim durumu', (tester) async {
     await telefon(tester);
     await tester.pumpWidget(_uygulama(bugunEkrani()));
-    await _bekle(tester);
+    await bekle(tester);
 
     // "Giydim" → düğme dolu "Giydildi" olur.
     await tester.tap(find.text('Giydim').first);
-    await _bekle(tester);
-    await _ekranGorusu(tester, '25_bugun_giydildi');
+    await bekle(tester);
+    await goruntu(tester, '25_bugun_giydildi');
 
     expect(find.text('Giydildi'), findsOneWidget);
     expect(tester.takeException(), isNull);
@@ -250,32 +267,32 @@ void main() {
   testWidgets('Bugun ekrani - alt kisim', (tester) async {
     await telefon(tester);
     await tester.pumpWidget(_uygulama(bugunEkrani()));
-    await _bekle(tester);
+    await bekle(tester);
 
     await tester.drag(find.byType(CustomScrollView), const Offset(0, -700));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '02_bugun_alt');
+    await bekle(tester);
+    await goruntu(tester, '02_bugun_alt');
 
     await tester.drag(find.byType(CustomScrollView), const Offset(0, -700));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '03_bugun_enalt');
+    await bekle(tester);
+    await goruntu(tester, '03_bugun_enalt');
     expect(tester.takeException(), isNull);
   });
 
   testWidgets('Bugun ekrani - raf aksiyonlari', (tester) async {
     await telefon(tester);
     await tester.pumpWidget(_uygulama(bugunEkrani()));
-    await _bekle(tester);
+    await bekle(tester);
 
     await tester.drag(find.byType(CustomScrollView), const Offset(0, -700));
-    await _bekle(tester);
+    await bekle(tester);
 
     final parca = find.text('Yün Kaban').first;
     await tester.ensureVisible(parca);
-    await _bekle(tester);
+    await bekle(tester);
     await tester.tap(parca);
-    await _bekle(tester);
-    await _ekranGorusu(tester, '04_raf_menu');
+    await bekle(tester);
+    await goruntu(tester, '04_raf_menu');
     expect(tester.takeException(), isNull);
   });
 
@@ -294,13 +311,13 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
+    await bekle(tester);
 
     // Boş dolapta ortadaki "fotoğraf ekle" düğmesi seçenekleri açar.
     await tester.tap(find.byIcon(Icons.add_a_photo_outlined));
-    await _bekle(tester);
+    await bekle(tester);
 
-    await _ekranGorusu(tester, '24_dolap_ekleme_secenekleri');
+    await goruntu(tester, '24_dolap_ekleme_secenekleri');
     expect(find.text('Arka planda ekle'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
@@ -310,8 +327,8 @@ void main() {
     await tester.pumpWidget(
       _uygulama(StilGunluguEkrani(gardirobum: dolap, gecmisKombinler: gecmis)),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '05_stil_takvim');
+    await bekle(tester);
+    await goruntu(tester, '05_stil_takvim');
     expect(tester.takeException(), isNull);
   });
 
@@ -320,10 +337,10 @@ void main() {
     await tester.pumpWidget(
       _uygulama(StilGunluguEkrani(gardirobum: dolap, gecmisKombinler: gecmis)),
     );
-    await _bekle(tester);
+    await bekle(tester);
     await tester.tap(find.text('Günlük'));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '06_stil_gunluk');
+    await bekle(tester);
+    await goruntu(tester, '06_stil_gunluk');
     expect(tester.takeException(), isNull);
   });
 
@@ -332,10 +349,10 @@ void main() {
     await tester.pumpWidget(
       _uygulama(StilGunluguEkrani(gardirobum: dolap, gecmisKombinler: gecmis)),
     );
-    await _bekle(tester);
+    await bekle(tester);
     await tester.tap(find.text('Rapor'));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '07_stil_rapor');
+    await bekle(tester);
+    await goruntu(tester, '07_stil_rapor');
     expect(tester.takeException(), isNull);
   });
 
@@ -371,16 +388,16 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '16_takvim_plan');
+    await bekle(tester);
+    await goruntu(tester, '16_takvim_plan');
 
     await tester.tap(find.text('${bugun.day}').first);
-    await _bekle(tester);
-    await _ekranGorusu(tester, '17_gun_plani');
+    await bekle(tester);
+    await goruntu(tester, '17_gun_plani');
 
     await tester.tap(find.text('Değiştir'));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '18_kombin_secimi');
+    await bekle(tester);
+    await goruntu(tester, '18_kombin_secimi');
 
     expect(tester.takeException(), isNull);
   });
@@ -388,8 +405,8 @@ void main() {
   testWidgets('Seyahat modu', (tester) async {
     await telefon(tester);
     await tester.pumpWidget(_uygulama(SeyahatEkrani(gardirobum: dolap)));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '08_seyahat');
+    await bekle(tester);
+    await goruntu(tester, '08_seyahat');
     expect(tester.takeException(), isNull);
   });
 
@@ -407,8 +424,8 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '09_duello_lobi');
+    await bekle(tester);
+    await goruntu(tester, '09_duello_lobi');
     expect(tester.takeException(), isNull);
   });
 
@@ -425,30 +442,30 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
+    await bekle(tester);
 
     await tester.tap(find.text('Düelloya başla'));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '10_duello_tur');
+    await bekle(tester);
+    await goruntu(tester, '10_duello_tur');
     // ignore: avoid_print
     print('DIAG once: check=' + find.byIcon(Icons.check_circle_rounded).evaluate().length.toString() + ' dogruYazi=' + find.text('Doğru!').evaluate().length.toString() + ' ipucu=' + find.text('Bir kombine dokun').evaluate().length.toString());
 
     final beklenen =
         DuelMotoru().uret(gardirobum: dolap, adet: 10, tohum: 7).sorular.first;
     await tester.tap(find.text(beklenen.solDogru ? 'A' : 'B'));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '11_duello_geribildirim');
+    await bekle(tester);
+    await goruntu(tester, '11_duello_geribildirim');
 
     // İkinci soru cevaplanır, ardından "Geri" ile 1. soruya dönülür.
     await tester.tap(find.text('Devam'));
-    await _bekle(tester);
+    await bekle(tester);
     final ikinci =
         DuelMotoru().uret(gardirobum: dolap, adet: 10, tohum: 7).sorular[1];
     await tester.tap(find.text(ikinci.solDogru ? 'A' : 'B'));
-    await _bekle(tester);
+    await bekle(tester);
     await tester.tap(find.text('Geri'));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '26_duello_geri');
+    await bekle(tester);
+    await goruntu(tester, '26_duello_geri');
 
     expect(tester.takeException(), isNull);
   });
@@ -475,13 +492,13 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
+    await bekle(tester);
     // Görsel asenkron çözülür; çözülmesini bekle.
     await tester.runAsync(
       () => Future<void>.delayed(const Duration(milliseconds: 400)),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '23_kiyfet_duzenleyici');
+    await bekle(tester);
+    await goruntu(tester, '23_kiyfet_duzenleyici');
     expect(tester.takeException(), isNull);
   });
 
@@ -499,17 +516,17 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '19_profil_analiz');
+    await bekle(tester);
+    await goruntu(tester, '19_profil_analiz');
 
     final dugme = find.byTooltip('Dolap Verimliliği').first;
     await tester.ensureVisible(dugme);
-    await _bekle(tester);
-    await _ekranGorusu(tester, '20_profil_bilgi_dugmesi');
+    await bekle(tester);
+    await goruntu(tester, '20_profil_bilgi_dugmesi');
 
     await tester.tap(dugme);
-    await _bekle(tester);
-    await _ekranGorusu(tester, '21_bilgi_sayfasi');
+    await bekle(tester);
+    await goruntu(tester, '21_bilgi_sayfasi');
 
     expect(tester.takeException(), isNull);
   });
@@ -531,8 +548,8 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '12_haftalik_plan');
+    await bekle(tester);
+    await goruntu(tester, '12_haftalik_plan');
     expect(tester.takeException(), isNull);
   });
 
@@ -551,8 +568,8 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '13_alt_menu');
+    await bekle(tester);
+    await goruntu(tester, '13_alt_menu');
     expect(tester.takeException(), isNull);
   });
 
@@ -573,12 +590,12 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '14_gardirobum');
+    await bekle(tester);
+    await goruntu(tester, '14_gardirobum');
 
     await tester.enterText(find.byType(TextField), 'beyaz');
-    await _bekle(tester);
-    await _ekranGorusu(tester, '15_gardirobum_arama');
+    await bekle(tester);
+    await goruntu(tester, '15_gardirobum_arama');
     expect(tester.takeException(), isNull);
   });
 
@@ -590,8 +607,8 @@ void main() {
 
     await telefon(tester);
     await tester.pumpWidget(_uygulama(bugunEkrani()));
-    await _bekle(tester);
-    await _ekranGorusu(tester, '27_koyu_bugun');
+    await bekle(tester);
+    await goruntu(tester, '27_koyu_bugun');
 
     await tester.pumpWidget(
       _uygulama(
@@ -606,8 +623,8 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '28_koyu_dolap');
+    await bekle(tester);
+    await goruntu(tester, '28_koyu_dolap');
 
     await tester.pumpWidget(
       _uygulama(
@@ -620,8 +637,26 @@ void main() {
         ),
       ),
     );
-    await _bekle(tester);
-    await _ekranGorusu(tester, '29_koyu_duello');
+    await bekle(tester);
+    await goruntu(tester, '29_koyu_duello');
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Giris ekrani cizilir (normal ve dar)', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    await telefon(tester);
+
+    await tester.pumpWidget(_uygulama(const GirisEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '30_giris');
+    _yerlesimHatasiniBildir(tester, 'Giriş');
+
+    // Dar ekran (320 pt): giriş formu taşmamalı.
+    tester.view.physicalSize = const Size(320 * 2, 700 * 2);
+    await tester.pumpWidget(_uygulama(const GirisEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '33_giris_dar');
+    _yerlesimHatasiniBildir(tester, 'Giriş (dar)');
   });
 }

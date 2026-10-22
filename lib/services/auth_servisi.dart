@@ -12,8 +12,11 @@ import 'analytics_servisi.dart';
 import '../utils/l10n_yardimcilari.dart';
 
 class AuthServisi {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  // Tembel erişim: servis kurulurken Firebase'e dokunulmaz. Böylece Firebase
+  // hazır olmadan (ör. açılış sırası, testler) ekran çizilebiliyor; önceden
+  // kurulum anında fırlatılan hata tüm sayfayı hata görünümüne düşürüyordu.
+  FirebaseAuth get _auth => FirebaseAuth.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
 
   // Uygulama yeniden açıldığında oturumun sessizce geri yüklenip
   // yüklenmeyeceğine karar vermek için son giriş bilgisi saklanır.

@@ -803,8 +803,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
   }
 
   Widget _iskelet(BuildContext context, ColorScheme colors) {
-    return SizedBox(
-      height: 190,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 190),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -835,8 +835,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
     AppLocalizations l10n,
     ColorScheme colors,
   ) {
-    return SizedBox(
-      height: 190,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 190),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

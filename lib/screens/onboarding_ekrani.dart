@@ -14,6 +14,13 @@ import '../services/analytics_servisi.dart';
 import '../utils/auth_hata_utils.dart';
 import '../../theme/design_tokens.dart';
 
+// Onboarding'in tek vurgu rengi: marka zümrütü. (Eskiden mor/indigo
+// kullanılıyordu; uygulamanın geri kalanıyla çelişiyordu.)
+const Color _marka = Color(0xFF0F5F4A);
+const Color _markaAltin = Color(0xFFD9A441);
+const Color _markaSu = Color(0xFF2F7E8F);
+const Color _markaAdacay = Color(0xFF2E6E5E);
+
 class OnboardingEkrani extends StatefulWidget {
   const OnboardingEkrani({super.key});
 
@@ -67,19 +74,18 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
   }
 
   // Her sayfa için canlı ve tematik renk paleti
+  // Sayfa paleti marka ailesinden seçilir: zümrüt, adaçayı, altın, su yeşili,
+  // kum. Sayfalar arasında renk farkı kalsın ama uygulamanın kimliği bozulmasın.
   List<Color> _getSayfaRenkPaleti(int index) {
     const paletler = [
-      [AppAccents.celebration, AppPermissionColors.notification], // Hoş Geldin - Mor / Indigo
-      [AppOnboardingColors.purple, Color(0xFFE056FD)], // Dolap - Eflatun / Pembe
-      [
-        AppOnboardingColors.orange,
-        AppOnboardingColors.yellow
-      ], // Hava Durumu - Sıcak Turuncu / Sarı
-      [AppPermissionColors.location, Color(0xFF81ECEC)], // Yıkama - Turkuaz / Su Yeşili
-      [AppPermissionColors.camera, Color(0xFFFF9FF3)], // Eksik Parça - Mercan / Roze
-      [AppOnboardingColors.green, Color(0xFF10AC84)], // Analitik - Zümrüt Yeşili
-      [AppOnboardingColors.deepOrange, Color(0xFFFFD32A)], // Stilist - Altın Sarı
-      [AppAccents.celebration, AppPermissionColors.camera], // Giriş / Kayıt - Canlı Gradient
+      [Color(0xFF0F5F4A), Color(0xFF2E8B6E)], // Hoş Geldin - derin zümrüt
+      [Color(0xFF2E6E5E), Color(0xFF72B79C)], // Dolap - adaçayı
+      [Color(0xFF9A6B1F), Color(0xFFD9A441)], // Hava Durumu - altın
+      [Color(0xFF2F7E8F), Color(0xFF79C3CE)], // Yıkama - su yeşili
+      [Color(0xFFA8743F), Color(0xFFDDB584)], // Eksik Parça - kum
+      [Color(0xFF1F7A5A), Color(0xFF5CBA92)], // Analitik - açık zümrüt
+      [Color(0xFFB98A2E), Color(0xFFEBD08A)], // Stilist - açık altın
+      [Color(0xFF0F5F4A), Color(0xFF3E9E7E)], // Giriş / Kayıt - zümrüt geçişi
     ];
     return paletler[index % paletler.length];
   }
@@ -87,19 +93,19 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
   Color _getIconColor(String iconName, ColorScheme colors) {
     switch (iconName) {
       case 'language':
-        return AppAccents.celebration;
+        return const Color(0xFF0F5F4A);
       case 'checkroom':
-        return AppOnboardingColors.purple;
+        return const Color(0xFF2E6E5E);
       case 'wb_sunny':
-        return AppOnboardingColors.orange;
+        return const Color(0xFF9A6B1F);
       case 'local_laundry_service':
-        return AppPermissionColors.location;
+        return const Color(0xFF2F7E8F);
       case 'shopping_bag':
-        return AppPermissionColors.camera;
+        return const Color(0xFFA8743F);
       case 'insights':
-        return AppOnboardingColors.green;
+        return const Color(0xFF1F7A5A);
       case 'auto_awesome':
-        return AppOnboardingColors.deepOrange;
+        return const Color(0xFFB98A2E);
       default:
         return colors.primary;
     }
@@ -361,7 +367,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(28)),
                   border: Border.all(
-                      color: AppAccents.celebration.withValues(alpha: 0.3),
+                      color: _marka.withValues(alpha: 0.3),
                       width: 1.5),
                 ),
                 child: Column(
@@ -371,7 +377,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       width: 48,
                       height: 5,
                       decoration: BoxDecoration(
-                        color: AppAccents.celebration.withValues(alpha: 0.6),
+                        color: _marka.withValues(alpha: 0.6),
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
@@ -381,7 +387,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       child: Row(
                         children: [
                           const Icon(Icons.gavel_rounded,
-                              color: AppAccents.celebration, size: 24),
+                              color: _marka, size: 24),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
@@ -456,7 +462,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Icon(Icons.arrow_downward_rounded,
-                                      size: 14, color: AppAccents.celebration),
+                                      size: 14, color: _marka),
                                   const SizedBox(width: 8),
                                   Flexible(
                                     child: Text(
@@ -465,7 +471,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       style: const TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold,
-                                          color: AppAccents.celebration),
+                                          color: _marka),
                                     ),
                                   ),
                                 ],
@@ -533,8 +539,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
     final String dilAdiEtiketi =
         _getDilEtiketi(seciliLocale?.languageCode, l10n);
-    final Color authGreenColor = AppAccents.successDark;
-    final Color antrasitRenk = const Color(0xFF37474F);
+    final Color authGreenColor = colors.primary;
+    final Color antrasitRenk = colors.onSurface;
 
     final List<Map<String, String>> tanitimSayfalari = [
       {
@@ -1092,15 +1098,15 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
-                                      AppAccents.celebration
+                                      _marka
                                           .withValues(alpha: 0.12),
-                                      AppPermissionColors.notification
-                                          .withValues(alpha: 0.05),
+                                      _markaAltin
+                                          .withValues(alpha: 0.06),
                                     ],
                                   ),
                                   borderRadius: AppRadius.xlRadius,
                                   border: Border.all(
-                                      color: AppAccents.celebration
+                                      color: _marka
                                           .withValues(alpha: 0.3),
                                       width: 1.5),
                                 ),
@@ -1109,7 +1115,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       horizontal: 18, vertical: 6),
                                   leading: _buildPremiumIconContainer(
                                       Icons.language_rounded,
-                                      iconColor: AppAccents.celebration),
+                                      iconColor: _marka),
                                   title: Text(l10n.uygulamaDili,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
@@ -1123,7 +1129,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   trailing: const Icon(
                                       Icons.keyboard_arrow_down_rounded,
                                       size: 24,
-                                      color: AppAccents.celebration),
+                                      color: _marka),
                                   onTap: () {
                                     HapticFeedback.selectionClick();
                                     DilSecimModal.goster(context);
@@ -1379,11 +1385,11 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
               blastDirectionality: BlastDirectionality.explosive,
               shouldLoop: false,
               colors: const [
-                AppAccents.celebration,
-                AppPermissionColors.camera,
-                AppPermissionColors.location,
-                AppOnboardingColors.yellow,
-                AppOnboardingColors.green,
+                _marka,
+                _markaAltin,
+                _markaSu,
+                _markaAdacay,
+                Color(0xFFEBD08A),
               ],
               numberOfParticles: 50,
               maxBlastForce: 40,

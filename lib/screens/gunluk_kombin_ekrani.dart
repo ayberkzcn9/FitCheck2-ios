@@ -61,7 +61,7 @@ class GunlukKombinEkrani extends StatefulWidget {
 }
 
 class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animController;
   late AnimationController _pulseController;
   ShakeDetector? _shakeDetector;

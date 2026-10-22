@@ -390,7 +390,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                             vertical: 12),
                                         decoration: BoxDecoration(
                                           color: _girisModu
-                                              ? AppAccents.successDark
+                                              ? primaryColor
                                               : Colors.transparent,
                                           borderRadius:
                                               BorderRadius.circular(12),
@@ -420,7 +420,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                             vertical: 12),
                                         decoration: BoxDecoration(
                                           color: !_girisModu
-                                              ? AppAccents.successDark
+                                              ? primaryColor
                                               : Colors.transparent,
                                           borderRadius:
                                               BorderRadius.circular(12),
@@ -464,8 +464,8 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                       borderSide: BorderSide.none),
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(16),
-                                      borderSide: const BorderSide(
-                                          color: AppAccents.successDark, width: 2)),
+                                      borderSide: BorderSide(
+                                          color: primaryColor, width: 2)),
                                 ),
                                 validator: (val) {
                                   if (val == null || val.trim().length < 3) {
@@ -497,8 +497,8 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                     borderSide: BorderSide.none),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
-                                    borderSide: const BorderSide(
-                                        color: AppAccents.successDark, width: 2)),
+                                    borderSide: BorderSide(
+                                        color: primaryColor, width: 2)),
                               ),
                               validator: (val) {
                                 if (val == null || !val.contains("@")) {
@@ -540,8 +540,8 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                     borderSide: BorderSide.none),
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
-                                    borderSide: const BorderSide(
-                                        color: AppAccents.successDark, width: 2)),
+                                    borderSide: BorderSide(
+                                        color: primaryColor, width: 2)),
                               ),
                               validator: (val) {
                                 if (val == null || val.length < 6) {
@@ -568,10 +568,10 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                   ),
                                   child: Text(
                                     l10n.sifremiUnuttum,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: AppAccents.successDark,
+                                      color: primaryColor,
                                     ),
                                   ),
                                 ),
@@ -582,7 +582,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 contentPadding: EdgeInsets.zero,
                                 dense: true,
                                 value: _beniHatirla,
-                                activeColor: AppAccents.successDark,
+                                activeColor: primaryColor,
                                 controlAffinity:
                                     ListTileControlAffinity.leading,
                                 title: Text(
@@ -602,7 +602,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                             // Tetikleyici Ana Buton
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: AppAccents.successDark,
+                                backgroundColor: primaryColor,
                                 foregroundColor: Colors.white,
                                 minimumSize: const Size(double.infinity, 52),
                                 elevation: 0,
