@@ -247,7 +247,7 @@ class AppAccents {
   static const Color celebration = Color(0xFF0F5F4A);
 
   /// Mavi vurgu (bilgi, uyum puanı)
-  static const Color info = Color(0xFF2F7E8F);
+  static const Color info = Color(0xFF30827D);
 
   /// "Doğru cevap" yeşili (Kombin Düellosu sonuç ekranı).
   /// [success]'ten daha koyu; aynı değer 8 yerde tekrar ediyordu.
@@ -338,7 +338,7 @@ class AppStatusColors {
   static const Color favoriteFgDark = Color(0xFFFFD699);
 
   // Giydim (yeşil)
-  static const Color wornBg = Color(0xFFDCFCE7);
+  static const Color wornBg = Color(0xFFDBF0E7);
   static const Color wornFg = Color(0xFF1F5C48);
   static const Color wornBgDark = Color(0xFF14271F);
   static const Color wornFgDark = Color(0xFFB4D9C8);
