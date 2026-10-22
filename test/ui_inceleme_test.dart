@@ -24,6 +24,7 @@ import 'package:fitcheck/l10n/app_localizations.dart';
 import 'package:fitcheck/models/bugun_kombin.dart';
 import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
+import 'package:fitcheck/theme/app_tema.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
 import 'package:fitcheck/screens/gardirobum_ekrani.dart';
 import 'package:fitcheck/screens/profil_analiz_ekrani.dart';
@@ -41,49 +42,29 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 const String _yaziTipi = 'ReviewFont';
 
+/// Koyu tema görüntüleri için testlerde değiştirilir.
+Brightness _parlaklik = Brightness.light;
+
 final Uint8List _png = base64Decode(
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8B'
   'QDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',
 );
 
-ColorScheme _acikSemas() {
-  final base = ColorScheme.fromSeed(
-    seedColor: const Color(0xFF3B3B3B),
-    brightness: Brightness.light,
-  );
-  return base.copyWith(
-    surface: const Color(0xFFF8F9FA),
-    surfaceContainerLow: Colors.white,
-    surfaceContainer: Colors.white,
-    surfaceContainerHighest: const Color(0xFFEFF1F3),
-    primary: const Color(0xFF3B3B3B),
-    onPrimary: Colors.white,
-    primaryContainer: const Color(0xFFE3E3E3),
-    onPrimaryContainer: const Color(0xFF1B1B1B),
-    secondary: const Color(0xFF5F5F5F),
-    onSecondary: Colors.white,
-    secondaryContainer: const Color(0xFFE7E7E7),
-    onSecondaryContainer: const Color(0xFF202020),
-    tertiary: const Color(0xFF686868),
-    onTertiary: Colors.white,
-    tertiaryContainer: const Color(0xFFEAEAEA),
-    onTertiaryContainer: const Color(0xFF242424),
-    onSurface: const Color(0xFF1C1B1F),
-    onSurfaceVariant: const Color(0xFF49454F),
-  );
-}
-
-ThemeData _tema() {
-  final sema = _acikSemas();
+ThemeData _tema({Brightness parlaklik = Brightness.light}) {
+  final sema = AppTema.renkSemasi(parlaklik);
+  final koyu = parlaklik == Brightness.dark;
+  final taban = koyu
+      ? Typography.material2021().white
+      : Typography.material2021().black;
   return ThemeData(
     useMaterial3: true,
     colorScheme: sema,
     fontFamily: _yaziTipi,
     scaffoldBackgroundColor: sema.surface,
-    textTheme: Typography.material2021().black.apply(fontFamily: _yaziTipi),
+    textTheme: taban.apply(fontFamily: _yaziTipi),
     appBarTheme: AppBarTheme(
       backgroundColor: sema.surface,
-      foregroundColor: const Color(0xFF1C1B1F),
+      foregroundColor: sema.onSurface,
       elevation: 0,
       centerTitle: false,
     ),
@@ -95,7 +76,7 @@ Widget _uygulama(Widget child) {
     locale: const Locale('tr'),
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
-    theme: _tema(),
+    theme: _tema(parlaklik: _parlaklik),
     home: child,
   );
 }

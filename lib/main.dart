@@ -31,6 +31,7 @@ import 'services/fcm_service.dart';
 import 'services/reklam_servisi.dart';
 import 'services/satin_alma_servisi.dart';
 import '../theme/design_tokens.dart';
+import 'theme/app_tema.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -255,7 +256,6 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
   Locale? _locale;
   late ThemeMode _temaModu;
 
-  static const Color _seedColor = Color(0xFF3B3B3B);
 
   @override
   void initState() {
@@ -321,56 +321,8 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
 
   Locale? get currentLocale => _locale;
 
-  ColorScheme _buildColorScheme(Brightness brightness) {
-    final base = ColorScheme.fromSeed(
-      seedColor: _seedColor,
-      brightness: brightness,
-    );
-    final isDark = brightness == Brightness.dark;
-
-    if (isDark) {
-      return base.copyWith(
-        primary: const Color(0xFFD0D0D0),
-        onPrimary: const Color(0xFF202020),
-        primaryContainer: const Color(0xFF4A4A4A),
-        onPrimaryContainer: const Color(0xFFF2F2F2),
-        secondary: const Color(0xFFC6C6C6),
-        onSecondary: const Color(0xFF202020),
-        secondaryContainer: const Color(0xFF464646),
-        onSecondaryContainer: const Color(0xFFF0F0F0),
-        tertiary: const Color(0xFFBDBDBD),
-        onTertiary: const Color(0xFF202020),
-        tertiaryContainer: const Color(0xFF414141),
-        onTertiaryContainer: const Color(0xFFEDEDED),
-        surfaceTint: const Color(0xFFD0D0D0),
-      );
-    }
-
-    return base.copyWith(
-      surface: const Color(0xFFF8F9FA),
-      surfaceContainerLow: Colors.white,
-      surfaceContainer: Colors.white,
-      surfaceContainerHighest:
-          const Color(0xFFEFF1F3),
-      primary: const Color(0xFF3B3B3B),
-      onPrimary: Colors.white,
-      primaryContainer: const Color(0xFFE3E3E3),
-      onPrimaryContainer: const Color(0xFF1B1B1B),
-      secondary: const Color(0xFF5F5F5F),
-      onSecondary: Colors.white,
-      secondaryContainer: const Color(0xFFE7E7E7),
-      onSecondaryContainer: const Color(0xFF202020),
-      tertiary: const Color(0xFF686868),
-      onTertiary: Colors.white,
-      tertiaryContainer: const Color(0xFFEAEAEA),
-      onTertiaryContainer: const Color(0xFF242424),
-      onSurface: const Color(0xFF1C1B1F),
-      onSurfaceVariant: const Color(0xFF49454F),
-      outline: const Color(0xFF79747E),
-      outlineVariant: const Color(0xFFCAC4D0),
-      surfaceTint: const Color(0xFF3B3B3B),
-    );
-  }
+  ColorScheme _buildColorScheme(Brightness brightness) =>
+      AppTema.renkSemasi(brightness);
 
   Widget _oturumKapisi(bool firebaseHazir) {
     if (!firebaseHazir) {
@@ -458,14 +410,14 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
                     end: Alignment.bottomRight,
                     colors: koyuMu
                         ? const [
-                            Color(0xFF121212),
-                            Color(0xFF1A1A1A),
-                            Color(0xFF202020),
+                            Color(0xFF0B110E),
+                            Color(0xFF101713),
+                            Color(0xFF151D19),
                           ]
                         : const [
-                            Color(0xFFFAFAFC),
-                            Color(0xFFF2F4F7),
-                            Color(0xFFEAECF0),
+                            Color(0xFFFEFBF4),
+                            Color(0xFFFBF7EF),
+                            Color(0xFFF4EEE1),
                           ],
                   ),
                 ),
@@ -480,9 +432,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: (koyuMu
-                          ? const Color(0xFF2A2A2A)
-                          : const Color(0xFFE2E8F0))
-                      .withValues(alpha: koyuMu ? 0.4 : 0.6),
+                          ? const Color(0xFF1F4D3F)
+                          : const Color(0xFFCFE8DD))
+                      .withValues(alpha: koyuMu ? 0.35 : 0.55),
                 ),
               ),
             ),
@@ -495,9 +447,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: (koyuMu
-                          ? const Color(0xFF262626)
-                          : const Color(0xFFD1D5DB))
-                      .withValues(alpha: 0.4),
+                          ? const Color(0xFF3A2F14)
+                          : const Color(0xFFF1DFB8))
+                      .withValues(alpha: koyuMu ? 0.30 : 0.45),
                 ),
               ),
             ),

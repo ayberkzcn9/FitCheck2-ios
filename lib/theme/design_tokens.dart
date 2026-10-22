@@ -162,8 +162,8 @@ class AppText {
 class AppAccents {
   const AppAccents._();
 
-  /// Ana aksan — marka rengi (koyu gri/siyah)
-  static const Color primary = Color(0xFF3B3B3B);
+  /// Ana aksan — marka rengi (derin zümrüt)
+  static const Color primary = Color(0xFF0F5F4A);
 
   /// İkincil aksan — başarı/onay (yeşil)
   static const Color success = Color(0xFF16A34A);
