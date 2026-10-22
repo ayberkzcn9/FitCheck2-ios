@@ -218,9 +218,9 @@ void main() {
     );
     await bekle(tester);
 
-    expect(bilgiDugmesi('SANAL GARDIROBUM'), findsOneWidget);
+    expect(bilgiDugmesi('Sanal Gardırobum'), findsOneWidget);
 
-    await tester.tap(bilgiDugmesi('SANAL GARDIROBUM'));
+    await tester.tap(bilgiDugmesi('Sanal Gardırobum'));
     await bekle(tester);
 
     expect(find.textContaining('arka plan otomatik silinir'), findsOneWidget);
