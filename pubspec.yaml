@@ -2,7 +2,7 @@
 description: "FitCheck - AkÄ±llÄ± KiÅŸisel Stilist ve GardÄ±rop UygulamasÄ±"
 publish_to: 'none'
 
-version: 1.0.33+43
+version: 1.0.33+44
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
