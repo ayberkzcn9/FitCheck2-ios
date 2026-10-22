@@ -53,6 +53,7 @@ class BugunEkrani extends StatefulWidget {
     this.onSeyahatAc,
     this.feedServisi,
     this.planJetonu = 0,
+    this.favoriKombinler = const <FavoriKombin>[],
   });
 
   final List<Kiyafet> gardirobum;
@@ -89,6 +90,10 @@ class BugunEkrani extends StatefulWidget {
   /// Takvimde plan değiştiğinde artan sayaç: kartın tazelenmesini sağlar.
   final int planJetonu;
 
+  /// Daha önce kaydedilmiş favoriler; "Kaydet" düğmesinin dolu görünmesi
+  /// için kullanılır.
+  final List<FavoriKombin> favoriKombinler;
+
   @override
   State<BugunEkrani> createState() => _BugunEkraniState();
 }
@@ -109,6 +114,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
   /// Takvimde bugüne atanmış kombin (varsa).
   PlanliKombin? _bugunPlani;
+
+  /// Bu oturumda kaydedilen kombin anahtarları (düğmenin dolu görünmesi için).
+  final Set<String> _kaydedilenler = <String>{};
 
   @override
   void initState() {
@@ -914,11 +922,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
               ),
               const SizedBox(width: 8),
               Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: () => _kaydet(kombin, parcalar),
-                  icon: const Icon(Icons.bookmark_add_outlined, size: 18),
-                  label: Text(l10n.bugunKaydet),
-                ),
+                child: _kaydetButonu(l10n, kombin, parcalar),
               ),
             ],
           ),
@@ -1327,8 +1331,62 @@ class _BugunEkraniState extends State<BugunEkrani> {
   // Aksiyonlar
   // ---------------------------------------------------------------------------
 
-  void _giydim(BugunKombin kombin, List<Kiyafet> parcalar) {
-    if (parcalar.isEmpty) return;
+  /// "Kaydet" düğmesi: kombin kaydedildiyse **dolu** (tonal) ve "Kaydedildi"
+  /// yazır; kaydedilmediyse kontur (outlined) görünür.
+  Widget _kaydetButonu(
+    AppLocalizations l10n,
+    BugunKombin kombin,
+    List<Kiyafet> parcalar,
+  ) {
+    final kaydedildi = _kaydedildiMi(kombin, parcalar);
+
+    if (kaydedildi) {
+      return FilledButton.tonalIcon(
+        onPressed: null,
+        icon: const Icon(Icons.bookmark_rounded, size: 18),
+        label: Text(l10n.bugunKaydedildi),
+      );
+    }
+
+    return OutlinedButton.icon(
+      onPressed: () => _kaydet(kombin, parcalar),
+      icon: const Icon(Icons.bookmark_add_outlined, size: 18),
+      label: Text(l10n.bugunKaydet),
+    );
+  }
+
+  /// Kombin favorilere kaydedilmiş mi?
+  ///
+  /// Hem bu oturumda kaydedilenler hem de daha önce kaydedilmiş favoriler
+  /// (parça başlıkları eşleşir) kontrol edilir.
+  bool _kaydedildiMi(BugunKombin kombin, List<Kiyafet> parcalar) {
+    if (_kaydedilenler.contains(kombin.anahtar)) return true;
+
+    final hedef = parcalar
+        .map((k) => k.gorunenBaslik.trim().toLowerCase())
+        .toList()
+      ..sort();
+    if (hedef.isEmpty) return false;
+
+    for (final favori in widget.favoriKombinler) {
+      final mevcut = favori.parcalar
+          .map((p) => p.trim().toLowerCase())
+          .toList()
+        ..sort();
+      if (mevcut.length != hedef.length) continue;
+      var ayni = true;
+      for (var i = 0; i < hedef.length; i++) {
+        if (mevcut[i] != hedef[i]) {
+          ayni = false;
+          break;
+        }
+      }
+      if (ayni) return true;
+    }
+    return false;
+  }
+
+  void _giydim(BugunKombin kombin, List<Kiyafet> parcalar) {    if (parcalar.isEmpty) return;
     HapticFeedback.mediumImpact();
     widget.onGecmiseEkle(kombin.baslik, parcalar);
     AnalyticsServisi().olay('today_feed_worn', {'items': parcalar.length});
@@ -1343,6 +1401,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
     // sabit bir değer kullanılıyor ki aynı kombin her açılışta aynı puanı
     // göstersin (rastgele her seferinde değişmesin).
     final puan = _uyumTahmini(kombin);
+
+    // Düğme "dolu" görünsün diye kaydedildi bilgisi hemen işaretlenir.
+    setState(() => _kaydedilenler.add(kombin.anahtar));
 
     widget.onFavoriEkle(
       FavoriKombin(

@@ -3519,4 +3519,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return '$count photos n\'ont pas pu être traitées';
   }
+
+  @override
+  String get bugunKaydedildi => 'Enregistré';
 }

@@ -3487,4 +3487,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return '$count фото не удалось обработать';
   }
+
+  @override
+  String get bugunKaydedildi => 'Сохранено';
 }

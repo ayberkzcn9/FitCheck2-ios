@@ -6399,6 +6399,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'{count} fotoğraf işlenemedi'**
   String arkaPlandaBaziAtlandi(int count);
+
+  /// No description provided for @bugunKaydedildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydedildi'**
+  String get bugunKaydedildi;
 }
 
 class _AppLocalizationsDelegate

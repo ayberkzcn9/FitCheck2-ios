@@ -3484,4 +3484,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return '$count fotoğraf işlenemedi';
   }
+
+  @override
+  String get bugunKaydedildi => 'Kaydedildi';
 }

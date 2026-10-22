@@ -3293,4 +3293,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return '$count 张照片无法处理';
   }
+
+  @override
+  String get bugunKaydedildi => '已保存';
 }

@@ -213,6 +213,66 @@ void main() {
     expect(favoriler.single.renkUyumuPuani, inInclusiveRange(85, 97));
   });
 
+  testWidgets('kaydedilen kombinde düğme dolu görünür', (tester) async {
+    await kur(
+      tester,
+      dolap: [ust, alt],
+      kombinler: [kombin],
+    );
+
+    // Başta kontur (outlined) düğme.
+    expect(find.text('Kaydet'), findsOneWidget);
+    expect(find.text('Kaydedildi'), findsNothing);
+    expect(find.byType(OutlinedButton), findsWidgets);
+
+    await tester.tap(find.text('Kaydet'));
+    await tester.pumpAndSettle();
+
+    // Kaydettikten sonra düğme dolu ve "Kaydedildi" yazıyor.
+    expect(find.text('Kaydedildi'), findsOneWidget);
+    expect(find.text('Kaydet'), findsNothing);
+    expect(find.byType(FilledButton), findsWidgets);
+  });
+
+  testWidgets('önceden kaydedilmiş favori de dolu görünür', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('tr'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: Scaffold(
+          body: BugunEkrani(
+            gardirobum: [ust, alt],
+            gunlukHava: 'İstanbul 21°C',
+            havaYukleniyor: false,
+            isAktifSekme: true,
+            onSekmeSec: (_) {},
+            onFotografEkle: () async {},
+            onFavoriEkle: (FavoriKombin f) async {},
+            onGecmiseEkle: (String b, List<Kiyafet> p) async {},
+            onStilistAc: () {},
+            anaRenk: Colors.indigo,
+            favoriKombinler: [
+              FavoriKombin(
+                id: 'f1',
+                baslik: 'Sade ofis kombini',
+                parcalar: ['Beyaz Tişört', 'Siyah Pantolon'],
+                tuyo: 'Nötr renkler',
+                renkUyumuPuani: 90,
+              ),
+            ],
+            feedServisi: _SahteFeed(
+              FeedSonucu([kombin], FeedKaynagi.yapayZeka),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Kaydedildi'), findsOneWidget);
+  });
+
   testWidgets('boş dolapta fotoğraf eklemeye yönlendirir', (tester) async {
     var fotografIstendi = false;
 

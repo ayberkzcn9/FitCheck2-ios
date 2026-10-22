@@ -3362,4 +3362,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return '사진 $count장을 처리하지 못했습니다';
   }
+
+  @override
+  String get bugunKaydedildi => '저장됨';
 }

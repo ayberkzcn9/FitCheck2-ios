@@ -3486,4 +3486,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return '$count photos could not be processed';
   }
+
+  @override
+  String get bugunKaydedildi => 'Saved';
 }

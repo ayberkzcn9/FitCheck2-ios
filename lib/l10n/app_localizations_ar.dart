@@ -3460,4 +3460,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return 'تعذّرت معالجة $count صور';
   }
+
+  @override
+  String get bugunKaydedildi => 'تم الحفظ';
 }

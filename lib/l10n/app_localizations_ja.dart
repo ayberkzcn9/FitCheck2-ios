@@ -3343,4 +3343,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String arkaPlandaBaziAtlandi(int count) {
     return '$count 枚を処理できませんでした';
   }
+
+  @override
+  String get bugunKaydedildi => '保存済み';
 }
