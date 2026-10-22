@@ -1909,7 +1909,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                   widget.onKombinIstegi!(item);
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xFFE9D5FF),
+                                  backgroundColor: AppTints.successBg,
                                   foregroundColor: AppAccents.styleist,
                                   padding: EdgeInsets.zero,
                                   shape: RoundedRectangleBorder(

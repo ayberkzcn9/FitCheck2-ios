@@ -43,15 +43,15 @@ class GunSecici extends StatelessWidget {
           final bool giyildiMi = giyilmisGunler.contains(index);
 
           final bg = seciliMi
-              ? (giyildiMi ? Colors.green : anaRenk)
+              ? (giyildiMi ? AppAccents.primary : anaRenk)
               : giyildiMi
-                  ? Colors.green.shade100
+                  ? AppTints.successBg
                   : colorScheme.surfaceContainerHigh;
 
           final fg = seciliMi
               ? Colors.white
               : giyildiMi
-                  ? Colors.green.shade900
+                  ? AppAccents.primary
                   : colorScheme.onSurfaceVariant;
 
           return Padding(
@@ -72,7 +72,7 @@ class GunSecici extends StatelessWidget {
                   borderRadius: AppRadius.xxlRadius,
                   border: Border.all(
                     color: giyildiMi && !seciliMi
-                        ? Colors.green.withValues(alpha: 0.4)
+                        ? AppAccents.primary.withValues(alpha: 0.4)
                         : Colors.transparent,
                     width: 1.5,
                   ),

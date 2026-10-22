@@ -1498,12 +1498,12 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                 horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
                               color: _kalanHak > 0
-                                  ? Colors.amber.withValues(alpha: 0.15)
+                                  ? AppAccents.warning.withValues(alpha: 0.15)
                                   : colorScheme.errorContainer,
                               borderRadius: AppRadius.xlRadius,
                               border: Border.all(
                                 color: (_kalanHak > 0
-                                        ? Colors.amber
+                                        ? AppAccents.warning
                                         : colorScheme.error)
                                     .withValues(alpha: 0.4),
                                 width: 1.2,
@@ -1515,7 +1515,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                 Icon(
                                   Icons.bolt_rounded,
                                   color: _kalanHak > 0
-                                      ? Colors.amber[700]
+                                      ? AppAccents.warning
                                       : colorScheme.error,
                                   size: 20,
                                 ),
@@ -1526,7 +1526,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                     fontWeight: FontWeight.w900,
                                     fontSize: 14,
                                     color: _kalanHak > 0
-                                        ? Colors.amber[800]
+                                        ? AppAccents.warning
                                         : colorScheme.onErrorContainer,
                                   ),
                                 ),

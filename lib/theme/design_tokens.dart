@@ -166,10 +166,10 @@ class AppAccents {
   static const Color primary = Color(0xFF0F5F4A);
 
   /// İkincil aksan — başarı/onay (yeşil)
-  static const Color success = Color(0xFF16A34A);
+  static const Color success = Color(0xFF1F7A5A);
 
   /// Koyu yeşil (buton metni, vurgular)
-  static const Color successDark = Color(0xFF2E7D32);
+  static const Color successDark = Color(0xFF0F5F4A);
 
   /// Uyarı (amber)
   static const Color warning = Color(0xFFD97706);
@@ -178,17 +178,17 @@ class AppAccents {
   static const Color error = Color(0xFFDC2626);
 
   /// Bilgi / stilist (mor — az kullanılır)
-  static const Color styleist = Color(0xFF8B5CF6);
+  static const Color styleist = Color(0xFF2E6E5E);
 
   /// Onboarding/kutlama mor (canlı)
-  static const Color celebration = Color(0xFF6C5CE7);
+  static const Color celebration = Color(0xFF0F5F4A);
 
   /// Mavi vurgu (bilgi, uyum puanı)
-  static const Color info = Color(0xFF2563EB);
+  static const Color info = Color(0xFF2F7E8F);
 
   /// "Doğru cevap" yeşili (Kombin Düellosu sonuç ekranı).
   /// [success]'ten daha koyu; aynı değer 8 yerde tekrar ediyordu.
-  static const Color successDeep = Color(0xFF2E7D5B);
+  static const Color successDeep = Color(0xFF2E6E5E);
 }
 
 // ===========================================================================
@@ -197,9 +197,9 @@ class AppAccents {
 class AppPermissionColors {
   const AppPermissionColors._();
 
-  static const Color camera = Color(0xFFFF7675);
-  static const Color location = Color(0xFF00CEC9);
-  static const Color notification = Color(0xFFA29BFE);
+  static const Color camera = Color(0xFFA8743F);
+  static const Color location = Color(0xFF2F7E8F);
+  static const Color notification = Color(0xFFD9A441);
 }
 
 // ===========================================================================
@@ -208,12 +208,12 @@ class AppPermissionColors {
 class AppOnboardingColors {
   const AppOnboardingColors._();
 
-  static const Color green = Color(0xFF1DD1A1);
-  static const Color orange = Color(0xFFFF9F43);
-  static const Color yellow = Color(0xFFFECA57);
-  static const Color deepOrange = Color(0xFFF39C12);
-  static const Color purple = Color(0xFF8E44AD);
-  static const Color darkGreen = Color(0xFF1B5E20);
+  static const Color green = Color(0xFF1F7A5A);
+  static const Color orange = Color(0xFFB98A2E);
+  static const Color yellow = Color(0xFFD9A441);
+  static const Color deepOrange = Color(0xFF9A6B1F);
+  static const Color purple = Color(0xFF2E6E5E);
+  static const Color darkGreen = Color(0xFF0F5F4A);
 }
 
 // ===========================================================================
@@ -222,16 +222,16 @@ class AppOnboardingColors {
 class AppMiscColors {
   const AppMiscColors._();
 
-  static const Color purple = Color(0xFFA78BFA);
-  static const Color lightPurpleBg = Color(0xFFF3E8FF);
-  static const Color lightPurpleBorder = Color(0xFFDDD6FE);
-  static const Color rose = Color(0xFFE11D48);
-  static const Color roseBg = Color(0xFFFFE4E6);
-  static const Color pink = Color(0xFFF472B6);
-  static const Color orangeLight = Color(0xFFF97316);
-  static const Color greenLight = Color(0xFF10B981);
-  static const Color greenPale = Color(0xFFDCFCE7);
-  static const Color greenDark = Color(0xFF15803D);
+  static const Color purple = Color(0xFF2E6E5E);
+  static const Color lightPurpleBg = Color(0xFFE6EFEA);
+  static const Color lightPurpleBorder = Color(0xFFC9DDD3);
+  static const Color rose = Color(0xFFB3413A);
+  static const Color roseBg = Color(0xFFF6E3E0);
+  static const Color pink = Color(0xFFA8743F);
+  static const Color orangeLight = Color(0xFFB98A2E);
+  static const Color greenLight = Color(0xFF1F7A5A);
+  static const Color greenPale = Color(0xFFDDEEE6);
+  static const Color greenDark = Color(0xFF0F5F4A);
 
   // Amber metin tonları (AI öneri kutusu)
   static const Color amberText = Color(0xFFB26A00);
@@ -239,12 +239,12 @@ class AppMiscColors {
   static const Color amberTextBody = Color(0xFF6B4A20);
 
   // Stilist kutusu metin tonları
-  static const Color styleistTextDark = Color(0xFF4A3B5A);
-  static const Color styleistText = Color(0xFF6B5382);
+  static const Color styleistTextDark = Color(0xFF1F4A3E);
+  static const Color styleistText = Color(0xFF2E5F50);
 
   // Dark mode metin tonları (açık renkli, koyu arka plan üstünde okunur)
-  static const Color styleistTextDarkKoyu = Color(0xFFE8DDF5);
-  static const Color styleistTextKoyu = Color(0xFFC9B8E0);
+  static const Color styleistTextDarkKoyu = Color(0xFFDCEEE6);
+  static const Color styleistTextKoyu = Color(0xFFBFD9CD);
 
   /// Stilist kutusu ana metni (dark mode'a duyarlı).
   static Color styleistTextDinamik(BuildContext context) =>
@@ -276,9 +276,9 @@ class AppStatusColors {
 
   // Giydim (yeşil)
   static const Color wornBg = Color(0xFFDCFCE7);
-  static const Color wornFg = Color(0xFF166534);
-  static const Color wornBgDark = Color(0xFF17301C);
-  static const Color wornFgDark = Color(0xFFA5D6A7);
+  static const Color wornFg = Color(0xFF1F5C48);
+  static const Color wornBgDark = Color(0xFF14271F);
+  static const Color wornFgDark = Color(0xFFB4D9C8);
 
   static Color favoriteBgDinamik(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
@@ -303,21 +303,21 @@ class AppStatusColors {
 class AppTints {
   const AppTints._();
 
-  static const Color successBg = Color(0xFFE8F5E9);
+  static const Color successBg = Color(0xFFE3F0EA);
   static const Color warningBg = Color(0xFFFFF8F0);
   static const Color errorBg = Color(0xFFFEE2E2);
-  static const Color styleistBg = Color(0xFFF7F2FA);
+  static const Color styleistBg = Color(0xFFF1F6F3);
 
-  static const Color successBorder = Color(0xFFA5D6A7);
+  static const Color successBorder = Color(0xFFB4D9C8);
   static const Color warningBorder = Color(0xFFEAD7BE);
-  static const Color styleistBorder = Color(0xFFE8DEF8);
+  static const Color styleistBorder = Color(0xFFD5E4DC);
 
   // ---- Dark-mode uyumlu varyantlar ----
-  static const Color styleistBgDark = Color(0xFF2A2438);
-  static const Color styleistBorderDark = Color(0xFF4A3D63);
+  static const Color styleistBgDark = Color(0xFF1E2A25);
+  static const Color styleistBorderDark = Color(0xFF3A4C44);
   static const Color warningBgDark = Color(0xFF2E2416);
   static const Color warningBorderDark = Color(0xFF5A4420);
-  static const Color successBgDark = Color(0xFF1B2E1E);
+  static const Color successBgDark = Color(0xFF14271F);
   static const Color errorBgDark = Color(0xFF3A1F1F);
 
   /// Stilist kutusu arka planı (dark mode'a duyarlı).

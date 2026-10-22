@@ -215,7 +215,7 @@ class BildirimServisi {
             children: [
               const Icon(
                 Icons.notifications_off_rounded,
-                color: Colors.orange,
+                color: AppAccents.warning,
                 size: 26,
               ),
               const SizedBox(width: 8),

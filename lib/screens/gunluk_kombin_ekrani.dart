@@ -375,7 +375,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         backgroundColor:
-            yeniDurum ? AppAccents.success : Colors.grey.shade700,
+            yeniDurum ? AppAccents.success : Color(0xFF4A4F49),
       ),
     );
   }
@@ -573,7 +573,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF22C55E), AppAccents.success],
+                  colors: [AppAccents.primary, AppAccents.success],
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -807,7 +807,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
         borderRadius: AppRadius.dialogRadius,
         side: BorderSide(
           color: _isBugunGiydildi
-              ? Colors.green
+              ? AppAccents.primary
               : colorScheme.outlineVariant,
           width: _isBugunGiydildi ? 2.0 : 1.0,
         ),

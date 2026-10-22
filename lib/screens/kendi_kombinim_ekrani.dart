@@ -685,7 +685,7 @@ SADECE bu JSON formatında dön:
                         duration: const Duration(milliseconds: 250),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: !_tekParcaMi ? Colors.green : Colors.transparent,
+                          color: !_tekParcaMi ? AppAccents.primary : Colors.transparent,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         alignment: Alignment.center,
@@ -718,7 +718,7 @@ SADECE bu JSON formatında dön:
                         duration: const Duration(milliseconds: 250),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: _tekParcaMi ? Colors.green : Colors.transparent,
+                          color: _tekParcaMi ? AppAccents.primary : Colors.transparent,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         alignment: Alignment.center,
@@ -885,7 +885,7 @@ SADECE bu JSON formatında dön:
                           ),
                         ),
                         style: FilledButton.styleFrom(
-                          backgroundColor: Colors.green,
+                          backgroundColor: AppAccents.primary,
                           foregroundColor: Colors.white,
                           disabledBackgroundColor: colors.surfaceContainerHighest,
                           disabledForegroundColor: colors.onSurfaceVariant.withValues(alpha: 0.38),

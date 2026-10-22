@@ -39,7 +39,7 @@ class HaftalikDialoglar {
             children: [
               const Icon(
                 Icons.bolt_rounded,
-                color: Colors.orange,
+                color: AppAccents.warning,
                 size: 28,
               ),
               const SizedBox(width: 8),

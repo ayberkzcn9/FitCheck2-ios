@@ -134,7 +134,7 @@ class AnaEkranDialoglar {
                         const SizedBox(width: 12),
                         FilledButton(
                           style: FilledButton.styleFrom(
-                            backgroundColor: Colors.green,
+                            backgroundColor: AppAccents.primary,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -272,7 +272,7 @@ class AnaEkranDialoglar {
                     children: [
                       Icon(
                         Icons.bolt_rounded,
-                        color: Colors.amber[700],
+                        color: AppAccents.warning,
                         size: 28,
                       ),
                       const SizedBox(width: 8),
@@ -355,7 +355,7 @@ class AnaEkranDialoglar {
                                 vertical: 12,
                                 horizontal: 4,
                               ),
-                              backgroundColor: Colors.orange,
+                              backgroundColor: AppAccents.warning,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
@@ -629,7 +629,7 @@ class AnaEkranDialoglar {
           ),
           title: Row(
             children: [
-              Icon(Icons.bolt_rounded, color: Colors.amber[700], size: 26),
+              Icon(Icons.bolt_rounded, color: AppAccents.warning, size: 26),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
