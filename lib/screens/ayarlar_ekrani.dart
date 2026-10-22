@@ -948,7 +948,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 leading: _buildIconContainer(
                   Icons.workspace_premium_rounded,
-                  iconColor: AppMiscColors.greenLight,
+                  iconColor: const Color(0xFF1F7A5A),
                 ),
                 title: Text(
                   l10n.premiumAylikBaslik,
@@ -995,7 +995,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     leading: _buildIconContainer(
                       Icons.style_rounded,
-                      iconColor: AppMiscColors.purple,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.stilVeTarzTercihleri,
@@ -1268,7 +1268,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     leading: _buildIconContainer(
                       Icons.psychology_rounded,
-                      iconColor: AppAccents.styleist,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.stilistHafizasiBaslik,
@@ -1415,7 +1415,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     secondary: _buildIconContainer(
                       Icons.dry_cleaning_rounded,
-                      iconColor: AppMiscColors.pink,
+                      iconColor: const Color(0xFFA8743F),
                     ),
                     title: Text(
                       l10n.camasirSepetiUyarilari,
@@ -1485,7 +1485,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     leading: _buildIconContainer(
                       Icons.language_rounded,
-                      iconColor: AppMiscColors.purple,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.uygulamaDili,
@@ -1517,7 +1517,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     secondary: _buildIconContainer(
                       Icons.dark_mode_rounded,
-                      iconColor: AppMiscColors.purple,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.karanlikMod,
@@ -1622,7 +1622,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     leading: _buildIconContainer(
                       Icons.location_city_rounded,
-                      iconColor: const Color(0xFF06B6D4),
+                      iconColor: const Color(0xFF2F7E8F),
                     ),
                     title: Text(
                       l10n.varsayilanSehirBolge,
@@ -1658,7 +1658,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     leading: _buildIconContainer(
                       Icons.cleaning_services_rounded,
-                      iconColor: AppMiscColors.orangeLight,
+                      iconColor: const Color(0xFFB98A2E),
                     ),
                     title: Text(
                       l10n.gorselOnbelleginiTemizle,
@@ -1684,7 +1684,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     leading: _buildIconContainer(
                       Icons.file_download_rounded,
-                      iconColor: const Color(0xFF60A5FA),
+                      iconColor: const Color(0xFF4F6B60),
                     ),
                     title: Text(
                       l10n.gardirobuDisaAktarYedekle,
@@ -1710,7 +1710,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     secondary: _buildIconContainer(
                       Icons.insights_rounded,
-                      iconColor: AppMiscColors.greenLight,
+                      iconColor: const Color(0xFF1F7A5A),
                     ),
                     title: Text(
                       l10n.analitikVerileriPaylas,
@@ -1863,7 +1863,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     leading: _buildIconContainer(
                       Icons.security_rounded,
-                      iconColor: AppMiscColors.pink,
+                      iconColor: const Color(0xFFA8743F),
                     ),
                     title: Text(
                       l10n.gizlilikPolitikasiTitle,

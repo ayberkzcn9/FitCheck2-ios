@@ -5,6 +5,13 @@ import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
 import '../../theme/design_tokens.dart';
 
+// İzin ekranı marka paletinde: zümrüt, su yeşili, kum, altın.
+const Color _izinMarka = Color(0xFF0F5F4A);
+const Color _izinMarkaAcik = Color(0xFF2E8B6E);
+const Color _izinSu = Color(0xFF2F7E8F);
+const Color _izinKum = Color(0xFFA8743F);
+const Color _izinAltin = Color(0xFFD9A441);
+
 class IzinDiyalogu extends StatefulWidget {
   const IzinDiyalogu({super.key});
 
@@ -61,7 +68,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           shape: RoundedRectangleBorder(
             borderRadius: AppRadius.dialogRadius,
             side: BorderSide(
-              color: AppAccents.celebration.withValues(alpha: 0.3),
+              color: _izinMarka.withValues(alpha: 0.3),
               width: 1.5,
             ),
           ),
@@ -70,12 +77,12 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppPermissionColors.camera.withValues(alpha: 0.15),
+                  color: _izinKum.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
                   Icons.shield_outlined,
-                  color: AppPermissionColors.camera,
+                  color: _izinKum,
                   size: 22,
                 ),
               ),
@@ -121,7 +128,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 gradient: const LinearGradient(
-                  colors: [AppAccents.celebration, AppPermissionColors.location],
+                  colors: [_izinMarka, _izinSu],
                 ),
               ),
               child: ElevatedButton(
@@ -174,7 +181,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           color: colors.surfaceContainerHigh.withValues(alpha: 0.98),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
           border: Border.all(
-            color: AppAccents.celebration.withValues(alpha: 0.3),
+            color: _izinMarka.withValues(alpha: 0.3),
             width: 1.5,
           ),
         ),
@@ -198,7 +205,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
-                    colors: [AppAccents.celebration, AppPermissionColors.notification],
+                    colors: [_izinMarka, _izinAltin],
                   ),
                 ),
                 child: const Icon(
@@ -239,21 +246,21 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                         icon: Icons.location_on_rounded,
                         baslik: l10n.konumIzni,
                         aciklama: l10n.konumIzniAciklama,
-                        accentColor: const Color(0xFF0984E3),
+                        accentColor: _izinSu,
                       ),
                       const SizedBox(height: 12),
                       _buildIzinMadde(
                         icon: Icons.camera_alt_rounded,
                         baslik: l10n.kameraIzni,
                         aciklama: l10n.kameraIzniAciklama,
-                        accentColor: const Color(0xFFE84393),
+                        accentColor: _izinKum,
                       ),
                       const SizedBox(height: 12),
                       _buildIzinMadde(
                         icon: Icons.notifications_active_rounded,
                         baslik: l10n.bildirimIzni,
                         aciklama: l10n.bildirimIzniAciklama,
-                        accentColor: AppAccents.celebration,
+                        accentColor: _izinMarka,
                       ),
                     ],
                   ),
@@ -266,7 +273,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   gradient: const LinearGradient(
-                    colors: [AppAccents.celebration, AppPermissionColors.location],
+                    colors: [_izinMarka, _izinSu],
                   ),
                 ),
                 child: ElevatedButton(

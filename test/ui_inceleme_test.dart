@@ -35,6 +35,8 @@ import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
 import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
 import 'package:fitcheck/screens/giris_ekrani.dart';
 import 'package:fitcheck/screens/onboarding_ekrani.dart';
+import 'package:fitcheck/screens/izin_ekrani.dart';
+import 'package:fitcheck/screens/reklamsiz_premium_ekrani.dart';
 import 'package:fitcheck/screens/seyahat_ekrani.dart';
 import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/services/bugun_feed_servisi.dart';
@@ -658,5 +660,35 @@ void main() {
     await bekle(tester);
     await goruntu(tester, '33_giris_dar');
     _yerlesimHatasiniBildir(tester, 'Giriş (dar)');
+  });
+
+  testWidgets('Premium ve Izin ekranlari cizilir', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    await telefon(tester);
+
+    await tester.pumpWidget(_uygulama(const ReklamsizPremiumEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '35_premium');
+    _yerlesimHatasiniBildir(tester, 'Premium');
+
+    await tester.pumpWidget(
+      _uygulama(
+        Builder(
+          builder: (context) => Scaffold(
+            body: Center(
+              child: ElevatedButton(
+                onPressed: () => IzinDiyalogu.goster(context),
+                child: const Text('ac'),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('ac'));
+    await bekle(tester);
+    await goruntu(tester, '36_izin');
+    _yerlesimHatasiniBildir(tester, 'Izin');
   });
 }
