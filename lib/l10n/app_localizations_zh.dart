@@ -3296,4 +3296,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => '已保存';
+
+  @override
+  String get bugunGiydildi => '已穿着';
 }

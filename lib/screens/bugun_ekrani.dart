@@ -31,6 +31,7 @@ import '../services/akilli_raflar.dart';
 import '../services/analytics_servisi.dart';
 import '../services/bugun_feed_servisi.dart';
 import '../services/planli_kombin_deposu.dart';
+import '../theme/design_tokens.dart';
 import '../utils/helpers.dart';
 import '../widgets/bilgi_butonu.dart';
 
@@ -54,6 +55,7 @@ class BugunEkrani extends StatefulWidget {
     this.feedServisi,
     this.planJetonu = 0,
     this.favoriKombinler = const <FavoriKombin>[],
+    this.gecmisKombinler = const <Map<String, String>>[],
   });
 
   final List<Kiyafet> gardirobum;
@@ -94,6 +96,10 @@ class BugunEkrani extends StatefulWidget {
   /// için kullanılır.
   final List<FavoriKombin> favoriKombinler;
 
+  /// Giyilme geçmişi (`tarih`, `baslik`, `detay`); "Giydim" düğmesinin dolu
+  /// görünmesi için bugünün kayıtları kullanılır.
+  final List<Map<String, String>> gecmisKombinler;
+
   @override
   State<BugunEkrani> createState() => _BugunEkraniState();
 }
@@ -117,6 +123,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
   /// Bu oturumda kaydedilen kombin anahtarları (düğmenin dolu görünmesi için).
   final Set<String> _kaydedilenler = <String>{};
+
+  /// Bu oturumda "giydim" denilen kombin anahtarları.
+  final Set<String> _giyilenler = <String>{};
 
   @override
   void initState() {
@@ -914,11 +923,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           Row(
             children: [
               Expanded(
-                child: FilledButton.icon(
-                  onPressed: () => _giydim(kombin, parcalar),
-                  icon: const Icon(Icons.check_rounded, size: 18),
-                  label: Text(l10n.bugunGiydim),
-                ),
+                child: _giydimButonu(l10n, kombin, parcalar),
               ),
               const SizedBox(width: 8),
               Expanded(
@@ -1386,8 +1391,82 @@ class _BugunEkraniState extends State<BugunEkrani> {
     return false;
   }
 
-  void _giydim(BugunKombin kombin, List<Kiyafet> parcalar) {    if (parcalar.isEmpty) return;
+  /// "Giydim" düğmesi: kombin bugün giyildiyse **dolu** (yeşil tonlu) ve
+  /// "Giydildi" yazar; giyilmediyse normal dolu düğme görünür.
+  Widget _giydimButonu(
+    AppLocalizations l10n,
+    BugunKombin kombin,
+    List<Kiyafet> parcalar,
+  ) {
+    if (_giyildiMi(kombin, parcalar)) {
+      final koyuMu = Theme.of(context).brightness == Brightness.dark;
+      return FilledButton.icon(
+        onPressed: null,
+        icon: const Icon(Icons.check_rounded, size: 18),
+        label: Text(l10n.bugunGiydildi),
+        style: FilledButton.styleFrom(
+          disabledBackgroundColor:
+              AppAccents.success.withValues(alpha: koyuMu ? 0.24 : 0.14),
+          disabledForegroundColor:
+              koyuMu ? AppAccents.success : AppAccents.successDark,
+        ),
+      );
+    }
+
+    return FilledButton.icon(
+      onPressed: () => _giydim(kombin, parcalar),
+      icon: const Icon(Icons.check_rounded, size: 18),
+      label: Text(l10n.bugunGiydim),
+    );
+  }
+
+  /// Kombin bugün giyildi mi?
+  ///
+  /// Hem bu oturumda işaretlenenler hem de geçmişte bugünün tarihiyle
+  /// kaydedilmiş kombinler (başlık veya parça listesi eşleşmesi) kontrol edilir.
+  bool _giyildiMi(BugunKombin kombin, List<Kiyafet> parcalar) {
+    if (_giyilenler.contains(kombin.anahtar)) return true;
+
+    final bugun = DateTime.now().toIso8601String().substring(0, 10);
+    final hedefBaslik = kombin.baslik.trim().toLowerCase();
+    final hedefParcalar = parcalar
+        .map((k) => k.gorunenBaslik.trim().toLowerCase())
+        .toList()
+      ..sort();
+
+    for (final kayit in widget.gecmisKombinler) {
+      if ((kayit['tarih'] ?? '').trim() != bugun) continue;
+
+      final baslik = (kayit['baslik'] ?? '').trim().toLowerCase();
+      if (baslik.isNotEmpty && baslik == hedefBaslik) return true;
+
+      final detay = (kayit['detay'] ?? '').trim();
+      if (detay.isEmpty || hedefParcalar.isEmpty) continue;
+
+      final kayitParcalar = detay
+          .split(',')
+          .map((e) => e.trim().toLowerCase())
+          .where((e) => e.isNotEmpty)
+          .toList()
+        ..sort();
+      if (kayitParcalar.length != hedefParcalar.length) continue;
+
+      var ayni = true;
+      for (var i = 0; i < hedefParcalar.length; i++) {
+        if (kayitParcalar[i] != hedefParcalar[i]) {
+          ayni = false;
+          break;
+        }
+      }
+      if (ayni) return true;
+    }
+    return false;
+  }
+
+  void _giydim(BugunKombin kombin, List<Kiyafet> parcalar) {
+    if (parcalar.isEmpty) return;
     HapticFeedback.mediumImpact();
+    setState(() => _giyilenler.add(kombin.anahtar));
     widget.onGecmiseEkle(kombin.baslik, parcalar);
     AnalyticsServisi().olay('today_feed_worn', {'items': parcalar.length});
   }

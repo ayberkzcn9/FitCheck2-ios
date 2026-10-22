@@ -3346,4 +3346,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => '保存済み';
+
+  @override
+  String get bugunGiydildi => '着用済み';
 }

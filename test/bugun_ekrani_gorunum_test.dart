@@ -63,6 +63,35 @@ class _SahteFeed extends BugunFeedServisi {
   }
 }
 
+Widget _kombinEkrani({
+  required Kiyafet ust,
+  required Kiyafet alt,
+  required BugunKombin kombin,
+  List<Map<String, String>> gecmisKombinler = const <Map<String, String>>[],
+}) {
+  return MaterialApp(
+    locale: const Locale('tr'),
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
+    home: Scaffold(
+      body: BugunEkrani(
+        gardirobum: [ust, alt],
+        gunlukHava: 'İstanbul 21°C',
+        havaYukleniyor: false,
+        isAktifSekme: true,
+        onSekmeSec: (_) {},
+        onFotografEkle: () async {},
+        onFavoriEkle: (FavoriKombin f) async {},
+        onGecmiseEkle: (String b, List<Kiyafet> p) async {},
+        onStilistAc: () {},
+        anaRenk: Colors.indigo,
+        gecmisKombinler: gecmisKombinler,
+        feedServisi: _SahteFeed(FeedSonucu([kombin], FeedKaynagi.yapayZeka)),
+      ),
+    ),
+  );
+}
+
 void main() {
   final ust = _kiyafet(id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört');
   final alt = _kiyafet(id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon');
@@ -271,6 +300,71 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Kaydedildi'), findsOneWidget);
+  });
+
+  testWidgets('"Giydim" sonrası düğme "Giydildi" olur', (tester) async {
+    final gecmis = <String>[];
+
+    await kur(tester, dolap: [ust, alt], kombinler: [kombin], gecmis: gecmis);
+
+    expect(find.text('Giydim'), findsOneWidget);
+    expect(find.text('Giydildi'), findsNothing);
+
+    await tester.tap(find.text('Giydim'));
+    await tester.pumpAndSettle();
+
+    expect(gecmis, ['Sade ofis kombini']);
+    expect(find.text('Giydildi'), findsOneWidget);
+    expect(find.text('Giydim'), findsNothing);
+  });
+
+  testWidgets('bugün giyilmiş kombin dolu görünür', (tester) async {
+    final bugun = DateTime.now().toIso8601String().substring(0, 10);
+
+    await tester.pumpWidget(
+      _kombinEkrani(
+        ust: ust,
+        alt: alt,
+        kombin: kombin,
+        gecmisKombinler: [
+          {
+            'tarih': bugun,
+            'baslik': 'Sade ofis kombini',
+            'detay': 'Beyaz Tişört, Siyah Pantolon',
+          },
+        ],
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Giydildi'), findsOneWidget);
+    expect(find.text('Giydim'), findsNothing);
+  });
+
+  testWidgets('dün giyilmiş kombin bugün giyilmemiş sayılır', (tester) async {
+    final dun = DateTime.now()
+        .subtract(const Duration(days: 1))
+        .toIso8601String()
+        .substring(0, 10);
+
+    await tester.pumpWidget(
+      _kombinEkrani(
+        ust: ust,
+        alt: alt,
+        kombin: kombin,
+        gecmisKombinler: [
+          {
+            'tarih': dun,
+            'baslik': 'Sade ofis kombini',
+            'detay': 'Beyaz Tişört, Siyah Pantolon',
+          },
+        ],
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Giydim'), findsOneWidget);
+    expect(find.text('Giydildi'), findsNothing);
   });
 
   testWidgets('boş dolapta fotoğraf eklemeye yönlendirir', (tester) async {

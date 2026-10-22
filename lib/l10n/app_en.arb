@@ -1245,5 +1245,6 @@
       }
     }
   },
-  "bugunKaydedildi": "Saved"
+  "bugunKaydedildi": "Saved",
+  "bugunGiydildi": "Worn"
 }

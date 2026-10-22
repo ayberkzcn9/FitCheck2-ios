@@ -3505,4 +3505,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => 'Guardado';
+
+  @override
+  String get bugunGiydildi => 'Usado';
 }

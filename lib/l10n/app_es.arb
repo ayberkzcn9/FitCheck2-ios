@@ -1245,5 +1245,6 @@
       }
     }
   },
-  "bugunKaydedildi": "Guardado"
+  "bugunKaydedildi": "Guardado",
+  "bugunGiydildi": "Puesto"
 }

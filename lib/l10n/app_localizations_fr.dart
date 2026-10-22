@@ -3522,4 +3522,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => 'Enregistré';
+
+  @override
+  String get bugunGiydildi => 'Porté';
 }

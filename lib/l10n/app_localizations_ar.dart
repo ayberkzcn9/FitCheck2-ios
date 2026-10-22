@@ -3463,4 +3463,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => 'تم الحفظ';
+
+  @override
+  String get bugunGiydildi => 'تم الارتداء';
 }

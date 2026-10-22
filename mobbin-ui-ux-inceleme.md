@@ -339,6 +339,24 @@ Aynı desen diğer ekranlara da taşındı:
 - **Dolap**: başlıkta ⓘ → fotoğraf → arka plan silme → AI analizi akışı ve
   verinin nerede işlendiği.
 
+### 4.9 Bugün kartında işlem geri bildirimi (bu tur)
+
+Büyük kombin kartındaki iki aksiyon artık **durum bildiriyor**; kullanıcı
+"kaydettim mi, giydim mi?" diye düşünmek zorunda kalmıyor:
+
+| Aksiyon | Önce | Sonra |
+|---|---|---|
+| Kaydet | kontur düğme, hep "Kaydet" | kaydedilince **dolu** + "Kaydedildi" |
+| Giydim | dolu düğme, hep "Giydim" | giyilince **yeşil tonlu** + "Giydildi" |
+
+Durum iki kaynaktan hesaplanıyor: bu oturumdaki işlemler ve kalıcı veriler
+(favori kombinler / giyilme geçmişi). Böylece uygulama kapatılıp açıldığında da
+düğme doğru görünüyor; geçmiş kaydı **yalnızca bugünün tarihiyle** eşleşirse
+"Giydildi" sayılıyor, ertesi gün düğme yeniden "Giydim" oluyor.
+
+Renk: giyildi durumu `AppAccents.success` (yeşil), kaydedildi durumu nötr tonal
+yüzey — ikisi yan yana karışmıyor.
+
 ---
 
 ## 5. Kopyalamayacağımız şeyler (bilinçli karar)

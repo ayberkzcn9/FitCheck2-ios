@@ -1688,6 +1688,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         anaRenk: _anaRenk,
         planJetonu: _planJetonu,
         favoriKombinler: _favoriKombinler,
+        gecmisKombinler: _gecmisKombinler,
       ),
       GardirobumEkrani(
         key: _gardirobumKey,

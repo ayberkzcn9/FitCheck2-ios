@@ -3514,4 +3514,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => 'Salvato';
+
+  @override
+  String get bugunGiydildi => 'Indossato';
 }

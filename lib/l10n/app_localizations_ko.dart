@@ -3365,4 +3365,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => '저장됨';
+
+  @override
+  String get bugunGiydildi => '착용함';
 }

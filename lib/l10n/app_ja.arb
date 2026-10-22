@@ -1245,5 +1245,6 @@
       }
     }
   },
-  "bugunKaydedildi": "保存済み"
+  "bugunKaydedildi": "保存済み",
+  "bugunGiydildi": "着用済み"
 }

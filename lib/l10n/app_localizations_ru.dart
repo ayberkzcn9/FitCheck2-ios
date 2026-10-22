@@ -3490,4 +3490,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => 'Сохранено';
+
+  @override
+  String get bugunGiydildi => 'Надето';
 }

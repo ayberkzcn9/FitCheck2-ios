@@ -3519,4 +3519,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get bugunKaydedildi => 'Gespeichert';
+
+  @override
+  String get bugunGiydildi => 'Getragen';
 }
