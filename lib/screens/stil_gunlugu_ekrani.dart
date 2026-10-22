@@ -149,6 +149,11 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     ColorScheme colors,
   ) {
     final yerel = MaterialLocalizations.of(context);
+    // Türkçede tek harflik kısaltmalar üç günü de "P" yapıyor; haftalık
+    // ızgarada okunur kısaltmalar kullanılıyor (Pzt, Sal, Çar...).
+    final gunAdlari = Localizations.localeOf(context).languageCode == 'tr'
+        ? const ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz']
+        : _haftaEtiketleri(yerel);
     final indeks = _parcaIndeksi();
     final gunler = KombinTakvimi.ay(
       ay: _ay,
@@ -193,7 +198,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         const SizedBox(height: 6),
         Row(
           children: [
-            for (final gun in _haftaEtiketleri(yerel))
+            for (final gun in gunAdlari)
               Expanded(
                 child: Center(
                   child: Text(
@@ -247,9 +252,12 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
   /// başlar; bizim ızgara ve plan eşlemesi pazartesi ile başladığı için liste
   /// bir kaydırılır. Aksi halde her gün yanlış sütunda görünür.
   static List<String> _haftaEtiketleri(MaterialLocalizations yerel) {
+    // Tek harflik kısaltmalar Türkçede üç günü de "P" yapıyordu (Pzt/Per/Paz).
+    // Dar adların ilk üç harfi hem okunur hem sığıyor: Pzt, Sal, Çar.
     final dar = yerel.narrowWeekdays;
     if (dar.length != 7) return dar;
-    return <String>[...dar.sublist(1), dar.first];
+    final ilkGun = yerel.firstDayOfWeekIndex; // 0 = Pazar
+    return List<String>.generate(7, (i) => dar[(ilkGun + i) % 7]);
   }
 
   Widget _noktaGostergesi(
