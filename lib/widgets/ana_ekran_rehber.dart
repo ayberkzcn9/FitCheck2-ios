@@ -260,7 +260,7 @@ class AnaEkranRehber {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHigh,
         borderRadius: AppRadius.xxlRadius,
@@ -308,8 +308,8 @@ class AnaEkranRehber {
                   borderRadius: AppRadius.mdRadius,
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 10,
+                  horizontal: AppSpacing.lg,
+                  vertical: AppSpacing.md,
                 ),
               ),
               onPressed: onNext,

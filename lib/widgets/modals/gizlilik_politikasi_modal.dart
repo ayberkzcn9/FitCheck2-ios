@@ -85,7 +85,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
           ),
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         FilledButton(
           style: FilledButton.styleFrom(

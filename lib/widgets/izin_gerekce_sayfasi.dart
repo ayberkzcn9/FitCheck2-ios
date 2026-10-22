@@ -34,7 +34,7 @@ class IzinGerekce {
       builder: (sheetContext) {
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
             child: ClipRRect(
               borderRadius: AppRadius.xxlRadius,
               child: BackdropFilter(
@@ -47,13 +47,13 @@ class IzinGerekce {
                     color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
                     borderRadius: AppRadius.xxlRadius,
                   ),
-                  padding: const EdgeInsets.fromLTRB(20, 22, 20, 18),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.lg),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(AppSpacing.md),
                         decoration: BoxDecoration(
                           color: colors.primary.withValues(alpha: 0.08),
                           shape: BoxShape.circle,

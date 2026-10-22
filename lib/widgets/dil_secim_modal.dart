@@ -105,7 +105,7 @@ class DilSecimModal extends StatelessWidget {
 
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 20),
+        padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.xl),
         constraints: BoxConstraints(
           maxHeight: MediaQuery.of(context).size.height * 0.75,
         ),
@@ -169,7 +169,7 @@ class DilSecimModal extends StatelessWidget {
 
                   return ListTile(
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 8,
+                      horizontal: AppSpacing.sm,
                       vertical: 2,
                     ),
                     shape: RoundedRectangleBorder(

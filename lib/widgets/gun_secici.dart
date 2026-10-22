@@ -32,7 +32,7 @@ class GunSecici extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
         itemCount: hafta.length,
         itemBuilder: (context, index) {
           final gunItem = hafta[index];
@@ -64,8 +64,7 @@ class GunSecici extends StatelessWidget {
               },
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 18, vertical: 0),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: 0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: bg,

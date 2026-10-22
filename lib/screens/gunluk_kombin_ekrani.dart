@@ -635,7 +635,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
             // İçerik
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 100),
+                padding: const EdgeInsets.fromLTRB(0, AppSpacing.sm, 0, 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -659,7 +659,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                     // Kombin YOKSA: ortada büyük yanıp sönen zar
                     if (_kombinVarMi)
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                         child: Row(
                           children: [
                             zarDairesi(boyut: 58, ikonBoyut: 28),
@@ -692,8 +692,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                               ),
                               style: TextButton.styleFrom(
                                 foregroundColor: colorScheme.error,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 6),
+                                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: AppRadius.mdRadius),
                               ),
@@ -726,14 +725,14 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                     // Ana Kombin Kartı (haftalık planlayıcı stilinde)
                     if (_kombinVarMi)
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                         child: _anaKombinKarti(
                             l10n, theme, colorScheme, havaSicaklikMetni,
                             havaDurumMetni),
                       )
                     else
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(32, 24, 32, 24),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.xxxl, AppSpacing.xxl, AppSpacing.xxxl, AppSpacing.xxl),
                         child: Column(
                           children: [
                             Text(
@@ -813,7 +812,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(AppSpacing.xl),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -836,8 +835,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
               runSpacing: 8,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 12, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                   decoration: BoxDecoration(
                     color: colorScheme.surfaceContainerHighest,
                     borderRadius: AppRadius.mdRadius,
@@ -864,8 +862,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 ),
                 if (havaSicaklikMetni.isNotEmpty)
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainerHighest,
                       borderRadius: AppRadius.mdRadius,
@@ -911,7 +908,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
             // Stilist Yorumu (Mor kutu - haftalık ile aynı)
             if (_stilistYorumu.isNotEmpty)
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   color: AppTints.styleistBgDinamik(context),
                   borderRadius: AppRadius.xlRadius,
@@ -1045,7 +1042,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                     child: Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(AppSpacing.sm),
                       decoration: BoxDecoration(
                         color: Colors.black.withValues(alpha: 0.3),
                         shape: BoxShape.circle,

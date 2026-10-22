@@ -48,7 +48,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+        padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
         children: [
           _secimKartlari(context, l10n, colors),
           const SizedBox(height: 14),
@@ -70,7 +70,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
     ColorScheme colors,
   ) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.45),
         borderRadius: AppRadius.xxlRadius,
@@ -212,7 +212,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
     ValizPlani plan,
   ) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -366,7 +366,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                       Container(
                         width: 88,
                         height: 54,
-                        padding: const EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(AppSpacing.xs),
                         decoration: BoxDecoration(
                           color: colors.surface.withValues(alpha: 0.6),
                           borderRadius: AppRadius.mdRadius,

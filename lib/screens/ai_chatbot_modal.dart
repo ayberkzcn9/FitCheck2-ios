@@ -547,7 +547,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
               color: colorScheme.surfaceContainerHighest,
               borderRadius: AppRadius.smRadius,
             ),
-            codeblockPadding: const EdgeInsets.all(10),
+            codeblockPadding: const EdgeInsets.all(AppSpacing.md),
             // Bağlantılar (tema rengi ile okunur).
             a: TextStyle(
               fontSize: AppText.sizeBodySmall,
@@ -584,13 +584,13 @@ You MUST write your ENTIRE response in **$hedefDil**!
               ),
             ),
             blockquotePadding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
           ),
         ),
         if (kombinVar) ...[
           const SizedBox(height: 12),
           Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
               color: colorScheme.tertiaryContainer.withValues(alpha: 0.5),
               borderRadius: AppRadius.lgRadius,
@@ -636,7 +636,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                       shape: RoundedRectangleBorder(
                         borderRadius: AppRadius.mdRadius,
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                     ),
                     onPressed: () {
                       HapticFeedback.mediumImpact();
@@ -684,7 +684,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
           },
           borderRadius: AppRadius.xlRadius,
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
             decoration: BoxDecoration(
               color: colorScheme.surfaceContainerHighest,
               borderRadius: AppRadius.xlRadius,
@@ -858,8 +858,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                   child: ListView.builder(
                     controller: _scrollController,
                     physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                     itemCount: _mesajlar.length,
                     itemBuilder: (context, index) {
                       final m = _mesajlar[index];
@@ -870,8 +869,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                             : Alignment.centerLeft,
                         child: Container(
                           margin: const EdgeInsets.only(bottom: 12),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 14, vertical: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
                           constraints: BoxConstraints(
                               maxWidth:
                                   MediaQuery.of(context).size.width * 0.85),
@@ -994,8 +992,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 if (_secilenResimBytes != null)
                   Container(
                     margin:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    padding: const EdgeInsets.all(8),
+                        const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                    padding: const EdgeInsets.all(AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainer,
                       borderRadius: AppRadius.lgRadius,
@@ -1080,7 +1078,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                   top: false,
                   child: Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainer,
                       border: Border(
@@ -1095,7 +1093,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                         Tooltip(
                           message: l10n.chatKamera,
                           child: IconButton(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(AppSpacing.sm),
                             constraints: const BoxConstraints(),
                             icon: Icon(
                               Icons.camera_alt_rounded,
@@ -1110,7 +1108,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                         Tooltip(
                           message: l10n.chatGaleri,
                           child: IconButton(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(AppSpacing.sm),
                             constraints: const BoxConstraints(),
                             icon: Icon(
                               Icons.photo_library_rounded,
@@ -1125,7 +1123,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                         const SizedBox(width: 8),
                         Expanded(
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                             decoration: BoxDecoration(
                               color: colorScheme.surfaceContainerHighest,
                               borderRadius: AppRadius.xxlRadius,
@@ -1154,8 +1152,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                       border: InputBorder.none,
                                       isDense: true,
                                       contentPadding:
-                                          const EdgeInsets.symmetric(
-                                              vertical: 10),
+                                          const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                     ),
                                   ),
                                 ),
@@ -1193,7 +1190,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                             onTap: _aiIslemde ? null : _mesajGonder,
                             borderRadius: AppRadius.xlRadius,
                             child: Container(
-                              padding: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(AppSpacing.sm),
                               decoration: BoxDecoration(
                                 color: _aiIslemde
                                     ? colorScheme.outline

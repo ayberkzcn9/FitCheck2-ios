@@ -100,7 +100,7 @@ void gorseliBuhur(
           borderRadius: AppRadius.dialogRadius,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.xl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

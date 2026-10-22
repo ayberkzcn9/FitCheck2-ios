@@ -41,7 +41,7 @@ class AiOneriKutusu extends StatelessWidget {
     final ikonRenk = koyu ? const Color(0xFFFFC56B) : AppMiscColors.amberText;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: AppRadius.xlRadius,

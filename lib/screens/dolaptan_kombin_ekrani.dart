@@ -731,7 +731,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         elevation: 0,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -802,7 +802,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
 ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 10, 20, 100),
+                padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 100),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -828,11 +828,11 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                               widget.onKonumuYenile();
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                               child: Row(
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.all(8),
+                                    padding: const EdgeInsets.all(AppSpacing.sm),
                                     decoration: BoxDecoration(
                                       color: widget.havaHatasi
                                           ? colors.errorContainer
@@ -892,7 +892,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                       style: IconButton.styleFrom(
                                         backgroundColor: colors.errorContainer,
                                         foregroundColor: colors.onErrorContainer,
-                                        padding: const EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(AppSpacing.sm),
                                       ),
                                     ),
                                     const SizedBox(width: 8),
@@ -931,7 +931,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                       foregroundColor: colors.error,
                                       side: BorderSide(color: colors.error.withValues(alpha: 0.4), width: 1.5),
                                       shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
-                                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                                     ),
                                   ),
                                 ),
@@ -959,7 +959,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
 
                     if (kombinVarMi)
                       Container(
-                        padding: const EdgeInsets.all(24),
+                        padding: const EdgeInsets.all(AppSpacing.xxl),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerLow,
                           borderRadius: AppRadius.modalRadius,
@@ -973,7 +973,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.sm),
                                   decoration: BoxDecoration(
                                     color: uyumRengi.withValues(alpha: 0.12),
                                     borderRadius: AppRadius.mdRadius,
@@ -1021,7 +1021,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             const SizedBox(height: 12),
 
                             Container(
-                              padding: const EdgeInsets.all(16),
+                              padding: const EdgeInsets.all(AppSpacing.lg),
                               decoration: BoxDecoration(
                                 color: AppTints.styleistBgDinamik(context),
                                 borderRadius: AppRadius.xlRadius,
@@ -1228,7 +1228,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                             child: BackdropFilter(
                               filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                               child: Container(
-                                padding: const EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(AppSpacing.sm),
                                 decoration: BoxDecoration(
                                   color: Colors.black.withValues(alpha: 0.35),
                                   shape: BoxShape.circle,
@@ -1245,7 +1245,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.sm, 6, AppSpacing.sm, 6),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -1318,7 +1318,7 @@ class ZarSallaDialog extends StatelessWidget {
           side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.4)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -1326,7 +1326,7 @@ class ZarSallaDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: AppAccents.success.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -1343,7 +1343,7 @@ class ZarSallaDialog extends StatelessWidget {
                   ),
                   const SizedBox(width: 16),
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: colors.primary.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -1392,7 +1392,7 @@ class ZarSallaDialog extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
                           borderRadius: AppRadius.lgRadius,
                         ),
@@ -1420,7 +1420,7 @@ class ZarSallaDialog extends StatelessWidget {
                         backgroundColor: AppAccents.success,
                         foregroundColor: Colors.white,
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
                           borderRadius: AppRadius.lgRadius,
                         ),

@@ -49,7 +49,7 @@ class BilgiButonu extends StatelessWidget {
           ),
           radius: 18,
           child: Padding(
-            padding: const EdgeInsets.all(4),
+            padding: const EdgeInsets.all(AppSpacing.xs),
             child: Icon(
               ikon,
               size: 16,
@@ -80,7 +80,7 @@ class BilgiSayfasi {
       builder: (sheetContext) {
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
             child: ClipRRect(
               borderRadius: AppRadius.xxlRadius,
               child: BackdropFilter(
@@ -93,7 +93,7 @@ class BilgiSayfasi {
                     color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
                     borderRadius: AppRadius.xxlRadius,
                   ),
-                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.lg),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +112,7 @@ class BilgiSayfasi {
                       Row(
                         children: [
                           Container(
-                            padding: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(AppSpacing.md),
                             decoration: BoxDecoration(
                               color: colors.primary.withValues(alpha: 0.08),
                               shape: BoxShape.circle,

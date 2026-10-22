@@ -309,7 +309,7 @@ SADECE bu JSON formatında dön:
                   const SizedBox(height: 20),
                   
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -354,7 +354,7 @@ SADECE bu JSON formatında dön:
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.all(24),
+                                  padding: const EdgeInsets.all(AppSpacing.xxl),
                                   decoration: BoxDecoration(
                                     color: colors.primaryContainer, 
                                     shape: BoxShape.circle,
@@ -380,7 +380,7 @@ SADECE bu JSON formatında dön:
                           )
                         : GridView.builder(
                             physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.fromLTRB(20, 10, 20, 40),
+                            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 40),
                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
                               crossAxisSpacing: 16,
@@ -487,7 +487,7 @@ SADECE bu JSON formatında dön:
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -557,7 +557,7 @@ SADECE bu JSON formatında dön:
                   style: IconButton.styleFrom(
                     backgroundColor: colors.errorContainer,
                     foregroundColor: colors.onErrorContainer,
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(AppSpacing.sm),
                     minimumSize: const Size(32, 32),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
@@ -649,13 +649,13 @@ SADECE bu JSON formatında dön:
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 140), 
+        padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 140), 
         child: Column(
           children: [
             // İpucu Bilgilendirme Kartı (Yumuşak Pastel Lavanta Tonları)
             Container(
               margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(AppSpacing.lg),
               decoration: BoxDecoration(
                 color: AppTints.styleistBgDinamik(context),
                 borderRadius: AppRadius.xlRadius,
@@ -689,7 +689,7 @@ SADECE bu JSON formatında dön:
             // Üst-Alt / Tek Parça Mod Switcher
             Container(
               margin: const EdgeInsets.only(bottom: 24),
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHighest,
                 borderRadius: AppRadius.xlRadius,
@@ -711,7 +711,7 @@ SADECE bu JSON formatında dön:
                       },
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 250),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         decoration: BoxDecoration(
                           color: !_tekParcaMi ? AppAccents.primary : Colors.transparent,
                           borderRadius: AppRadius.lgRadius,
@@ -744,7 +744,7 @@ SADECE bu JSON formatında dön:
                       },
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 250),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         decoration: BoxDecoration(
                           color: _tekParcaMi ? AppAccents.primary : Colors.transparent,
                           borderRadius: AppRadius.lgRadius,
@@ -780,7 +780,7 @@ SADECE bu JSON formatında dön:
               AnimatedContainer(
                 duration: const Duration(milliseconds: 400),
                 curve: Curves.easeOutBack,
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.all(AppSpacing.xxl),
                 margin: const EdgeInsets.only(bottom: 24),
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerLow,
@@ -810,7 +810,7 @@ SADECE bu JSON formatında dön:
                         // Uyum rozeti — Haftalık Planlayıcı ve Günlük Kombin
                         // ekranlarıyla birebir aynı görünüm (tasarım devamlılığı).
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
                             borderRadius: AppRadius.mdRadius,
@@ -840,7 +840,7 @@ SADECE bu JSON formatında dön:
 
                     // STİLİST İPUCU KUTUSU
                     Container(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(AppSpacing.lg),
                       decoration: BoxDecoration(
                         color: AppTints.styleistBgDinamik(context),
                         borderRadius: AppRadius.xlRadius,

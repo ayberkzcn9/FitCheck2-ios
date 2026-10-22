@@ -43,7 +43,7 @@ class AnaEkranDialoglar {
                   top: Radius.circular(28),
                 ),
               ),
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+              padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
               child: SafeArea(
                 top: false,
                 bottom: true,
@@ -108,8 +108,8 @@ class AnaEkranDialoglar {
                         filled: true,
                         fillColor: colors.surfaceContainerHighest,
                         contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 14,
+                          horizontal: AppSpacing.lg,
+                          vertical: AppSpacing.md,
                         ),
                         border: OutlineInputBorder(
                           borderRadius: AppRadius.lgRadius,
@@ -140,8 +140,8 @@ class AnaEkranDialoglar {
                               borderRadius: AppRadius.lgRadius,
                             ),
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 22,
-                              vertical: 12,
+                              horizontal: AppSpacing.xl,
+                              vertical: AppSpacing.md,
                             ),
                           ),
                           onPressed: () async {
@@ -251,7 +251,7 @@ class AnaEkranDialoglar {
                 top: Radius.circular(28),
               ),
             ),
-            padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
             child: SafeArea(
               top: false,
               bottom: true,
@@ -312,8 +312,8 @@ class AnaEkranDialoglar {
                         child: OutlinedButton.icon(
                           style: OutlinedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
-                              vertical: 12,
-                              horizontal: 4,
+                              vertical: AppSpacing.md,
+                              horizontal: AppSpacing.xs,
                             ),
                             side: BorderSide(color: context.uygunMetin),
                             shape: RoundedRectangleBorder(
@@ -352,8 +352,8 @@ class AnaEkranDialoglar {
                           child: FilledButton.icon(
                             style: FilledButton.styleFrom(
                               padding: const EdgeInsets.symmetric(
-                                vertical: 12,
-                                horizontal: 4,
+                                vertical: AppSpacing.md,
+                                horizontal: AppSpacing.xs,
                               ),
                               backgroundColor: AppAccents.warning,
                               foregroundColor: Colors.white,
@@ -423,7 +423,7 @@ class AnaEkranDialoglar {
                       width: double.infinity,
                       child: FilledButton.icon(
                         style: FilledButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                           backgroundColor: anaRenk,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -520,7 +520,7 @@ class AnaEkranDialoglar {
                   ),
                 ),
                 style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                   backgroundColor: AppAccents.successDark,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -551,7 +551,7 @@ class AnaEkranDialoglar {
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     side: BorderSide(color: context.uygunMetin),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.mdRadius,
@@ -589,7 +589,7 @@ class AnaEkranDialoglar {
               ],
             ],
           ),
-          actionsPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
@@ -664,7 +664,7 @@ class AnaEkranDialoglar {
                   ),
                 ),
                 style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                   backgroundColor: AppAccents.successDark,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -695,7 +695,7 @@ class AnaEkranDialoglar {
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     side: BorderSide(color: context.uygunMetin),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.mdRadius,
@@ -735,7 +735,7 @@ class AnaEkranDialoglar {
               ],
             ],
           ),
-          actionsPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),

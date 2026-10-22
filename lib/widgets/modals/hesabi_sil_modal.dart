@@ -94,8 +94,8 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
               filled: true,
               fillColor: colors.surfaceContainerHighest,
               contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
+                horizontal: AppSpacing.lg,
+                vertical: AppSpacing.md,
               ),
               border: OutlineInputBorder(
                 borderRadius: AppRadius.lgRadius,
@@ -117,7 +117,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
           ),
         ],
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false),

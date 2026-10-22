@@ -803,8 +803,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       if (tarih.isNotEmpty) ...[
                         const SizedBox(height: 5),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 3),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
                             borderRadius: AppRadius.smRadius,
@@ -915,7 +914,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 0),
             sliver: SliverToBoxAdapter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1130,8 +1129,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                     ),
                                     const SizedBox(height: 4),
                                     Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 2),
+                                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 2),
                                       decoration: BoxDecoration(
                                         color: colors.surfaceContainerHighest,
                                         borderRadius: AppRadius.mdRadius,
@@ -1292,7 +1290,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
           ),
           if (_gecmis.isNotEmpty)
             SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
               sliver: SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) => _gecmisKarti(_gecmis[index]),
@@ -1365,7 +1363,7 @@ class _ProfilKart extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.xl),
           child: child,
         ),
       ),
@@ -1391,7 +1389,7 @@ class _ProfilIkon extends StatelessWidget {
     final fg = ikonRenk ?? defaultAccent;
 
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: bg,
         shape: BoxShape.circle,

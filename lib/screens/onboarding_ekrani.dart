@@ -382,8 +382,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.md),
                       child: Row(
                         children: [
                           const Icon(Icons.gavel_rounded,
@@ -429,7 +428,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                         child: SingleChildScrollView(
                           controller: modalScrollController,
                           physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+                          padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xl),
                           child: Text(
                             l10n.kullanimKosullariMetni,
                             style: TextStyle(
@@ -624,8 +623,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -644,8 +642,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                         child: TextButton(
                           onPressed: _yukleniyor ? null : _onboardingAtla,
                           style: TextButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                             shape: RoundedRectangleBorder(
                                 borderRadius: AppRadius.xlRadius),
                             backgroundColor: colors.surfaceContainerHighest
@@ -678,7 +675,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       if (index == toplamSayfaSayisi - 1) {
                         return SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(28, 16, 28, 120),
+                          padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, 120),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
@@ -711,7 +708,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               const SizedBox(height: 24),
 
                               Container(
-                                padding: const EdgeInsets.all(4),
+                                padding: const EdgeInsets.all(AppSpacing.xs),
                                 decoration: BoxDecoration(
                                   color: colors.surfaceContainerHighest,
                                   borderRadius: AppRadius.lgRadius,
@@ -725,8 +722,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                         child: AnimatedContainer(
                                           duration:
                                               const Duration(milliseconds: 200),
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10),
+                                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                           decoration: BoxDecoration(
                                             color: _girisModu
                                                 ? authGreenColor
@@ -762,8 +758,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                         child: AnimatedContainer(
                                           duration:
                                               const Duration(milliseconds: 200),
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10),
+                                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                           decoration: BoxDecoration(
                                             color: !_girisModu
                                                 ? authGreenColor
@@ -815,8 +810,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     filled: true,
                                     fillColor: colors.surfaceContainerHighest
                                         .withValues(alpha: 0.6),
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 16, vertical: 14),
+                                    contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                                     border: OutlineInputBorder(
                                         borderRadius: AppRadius.lgRadius,
                                         borderSide: BorderSide.none),
@@ -845,8 +839,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   filled: true,
                                   fillColor: colors.surfaceContainerHighest
                                       .withValues(alpha: 0.6),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 14),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                                   border: OutlineInputBorder(
                                       borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
@@ -882,8 +875,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   filled: true,
                                   fillColor: colors.surfaceContainerHighest
                                       .withValues(alpha: 0.6),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 14),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                                   border: OutlineInputBorder(
                                       borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
@@ -942,8 +934,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       child: Divider(
                                           color: colors.outlineVariant)),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
+                                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                                     child: Text(
                                       l10n.girisVeya,
                                       style: TextStyle(
@@ -972,7 +963,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                    backgroundColor: colors.surfaceContainerLow,
                                    foregroundColor: colors.onSurface,
                                    elevation: 0,
-                                   padding: const EdgeInsets.symmetric(vertical: 14),
+                                   padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                  ),
                                  onPressed:
                                      _yukleniyor ? null : () { _googleIleGirisTetikle(); },
@@ -1030,7 +1021,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
                       return SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.fromLTRB(28, 16, 28, 120),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, 120),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -1111,8 +1102,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       width: 1.5),
                                 ),
                                 child: ListTile(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 18, vertical: 6),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                                   leading: _buildPremiumIconContainer(
                                       Icons.language_rounded,
                                       iconColor: _marka),
@@ -1231,8 +1221,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   checkColor: Colors.white,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: AppRadius.smRadius),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 4),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                                   controlAffinity:
                                       ListTileControlAffinity.leading,
                                   title: GestureDetector(
@@ -1309,7 +1298,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       return AnimatedContainer(
                         duration: const Duration(milliseconds: 400),
                         curve: Curves.easeOutCubic,
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                         height: 8,
                         width: isActive ? 28 : 8,
                         decoration: BoxDecoration(
@@ -1418,7 +1407,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected ? effectiveAccent : colors.surfaceContainerLow,
           borderRadius: AppRadius.lgRadius,
@@ -1465,7 +1454,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(AppSpacing.sm),
         decoration: BoxDecoration(
           color: effectiveColor.withValues(alpha: 0.12),
           shape: BoxShape.circle,
@@ -1480,7 +1469,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     final effectiveColor = iconColor ?? colors.primary;
 
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
         color: effectiveColor.withValues(alpha: 0.15),
         shape: BoxShape.circle,

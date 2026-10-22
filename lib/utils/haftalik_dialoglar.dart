@@ -80,7 +80,7 @@ class HaftalikDialoglar {
                   ),
                 ),
                 style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                   backgroundColor: AppAccents.successDark,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -112,7 +112,7 @@ class HaftalikDialoglar {
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     side: BorderSide(color: context.uygunMetin),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.mdRadius,
@@ -213,8 +213,8 @@ class HaftalikDialoglar {
                     borderRadius: AppRadius.lgRadius,
                   ),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
+                    horizontal: AppSpacing.xl,
+                    vertical: AppSpacing.md,
                   ),
                 ),
                 onPressed: () {
@@ -272,8 +272,8 @@ class HaftalikDialoglar {
                   borderRadius: AppRadius.dialogRadius,
                 ),
                 insetPadding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 24,
+                  horizontal: AppSpacing.xxl,
+                  vertical: AppSpacing.xxl,
                 ),
                 child: SingleChildScrollView(
                   child: Column(
@@ -372,7 +372,7 @@ class HaftalikDialoglar {
                                       duration:
                                           const Duration(milliseconds: 300),
                                       margin: const EdgeInsets.symmetric(
-                                        horizontal: 3,
+                                        horizontal: AppSpacing.xs,
                                       ),
                                       height: 6,
                                       width: isActive ? 20 : 6,
@@ -390,7 +390,7 @@ class HaftalikDialoglar {
                         ],
                       ),
                       Container(
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(AppSpacing.xl),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerHigh,
                           borderRadius: const BorderRadius.vertical(
@@ -490,7 +490,7 @@ class HaftalikDialoglar {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest,
         borderRadius: AppRadius.mdRadius,

@@ -330,7 +330,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           title: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(AppSpacing.sm),
                 decoration: const BoxDecoration(
                   color: AppMiscColors.lightPurpleBg,
                   shape: BoxShape.circle,
@@ -377,7 +377,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   ),
                 ),
                 style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                   backgroundColor: AppAccents.successDark,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -410,7 +410,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     side: BorderSide(color: colors.onSurfaceVariant),
                     shape: RoundedRectangleBorder(
                         borderRadius: AppRadius.lgRadius),
@@ -580,7 +580,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                   ),
                                   const SizedBox(width: 8),
                                   Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                                     decoration: BoxDecoration(
                                       color: Colors.white.withValues(alpha: 0.2),
                                       borderRadius: AppRadius.mdRadius,
@@ -624,7 +624,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: suAnkiKiyafet.sepetteMi ? colors.errorContainer : Colors.white,
-                                        padding: const EdgeInsets.symmetric(vertical: 14),
+                                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: AppRadius.lgRadius,
                                           side: suAnkiKiyafet.sepetteMi
@@ -652,7 +652,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                       },
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: AppMiscColors.lightPurpleBg,
-                                        padding: const EdgeInsets.all(16),
+                                        padding: const EdgeInsets.all(AppSpacing.lg),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: AppRadius.lgRadius,
                                           side: const BorderSide(color: AppMiscColors.lightPurpleBorder, width: 1.2),
@@ -727,7 +727,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 foregroundColor: colors.onPrimary,
                 shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                 elevation: 0,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
               ),
               onPressed: () {
                 HapticFeedback.selectionClick();
@@ -785,7 +785,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.sm),
                       child: Text(
                         l10n.kiyafetEkle,
                         maxLines: 1,
@@ -801,9 +801,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     // Çekim ipuçları: kesim kalitesini en çok zemin belirliyor;
                     // kullanıcı tam çekim anında görsün.
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
+                      padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, 0, AppSpacing.xxl, AppSpacing.xs),
                       child: Container(
-                        padding: const EdgeInsets.fromLTRB(14, 12, 14, 10),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.md, AppSpacing.md, AppSpacing.md),
                         decoration: BoxDecoration(
                           color: colors.primaryContainer.withValues(alpha: 0.35),
                           borderRadius: AppRadius.lgRadius,
@@ -838,9 +838,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     ),
                     const SizedBox(height: 4),
                     ListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs),
                       leading: Container(
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(AppSpacing.md),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerHighest,
                           shape: BoxShape.circle,
@@ -862,9 +862,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       },
                     ),
                     ListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs),
                       leading: Container(
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(AppSpacing.md),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerHighest,
                           shape: BoxShape.circle,
@@ -886,9 +886,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       },
                     ),
                     ListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.xs),
                       leading: Container(
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(AppSpacing.md),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerHighest,
                           shape: BoxShape.circle,
@@ -1346,11 +1346,11 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   ),
                   // Title
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
                     child: Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(AppSpacing.sm),
                           decoration: BoxDecoration(color: colors.surfaceContainerHighest, shape: BoxShape.circle),
                           child: Icon(
                             Icons.edit_note_rounded,
@@ -1378,7 +1378,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   const SizedBox(height: 20),
                   // 🧭 Görsel önizleme + döndürme (yan görünen kıyafetler)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
                     child: Row(
                       children: [
                         Container(
@@ -1431,7 +1431,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                 style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
                               style: OutlinedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(vertical: 14),
+                                padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                 side: BorderSide(color: colors.outlineVariant),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: AppRadius.lgRadius,
@@ -1446,7 +1446,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   const SizedBox(height: 20),
                   // Content
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -1470,7 +1470,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         ),
                         const SizedBox(height: 8),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 14),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
                             borderRadius: AppRadius.lgRadius,
@@ -1503,7 +1503,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   const SizedBox(height: 20),
                   // Actions
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xxl),
                     child: Row(
                       children: [
                         Expanded(
@@ -1513,7 +1513,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                               Navigator.pop(sheetContext);
                             },
                             style: TextButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                               shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                             ),
                             child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold)),
@@ -1527,7 +1527,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                               foregroundColor: colors.onPrimary,
                               shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                               elevation: 0,
-                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                             ),
                             onPressed: () {
                               HapticFeedback.selectionClick();
@@ -1606,7 +1606,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 backgroundColor: colors.error,
                 shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                 elevation: 0,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.md),
               ),
               onPressed: () {
                 HapticFeedback.selectionClick();
@@ -1669,7 +1669,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             0, 0, 0, 1, 0,
                           ]),
                           child: Padding(
-                            padding: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(AppSpacing.md),
                             child: Image.memory(
                               item.resimBytes,
                               // 🔍 contain: yatay kalan görsellerde kıyafetin
@@ -1697,7 +1697,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             GestureDetector(
                               onTap: () => _tamEkranGaleriyiGoster(index, kategoriListesi),
                               child: Container(
-                                padding: const EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(AppSpacing.sm),
                                 decoration: BoxDecoration(
                                   color: Colors.black.withValues(alpha: 0.5),
                                   shape: BoxShape.circle,
@@ -1710,7 +1710,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             GestureDetector(
                               onTap: () => _kiyafetDuzenle(item),
                               child: Container(
-                                padding: const EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(AppSpacing.sm),
                                 decoration: BoxDecoration(
                                   color: Colors.black.withValues(alpha: 0.5),
                                   shape: BoxShape.circle,
@@ -1726,7 +1726,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                 widget.onKiyafetSil(item.id);
                               },
                               child: Container(
-                                padding: const EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(AppSpacing.sm),
                                 decoration: BoxDecoration(
                                   color: Colors.black.withValues(alpha: 0.5),
                                   shape: BoxShape.circle,
@@ -1750,7 +1750,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         duration: const Duration(milliseconds: 200),
                         opacity: item.sepetteMi ? 1.0 : 0.0,
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
                           decoration: BoxDecoration(
                             color: colors.error,
                             borderRadius: AppRadius.smRadius,
@@ -1768,7 +1768,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               // yüzeyinde okunur (açık/koyu temada aynı kontrast).
               if (!acik)
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 0, 8, 10),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.md, 0, AppSpacing.sm, AppSpacing.md),
                   child: Row(
                     children: [
                       Expanded(
@@ -1787,7 +1787,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       ),
                       const SizedBox(width: 4),
                       Container(
-                        padding: const EdgeInsets.all(3),
+                        padding: const EdgeInsets.all(AppSpacing.xs),
                         decoration: BoxDecoration(
                           color: colors.primaryContainer,
                           shape: BoxShape.circle,
@@ -1806,7 +1806,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               AnimatedCrossFade(
                 firstChild: const SizedBox(width: double.infinity, height: 0),
                 secondChild: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.sm, AppSpacing.md, AppSpacing.md),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -1859,7 +1859,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                         ? BorderSide(color: colors.error.withValues(alpha: 0.4), width: 1.2)
                                         : BorderSide.none,
                                   ),
-                                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1978,7 +1978,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+          padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
           child: TextField(
             controller: _aramaDenetleyici,
             onChanged: (deger) => setState(() => _aramaMetni = deger),
@@ -2013,7 +2013,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 borderRadius: BorderRadius.circular(AppRadius.lg),
                 borderSide: BorderSide.none,
               ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 14),
+              contentPadding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
             ),
           ),
         ),
@@ -2021,7 +2021,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           height: 56,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.fromLTRB(16, 10, 16, 8),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.sm),
             itemCount: cipler.length,
             separatorBuilder: (_, __) => const SizedBox(width: 8),
             itemBuilder: (context, i) {
@@ -2051,7 +2051,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
         ),
         if (_filtreAktif)
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 4),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xs),
             child: Text(
               l10n.gardirobumUrunSayisi(_gorunenParcalar().length),
               style: TextStyle(
@@ -2067,7 +2067,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
 
   Widget _eslesmeYok(AppLocalizations l10n, ColorScheme colors) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(32, 40, 32, 16),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.xxxl, 40, AppSpacing.xxxl, AppSpacing.lg),
       child: Column(
         children: [
           Icon(
@@ -2141,7 +2141,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -2179,7 +2179,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           child: kategoriListesi.isEmpty
               ? ListView(
                   scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                   physics: const BouncingScrollPhysics(),
                   children: [
                     GestureDetector(
@@ -2200,7 +2200,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             Icon(Icons.add_circle_outline_rounded, size: 36, color: colors.onSurfaceVariant),
                             const SizedBox(height: 12),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8),
+                              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
                               child: Text(
                                 l10n.gardirobumHenuzYokEkle,
                                 textAlign: TextAlign.center,
@@ -2216,7 +2216,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               : ListView.builder(
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                   itemCount: kategoriListesi.length,
                   itemBuilder: (context, index) {
                     final item = kategoriListesi[index];
@@ -2340,8 +2340,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     child: GestureDetector(
                       onTap: _fotoEklemeSecenegiGoster,
                       child: Container(
-                        margin: const EdgeInsets.all(32),
-                        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
+                        margin: const EdgeInsets.all(AppSpacing.xxxl),
+                        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: AppSpacing.xxl),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerLow,
                           borderRadius: AppRadius.xxlRadius,
@@ -2352,7 +2352,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              padding: const EdgeInsets.all(16),
+                              padding: const EdgeInsets.all(AppSpacing.lg),
                               decoration: BoxDecoration(color: colors.surfaceContainerHighest, shape: BoxShape.circle),
                               child: Icon(Icons.add_a_photo_outlined, size: 48, color: colors.onSurface),
                             ),
@@ -2429,8 +2429,8 @@ class _YuklemeOverlay extends StatelessWidget {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeOutCubic,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 36),
-            margin: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: 36),
+            margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
             decoration: BoxDecoration(
               color: colors.surfaceContainerHigh,
               borderRadius: AppRadius.dialogRadius,
@@ -2460,7 +2460,7 @@ class _YuklemeOverlay extends StatelessWidget {
                     child: child,
                   ),
                   child: Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(AppSpacing.xl),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -2512,7 +2512,7 @@ class _YuklemeOverlay extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                             decoration: BoxDecoration(
                               color: anaRenk.withValues(alpha: 0.12),
                               borderRadius: AppRadius.mdRadius,

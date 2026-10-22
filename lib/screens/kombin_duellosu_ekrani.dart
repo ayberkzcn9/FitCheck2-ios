@@ -292,7 +292,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(22, 20, 22, 22),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.xl),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -318,7 +318,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
                         color: colors.onPrimary.withValues(alpha: 0.16),
                         shape: BoxShape.circle,
@@ -430,7 +430,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           ),
           const SizedBox(height: 18),
           Container(
-            padding: const EdgeInsets.fromLTRB(18, 16, 18, 18),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.lg),
             decoration: BoxDecoration(
               color: colors.surfaceContainerLow,
               borderRadius: AppRadius.xxlRadius,
@@ -529,7 +529,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     required Color zemin,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
         color: zemin,
         borderRadius: AppRadius.xlRadius,
@@ -810,7 +810,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     final renk = olcu == DuelOlcusu.renk;
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
       decoration: BoxDecoration(
         color: colors.primary.withValues(alpha: 0.08),
         borderRadius: AppRadius.lgRadius,
@@ -899,7 +899,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 220),
             curve: Curves.easeOutCubic,
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 10),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.sm, AppSpacing.sm, AppSpacing.sm, AppSpacing.md),
             decoration: BoxDecoration(
               color: zemin,
               borderRadius: AppRadius.xlRadius,
@@ -1021,7 +1021,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.md),
       decoration: BoxDecoration(
         color: dogruMu
             ? AppAccents.successDeep.withValues(alpha: 0.09)
@@ -1248,7 +1248,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           ),
           const SizedBox(height: 24),
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
               color: colors.surfaceContainerLow,
               borderRadius: AppRadius.xlRadius,

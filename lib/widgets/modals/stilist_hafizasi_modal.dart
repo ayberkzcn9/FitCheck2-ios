@@ -121,7 +121,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
             Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(AppSpacing.md),
                   decoration: BoxDecoration(
                     color: AppAccents.styleist.withValues(alpha: 0.15),
                     borderRadius: AppRadius.lgRadius,
@@ -159,14 +159,14 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
             if (_yukleniyor)
               const Center(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 24),
+                  padding: EdgeInsets.symmetric(vertical: AppSpacing.xxl),
                   child: CircularProgressIndicator(),
                 ),
               )
             else if (_notlar.isEmpty && _ozet.trim().isEmpty)
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerHighest,
                   borderRadius: AppRadius.lgRadius,
@@ -209,7 +209,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(AppSpacing.md),
                     decoration: BoxDecoration(
                       color: colors.surfaceContainerHighest,
                       borderRadius: AppRadius.lgRadius,
@@ -253,7 +253,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                 const SizedBox(height: 10),
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(AppSpacing.md),
                   decoration: BoxDecoration(
                     color: colors.surfaceContainerHighest,
                     borderRadius: AppRadius.lgRadius,
@@ -281,7 +281,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                     side: BorderSide(
                       color: AppAccents.error.withValues(alpha: 0.4),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.lgRadius,
                     ),

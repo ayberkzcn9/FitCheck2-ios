@@ -102,13 +102,13 @@ class _KiyafetDuzenleyiciState extends State<KiyafetDuzenleyici> {
 
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
         child: Container(
           decoration: BoxDecoration(
             color: colors.surfaceContainerHigh,
             borderRadius: AppRadius.xxlRadius,
           ),
-          padding: const EdgeInsets.fromLTRB(18, 18, 18, 14),
+          padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.md),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -161,7 +161,7 @@ class _KiyafetDuzenleyiciState extends State<KiyafetDuzenleyici> {
                           child: Transform.scale(
                             scale: _olcek,
                             child: Padding(
-                              padding: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(AppSpacing.sm),
                               child: Image.memory(
                                 widget.kesim,
                                 fit: BoxFit.contain,

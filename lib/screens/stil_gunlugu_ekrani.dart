@@ -164,7 +164,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     );
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
       children: [
         Row(
           children: [
@@ -399,7 +399,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       builder: (sheetContext) {
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 18, 20, 18),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.lg),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -515,7 +515,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
         borderRadius: AppRadius.lgRadius,
@@ -599,7 +599,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 18, 20, 8),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.sm),
                   child: Row(
                     children: [
                       Expanded(
@@ -623,7 +623,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 ),
                 if (favoriler.isEmpty && sonGiyilenler.isEmpty && oneriler.isEmpty)
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.sm, AppSpacing.xl, AppSpacing.xl),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -645,7 +645,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   Flexible(
                     child: ListView(
                       shrinkWrap: true,
-                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
                       children: [
                         if (oneriler.isNotEmpty) ...[
                           _secimBasligi(l10n.planOneriler, colors),
@@ -818,7 +818,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       onTap: onTap,
       borderRadius: AppRadius.lgRadius,
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
           borderRadius: AppRadius.lgRadius,
@@ -922,7 +922,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     if (gecmis.isEmpty) {
       return Center(
         child: Padding(
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.all(AppSpacing.xxxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -943,7 +943,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     final indeks = _parcaIndeksi();
 
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
       itemCount: gecmis.length,
       separatorBuilder: (_, __) => const SizedBox(height: 10),
       itemBuilder: (context, i) {
@@ -956,7 +956,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             .toList();
 
         return Container(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.all(AppSpacing.md),
           decoration: BoxDecoration(
             color: colors.surfaceContainerHighest.withValues(alpha: 0.45),
             borderRadius: AppRadius.xlRadius,
@@ -1080,12 +1080,12 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             : colors.onPrimaryContainer;
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
       children: [
         RepaintBoundary(
           key: _raporKey,
           child: Container(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -1148,8 +1148,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
                       decoration: BoxDecoration(
                         color: farkRengi.withValues(alpha: 0.14),
                         borderRadius: BorderRadius.circular(AppRadius.sm),
@@ -1266,7 +1265,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               for (var i = 0; i < haftalar.length; i++)
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

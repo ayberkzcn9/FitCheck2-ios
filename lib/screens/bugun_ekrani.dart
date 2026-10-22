@@ -345,7 +345,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
     final havaVar = hava.isNotEmpty && !widget.havaYukleniyor;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 4),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xs),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -371,7 +371,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
             const SizedBox(height: 8),
             Container(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHighest,
                 borderRadius: AppRadius.fullRadius,
@@ -463,7 +463,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
     }
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.sm),
       child: Column(
         children: [
           for (var s = 0; s < satirlar.length; s++) ...[
@@ -504,7 +504,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
         .toList();
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.xs, AppSpacing.lg, AppSpacing.xs),
       child: Material(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
         borderRadius: BorderRadius.circular(18),
@@ -512,7 +512,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
         child: InkWell(
           onTap: widget.onStilGunluguAc,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.md, AppSpacing.md, AppSpacing.md),
             child: Row(
               children: [
                 Expanded(
@@ -621,7 +621,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           aksiyon.onTap();
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md, horizontal: AppSpacing.xs),
           child: Column(
             children: [
               Container(
@@ -711,9 +711,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
     return RepaintBoundary(
       key: _paylasKey,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+        padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.xs),
         child: Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -901,7 +901,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                     aspectRatio: 1,
                     child: Container(
                       margin: const EdgeInsets.only(right: 8),
-                      padding: const EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(AppSpacing.xs),
                       decoration: BoxDecoration(
                         color: colors.surface.withValues(alpha: 0.65),
                         borderRadius: AppRadius.lgRadius,
@@ -981,7 +981,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
             itemCount: kombinler.length,
             separatorBuilder: (_, __) => const SizedBox(width: 12),
             itemBuilder: (context, i) {
@@ -997,7 +997,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                     onTap: () =>
                         _detayPenceresi(context, l10n, kombin, parcalar),
                     child: Padding(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(AppSpacing.md),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -1009,7 +1009,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                                 Container(
                                   width: 66,
                                   height: 66,
-                                  padding: const EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(AppSpacing.xs),
                                   decoration: BoxDecoration(
                                     color:
                                         colors.surface.withValues(alpha: 0.7),
@@ -1080,7 +1080,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
         final colors = Theme.of(sheetContext).colorScheme;
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 4, 20, 20),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xs, AppSpacing.xl, AppSpacing.xl),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1117,7 +1117,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                             Container(
                               width: 88,
                               height: 88,
-                              padding: const EdgeInsets.all(6),
+                              padding: const EdgeInsets.all(AppSpacing.xs),
                               decoration: BoxDecoration(
                                 color: colors.surfaceContainerHighest,
                                 borderRadius: AppRadius.lgRadius,
@@ -1207,7 +1207,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 18, 20, 6),
+                padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, 6),
                 child: Text(
                   parca.gorunenBaslik,
                   maxLines: 2,
@@ -1278,7 +1278,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
             itemCount: parcalar.length,
             separatorBuilder: (_, __) => const SizedBox(width: 10),
             itemBuilder: (context, i) {
@@ -1292,7 +1292,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                       Container(
                         width: 96,
                         height: 76,
-                        padding: const EdgeInsets.all(6),
+                        padding: const EdgeInsets.all(AppSpacing.xs),
                         decoration: BoxDecoration(
                           color:
                               colors.surfaceContainerHighest.withValues(alpha: 0.55),
@@ -1329,7 +1329,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
   Widget _bolumBasligi(BuildContext context, String metin, {String? altYazi}) {
     final colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 22, 20, 10),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

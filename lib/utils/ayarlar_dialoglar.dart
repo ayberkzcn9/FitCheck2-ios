@@ -23,7 +23,7 @@ class AyarlarDialoglar {
           title: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
                   color: colors.errorContainer,
                   shape: BoxShape.circle,
@@ -55,7 +55,7 @@ class AyarlarDialoglar {
               height: 1.4,
             ),
           ),
-          actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
           actions: [
             TextButton(
               onPressed: () {
@@ -79,8 +79,8 @@ class AyarlarDialoglar {
                 backgroundColor: colors.error,
                 foregroundColor: colors.onError,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
+                  horizontal: AppSpacing.xl,
+                  vertical: AppSpacing.md,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: AppRadius.lgRadius,
@@ -209,7 +209,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
       title: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(AppSpacing.sm),
             decoration: BoxDecoration(
               color: widget.colors.primaryContainer,
               shape: BoxShape.circle,
@@ -274,7 +274,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
           ],
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () {
@@ -298,8 +298,8 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
             backgroundColor: widget.colors.primary,
             foregroundColor: widget.colors.onPrimary,
             padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 12,
+              horizontal: AppSpacing.xl,
+              vertical: AppSpacing.md,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: AppRadius.lgRadius,
@@ -391,7 +391,7 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
           ),
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () {
@@ -415,8 +415,8 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
             backgroundColor: widget.colors.primary,
             foregroundColor: widget.colors.onPrimary,
             padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 12,
+              horizontal: AppSpacing.xl,
+              vertical: AppSpacing.md,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: AppRadius.lgRadius,

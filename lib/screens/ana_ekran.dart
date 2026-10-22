@@ -1475,8 +1475,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                 child: SafeArea(
                   bottom: false,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -1494,8 +1493,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 240),
                             curve: Curves.easeOutCubic,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 6),
+                            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                             decoration: BoxDecoration(
                               color: _kalanHak > 0
                                   ? AppAccents.warning.withValues(alpha: 0.15)
@@ -1541,8 +1539,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                           children: [
                             Container(
                               height: 40,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 4),
+                              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                               decoration: BoxDecoration(
                                 color: colorScheme.surfaceContainerHighest,
                                 borderRadius: AppRadius.xlRadius,
@@ -1811,7 +1808,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         return Container(
           width: double.infinity,
           color: colors.surfaceContainerHigh,
-          padding: const EdgeInsets.fromLTRB(16, 6, 16, 8),
+          padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 6, AppSpacing.lg, AppSpacing.sm),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

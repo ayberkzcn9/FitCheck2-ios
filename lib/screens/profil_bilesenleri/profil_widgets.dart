@@ -73,7 +73,7 @@ class KiyafetKartcigi extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(AppSpacing.md),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -140,7 +140,7 @@ class IstatistikKutusu extends StatelessWidget {
             : null,
         borderRadius: AppRadius.xlRadius,
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.xl),
           decoration: BoxDecoration(
             borderRadius: AppRadius.xlRadius,
             border: Border.all(
@@ -155,7 +155,7 @@ class IstatistikKutusu extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: effectiveIconColor.withValues(alpha: 0.15),
                       shape: BoxShape.circle,

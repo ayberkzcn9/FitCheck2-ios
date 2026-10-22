@@ -81,7 +81,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.premiumEkranBaslik)),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
+        padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxxl),
         children: [
           _kahraman(l10n, colors),
           const SizedBox(height: AppSpacing.xxl),
@@ -173,7 +173,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           const SizedBox(height: AppSpacing.md),
           if (_satinAlma.denemeSunuluyor)
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
               decoration: BoxDecoration(
                 color: AppAccents.success,
                 borderRadius: AppRadius.fullRadius,
@@ -395,7 +395,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     required Color onArka,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
         color: arka,
         borderRadius: AppRadius.fullRadius,

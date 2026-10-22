@@ -319,8 +319,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                         ),
                       ),
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                         shape: RoundedRectangleBorder(
                             borderRadius: AppRadius.xlRadius),
                         backgroundColor: colors.surfaceContainerHighest,
@@ -334,8 +333,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                       keyboardDismissBehavior:
                           ScrollViewKeyboardDismissBehavior.onDrag,
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -372,7 +370,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
 
                             // Sekme Switcher (Giriş Yap / Kayıt Ol)
                             Container(
-                              padding: const EdgeInsets.all(4),
+                              padding: const EdgeInsets.all(AppSpacing.xs),
                               decoration: BoxDecoration(
                                 color: colors.surfaceContainerHighest,
                                 borderRadius: AppRadius.lgRadius,
@@ -386,8 +384,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                       child: AnimatedContainer(
                                         duration:
                                             const Duration(milliseconds: 200),
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 12),
+                                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                         decoration: BoxDecoration(
                                           color: _girisModu
                                               ? primaryColor
@@ -416,8 +413,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                       child: AnimatedContainer(
                                         duration:
                                             const Duration(milliseconds: 200),
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 12),
+                                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                                         decoration: BoxDecoration(
                                           color: !_girisModu
                                               ? primaryColor
@@ -457,8 +453,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                       size: 20, color: colors.onSurfaceVariant),
                                   filled: true,
                                   fillColor: colors.surfaceContainerHighest,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 14),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                                   border: OutlineInputBorder(
                                       borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
@@ -490,8 +485,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                     size: 20, color: colors.onSurfaceVariant),
                                 filled: true,
                                 fillColor: colors.surfaceContainerHighest,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 14),
+                                contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                                 border: OutlineInputBorder(
                                     borderRadius: AppRadius.lgRadius,
                                     borderSide: BorderSide.none),
@@ -533,8 +527,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 ),
                                 filled: true,
                                 fillColor: colors.surfaceContainerHighest,
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 14),
+                                contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                                 border: OutlineInputBorder(
                                     borderRadius: AppRadius.lgRadius,
                                     borderSide: BorderSide.none),
@@ -560,8 +553,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                       ? null
                                       : _sifreSifirlamaTetikle,
                                   style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
                                     minimumSize: const Size(0, 36),
                                     tapTargetSize:
                                         MaterialTapTargetSize.shrinkWrap,
@@ -640,8 +632,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                     child:
                                         Divider(color: colors.outlineVariant)),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
+                                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                                   child: Text(
                                     l10n.girisVeya,
                                     style: TextStyle(
@@ -670,7 +661,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 backgroundColor: colors.surfaceContainerLow,
                                 foregroundColor: colors.onSurface,
                                 elevation: 0,
-                                padding: const EdgeInsets.symmetric(vertical: 14),
+                                padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                               ),
                               onPressed:
                                   _yukleniyor ? null : () { _googleGirisTetikle(); },

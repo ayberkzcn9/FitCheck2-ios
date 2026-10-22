@@ -74,7 +74,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           title: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
                   color: _izinKum.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
@@ -139,8 +139,8 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                     borderRadius: AppRadius.lgRadius,
                   ),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 18,
-                    vertical: 10,
+                    horizontal: AppSpacing.lg,
+                    vertical: AppSpacing.md,
                   ),
                 ),
                 onPressed: () async {
@@ -184,7 +184,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
             width: 1.5,
           ),
         ),
-        padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
+        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxl),
         child: SafeArea(
           top: false,
           child: Column(
@@ -200,7 +200,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
@@ -332,7 +332,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: colors.surfaceContainerLow,
         borderRadius: AppRadius.xlRadius,
@@ -344,7 +344,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(AppSpacing.sm),
             decoration: BoxDecoration(
               color: accentColor.withValues(alpha: 0.15),
               shape: BoxShape.circle,

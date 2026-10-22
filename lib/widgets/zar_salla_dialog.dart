@@ -29,7 +29,7 @@ class ZarSallaDialog extends StatelessWidget {
           side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.4)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -37,7 +37,7 @@ class ZarSallaDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: AppAccents.success.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -54,7 +54,7 @@ class ZarSallaDialog extends StatelessWidget {
                   ),
                   const SizedBox(width: 16),
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: colors.primary.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -103,7 +103,7 @@ class ZarSallaDialog extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
                           borderRadius: AppRadius.lgRadius,
                         ),
@@ -131,7 +131,7 @@ class ZarSallaDialog extends StatelessWidget {
                         backgroundColor: AppAccents.success,
                         foregroundColor: Colors.white,
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
                           borderRadius: AppRadius.lgRadius,
                         ),

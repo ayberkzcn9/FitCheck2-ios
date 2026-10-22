@@ -1636,7 +1636,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
               if (_hataMesaji != null && !programVarMi)
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
                     child: Card(
                       elevation: 0,
                       color: colorScheme.errorContainer,
@@ -1644,7 +1644,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                         borderRadius: AppRadius.lgRadius,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(AppSpacing.lg),
                         child: Row(
                           children: [
                             Icon(
@@ -1673,7 +1673,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
               if (programVarMi && eksikParcaNotu != null)
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
                     child: Card(
                       elevation: 0,
                       color: colorScheme.tertiaryContainer,
@@ -1681,7 +1681,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                         borderRadius: AppRadius.lgRadius,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(AppSpacing.lg),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -1724,7 +1724,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
               if (_eksikParcaOnerisiYukleniyor || _eksikParcaOnerisi != null)
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
                     child: Card(
                       elevation: 0,
                       color: colorScheme.tertiaryContainer,
@@ -1732,7 +1732,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                         borderRadius: AppRadius.lgRadius,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(AppSpacing.lg),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -1807,8 +1807,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                     children: [
                       // Üst Buton Grubu
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0, vertical: 6.0),
+                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                         child: Row(
                           children: [
                             Expanded(
@@ -1839,8 +1838,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: AppRadius.lgRadius,
                                     ),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
                                   ),
                                 ),
                               ),
@@ -1853,8 +1851,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
                       if (_hataMesaji != null)
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16.0, vertical: 6.0),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                           child: Card(
                             elevation: 0,
                             color: colorScheme.errorContainer,
@@ -1862,7 +1859,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                               borderRadius: AppRadius.lgRadius,
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(16),
+                              padding: const EdgeInsets.all(AppSpacing.lg),
                               child: Row(
                                 children: [
                                   Icon(
@@ -1918,7 +1915,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
                       // --- ANA KOMBİN KARTI ---
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, 100),
                         child: Builder(
                           builder: (context) {
                             final gunItem =
@@ -1984,7 +1981,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(AppSpacing.xl),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -2026,9 +2023,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           if (!booleanBosMu)
                                             Container(
                                               padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                      vertical: 8),
+                                                  const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                                               decoration: BoxDecoration(
                                                 color: colorScheme
                                                     .surfaceContainerHighest,
@@ -2077,9 +2072,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           if (gunlukHavaTahmini.isNotEmpty)
                                             Container(
                                               padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 12,
-                                                      vertical: 8),
+                                                  const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                                               decoration: BoxDecoration(
                                                 color: colorScheme
                                                     .surfaceContainerHighest,
@@ -2118,8 +2111,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     // Parçalar Listesi
                                     if (booleanBosMu)
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 8),
+                                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
                                         child: Text(
                                           tuyoMetni.isNotEmpty
                                               ? tuyoMetni
@@ -2260,7 +2252,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     if (!booleanBosMu) ...[
                                       const SizedBox(height: 20),
                                       Container(
-                                        padding: const EdgeInsets.all(16),
+                                        padding: const EdgeInsets.all(AppSpacing.lg),
                                         decoration: BoxDecoration(
                                           color: AppTints.styleistBgDinamik(context),
                                           borderRadius:
@@ -2505,12 +2497,12 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                 SliverFillRemaining(
                   hasScrollBody: false,
                   child: Padding(
-                    padding: const EdgeInsets.all(32.0),
+                    padding: const EdgeInsets.all(AppSpacing.xxxl),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(24),
+                          padding: const EdgeInsets.all(AppSpacing.xxl),
                           decoration: BoxDecoration(
                             color: colorScheme.surfaceContainerHighest,
                             shape: BoxShape.circle,

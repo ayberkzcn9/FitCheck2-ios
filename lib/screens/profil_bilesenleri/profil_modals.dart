@@ -275,7 +275,7 @@ class _ModalCercevesi extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+                padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.md),
                 child: Column(
                   children: [
                     Container(
@@ -290,7 +290,7 @@ class _ModalCercevesi extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(AppSpacing.sm),
                           decoration: BoxDecoration(
                             color: iconColor.withValues(alpha: 0.15),
                             shape: BoxShape.circle,
@@ -363,7 +363,7 @@ class _ModalKart extends StatelessWidget {
 
   const _ModalKart({
     required this.child,
-    this.padding = const EdgeInsets.all(16),
+    this.padding = const EdgeInsets.all(AppSpacing.lg),
   });
 
   @override
@@ -409,12 +409,12 @@ class _BosDurum extends StatelessWidget {
               minHeight: constraints.maxHeight,
             ),
             child: Padding(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(AppSpacing.xxl),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(AppSpacing.xxl),
                     decoration: BoxDecoration(
                       color: color.withValues(alpha: 0.12),
                       shape: BoxShape.circle,
@@ -476,8 +476,8 @@ class _ParcaGorunumu extends StatelessWidget {
       constraints: const BoxConstraints(maxWidth: 180),
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: 14,
-          vertical: 12,
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.md,
         ),
         decoration: BoxDecoration(
           color: colorScheme.surfaceContainerHighest,
@@ -578,7 +578,7 @@ class _GecmisDetaySheetState extends _IslemSheetState<_GecmisDetaySheet> {
       yukseklikOrani: 0.78,
       child: ListView(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(AppSpacing.xxl),
         children: [
           if (tarih.isNotEmpty) ...[
             Text(
@@ -715,7 +715,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
               message: l10n.henuzFavoriEklemediniz,
             )
           : ListView.separated(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(AppSpacing.xl),
               physics: const BouncingScrollPhysics(),
               itemCount: favoriler.length,
               separatorBuilder: (_, __) => const SizedBox(height: 16),
@@ -750,8 +750,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                                 ),
                                 const SizedBox(height: 8),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
+                                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                                   decoration: BoxDecoration(
                                     color: colorScheme.surfaceContainerHighest,
                                     borderRadius: AppRadius.mdRadius,
@@ -821,7 +820,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                       if (favori.tuyo.trim().isNotEmpty) ...[
                         const SizedBox(height: 16),
                         Container(
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(AppSpacing.md),
                           decoration: BoxDecoration(
                             color: colorScheme.surfaceContainerHighest,
                             borderRadius: AppRadius.lgRadius,
@@ -924,7 +923,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
       altAlan: sepettekiler.isEmpty
           ? null
           : Container(
-              padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+              padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.md),
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
@@ -965,7 +964,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
               message: l10n.sepetBosTumKiyafetlerTemiz,
             )
           : ListView.separated(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(AppSpacing.xl),
               physics: const BouncingScrollPhysics(),
               itemCount: sepettekiler.length,
               separatorBuilder: (_, __) => const SizedBox(height: 16),
@@ -973,7 +972,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                 final item = sepettekiler[index];
 
                 return _ModalKart(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(AppSpacing.md),
                   child: Row(
                     children: [
                       ProfilKiyafetGorseli(
