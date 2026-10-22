@@ -1675,6 +1675,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                               // 🔍 contain: yatay kalan görsellerde kıyafetin
                               // kenarları kırpılmasın (cover kırpıyordu).
                               fit: BoxFit.contain,
+                              // Sığmayan görsel kartın üstüne yaslanır; ortalı
+                              // bırakıldığında üstte boş bir bant kalıyordu.
+                              alignment: Alignment.topCenter,
                               errorBuilder: (_, __, ___) => Center(
                                 child: Icon(Icons.broken_image_outlined, color: colors.onSurfaceVariant),
                               ),
