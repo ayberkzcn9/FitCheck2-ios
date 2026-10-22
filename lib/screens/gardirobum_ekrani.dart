@@ -1654,6 +1654,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
+                    Positioned.fill(
+                      child: ColoredBox(color: colors.surfaceContainer),
+                    ),
                     TweenAnimationBuilder<double>(
                       tween: Tween<double>(begin: 0, end: item.sepetteMi ? 1 : 0),
                       duration: const Duration(milliseconds: 400),

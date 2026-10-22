@@ -889,7 +889,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        centerTitle: true,
+        centerTitle: false,
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
