@@ -124,6 +124,15 @@ void main() {
     Future<void> Function(Kiyafet)? onGiydi,
     void Function(Kiyafet)? onKombin,
   }) async {
+    // Liste tembel çizildiği için varsayılan 800x600 ekranda raflar hiç
+    // oluşmaz; boyutu testin kendisi ayarlamadıysa uzun bir ekran kullan.
+    if (tester.view.physicalSize == const Size(2400, 1800)) {
+      tester.view.physicalSize = const Size(800, 1800);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+    }
+
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('tr'),
