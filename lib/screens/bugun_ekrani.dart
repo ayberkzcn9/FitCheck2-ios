@@ -1273,18 +1273,24 @@ class _BugunEkraniState extends State<BugunEkrani> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _bolumBasligi(context, baslik, altYazi: altYazi),
-        SizedBox(
-          height: 106,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-            itemCount: parcalar.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 10),
-            itemBuilder: (context, i) {
-              final parca = parcalar[i];
-              return SizedBox(
-                width: 96,
+        // Yükseklik sabit değil: metin ölçeği büyüdüğünde (erişilebilirlik
+        // ayarı %200) etiket de büyür, raf da ona göre uzasın.
+        Builder(
+          builder: (context) {
+            final metinOlcegi = MediaQuery.textScalerOf(context).scale(12);
+            final rafYuksekligi = 76 + metinOlcegi * 1.5 + AppSpacing.xs * 2;
+            return SizedBox(
+              height: rafYuksekligi,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                itemCount: parcalar.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
+                itemBuilder: (context, i) {
+                  final parca = parcalar[i];
+                  return SizedBox(
+                    width: 96,
                 child: GestureDetector(
                   onTap: () => _parcaMenusu(context, l10n, parca),
                   child: Column(
@@ -1305,7 +1311,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                           gaplessPlayback: true,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: AppSpacing.xs),
                       Text(
                         parca.gorunenBaslik,
                         maxLines: 1,
@@ -1321,6 +1327,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
               );
             },
           ),
+        );
+          },
         ),
       ],
     );

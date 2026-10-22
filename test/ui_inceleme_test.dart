@@ -91,8 +91,13 @@ void _donanimKanallariniSustur() {
   }
 }
 
+int _uygulamaSayaci = 0;
+
 Widget _uygulama(Widget child, {Locale? dil}) {
   return MaterialApp(
+    // Her çağrı için benzersiz anahtar: Navigator durumu (açık modal, rota)
+    // bir sonraki ekrana taşmasın.
+    key: ValueKey('uygulama-${_uygulamaSayaci++}'),
     debugShowCheckedModeBanner: false,
     locale: dil ?? const Locale('tr'),
     localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -860,5 +865,222 @@ void main() {
     print(cikti);
     expect(sonuc.exitCode, 0,
         reason: 'Tasarim butunlugu kapisi gecti:\n' + cikti);
+  });
+
+  testWidgets('Erisilebilirlik: yazi boyutu %200 - tasma denetimi', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    await telefon(tester);
+
+    // WCAG 1.4.4: metin %200 buyutulebilmeli.
+    tester.platformDispatcher.textScaleFactorTestValue = 2.0;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+    await tester.pumpWidget(_uygulama(bugunEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '48_olcek_bugun');
+    _yerlesimHatasiniBildir(tester, 'Bugun x2');
+
+    await tester.pumpWidget(
+      _uygulama(
+        GardirobumEkrani(
+          gardirobum: dolap,
+          onKiyafetEkle: (_) {},
+          onKiyafetSil: (_) {},
+          onGardirobuTemizle: () {},
+          onSepetToggle: (_) {},
+          onKombinIstegi: (_) {},
+          anaRenk: const Color(0xFF0F5F4A),
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '49_olcek_dolap');
+    _yerlesimHatasiniBildir(tester, 'Dolap x2');
+
+    await tester.pumpWidget(_uygulama(const GirisEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '50_olcek_giris');
+    _yerlesimHatasiniBildir(tester, 'Giris x2');
+
+    await tester.pumpWidget(
+      _uygulama(
+        ProfilVeAnalizEkrani(
+          gardirobum: dolap,
+          favoriKombinler: const <FavoriKombin>[],
+          gecmisKombinler: gecmis,
+          gunlukHava: 'İstanbul 21°C',
+          anaRenk: const Color(0xFF0F5F4A),
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '51_olcek_profil');
+    _yerlesimHatasiniBildir(tester, 'Profil x2');
+
+    await tester.pumpWidget(
+      _uygulama(StilGunluguEkrani(gardirobum: dolap, gecmisKombinler: gecmis)),
+    );
+    await bekle(tester);
+    await goruntu(tester, '52_olcek_stil');
+    _yerlesimHatasiniBildir(tester, 'Stil x2');
+
+    await tester.pumpWidget(_uygulama(SeyahatEkrani(gardirobum: dolap)));
+    await bekle(tester);
+    await goruntu(tester, '53_olcek_seyahat');
+    _yerlesimHatasiniBildir(tester, 'Seyahat x2');
+
+    await tester.pumpWidget(
+      _uygulama(
+        KombinDuellosuEkrani(
+          gardirobum: dolap,
+          gunlukHava: 'İstanbul 21°C',
+          motor: DuelMotoru(),
+          servisi: KombinDuellosuServisi(),
+          tohum: 7,
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '54_olcek_duello');
+    _yerlesimHatasiniBildir(tester, 'Duello x2');
+
+    await tester.pumpWidget(
+      _uygulama(
+        KendiKombinimEkrani(
+          gardirobum: dolap,
+          anaRenk: const Color(0xFF0F5F4A),
+          onFavoriEkle: (_) {},
+          onFavoriCikar: (_) {},
+          onGecmiseEkle: (_, __) {},
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '55_olcek_kendi_kombinim');
+    _yerlesimHatasiniBildir(tester, 'Kendi kombinim x2');
+
+    await tester.pumpWidget(_uygulama(const OnboardingEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '56_olcek_onboarding');
+    _yerlesimHatasiniBildir(tester, 'Onboarding x2');
+
+    await tester.pumpWidget(_uygulama(const ReklamsizPremiumEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '57_olcek_premium');
+    _yerlesimHatasiniBildir(tester, 'Premium x2');
+  });
+
+  testWidgets('Kapsam: koyu tema ve RTL ile kalan ekranlar', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    _donanimKanallariniSustur();
+    await telefon(tester);
+
+    // --- KOYU TEMA: daha önce kapsanmayan ekranlar
+    _parlaklik = Brightness.dark;
+    addTearDown(() => _parlaklik = Brightness.light);
+
+    await tester.pumpWidget(
+      _uygulama(
+        HaftalikPlanlayiciEkrani(
+          gardirobum: dolap,
+          gunlukHava: 'İstanbul 21°C',
+          detayliHaftalikHava: 'Pazartesi 22°C, Salı 24°C',
+          havaYukleniyor: false,
+          onFavoriEkle: (_) {},
+          onGecmiseEkle: (_, __) {},
+          onKonumuYenile: () {},
+          anaRenk: const Color(0xFF0F5F4A),
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '58_koyu_haftalik');
+    _yerlesimHatasiniBildir(tester, 'Koyu haftalik');
+
+    await tester.pumpWidget(
+      _uygulama(
+        DolaptanKombinStilistiEkrani(
+          gardirobum: dolap,
+          favoriKombinler: const <FavoriKombin>[],
+          gunlukHava: 'İstanbul 21°C',
+          havaYukleniyor: false,
+          onFavoriEkle: (_) {},
+          onGecmiseEkle: (_, __) async {},
+          onKonumuYenile: () {},
+          anaRenk: const Color(0xFF0F5F4A),
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '59_koyu_dolaptan');
+    _yerlesimHatasiniBildir(tester, 'Koyu dolaptan');
+
+    await tester.pumpWidget(_uygulama(const ReklamsizPremiumEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '61_koyu_premium');
+    _yerlesimHatasiniBildir(tester, 'Koyu premium');
+
+    // --- RTL (ar): daha önce kapsanmayan ekranlar
+    _parlaklik = Brightness.light;
+
+    await tester.pumpWidget(
+      _uygulama(
+        StilGunluguEkrani(gardirobum: dolap, gecmisKombinler: gecmis),
+        dil: const Locale('ar'),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '62_dil_ar_stil');
+    _yerlesimHatasiniBildir(tester, 'Ar stil');
+
+    await tester.pumpWidget(
+      _uygulama(
+        ProfilVeAnalizEkrani(
+          gardirobum: dolap,
+          favoriKombinler: const <FavoriKombin>[],
+          gecmisKombinler: gecmis,
+          gunlukHava: 'İstanbul 21°C',
+          anaRenk: const Color(0xFF0F5F4A),
+        ),
+        dil: const Locale('ar'),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '63_dil_ar_profil');
+    _yerlesimHatasiniBildir(tester, 'Ar profil');
+
+    await tester.pumpWidget(
+      _uygulama(
+        KombinDuellosuEkrani(
+          gardirobum: dolap,
+          gunlukHava: 'İstanbul 21°C',
+          motor: DuelMotoru(),
+          servisi: KombinDuellosuServisi(),
+          tohum: 7,
+        ),
+        dil: const Locale('ar'),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '64_dil_ar_duello');
+    _yerlesimHatasiniBildir(tester, 'Ar duello');
+
+    await tester.pumpWidget(
+      _uygulama(
+        KendiKombinimEkrani(
+          gardirobum: dolap,
+          anaRenk: const Color(0xFF0F5F4A),
+          onFavoriEkle: (_) {},
+          onFavoriCikar: (_) {},
+          onGecmiseEkle: (_, __) {},
+        ),
+        dil: const Locale('ar'),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '66_dil_ar_kendi_kombinim');
+    _yerlesimHatasiniBildir(tester, 'Ar kendi kombinim');
   });
 }
