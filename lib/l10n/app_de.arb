@@ -102,8 +102,8 @@
       }
     }
   },
-  "stilistTitle": "SOFORT-OUTFIT-STYLIST",
-  "gunlukKombinTitle": "TAGESOUTFIT",
+  "stilistTitle": "Sofort-Outfit-Stylist",
+  "gunlukKombinTitle": "Tagesoutfit",
   "gunlukKombinHazirBaslik": "Bereit für dein Outfit?",
   "gunlukKombinHazirIcerik": "Würfle oder schüttle dein Handy, um das heutige Outfit zu erstellen.",
   "gunlukKombinKartBaslik": "Heutiges Outfit",
@@ -237,7 +237,7 @@
   "kameraIzni": "Kameraberechtigung",
   "izinVerDevamEt": "Erlauben und fortfahren",
   "gunlukHavaMevcutDegil": "Wetterdaten nicht verfügbar",
-  "profilAnalizTitle": "PROFIL & ANALYSE",
+  "profilAnalizTitle": "Profil & Analyse",
   "anlikDurum": "Aktueller Status",
   "toplamParca": "Gesamtanzahl Artikel",
   "favoriKombin": "Lieblingsoutfit",

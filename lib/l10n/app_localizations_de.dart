@@ -253,10 +253,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get gardirobumTamam => 'OK';
 
   @override
-  String get stilistTitle => 'SOFORT-OUTFIT-STYLIST';
+  String get stilistTitle => 'Sofort-Outfit-Stylist';
 
   @override
-  String get gunlukKombinTitle => 'TAGESOUTFIT';
+  String get gunlukKombinTitle => 'Tagesoutfit';
 
   @override
   String get gunlukKombinHazirBaslik => 'Bereit für dein Outfit?';
@@ -733,7 +733,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get gunlukHavaMevcutDegil => 'Wetterdaten nicht verfügbar';
 
   @override
-  String get profilAnalizTitle => 'PROFIL & ANALYSE';
+  String get profilAnalizTitle => 'Profil & Analyse';
 
   @override
   String get anlikDurum => 'Aktueller Status';

@@ -245,10 +245,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get gardirobumTamam => 'Tamam';
 
   @override
-  String get stilistTitle => 'ANLIK KOMBİN STİLİSTİ';
+  String get stilistTitle => 'Anlık Kombin Stilisti';
 
   @override
-  String get gunlukKombinTitle => 'GÜNLÜK KOMBİN';
+  String get gunlukKombinTitle => 'Günlük Kombin';
 
   @override
   String get gunlukKombinHazirBaslik => 'Kombinine Hazır mısın?';
@@ -722,7 +722,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get gunlukHavaMevcutDegil => 'Hava durumu mevcut değil';
 
   @override
-  String get profilAnalizTitle => 'PROFİL & ANALİZ';
+  String get profilAnalizTitle => 'Profil & Analiz';
 
   @override
   String get anlikDurum => 'Anlık Durum';

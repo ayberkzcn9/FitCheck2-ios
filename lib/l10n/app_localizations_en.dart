@@ -247,10 +247,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gardirobumTamam => 'OK';
 
   @override
-  String get stilistTitle => 'INSTANT OUTFIT STYLIST';
+  String get stilistTitle => 'Instant Outfit Stylist';
 
   @override
-  String get gunlukKombinTitle => 'DAILY OUTFIT';
+  String get gunlukKombinTitle => 'Daily Outfit';
 
   @override
   String get gunlukKombinHazirBaslik => 'Ready For Your Outfit?';
@@ -725,7 +725,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gunlukHavaMevcutDegil => 'Weather data unavailable';
 
   @override
-  String get profilAnalizTitle => 'PROFILE & INSIGHTS';
+  String get profilAnalizTitle => 'Profile & Insights';
 
   @override
   String get anlikDurum => 'Current Status';

@@ -547,13 +547,13 @@ abstract class AppLocalizations {
   /// No description provided for @stilistTitle.
   ///
   /// In tr, this message translates to:
-  /// **'ANLIK KOMBİN STİLİSTİ'**
+  /// **'Anlık Kombin Stilisti'**
   String get stilistTitle;
 
   /// No description provided for @gunlukKombinTitle.
   ///
   /// In tr, this message translates to:
-  /// **'GÜNLÜK KOMBİN'**
+  /// **'Günlük Kombin'**
   String get gunlukKombinTitle;
 
   /// No description provided for @gunlukKombinHazirBaslik.
@@ -1411,7 +1411,7 @@ abstract class AppLocalizations {
   /// No description provided for @profilAnalizTitle.
   ///
   /// In tr, this message translates to:
-  /// **'PROFİL & ANALİZ'**
+  /// **'Profil & Analiz'**
   String get profilAnalizTitle;
 
   /// No description provided for @anlikDurum.
