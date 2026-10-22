@@ -1638,11 +1638,11 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
         curve: Curves.fastOutSlowIn,
         key: ValueKey(item.id),
         decoration: BoxDecoration(
-          color: Colors.transparent,
+          color: colors.surfaceContainerLow,
           borderRadius: AppRadius.xxlRadius,
           border: Border.all(
-            color: Colors.transparent,
-            width: 0,
+            color: colors.outlineVariant,
+            width: 1,
           ),
         ),
         child: ClipRRect(
@@ -1665,13 +1665,16 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             0.2126 - 0.2126 * (1 - value), 0.7152 - 0.7152 * (1 - value), 0.0722 + 0.9278 * (1 - value), 0, 0,
                             0, 0, 0, 1, 0,
                           ]),
-                          child: Image.memory(
-                            item.resimBytes,
-                            // 🔍 contain: yatay kalan görsellerde kıyafetin
-                            // kenarları kırpılmasın (cover kırpıyordu).
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) => Center(
-                              child: Icon(Icons.broken_image_outlined, color: colors.onSurfaceVariant),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Image.memory(
+                              item.resimBytes,
+                              // 🔍 contain: yatay kalan görsellerde kıyafetin
+                              // kenarları kırpılmasın (cover kırpıyordu).
+                              fit: BoxFit.contain,
+                              errorBuilder: (_, __, ___) => Center(
+                                child: Icon(Icons.broken_image_outlined, color: colors.onSurfaceVariant),
+                              ),
                             ),
                           ),
                         );
@@ -1751,49 +1754,47 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       ),
                     ),
 
-                    // Kapalı Durumda Fotoğraf Üzerindeki İpuç/Başlık Yazısı
-                    if (!acik)
-                      Positioned(
-                        bottom: 10,
-                        left: 10,
-                        right: 10,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: StrokedText(
-                                item.gorunenBaslik,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                strokeColor: Colors.black,
-                                strokeBlur: 2.5,
-                              ),
-                            ),
-                            const SizedBox(width: 4),
-                            Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                // Açık renkli fotoğraflarda beyaz ok kaybolmasın
-                                // diye koyu yarı saydam zemin kullanılır.
-                                color: Colors.black.withValues(alpha: 0.45),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Colors.white.withValues(alpha: 0.5),
-                                ),
-                              ),
-                              child: const Icon(Icons.keyboard_arrow_up_rounded, color: Colors.white, size: 14),
-                            ),
-                          ],
-                        ),
-                      ),
                   ],
                 ),
               ),
+
+              // Kapalı durumda ad etiketi: fotoğrafın üstüne binmez, kart
+              // yüzeyinde okunur (açık/koyu temada aynı kontrast).
+              if (!acik)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 0, 8, 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          item.gorunenBaslik,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: item.sepetteMi
+                                ? colors.onSurfaceVariant.withValues(alpha: 0.6)
+                                : colors.onSurface,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Container(
+                        padding: const EdgeInsets.all(3),
+                        decoration: BoxDecoration(
+                          color: colors.primaryContainer,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.keyboard_arrow_up_rounded,
+                          color: colors.onPrimaryContainer,
+                          size: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
 
               // Açık Durumdaki Alt Detay Paneli
               AnimatedCrossFade(
@@ -1841,10 +1842,10 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: item.sepetteMi
                                       ? colors.errorContainer
-                                      : colors.onSurface,
+                                      : colors.primary,
                                   foregroundColor: item.sepetteMi
                                       ? colors.onErrorContainer
-                                      : colors.surface,
+                                      : colors.onPrimary,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
@@ -1863,7 +1864,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                       size: 14,
                                       color: item.sepetteMi
                                           ? colors.onErrorContainer
-                                          : colors.surface,
+                                          : colors.onPrimary,
                                     ),
                                     const SizedBox(width: 4),
                                     Flexible(
@@ -1878,7 +1879,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                             letterSpacing: 0.1,
                                             color: item.sepetteMi
                                                 ? colors.onErrorContainer
-                                                : colors.surface,
+                                                : colors.onPrimary,
                                           ),
                                         ),
                                       ),
@@ -2031,12 +2032,12 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 visualDensity: VisualDensity.compact,
                 backgroundColor:
                     colors.surfaceContainerHighest.withValues(alpha: 0.55),
-                selectedColor: colors.onSurface,
+                selectedColor: colors.primary,
                 side: BorderSide.none,
                 labelStyle: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
-                  color: secili ? colors.surface : colors.onSurfaceVariant,
+                  color: secili ? colors.onPrimary : colors.onSurfaceVariant,
                 ),
               );
             },

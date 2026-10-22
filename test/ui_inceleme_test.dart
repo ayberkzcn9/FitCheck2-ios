@@ -578,4 +578,47 @@ void main() {
     await _ekranGorusu(tester, '15_gardirobum_arama');
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets('Koyu tema - Bugun, Dolap, Duello', (tester) async {
+    _parlaklik = Brightness.dark;
+    addTearDown(() => _parlaklik = Brightness.light);
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+
+    await telefon(tester);
+    await tester.pumpWidget(_uygulama(bugunEkrani()));
+    await _bekle(tester);
+    await _ekranGorusu(tester, '27_koyu_bugun');
+
+    await tester.pumpWidget(
+      _uygulama(
+        GardirobumEkrani(
+          gardirobum: dolap,
+          onKiyafetEkle: (_) {},
+          onKiyafetSil: (_) {},
+          onGardirobuTemizle: () {},
+          onSepetToggle: (_) {},
+          onKombinIstegi: (_) {},
+          anaRenk: Colors.indigo,
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '28_koyu_dolap');
+
+    await tester.pumpWidget(
+      _uygulama(
+        KombinDuellosuEkrani(
+          gardirobum: dolap,
+          gunlukHava: 'İstanbul 21°C · Parçalı Bulutlu',
+          motor: DuelMotoru(),
+          servisi: KombinDuellosuServisi(),
+          tohum: 7,
+        ),
+      ),
+    );
+    await _bekle(tester);
+    await _ekranGorusu(tester, '29_koyu_duello');
+    expect(tester.takeException(), isNull);
+  });
 }

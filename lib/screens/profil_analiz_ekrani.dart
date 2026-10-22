@@ -924,8 +924,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   if (analiz.seri > 0) ...[
                     _ProfilBilgiKarti(
                       icon: Icons.local_fire_department_rounded,
-                      bgRenk: const Color(0xFFFFEDD5),
-                      ikonRenk: const Color(0xFFEA580C),
+                      bgRenk: colors.tertiaryContainer,
+                      ikonRenk: colors.tertiary,
                       baslik: l10n.harikaGidiyorsun,
                       deger: l10n.gundurSeridesin(analiz.seri),
                       bilgiBaslik: l10n.bilgiSeriBaslik,
@@ -937,8 +937,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   // ANLIK HAVA DURUMU KARTI (Gökyüzü Mavisi Vurgulu)
                   _ProfilBilgiKarti(
                     icon: Icons.wb_sunny_rounded,
-                    bgRenk: const Color(0xFFE0F2FE),
-                    ikonRenk: const Color(0xFF0284C7),
+                    bgRenk: colors.primaryContainer,
+                    ikonRenk: colors.primary,
                     baslik: l10n.anlikDurum,
                     deger: _havayiFormatla(l10n),
                     bilgiBaslik: l10n.anlikDurum,
@@ -954,10 +954,10 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                         _ProfilIkon(
                           icon: Icons.local_laundry_service_rounded,
                           bgRenk: analiz.sepette == 0
-                              ? AppMiscColors.greenPale
+                              ? colors.primaryContainer
                               : AppMiscColors.roseBg,
                           ikonRenk: analiz.sepette == 0
-                              ? AppAccents.success
+                              ? colors.primary
                               : AppMiscColors.rose,
                         ),
                         const SizedBox(width: 16),
@@ -994,7 +994,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                   color: analiz.sepette == 0
-                                      ? AppAccents.success
+                                      ? colors.primary
                                       : AppMiscColors.rose,
                                 ),
                               ),
@@ -1022,12 +1022,12 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   ),
                   const SizedBox(height: 16),
 
-                  // IKILI OZET KARTLAR (Mor & Zümrüt Yeşili)
+                  // IKILI OZET KARTLAR (marka zümrütü)
                   _ProfilIkili(
                     sol: _ProfilOzetKarti(
                       icon: Icons.psychology_rounded,
-                      bgRenk: AppMiscColors.lightPurpleBg,
-                      ikonRenk: const Color(0xFF7C3AED),
+                      bgRenk: colors.primaryContainer,
+                      ikonRenk: colors.primary,
                       deger: stil,
                       baslik: l10n.stilKimligin,
                       bilgiBaslik: l10n.stilKimligin,
@@ -1035,8 +1035,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                     ),
                     sag: _ProfilOzetKarti(
                       icon: Icons.eco_rounded,
-                      bgRenk: const Color(0xFFD1FAE5),
-                      ikonRenk: AppAccents.success,
+                      bgRenk: colors.primaryContainer,
+                      ikonRenk: colors.primary,
                       deger: '%${(analiz.verimlilik * 100).toStringAsFixed(0)}',
                       baslik: l10n.dolapVerimliligi,
                       bilgiBaslik: l10n.dolapVerimliligi,
@@ -1045,19 +1045,19 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   ),
                   const SizedBox(height: 16),
 
-                  // IKILI ISTATISTIK KUTULARI (Kraliyet Mavisi & Altın Sarısı)
+                  // IKILI ISTATISTIK KUTULARI (zümrüt & altın)
                   _ProfilIkili(
                     sol: IstatistikKutusu(
                       baslik: l10n.toplamParca,
                       deger: '$toplam',
                       icon: Icons.checkroom_rounded,
-                      iconColor: AppAccents.info,
+                      iconColor: colors.primary,
                     ),
                     sag: IstatistikKutusu(
                       baslik: l10n.favoriKombin,
                       deger: '${widget.favoriKombinler.length}',
                       icon: Icons.star_rounded,
-                      iconColor: AppAccents.warning,
+                      iconColor: colors.tertiary,
                       onTap: () => _favorileriAc(),
                     ),
                   ),

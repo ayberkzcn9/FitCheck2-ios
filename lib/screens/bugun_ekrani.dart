@@ -609,10 +609,13 @@ class _BugunEkraniState extends State<BugunEkrani> {
   Widget _aksiyonKutusu(BuildContext context, _HizliAksiyon aksiyon) {
     final colors = Theme.of(context).colorScheme;
     return Material(
-      color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
-      borderRadius: BorderRadius.circular(16),
+      color: colors.surfaceContainerLow,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+        side: BorderSide(color: colors.outlineVariant),
+      ),
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(18),
         onTap: () {
           HapticFeedback.lightImpact();
           aksiyon.onTap();
@@ -621,18 +624,26 @@ class _BugunEkraniState extends State<BugunEkrani> {
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
           child: Column(
             children: [
-              Icon(aksiyon.ikon, size: 22, color: aksiyon.renk),
-              const SizedBox(height: 6),
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: colors.primaryContainer,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(aksiyon.ikon, size: 20, color: aksiyon.renk),
+              ),
+              const SizedBox(height: 8),
               Text(
                 aksiyon.etiket,
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 11,
                   height: 1.15,
                   fontWeight: FontWeight.w700,
-                  color: colors.onSurfaceVariant,
+                  color: colors.onSurface,
                 ),
               ),
             ],

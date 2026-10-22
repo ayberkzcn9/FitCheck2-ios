@@ -226,7 +226,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
           children: [
             _noktaGostergesi(colors, AppAccents.success, l10n.stilGunluguGiyildi),
             const SizedBox(width: 14),
-            _noktaGostergesi(colors, AppAccents.info, l10n.stilGunluguPlanli),
+            _noktaGostergesi(colors, colors.tertiary, l10n.stilGunluguPlanli),
           ],
         ),
         if (widget.gecmisKombinler.isEmpty && _program == null) ...[
@@ -341,7 +341,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       const SizedBox(width: 6),
                     if (gun.planVar) ...[
                       const SizedBox(width: 3),
-                      _nokta(colors, AppAccents.info),
+                      _nokta(colors, colors.tertiary),
                     ],
                   ],
                 ),
@@ -469,7 +469,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 for (final kombin in gun.planlanan)
                   _satir(
                     icons: Icons.repeat_rounded,
-                    renk: AppAccents.info,
+                    renk: colors.tertiary,
                     baslik: l10n.planHaftalikProgram,
                     metin: kombin,
                   ),

@@ -299,7 +299,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 end: Alignment.bottomRight,
                 colors: [
                   colors.primary,
-                  Color.lerp(colors.primary, colors.tertiary, 0.45) ??
+                  Color.lerp(colors.primary, colors.onPrimaryContainer, 0.4) ??
                       colors.primary,
                 ],
               ),
