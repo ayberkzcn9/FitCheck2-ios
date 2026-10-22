@@ -257,26 +257,12 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                 color: colors.onPrimaryContainer.withValues(alpha: 0.85),
               ),
             ),
-          _grup(
-            l10n.gardirobumKategoriUst,
-            plan.ustler,
-            colors,
-          ),
-          _grup(
-            l10n.gardirobumKategoriAlt,
-            plan.altlar,
-            colors,
-          ),
-          _grup(
-            l10n.seyahatDiger,
-            plan.disGiyim,
-            colors,
-          ),
-          _grup(
-            l10n.gardirobumKategoriAyakkabi,
-            plan.ayakkabilar,
-            colors,
-          ),
+          _grupIzgarasi(colors, [
+            (l10n.gardirobumKategoriUst, plan.ustler),
+            (l10n.gardirobumKategoriAlt, plan.altlar),
+            (l10n.seyahatDiger, plan.disGiyim),
+            (l10n.gardirobumKategoriAyakkabi, plan.ayakkabilar),
+          ]),
           if (plan.eksikler.isNotEmpty) ...[
             const SizedBox(height: 8),
             for (final eksik in plan.eksikler)
@@ -326,6 +312,29 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
       default:
         return eksik;
     }
+  }
+
+  /// Kategori gruplarını iki sütunlu ızgarada dizer; tek satırlık kısa
+  /// gruplar yüzünden kartın yarısı boş kalmasın.
+  Widget _grupIzgarasi(
+    ColorScheme colors,
+    List<(String, List<Kiyafet>)> gruplar,
+  ) {
+    return LayoutBuilder(
+      builder: (context, kisit) {
+        final genislik = (kisit.maxWidth - 16) / 2;
+        return Wrap(
+          spacing: 16,
+          children: [
+            for (final (baslik, parcalar) in gruplar)
+              SizedBox(
+                width: genislik,
+                child: _grup(baslik, parcalar, colors),
+              ),
+          ],
+        );
+      },
+    );
   }
 
   Widget _grup(String baslik, List<Kiyafet> parcalar, ColorScheme colors) {

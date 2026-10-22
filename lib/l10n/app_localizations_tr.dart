@@ -173,7 +173,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get tamam => 'Tamam';
 
   @override
-  String get gardirobumTitle => 'SANAL GARDIROBUM';
+  String get gardirobumTitle => 'Sanal Gardırobum';
 
   @override
   String get gardirobumYukleniyor => 'AI İnceliyor...';
@@ -610,7 +610,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get haftalikHata => 'Haftalık plan oluşturulurken hata oluştu.';
 
   @override
-  String get haftalikAjandaTitle => 'HAFTALIK STİL AJANDASI';
+  String get haftalikAjandaTitle => 'Haftalık Stil Ajandası';
 
   @override
   String get haftalikAnlikHavaDurumu => 'Haftalık Hava Tahmini';

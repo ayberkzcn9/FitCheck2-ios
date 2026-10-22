@@ -415,7 +415,7 @@ abstract class AppLocalizations {
   /// No description provided for @gardirobumTitle.
   ///
   /// In tr, this message translates to:
-  /// **'SANAL GARDIROBUM'**
+  /// **'Sanal Gardırobum'**
   String get gardirobumTitle;
 
   /// No description provided for @gardirobumYukleniyor.
@@ -1207,7 +1207,7 @@ abstract class AppLocalizations {
   /// No description provided for @haftalikAjandaTitle.
   ///
   /// In tr, this message translates to:
-  /// **'HAFTALIK STİL AJANDASI'**
+  /// **'Haftalık Stil Ajandası'**
   String get haftalikAjandaTitle;
 
   /// No description provided for @haftalikAnlikHavaDurumu.

@@ -174,7 +174,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get tamam => 'OK';
 
   @override
-  String get gardirobumTitle => 'GUARDAROBA VIRTUALE';
+  String get gardirobumTitle => 'Guardaroba virtuale';
 
   @override
   String get gardirobumYukleniyor => 'L\'IA sta esaminando...';
@@ -617,7 +617,7 @@ class AppLocalizationsIt extends AppLocalizations {
       'Si è verificato un errore durante la generazione del piano settimanale.';
 
   @override
-  String get haftalikAjandaTitle => 'AGENDA STILE SETTIMANALE';
+  String get haftalikAjandaTitle => 'Agenda stile settimanale';
 
   @override
   String get haftalikAnlikHavaDurumu => 'Previsioni Meteo Settimanali';
