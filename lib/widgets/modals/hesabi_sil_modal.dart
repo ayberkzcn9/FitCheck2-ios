@@ -53,7 +53,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
             child: Text(
               l10n.hesabiKaliciSilTitle,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: AppText.sizeTitleSmall,
                 fontWeight: FontWeight.bold,
                 color: colors.onSurface,
               ),
@@ -68,7 +68,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
           Text(
             l10n.hesabiSilGeriAlinamazUyari,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
               height: 1.4,
             ),
@@ -77,7 +77,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
           Text(
             l10n.hesabiSilOnayKoduMetni,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: AppText.sizeCaption,
               fontWeight: FontWeight.bold,
               color: colors.onSurfaceVariant,
             ),
@@ -98,11 +98,11 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
                 vertical: 12,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.lgRadius,
                 borderSide: BorderSide.none,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.lgRadius,
                 borderSide: BorderSide(
                   color: _isValid ? colors.error : colors.primary,
                   width: 1.5,
@@ -134,7 +134,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
             backgroundColor: colors.error,
             foregroundColor: colors.onError,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
             ),
           ),
           onPressed: _isValid ? () => Navigator.pop(context, true) : null,

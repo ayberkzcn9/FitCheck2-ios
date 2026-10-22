@@ -172,7 +172,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -197,7 +197,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           backgroundColor: colors.tertiaryContainer,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
       return;
@@ -214,7 +214,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           backgroundColor: colors.tertiaryContainer,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
       return;
@@ -269,7 +269,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -333,7 +333,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -378,7 +378,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       height: 5,
                       decoration: BoxDecoration(
                         color: _marka.withValues(alpha: 0.6),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppRadius.mdRadius,
                       ),
                     ),
                     Padding(
@@ -394,7 +394,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               l10n.kullanimKosullariBaslik,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: AppText.sizeTitleSmall,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: -0.5,
                                 color: colors.onSurface,
@@ -433,7 +433,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                           child: Text(
                             l10n.kullanimKosullariMetni,
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: AppText.sizeBodySmall,
                               height: 1.6,
                               color: colors.onSurfaceVariant,
                               fontWeight: FontWeight.w500,
@@ -469,7 +469,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       l10n.onaylamakIcinKaydirin,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
-                                          fontSize: 12,
+                                          fontSize: AppText.sizeCaption,
                                           fontWeight: FontWeight.bold,
                                           color: _marka),
                                     ),
@@ -490,7 +490,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     : colors.onSurfaceVariant,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
+                                    borderRadius: AppRadius.lgRadius),
                               ),
                               onPressed: enAltaUlasildi
                                   ? () {
@@ -506,7 +506,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 l10n.okudumAnladimKabulEdiyorum,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                    fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
@@ -657,7 +657,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                             style: TextStyle(
                               color: colors.onSurfaceVariant,
                               fontWeight: FontWeight.bold,
-                              fontSize: 14,
+                              fontSize: AppText.sizeBodySmall,
                             ),
                           ),
                         ),
@@ -691,7 +691,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     : l10n.yeniHesapOlusturun,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 24,
+                                  fontSize: AppText.sizeHeadline,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: -0.5,
                                   color: colors.onSurface,
@@ -704,7 +704,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     : l10n.kombinleriniSaklamakIcinKatil,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: AppText.sizeBodySmall,
                                     color: colors.onSurfaceVariant,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -714,7 +714,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 padding: const EdgeInsets.all(4),
                                 decoration: BoxDecoration(
                                   color: colors.surfaceContainerHighest,
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: AppRadius.lgRadius,
                                 ),
                                 child: Row(
                                   children: [
@@ -732,7 +732,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                                 ? authGreenColor
                                                 : null,
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                                AppRadius.mdRadius,
                                             border: _girisModu
                                                 ? const Border(
                                                     bottom: BorderSide(
@@ -769,7 +769,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                                 ? authGreenColor
                                                 : null,
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                                AppRadius.mdRadius,
                                             border: !_girisModu
                                                 ? const Border(
                                                     bottom: BorderSide(
@@ -803,7 +803,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   textCapitalization: TextCapitalization.words,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 14,
+                                      fontSize: AppText.sizeBodySmall,
                                       color: colors.onSurface),
                                   decoration: InputDecoration(
                                     labelText: l10n.adinizVeyaLakabiniz,
@@ -818,10 +818,10 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 16, vertical: 14),
                                     border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius: AppRadius.lgRadius,
                                         borderSide: BorderSide.none),
                                     focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius: AppRadius.lgRadius,
                                         borderSide: BorderSide(
                                             color: authGreenColor, width: 2)),
                                   ),
@@ -834,7 +834,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 keyboardType: TextInputType.emailAddress,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 14,
+                                    fontSize: AppText.sizeBodySmall,
                                     color: colors.onSurface),
                                 decoration: InputDecoration(
                                   labelText: l10n.epostaAdresiniz,
@@ -848,10 +848,10 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 16, vertical: 14),
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
                                   focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide(
                                           color: authGreenColor, width: 2)),
                                 ),
@@ -862,7 +862,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 obscureText: _sifreGizli,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 14,
+                                    fontSize: AppText.sizeBodySmall,
                                     color: colors.onSurface),
                                 decoration: InputDecoration(
                                   labelText: l10n.sifreniz,
@@ -885,10 +885,10 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 16, vertical: 14),
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
                                   focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide(
                                           color: authGreenColor, width: 2)),
                                 ),
@@ -899,7 +899,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               Container(
                                 height: 52,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: AppRadius.lgRadius,
                                   color: authGreenColor,
                                 ),
                                 child: ElevatedButton(
@@ -913,7 +913,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                         const Size(double.infinity, 52),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(16)),
+                                            AppRadius.lgRadius),
                                   ),
                                   child: _yukleniyor
                                       ? const SizedBox(
@@ -927,7 +927,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                               ? l10n.girisYapVeBasla
                                               : l10n.kayitOlVeBasla,
                                           style: const TextStyle(
-                                              fontSize: 16,
+                                              fontSize: AppText.sizeBodyLarge,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white),
                                         ),
@@ -948,7 +948,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       l10n.girisVeya,
                                       style: TextStyle(
                                           color: colors.onSurfaceVariant,
-                                          fontSize: 12,
+                                          fontSize: AppText.sizeCaption,
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
@@ -967,7 +967,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                  style: OutlinedButton.styleFrom(
                                    minimumSize: const Size(double.infinity, 52),
                                    shape: RoundedRectangleBorder(
-                                       borderRadius: BorderRadius.circular(16)),
+                                       borderRadius: AppRadius.lgRadius),
                                    side: BorderSide(color: colors.outlineVariant, width: 1.5),
                                    backgroundColor: colors.surfaceContainerLow,
                                    foregroundColor: colors.onSurface,
@@ -989,7 +989,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                  label: Text(
                                    l10n.girisYapGoogle,
                                    style: TextStyle(
-                                     fontSize: 16,
+                                     fontSize: AppText.sizeBodyLarge,
                                      fontWeight: FontWeight.w600,
                                      color: colors.onSurface,
                                      letterSpacing: 0.2,
@@ -1011,7 +1011,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 style: OutlinedButton.styleFrom(
                                   minimumSize: const Size(double.infinity, 50),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16)),
+                                      borderRadius: AppRadius.lgRadius),
                                   side:
                                       BorderSide(color: colors.outlineVariant),
                                 ),
@@ -1075,7 +1075,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               sayfa["baslik"]!,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: AppText.sizeHeadline,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: -0.5,
                                 color: colors.onSurface,
@@ -1086,7 +1086,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               sayfa["aciklama"]!,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 color: colors.onSurfaceVariant,
                                 height: 1.5,
                                 fontWeight: FontWeight.w500,
@@ -1119,11 +1119,11 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   title: Text(l10n.uygulamaDili,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
-                                          fontSize: 14,
+                                          fontSize: AppText.sizeBodySmall,
                                           color: colors.onSurface)),
                                   subtitle: Text(dilAdiEtiketi,
                                       style: TextStyle(
-                                          fontSize: 14,
+                                          fontSize: AppText.sizeBodySmall,
                                           color: colors.onSurfaceVariant,
                                           fontWeight: FontWeight.w600)),
                                   trailing: const Icon(
@@ -1216,7 +1216,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               Container(
                                 decoration: BoxDecoration(
                                   color: colors.surfaceContainerLow,
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: AppRadius.lgRadius,
                                   border: Border.all(
                                     color: _kosullariKabulEtti
                                         ? sayfaIkonRengi
@@ -1230,7 +1230,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   activeColor: sayfaIkonRengi,
                                   checkColor: Colors.white,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8)),
+                                      borderRadius: AppRadius.smRadius),
                                   contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 12, vertical: 4),
                                   controlAffinity:
@@ -1241,7 +1241,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     child: RichText(
                                       text: TextSpan(
                                         style: TextStyle(
-                                          fontSize: 14,
+                                          fontSize: AppText.sizeBodySmall,
                                           fontWeight: FontWeight.w600,
                                           color: colors.onSurfaceVariant,
                                         ),
@@ -1316,7 +1316,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                           color: isActive
                               ? sayfaRenk
                               : colors.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: AppRadius.smRadius,
                         ),
                       );
                     }),
@@ -1354,7 +1354,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 backgroundColor: colors.tertiaryContainer,
                                 behavior: SnackBarBehavior.floating,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
+                                    borderRadius: AppRadius.lgRadius),
                               ),
                             );
                             return;
@@ -1367,7 +1367,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                         child: Text(
                           l10n.onboardingDevamEt,
                           style: const TextStyle(
-                              fontSize: 18,
+                              fontSize: AppText.sizeTitleSmall,
                               fontWeight: FontWeight.w800,
                               color: Colors.white,
                               letterSpacing: 0.5),
@@ -1421,7 +1421,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? effectiveAccent : colors.surfaceContainerLow,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppRadius.lgRadius,
           border: Border.all(
               color: isSelected
                   ? effectiveAccent
@@ -1430,7 +1430,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         ),
         child: Text(label,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
               color: isSelected ? Colors.white : colors.onSurfaceVariant,
             )),
@@ -1449,7 +1449,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           style: TextStyle(
             fontWeight: FontWeight.w900,
             color: labelColor ?? colors.onSurface,
-            fontSize: 12,
+            fontSize: AppText.sizeCaption,
             letterSpacing: 1.2,
           ),
         ),

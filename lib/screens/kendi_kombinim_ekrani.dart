@@ -124,7 +124,7 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
           ),
           backgroundColor: colors.surfaceContainerHigh,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -151,7 +151,7 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
           ),
           backgroundColor: colors.primaryContainer,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -262,7 +262,7 @@ SADECE bu JSON formatında dön:
             ),
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -303,7 +303,7 @@ SADECE bu JSON formatında dön:
                     height: 5, 
                     decoration: BoxDecoration(
                       color: colors.onSurfaceVariant.withValues(alpha: 0.4), 
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.mdRadius,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -318,7 +318,7 @@ SADECE bu JSON formatında dön:
                             l10n.parcaSecModalBaslik(baslik), 
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 18, 
+                              fontSize: AppText.sizeTitleSmall, 
                               fontWeight: FontWeight.w900, 
                               color: colors.onSurface, 
                               letterSpacing: -0.4,
@@ -371,7 +371,7 @@ SADECE bu JSON formatında dön:
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: colors.onSurfaceVariant, 
-                                    fontSize: 14, 
+                                    fontSize: AppText.sizeBodySmall, 
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -415,7 +415,7 @@ SADECE bu JSON formatında dön:
                                     color: colors.surfaceContainerLow,
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                     child: Image.memory(
                                       item.resimBytes,
                                       fit: BoxFit.cover,
@@ -481,7 +481,7 @@ SADECE bu JSON formatında dön:
                   : Center(
                       child: Text(
                         bosEmoji,
-                        style: const TextStyle(fontSize: 42),
+                        style: const TextStyle(fontSize: AppText.sizeEmoji),
                       ),
                     ),
             ),
@@ -499,7 +499,7 @@ SADECE bu JSON formatında dön:
                       style: TextStyle(
                         color: colors.onSurface, 
                         fontWeight: FontWeight.w900, 
-                        fontSize: 12, 
+                        fontSize: AppText.sizeCaption, 
                         letterSpacing: 1.1,
                       ),
                     ),
@@ -511,7 +511,7 @@ SADECE bu JSON formatında dön:
                       Text(
                         secilenKiyafet.gorunenBaslik,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           fontWeight: FontWeight.w800,
                           color: colors.onSurface,
                           letterSpacing: -0.3,
@@ -532,7 +532,7 @@ SADECE bu JSON formatında dön:
                             child: Text(
                               l10n.kendiTasarimimParcaSec,
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: AppText.sizeSmall,
                                 fontWeight: FontWeight.w700,
                                 color: colors.primary,
                               ),
@@ -620,12 +620,12 @@ SADECE bu JSON formatında dön:
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontWeight: FontWeight.w900, 
-            fontSize: 18, 
+            fontSize: AppText.sizeTitleSmall, 
             letterSpacing: -0.4,
             color: colors.onSurface,
           ),
         ),
-        centerTitle: true,
+        centerTitle: false,
         backgroundColor: theme.scaffoldBackgroundColor,
         elevation: 0,
         actions: [
@@ -675,7 +675,7 @@ SADECE bu JSON formatında dön:
                     child: Text(
                       kombinHazirMi ? l10n.kombinHazirAiTavsiyesi : l10n.kombinBaslaIpucu,
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        fontSize: 14,
+                        fontSize: AppText.sizeBodySmall,
                         fontWeight: FontWeight.w500,
                         color: AppMiscColors.styleistTextDinamik(context),
                         height: 1.45,
@@ -714,14 +714,14 @@ SADECE bu JSON formatında dön:
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
                           color: !_tekParcaMi ? AppAccents.primary : Colors.transparent,
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                         alignment: Alignment.center,
                         child: Text(
                           "${_cinsiyet.trim() == 'Erkek' ? '👕' : '👚'} ${l10n.ustAltModu}",
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: AppText.sizeBodySmall,
                             fontWeight: !_tekParcaMi ? FontWeight.w800 : FontWeight.w600,
                             color: !_tekParcaMi ? Colors.white : colors.onSurfaceVariant,
                           ),
@@ -747,14 +747,14 @@ SADECE bu JSON formatında dön:
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
                           color: _tekParcaMi ? AppAccents.primary : Colors.transparent,
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                         alignment: Alignment.center,
                         child: Text(
                           "👗 ${l10n.tekParcaElbiseModu}",
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: AppText.sizeBodySmall,
                             fontWeight: _tekParcaMi ? FontWeight.w800 : FontWeight.w600,
                             color: _tekParcaMi ? Colors.white : colors.onSurfaceVariant,
                           ),
@@ -799,7 +799,7 @@ SADECE bu JSON formatında dön:
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontWeight: FontWeight.w900, 
-                              fontSize: 16, 
+                              fontSize: AppText.sizeBodyLarge, 
                               letterSpacing: -0.5,
                               color: colors.onSurface,
                             ),
@@ -813,7 +813,7 @@ SADECE bu JSON formatında dön:
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: AppRadius.mdRadius,
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -861,7 +861,7 @@ SADECE bu JSON formatında dön:
                             child: Text(
                               metniGuvenliYap(_sonTuyo!),
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 fontWeight: FontWeight.w500,
                                 color: AppMiscColors.styleistTextDinamik(context),
                                 height: 1.45,
@@ -906,7 +906,7 @@ SADECE bu JSON formatında dön:
                           child: Text(
                             _aiIslemde ? l10n.stilistDegerlendiriyor : l10n.aiIleAnalizEtKaydet, 
                             style: const TextStyle(
-                              fontSize: 14, 
+                              fontSize: AppText.sizeBodySmall, 
                               fontWeight: FontWeight.bold, 
                               letterSpacing: -0.2,
                             ),
@@ -917,7 +917,7 @@ SADECE bu JSON formatında dön:
                           foregroundColor: Colors.white,
                           disabledBackgroundColor: colors.surfaceContainerHighest,
                           disabledForegroundColor: colors.onSurfaceVariant.withValues(alpha: 0.38),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                           elevation: 0,
                         ),
                       ),
@@ -944,7 +944,7 @@ SADECE bu JSON formatında dön:
                             ? AppStatusColors.favoriteFgDinamik(context)
                             : colors.onSurfaceVariant,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                     ),

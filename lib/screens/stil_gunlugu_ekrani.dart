@@ -180,7 +180,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 yerel.formatMonthYear(_ay),
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: AppText.sizeBodyLarge,
                   fontWeight: FontWeight.w900,
                   color: colors.onSurface,
                 ),
@@ -204,7 +204,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   child: Text(
                     gun,
                     style: TextStyle(
-                      fontSize: 11,
+                      fontSize: AppText.sizeMicro,
                       fontWeight: FontWeight.w700,
                       color: colors.onSurfaceVariant,
                     ),
@@ -276,7 +276,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         const SizedBox(width: 6),
         Text(
           etiket,
-          style: TextStyle(fontSize: 11, color: colors.onSurfaceVariant),
+          style: TextStyle(fontSize: AppText.sizeMicro, color: colors.onSurfaceVariant),
         ),
       ],
     );
@@ -303,7 +303,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
           color: bugunMu
               ? colors.primaryContainer.withValues(alpha: 0.55)
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.mdRadius,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -311,7 +311,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             Text(
               '${gun.tarih.day}',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 fontWeight: bugunMu ? FontWeight.w900 : FontWeight.w600,
                 color: colors.onSurface,
               ),
@@ -407,7 +407,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 Text(
                   yerel.formatMediumDate(gun.tarih),
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: AppText.sizeBodyLarge,
                     fontWeight: FontWeight.w900,
                     color: colors.onSurface,
                   ),
@@ -518,7 +518,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppRadius.lgRadius,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -531,7 +531,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: AppText.sizeBody,
                     fontWeight: FontWeight.w800,
                     color: colors.onSurface,
                   ),
@@ -541,7 +541,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               Text(
                 l10n.planParcaSayisi(plan.parcalar.length),
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: AppText.sizeMicro,
                   fontWeight: FontWeight.w700,
                   color: colors.onSurfaceVariant,
                 ),
@@ -606,7 +606,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                         child: Text(
                           l10n.planKombinSec,
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: AppText.sizeBodyLarge,
                             fontWeight: FontWeight.w900,
                             color: colors.onSurface,
                           ),
@@ -764,7 +764,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       child: Text(
         turkceBuyukHarf(metin),
         style: TextStyle(
-          fontSize: 10,
+          fontSize: AppText.sizeMicro,
           fontWeight: FontWeight.w800,
           letterSpacing: 0.8,
           color: colors.onSurfaceVariant,
@@ -816,12 +816,12 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: AppRadius.lgRadius,
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppRadius.lgRadius,
         ),
         child: Row(
           children: [
@@ -842,7 +842,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: AppText.sizeBodySmall,
                       fontWeight: FontWeight.w800,
                       color: colors.onSurface,
                     ),
@@ -854,7 +854,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: AppText.sizeMicro,
                         color: colors.onSurfaceVariant,
                       ),
                     ),
@@ -890,7 +890,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 Text(
                   baslik,
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: AppText.sizeMicro,
                     fontWeight: FontWeight.w700,
                     color: colors.onSurfaceVariant,
                   ),
@@ -898,7 +898,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 Text(
                   metin,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: AppText.sizeBodySmall,
                     fontWeight: FontWeight.w700,
                     color: colors.onSurface,
                   ),
@@ -959,7 +959,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: colors.surfaceContainerHighest.withValues(alpha: 0.45),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppRadius.xlRadius,
             border: Border.all(
               color: colors.outlineVariant.withValues(alpha: 0.3),
             ),
@@ -974,7 +974,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     Text(
                       kayit['baslik'] ?? '',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: AppText.sizeBodySmall,
                         fontWeight: FontWeight.w900,
                         color: colors.onSurface,
                       ),
@@ -986,7 +986,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                           : MaterialLocalizations.of(context)
                               .formatMediumDate(tarih),
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: AppText.sizeMicro,
                         color: colors.onSurfaceVariant,
                       ),
                     ),
@@ -995,7 +995,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       Text(
                         parcalar.join(', '),
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                         ),
                       ),
@@ -1031,7 +1031,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     return Container(
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.6),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.mdRadius,
       ),
       clipBehavior: Clip.antiAlias,
       child: kiyafet == null
@@ -1107,7 +1107,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     Text(
                       '${rapor.kombinSayisi}',
                       style: TextStyle(
-                        fontSize: 44,
+                        fontSize: AppText.sizeDisplayHuge,
                         height: 1.0,
                         fontWeight: FontWeight.w900,
                         letterSpacing: -1.5,
@@ -1399,7 +1399,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 Text(
                   '${baslangic.add(Duration(days: i)).day}',
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: AppText.sizeMicro,
                     color: colors.onPrimaryContainer
                         .withValues(alpha: 0.8),
                   ),

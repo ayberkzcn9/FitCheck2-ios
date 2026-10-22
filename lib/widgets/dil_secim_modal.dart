@@ -1,3 +1,4 @@
+import '../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 import '../main.dart'; // KombinDanismaniApp için
 import '../l10n/app_localizations.dart';
@@ -128,7 +129,7 @@ class DilSecimModal extends StatelessWidget {
               l10n.dilSecimBaslik,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: AppText.sizeTitleSmall,
                 fontWeight: FontWeight.bold,
                 color: colors.onSurface,
               ),
@@ -172,7 +173,7 @@ class DilSecimModal extends StatelessWidget {
                       vertical: 2,
                     ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.mdRadius,
                     ),
 
                     // BAYRAK
@@ -189,7 +190,7 @@ class DilSecimModal extends StatelessWidget {
                       child: Text(
                         bayrak,
                         style: const TextStyle(
-                          fontSize: 24,
+                          fontSize: AppText.sizeHeadline,
                         ),
                       ),
                     ),
@@ -198,7 +199,7 @@ class DilSecimModal extends StatelessWidget {
                     title: Text(
                       dilAdi,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: AppText.sizeBodySmall,
                         fontWeight:
                             isSelected ? FontWeight.bold : FontWeight.normal,
                         color: isSelected ? colors.primary : colors.onSurface,

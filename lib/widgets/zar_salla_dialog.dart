@@ -25,7 +25,7 @@ class ZarSallaDialog extends StatelessWidget {
         backgroundColor: colors.surfaceContainerHigh,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: AppRadius.modalRadius,
           side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.4)),
         ),
         child: Padding(
@@ -75,7 +75,7 @@ class ZarSallaDialog extends StatelessWidget {
               Text(
                 l10n.zarPopupBaslik,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: AppText.sizeTitle,
                   fontWeight: FontWeight.w900,
                   letterSpacing: -0.5,
                   color: colors.onSurface,
@@ -86,7 +86,7 @@ class ZarSallaDialog extends StatelessWidget {
               Text(
                 l10n.zarPopupAciklama,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   height: 1.4,
                   fontWeight: FontWeight.w500,
                   color: colors.onSurfaceVariant,
@@ -105,7 +105,7 @@ class ZarSallaDialog extends StatelessWidget {
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                       child: Text(
@@ -133,7 +133,7 @@ class ZarSallaDialog extends StatelessWidget {
                         elevation: 0,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                       icon: const Icon(Icons.casino_rounded, size: 20),
@@ -141,7 +141,7 @@ class ZarSallaDialog extends StatelessWidget {
                         l10n.zarlariAt,
                         style: const TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                         ),
                       ),
                     ),

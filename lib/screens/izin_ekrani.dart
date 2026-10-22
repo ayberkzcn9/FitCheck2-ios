@@ -91,7 +91,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   l10n.izinGerekliBaslik,
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 18,
+                    fontSize: AppText.sizeTitleSmall,
                     letterSpacing: -0.5,
                     color: colors.onSurface,
                   ),
@@ -102,7 +102,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           content: Text(
             l10n.izinGerekliIcerik,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
               height: 1.45,
             ),
@@ -118,14 +118,14 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 l10n.dahaSonraAyarla,
                 style: TextStyle(
                   color: colors.onSurfaceVariant,
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.lgRadius,
                 gradient: const LinearGradient(
                   colors: [_izinMarka, _izinSu],
                 ),
@@ -136,7 +136,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   shadowColor: Colors.transparent,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: AppRadius.lgRadius,
                   ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 18,
@@ -152,7 +152,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   l10n.ayarlaraGit,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: AppText.sizeBodySmall,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -218,7 +218,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 l10n.uygulamaIzinleri,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: AppText.sizeHeadline,
                   fontWeight: FontWeight.w900,
                   letterSpacing: -0.5,
                   color: colors.onSurface,
@@ -229,7 +229,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 l10n.izinEkraniAciklama,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   color: colors.onSurfaceVariant,
                   height: 1.4,
                   fontWeight: FontWeight.w500,
@@ -270,7 +270,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 height: 52,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: AppRadius.lgRadius,
                   gradient: const LinearGradient(
                     colors: [_izinMarka, _izinSu],
                   ),
@@ -281,7 +281,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                     shadowColor: Colors.transparent,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: AppRadius.lgRadius,
                     ),
                   ),
                   onPressed: _yukleniyor ? null : _izinleriSiraIleIste,
@@ -297,7 +297,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                       : Text(
                           l10n.izinleriVerVeBasla,
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: AppText.sizeBodyLarge,
                             fontWeight: FontWeight.w800,
                             color: Colors.white,
                           ),
@@ -311,7 +311,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   l10n.simdilikAtla,
                   style: TextStyle(
                     color: colors.onSurfaceVariant,
-                    fontSize: 14,
+                    fontSize: AppText.sizeBodySmall,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -360,7 +360,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   baslik,
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 14,
+                    fontSize: AppText.sizeBodySmall,
                     color: colors.onSurface,
                   ),
                 ),
@@ -368,7 +368,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 Text(
                   aciklama,
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: AppText.sizeCaption,
                     color: colors.onSurfaceVariant,
                     fontWeight: FontWeight.w500,
                     height: 1.3,

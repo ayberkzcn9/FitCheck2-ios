@@ -1,3 +1,4 @@
+import '../../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -110,7 +111,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.stilVeModaTercihleriniz,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: AppText.sizeTitle,
                 fontWeight: FontWeight.w900,
                 color: colors.onSurface,
               ),
@@ -119,7 +120,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.stilModalAciklama,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: AppText.sizeBodySmall,
                 color: colors.onSurfaceVariant,
               ),
             ),
@@ -127,7 +128,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.favoriTarzinizUst,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 fontWeight: FontWeight.w900,
                 color: colors.onSurfaceVariant,
                 letterSpacing: 1.2,
@@ -154,7 +155,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.giyimKesimiFitUst,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 fontWeight: FontWeight.w900,
                 color: colors.onSurfaceVariant,
                 letterSpacing: 1.2,
@@ -196,7 +197,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
         HapticFeedback.selectionClick();
         onTap();
       },
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: AppRadius.mdRadius,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 240),
         curve: Curves.easeOutCubic,
@@ -205,7 +206,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
           color: isSelected
               ? colors.secondaryContainer
               : colors.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.mdRadius,
           border: Border.all(
             color: isSelected
                 ? colors.secondary
@@ -216,7 +217,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
         child: Text(
           label,
           style: TextStyle(
-            fontSize: 12,
+            fontSize: AppText.sizeCaption,
             fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
             color: isSelected
                 ? colors.onSecondaryContainer

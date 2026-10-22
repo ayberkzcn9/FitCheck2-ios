@@ -1,5 +1,6 @@
 import 'dart:ui' show lerpDouble;
 
+import '../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 
 /// Uygulama açılırken arka plandaki hazırlıklar (Firebase, reklamlar,
@@ -127,7 +128,7 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
                       Text(
                         'FitCheck',
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: AppText.sizeHeadline,
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.5,
                           color: colors.onSurface,
@@ -191,7 +192,7 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
   /// İnce, yuvarlatılmış ve sürekli akan ilerleme çubuğu.
   Widget _ilerlemeCubugu(ColorScheme colors) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(999),
+      borderRadius: AppRadius.fullRadius,
       child: SizedBox(
         width: 132,
         height: 4,

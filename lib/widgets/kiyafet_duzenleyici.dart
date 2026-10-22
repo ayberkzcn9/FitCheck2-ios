@@ -106,7 +106,7 @@ class _KiyafetDuzenleyiciState extends State<KiyafetDuzenleyici> {
         child: Container(
           decoration: BoxDecoration(
             color: colors.surfaceContainerHigh,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: AppRadius.xxlRadius,
           ),
           padding: const EdgeInsets.fromLTRB(18, 18, 18, 14),
           child: SingleChildScrollView(
@@ -117,7 +117,7 @@ class _KiyafetDuzenleyiciState extends State<KiyafetDuzenleyici> {
               Text(
                 l10n.duzenleArkaPlanBaslik,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: AppText.sizeBodyLarge,
                   fontWeight: FontWeight.w900,
                   color: colors.onSurface,
                 ),
@@ -126,7 +126,7 @@ class _KiyafetDuzenleyiciState extends State<KiyafetDuzenleyici> {
               Text(
                 l10n.duzenleIpucu,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: AppText.sizeCaption,
                   color: colors.onSurfaceVariant,
                 ),
               ),

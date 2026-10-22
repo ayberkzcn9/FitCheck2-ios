@@ -195,7 +195,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         SnackBar(
           content: Text(l10n.arkaPlandaTamamlandi(durum.eklenen)),
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     }
@@ -206,7 +206,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
           content: Text(l10n.arkaPlandaBaziAtlandi(durum.atlanan)),
           behavior: SnackBarBehavior.floating,
           backgroundColor: colors.error,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     }
@@ -314,7 +314,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
               backgroundColor: colorScheme.primaryContainer,
               foregroundColor: colorScheme.onPrimaryContainer,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: AppRadius.mdRadius,
               ),
             ),
             onPressed: () {
@@ -450,7 +450,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
             backgroundColor: _anaRenk,
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
             ),
           ),
         );
@@ -1220,7 +1220,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                         backgroundColor: colorScheme.primaryContainer,
                         foregroundColor: colorScheme.onPrimaryContainer,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: AppRadius.mdRadius,
                         ),
                       ),
                       onPressed: () => Navigator.pop(context),
@@ -1524,7 +1524,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                   _kalanHak >= 99999 ? '∞' : '$_kalanHak',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w900,
-                                    fontSize: 14,
+                                    fontSize: AppText.sizeBodySmall,
                                     color: _kalanHak > 0
                                         ? AppAccents.warning
                                         : colorScheme.onErrorContainer,
@@ -1821,7 +1821,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                     child: Text(
                       l10n.arkaPlandaIlerleme(durum.islenen, durum.toplam),
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: AppText.sizeMicro,
                         fontWeight: FontWeight.w700,
                         color: colors.onSurfaceVariant,
                       ),
@@ -1830,7 +1830,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                   Text(
                     l10n.arkaPlandaEkle,
                     style: TextStyle(
-                      fontSize: 11,
+                      fontSize: AppText.sizeMicro,
                       fontWeight: FontWeight.w800,
                       color: colors.onSurface,
                     ),
@@ -1839,7 +1839,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
               ),
               const SizedBox(height: 4),
               ClipRRect(
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: AppRadius.xsRadius,
                 child: LinearProgressIndicator(
                   value: durum.oran,
                   minHeight: 4,

@@ -72,6 +72,12 @@ class AppRadius {
   /// 32 — modal
   static const double modal = 32;
 
+  /// 4 — mikro (nokta, küçük işaret)
+  static const double xs = 4;
+
+  /// 999 — tam yuvarlak (daire, rozet)
+  static const double full = 999;
+
   // BorderRadius yardımcıları
   static const BorderRadius smRadius = BorderRadius.all(Radius.circular(sm));
   static const BorderRadius mdRadius = BorderRadius.all(Radius.circular(md));
@@ -80,6 +86,11 @@ class AppRadius {
   static const BorderRadius xxlRadius = BorderRadius.all(Radius.circular(xxl));
   static const BorderRadius dialogRadius =
       BorderRadius.all(Radius.circular(dialog));
+  static const BorderRadius modalRadius =
+      BorderRadius.all(Radius.circular(modal));
+  static const BorderRadius xsRadius = BorderRadius.all(Radius.circular(xs));
+  static const BorderRadius fullRadius =
+      BorderRadius.all(Radius.circular(full));
 }
 
 // ===========================================================================
@@ -101,60 +112,112 @@ class AppBlur {
 class AppText {
   const AppText._();
 
-  /// 11 — çok küçük etiket (all-caps)
+  // ---------------------------------------------------------------------
+  // PUNTO ÖLÇEĞİ
+  // Ekranda kullanılabilecek her punto burada tanımlıdır. Erişilebilirlik
+  // için en küçük punto 12'dir (WCAG AA ve okunabilirlik).
+  // ---------------------------------------------------------------------
+
+  /// 12 — mikro etiket (all-caps), alt bilgi
+  static const double sizeMicro = 12;
+
+  /// 12 — küçük etiket
+  static const double sizeCaption = 12;
+
+  /// 13 — gövde küçük
+  static const double sizeSmall = 13;
+
+  /// 14 — gövde küçük (en sık kullanılan)
+  static const double sizeBodySmall = 14;
+
+  /// 15 — gövde
+  static const double sizeBody = 15;
+
+  /// 16 — gövde büyük
+  static const double sizeBodyLarge = 16;
+
+  /// 18 — başlık küçük
+  static const double sizeTitleSmall = 18;
+
+  /// 20 — başlık
+  static const double sizeTitle = 20;
+
+  /// 22 — başlık büyük
+  static const double sizeTitleLarge = 22;
+
+  /// 24 — başlık en büyük
+  static const double sizeHeadline = 24;
+
+  /// 26 — display
+  static const double sizeDisplay = 26;
+
+  /// 32 — display büyük (rakamlar)
+  static const double sizeDisplayLarge = 32;
+
+  /// 42 — emoji boyutu
+  static const double sizeEmoji = 42;
+
+  /// 44 — dev rakam (takvim ayı)
+  static const double sizeDisplayHuge = 44;
+
+  // ---------------------------------------------------------------------
+  // HAZIR METİN STİLLERİ
+  // ---------------------------------------------------------------------
+  /// 12 — çok küçük etiket (all-caps)
   static const TextStyle labelMicro = TextStyle(
-    fontSize: 11,
+    fontSize: sizeMicro,
     fontWeight: FontWeight.w800,
     letterSpacing: 1.2,
   );
 
   /// 12 — küçük etiket
   static const TextStyle labelSmall = TextStyle(
-    fontSize: 12,
+    fontSize: sizeCaption,
     fontWeight: FontWeight.w600,
   );
 
   /// 13 — gövde küçük
   static const TextStyle bodySmall = TextStyle(
-    fontSize: 13,
+    fontSize: sizeSmall,
     fontWeight: FontWeight.w500,
     height: 1.4,
   );
 
   /// 15 — gövde (varsayılan)
   static const TextStyle body = TextStyle(
-    fontSize: 15,
+    fontSize: sizeBody,
     fontWeight: FontWeight.w500,
     height: 1.4,
   );
 
-  /// 16 — vurgulu gövde
+  /// 15 — vurgulu gövde
   static const TextStyle bodyStrong = TextStyle(
-    fontSize: 15,
+    fontSize: sizeBody,
     fontWeight: FontWeight.w700,
   );
 
-  /// 20 — başlık küçük
+  /// 18 — başlık küçük
   static const TextStyle titleSmall = TextStyle(
-    fontSize: 18,
+    fontSize: sizeTitleSmall,
     fontWeight: FontWeight.w800,
     letterSpacing: -0.3,
   );
 
-  /// 24 — başlık orta
+  /// 22 — başlık orta
   static const TextStyle title = TextStyle(
-    fontSize: 22,
+    fontSize: sizeTitleLarge,
     fontWeight: FontWeight.w900,
     letterSpacing: -0.5,
   );
 
-  /// 28 — başlık büyük
+  /// 26 — başlık büyük
   static const TextStyle headline = TextStyle(
-    fontSize: 26,
+    fontSize: sizeDisplay,
     fontWeight: FontWeight.w900,
     letterSpacing: -0.6,
   );
 }
+
 
 // ===========================================================================
 // AKSAN RENKLERİ — Sadece 2 ana aksan (sadeleştirme)

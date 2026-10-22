@@ -223,7 +223,7 @@ class BildirimServisi {
                 child: Text(
                   l10n.bildirimIzinGerekliBaslik,
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: AppText.sizeBodyLarge,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -233,7 +233,7 @@ class BildirimServisi {
           content: Text(
             l10n.bildirimIzinGerekliIcerik,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               height: 1.4,
             ),
           ),
@@ -249,7 +249,7 @@ class BildirimServisi {
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors.primary,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppRadius.mdRadius,
                 ),
               ),
               onPressed: () async {

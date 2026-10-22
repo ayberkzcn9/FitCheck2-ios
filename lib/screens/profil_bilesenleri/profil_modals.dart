@@ -284,7 +284,7 @@ class _ModalCercevesi extends StatelessWidget {
                       margin: const EdgeInsets.only(bottom: 16),
                       decoration: BoxDecoration(
                         color: colorScheme.outline.withValues(alpha: 0.4),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppRadius.mdRadius,
                       ),
                     ),
                     Row(
@@ -427,7 +427,7 @@ class _BosDurum extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: colorScheme.onSurfaceVariant,
-                      fontSize: 14,
+                      fontSize: AppText.sizeBodySmall,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -481,7 +481,7 @@ class _ParcaGorunumu extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: colorScheme.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppRadius.lgRadius,
           border: Border.all(
             color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           ),
@@ -491,7 +491,7 @@ class _ParcaGorunumu extends StatelessWidget {
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: AppText.sizeBodySmall,
             fontWeight: FontWeight.w700,
             color: colorScheme.onSurface,
           ),
@@ -585,7 +585,7 @@ class _GecmisDetaySheetState extends _IslemSheetState<_GecmisDetaySheet> {
               tarih,
               style: TextStyle(
                 color: colorScheme.onSurfaceVariant,
-                fontSize: 14,
+                fontSize: AppText.sizeBodySmall,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -627,7 +627,7 @@ class _GecmisDetaySheetState extends _IslemSheetState<_GecmisDetaySheet> {
             l10n.giyilenParcalarUst,
             style: TextStyle(
               color: colorScheme.primary,
-              fontSize: 12,
+              fontSize: AppText.sizeCaption,
               fontWeight: FontWeight.w900,
               letterSpacing: 1.2,
             ),
@@ -754,7 +754,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                                       horizontal: 12, vertical: 8),
                                   decoration: BoxDecoration(
                                     color: colorScheme.surfaceContainerHighest,
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: AppRadius.mdRadius,
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -824,7 +824,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             color: colorScheme.surfaceContainerHighest,
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: AppRadius.lgRadius,
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -839,7 +839,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                                 child: Text(
                                   favori.tuyo,
                                   style: theme.textTheme.bodyMedium?.copyWith(
-                                    fontSize: 14,
+                                    fontSize: AppText.sizeBodySmall,
                                     fontStyle: FontStyle.italic,
                                     fontWeight: FontWeight.w600,
                                     height: 1.4,
@@ -940,7 +940,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                     backgroundColor: colorScheme.error,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: AppRadius.lgRadius,
                     ),
                   ),
                   onPressed: islemSuruyor || widget.onSepetiTemizle == null
@@ -952,7 +952,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontWeight: FontWeight.w900,
-                      fontSize: 14,
+                      fontSize: AppText.sizeBodySmall,
                     ),
                   ),
                 ),
@@ -991,7 +991,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                               overflow: TextOverflow.ellipsis,
                               style: theme.textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.w900,
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 color: colorScheme.onSurface,
                               ),
                             ),
@@ -1002,7 +1002,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 color: colorScheme.onSurfaceVariant,
-                                fontSize: 12,
+                                fontSize: AppText.sizeCaption,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),

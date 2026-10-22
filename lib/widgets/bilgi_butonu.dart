@@ -82,7 +82,7 @@ class BilgiSayfasi {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: AppRadius.xxlRadius,
               child: BackdropFilter(
                 filter: ImageFilter.blur(
                   sigmaX: AppBlur.cam,
@@ -91,7 +91,7 @@ class BilgiSayfasi {
                 child: Container(
                   decoration: BoxDecoration(
                     color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: AppRadius.xxlRadius,
                   ),
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
                   child: Column(
@@ -128,7 +128,7 @@ class BilgiSayfasi {
                             child: Text(
                               baslik,
                               style: TextStyle(
-                                fontSize: 17,
+                                fontSize: AppText.sizeTitleSmall,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: -0.3,
                                 color: colors.onSurface,
@@ -148,7 +148,7 @@ class BilgiSayfasi {
                       Text(
                         aciklama,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           height: 1.45,
                           color: colors.onSurfaceVariant,
                         ),

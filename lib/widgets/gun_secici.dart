@@ -91,7 +91,7 @@ class GunSecici extends StatelessWidget {
                     Text(
                       gunAdi,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: AppText.sizeBodySmall,
                         fontWeight: FontWeight.w800,
                         color: fg,
                         letterSpacing: 0.5,

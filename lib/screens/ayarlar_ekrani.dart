@@ -243,7 +243,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               style: const TextStyle(fontWeight: FontWeight.bold)),
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (_) {
@@ -275,7 +275,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           backgroundColor: AppAccents.success,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (e) {
@@ -288,7 +288,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     }
@@ -311,7 +311,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             backgroundColor: AppAccents.error,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
         Navigator.pushAndRemoveUntil(
@@ -442,7 +442,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             backgroundColor: AppAccents.warning,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
         return;
@@ -456,7 +456,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         content: Text(l10n.sabahBildirimiAyarlandi(secilen.format(context)),
             style: const TextStyle(fontWeight: FontWeight.bold)),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
       ),
     );
   }
@@ -484,7 +484,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             backgroundColor: AppAccents.error,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
         setState(() {
@@ -538,7 +538,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             backgroundColor: AppAccents.error,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
         return;
@@ -611,7 +611,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           backgroundColor: AppAccents.success,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (e) {
@@ -624,7 +624,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           backgroundColor: AppAccents.warning,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     }
@@ -650,7 +650,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           backgroundColor: AppAccents.warning,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
       return;
@@ -666,7 +666,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             style: const TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: colors.inverseSurface,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
       ),
     );
   }
@@ -727,12 +727,12 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             softWrap: true,
             style: TextStyle(
               fontWeight: FontWeight.w900,
-              fontSize: 18,
+              fontSize: AppText.sizeTitleSmall,
               letterSpacing: -0.5,
               color: colors.onSurface,
             ),
           ),
-          centerTitle: true,
+          centerTitle: false,
           backgroundColor: Colors.transparent,
           elevation: 0,
           surfaceTintColor: Colors.transparent,
@@ -769,7 +769,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                       ? colors.onPrimary
                                       : colors.onSurfaceVariant,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                                  fontSize: AppText.sizeTitleSmall),
                             )
                           : null,
                     ),
@@ -781,7 +781,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           : l10n.misafirKullanici,
                       style: TextStyle(
                           fontWeight: FontWeight.w900,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           letterSpacing: -0.3,
                           color: colors.onSurface),
                     ),
@@ -803,7 +803,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 ? (_userEmail ?? l10n.epostaDogrulanmis)
                                 : l10n.esitlemekIcinGirisYapin,
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: AppText.sizeCaption,
                                 color: colors.onSurfaceVariant,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -824,7 +824,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                               foregroundColor: Colors.white,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16)),
+                                  borderRadius: AppRadius.lgRadius),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 14, vertical: 8),
                             ),
@@ -836,7 +836,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w900,
-                                    fontSize: 14),
+                                    fontSize: AppText.sizeBodySmall),
                               ),
                             ),
                           ),
@@ -856,7 +856,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           Text(
                             l10n.bagliHesaplarUst,
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: AppText.sizeCaption,
                                 fontWeight: FontWeight.w900,
                                 color: colors.onSurfaceVariant,
                                 letterSpacing: 1.2),
@@ -872,7 +872,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                         : colors.outlineVariant,
                                     width: 1.5),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
+                                    borderRadius: AppRadius.lgRadius),
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 12, horizontal: 8),
                               ),
@@ -895,7 +895,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                       ? l10n.googleHesabiBagli
                                       : l10n.googleHesabiniBagla,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: AppText.sizeBodySmall,
                                     fontWeight: FontWeight.w800,
                                     color: _isGoogleConnected
                                         ? colors.onSurface
@@ -923,11 +923,11 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       title: Text(l10n.sifreVeGuvenlik,
                           style: TextStyle(
                               fontWeight: FontWeight.w800,
-                              fontSize: 14,
+                              fontSize: AppText.sizeBodySmall,
                               color: colors.onSurface)),
                       subtitle: Text(l10n.sifreYenilemeBaglantisiIste,
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: AppText.sizeCaption,
                               color: colors.onSurfaceVariant,
                               fontWeight: FontWeight.w600)),
                       trailing: Icon(Icons.arrow_forward_ios_rounded,
@@ -954,7 +954,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   l10n.premiumAylikBaslik,
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
-                    fontSize: 14,
+                    fontSize: AppText.sizeBodySmall,
                     color: colors.onSurface,
                   ),
                 ),
@@ -963,7 +963,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     SatinAlmaServisi.ornek.aylikFiyat,
                   ),
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: AppText.sizeCaption,
                     color: colors.onSurfaceVariant,
                     fontWeight: FontWeight.w600,
                   ),
@@ -1001,13 +1001,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.stilVeTarzTercihleri,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       '${l10n.secili}: ${_getStilLabel(_seciliStil, l10n)} • ${_getFitLabel(_seciliFit, l10n)}',
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -1044,7 +1044,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           l10n.cinsiyetTercihiBaslik,
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
-                            fontSize: 12,
+                            fontSize: AppText.sizeCaption,
                             color: colors.onSurfaceVariant,
                             letterSpacing: 1.2,
                           ),
@@ -1087,7 +1087,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           l10n.tenRengiTercihinizUst,
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
-                            fontSize: 12,
+                            fontSize: AppText.sizeCaption,
                             color: colors.onSurfaceVariant,
                             letterSpacing: 1.2,
                           ),
@@ -1129,7 +1129,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         Text(
                           l10n.stilistKisiligiVeYantitTarziUst,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: AppText.sizeCaption,
                             fontWeight: FontWeight.w900,
                             color: colors.onSurfaceVariant,
                             letterSpacing: 1.2,
@@ -1155,7 +1155,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                   });
                                   _ayarKaydet('ai_kisilik', key);
                                 },
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: AppRadius.lgRadius,
                                 child: AnimatedContainer(
                                   duration: const Duration(milliseconds: 240),
                                   curve: Curves.easeOutCubic,
@@ -1164,7 +1164,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                     color: secili
                                         ? renk.withValues(alpha: 0.15)
                                         : colors.surfaceContainerHigh,
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                     border: Border.all(
                                       color: secili
                                           ? renk
@@ -1191,7 +1191,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                                 fontWeight: secili
                                                     ? FontWeight.w900
                                                     : FontWeight.w700,
-                                                fontSize: 14,
+                                                fontSize: AppText.sizeBodySmall,
                                                 color: colors.onSurface,
                                               ),
                                             ),
@@ -1199,7 +1199,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                             Text(
                                               aciklama,
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: AppText.sizeCaption,
                                                 color: colors.onSurfaceVariant,
                                                 height: 1.3,
                                                 fontWeight: FontWeight.w500,
@@ -1240,13 +1240,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.sikiRenkTeorisiUyumModu,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.sikiRenkTeorisiAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1274,7 +1274,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.stilistHafizasiBaslik,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
@@ -1283,7 +1283,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                               _stilistHafizaNotSayisi)
                           : l10n.stilistHafizasiAltBaslikBos,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1321,14 +1321,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.sabahKombinOnerisi,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.herSabahBildirimAl(
                           _sabahBildirimSaati.format(context)),
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1344,13 +1344,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.bildirimSaatiniOzellestir,
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.gunlukKombinBildirimSaati,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1359,7 +1359,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
                         color: colors.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppRadius.mdRadius,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -1371,7 +1371,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                             _sabahBildirimSaati.format(context),
                             style: TextStyle(
                                 fontWeight: FontWeight.w900,
-                                fontSize: 12,
+                                fontSize: AppText.sizeCaption,
                                 color: colors.onSurface),
                           ),
                         ],
@@ -1393,13 +1393,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.planHatirlatimiAyar,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.planHatirlatimiAyarAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1421,13 +1421,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.camasirSepetiUyarilari,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.camasirSepetiUyarilariAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1455,13 +1455,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.haftalikStilRaporu,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.haftalikStilRaporuAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1491,13 +1491,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.uygulamaDili,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       seciliDilEtiketi,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -1523,7 +1523,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.karanlikMod,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
@@ -1531,7 +1531,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           ? l10n.koyuTemaAktif
                           : l10n.acikTemaAktif,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -1572,7 +1572,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                   l10n.sicaklikBirimi,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w800,
-                                      fontSize: 14,
+                                      fontSize: AppText.sizeBodySmall,
                                       color: colors.onSurface),
                                 ),
                               ),
@@ -1593,13 +1593,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 label: Text('°C',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 12))),
+                                        fontSize: AppText.sizeCaption))),
                             ButtonSegment(
                                 value: '°F',
                                 label: Text('°F',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 12))),
+                                        fontSize: AppText.sizeCaption))),
                           ],
                           selected: {_sicaklikBirimi},
                           onSelectionChanged: (set) {
@@ -1628,13 +1628,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.varsayilanSehirBolge,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       '${l10n.secili}: $_varsayilanSehir',
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -1664,13 +1664,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.gorselOnbelleginiTemizle,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.geciciFotografHafizasiAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1690,13 +1690,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.gardirobuDisaAktarYedekle,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.tumKiyafetVeKombinJsonAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1716,13 +1716,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.analitikVerileriPaylas,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.analitikVerileriPaylasAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1752,13 +1752,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.uygulamayiDegerlendirin,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.googlePlay5YildizDestek,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1809,13 +1809,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.geriBildirimVeDestek,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.hataBildirVeyaOneri,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1849,7 +1849,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                             backgroundColor: AppAccents.error,
                             behavior: SnackBarBehavior.floating,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16)),
+                                borderRadius: AppRadius.lgRadius),
                           ),
                         );
                       }
@@ -1869,13 +1869,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       l10n.gizlilikPolitikasiTitle,
                       style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.veriKullanimiVeGizlilikHaklari,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1904,14 +1904,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     l10n.hesabiKaliciSilTitle,
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
-                      fontSize: 14,
+                      fontSize: AppText.sizeBodySmall,
                       color: colors.error,
                     ),
                   ),
                   subtitle: Text(
                     l10n.tumBulutVeYerelVeriTemizlenir,
                     style: TextStyle(
-                        fontSize: 12,
+                        fontSize: AppText.sizeCaption,
                         color: colors.onSurfaceVariant,
                         fontWeight: FontWeight.w500),
                   ),
@@ -1940,7 +1940,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   l10n.surum,
                   style: TextStyle(
                       fontWeight: FontWeight.w800,
-                      fontSize: 14,
+                      fontSize: AppText.sizeBodySmall,
                       color: colors.onSurface),
                 ),
                 trailing: _surumMetni.isEmpty
@@ -1950,13 +1950,13 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                             horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: AppRadius.mdRadius,
                         ),
                         child: Text(
                           _surumMetni,
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
-                              fontSize: 12,
+                              fontSize: AppText.sizeCaption,
                               color: colors.onSurface),
                         ),
                       ),
@@ -1977,7 +1977,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   Text(
                     l10n.ayarlarAltbilgi,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: AppText.sizeCaption,
                       fontWeight: FontWeight.w800,
                       color: colors.onSurfaceVariant.withValues(alpha: 0.5),
                       letterSpacing: 1.0,
@@ -2021,7 +2021,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         HapticFeedback.selectionClick();
         onTap();
       },
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: AppRadius.mdRadius,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 240),
         curve: Curves.easeOutCubic,
@@ -2030,7 +2030,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           color: isSelected
               ? colors.secondaryContainer
               : colors.surfaceContainerHigh,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.mdRadius,
           border: Border.all(
             color: isSelected
                 ? colors.secondary
@@ -2041,7 +2041,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         child: Text(
           label,
           style: TextStyle(
-            fontSize: 12,
+            fontSize: AppText.sizeCaption,
             fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
             color: isSelected ? colors.onSecondaryContainer : colors.onSurface,
           ),
@@ -2058,7 +2058,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: effectiveColor.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.mdRadius,
       ),
       child: Icon(
         ikon,
@@ -2076,7 +2076,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 12,
+          fontSize: AppText.sizeCaption,
           fontWeight: FontWeight.w900,
           letterSpacing: 1.2,
           color: colors.onSurface,
@@ -2149,7 +2149,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
       ),
     );
   }

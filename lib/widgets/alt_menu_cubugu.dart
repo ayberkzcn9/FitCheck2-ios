@@ -184,7 +184,7 @@ class AltMenuCubugu extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: AppText.sizeMicro,
                     height: 1.15,
                     fontWeight: isSelected ? FontWeight.w800 : FontWeight.w500,
                     color: isSelected

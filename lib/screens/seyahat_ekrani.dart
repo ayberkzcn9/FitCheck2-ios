@@ -73,7 +73,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.45),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: AppRadius.xxlRadius,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +84,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                 child: Text(
                   l10n.seyahatGunSayisi,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: AppText.sizeBodySmall,
                     fontWeight: FontWeight.w900,
                     color: colors.onSurface,
                   ),
@@ -100,7 +100,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
               Text(
                 '$_gunSayisi',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: AppText.sizeBodyLarge,
                   fontWeight: FontWeight.w900,
                   color: colors.onSurface,
                 ),
@@ -118,7 +118,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
           Text(
             l10n.seyahatHava,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               fontWeight: FontWeight.w900,
               color: colors.onSurface,
             ),
@@ -151,7 +151,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
           Text(
             l10n.seyahatAmac,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               fontWeight: FontWeight.w900,
               color: colors.onSurface,
             ),
@@ -198,7 +198,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
       showCheckmark: false,
       selectedColor: colors.primaryContainer,
       labelStyle: TextStyle(
-        fontSize: 12,
+        fontSize: AppText.sizeCaption,
         fontWeight: FontWeight.w700,
         color: secili ? colors.onPrimaryContainer : colors.onSurfaceVariant,
       ),
@@ -222,7 +222,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             colors.surfaceContainerHighest.withValues(alpha: 0.6),
           ],
         ),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: AppRadius.xxlRadius,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -233,7 +233,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                 child: Text(
                   l10n.seyahatPlanBaslik,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: AppText.sizeBodyLarge,
                     fontWeight: FontWeight.w900,
                     color: colors.onPrimaryContainer,
                   ),
@@ -242,7 +242,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
               Text(
                 l10n.seyahatKombine('${plan.kombinSayisi}'),
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: AppText.sizeCaption,
                   fontWeight: FontWeight.w800,
                   color: colors.onPrimaryContainer.withValues(alpha: 0.8),
                 ),
@@ -280,7 +280,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                       child: Text(
                         _eksikMetni(l10n, eksik, plan.gunSayisi),
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onPrimaryContainer
                               .withValues(alpha: 0.9),
                         ),
@@ -348,7 +348,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
           Text(
             baslik,
             style: TextStyle(
-              fontSize: 11,
+              fontSize: AppText.sizeMicro,
               fontWeight: FontWeight.w800,
               color: colors.onPrimaryContainer.withValues(alpha: 0.75),
             ),
@@ -360,16 +360,16 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             children: [
               for (final parca in parcalar)
                 SizedBox(
-                  width: 76,
+                  width: 88,
                   child: Column(
                     children: [
                       Container(
-                        width: 76,
+                        width: 88,
                         height: 54,
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           color: colors.surface.withValues(alpha: 0.6),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: AppRadius.mdRadius,
                         ),
                         clipBehavior: Clip.antiAlias,
                         child: Image.memory(
@@ -386,7 +386,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: AppText.sizeMicro,
                           height: 1.15,
                           color: colors.onPrimaryContainer
                               .withValues(alpha: 0.85),

@@ -36,7 +36,7 @@ class IzinGerekce {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: AppRadius.xxlRadius,
               child: BackdropFilter(
                 filter: ImageFilter.blur(
                   sigmaX: AppBlur.cam,
@@ -45,7 +45,7 @@ class IzinGerekce {
                 child: Container(
                   decoration: BoxDecoration(
                     color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: AppRadius.xxlRadius,
                   ),
                   padding: const EdgeInsets.fromLTRB(20, 22, 20, 18),
                   child: Column(
@@ -64,7 +64,7 @@ class IzinGerekce {
                       Text(
                         baslik,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: AppText.sizeTitleSmall,
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.4,
                           color: colors.onSurface,
@@ -74,7 +74,7 @@ class IzinGerekce {
                       Text(
                         aciklama,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           height: 1.35,
                           color: colors.onSurfaceVariant,
                         ),

@@ -46,7 +46,7 @@ class AppPrimaryButton extends StatelessWidget {
           child: Text(
             label,
             style: const TextStyle(
-              fontSize: 15,
+              fontSize: AppText.sizeBody,
               fontWeight: FontWeight.w800,
               letterSpacing: -0.2,
             ),
@@ -94,7 +94,7 @@ class AppSecondaryButton extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w700, color: c),
+                fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w700, color: c),
           ),
         ),
         style: OutlinedButton.styleFrom(
@@ -132,7 +132,7 @@ class AppDangerButton extends StatelessWidget {
         label: Text(
           label,
           style: const TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               fontWeight: FontWeight.w700,
               color: AppAccents.error),
         ),
@@ -258,7 +258,7 @@ class AppChip extends StatelessWidget {
               Text(
                 label,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: AppText.sizeSmall,
                   fontWeight: FontWeight.w700,
                   color: selected ? cs.onPrimary : cs.onSurface,
                 ),

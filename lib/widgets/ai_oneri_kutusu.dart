@@ -84,7 +84,7 @@ class AiOneriKutusu extends StatelessWidget {
                         child: Text(
                           yukleniyorMetni,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            fontSize: 14,
+                            fontSize: AppText.sizeBodySmall,
                             height: 1.4,
                             color: govdeRenk,
                           ),
@@ -96,7 +96,7 @@ class AiOneriKutusu extends StatelessWidget {
                   Text(
                     metin,
                     style: theme.textTheme.bodyMedium?.copyWith(
-                      fontSize: 14,
+                      fontSize: AppText.sizeBodySmall,
                       height: 1.4,
                       color: govdeRenk,
                     ),

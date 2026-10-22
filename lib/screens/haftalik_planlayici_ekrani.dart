@@ -335,7 +335,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
           zatenGiyildi
               ? l10n.kombinIsaretlemeKaldirildi(kombinAdi)
               : l10n.kombinGiydimIsaretlendi(kombinAdi),
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          style: const TextStyle(fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w600),
         ),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
@@ -1559,7 +1559,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
         label: Text(
           programVarMi ? l10n.planiYenile : l10n.haftalikProgramOlustur,
           style: const TextStyle(
-            fontSize: 14,
+            fontSize: AppText.sizeBodySmall,
             fontWeight: FontWeight.bold,
             letterSpacing: -0.2,
           ),
@@ -1570,7 +1570,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
           backgroundColor: colorScheme.primary,
           foregroundColor: colorScheme.onPrimary,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           elevation: 0,
         ),
       ),
@@ -1641,7 +1641,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                       elevation: 0,
                       color: colorScheme.errorContainer,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: AppRadius.lgRadius,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(16),
@@ -1678,7 +1678,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                       elevation: 0,
                       color: colorScheme.tertiaryContainer,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: AppRadius.lgRadius,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(16),
@@ -1729,7 +1729,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                       elevation: 0,
                       color: colorScheme.tertiaryContainer,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: AppRadius.lgRadius,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(16),
@@ -1826,7 +1826,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     child: Text(
                                       l10n.temizle,
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: AppText.sizeBodySmall,
                                         fontWeight: FontWeight.bold,
                                         color: colorScheme.error,
                                       ),
@@ -1837,7 +1837,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                         color: colorScheme.error
                                             .withValues(alpha: 0.4)),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: AppRadius.lgRadius,
                                     ),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8),
@@ -1859,7 +1859,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                             elevation: 0,
                             color: colorScheme.errorContainer,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: AppRadius.lgRadius,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(16),
@@ -2033,7 +2033,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                 color: colorScheme
                                                     .surfaceContainerHighest,
                                                 borderRadius:
-                                                    BorderRadius.circular(12),
+                                                    AppRadius.mdRadius,
                                               ),
                                               child: isAnalizEdiliyor
                                                   ? SizedBox(
@@ -2084,7 +2084,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                 color: colorScheme
                                                     .surfaceContainerHighest,
                                                 borderRadius:
-                                                    BorderRadius.circular(12),
+                                                    AppRadius.mdRadius,
                                               ),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
@@ -2317,7 +2317,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                       style: theme
                                                           .textTheme.bodyMedium
                                                           ?.copyWith(
-                                                        fontSize: 14,
+                                                        fontSize: AppText.sizeBodySmall,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: AppMiscColors

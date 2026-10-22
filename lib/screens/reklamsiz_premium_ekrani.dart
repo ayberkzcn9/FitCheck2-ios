@@ -102,7 +102,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
                 l10n.premiumDenemeSonrasi(_seciliFiyat),
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: AppText.sizeCaption,
                   color: colors.onSurfaceVariant,
                   fontWeight: FontWeight.w600,
                 ),
@@ -146,7 +146,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             Text(
               _satinAlma.tani!,
               textAlign: TextAlign.center,
-              style: TextStyle(color: colors.onSurfaceVariant, fontSize: 12),
+              style: TextStyle(color: colors.onSurfaceVariant, fontSize: AppText.sizeCaption),
             ),
           ],
 
@@ -176,13 +176,13 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               decoration: BoxDecoration(
                 color: AppAccents.success,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: AppRadius.fullRadius,
               ),
               child: Text(
                 l10n.premiumDenemeRozeti(SatinAlmaServisi.denemeGunSayisi),
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 12,
+                  fontSize: AppText.sizeCaption,
                   fontWeight: FontWeight.w900,
                   letterSpacing: _harfAraligi(0.5),
                 ),
@@ -193,7 +193,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             l10n.premiumBaslik,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 22,
+              fontSize: AppText.sizeTitleLarge,
               fontWeight: FontWeight.w900,
               letterSpacing: _harfAraligi(-0.4),
               color: colors.onPrimaryContainer,
@@ -204,7 +204,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             l10n.premiumAciklama,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               height: 1.4,
               color: colors.onPrimaryContainer.withValues(alpha: 0.8),
             ),
@@ -221,7 +221,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
         Text(
           l10n.premiumOzelliklerBaslik,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: AppText.sizeBodyLarge,
             fontWeight: FontWeight.w800,
             color: colors.onSurface,
           ),
@@ -342,7 +342,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
                       Text(
                         ad,
                         style: const TextStyle(
-                          fontSize: 15,
+                          fontSize: AppText.sizeBody,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -366,7 +366,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
                     Text(
                       l10n.premiumTasarrufYuzde(tasarrufYuzde),
                       style: const TextStyle(
-                        fontSize: 13,
+                        fontSize: AppText.sizeSmall,
                         fontWeight: FontWeight.w700,
                         color: AppAccents.successDark,
                       ),
@@ -379,7 +379,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             Text(
               fiyat,
               style: const TextStyle(
-                fontSize: 15,
+                fontSize: AppText.sizeBody,
                 fontWeight: FontWeight.w900,
               ),
             ),
@@ -398,13 +398,13 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: arka,
-        borderRadius: BorderRadius.circular(999),
+        borderRadius: AppRadius.fullRadius,
       ),
       child: Text(
         metin,
         style: TextStyle(
           color: onArka,
-          fontSize: 10,
+          fontSize: AppText.sizeMicro,
           fontWeight: FontWeight.w900,
           letterSpacing: _harfAraligi(0.4),
         ),
@@ -431,7 +431,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             : Text(
                 l10n.premiumAboneOlFiyatli(_seciliFiyat),
                 style: const TextStyle(
-                  fontSize: 15,
+                  fontSize: AppText.sizeBody,
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -441,7 +441,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
 
   Widget _altBilgi(AppLocalizations l10n, ColorScheme colors) {
     final stil = TextStyle(
-      fontSize: 12,
+      fontSize: AppText.sizeCaption,
       height: 1.4,
       color: colors.onSurfaceVariant,
     );
@@ -481,7 +481,7 @@ class _OzellikSatiri extends StatelessWidget {
           Expanded(
             child: Text(
               metin,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w600),
             ),
           ),
         ],

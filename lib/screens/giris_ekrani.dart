@@ -114,7 +114,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -157,7 +157,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -200,7 +200,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
           backgroundColor: AppAccents.success,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (e) {
@@ -215,7 +215,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -254,7 +254,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -313,7 +313,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                       label: Text(
                         l10n.onboardingAtla,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           fontWeight: FontWeight.bold,
                           color: colors.onSurfaceVariant,
                         ),
@@ -350,7 +350,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                               "FitCheck",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 32,
+                                fontSize: AppText.sizeDisplayLarge,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: -0.5,
                                 color: colors.onSurface,
@@ -364,7 +364,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: colors.onSurfaceVariant,
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -375,7 +375,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                               padding: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
                                 color: colors.surfaceContainerHighest,
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: AppRadius.lgRadius,
                               ),
                               child: Row(
                                 children: [
@@ -393,14 +393,14 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                               ? primaryColor
                                               : Colors.transparent,
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              AppRadius.mdRadius,
                                         ),
                                         child: Text(
                                           l10n.girisYap,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 14,
+                                            fontSize: AppText.sizeBodySmall,
                                             color: _girisModu
                                                 ? Colors.white
                                                 : colors.onSurfaceVariant,
@@ -423,14 +423,14 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                               ? primaryColor
                                               : Colors.transparent,
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              AppRadius.mdRadius,
                                         ),
                                         child: Text(
                                           l10n.kayitOl,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 14,
+                                            fontSize: AppText.sizeBodySmall,
                                             color: !_girisModu
                                                 ? Colors.white
                                                 : colors.onSurfaceVariant,
@@ -460,10 +460,10 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                   contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 16, vertical: 14),
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
                                   focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide(
                                           color: primaryColor, width: 2)),
                                 ),
@@ -493,10 +493,10 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 14),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                     borderSide: BorderSide.none),
                                 focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                     borderSide: BorderSide(
                                         color: primaryColor, width: 2)),
                               ),
@@ -536,10 +536,10 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 14),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                     borderSide: BorderSide.none),
                                 focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                     borderSide: BorderSide(
                                         color: primaryColor, width: 2)),
                               ),
@@ -569,7 +569,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                   child: Text(
                                     l10n.sifremiUnuttum,
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: AppText.sizeBodySmall,
                                       fontWeight: FontWeight.bold,
                                       color: primaryColor,
                                     ),
@@ -588,7 +588,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 title: Text(
                                   l10n.girisBeniHatirla,
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: AppText.sizeBodySmall,
                                       color: colors.onSurface,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -607,7 +607,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 minimumSize: const Size(double.infinity, 52),
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
+                                    borderRadius: AppRadius.lgRadius),
                               ),
                               onPressed: _yukleniyor ? null : _islemTetikle,
                               child: _yukleniyor
@@ -624,7 +624,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                           ? l10n.girisYapVeBasla
                                           : l10n.kayitOlVeBasla,
                                       style: const TextStyle(
-                                        fontSize: 16,
+                                        fontSize: AppText.sizeBodyLarge,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
@@ -646,7 +646,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                     l10n.girisVeya,
                                     style: TextStyle(
                                         color: colors.onSurfaceVariant,
-                                        fontSize: 12,
+                                        fontSize: AppText.sizeCaption,
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),
@@ -665,7 +665,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                               style: OutlinedButton.styleFrom(
                                 minimumSize: const Size(double.infinity, 52),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(16)),
+                                    borderRadius: AppRadius.lgRadius),
                                 side: BorderSide(color: colors.outlineVariant, width: 1.5),
                                 backgroundColor: colors.surfaceContainerLow,
                                 foregroundColor: colors.onSurface,
@@ -687,7 +687,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                               label: Text(
                                 l10n.girisYapGoogle,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: AppText.sizeBodyLarge,
                                   fontWeight: FontWeight.w600,
                                   color: colors.onSurface,
                                   letterSpacing: 0.2,

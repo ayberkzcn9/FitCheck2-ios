@@ -496,7 +496,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           color: lightColorScheme.surfaceContainerLow,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: AppRadius.lgRadius,
           ),
         ),
         dialogTheme: DialogThemeData(
@@ -568,7 +568,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           color: darkColorScheme.surfaceContainerLow,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: AppRadius.lgRadius,
           ),
         ),
         dialogTheme: DialogThemeData(

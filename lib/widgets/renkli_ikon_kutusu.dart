@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/design_tokens.dart';
+
 class RenkliIkonKutusu extends StatelessWidget {
   final IconData ikon;
   final Color? acikTemaRengi;
@@ -25,7 +27,7 @@ class RenkliIkonKutusu extends StatelessWidget {
         color: acikTemaRengi != null
             ? etkinRenk.withValues(alpha: 0.12)
             : colors.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.mdRadius,
       ),
       child: Icon(
         ikon,

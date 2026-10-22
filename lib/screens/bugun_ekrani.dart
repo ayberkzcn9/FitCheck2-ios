@@ -352,7 +352,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           Text(
             selam,
             style: TextStyle(
-              fontSize: 13,
+              fontSize: AppText.sizeSmall,
               fontWeight: FontWeight.w700,
               letterSpacing: 0.2,
               color: colors.onSurfaceVariant,
@@ -362,7 +362,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           Text(
             l10n.bugunBaslik,
             style: TextStyle(
-              fontSize: 26,
+              fontSize: AppText.sizeDisplay,
               fontWeight: FontWeight.w900,
               color: colors.onSurface,
             ),
@@ -374,7 +374,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: AppRadius.fullRadius,
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -388,7 +388,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: AppText.sizeCaption,
                         fontWeight: FontWeight.w600,
                         color: colors.onSurfaceVariant,
                       ),
@@ -522,7 +522,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                       Text(
                         turkceBuyukHarf(l10n.planBugun),
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: AppText.sizeMicro,
                           fontWeight: FontWeight.w800,
                           letterSpacing: 0.8,
                           color: colors.onSurfaceVariant,
@@ -534,7 +534,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: AppText.sizeBodyLarge,
                           fontWeight: FontWeight.w800,
                           letterSpacing: -0.3,
                           color: colors.onSurface,
@@ -570,7 +570,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                           Text(
                             l10n.planTakvimdenDegistir,
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: AppText.sizeMicro,
                               fontWeight: FontWeight.w600,
                               color: colors.onSurfaceVariant,
                             ),
@@ -640,7 +640,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: AppText.sizeMicro,
                   height: 1.15,
                   fontWeight: FontWeight.w700,
                   color: colors.onSurface,
@@ -723,7 +723,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 colors.surfaceContainerHighest.withValues(alpha: 0.75),
               ],
             ),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: AppRadius.xxlRadius,
             border: Border.all(
               color: colors.outlineVariant.withValues(alpha: 0.35),
             ),
@@ -740,7 +740,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                     child: Text(
                       l10n.bugunBugununKombini,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: AppText.sizeSmall,
                         fontWeight: FontWeight.w900,
                         letterSpacing: 0.4,
                         color: colors.onPrimaryContainer,
@@ -819,7 +819,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
             Text(
               AppLocalizations.of(context)!.bugunHazirlaniyor,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 fontWeight: FontWeight.w600,
                 color: colors.onSurfaceVariant,
               ),
@@ -848,7 +848,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
               l10n.bugunBosBaslik,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 15,
+                fontSize: AppText.sizeBody,
                 fontWeight: FontWeight.w900,
                 color: colors.onSurface,
               ),
@@ -858,7 +858,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
               l10n.bugunBosAciklama,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 height: 1.35,
                 color: colors.onSurfaceVariant,
               ),
@@ -904,7 +904,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         color: colors.surface.withValues(alpha: 0.65),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: AppRadius.lgRadius,
                       ),
                       child: Image.memory(
                         parca.resimBytes,
@@ -937,7 +937,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: AppText.sizeCaption,
               height: 1.3,
               color: colors.onSurfaceVariant,
             ),
@@ -991,9 +991,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 width: 172,
                 child: Material(
                   color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: AppRadius.xxlRadius,
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: AppRadius.xxlRadius,
                     onTap: () =>
                         _detayPenceresi(context, l10n, kombin, parcalar),
                     child: Padding(
@@ -1013,7 +1013,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                                   decoration: BoxDecoration(
                                     color:
                                         colors.surface.withValues(alpha: 0.7),
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                   ),
                                   child: Image.memory(
                                     parca.resimBytes,
@@ -1030,7 +1030,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: AppText.sizeCaption,
                               height: 1.2,
                               fontWeight: FontWeight.w800,
                               color: colors.onSurface,
@@ -1043,7 +1043,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                                 child: Text(
                                   '${parcalar.length}',
                                   style: TextStyle(
-                                    fontSize: 11,
+                                    fontSize: AppText.sizeMicro,
                                     fontWeight: FontWeight.w700,
                                     color: colors.onSurfaceVariant,
                                   ),
@@ -1088,7 +1088,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 Text(
                   kombin.baslik,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: AppText.sizeTitleSmall,
                     fontWeight: FontWeight.w900,
                     color: colors.onSurface,
                   ),
@@ -1098,7 +1098,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   Text(
                     kombin.aciklama,
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: AppText.sizeSmall,
                       height: 1.35,
                       color: colors.onSurfaceVariant,
                     ),
@@ -1120,7 +1120,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                               padding: const EdgeInsets.all(6),
                               decoration: BoxDecoration(
                                 color: colors.surfaceContainerHighest,
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: AppRadius.lgRadius,
                               ),
                               child: Image.memory(
                                 parca.resimBytes,
@@ -1136,7 +1136,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: AppText.sizeMicro,
                                 color: colors.onSurfaceVariant,
                               ),
                             ),
@@ -1213,7 +1213,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: AppText.sizeBody,
                     fontWeight: FontWeight.w900,
                     color: colors.onSurface,
                   ),
@@ -1284,19 +1284,19 @@ class _BugunEkraniState extends State<BugunEkrani> {
             itemBuilder: (context, i) {
               final parca = parcalar[i];
               return SizedBox(
-                width: 82,
+                width: 96,
                 child: GestureDetector(
                   onTap: () => _parcaMenusu(context, l10n, parca),
                   child: Column(
                     children: [
                       Container(
-                        width: 82,
-                        height: 82,
+                        width: 96,
+                        height: 76,
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(
                           color:
                               colors.surfaceContainerHighest.withValues(alpha: 0.55),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                         child: Image.memory(
                           parca.resimBytes,
@@ -1311,7 +1311,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: AppText.sizeMicro,
                           color: colors.onSurfaceVariant,
                         ),
                       ),
@@ -1336,7 +1336,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           Text(
             metin,
             style: TextStyle(
-              fontSize: 13,
+              fontSize: AppText.sizeSmall,
               fontWeight: FontWeight.w900,
               letterSpacing: 0.4,
               color: colors.onSurface,
@@ -1347,7 +1347,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
             Text(
               altYazi,
               style: TextStyle(
-                fontSize: 11,
+                fontSize: AppText.sizeMicro,
                 color: colors.onSurfaceVariant,
               ),
             ),

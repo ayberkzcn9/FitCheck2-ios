@@ -467,7 +467,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
         backgroundColor: colors.surfaceContainerHigh,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppRadius.lgRadius,
         ),
       ),
     );
@@ -708,14 +708,14 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
       child: Row(
         children: [
           if (emoji != null) ...[
-            Text(emoji, style: const TextStyle(fontSize: 24)),
+            Text(emoji, style: const TextStyle(fontSize: AppText.sizeHeadline)),
             const SizedBox(width: 8),
           ],
           Expanded(
             child: Text(
               text,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: AppText.sizeTitleSmall,
                 fontWeight: FontWeight.w900,
                 letterSpacing: -0.5,
                 color: colors.onSurface,
@@ -796,7 +796,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
-                          fontSize: 16,
+                          fontSize: AppText.sizeBodyLarge,
                           color: colors.onSurface,
                         ),
                       ),
@@ -807,13 +807,13 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: AppRadius.smRadius,
                           ),
                           child: Text(
                             tarih,
                             style: TextStyle(
                               color: colors.onSurfaceVariant,
-                              fontSize: 12,
+                              fontSize: AppText.sizeCaption,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -836,7 +836,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: colors.onSurfaceVariant,
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   height: 1.4,
                 ),
               ),
@@ -902,7 +902,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
-                  fontSize: 18,
+                  fontSize: AppText.sizeTitleSmall,
                   letterSpacing: -0.5,
                   color: colors.onSurface,
                 ),
@@ -971,7 +971,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                     child: Text(
                                       l10n.camasirSepetiTitle,
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: AppText.sizeBodyLarge,
                                         fontWeight: FontWeight.w900,
                                         color: colors.onSurface,
                                       ),
@@ -991,7 +991,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                         analiz.sepette,
                                       ),
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: AppText.sizeBodySmall,
                                   fontWeight: FontWeight.w700,
                                   color: analiz.sepette == 0
                                       ? colors.primary
@@ -1124,7 +1124,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w800,
-                                        fontSize: 12,
+                                        fontSize: AppText.sizeCaption,
                                         color: colors.onSurface,
                                       ),
                                     ),
@@ -1134,13 +1134,13 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                           horizontal: 8, vertical: 2),
                                       decoration: BoxDecoration(
                                         color: colors.surfaceContainerHighest,
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: AppRadius.mdRadius,
                                       ),
                                       child: Text(
                                         '%${oran.toStringAsFixed(0)}',
                                         style: TextStyle(
                                           color: colors.onSurfaceVariant,
-                                          fontSize: 12,
+                                          fontSize: AppText.sizeCaption,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -1231,7 +1231,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       Text(
                         '${l10n.sonGiyilenler} (${_gecmis.length})',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: AppText.sizeTitleSmall,
                           fontWeight: FontWeight.w900,
                           color: colors.onSurface,
                         ),
@@ -1446,7 +1446,7 @@ class _ProfilBilgiKarti extends StatelessWidget {
                         baslik,
                         style: TextStyle(
                           color: colors.onSurfaceVariant,
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -1462,7 +1462,7 @@ class _ProfilBilgiKarti extends StatelessWidget {
                 Text(
                   deger,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: AppText.sizeBodyLarge,
                     fontWeight: FontWeight.w900,
                     height: 1.25,
                     color: colors.onSurface,
@@ -1517,7 +1517,7 @@ class _ProfilOzetKarti extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: AppText.sizeTitleSmall,
               fontWeight: FontWeight.w900,
               color: colors.onSurface,
             ),
@@ -1530,7 +1530,7 @@ class _ProfilOzetKarti extends StatelessWidget {
                   baslik,
                   style: TextStyle(
                     color: colors.onSurfaceVariant,
-                    fontSize: 12,
+                    fontSize: AppText.sizeCaption,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

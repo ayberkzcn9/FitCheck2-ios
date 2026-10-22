@@ -109,13 +109,13 @@ void gorseliBuhur(
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: AppText.sizeBodyLarge,
                   color: colors.onSurface,
                 ),
               ),
               const SizedBox(height: 16),
               ClipRRect(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.lgRadius,
                 child: Image.memory(
                   bytesCopy,
                   height: 320,
@@ -130,7 +130,7 @@ void gorseliBuhur(
                   style: TextStyle(
                     color: colors.primary,
                     fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                    fontSize: AppText.sizeBodySmall,
                   ),
                 ),
               ),

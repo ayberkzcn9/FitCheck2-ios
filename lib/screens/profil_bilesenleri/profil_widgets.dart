@@ -38,7 +38,7 @@ class KiyafetKartcigi extends StatelessWidget {
       width: 115,
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppRadius.lgRadius,
         border: Border.all(
           color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           width: 1.0,
@@ -94,7 +94,7 @@ class KiyafetKartcigi extends StatelessWidget {
                   style: theme.textTheme.labelSmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                     fontWeight: FontWeight.w800,
-                    fontSize: 12,
+                    fontSize: AppText.sizeCaption,
                   ),
                 ),
               ],
@@ -192,7 +192,7 @@ class IstatistikKutusu extends StatelessWidget {
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: colorScheme.onSurfaceVariant,
                   fontWeight: FontWeight.w800,
-                  fontSize: 12,
+                  fontSize: AppText.sizeCaption,
                 ),
               ),
             ],
@@ -233,7 +233,7 @@ class KategoriSatiri extends StatelessWidget {
                 etiket,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   fontWeight: FontWeight.w900,
                   color: colorScheme.onSurface,
                 ),
@@ -243,7 +243,7 @@ class KategoriSatiri extends StatelessWidget {
             Text(
               '$adet ${l10n.parca} (%$yuzde)',
               style: theme.textTheme.bodySmall?.copyWith(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 color: colorScheme.onSurfaceVariant,
                 fontWeight: FontWeight.w800,
               ),
@@ -256,7 +256,7 @@ class KategoriSatiri extends StatelessWidget {
           backgroundColor: colorScheme.surfaceContainerHighest,
           color: colorScheme.onSurfaceVariant,
           minHeight: 8,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.mdRadius,
         ),
       ],
     );

@@ -33,7 +33,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
               l10n.gizlilikPolitikasiTitle,
               style: TextStyle(
                 fontWeight: FontWeight.w900,
-                fontSize: 18,
+                fontSize: AppText.sizeTitleSmall,
                 color: colors.onSurface,
               ),
             ),
@@ -50,7 +50,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
               Text(
                 l10n.sonGuncellemeTarihi,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: AppText.sizeCaption,
                   fontWeight: FontWeight.bold,
                   color: colors.onSurfaceVariant,
                 ),
@@ -92,7 +92,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
             backgroundColor: AppAccents.successDark,
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: AppRadius.mdRadius,
             ),
           ),
           onPressed: () => Navigator.pop(context),
@@ -121,7 +121,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
             baslik,
             style: TextStyle(
               fontWeight: FontWeight.w800,
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.primary,
             ),
           ),
@@ -129,7 +129,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
           Text(
             icerik,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: AppText.sizeCaption,
               height: 1.4,
               color: colors.onSurfaceVariant,
             ),

@@ -345,7 +345,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 18,
+                    fontSize: AppText.sizeTitleSmall,
                     letterSpacing: -0.5,
                     color: colors.onSurface,
                   ),
@@ -360,7 +360,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               Text(
                 l10n.gardirobumHakBittiAciklama,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   height: 1.4,
                   color: colors.onSurfaceVariant,
                 ),
@@ -381,7 +381,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   backgroundColor: AppAccents.successDark,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: AppRadius.lgRadius,
                   ),
                 ),
                 onPressed: () {
@@ -404,7 +404,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     child: Text(
                       l10n.reklamIzleHakKazan,
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           fontWeight: FontWeight.bold,
                           color: colors.onSurfaceVariant),
                     ),
@@ -413,7 +413,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     side: BorderSide(color: colors.onSurfaceVariant),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)),
+                        borderRadius: AppRadius.lgRadius),
                   ),
                   onPressed: () {
                     HapticFeedback.selectionClick();
@@ -433,7 +433,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                               backgroundColor: AppAccents.success,
                               behavior: SnackBarBehavior.floating,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16)),
+                                  borderRadius: AppRadius.lgRadius),
                             ),
                           );
                         }
@@ -452,7 +452,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
               },
               child: Text(
                 l10n.dahaSonra,
-                style: TextStyle(color: colors.onSurfaceVariant, fontSize: 14, fontWeight: FontWeight.bold),
+                style: TextStyle(color: colors.onSurfaceVariant, fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold),
               ),
             ),
           ],
@@ -557,7 +557,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                           suAnkiKiyafet.gorunenBaslik,
                                           style: const TextStyle(
                                             color: Colors.white,
-                                            fontSize: 20,
+                                            fontSize: AppText.sizeTitle,
                                             fontWeight: FontWeight.w900,
                                             letterSpacing: -0.5,
                                           ),
@@ -569,7 +569,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                           "${suAnkiKiyafet.renk} • ${_kategoriEtiketiGetir(suAnkiKiyafet.kategori, l10n)}",
                                           style: TextStyle(
                                             color: Colors.white.withValues(alpha: 0.7),
-                                            fontSize: 14,
+                                            fontSize: AppText.sizeBodySmall,
                                             fontWeight: FontWeight.w600,
                                           ),
                                           maxLines: 1,
@@ -583,14 +583,14 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                     decoration: BoxDecoration(
                                       color: Colors.white.withValues(alpha: 0.2),
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: AppRadius.mdRadius,
                                     ),
                                     child: Text(
                                       "${currentIndex + 1} / ${liste.length}",
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 12,
+                                        fontSize: AppText.sizeCaption,
                                       ),
                                     ),
                                   ),
@@ -626,7 +626,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                         backgroundColor: suAnkiKiyafet.sepetteMi ? colors.errorContainer : Colors.white,
                                         padding: const EdgeInsets.symmetric(vertical: 14),
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(16),
+                                          borderRadius: AppRadius.lgRadius,
                                           side: suAnkiKiyafet.sepetteMi
                                               ? BorderSide(color: colors.error.withValues(alpha: 0.4), width: 1.2)
                                               : BorderSide.none,
@@ -654,7 +654,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                         backgroundColor: AppMiscColors.lightPurpleBg,
                                         padding: const EdgeInsets.all(16),
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(16),
+                                          borderRadius: AppRadius.lgRadius,
                                           side: const BorderSide(color: AppMiscColors.lightPurpleBorder, width: 1.2),
                                         ),
                                         elevation: 0,
@@ -701,7 +701,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontWeight: FontWeight.w900,
-              fontSize: 18,
+              fontSize: AppText.sizeTitleSmall,
               letterSpacing: -0.5,
               color: colors.onSurface,
             ),
@@ -709,7 +709,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           content: Text(
             aciklama,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
             ),
           ),
@@ -719,13 +719,13 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 HapticFeedback.selectionClick();
                 Navigator.pop(context);
               },
-              child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: 14, fontWeight: FontWeight.bold)),
+              child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold)),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors.primary,
                 foregroundColor: colors.onPrimary,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               ),
@@ -734,7 +734,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 Navigator.pop(context);
                 openAppSettings();
               },
-              child: Text(l10n.ayarlariAc, style: TextStyle(color: colors.onPrimary, fontSize: 14, fontWeight: FontWeight.bold)),
+              child: Text(l10n.ayarlariAc, style: TextStyle(color: colors.onPrimary, fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold)),
             ),
           ],
         ),
@@ -780,7 +780,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         margin: const EdgeInsets.only(bottom: 16),
                         decoration: BoxDecoration(
                           color: colors.outlineVariant,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: AppRadius.mdRadius,
                         ),
                       ),
                     ),
@@ -791,7 +791,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: AppText.sizeTitle,
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.5,
                           color: colors.onSurface,
@@ -806,7 +806,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         padding: const EdgeInsets.fromLTRB(14, 12, 14, 10),
                         decoration: BoxDecoration(
                           color: colors.primaryContainer.withValues(alpha: 0.35),
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                           border: Border.all(color: colors.primary.withValues(alpha: 0.25)),
                         ),
                         child: Column(
@@ -820,7 +820,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                   child: Text(
                                     l10n.cekimIpucuBaslik,
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: AppText.sizeBodySmall,
                                       fontWeight: FontWeight.bold,
                                       color: colors.onSurface,
                                     ),
@@ -851,7 +851,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         l10n.kameraIleCek,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: AppText.sizeBodyLarge,
                           color: colors.onSurface,
                         ),
                       ),
@@ -875,7 +875,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         l10n.galeridenSecToplu,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: AppText.sizeBodyLarge,
                           color: colors.onSurface,
                         ),
                       ),
@@ -899,14 +899,14 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         l10n.arkaPlandaEkle,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: AppText.sizeBodyLarge,
                           color: colors.onSurface,
                         ),
                       ),
                       subtitle: Text(
                         l10n.arkaPlandaEkleAciklama,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                         ),
                       ),
@@ -945,7 +945,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           Expanded(
             child: Text(
               metin,
-              style: TextStyle(fontSize: 12, height: 1.35, color: colors.onSurfaceVariant),
+              style: TextStyle(fontSize: AppText.sizeCaption, height: 1.35, color: colors.onSurfaceVariant),
             ),
           ),
         ],
@@ -994,7 +994,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       SnackBar(
         content: Text(l10n.arkaPlandaBasladi(files.length)),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         backgroundColor: colors.primary,
       ),
     );
@@ -1080,7 +1080,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             content: Text(l10n.gardirobumMaksFotografUyari(kalanSlot)),
             backgroundColor: AppAccents.warning,
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -1237,7 +1237,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             content: Text(l10n.gardirobumHataMesaji),
             backgroundColor: AppAccents.warning,
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -1249,7 +1249,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           content: Text(l10n.gardirobumHataMesaji),
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -1365,7 +1365,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: AppText.sizeTitleSmall,
                               fontWeight: FontWeight.w900,
                               letterSpacing: -0.5,
                               color: colors.onSurface,
@@ -1387,7 +1387,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                           clipBehavior: Clip.antiAlias,
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: AppRadius.lgRadius,
                             border: Border.all(
                               color: colors.outlineVariant.withValues(alpha: 0.4),
                             ),
@@ -1434,7 +1434,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                 padding: const EdgeInsets.symmetric(vertical: 14),
                                 side: BorderSide(color: colors.outlineVariant),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: AppRadius.lgRadius,
                                 ),
                               ),
                             ),
@@ -1453,34 +1453,34 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         TextField(
                           controller: controller,
                           autofocus: true,
-                          style: TextStyle(color: colors.onSurface, fontSize: 14),
+                          style: TextStyle(color: colors.onSurface, fontSize: AppText.sizeBodySmall),
                           decoration: InputDecoration(
                             labelText: l10n.kiyafetAdiEtiketi,
                             labelStyle: TextStyle(color: colors.onSurfaceVariant),
                             filled: true,
                             fillColor: colors.surfaceContainerHighest,
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
-                            focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide(color: colors.onSurface, width: 2)),
+                            border: OutlineInputBorder(borderRadius: AppRadius.lgRadius, borderSide: BorderSide.none),
+                            focusedBorder: OutlineInputBorder(borderRadius: AppRadius.lgRadius, borderSide: BorderSide(color: colors.onSurface, width: 2)),
                           ),
                         ),
                         const SizedBox(height: 16),
                         Text(
                           l10n.kategori,
-                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: colors.onSurfaceVariant),
+                          style: TextStyle(fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold, color: colors.onSurfaceVariant),
                         ),
                         const SizedBox(height: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 14),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: AppRadius.lgRadius,
                           ),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton<String>(
                               value: ['ust', 'alt', 'ayakkabi', 'aksesuar'].contains(secilenKategori) ? secilenKategori : 'ust',
                               isExpanded: true,
                               dropdownColor: colors.surfaceContainerHigh,
-                              style: TextStyle(color: colors.onSurface, fontSize: 14, fontWeight: FontWeight.w600),
+                              style: TextStyle(color: colors.onSurface, fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w600),
                               items: [
                                 DropdownMenuItem(value: 'ust', child: Text(l10n.gardirobumKategoriUst)),
                                 DropdownMenuItem(value: 'alt', child: Text(l10n.gardirobumKategoriAlt)),
@@ -1514,9 +1514,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             },
                             style: TextButton.styleFrom(
                               padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                              shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                             ),
-                            child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: 14, fontWeight: FontWeight.bold)),
+                            child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold)),
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -1525,7 +1525,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             style: ElevatedButton.styleFrom(
                               backgroundColor: colors.primary,
                               foregroundColor: colors.onPrimary,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                              shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                               elevation: 0,
                               padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
@@ -1543,7 +1543,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                               widget.onKiyafetEkle(item);
                               Navigator.pop(sheetContext);
                             },
-                            child: Text(l10n.kaydet, style: TextStyle(color: colors.onPrimary, fontWeight: FontWeight.bold, fontSize: 14)),
+                            child: Text(l10n.kaydet, style: TextStyle(color: colors.onPrimary, fontWeight: FontWeight.bold, fontSize: AppText.sizeBodySmall)),
                           ),
                         ),
                       ],
@@ -1581,7 +1581,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontWeight: FontWeight.w900,
-              fontSize: 18,
+              fontSize: AppText.sizeTitleSmall,
               letterSpacing: -0.5,
               color: colors.onSurface,
             ),
@@ -1589,7 +1589,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           content: Text(
             l10n.gardirobumTemizleOnay,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
             ),
           ),
@@ -1599,12 +1599,12 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 HapticFeedback.selectionClick();
                 Navigator.pop(context);
               },
-              child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: 14, fontWeight: FontWeight.bold)),
+              child: Text(l10n.iptal, style: TextStyle(color: colors.onSurfaceVariant, fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold)),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors.error,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                 elevation: 0,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               ),
@@ -1613,7 +1613,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 Navigator.pop(context);
                 widget.onGardirobuTemizle();
               },
-              child: Text(l10n.evetSil, style: TextStyle(color: colors.onError, fontWeight: FontWeight.bold, fontSize: 14)),
+              child: Text(l10n.evetSil, style: TextStyle(color: colors.onError, fontWeight: FontWeight.bold, fontSize: AppText.sizeBodySmall)),
             ),
           ],
         ),
@@ -1646,7 +1646,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           ),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: AppRadius.lgRadius,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -1753,7 +1753,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: colors.error,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: AppRadius.smRadius,
                           ),
                           child: const Icon(Icons.local_laundry_service_rounded, color: Colors.white, size: 14),
                         ),
@@ -1780,7 +1780,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                             color: item.sepetteMi
                                 ? colors.onSurfaceVariant.withValues(alpha: 0.6)
                                 : colors.onSurface,
-                            fontSize: 13,
+                            fontSize: AppText.sizeSmall,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -1817,7 +1817,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           height: 1.1,
                           letterSpacing: -0.3,
                           color: item.sepetteMi ? colors.onSurfaceVariant.withValues(alpha: 0.5) : colors.onSurface,
@@ -1829,7 +1829,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600,
                         ),
@@ -1854,7 +1854,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                       : colors.onPrimary,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: AppRadius.mdRadius,
                                     side: item.sepetteMi
                                         ? BorderSide(color: colors.error.withValues(alpha: 0.4), width: 1.2)
                                         : BorderSide.none,
@@ -1880,7 +1880,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                         child: Text(
                                           item.sepetteMi ? l10n.gardirobumDolabaAl : l10n.gardirobumSepeteAt,
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: AppText.sizeCaption,
                                             fontWeight: FontWeight.w800,
                                             letterSpacing: 0.1,
                                             color: item.sepetteMi
@@ -1916,7 +1916,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                                   foregroundColor: AppAccents.styleist,
                                   padding: EdgeInsets.zero,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: AppRadius.mdRadius,
                                     side: const BorderSide(color: AppMiscColors.lightPurpleBorder, width: 1.0),
                                   ),
                                   elevation: 0,
@@ -1983,7 +1983,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             controller: _aramaDenetleyici,
             onChanged: (deger) => setState(() => _aramaMetni = deger),
             textInputAction: TextInputAction.search,
-            style: const TextStyle(fontSize: 14),
+            style: const TextStyle(fontSize: AppText.sizeBodySmall),
             decoration: InputDecoration(
               hintText: l10n.dolapAra,
               isDense: true,
@@ -2006,7 +2006,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       onPressed: _aramayiTemizle,
                     ),
               hintStyle: TextStyle(
-                fontSize: 14,
+                fontSize: AppText.sizeBodySmall,
                 color: colors.onSurfaceVariant,
               ),
               border: OutlineInputBorder(
@@ -2041,7 +2041,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 selectedColor: colors.primary,
                 side: BorderSide.none,
                 labelStyle: TextStyle(
-                  fontSize: 12,
+                  fontSize: AppText.sizeCaption,
                   fontWeight: FontWeight.w700,
                   color: secili ? colors.onPrimary : colors.onSurfaceVariant,
                 ),
@@ -2055,7 +2055,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             child: Text(
               l10n.gardirobumUrunSayisi(_gorunenParcalar().length),
               style: TextStyle(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 fontWeight: FontWeight.bold,
                 color: colors.onSurfaceVariant,
               ),
@@ -2079,7 +2079,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           Text(
             l10n.dolapEslesmeYok,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14, color: colors.onSurfaceVariant),
+            style: TextStyle(fontSize: AppText.sizeBodySmall, color: colors.onSurfaceVariant),
           ),
           const SizedBox(height: 8),
           TextButton.icon(
@@ -2153,7 +2153,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   child: Text(
                     kategoriBasligi,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: AppText.sizeTitleSmall,
                       fontWeight: FontWeight.w900,
                       letterSpacing: -0.5,
                       color: colors.onSurface,
@@ -2166,7 +2166,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 Text(
                   l10n.gardirobumUrunSayisi(kategoriListesi.length),
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: AppText.sizeCaption,
                     fontWeight: FontWeight.bold,
                     color: colors.onSurfaceVariant,
                   ),
@@ -2262,7 +2262,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.5,
-                          fontSize: 18,
+                          fontSize: AppText.sizeTitleSmall,
                           color: colors.onSurface,
                         ),
                       ),
@@ -2316,7 +2316,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         Text(
                           l10n.gardirobumGizlendiBaslik,
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: AppText.sizeTitleSmall,
                             fontWeight: FontWeight.bold,
                             color: colors.onSurfaceVariant,
                           ),
@@ -2325,7 +2325,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                         Text(
                           l10n.gardirobumGizlendiAciklama,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: AppText.sizeBodySmall,
                             color: colors.onSurfaceVariant.withValues(alpha: 0.8),
                           ),
                         ),
@@ -2357,9 +2357,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                               child: Icon(Icons.add_a_photo_outlined, size: 48, color: colors.onSurface),
                             ),
                             const SizedBox(height: 16),
-                            Text(l10n.gardirobumBosBaslik, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: colors.onSurface)),
+                            Text(l10n.gardirobumBosBaslik, style: TextStyle(fontSize: AppText.sizeTitleSmall, fontWeight: FontWeight.w900, color: colors.onSurface)),
                             const SizedBox(height: 8),
-                            Text(l10n.gardirobumBosAciklama, textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: colors.onSurfaceVariant, height: 1.4)),
+                            Text(l10n.gardirobumBosAciklama, textAlign: TextAlign.center, style: TextStyle(fontSize: AppText.sizeBodySmall, color: colors.onSurfaceVariant, height: 1.4)),
                           ],
                         ),
                       ),
@@ -2494,7 +2494,7 @@ class _YuklemeOverlay extends StatelessWidget {
                 Text(
                   stepInfo.title,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: AppText.sizeTitle,
                     fontWeight: FontWeight.w900,
                     letterSpacing: -0.5,
                     color: colors.onSurface,
@@ -2515,13 +2515,13 @@ class _YuklemeOverlay extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                             decoration: BoxDecoration(
                               color: anaRenk.withValues(alpha: 0.12),
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: AppRadius.mdRadius,
                               border: Border.all(color: anaRenk.withValues(alpha: 0.3)),
                             ),
                             child: Text(
                               '$currentPhotoIndex / $totalPhotos',
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 fontWeight: FontWeight.w800,
                                 color: anaRenk,
                                 letterSpacing: 0.3,
@@ -2590,7 +2590,7 @@ class _YuklemeOverlay extends StatelessWidget {
                           key: ValueKey<int>(aiMessageIndex),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: AppText.sizeBodySmall,
                             fontWeight: FontWeight.w600,
                             color: colors.onSurfaceVariant,
                             height: 1.4,

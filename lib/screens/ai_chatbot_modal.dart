@@ -502,7 +502,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
           selectable: true,
           styleSheet: MarkdownStyleSheet(
             p: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               letterSpacing: -0.1,
               color: context.uygunMetin,
               height: 1.45,
@@ -517,40 +517,40 @@ You MUST write your ENTIRE response in **$hedefDil**!
               color: context.uygunMetin,
             ),
             h1: TextStyle(
-              fontSize: 18,
+              fontSize: AppText.sizeTitleSmall,
               fontWeight: FontWeight.w700,
               color: context.uygunMetin,
             ),
             h2: TextStyle(
-              fontSize: 16,
+              fontSize: AppText.sizeBodyLarge,
               fontWeight: FontWeight.w700,
               color: context.uygunMetin,
             ),
             h3: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               fontWeight: FontWeight.w600,
               color: context.uygunMetin,
             ),
             listBullet: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: context.uygunMetin,
             ),
             listIndent: 16.0,
             // Kod blokları ve satır içi kod (dark mode uyumlu).
             code: TextStyle(
-              fontSize: 13,
+              fontSize: AppText.sizeSmall,
               color: colorScheme.onSurface,
               backgroundColor: colorScheme.surfaceContainerHighest,
               fontFamily: 'monospace',
             ),
             codeblockDecoration: BoxDecoration(
               color: colorScheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: AppRadius.smRadius,
             ),
             codeblockPadding: const EdgeInsets.all(10),
             // Bağlantılar (tema rengi ile okunur).
             a: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colorScheme.primary,
               decoration: TextDecoration.underline,
               decorationColor: colorScheme.primary,
@@ -565,12 +565,12 @@ You MUST write your ENTIRE response in **$hedefDil**!
             ),
             // Tablo metinleri.
             tableHead: TextStyle(
-              fontSize: 13,
+              fontSize: AppText.sizeSmall,
               fontWeight: FontWeight.w700,
               color: context.uygunMetin,
             ),
             tableBody: TextStyle(
-              fontSize: 13,
+              fontSize: AppText.sizeSmall,
               color: context.uygunMetin,
             ),
             tableBorder: TableBorder.all(
@@ -578,7 +578,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
             ),
             blockquoteDecoration: BoxDecoration(
               color: colorScheme.surfaceContainerHighest,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: AppRadius.smRadius,
               border: Border(
                 left: BorderSide(color: widget.anaRenk, width: 3),
               ),
@@ -593,7 +593,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: colorScheme.tertiaryContainer.withValues(alpha: 0.5),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
               border: Border.all(
                 color: colorScheme.tertiary.withValues(alpha: 0.2),
               ),
@@ -615,7 +615,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                         l10n.chatKombinHazirBaslik(_ortamEtiketi(hedefOrtam)),
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
-                          fontSize: 14,
+                          fontSize: AppText.sizeBodySmall,
                           color: context.uygunMetin,
                         ),
                         maxLines: 2,
@@ -634,7 +634,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                       backgroundColor: colorScheme.tertiary,
                       foregroundColor: colorScheme.onTertiary,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: AppRadius.mdRadius,
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                     ),
@@ -647,7 +647,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                       l10n.chatKombiniGorButon,
                       style: const TextStyle(
                         fontWeight: FontWeight.w800,
-                        fontSize: 14,
+                        fontSize: AppText.sizeBodySmall,
                       ),
                     ),
                   ),
@@ -695,7 +695,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
             child: Text(
               etiket,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 color: context.uygunMetin,
                 fontWeight: FontWeight.w600,
               ),
@@ -790,7 +790,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                           margin: const EdgeInsets.only(bottom: 10),
                           decoration: BoxDecoration(
                             color: colorScheme.outline.withValues(alpha: 0.4),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: AppRadius.mdRadius,
                           ),
                         ),
                       ),
@@ -811,7 +811,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                   style: theme.textTheme.titleMedium?.copyWith(
                                     color: context.uygunMetin,
                                     fontWeight: FontWeight.w800,
-                                    fontSize: 16,
+                                    fontSize: AppText.sizeBodyLarge,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -821,7 +821,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                   l10n.chatModHavaDuyarli,
                                   style: theme.textTheme.bodySmall?.copyWith(
                                     color: context.uygunMetin,
-                                    fontSize: 12,
+                                    fontSize: AppText.sizeCaption,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   maxLines: 1,
@@ -897,7 +897,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                             children: [
                               if (m.resimBytes != null) ...[
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: AppRadius.mdRadius,
                                   child: Image.memory(
                                     m.resimBytes!,
                                     height: 160,
@@ -924,7 +924,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                       m.mesaj,
                                       style: TextStyle(
                                         color: context.uygunMetin,
-                                        fontSize: 14,
+                                        fontSize: AppText.sizeBodySmall,
                                         fontWeight: FontWeight.w500,
                                         height: 1.4,
                                       ),
@@ -961,7 +961,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                 : l10n.chatStilistYaziyor,
                             style: theme.textTheme.bodySmall?.copyWith(
                               color: context.uygunMetin,
-                              fontSize: 12,
+                              fontSize: AppText.sizeCaption,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -998,7 +998,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainer,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: AppRadius.lgRadius,
                       border: Border.all(
                         color:
                             colorScheme.outlineVariant.withValues(alpha: 0.5),
@@ -1007,7 +1007,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                     child: Row(
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: AppRadius.smRadius,
                           child: Image.memory(
                             _secilenResimBytes!,
                             width: 40,
@@ -1032,7 +1032,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                           child: Text(
                             l10n.chatGorselEklendi,
                             style: theme.textTheme.bodyMedium?.copyWith(
-                              fontSize: 12,
+                              fontSize: AppText.sizeCaption,
                               fontWeight: FontWeight.w500,
                               color: context.uygunMetin,
                             ),
@@ -1139,7 +1139,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                     onSubmitted: (_) => _mesajGonder(),
                                     style: TextStyle(
                                       color: context.uygunMetin,
-                                      fontSize: 14,
+                                      fontSize: AppText.sizeBodySmall,
                                       fontWeight: FontWeight.w400,
                                     ),
                                     decoration: InputDecoration(
@@ -1147,7 +1147,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                           ? l10n.chatDinleniyor
                                           : l10n.chatBirSeylerYazin,
                                       hintStyle: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: AppText.sizeBodySmall,
                                         fontWeight: FontWeight.w400,
                                         color: context.uygunMetin,
                                       ),

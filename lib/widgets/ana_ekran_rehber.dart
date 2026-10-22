@@ -228,7 +228,7 @@ class AnaEkranRehber {
       textStyleSkip: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.bold,
-        fontSize: 14,
+        fontSize: AppText.sizeBodySmall,
         shadows: [
           Shadow(
             color: Colors.black54,
@@ -283,7 +283,7 @@ class AnaEkranRehber {
           Text(
             baslik,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: AppText.sizeTitleSmall,
               fontWeight: FontWeight.w700,
               color: colors.onSurface,
             ),
@@ -292,7 +292,7 @@ class AnaEkranRehber {
           Text(
             aciklama,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
               height: 1.45,
             ),
@@ -305,7 +305,7 @@ class AnaEkranRehber {
                 backgroundColor: colors.primary,
                 foregroundColor: colors.onPrimary,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppRadius.mdRadius,
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 18,
@@ -317,7 +317,7 @@ class AnaEkranRehber {
                 sonAdimMi ? l10n.rehberAnladimBasla : l10n.rehberSonrakiAdim,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                 ),
               ),
             ),

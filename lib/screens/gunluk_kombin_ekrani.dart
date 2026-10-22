@@ -373,7 +373,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         backgroundColor:
             yeniDurum ? AppAccents.success : Color(0xFF4A4F49),
       ),
@@ -670,7 +670,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: AppText.sizeBodySmall,
                                   fontWeight: FontWeight.w800,
                                   letterSpacing: -0.2,
                                   color: colorScheme.onSurface,
@@ -685,7 +685,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                               label: Text(
                                 l10n.temizle,
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: AppText.sizeBodySmall,
                                   fontWeight: FontWeight.bold,
                                   color: colorScheme.error,
                                 ),
@@ -695,7 +695,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 12, vertical: 6),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
+                                    borderRadius: AppRadius.mdRadius),
                               ),
                             ),
                           ],
@@ -711,7 +711,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                             Text(
                               l10n.zarAtKaristir,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: -0.2,
                                 color: colorScheme.onSurface,
@@ -840,7 +840,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                       horizontal: 12, vertical: 8),
                   decoration: BoxDecoration(
                     color: colorScheme.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppRadius.mdRadius,
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -868,7 +868,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                         horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainerHighest,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.mdRadius,
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -944,7 +944,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                           : Text(
                               metniGuvenliYap(_stilistYorumu),
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 fontWeight: FontWeight.w500,
                                 color: AppMiscColors.styleistTextDinamik(context),
                                 height: 1.45,
@@ -1025,7 +1025,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
           fit: StackFit.expand,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
               child: Image.memory(
                 kiyafet.resimBytes,
                 fit: BoxFit.cover,
