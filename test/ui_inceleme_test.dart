@@ -249,6 +249,20 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('Bugun ekrani - giydim durumu', (tester) async {
+    await telefon(tester);
+    await tester.pumpWidget(_uygulama(bugunEkrani()));
+    await _bekle(tester);
+
+    // "Giydim" → düğme dolu "Giydildi" olur.
+    await tester.tap(find.text('Giydim').first);
+    await _bekle(tester);
+    await _ekranGorusu(tester, '25_bugun_giydildi');
+
+    expect(find.text('Giydildi'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('Bugun ekrani - alt kisim', (tester) async {
     await telefon(tester);
     await tester.pumpWidget(_uygulama(bugunEkrani()));

@@ -156,8 +156,8 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.969.395 bayt,
-   SHA256 `E66C9A07AE986362C40D0F9F2D6BB356A15AD6BC8F01214A359F8B60E53E19AF`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.988.490 bayt,
+   SHA256 `CD5644B70AA606DC4FE68A9995A3F20EBE9CF99171B8FA7A6FDA21FFE9BA75EC`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
    (21.10.2026 dolap arama/filtre ve takvim planlama turlarından sonra yeniden
@@ -171,7 +171,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 5. **Data safety:** fotoğraf/veri paylaşımı bölümünü kontrol et (fotoğraflar
    işlenmek üzere üçüncü taraf AI servislerine gidiyor).
 6. **Cihaz testi:** `build\FitCheck-1.0.32+38.apk` (versionCode 38,
-   SHA256 `B84D39BCF08BD9E9FF536DF5B6CDD46BD4E5DE44E1B4E180EC95145CE5EEFDE7`).
+   SHA256 `D15D505396BF7D931B60AAA3ED7B424D1BD40E757B006494A0CF442D5C9AFB45`).
    Yeni: 7. sekme "Düello", Bildirim → sekme yönlendirme, kombini paylaşma,
    raf aksiyonları, "Stil Günlüğüm" (takvim/günlük/rapor), "Seyahat Modu".
    Değişiklik: "Kendin Kombin Yap" sekmesi kaldırıldı → alt menüde 6 sekme
@@ -191,3 +191,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
    Son tur: dolaba eklerken "Arka plan ve yerleşim" düzenleyicisi (zemin seçimi,
    sürükleme/ölçek) ve "Arka planda ekle" seçeneği (yükleme ekranı kilitlemiyor,
    ilerleme çubuğu her sekmede görünüyor).
+   Son tur: Bugün kartındaki **Kaydet** ve **Giydim** düğmeleri işlem durumunu
+   gösteriyor — kaydedilince dolu "Kaydedildi", giyilince yeşil "Giydildi".
+   Durum favorilerden ve giyilme geçmişinden hesaplanıyor (dünkü kayıt bugünü
+   işaretlemiyor), uygulama kapatılıp açılsa da korunuyor.
