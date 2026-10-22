@@ -1,3 +1,4 @@
+import '../utils/buyuk_harf.dart';
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
@@ -855,7 +856,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
-                                          l10n.stilistAnlikHavaDurumu.toUpperCase(),
+                                          buyukHarf(l10n.stilistAnlikHavaDurumu, Localizations.localeOf(context).languageCode),
                                           style: TextStyle(
                                             fontSize: 12,
                                             color: colors.primary,
@@ -1250,7 +1251,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          etiket.toUpperCase(),
+                          buyukHarf(etiket, Localizations.localeOf(context).languageCode),
                           style: TextStyle(
                             fontSize: 12,
                             color: colors.primary,

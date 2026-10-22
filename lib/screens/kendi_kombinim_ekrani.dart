@@ -1,3 +1,4 @@
+import '../utils/buyuk_harf.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; 
@@ -492,7 +493,7 @@ SADECE bu JSON formatında dön:
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      baslik.toUpperCase(), 
+                      buyukHarf(baslik, Localizations.localeOf(context).languageCode), 
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(

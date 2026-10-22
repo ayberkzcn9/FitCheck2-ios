@@ -37,6 +37,8 @@ import 'package:fitcheck/screens/giris_ekrani.dart';
 import 'package:fitcheck/screens/onboarding_ekrani.dart';
 import 'package:fitcheck/screens/izin_ekrani.dart';
 import 'package:fitcheck/screens/reklamsiz_premium_ekrani.dart';
+import 'package:fitcheck/screens/kendi_kombinim_ekrani.dart';
+import 'package:fitcheck/screens/dolaptan_kombin_ekrani.dart';
 import 'package:fitcheck/screens/seyahat_ekrani.dart';
 import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/services/bugun_feed_servisi.dart';
@@ -73,6 +75,20 @@ ThemeData _tema({Brightness parlaklik = Brightness.light}) {
       centerTitle: false,
     ),
   );
+}
+
+/// Testte olmayan donanım kanallarını (sensör, titreşim) boş yanıtla susturur.
+void _donanimKanallariniSustur() {
+  final haberci = TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+  for (final kanal in <String>[
+    'dev.fluttercommunity.plus/sensors/method',
+    'dev.fluttercommunity.plus/sensors/accelerometer',
+    'dev.fluttercommunity.plus/sensors/gyroscope',
+    'dev.fluttercommunity.plus/sensors/magnetometer',
+    'vibration',
+  ]) {
+    haberci.setMockMethodCallHandler(MethodChannel(kanal), (_) async => null);
+  }
 }
 
 Widget _uygulama(Widget child) {
@@ -690,5 +706,45 @@ void main() {
     await bekle(tester);
     await goruntu(tester, '36_izin');
     _yerlesimHatasiniBildir(tester, 'Izin');
+  });
+
+  testWidgets('Alt ekranlar: kendi kombinim ve dolaptan kombin cizilir', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    await telefon(tester);
+    _donanimKanallariniSustur();
+
+    await tester.pumpWidget(
+      _uygulama(
+        KendiKombinimEkrani(
+          gardirobum: dolap,
+          anaRenk: const Color(0xFF0F5F4A),
+          onFavoriEkle: (_) {},
+          onFavoriCikar: (_) {},
+          onGecmiseEkle: (_, __) {},
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '37_kendi_kombinim');
+    _yerlesimHatasiniBildir(tester, 'Kendi kombinim');
+
+    await tester.pumpWidget(
+      _uygulama(
+        DolaptanKombinStilistiEkrani(
+          gardirobum: dolap,
+          favoriKombinler: const <FavoriKombin>[],
+          gunlukHava: 'İstanbul 21°C · Parçalı Bulutlu',
+          havaYukleniyor: false,
+          onFavoriEkle: (_) {},
+          onGecmiseEkle: (_, __) async {},
+          onKonumuYenile: () {},
+          anaRenk: const Color(0xFF0F5F4A),
+        ),
+      ),
+    );
+    await bekle(tester);
+    await goruntu(tester, '38_dolaptan_kombin');
+    _yerlesimHatasiniBildir(tester, 'Dolaptan kombin');
   });
 }
