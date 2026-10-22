@@ -357,6 +357,23 @@ düğme doğru görünüyor; geçmiş kaydı **yalnızca bugünün tarihiyle** e
 Renk: giyildi durumu `AppAccents.success` (yeşil), kaydedildi durumu nötr tonal
 yüzey — ikisi yan yana karışmıyor.
 
+### 4.10 Çamaşır sepeti döngüsü (bu tur)
+
+"Giydim" artık tek yönlü değil: parçalar sepete düşüyor, **sepet temizlenince
+kombin yeniden giyilebilir** hâle geliyor ve Bugün kartındaki düğme "Giydim"e
+dönüyor.
+
+Durum üç kaynaktan türetiliyor: bu oturumdaki işlem, **bugünün giyilme kaydı**
+ve **parçaların sepette olup olmadığı**. Sepet boşsa kombin yıkanmış sayılır.
+
+- Sepet temizliği ve tekli "Dolaba al" işlemleri AnaEkran'da bir **jeton**
+  artırıyor; Bugün ekranı bunu görünce iyimser işaretleri bırakıp durumu
+  yeniden hesaplıyor (aynı desen: `planJetonu`).
+- **Geçmiş silinmiyor:** haftalık rapor, giyme serisi ve takvim aynı kalıyor;
+  sadece "şu an giyilebilir mi" bilgisi değişiyor.
+- Aynı gün aynı kombin tekrar giyilirse geçmişe **ikinci satır** eklenmiyor
+  (tarih + başlık + parça listesi aynıysa satır tazeleniyor).
+
 ---
 
 ## 5. Kopyalamayacağımız şeyler (bilinçli karar)

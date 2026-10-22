@@ -32,6 +32,7 @@ Kiyafet _kiyafet({
   required String baslik,
   DateTime? eklenme,
   DateTime? sonGiyilme,
+  bool sepette = false,
 }) {
   return Kiyafet(
     id: id,
@@ -41,6 +42,7 @@ Kiyafet _kiyafet({
     renk: 'Siyah',
     stil: 'Regular',
     mevsim: 'dort_mevsim',
+    sepetteMi: sepette,
     sonGiyilmeTarihi: sonGiyilme,
     eklenmeTarihi: eklenme ?? DateTime(2026, 1, 1),
   );
@@ -68,6 +70,7 @@ Widget _kombinEkrani({
   required Kiyafet alt,
   required BugunKombin kombin,
   List<Map<String, String>> gecmisKombinler = const <Map<String, String>>[],
+  int sepetJetonu = 0,
 }) {
   return MaterialApp(
     locale: const Locale('tr'),
@@ -86,6 +89,7 @@ Widget _kombinEkrani({
         onStilistAc: () {},
         anaRenk: Colors.indigo,
         gecmisKombinler: gecmisKombinler,
+        sepetJetonu: sepetJetonu,
         feedServisi: _SahteFeed(FeedSonucu([kombin], FeedKaynagi.yapayZeka)),
       ),
     ),
@@ -321,10 +325,11 @@ void main() {
   testWidgets('bugün giyilmiş kombin dolu görünür', (tester) async {
     final bugun = DateTime.now().toIso8601String().substring(0, 10);
 
+    // "Giydim" parçaları sepete attığı için sepet dolu olmalı.
     await tester.pumpWidget(
       _kombinEkrani(
-        ust: ust,
-        alt: alt,
+        ust: _kiyafet(id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört', sepette: true),
+        alt: _kiyafet(id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon', sepette: true),
         kombin: kombin,
         gecmisKombinler: [
           {
@@ -339,6 +344,47 @@ void main() {
 
     expect(find.text('Giydildi'), findsOneWidget);
     expect(find.text('Giydim'), findsNothing);
+  });
+
+  testWidgets('sepet temizlenince "Giydildi" yeniden "Giydim" olur',
+      (tester) async {
+    final bugun = DateTime.now().toIso8601String().substring(0, 10);
+
+    final gecmisli = [
+      {
+        'tarih': bugun,
+        'baslik': 'Sade ofis kombini',
+        'detay': 'Beyaz Tişört, Siyah Pantolon',
+      },
+    ];
+
+    // Sepet dolu: kombin "giyildi" görünür.
+    await tester.pumpWidget(
+      _kombinEkrani(
+        ust: _kiyafet(id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört', sepette: true),
+        alt: _kiyafet(id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon', sepette: true),
+        kombin: kombin,
+        gecmisKombinler: gecmisli,
+        sepetJetonu: 0,
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Giydildi'), findsOneWidget);
+
+    // "Sepeti temizle": parçalar artık sepette değil + jeton arttı.
+    await tester.pumpWidget(
+      _kombinEkrani(
+        ust: _kiyafet(id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört'),
+        alt: _kiyafet(id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon'),
+        kombin: kombin,
+        gecmisKombinler: gecmisli,
+        sepetJetonu: 1,
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Giydim'), findsOneWidget);
+    expect(find.text('Giydildi'), findsNothing);
   });
 
   testWidgets('dün giyilmiş kombin bugün giyilmemiş sayılır', (tester) async {

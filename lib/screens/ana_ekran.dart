@@ -69,6 +69,10 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   /// Takvimde plan değiştikçe artar; Bugün ekranındaki plan kartını tazeler.
   int _planJetonu = 0;
 
+  /// Çamaşır sepeti her değiştiğinde artar; Bugün ekranındaki "Giydildi"
+  /// işaretinin yıkanan parçalar için sıfırlanmasını sağlar.
+  int _sepetJetonu = 0;
+
   /// Arka plan yükleme durumu dinleyicisi.
   late final ValueNotifier<KilyafetYuklemeDurumu> _yuklemeListener;
 
@@ -854,6 +858,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         if (index != -1) {
           _gardirobum[index].sepetteMi = !_gardirobum[index].sepetteMi;
         }
+        // Sepet durumu değişti: Bugün'deki "Giydildi" işareti tazelensin.
+        _sepetJetonu++;
       });
       await _verileriKaydet();
     });
@@ -1065,6 +1071,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
           ..sepetteMi = false
           ..giyilmeSayisi = eskiSayi
           ..sonGiyilmeTarihi = eskiGiyilme;
+        // Parça yeniden temiz: Bugün'deki "Giydildi" işareti tazelensin.
+        _sepetJetonu++;
       });
       await _verileriKaydet();
     });
@@ -1122,9 +1130,21 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
 
       final Set<String> sepeteEklenenIdler = <String>{};
 
+      final bugun = DateTime.now().toString().substring(0, 10);
+
       setState(() {
+        // Aynı kombin bugün zaten kayıtlıysa satırı çoğaltma: sepet
+        // temizlendikten sonra aynı kombin tekrar "Giydim" denebiliyor.
+        final zatenVar = _gecmisKombinler.indexWhere(
+          (k) =>
+              k['tarih'] == bugun &&
+              k['baslik'] == kombinAdi &&
+              k['detay'] == detayMetni,
+        );
+        if (zatenVar >= 0) _gecmisKombinler.removeAt(zatenVar);
+
         _gecmisKombinler.insert(0, {
-          "tarih": DateTime.now().toString().substring(0, 10),
+          "tarih": bugun,
           "baslik": kombinAdi,
           "detay": detayMetni,
         });
@@ -1262,6 +1282,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
             if (item.giyilmeSayisi > 0) item.giyilmeSayisi--;
           }
         }
+        // Parçalar sepete geri alındı: Bugün'deki "Giydildi" tazelensin.
+        _sepetJetonu++;
       });
 
       await _verileriKaydet();
@@ -1377,6 +1399,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         for (var k in _gardirobum) {
           k.sepetteMi = false;
         }
+        // Bugün ekranı "Giydildi" işaretini bırakıp yeniden "Giydim" göstersin.
+        _sepetJetonu++;
       });
       await _verileriKaydet();
       if (temizlenenSayi > 0) {
@@ -1393,6 +1417,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       setState(() {
         final index = _gardirobum.indexWhere((k) => k.id == id);
         if (index != -1) _gardirobum[index].sepetteMi = false;
+        _sepetJetonu++;
       });
       await _verileriKaydet();
     });
@@ -1689,6 +1714,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         planJetonu: _planJetonu,
         favoriKombinler: _favoriKombinler,
         gecmisKombinler: _gecmisKombinler,
+        sepetJetonu: _sepetJetonu,
       ),
       GardirobumEkrani(
         key: _gardirobumKey,

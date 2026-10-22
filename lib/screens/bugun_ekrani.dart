@@ -56,6 +56,7 @@ class BugunEkrani extends StatefulWidget {
     this.planJetonu = 0,
     this.favoriKombinler = const <FavoriKombin>[],
     this.gecmisKombinler = const <Map<String, String>>[],
+    this.sepetJetonu = 0,
   });
 
   final List<Kiyafet> gardirobum;
@@ -99,6 +100,12 @@ class BugunEkrani extends StatefulWidget {
   /// Giyilme geçmişi (`tarih`, `baslik`, `detay`); "Giydim" düğmesinin dolu
   /// görünmesi için bugünün kayıtları kullanılır.
   final List<Map<String, String>> gecmisKombinler;
+
+  /// Çamaşır sepeti her değiştiğinde (temizle / tekli çıkar) artan sayaç.
+  ///
+  /// Bugün ekranı bu sayacı izleyerek iyimser "giydildi" işaretlerini bırakır:
+  /// parçalar yıkandıysa düğme yeniden "Giydim" olur.
+  final int sepetJetonu;
 
   @override
   State<BugunEkrani> createState() => _BugunEkraniState();
@@ -151,6 +158,13 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
     if (eski.planJetonu != widget.planJetonu) {
       _planiYukle();
+    }
+
+    // Sepet temizlendi ya da bir parça sepetten çıkarıldı: iyimser "giydildi"
+    // işaretleri bırakılır, durum yeniden gerçek veriden (geçmiş + sepet)
+    // hesaplanır. Böylece yıkanan kombin tekrar "Giydim" görünür.
+    if (eski.sepetJetonu != widget.sepetJetonu) {
+      _giyilenler.clear();
     }
 
     final yeniImza = _imzaHesapla();
@@ -1422,11 +1436,30 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
   /// Kombin bugün giyildi mi?
   ///
-  /// Hem bu oturumda işaretlenenler hem de geçmişte bugünün tarihiyle
-  /// kaydedilmiş kombinler (başlık veya parça listesi eşleşmesi) kontrol edilir.
+  /// Üç kaynak birlikte değerlendirilir:
+  /// 1. Bu oturumda "Giydim"e basıldıysa (anında geri bildirim),
+  /// 2. Geçmişte bugünün tarihiyle kayıtlıysa (başlık veya parça eşleşmesi),
+  /// 3. Parçalar hâlâ çamaşır sepetindeyse.
+  ///
+  /// Sepet temizlendiğinde parçalar "yıkanmış" sayılır ve düğme yeniden
+  /// "Giydim" olur; giyilme geçmişi/rapor ise olduğu gibi kalır.
   bool _giyildiMi(BugunKombin kombin, List<Kiyafet> parcalar) {
     if (_giyilenler.contains(kombin.anahtar)) return true;
+    if (!_bugunGiyildi(kombin, parcalar)) return false;
 
+    final cozulenler = _kombinParcalari(kombin);
+    if (cozulenler.isEmpty) return true; // parçalar silinmiş: geçmişe güven
+    return cozulenler.any((k) => k.sepetteMi);
+  }
+
+  /// Kombinin parçaları (dolapta bulunanlar).
+  List<Kiyafet> _kombinParcalari(BugunKombin kombin) {
+    final idler = kombin.kiyafetIdleri.toSet();
+    return widget.gardirobum.where((k) => idler.contains(k.id)).toList();
+  }
+
+  /// Geçmişte bugünün tarihiyle bu kombine ait bir kayıt var mı?
+  bool _bugunGiyildi(BugunKombin kombin, List<Kiyafet> parcalar) {
     final bugun = DateTime.now().toIso8601String().substring(0, 10);
     final hedefBaslik = kombin.baslik.trim().toLowerCase();
     final hedefParcalar = parcalar

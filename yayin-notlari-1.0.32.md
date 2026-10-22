@@ -198,3 +198,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
    Son tur: Kombin Düellosu'nda **önceki sorulara dönüş** (üst çubuktaki ‹ ve
    geri bildirim panelindeki "Geri"); dönülen soruda cevap ve kazanılan XP
    aynen görünüyor, puan yeniden hesaplanmıyor.
+   Son tur: **Çamaşır sepeti döngüsü tamamlandı** — sepet temizlenince (veya
+   parça "Dolaba al" yapılınca) Bugün'deki "Giydildi" yeniden "Giydim" oluyor;
+   giyilme geçmişi, haftalık rapor ve seri olduğu gibi kalıyor. Aynı gün aynı
+   kombin tekrar giyilirse geçmişte ikinci satır oluşmuyor.

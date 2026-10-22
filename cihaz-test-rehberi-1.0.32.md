@@ -96,7 +96,21 @@ Kurulum: `adb install -r build\FitCheck-1.0.32+38.apk`
 - [ ] Geri dönüp son soruya kadar ilerleyip "Sonucu gör" deyince XP **iki kez**
       yazılmıyor (profil/XP toplamı bir tur kadar artıyor)
 
-## 9. Regresyon (daha önce çalışan yerler)
+## 9. Sepet temizliği → kombin yeniden giyilebilir (yeni)
+
+- [ ] Bugün → **Giydim** (düğme yeşil "Giydildi") → parçalar sepete düştü
+- [ ] Profil → **Çamaşır Sepeti** → **Tümünü temiz işaretle** → sepet boşalıyor
+- [ ] Bugün sekmesine dön → düğme yeniden **"Giydim"** (yeşil kalmıyor)
+- [ ] Dolap'a git → aynı parçalarda **"Sepette" rozeti kalkmış**
+- [ ] Profil → Çamaşır Sepeti sayısı **0**
+- [ ] Stil Günlüğü → Rapor: **giyilme kaydı/rapor değişmemiş** (geçmiş silinmiyor)
+- [ ] Aynı kombinde tekrar **Giydim** → düğme yeşile dönüyor, geçmişte **ikinci
+      satır oluşmuyor** (aynı gün aynı kombin tekrarı çoğaltılmıyor)
+- [ ] Sepetten **tek parça** çıkar (Dolap → parça → "Dolaba al") → Bugün'de
+      durum tazeleniyor, uygulama yeniden başlatmaya gerek yok
+- [ ] Uygulamayı kapatıp aç → sepet boşsa düğme **"Giydim"** kalıyor (kalıcı)
+
+## 10. Regresyon (daha önce çalışan yerler)
 
 - [ ] Alt menü 6 sekme, ikon + etiket: Bugün, Dolap, Plan, Kombin, Profil, Düello
 - [ ] Bildirim → dokununca doğru sekmeyi açıyor (bugün / plan / düello)
