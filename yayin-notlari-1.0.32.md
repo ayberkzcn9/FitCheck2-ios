@@ -156,8 +156,8 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 
 ## Play Console'da yapılacaklar
 
-1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.988.490 bayt,
-   SHA256 `CD5644B70AA606DC4FE68A9995A3F20EBE9CF99171B8FA7A6FDA21FFE9BA75EC`).
+1. **AAB:** `build\FitCheck-1.0.32+38.aab` (72.993.261 bayt,
+   SHA256 `51B5F157E7A5CB2BFC447CA582DE81880FA2BC7FD91FE37D4B9A28BAB4E34D38`).
    `tool/aab_dogrula.py` ile doğrulandı; `D:\yedekler`e kopyalandı.
    1.0.30+36 AAB'si yüklenmedi, doğrudan bu sürüm yüklenebilir.
    (21.10.2026 dolap arama/filtre ve takvim planlama turlarından sonra yeniden
@@ -171,7 +171,7 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
 5. **Data safety:** fotoğraf/veri paylaşımı bölümünü kontrol et (fotoğraflar
    işlenmek üzere üçüncü taraf AI servislerine gidiyor).
 6. **Cihaz testi:** `build\FitCheck-1.0.32+38.apk` (versionCode 38,
-   SHA256 `D15D505396BF7D931B60AAA3ED7B424D1BD40E757B006494A0CF442D5C9AFB45`).
+   SHA256 `2C298C43591A445FAE8B9817E044C9FAFDB3F7E91B5F9116C62147DE5913F1A2`).
    Yeni: 7. sekme "Düello", Bildirim → sekme yönlendirme, kombini paylaşma,
    raf aksiyonları, "Stil Günlüğüm" (takvim/günlük/rapor), "Seyahat Modu".
    Değişiklik: "Kendin Kombin Yap" sekmesi kaldırıldı → alt menüde 6 sekme

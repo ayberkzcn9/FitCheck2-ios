@@ -454,6 +454,18 @@ void main() {
     await tester.tap(find.text(beklenen.solDogru ? 'A' : 'B'));
     await _bekle(tester);
     await _ekranGorusu(tester, '11_duello_geribildirim');
+
+    // İkinci soru cevaplanır, ardından "Geri" ile 1. soruya dönülür.
+    await tester.tap(find.text('Devam'));
+    await _bekle(tester);
+    final ikinci =
+        DuelMotoru().uret(gardirobum: dolap, adet: 10, tohum: 7).sorular[1];
+    await tester.tap(find.text(ikinci.solDogru ? 'A' : 'B'));
+    await _bekle(tester);
+    await tester.tap(find.text('Geri'));
+    await _bekle(tester);
+    await _ekranGorusu(tester, '26_duello_geri');
+
     expect(tester.takeException(), isNull);
   });
 
