@@ -93,11 +93,22 @@ class BilgiSayfasi {
                     color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  padding: const EdgeInsets.fromLTRB(20, 22, 20, 14),
+                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Center(
+                        child: Container(
+                          width: 36,
+                          height: 4,
+                          margin: const EdgeInsets.only(bottom: 12),
+                          decoration: BoxDecoration(
+                            color: colors.onSurfaceVariant.withValues(alpha: 0.3),
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                        ),
+                      ),
                       Row(
                         children: [
                           Container(
@@ -138,8 +149,18 @@ class BilgiSayfasi {
                         aciklama,
                         style: TextStyle(
                           fontSize: 14,
-                          height: 1.4,
+                          height: 1.45,
                           color: colors.onSurfaceVariant,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        width: double.infinity,
+                        child: FilledButton(
+                          onPressed: () => Navigator.of(sheetContext).pop(),
+                          child: Text(
+                            MaterialLocalizations.of(sheetContext).okButtonLabel,
+                          ),
                         ),
                       ),
                     ],

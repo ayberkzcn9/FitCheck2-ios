@@ -140,6 +140,9 @@ Future<void> _ekranGorusu(WidgetTester tester, String ad) async {
 Future<void> _bekle(WidgetTester tester) async {
   await tester.pump();
   await tester.pump(const Duration(milliseconds: 400));
+  // Dokunma dalgası (ink splash) sönmeden görüntü alınırsa seçili sekmenin
+  // arkasında geçici bir blok görünüyor; bitmesini bekle.
+  await tester.pump(const Duration(milliseconds: 600));
   await tester.pump();
 }
 

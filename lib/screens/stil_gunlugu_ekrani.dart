@@ -224,7 +224,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         const SizedBox(height: 18),
         Row(
           children: [
-            _noktaGostergesi(colors, AppAccents.success, l10n.stilGunluguGiyildi),
+            _noktaGostergesi(colors, colors.primary, l10n.stilGunluguGiyildi),
             const SizedBox(width: 14),
             _noktaGostergesi(colors, colors.tertiary, l10n.stilGunluguPlanli),
           ],
@@ -336,7 +336,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     if (gun.giyildi)
-                      _nokta(colors, AppAccents.success)
+                      _nokta(colors, colors.primary)
                     else
                       const SizedBox(width: 6),
                     if (gun.planVar) ...[
@@ -476,7 +476,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 for (final kombin in gun.giyilen)
                   _satir(
                     icons: Icons.check_circle_rounded,
-                    renk: AppAccents.success,
+                    renk: colors.primary,
                     baslik: l10n.stilGunluguGiyildi,
                     metin: kombin,
                   ),
@@ -820,7 +820,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             for (final parca in gorseller)
               Padding(
                 padding: const EdgeInsets.only(right: 6),
-                child: SizedBox(width: 42, height: 52, child: _parcaGorseli(parca)),
+                child: SizedBox(width: 34, height: 44, child: _parcaGorseli(parca)),
               ),
             if (gorseller.isEmpty)
               Icon(Icons.checkroom_rounded, color: colors.onSurfaceVariant),
@@ -831,7 +831,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 children: [
                   Text(
                     baslik,
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 14,
@@ -1066,7 +1066,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             ? '${rapor.degisim}'
             : '0';
     final farkRengi = rapor.degisim > 0
-        ? AppAccents.success
+        ? colors.primary
         : rapor.degisim < 0
             ? AppAccents.error
             : colors.onPrimaryContainer;
@@ -1277,7 +1277,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                               : 6 + (34 * (haftalar[i] / zirve)).clamp(0, 34),
                           decoration: BoxDecoration(
                             color: i == haftalar.length - 1
-                                ? AppAccents.success
+                                ? colors.primary
                                 : colors.onPrimaryContainer
                                     .withValues(alpha: 0.22),
                             borderRadius: BorderRadius.circular(AppRadius.sm),
@@ -1382,7 +1382,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   height: 26,
                   decoration: BoxDecoration(
                     color: rapor.gunler[i]
-                        ? AppAccents.success.withValues(alpha: 0.85)
+                        ? colors.primary.withValues(alpha: 0.9)
                         : colors.surface.withValues(alpha: 0.6),
                     shape: BoxShape.circle,
                   ),
@@ -1451,9 +1451,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 minHeight: 6,
                 backgroundColor:
                     colors.onPrimaryContainer.withValues(alpha: 0.14),
-                valueColor: const AlwaysStoppedAnimation<Color>(
-                  AppAccents.success,
-                ),
+                valueColor: AlwaysStoppedAnimation<Color>(colors.primary),
               ),
             ),
           ],

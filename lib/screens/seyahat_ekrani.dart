@@ -345,21 +345,18 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             ),
           ),
           const SizedBox(height: 6),
-          SizedBox(
-            height: 64,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: parcalar.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 8),
-              itemBuilder: (context, i) {
-                final parca = parcalar[i];
-                return SizedBox(
-                  width: 64,
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final parca in parcalar)
+                SizedBox(
+                  width: 76,
                   child: Column(
                     children: [
                       Container(
-                        width: 64,
-                        height: 48,
+                        width: 76,
+                        height: 54,
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           color: colors.surface.withValues(alpha: 0.6),
@@ -373,22 +370,23 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                           gaplessPlayback: true,
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      const SizedBox(height: 3),
                       Text(
                         parca.gorunenBaslik,
-                        maxLines: 1,
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 10,
+                          height: 1.15,
                           color: colors.onPrimaryContainer
                               .withValues(alpha: 0.85),
                         ),
                       ),
                     ],
                   ),
-                );
-              },
-            ),
+                ),
+            ],
           ),
         ],
       ),
