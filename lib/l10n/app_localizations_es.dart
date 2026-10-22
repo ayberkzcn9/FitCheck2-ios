@@ -3519,4 +3519,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get bugunGiydildi => 'Puesto';
+
+  @override
+  String get duelloGeri => 'Atrás';
 }

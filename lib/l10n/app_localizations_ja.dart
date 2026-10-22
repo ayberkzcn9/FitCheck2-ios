@@ -3349,4 +3349,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get bugunGiydildi => '着用済み';
+
+  @override
+  String get duelloGeri => '戻る';
 }

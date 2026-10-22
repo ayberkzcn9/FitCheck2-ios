@@ -1246,5 +1246,6 @@
     }
   },
   "bugunKaydedildi": "Saved",
-  "bugunGiydildi": "Worn"
+  "bugunGiydildi": "Worn",
+  "duelloGeri": "Back"
 }

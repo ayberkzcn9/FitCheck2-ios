@@ -1246,5 +1246,6 @@
     }
   },
   "bugunKaydedildi": "保存済み",
-  "bugunGiydildi": "着用済み"
+  "bugunGiydildi": "着用済み",
+  "duelloGeri": "戻る"
 }

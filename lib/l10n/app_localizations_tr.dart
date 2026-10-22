@@ -3490,4 +3490,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get bugunGiydildi => 'Giydildi';
+
+  @override
+  String get duelloGeri => 'Geri';
 }

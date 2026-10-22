@@ -3522,4 +3522,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get bugunGiydildi => 'Getragen';
+
+  @override
+  String get duelloGeri => 'Zurück';
 }

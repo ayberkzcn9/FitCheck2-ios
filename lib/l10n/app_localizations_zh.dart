@@ -3299,4 +3299,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get bugunGiydildi => '已穿着';
+
+  @override
+  String get duelloGeri => '返回';
 }

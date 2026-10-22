@@ -3517,4 +3517,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get bugunGiydildi => 'Indossato';
+
+  @override
+  String get duelloGeri => 'Indietro';
 }

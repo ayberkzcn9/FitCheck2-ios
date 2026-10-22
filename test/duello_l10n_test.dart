@@ -35,6 +35,7 @@ const List<String> anahtarlar = [
   'duelloDogru',
   'duelloYanlis',
   'duelloDevam',
+  'duelloGeri',
   'duelloSonuc',
   'duelloBitti',
   'duelloSkor',
@@ -69,7 +70,7 @@ const Map<String, Map<String, String>> yerTutucular =
 
 void main() {
   group('düello: yerelleştirme', () {
-    test('40 anahtar 12 dilde de tanımlı ve boş değil', () {
+    test('41 anahtar 12 dilde de tanımlı ve boş değil', () {
       expect(diller, hasLength(12));
 
       for (final dil in diller) {

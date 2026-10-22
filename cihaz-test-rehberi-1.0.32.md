@@ -85,7 +85,18 @@ Kurulum: `adb install -r build\FitCheck-1.0.32+38.apk`
 - [ ] Ertesi gün aynı kombin → düğme yeniden **"Giydim"** (dün giyilmiş sayılmıyor)
 - [ ] Koyu temada her iki dolu durum da okunuyor (yeşil metin kontrastı)
 
-## 8. Regresyon (daha önce çalışan yerler)
+## 8. Düelloda geri dönüş (yeni)
+
+- [ ] Düello → başla → 2. soruyu cevapla → üst çubuktaki **‹** oku → 1. soruya dönüyor
+- [ ] Geri bildirim panelindeki **Geri** düğmesi de aynı işi yapıyor
+- [ ] Dönülen soruda **verdiğin cevap**, doğru/yanlış durumu ve **kazandığın XP**
+      aynen görünüyor (XP yeniden hesaplanmıyor, artmıyor)
+- [ ] **Devam** ile ileri gidince puan/seri bozulmuyor, tur sayacı doğru
+- [ ] 1. soruda geri oku **görünmüyor**
+- [ ] Geri dönüp son soruya kadar ilerleyip "Sonucu gör" deyince XP **iki kez**
+      yazılmıyor (profil/XP toplamı bir tur kadar artıyor)
+
+## 9. Regresyon (daha önce çalışan yerler)
 
 - [ ] Alt menü 6 sekme, ikon + etiket: Bugün, Dolap, Plan, Kombin, Profil, Düello
 - [ ] Bildirim → dokununca doğru sekmeyi açıyor (bugün / plan / düello)

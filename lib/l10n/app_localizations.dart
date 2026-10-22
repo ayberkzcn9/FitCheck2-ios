@@ -6411,6 +6411,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Giydildi'**
   String get bugunGiydildi;
+
+  /// No description provided for @duelloGeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geri'**
+  String get duelloGeri;
 }
 
 class _AppLocalizationsDelegate

@@ -3525,4 +3525,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get bugunGiydildi => 'Porté';
+
+  @override
+  String get duelloGeri => 'Retour';
 }

@@ -3508,4 +3508,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get bugunGiydildi => 'Usado';
+
+  @override
+  String get duelloGeri => 'Voltar';
 }

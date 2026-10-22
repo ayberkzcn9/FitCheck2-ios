@@ -195,3 +195,6 @@ Aşağıdaki metinler 500 karakterin altında tutuldu; uzun sürüm notları
    gösteriyor — kaydedilince dolu "Kaydedildi", giyilince yeşil "Giydildi".
    Durum favorilerden ve giyilme geçmişinden hesaplanıyor (dünkü kayıt bugünü
    işaretlemiyor), uygulama kapatılıp açılsa da korunuyor.
+   Son tur: Kombin Düellosu'nda **önceki sorulara dönüş** (üst çubuktaki ‹ ve
+   geri bildirim panelindeki "Geri"); dönülen soruda cevap ve kazanılan XP
+   aynen görünüyor, puan yeniden hesaplanmıyor.

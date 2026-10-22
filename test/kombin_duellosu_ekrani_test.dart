@@ -126,6 +126,86 @@ void main() {
     expect(find.textContaining('/10 doğru'), findsOneWidget);
   });
 
+  testWidgets('önceki soruya dönülebilir, cevap ve XP korunur', (tester) async {
+    await kur(tester, tohum: 7);
+
+    final sorular = DuelMotoru()
+        .uret(gardirobum: const <Kiyafet>[], adet: 10, tohum: 7)
+        .sorular;
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    // 1. soru doğru cevaplanır (seri 1 → +10 XP).
+    await tester.tap(find.text(sorular[0].solDogru ? 'A' : 'B'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    expect(find.text('+10 XP'), findsOneWidget);
+
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
+
+    // 2. soru doğru cevaplanır (seri 2 → +12 XP).
+    await tester.tap(find.text(sorular[1].solDogru ? 'A' : 'B'));
+    await tester.pumpAndSettle();
+    expect(find.text('+12 XP'), findsOneWidget);
+
+    // "Geri" → 1. sorunun kendi cevabı ve kendi XP'si görünür.
+    await tester.tap(find.text('Geri'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    expect(find.text('Doğru!'), findsOneWidget);
+    expect(find.text('+10 XP'), findsOneWidget);
+    expect(find.text('+12 XP'), findsNothing);
+
+    // "Devam" → 2. soruya döner; XP yeniden hesaplanmaz.
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
+    expect(find.text('+12 XP'), findsOneWidget);
+  });
+
+  testWidgets('ilk soruda Geri düğmesi görünmez', (tester) async {
+    await kur(tester);
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    // Henüz cevap yokken panel kapalı; üst çubukta da geri oku yok.
+    expect(find.text('Geri'), findsNothing);
+    expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+  });
+
+  testWidgets('geri dönüp ilerlemek soru sayısını ve XP\'yi bozmaz',
+      (tester) async {
+    await kur(tester, tohum: 7);
+
+    final sorular = DuelMotoru()
+        .uret(gardirobum: const <Kiyafet>[], adet: 10, tohum: 7)
+        .sorular;
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    // 1. soru yanlış (seri bozulur), 2. soru doğru (+10 XP).
+    await tester.tap(find.text(sorular[0].solDogru ? 'B' : 'A'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text(sorular[1].solDogru ? 'A' : 'B'));
+    await tester.pumpAndSettle();
+    expect(find.text('+10 XP'), findsOneWidget);
+
+    // Geri → yanlış cevap "Olmadı" olarak duruyor.
+    await tester.tap(find.text('Geri'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    expect(find.text('Olmadı'), findsOneWidget);
+    expect(find.text('+0 XP'), findsOneWidget);
+  });
+
   testWidgets('tekrar oyna lobiye değil yeni tura götürür', (tester) async {
     await kur(tester);
 

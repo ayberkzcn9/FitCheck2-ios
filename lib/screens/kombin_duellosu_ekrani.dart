@@ -51,6 +51,17 @@ class KombinDuellosuEkrani extends StatefulWidget {
 
 enum _Asama { lobi, oyun, sonuc }
 
+/// Tek bir soruya verilen cevap: hangi kart seçildi ve o an kaç XP kazanıldı.
+///
+/// XP cevapla birlikte saklanıyor; kullanıcı geri döndüğünde seri çarpanı
+/// yeniden hesaplanmadığı için ekranda yanlış puan görünmüyor.
+class _Cevap {
+  const _Cevap({required this.solSecildi, required this.xp});
+
+  final bool solSecildi;
+  final int xp;
+}
+
 class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
   static const int _turSayisi = 10;
 
@@ -63,12 +74,24 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
   bool _paletKullanildi = false;
   int _soruIndex = 0;
 
+  /// Her sorunun cevabı (sırayla). null = henüz cevaplanmadı.
+  ///
+  /// Ayrı bir liste tutuluyor ki kullanıcı **önceki sorulara dönebilsin**;
+  /// dönüşte o sorunun verdiği cevap, kazandığı XP ve gerekçesi aynen görünür.
+  List<_Cevap?> _cevaplar = <_Cevap?>[];
+
   /// Hangi karta dokunuldu: true = sol, false = sağ, null = henüz yok.
-  bool? _secim;
+  bool? get _secim =>
+      _soruIndex < _cevaplar.length ? _cevaplar[_soruIndex]?.solSecildi : null;
+
   int _dogru = 0;
   int _seri = 0;
   int _enIyiSeri = 0;
   int _xp = 0;
+
+  /// Turun sonucu yalnızca bir kez kaydedilsin (geri dönüp tekrar
+  /// "Sonucu gör" denirse XP ikinci kez yazılmasın).
+  bool _bitirildi = false;
 
   /// Kısa ekranda (yatay mod) panel açılınca "Devam" görünür olsun diye.
   final ScrollController _kaydirici = ScrollController();
@@ -124,11 +147,12 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       _sorular = seti.sorular;
       _paletKullanildi = seti.paletKullanildi;
       _soruIndex = 0;
-      _secim = null;
+      _cevaplar = List<_Cevap?>.filled(seti.sorular.length, null);
       _dogru = 0;
       _seri = 0;
       _enIyiSeri = 0;
       _xp = 0;
+      _bitirildi = false;
     });
   }
 
@@ -136,17 +160,20 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     if (_cevaplandi || _asama != _Asama.oyun) return;
 
     final dogruMu = solSecildi == _soru.solDogru;
+    var kazanilanXp = 0;
     setState(() {
-      _secim = solSecildi;
       if (dogruMu) {
         _dogru += 1;
         _seri += 1;
         _enIyiSeri = max(_enIyiSeri, _seri);
         // Seri çarpanı: +0, +2, +4, sonra +6'da sabitlenir.
-        _xp += 10 + min(_seri - 1, 3) * 2;
+        kazanilanXp = 10 + min(_seri - 1, 3) * 2;
+        _xp += kazanilanXp;
       } else {
         _seri = 0;
       }
+      // Cevap, bulunduğu sorunun satırına yazılır (geri dönüşte bozulmasın).
+      _cevaplar[_soruIndex] = _Cevap(solSecildi: solSecildi, xp: kazanilanXp);
     });
 
     if (dogruMu) {
@@ -174,10 +201,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       _bitir();
       return;
     }
-    setState(() {
-      _soruIndex += 1;
-      _secim = null;
-    });
+    setState(() => _soruIndex += 1);
     // Yeni turda başa dön; kısa ekranda kaydırma altta kalmış olabilir.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted && _kaydirici.hasClients) {
@@ -186,7 +210,30 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     });
   }
 
+  /// Önceki soruya döner. Cevaplar `_cevaplar` listesinde tutulduğu için
+  /// dönülen soru, verilen cevap ve kazanılan XP ile birlikte görünür;
+  /// puan yeniden hesaplanmaz.
+  void _geri() {
+    if (_asama != _Asama.oyun || _soruIndex == 0) return;
+    HapticFeedback.selectionClick();
+    setState(() => _soruIndex -= 1);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _kaydirici.hasClients) {
+        _kaydirici.jumpTo(0);
+      }
+    });
+  }
+
   Future<void> _bitir() async {
+    // Aynı tur iki kez kaydedilmesin (geri dönüp "Sonucu gör" tekrar basılırsa).
+    if (_bitirildi) {
+      if (mounted && _asama != _Asama.sonuc) {
+        setState(() => _asama = _Asama.sonuc);
+      }
+      return;
+    }
+    _bitirildi = true;
+
     setState(() => _asama = _Asama.sonuc);
 
     AnalyticsServisi().olay(
@@ -637,6 +684,17 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     final colors = Theme.of(context).colorScheme;
     return Row(
       children: [
+        if (_soruIndex > 0) ...[
+          IconButton(
+            onPressed: _geri,
+            tooltip: l10n.duelloGeri,
+            icon: const Icon(Icons.chevron_left_rounded, size: 22),
+            visualDensity: VisualDensity.compact,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+          ),
+          const SizedBox(width: 2),
+        ],
         Text(
           l10n.duelloTur(_soruIndex + 1, _sorular.length),
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -958,7 +1016,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     final colors = Theme.of(context).colorScheme;
     final dogruMu = _secim == soru.solDogru;
     final son = _soruIndex + 1 >= _sorular.length;
-    final kazanilanXp = dogruMu ? 10 + min(_seri - 1, 3) * 2 : 0;
+    // XP cevapla birlikte saklandığı için geri dönüşte de doğru görünür.
+    final kazanilanXp = _cevaplar[_soruIndex]?.xp ?? 0;
 
     return Container(
       width: double.infinity,
@@ -1017,22 +1076,45 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             olumlu: false,
           ),
           const SizedBox(height: 10),
-          SizedBox(
-            width: double.infinity,
-            height: 42,
-            child: FilledButton(
-              onPressed: _devam,
-              style: FilledButton.styleFrom(
-                backgroundColor: dogruMu ? AppAccents.successDeep : null,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+          Row(
+            children: [
+              if (_soruIndex > 0) ...[
+                SizedBox(
+                  height: 42,
+                  child: OutlinedButton(
+                    onPressed: _geri,
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    child: Text(
+                      l10n.duelloGeri,
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+              ],
+              Expanded(
+                child: SizedBox(
+                  height: 42,
+                  child: FilledButton(
+                    onPressed: _devam,
+                    style: FilledButton.styleFrom(
+                      backgroundColor: dogruMu ? AppAccents.successDeep : null,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    child: Text(
+                      son ? l10n.duelloSonuc : l10n.duelloDevam,
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
+                  ),
                 ),
               ),
-              child: Text(
-                son ? l10n.duelloSonuc : l10n.duelloDevam,
-                style: const TextStyle(fontWeight: FontWeight.w700),
-              ),
-            ),
+            ],
           ),
         ],
       ),

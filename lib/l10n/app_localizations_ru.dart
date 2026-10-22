@@ -3493,4 +3493,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get bugunGiydildi => 'Надето';
+
+  @override
+  String get duelloGeri => 'Назад';
 }
