@@ -306,9 +306,9 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               borderRadius: BorderRadius.circular(28),
               boxShadow: [
                 BoxShadow(
-                  color: colors.primary.withValues(alpha: 0.25),
+                  color: colors.primary.withValues(alpha: 0.18),
                   blurRadius: 24,
-                  offset: const Offset(0, 10),
+                  offset: const Offset(0, 6),
                 ),
               ],
             ),

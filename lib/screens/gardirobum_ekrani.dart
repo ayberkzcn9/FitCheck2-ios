@@ -1639,14 +1639,14 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
         key: ValueKey(item.id),
         decoration: BoxDecoration(
           color: colors.surfaceContainerLow,
-          borderRadius: AppRadius.xxlRadius,
+          borderRadius: AppRadius.lgRadius,
           border: Border.all(
             color: colors.outlineVariant,
             width: 1,
           ),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

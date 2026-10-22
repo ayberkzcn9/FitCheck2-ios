@@ -164,7 +164,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     );
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
       children: [
         Row(
           children: [
@@ -943,7 +943,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     final indeks = _parcaIndeksi();
 
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
       itemCount: gecmis.length,
       separatorBuilder: (_, __) => const SizedBox(height: 10),
       itemBuilder: (context, i) {
@@ -1080,7 +1080,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             : colors.onPrimaryContainer;
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
       children: [
         RepaintBoundary(
           key: _raporKey,

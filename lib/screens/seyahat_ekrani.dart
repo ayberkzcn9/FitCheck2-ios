@@ -48,7 +48,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
         children: [
           _secimKartlari(context, l10n, colors),
           const SizedBox(height: 14),
