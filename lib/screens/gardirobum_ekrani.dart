@@ -73,7 +73,6 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
   static int _idCounter = 0;
   final ImagePicker _picker = ImagePicker();
   bool _otomatikYukleniyor = false;
-  bool _gizlendi = false;
 
   /// Dolap araması ve kategori filtresi (rafların üstünde).
   final TextEditingController _aramaDenetleyici = TextEditingController();
@@ -2275,20 +2274,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   ],
                 ),
                 actions: [
-                  IconButton(
-                    icon: Icon(
-                      _gizlendi ? Icons.visibility_off_rounded : Icons.visibility_rounded,
-                      color: colors.onSurfaceVariant,
-                    ),
-                    onPressed: () {
-                      HapticFeedback.selectionClick();
-                      setState(() {
-                        _gizlendi = !_gizlendi;
-                      });
-                    },
-                    tooltip: _gizlendi ? l10n.gardirobumGoster : l10n.gardirobumGizle,
-                  ),
-                  if (widget.gardirobum.isNotEmpty && !_gizlendi)
+                  if (widget.gardirobum.isNotEmpty)
                     IconButton(
                       icon: Icon(
                         Icons.delete_sweep_rounded,
@@ -2300,40 +2286,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   const SizedBox(width: 8),
                 ],
               ),
-              if (_gizlendi)
-                SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.lock_outline_rounded,
-                          size: 64,
-                          color: colors.onSurfaceVariant.withValues(alpha: 0.5),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          l10n.gardirobumGizlendiBaslik,
-                          style: TextStyle(
-                            fontSize: AppText.sizeTitleSmall,
-                            fontWeight: FontWeight.bold,
-                            color: colors.onSurfaceVariant,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          l10n.gardirobumGizlendiAciklama,
-                          style: TextStyle(
-                            fontSize: AppText.sizeBodySmall,
-                            color: colors.onSurfaceVariant.withValues(alpha: 0.8),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              else if (widget.gardirobum.isEmpty)
+              if (widget.gardirobum.isEmpty)
                 SliverFillRemaining(
                   hasScrollBody: false,
                   child: Center(
