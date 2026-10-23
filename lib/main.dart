@@ -481,9 +481,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           ),
         ),
         scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
-          foregroundColor: Color(0xFF1C1B1F),
+          foregroundColor: lightColorScheme.onSurface,
           elevation: 0,
           scrolledUnderElevation: 0,
           centerTitle: false,
@@ -553,9 +553,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           ),
         ),
         scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
-          foregroundColor: Color(0xFFF2F2F2),
+          foregroundColor: darkColorScheme.onSurface,
           elevation: 0,
           scrolledUnderElevation: 0,
           centerTitle: false,

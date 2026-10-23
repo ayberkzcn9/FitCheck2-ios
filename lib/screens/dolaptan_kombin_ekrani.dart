@@ -348,7 +348,9 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
-        backgroundColor: yeniDurum ? AppAccents.success : Color(0xFF4A4F49),
+        backgroundColor: yeniDurum
+            ? AppAccents.success
+            : Theme.of(context).colorScheme.onSurfaceVariant,
       ),
     );
   }

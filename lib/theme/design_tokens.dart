@@ -416,12 +416,14 @@ class AppTints {
   const AppTints._();
 
   static const Color successBg = Color(0xFFE3F0EA);
-  static const Color warningBg = Color(0xFFFFF8F0);
+  // Uyari zemini kart zeminine cok yakindi (dE 2.8): kutu bos/gri
+  // gorunuyordu. Amber tonu belirgin ama yumusak tutuldu (dE 9.6).
+  static const Color warningBg = Color(0xFFFDF0DC);
   static const Color errorBg = Color(0xFFFEE2E2);
-  static const Color styleistBg = Color(0xFFF1F6F3);
+  static const Color styleistBg = Color(0xFFE9F3EE);
 
   static const Color successBorder = Color(0xFFB4D9C8);
-  static const Color warningBorder = Color(0xFFEAD7BE);
+  static const Color warningBorder = Color(0xFFE7CFAE);
   static const Color styleistBorder = Color(0xFFD5E4DC);
 
   // ---- Dark-mode uyumlu varyantlar ----

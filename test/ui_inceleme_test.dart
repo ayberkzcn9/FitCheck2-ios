@@ -25,11 +25,13 @@ import 'package:fitcheck/models/bugun_kombin.dart';
 import 'package:fitcheck/models/favori_kombin.dart';
 import 'package:fitcheck/models/kiyafet.dart';
 import 'package:fitcheck/theme/app_tema.dart';
+import 'package:fitcheck/theme/design_tokens.dart';
 import 'package:fitcheck/screens/bugun_ekrani.dart';
 import 'package:fitcheck/screens/gardirobum_ekrani.dart';
 import 'package:fitcheck/screens/profil_analiz_ekrani.dart';
 import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/widgets/alt_menu_cubugu.dart';
+import 'package:fitcheck/widgets/ai_oneri_kutusu.dart';
 import 'package:fitcheck/widgets/kiyafet_duzenleyici.dart';
 import 'package:fitcheck/screens/haftalik_planlayici_ekrani.dart';
 import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
@@ -1082,5 +1084,43 @@ void main() {
     await bekle(tester);
     await goruntu(tester, '66_dil_ar_kendi_kombinim');
     _yerlesimHatasiniBildir(tester, 'Ar kendi kombinim');
+  });
+
+  testWidgets('Uyari kutusu: zemin ve metin', (tester) async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
+    _donanimKanallariniSustur();
+    await telefon(tester);
+
+    Widget kutu() => Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.all(AppSpacing.lg),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AiOneriKutusu(
+                  baslik: 'Hafta icin eksik parca onerisi',
+                  metin:
+                      'Ust giyim ve ayakkabi eksik. Notr tonlarda bir ust ile '
+                      'gunu tamamlayabilirsin.',
+                  yukleniyor: false,
+                  onTekrarDene: () {},
+                ),
+              ],
+            ),
+          ),
+        );
+
+    await tester.pumpWidget(_uygulama(kutu()));
+    await bekle(tester);
+    await goruntu(tester, '67_uyari_kutusu');
+    _yerlesimHatasiniBildir(tester, 'Uyari kutusu');
+
+    _parlaklik = Brightness.dark;
+    addTearDown(() => _parlaklik = Brightness.light);
+    await tester.pumpWidget(_uygulama(kutu()));
+    await bekle(tester);
+    await goruntu(tester, '68_koyu_uyari_kutusu');
+    _yerlesimHatasiniBildir(tester, 'Koyu uyari kutusu');
   });
 }

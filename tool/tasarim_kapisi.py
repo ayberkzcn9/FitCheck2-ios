@@ -1,7 +1,8 @@
 """FitCheck tasarim butunlugu kalite kapisi.
 
 Otomatik denetimler:
-  1. Renk: eski palet kalintisi, tema disi Material renkleri, WCAG kontrast
+  1. Renk: eski palet kalintisi, tema disi Material renkleri, WCAG kontrast,
+     sicak notr kurali (saf/soguk gri yasak)
   2. Tipografi: sabit punto, erisilebilirlik alt siniri (10-11 pt)
   3. Olcu: sabit dolgu / sabit yaricap degerleri
   4. Baslik hizalamasi: sola hizali olmayan AppBar'lar
@@ -108,6 +109,40 @@ for ad, sema_sozluk, hedef in (('acik', acik, 4.5), ('koyu', koyu, 4.5)):
             if k < hedef:
                 bildir('kontrast', '%s: %s/%s = %.2f (min %.1f)' %
                         (ad, a, b, k, hedef))
+
+# --- Notr tonlar: gri sizmasi
+# Tum lib taranir; design_tokens.dart normalde `dosyalar()` disinda tutulur.
+# Yalnizca opak renkler denetlenir (yarim saydam beyaz/siyah katmanlar mesru).
+def _hsv(h8):
+    r, g, b = [int(h8[i:i + 2], 16) / 255.0 for i in (2, 4, 6)]
+    return colorsys.rgb_to_hsv(r, g, b)
+
+
+def _notr_denetle(yol):
+    s = oku(yol)
+    for i, satir in enumerate(s.splitlines(), 1):
+        for m in re.finditer(r'Color\(0x([0-9A-Fa-f]{8})\)', satir):
+            h8 = m.group(1)
+            if h8[:2].upper() != 'FF':
+                continue
+            if h8.upper() in ('FFFFFFFF', 'FF000000'):
+                continue  # saf beyaz/siyah mesrudur
+            h, doygunluk, _ = _hsv(h8)
+            derece = h * 360
+            if doygunluk < 0.02:
+                bildir('renk', '%s:%d saf gri (sicak tas veya zumrut notr kullan)'
+                       % (os.path.basename(yol), i))
+            elif (doygunluk < 0.12
+                  and not (30 <= derece <= 65)
+                  and not (135 <= derece <= 185)
+                  and not (derece >= 345 or derece <= 15)):
+                bildir('renk', '%s:%d soguk notr (h=%.0f) - sicak tas/zumrut bekleniyor'
+                       % (os.path.basename(yol), i, derece))
+
+
+for _yol in list(dosyalar()) + [os.path.join(KOK, 'theme', 'design_tokens.dart')]:
+    _notr_denetle(_yol)
+
 
 # =========================================================================
 # 2) TIPOGRAFI

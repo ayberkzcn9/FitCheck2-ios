@@ -99,6 +99,11 @@ Material 3 hareket kuralları: kısa / orta / uzun süre, dört eğri.
   eklenirse bu aralıkta kalmalı.
 - Kritik renk çiftlerinin tamamı **WCAG AA** (4.5:1 metin, 3:1 kenar).
 - Anlam renkleri (kırmızı/amber) hariç tüm vurgular zümrüt ailesinde.
+- **Nötrler sıcak taştır** (h ≈ 40–50°), soğuk gri değil. Metin, ikon ve
+  kenarlıklar `onSurface` / `onSurfaceVariant` / `outline` tokenlarından gelir;
+  sabit gri (`#F2F2F2`, `#4A4F49`, `Colors.grey`) yasak — kapı denetler.
+- Uyarı/stilist kutularının zemini kart zemininden **ΔE ≥ 6** uzak olmalı;
+  aksi hâlde kutu "boş/gri" görünür (ölçülen eski değer ΔE 2.8 idi).
 
 ### Tipografi
 - Her punto `AppText` tokenından gelir. Sabit `fontSize: 14` yazılmaz.
