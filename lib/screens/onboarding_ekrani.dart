@@ -18,7 +18,7 @@ import '../../theme/design_tokens.dart';
 // kullanılıyordu; uygulamanın geri kalanıyla çelişiyordu.)
 const Color _marka = Color(0xFF0F5F4A);
 const Color _markaAltin = Color(0xFFD9A441);
-const Color _markaSu = Color(0xFF2F7E8F);
+const Color _markaSu = Color(0xFF30827D);
 const Color _markaAdacay = Color(0xFF2E6E5E);
 
 class OnboardingEkrani extends StatefulWidget {
@@ -81,7 +81,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       [Color(0xFF0F5F4A), Color(0xFF2E8B6E)], // Hoş Geldin - derin zümrüt
       [Color(0xFF2E6E5E), Color(0xFF72B79C)], // Dolap - adaçayı
       [Color(0xFF9A6B1F), Color(0xFFD9A441)], // Hava Durumu - altın
-      [Color(0xFF2F7E8F), Color(0xFF79C3CE)], // Yıkama - su yeşili
+      [Color(0xFF30827D), Color(0xFF79C3CE)], // Yıkama - su yeşili
       [Color(0xFFA8743F), Color(0xFFDDB584)], // Eksik Parça - kum
       [Color(0xFF1F7A5A), Color(0xFF5CBA92)], // Analitik - açık zümrüt
       [Color(0xFFB98A2E), Color(0xFFEBD08A)], // Stilist - açık altın
@@ -99,7 +99,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       case 'wb_sunny':
         return const Color(0xFF9A6B1F);
       case 'local_laundry_service':
-        return const Color(0xFF2F7E8F);
+        return const Color(0xFF30827D);
       case 'shopping_bag':
         return const Color(0xFFA8743F);
       case 'insights':

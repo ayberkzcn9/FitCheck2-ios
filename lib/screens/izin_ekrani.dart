@@ -7,7 +7,7 @@ import '../../theme/design_tokens.dart';
 
 // İzin ekranı marka paletinde: zümrüt, su yeşili, kum, altın.
 const Color _izinMarka = Color(0xFF0F5F4A);
-const Color _izinSu = Color(0xFF2F7E8F);
+const Color _izinSu = Color(0xFF30827D);
 const Color _izinKum = Color(0xFFA8743F);
 const Color _izinAltin = Color(0xFFD9A441);
 

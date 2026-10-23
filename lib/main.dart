@@ -466,7 +466,10 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: lightColorScheme,
-        textTheme: Typography.material2021().black,
+        textTheme: Typography.material2021().black.apply(
+          bodyColor: lightColorScheme.onSurface,
+          displayColor: lightColorScheme.onSurface,
+        ),
         dividerTheme: DividerThemeData(
           color: lightColorScheme.outlineVariant,
           thickness: 1,
@@ -538,7 +541,10 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: darkColorScheme,
-        textTheme: Typography.material2021().white,
+        textTheme: Typography.material2021().white.apply(
+          bodyColor: darkColorScheme.onSurface,
+          displayColor: darkColorScheme.onSurface,
+        ),
         dividerTheme: DividerThemeData(
           color: darkColorScheme.outlineVariant,
           thickness: 1,

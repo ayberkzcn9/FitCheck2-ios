@@ -384,40 +384,40 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
       return Colors.white;
     }
     if (r.contains('lacivert') || r.contains('navy')) {
-      return const Color(0xFF1E3A8A);
+      return AppDataColors.navy;
     }
     if (r.contains('mavi') || r.contains('blue')) {
-      return const Color(0xFF3B82F6);
+      return AppDataColors.blue;
     }
     if (r.contains('kirmizi') || r.contains('red')) {
-      return const Color(0xFFEF4444);
+      return AppDataColors.red;
     }
     if (r.contains('yesil') || r.contains('green')) {
       return AppMiscColors.greenLight;
     }
     if (r.contains('sari') || r.contains('yellow')) {
-      return AppAccents.warning;
+      return AppDataColors.yellow;
     }
     if (r.contains('gri') || r.contains('grey') || r.contains('gray')) {
-      return const Color(0xFF6B7280);
+      return AppDataColors.grey;
     }
     if (r.contains('kahve') || r.contains('taba') || r.contains('brown')) {
-      return const Color(0xFF92400E);
+      return AppDataColors.brown;
     }
     if (r.contains('pembe') || r.contains('pink')) {
-      return const Color(0xFFEC4899);
+      return AppDataColors.pink;
     }
     if (r.contains('mor') || r.contains('purple')) {
-      return AppAccents.styleist;
+      return AppDataColors.purple;
     }
     if (r.contains('turuncu') || r.contains('orange')) {
-      return AppMiscColors.orangeLight;
+      return AppDataColors.orange;
     }
     if (r.contains('bej') ||
         r.contains('krem') ||
         r.contains('beige') ||
         r.contains('cream')) {
-      return const Color(0xFFE5D5C5);
+      return AppDataColors.beige;
     }
 
     return widget.anaRenk;

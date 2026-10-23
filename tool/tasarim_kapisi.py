@@ -50,7 +50,7 @@ def oku(yol):
 ESKI = re.compile(
     r'Color\(0x(?:FF)?(?:2E7D32|16A34A|8B5CF6|6C5CE7|2563EB|FF7675|00CEC9|'
     r'A29BFE|1DD1A1|FF9F43|FECA57|F39C12|8E44AD|1B5E20|A78BFA|F472B6|'
-    r'F97316|10B981|15803D|E11D48|DCFCE7)\)', re.I)
+    r'F97316|10B981|15803D|E11D48|2F7E8F|DCFCE7)\)', re.I)
 for yol in dosyalar():
     s = oku(yol)
     for i, satir in enumerate(s.splitlines(), 1):
@@ -61,6 +61,14 @@ for yol in dosyalar():
     s = oku(yol)
     if re.search(r'(?<![\w.])Colors\.(purple|indigo|deepPurple|teal|cyan|blue)\b', s):
         bildir('renk', '%s tema disi Material rengi' % os.path.basename(yol))
+
+# Varsayilan metin rengi saf siyah/beyaz olmamali: tema semasina baglanir.
+for yol in dosyalar():
+    s = oku(yol)
+    for i, satir in enumerate(s.splitlines(), 1):
+        if re.search(r'Typography\.material2021\(\)\.(black|white)\s*[,)]', satir):
+            bildir('renk', '%s:%d tema metni saf siyah/beyaz (bodyColor/displayColor bagla)'
+                   % (os.path.basename(yol), i))
 
 
 # --- WCAG kontrast

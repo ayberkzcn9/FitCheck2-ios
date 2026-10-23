@@ -310,7 +310,7 @@ class AppPermissionColors {
   const AppPermissionColors._();
 
   static const Color camera = Color(0xFFA8743F);
-  static const Color location = Color(0xFF2F7E8F);
+  static const Color location = Color(0xFF30827D);
   static const Color notification = Color(0xFFD9A441);
 }
 
@@ -372,6 +372,28 @@ class AppMiscColors {
 
   // Google marka renkleri
   static const Color googleBlue = Color(0xFF4285F4);
+}
+
+// ===========================================================================
+// VERİ RENKLERİ — Kıyafet renk adlarının gerçek karşılıkları
+// ===========================================================================
+// Bu palet marka paletinin DIŞINDADIR ve bilinçli istisnadır: kullanıcı
+// "lacivert" yazdığında grafikte lacivert görünmelidir. Burada marka uyumu
+// değil, adın doğru gösterilmesi esastır. Yalnızca veri görselleştirmede
+// (Profil > Renk Paletin) kullanılır, arayüz rengi olarak kullanılmaz.
+class AppDataColors {
+  const AppDataColors._();
+
+  static const Color navy = Color(0xFF1E3A8A);
+  static const Color blue = Color(0xFF3B82F6);
+  static const Color red = Color(0xFFEF4444);
+  static const Color grey = Color(0xFF8C8C88);
+  static const Color brown = Color(0xFF92400E);
+  static const Color pink = Color(0xFFEC4899);
+  static const Color purple = Color(0xFF8B5CF6);
+  static const Color orange = Color(0xFFE07A2F);
+  static const Color yellow = Color(0xFFEAB308);
+  static const Color beige = Color(0xFFE5D5C5);
 }
 
 // ===========================================================================

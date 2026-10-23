@@ -170,6 +170,7 @@ flutter test test/ui_inceleme_test.dart       # 45 ekran görüntüsü + çok di
 | Konu | Karar | Neden |
 |---|---|---|
 | Kırmızı / amber | Marka paletinin dışında | Anlam taşıyor (hata, uyarı) |
-| Kıyafet renkleri | Serbest (lacivert, pembe, kırmızı) | Kullanıcının giysisinin rengi, veri |
+| Kıyafet renkleri | `AppDataColors` (lacivert, pembe, mor…) | Kullanıcının giysisinin rengi, veri; adı doğru gösterilmeli |
+| Tema metni | Saf siyah/beyaz yok | Varsayılan metin `onSurface` (sıcak mürekkep) |
 | Oyun ekranları | Mevcut paleti korur | Kapsam dışı, ayrı karar |
 | Yükseltili kart gölgesi | Yok | Krem zemin üzerinde ince kenarlı kart tercih edildi |

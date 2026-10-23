@@ -69,7 +69,11 @@ ThemeData _tema({Brightness parlaklik = Brightness.light}) {
     colorScheme: sema,
     fontFamily: _yaziTipi,
     scaffoldBackgroundColor: sema.surface,
-    textTheme: taban.apply(fontFamily: _yaziTipi),
+    textTheme: taban.apply(
+      fontFamily: _yaziTipi,
+      bodyColor: sema.onSurface,
+      displayColor: sema.onSurface,
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: sema.surface,
       foregroundColor: sema.onSurface,

@@ -1618,7 +1618,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.location_city_rounded,
-                      iconColor: const Color(0xFF2F7E8F),
+                      iconColor: const Color(0xFF30827D),
                     ),
                     title: Text(
                       l10n.varsayilanSehirBolge,
