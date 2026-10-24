@@ -1642,6 +1642,16 @@ class AppLocalizationsTr extends AppLocalizations {
       'Bildirimleri açmak için cihaz ayarlarından izin vermeniz gerekiyor.';
 
   @override
+  String get bildirimTamZamanAyar => 'Tam Zamanlı Bildirim';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Bildirimlerin tam seçtiğin saatte gelmesi için Android\'de \'Alarms & reminders\' iznini ver.';
+
+  @override
+  String get bildirimTamZamanAcik => 'Tam zamanlı bildirimler açık.';
+
+  @override
   String get camasirSepetiUyarilari => 'Çamaşır Sepeti Uyarıları';
 
   @override

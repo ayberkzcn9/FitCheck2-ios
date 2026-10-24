@@ -1642,6 +1642,16 @@ class AppLocalizationsEn extends AppLocalizations {
       'You need to grant permission in device settings to enable notifications.';
 
   @override
+  String get bildirimTamZamanAyar => 'Exact-time notifications';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Allow \'Alarms & reminders\' on Android so notifications arrive exactly at the time you chose.';
+
+  @override
+  String get bildirimTamZamanAcik => 'Exact-time notifications are on.';
+
+  @override
   String get camasirSepetiUyarilari => 'Laundry Basket Alerts';
 
   @override

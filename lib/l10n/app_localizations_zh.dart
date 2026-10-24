@@ -1536,6 +1536,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get bildirimIzinGerekliUyari => '请在设备设置中开启通知权限以继续。';
 
   @override
+  String get bildirimTamZamanAyar => '准时通知';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      '在 Android 上允许\'Alarms & reminders\'，通知就会在你选择的时间准时送达。';
+
+  @override
+  String get bildirimTamZamanAcik => '准时通知已开启。';
+
+  @override
   String get camasirSepetiUyarilari => '脏衣篮提醒';
 
   @override

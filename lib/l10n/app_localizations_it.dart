@@ -1659,6 +1659,17 @@ class AppLocalizationsIt extends AppLocalizations {
       'Devi abilitare le notifiche nelle impostazioni del dispositivo.';
 
   @override
+  String get bildirimTamZamanAyar => 'Notifiche a orario esatto';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Consenti \'Alarms & reminders\' su Android per ricevere le notifiche esattamente all\'ora scelta.';
+
+  @override
+  String get bildirimTamZamanAcik =>
+      'Le notifiche a orario esatto sono attive.';
+
+  @override
   String get camasirSepetiUyarilari => 'Avvisi Cesto della Biancheria';
 
   @override

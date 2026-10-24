@@ -3088,6 +3088,24 @@ abstract class AppLocalizations {
   /// **'Bildirimleri açmak için cihaz ayarlarından izin vermeniz gerekiyor.'**
   String get bildirimIzinGerekliUyari;
 
+  /// No description provided for @bildirimTamZamanAyar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tam Zamanlı Bildirim'**
+  String get bildirimTamZamanAyar;
+
+  /// No description provided for @bildirimTamZamanAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bildirimlerin tam seçtiğin saatte gelmesi için Android\'de \'Alarms & reminders\' iznini ver.'**
+  String get bildirimTamZamanAciklama;
+
+  /// No description provided for @bildirimTamZamanAcik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tam zamanlı bildirimler açık.'**
+  String get bildirimTamZamanAcik;
+
   /// No description provided for @camasirSepetiUyarilari.
   ///
   /// In tr, this message translates to:

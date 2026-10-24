@@ -1641,6 +1641,16 @@ class AppLocalizationsRu extends AppLocalizations {
       'Включите уведомления в настройках устройства, чтобы продолжить.';
 
   @override
+  String get bildirimTamZamanAyar => 'Уведомления точно вовремя';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Разрешите «Alarms & reminders» на Android, чтобы уведомления приходили ровно в выбранное время.';
+
+  @override
+  String get bildirimTamZamanAcik => 'Уведомления точно вовремя включены.';
+
+  @override
   String get camasirSepetiUyarilari => 'Уведомления бельевой корзины';
 
   @override

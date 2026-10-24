@@ -1657,6 +1657,17 @@ class AppLocalizationsEs extends AppLocalizations {
       'Debes conceder permiso en los ajustes del dispositivo para activar las notificaciones.';
 
   @override
+  String get bildirimTamZamanAyar => 'Notificaciones a la hora exacta';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Permite \'Alarms & reminders\' en Android para recibirlas exactamente a la hora que elijas.';
+
+  @override
+  String get bildirimTamZamanAcik =>
+      'Las notificaciones a la hora exacta están activadas.';
+
+  @override
   String get camasirSepetiUyarilari => 'Alertas de cesto de colada';
 
   @override

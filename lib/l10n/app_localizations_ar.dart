@@ -1626,6 +1626,16 @@ class AppLocalizationsAr extends AppLocalizations {
       'تحتاج إلى منح الإذن في إعدادات الجهاز لتفعيل الإشعارات.';
 
   @override
+  String get bildirimTamZamanAyar => 'إشعارات في الوقت المحدد';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'اسمح بـ «Alarms & reminders» على أندرويد لتصلك الإشعارات في الوقت الذي تختاره بالضبط.';
+
+  @override
+  String get bildirimTamZamanAcik => 'تم تفعيل الإشعارات في الوقت المحدد.';
+
+  @override
   String get camasirSepetiUyarilari => 'تنبيهات سلة الغسيل';
 
   @override

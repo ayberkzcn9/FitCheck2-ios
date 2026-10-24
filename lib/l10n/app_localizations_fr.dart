@@ -1662,6 +1662,17 @@ class AppLocalizationsFr extends AppLocalizations {
       'Activer les notifications dans les paramètres de votre appareil pour continuer.';
 
   @override
+  String get bildirimTamZamanAyar => 'Notifications à l\'heure exacte';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Autorisez « Alarms & reminders » sur Android pour recevoir les notifications exactement à l\'heure choisie.';
+
+  @override
+  String get bildirimTamZamanAcik =>
+      'Les notifications à l\'heure exacte sont activées.';
+
+  @override
   String get camasirSepetiUyarilari => 'Alertes Panier à linge';
 
   @override

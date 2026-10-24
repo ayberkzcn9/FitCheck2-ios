@@ -1564,6 +1564,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get bildirimIzinGerekliUyari => '계속 진행하려면 기기 설정에서 알림 권한을 승인해 주세요.';
 
   @override
+  String get bildirimTamZamanAyar => '정확한 시간 알림';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      '선택한 시간에 정확히 받으려면 Android에서 \'Alarms & reminders\'를 허용하세요.';
+
+  @override
+  String get bildirimTamZamanAcik => '정확한 시간 알림이 켜졌어요.';
+
+  @override
   String get camasirSepetiUyarilari => '빨래 바구니 알림';
 
   @override

@@ -1650,6 +1650,17 @@ class AppLocalizationsPt extends AppLocalizations {
       'Ative as notificações nas configurações do seu dispositivo para continuar.';
 
   @override
+  String get bildirimTamZamanAyar => 'Notificações à hora exata';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Permite \'Alarms & reminders\' no Android para as notificações chegarem exatamente à hora escolhida.';
+
+  @override
+  String get bildirimTamZamanAcik =>
+      'As notificações à hora exata estão ativas.';
+
+  @override
   String get camasirSepetiUyarilari => 'Alertas do Cesto de Roupa';
 
   @override

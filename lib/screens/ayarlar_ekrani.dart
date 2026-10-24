@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -64,6 +65,11 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     hour: 8,
     minute: 30,
   );
+
+  /// Android 12+ "tam zamanlı alarm" (Alarms & reminders) izni verildi mi?
+  ///
+  /// Verilmezse bildirimler yine gelir, sadece birkaç dakika geç gelir.
+  bool _tamZamanliAlarmIzinli = false;
 
   // 🤖 YAPAY ZEKÂ
   String _aiStilistKisiligi = 'Samimi / Arkadaş Canlısı';
@@ -372,6 +378,51 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       _stilistHafizasiAcik = hafiza.acik;
       _stilistHafizaNotSayisi = hafiza.notlar.length;
     });
+
+    await _tamZamanliAlarmIzinDurumunuYenile();
+  }
+
+  /// Android'de "tam zamanlı alarm" izninin durumunu tazeler.
+  Future<void> _tamZamanliAlarmIzinDurumunuYenile() async {
+    try {
+      final sonuc = await BildirimServisi().tamZamanliAlarmIzinVar();
+      if (!mounted) return;
+      setState(() {
+        _tamZamanliAlarmIzinli = sonuc;
+      });
+    } catch (_) {
+      // İzin okunamazsa ayar gizli kalır; bildirimler yine planlanır.
+    }
+  }
+
+  /// "Alarms & reminders" ayar ekranını açar. Kullanıcı izin verirse
+  /// bildirimler tam seçtiği saatte gelir.
+  Future<void> _tamZamanliAlarmIzinIste() async {
+    HapticFeedback.selectionClick();
+    final l10n = AppLocalizations.of(context)!;
+
+    bool verildi = false;
+    try {
+      verildi = await BildirimServisi().tamZamanliAlarmIzinIste();
+    } catch (_) {
+      verildi = false;
+    }
+
+    await _tamZamanliAlarmIzinDurumunuYenile();
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          verildi
+              ? l10n.bildirimTamZamanAcik
+              : l10n.bildirimTamZamanAciklama,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+      ),
+    );
   }
 
   /// Stilist hafızası ekranından dönünce sayaç/anahtar durumunu tazeler.
@@ -1375,6 +1426,41 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     ),
                     onTap: _saatSec,
                   ),
+                  if (!kIsWeb &&
+                      defaultTargetPlatform == TargetPlatform.android) ...[
+                    Divider(
+                        height: 1,
+                        color: colors.outlineVariant.withValues(alpha: 0.4)),
+                    ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
+                      leading: const SizedBox(width: 40),
+                      title: Text(
+                        l10n.bildirimTamZamanAyar,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: AppText.sizeBodySmall,
+                            color: colors.onSurface),
+                      ),
+                      subtitle: Text(
+                        l10n.bildirimTamZamanAciklama,
+                        style: TextStyle(
+                            fontSize: AppText.sizeCaption,
+                            color: colors.onSurfaceVariant,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      trailing: Icon(
+                        _tamZamanliAlarmIzinli
+                            ? Icons.check_circle_rounded
+                            : Icons.chevron_right_rounded,
+                        size: 20,
+                        color: _tamZamanliAlarmIzinli
+                            ? colors.primary
+                            : colors.onSurfaceVariant,
+                      ),
+                      onTap: _tamZamanliAlarmIzinIste,
+                    ),
+                  ],
                   Divider(
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),

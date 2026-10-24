@@ -1659,6 +1659,17 @@ class AppLocalizationsDe extends AppLocalizations {
       'Du musst Benachrichtigungen in den Gerätexeinstellungen erlauben.';
 
   @override
+  String get bildirimTamZamanAyar => 'Benachrichtigungen zur genauen Uhrzeit';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Erlaube unter Android „Alarms & reminders“, damit Benachrichtigungen genau zur gewählten Zeit eintreffen.';
+
+  @override
+  String get bildirimTamZamanAcik =>
+      'Benachrichtigungen zur genauen Uhrzeit sind aktiv.';
+
+  @override
   String get camasirSepetiUyarilari => 'Wäschekorb-Warnungen';
 
   @override

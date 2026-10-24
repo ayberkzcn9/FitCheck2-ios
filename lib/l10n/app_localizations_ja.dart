@@ -1558,6 +1558,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get bildirimIzinGerekliUyari => '続行するには、端末の設定で通知を許可してください。';
 
   @override
+  String get bildirimTamZamanAyar => '正確な時刻の通知';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      '選んだ時刻ちょうどに届くように、Android で「Alarms & reminders」を許可してください。';
+
+  @override
+  String get bildirimTamZamanAcik => '正確な時刻の通知が有効になりました。';
+
+  @override
   String get camasirSepetiUyarilari => 'ランドリーかご通知';
 
   @override

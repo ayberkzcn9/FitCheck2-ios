@@ -179,10 +179,11 @@ class BildirimServisi {
         return false;
       }
 
-      // Android 12+ için Hassas Alarm/Hatırlatıcı izni kontrolü
-      if (await Permission.scheduleExactAlarm.isDenied) {
-        await Permission.scheduleExactAlarm.request();
-      }
+      // Android 12+ "tam zamanlı alarm" izni (Alarms & reminders) bilerek
+      // burada istenmiyor: anahtarı çevirirken kullanıcıyı sistem
+      // ayarlarına atlamak akışı bölüyor. Izin yoksa bildirimler yine
+      // gelir, sadece birkaç dakika geç gelir. Kullanıcı isterse Ayarlar >
+      // Bildirimler bölümünden kendisi verir.
 
       if (status.isGranted || status.isLimited) {
         return true;
@@ -193,6 +194,61 @@ class BildirimServisi {
       debugPrint('Bildirim izni kontrol edilirken hata: $e');
       return false;
     }
+  }
+
+  // ============================================================
+  // 1.5 ZAMANLAMA (TAM ZAMANLI ALARM İZNİ)
+  // ============================================================
+  //
+  // Android 12+ cihazlarda "tam zamanlı alarm" izni verilmeden `exact`
+  // modu kullanılırsa eklenti `exact_alarms_not_permitted` hatası
+  // fırlatır ve bildirim HİÇ kurulmaz. Bu yüzden:
+  //   1) izin varsa tam saatinde (exactAllowWhileIdle),
+  //   2) izin yoksa birkaç dakika geç ama MUTLAKA gelir (inexact).
+  //
+  // İzin "Alarms & reminders" (Özel izin > Alarmlar ve hatırlatıcılar)
+  // ekranından verilir; Ayarlar > Bildirimler bölümünden istenebilir.
+
+  /// Tam zamanlı alarm izni var mı? (Android 12+ özel izin)
+  Future<bool> tamZamanliAlarmIzinVar() async {
+    try {
+      final androidPlugin = _notificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>();
+      if (androidPlugin == null) return false;
+      final sonuc = await androidPlugin.canScheduleExactNotifications();
+      return sonuc ?? false;
+    } catch (e) {
+      debugPrint('Tam zamanlı alarm izni okunamadı: $e');
+      return false;
+    }
+  }
+
+  /// Android'de "Alarms & reminders" ekranını açar; kullanıcı izin verirse
+  /// bildirimler tam seçtiği saatte gelir.
+  Future<bool> tamZamanliAlarmIzinIste() async {
+    try {
+      final androidPlugin = _notificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>();
+      if (androidPlugin == null) return false;
+      final sonuc = await androidPlugin.requestExactAlarmsPermission();
+      return sonuc ?? false;
+    } catch (e) {
+      debugPrint('Tam zamanlı alarm izni istenemedi: $e');
+      return false;
+    }
+  }
+
+  /// Zamanlama modunu seçer (saf fonksiyon, test edilebilir).
+  ///
+  /// İzin varsa tam saatinde, yoksa `inexact`: birkaç dakika geç gelebilir
+  /// ama bildirim ASLA kaybolmaz.
+  @visibleForTesting
+  static AndroidScheduleMode alarmModuSec({required bool tamZamanliIzinVar}) {
+    return tamZamanliIzinVar
+        ? AndroidScheduleMode.exactAllowWhileIdle
+        : AndroidScheduleMode.inexactAllowWhileIdle;
   }
 
   // ============================================================
@@ -355,6 +411,71 @@ class BildirimServisi {
     );
   }
 
+  /// Bildirimi zamanlar.
+  ///
+  /// Önce tam zamanlı alarm dener; izin yoksa veya hata verirse
+  /// `inexactAllowWhileIdle` moda düşer. Böylece bildirim uygulama kapalıyken
+  /// de gelir; en kötü ihtimalle birkaç dakika geç gelir.
+  Future<void> _zamanla({
+    required int id,
+    required String? title,
+    required String? body,
+    required tz.TZDateTime scheduledDate,
+    required NotificationDetails notificationDetails,
+    String? payload,
+    DateTimeComponents? matchDateTimeComponents,
+  }) async {
+    final androidPlugin = _notificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+
+    // iOS / web / masaüstü: mod yok, doğrudan zamanla.
+    if (androidPlugin == null) {
+      await _notificationsPlugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: notificationDetails,
+        payload: payload,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        matchDateTimeComponents: matchDateTimeComponents,
+      );
+      return;
+    }
+
+    final mod = alarmModuSec(
+      tamZamanliIzinVar: await tamZamanliAlarmIzinVar(),
+    );
+
+    try {
+      await _notificationsPlugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: notificationDetails,
+        payload: payload,
+        androidScheduleMode: mod,
+        matchDateTimeComponents: matchDateTimeComponents,
+      );
+    } catch (e) {
+      // İzin tam zamanlı sırada geldiyse bir kez inexact ile dene.
+      if (mod == AndroidScheduleMode.inexactAllowWhileIdle) rethrow;
+      debugPrint('Tam zamanlı alarm kurulamadı ($id), inexact deneniyor: $e');
+      await _notificationsPlugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: notificationDetails,
+        payload: payload,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        matchDateTimeComponents: matchDateTimeComponents,
+      );
+    }
+  }
+
   Future<void> _seriKur({
     required List<BildirimIcerigi> bildirimler,
     required int ilkId,
@@ -399,14 +520,13 @@ class BildirimServisi {
         // Geçmiş saatteki bildirim hemen düşerdi; atla.
         if (!zaman.isAfter(simdi)) continue;
 
-        await _notificationsPlugin.zonedSchedule(
+        await _zamanla(
           id: ilkId + i,
           title: icerik.baslik,
           body: icerik.icerik,
           scheduledDate: zaman,
           notificationDetails: detaylar,
           payload: icerik.hedef,
-          androidScheduleMode: AndroidScheduleMode.exact,
         );
         kurulan++;
       }
@@ -498,13 +618,12 @@ class BildirimServisi {
       );
 
       await _notificationsPlugin.cancel(id: haftalikRaporBildirimId);
-      await _notificationsPlugin.zonedSchedule(
+      await _zamanla(
         id: haftalikRaporBildirimId,
         title: l10n.haftalikStilRaporu,
         body: l10n.haftalikStilRaporuAciklama,
         scheduledDate: planlanan,
         notificationDetails: detaylar,
-        androidScheduleMode: AndroidScheduleMode.exact,
         matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
       );
     } catch (e) {

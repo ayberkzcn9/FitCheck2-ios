@@ -266,5 +266,6 @@ yeterli; metinlerin geri kalanı aynı kalır.
 | İzin | Kamera isteğinden önce gerekçe sayfası |
 | Navigasyon | "Kendin Kombin Yap" sekmesi kalktı → 6 sekme (Bugün, Dolap, Plan, Kombin, Profil, Düello) |
 | Bilgi | ⓘ düğmeleri: Profil, Bugün, Rapor, Düello, Dolap |
-| Tasarım | Zümrüt + krem marka paleti (tek kaynak), 16 ekran, sıcak taş nötrler, saf siyah metin yok, ALL CAPS kalktı, %200 yazı ölçeği, 44 pt dokunma hedefi, RTL, AppDataColors |
+| Bildirim | Zamanlanmış bildirimler artık "tam zamanlı alarm" izni yoksa da kuruluyor (exact → inexact yedeği; eskiden hata yutulup hiç kurulmuyordu); Ayarlar > Bildirimler'den "Alarms & reminders" izni istenebiliyor; `USE_EXACT_ALARM` Play politikası gereği kaldırıldı |
+| Tasarlım | Zümrüt + krem marka paleti (tek kaynak), 16 ekran, sıcak taş nötrler, saf siyah metin yok, ALL CAPS kalktı, %200 yazı ölçeği, 44 pt dokunma hedefi, RTL, AppDataColors |
 | Kalite | 329 test, tasarım kalite kapısı, kontrast denetimi, `aab_dogrula` |
