@@ -1123,10 +1123,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get dahaSonra => '後で';
 
   @override
-  String get reklamIzleHakKazan => '広告を見る (+3クレジット)';
+  String reklamIzleHakKazan(int adet) {
+    return '広告を見る (+$adetクレジット)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'おめでとうございます！+3クレジットが追加されました。 ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'おめでとうございます！+$adetクレジットが追加されました。 ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1754,22 +1758,27 @@ class AppLocalizationsJa extends AppLocalizations {
   String get kuponKullan => 'クーポンコードを使用';
 
   @override
-  String get hakEklendiTebrikler => 'おめでとうございます！+3クレジットが追加されました。 ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'おめでとうございます！+$adetクレジットが追加されました。 ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'クローゼットがいっぱいです！';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return '最大上限の $limit アイテムに達しました。短い動画を視聴して、クローゼットの容量を +3 アイテム増やしますか？ 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return '最大上限の $limit アイテムに達しました。短い動画を視聴して、クローゼットの容量を +$adet アイテム増やしますか？ 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => '広告を見る (+3枠追加)';
+  String reklamIzleSlotEkle(int adet) {
+    return '広告を見る (+$adet枠追加)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'おめでとうございます！クローゼットに新しいスロットが+3追加されました。 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'おめでとうございます！クローゼットに新しいスロットが+$adet追加されました。 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => '本日の上限に達しました！';
@@ -2613,7 +2622,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'アプリを気に入っていただけたら、5秒だけレビューを書いていただけませんか？小さなレビューが大きな励みになります！⭐ レビューを書いた方に+3無料クレジットをプレゼント！';
+      'アプリを気に入っていただけたら、5秒だけレビューを書いていただけませんか？小さなレビューが大きな励みになります！';
 
   @override
   String get degerlendirmeEvet => 'はい、評価します';

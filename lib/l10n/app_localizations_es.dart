@@ -1191,10 +1191,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get dahaSonra => 'Más tarde';
 
   @override
-  String get reklamIzleHakKazan => 'Ver anuncio (+3 crédito)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Ver anuncio (+$adet crédito)';
+  }
 
   @override
-  String get tebriklerHakEklendi => '¡Enhorabuena! +3 crédito añadido. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return '¡Enhorabuena! +$adet crédito añadido. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1874,22 +1878,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get kuponKullan => 'Usar cupón';
 
   @override
-  String get hakEklendiTebrikler => '¡Enhorabuena! +3 crédito añadido. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return '¡Enhorabuena! +$adet crédito añadido. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => '¡Armario lleno!';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'Has alcanzado el límite de $limit prendas. ¿Quieres ver un vídeo corto para ampliar la capacidad de tu armario en +3 prendas? 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'Has alcanzado el límite de $limit prendas. ¿Quieres ver un vídeo corto para ampliar la capacidad de tu armario en +$adet prendas? 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Ver anuncio (+3 espacios)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Ver anuncio (+$adet espacios)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      '¡Enhorabuena! +3 nuevos espacios añadidos al armario. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return '¡Enhorabuena! +$adet nuevos espacios añadidos al armario. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => '¡Límite diario alcanzado!';
@@ -2756,7 +2765,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'Si te encanta la aplicación, ¿podrías dedicar 5 segundos a dejarnos una reseña? ¡Las reseñas pequeñas son una gran ayuda! ⭐ ¡Los revisores reciben +3 créditos gratis como regalo!';
+      'Si te encanta la aplicación, ¿podrías dedicar 5 segundos a dejarnos una reseña? ¡Las reseñas pequeñas son una gran ayuda!';
 
   @override
   String get degerlendirmeEvet => 'Sí, lo evaluaré';

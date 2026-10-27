@@ -1183,10 +1183,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dahaSonra => 'Later';
 
   @override
-  String get reklamIzleHakKazan => 'Watch Ad (+3 Credit)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Watch Ad (+$adet Credit)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'Congratulations! +3 Credit added. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'Congratulations! +$adet Credit added. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1853,22 +1857,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kuponKullan => 'Redeem Coupon';
 
   @override
-  String get hakEklendiTebrikler => 'Congratulations! +3 Credit added. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'Congratulations! +$adet Credit added. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'Wardrobe Full!';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'You have reached your limit of $limit clothing items. Watch a short video to expand your wardrobe capacity by +3 items? 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'You have reached your limit of $limit clothing items. Watch a short video to expand your wardrobe capacity by +$adet items? 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Watch Ad (+3 Slots)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Watch Ad (+$adet Slots)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'Congratulations! +3 new wardrobe slots added. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'Congratulations! +$adet new wardrobe slots added. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => 'Daily Limit Reached!';
@@ -2732,7 +2741,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'If you love the app, could you take 5 seconds to leave us a review? Small reviews are a big help! ⭐ Reviewers get +3 free credits as a gift!';
+      'If you love the app, could you take 5 seconds to leave us a review? Small reviews are a big help!';
 
   @override
   String get degerlendirmeEvet => 'Yes, I\'ll review it';

@@ -1195,10 +1195,14 @@ class AppLocalizationsIt extends AppLocalizations {
   String get dahaSonra => 'Più Tardi';
 
   @override
-  String get reklamIzleHakKazan => 'Guarda Annuncio (+3 Credito)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Guarda Annuncio (+$adet Credito)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'Congratulazioni! +3 credito concesso. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'Congratulazioni! +$adet credito concesso. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1873,22 +1877,27 @@ class AppLocalizationsIt extends AppLocalizations {
   String get kuponKullan => 'Riscatta Codice';
 
   @override
-  String get hakEklendiTebrikler => 'Congratulazioni! +3 credito concesso. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'Congratulazioni! +$adet credito concesso. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'Guardaroba Pieno!';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'Hai raggiunto il tuo limite di $limit capi di abbigliamento. Vuoi guardare un breve video per aggiungere +3 slot abbigliamento al tuo guardaroba? 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'Hai raggiunto il tuo limite di $limit capi di abbigliamento. Vuoi guardare un breve video per aggiungere +$adet slot abbigliamento al tuo guardaroba? 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Guarda Annuncio (+3 Slot)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Guarda Annuncio (+$adet Slot)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'Congratulazioni! +3 nuovi slot abbigliamento aggiunti al guardaroba. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'Congratulazioni! +$adet nuovi slot abbigliamento aggiunti al guardaroba. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => 'Crediti Giornalieri Esauriti!';
@@ -2755,7 +2764,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'Se ti piace l\'app, puoi dedicare 5 secondi per lasciarci una recensione? Le piccole recensioni sono un grande aiuto! ⭐ I recensori ricevono +3 crediti gratuiti in regalo!';
+      'Se ti piace l\'app, puoi dedicare 5 secondi per lasciarci una recensione? Le piccole recensioni sono un grande aiuto!';
 
   @override
   String get degerlendirmeEvet => 'Sì, la valuterò';

@@ -1182,10 +1182,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get dahaSonra => 'Daha Sonra';
 
   @override
-  String get reklamIzleHakKazan => 'Reklam İzle (+2 Hak)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Reklam İzle (+$adet Hak)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'Tebrikler! +2 İşlem hakkı tanımlandı. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'Tebrikler! +$adet İşlem hakkı tanımlandı. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1855,22 +1859,27 @@ class AppLocalizationsTr extends AppLocalizations {
   String get kuponKullan => 'Kupon Kullan';
 
   @override
-  String get hakEklendiTebrikler => 'Tebrikler! +2 İşlem hakkı tanımlandı. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'Tebrikler! +$adet İşlem hakkı tanımlandı. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'Gardırobun Doldu!';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'Mevcut limitin olan $limit kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +2 kıyafet yükleme alanı eklemek ister misin? 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'Mevcut limitin olan $limit kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +$adet kıyafet yükleme alanı eklemek ister misin? 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Reklam İzle (+2 Slot)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Reklam İzle (+$adet Slot)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'Tebrikler! Gardırobuna +2 yeni kıyafet alanı eklendi. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'Tebrikler! Gardırobuna +$adet yeni kıyafet alanı eklendi. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => 'Günlük Hakkın Bitti!';
@@ -2734,7 +2743,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek! ⭐ Değerlendirme yapanlara +3 hak hediye!';
+      'Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek!';
 
   @override
   String get degerlendirmeEvet => 'Evet, değerlendireyim';

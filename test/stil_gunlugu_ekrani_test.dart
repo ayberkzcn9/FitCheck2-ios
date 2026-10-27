@@ -37,14 +37,22 @@ void main() {
     _kiyafet('Beyaz Gömlek', 'ust'),
   ];
 
+  // Tarihler sabit yazılırsa test bir süre sonra kendiliğinden bozulur:
+  // rapor "son 7 gün" penceresine bakar, sabit tarihler pencereden çıkar.
+  // Bu yüzden tohum verisi her zaman "düne" ve "önceki güne" göre üretilir.
+  String gun(DateTime t) =>
+      '${t.year}-${t.month.toString().padLeft(2, '0')}-'
+      '${t.day.toString().padLeft(2, '0')}';
+  final bugun = DateTime.now();
+
   final gecmis = <Map<String, String>>[
     {
-      'tarih': '2026-10-20',
+      'tarih': gun(bugun.subtract(const Duration(days: 1))),
       'baslik': 'Ofis kombini',
       'detay': 'Beyaz Tişört, Siyah Pantolon',
     },
     {
-      'tarih': '2026-10-18',
+      'tarih': gun(bugun.subtract(const Duration(days: 2))),
       'baslik': 'Spor kombini',
       'detay': 'Beyaz Gömlek, Siyah Pantolon',
     },

@@ -1173,10 +1173,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dahaSonra => 'لاحقاً';
 
   @override
-  String get reklamIzleHakKazan => 'مشاهدة إعلان (+3 رصيد)';
+  String reklamIzleHakKazan(int adet) {
+    return 'مشاهدة إعلان (+$adet رصيد)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'تهانينا! تم إضافة +3 رصيد. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'تهانينا! تم إضافة +$adet رصيد. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1837,22 +1841,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kuponKullan => 'استخدام قسيمة';
 
   @override
-  String get hakEklendiTebrikler => 'تهانينا! تم إضافة +3 رصيد. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'تهانينا! تم إضافة +$adet رصيد. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'الخزانة ممتلئة!';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'لقد وصلت إلى الحد الأقصى البالغ $limit قطعة ملابس. هل ترغب في مشاهدة فيديو قصير لتوسيع سعة خزانتك بمقدار +3 قطعة؟ 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'لقد وصلت إلى الحد الأقصى البالغ $limit قطعة ملابس. هل ترغب في مشاهدة فيديو قصير لتوسيع سعة خزانتك بمقدار +$adet قطعة؟ 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'مشاهدة إعلان (+3 خانة)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'مشاهدة إعلان (+$adet خانة)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'تهانينا! تم إضافة +3 خانة خزانة جديدة. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'تهانينا! تم إضافة +$adet خانة خزانة جديدة. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => 'تم الوصول إلى الحد اليومي!';
@@ -2712,7 +2721,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'إذا أعجبك التطبيق، هل يمكنك تخصيص 5 ثوانٍ لتترك لنا مراجعة؟ المراجعات الصغيرة تساعد كثيرًا! ⭐ المراجعون يحصلون على +3 رصيد مجاني كهدية!';
+      'إذا أعجبك التطبيق، هل يمكنك تخصيص 5 ثوانٍ لتترك لنا مراجعة؟ المراجعات الصغيرة تساعد كثيرًا!';
 
   @override
   String get degerlendirmeEvet => 'نعم، سأقيّم';

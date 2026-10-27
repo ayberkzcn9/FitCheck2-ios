@@ -369,7 +369,8 @@ class AnaEkranDialoglar {
                             label: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                l10n.reklamIzleHakKazan,
+                                l10n.reklamIzleHakKazan(
+                                    ReklamServisi.reklamOduluKredi),
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: AppText.sizeBodySmall,
@@ -390,7 +391,8 @@ class AnaEkranDialoglar {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          l10n.hakEklendiTebrikler,
+                                          l10n.hakEklendiTebrikler(
+                                              ReklamServisi.reklamOduluKredi),
                                           style: TextStyle(
                                             color: colors.onSurface,
                                             fontWeight: FontWeight.bold,
@@ -505,7 +507,8 @@ class AnaEkranDialoglar {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                l10n.gardirobunDolduIcerik(maxLimit),
+                l10n.gardirobunDolduIcerik(
+                    maxLimit, ReklamServisi.reklamOduluSlot),
                 style: TextStyle(fontSize: AppText.sizeBodySmall, color: context.uygunAltMetin),
               ),
               const SizedBox(height: 20),
@@ -543,7 +546,8 @@ class AnaEkranDialoglar {
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      l10n.reklamIzleSlotEkle,
+                      l10n.reklamIzleSlotEkle(
+                          ReklamServisi.reklamOduluSlot),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: context.uygunMetin,
@@ -568,7 +572,8 @@ class AnaEkranDialoglar {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                l10n.yeniSlotEklendiTebrikler,
+                                l10n.yeniSlotEklendiTebrikler(
+                                    ReklamServisi.reklamOduluSlot),
                                 style: TextStyle(
                                   color: colors.onSurface,
                                   fontWeight: FontWeight.bold,
@@ -687,7 +692,8 @@ class AnaEkranDialoglar {
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      l10n.reklamIzleHakKazan,
+                      l10n.reklamIzleHakKazan(
+                          ReklamServisi.reklamOduluKredi),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: context.uygunMetin,
@@ -714,7 +720,8 @@ class AnaEkranDialoglar {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                l10n.hakEklendiTebrikler,
+                                l10n.hakEklendiTebrikler(
+                                    ReklamServisi.reklamOduluKredi),
                                 style: TextStyle(
                                   color: colors.onSurface,
                                   fontWeight: FontWeight.bold,

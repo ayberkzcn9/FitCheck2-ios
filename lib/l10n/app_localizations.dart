@@ -2269,14 +2269,14 @@ abstract class AppLocalizations {
   /// No description provided for @reklamIzleHakKazan.
   ///
   /// In tr, this message translates to:
-  /// **'Reklam İzle (+2 Hak)'**
-  String get reklamIzleHakKazan;
+  /// **'Reklam İzle (+{adet} Hak)'**
+  String reklamIzleHakKazan(int adet);
 
   /// No description provided for @tebriklerHakEklendi.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! +2 İşlem hakkı tanımlandı. ✨'**
-  String get tebriklerHakEklendi;
+  /// **'Tebrikler! +{adet} İşlem hakkı tanımlandı. ✨'**
+  String tebriklerHakEklendi(int adet);
 
   /// No description provided for @kombinIsaretlemeKaldirildi.
   ///
@@ -3463,8 +3463,8 @@ abstract class AppLocalizations {
   /// No description provided for @hakEklendiTebrikler.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! +2 İşlem hakkı tanımlandı. ✨'**
-  String get hakEklendiTebrikler;
+  /// **'Tebrikler! +{adet} İşlem hakkı tanımlandı. ✨'**
+  String hakEklendiTebrikler(int adet);
 
   /// No description provided for @gardirobunDolduTitle.
   ///
@@ -3475,20 +3475,20 @@ abstract class AppLocalizations {
   /// No description provided for @gardirobunDolduIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Mevcut limitin olan {limit} kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +2 kıyafet yükleme alanı eklemek ister misin? 👕'**
-  String gardirobunDolduIcerik(Object limit);
+  /// **'Mevcut limitin olan {limit} kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +{adet} kıyafet yükleme alanı eklemek ister misin? 👕'**
+  String gardirobunDolduIcerik(int limit, int adet);
 
   /// No description provided for @reklamIzleSlotEkle.
   ///
   /// In tr, this message translates to:
-  /// **'Reklam İzle (+2 Slot)'**
-  String get reklamIzleSlotEkle;
+  /// **'Reklam İzle (+{adet} Slot)'**
+  String reklamIzleSlotEkle(int adet);
 
   /// No description provided for @yeniSlotEklendiTebrikler.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! Gardırobuna +2 yeni kıyafet alanı eklendi. 🎉'**
-  String get yeniSlotEklendiTebrikler;
+  /// **'Tebrikler! Gardırobuna +{adet} yeni kıyafet alanı eklendi. 🎉'**
+  String yeniSlotEklendiTebrikler(int adet);
 
   /// No description provided for @gunlukHakBittiTitle.
   ///
@@ -5071,7 +5071,7 @@ abstract class AppLocalizations {
   /// No description provided for @degerlendirmeIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek! ⭐ Değerlendirme yapanlara +3 hak hediye!'**
+  /// **'Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek!'**
   String get degerlendirmeIcerik;
 
   /// No description provided for @degerlendirmeEvet.

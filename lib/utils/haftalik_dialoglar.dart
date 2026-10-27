@@ -103,7 +103,8 @@ class HaftalikDialoglar {
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      l10n.reklamIzleHakKazan,
+                      l10n.reklamIzleHakKazan(
+                          ReklamServisi.reklamOduluKredi),
                       style: TextStyle(
                         fontSize: AppText.sizeBodySmall,
                         fontWeight: FontWeight.bold,

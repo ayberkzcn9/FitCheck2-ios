@@ -1183,10 +1183,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dahaSonra => 'Позже';
 
   @override
-  String get reklamIzleHakKazan => 'Смотреть рекламу (+3 попытка)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Смотреть рекламу (+$adet попытка)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'Поздравляем! +3 попытка добавлена. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'Поздравляем! +$adet попытка добавлена. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1853,22 +1857,27 @@ class AppLocalizationsRu extends AppLocalizations {
   String get kuponKullan => 'Ввести промокод';
 
   @override
-  String get hakEklendiTebrikler => 'Поздравляем! +3 попытка добавлена. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'Поздравляем! +$adet попытка добавлена. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'Гардероб полон!';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'Вы достигли лимита в $limit вещей. Посмотреть короткую рекламу, чтобы расширить гардероб ещё на +3 слотов? 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'Вы достигли лимита в $limit вещей. Посмотреть короткую рекламу, чтобы расширить гардероб ещё на +$adet слотов? 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Смотреть рекламу (+3 слотов)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Смотреть рекламу (+$adet слотов)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'Поздравляем! В ваш гардероб добавлено +3 новых слотов. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'Поздравляем! В ваш гардероб добавлено +$adet новых слотов. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => 'Дневной лимит исчерпан!';
@@ -2731,7 +2740,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'Если вам нравится приложение, уделите 5 секунд и оставьте нам отзыв! Небольшие отзывы — большая помощь! ⭐ Оценившим пользователям +3 бесплатных кредита в подарок!';
+      'Если вам нравится приложение, уделите 5 секунд и оставьте нам отзыв! Небольшие отзывы — большая помощь!';
 
   @override
   String get degerlendirmeEvet => 'Да, оценю';

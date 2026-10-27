@@ -260,7 +260,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(l10n.tebriklerHakEklendi),
+              content: Text(l10n.tebriklerHakEklendi(ReklamServisi.reklamOduluKredi)),
               backgroundColor: Theme.of(context).colorScheme.primary,
               behavior: SnackBarBehavior.floating,
             ),

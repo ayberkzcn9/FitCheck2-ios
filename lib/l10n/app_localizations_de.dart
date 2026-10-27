@@ -1195,10 +1195,14 @@ class AppLocalizationsDe extends AppLocalizations {
   String get dahaSonra => 'Später';
 
   @override
-  String get reklamIzleHakKazan => 'Video ansehen (+3 Guthaben)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Video ansehen (+$adet Guthaben)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'Glückwunsch! +3 Guthaben vergeben. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'Glückwunsch! +$adet Guthaben vergeben. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1874,22 +1878,27 @@ class AppLocalizationsDe extends AppLocalizations {
   String get kuponKullan => 'Code einlösen';
 
   @override
-  String get hakEklendiTebrikler => 'Glückwunsch! +3 Guthaben vergeben. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'Glückwunsch! +$adet Guthaben vergeben. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'Schrank voll!';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'Du hast dein Limit von $limit Kleidungsstücken erreicht. Möchtest du ein kurzes Video ansehen, um +3 neue Plätze hinzuzufügen? 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'Du hast dein Limit von $limit Kleidungsstücken erreicht. Möchtest du ein kurzes Video ansehen, um +$adet neue Plätze hinzuzufügen? 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Video ansehen (+3 Plätze)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Video ansehen (+$adet Plätze)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'Glückwunsch! +3 neue Kleiderplätze hinzugefügt. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'Glückwunsch! +$adet neue Kleiderplätze hinzugefügt. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => 'Kein tägliches Guthaben mehr!';
@@ -2757,7 +2766,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'Wenn dir die App gefällt, nimm dir doch 5 Sekunden Zeit für eine Bewertung! Kleine Bewertungen sind eine große Hilfe! ⭐ Bewerter erhalten +3 kostenlose Credits geschenkt!';
+      'Wenn dir die App gefällt, nimm dir doch 5 Sekunden Zeit für eine Bewertung! Kleine Bewertungen sind eine große Hilfe!';
 
   @override
   String get degerlendirmeEvet => 'Ja, gerne bewerten';

@@ -401,7 +401,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      l10n.reklamIzleHakKazan,
+                      l10n.reklamIzleHakKazan(
+                          ReklamServisi.reklamOduluKredi),
                       style: TextStyle(
                           fontSize: AppText.sizeBodySmall,
                           fontWeight: FontWeight.bold,

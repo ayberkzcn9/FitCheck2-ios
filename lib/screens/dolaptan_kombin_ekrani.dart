@@ -252,7 +252,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
           final l10n = AppLocalizations.of(context)!;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(l10n.tebriklerHakEklendi, style: const TextStyle(fontWeight: FontWeight.bold)),
+              content: Text(l10n.tebriklerHakEklendi(ReklamServisi.reklamOduluKredi), style: const TextStyle(fontWeight: FontWeight.bold)),
               backgroundColor: AppAccents.success,
               behavior: SnackBarBehavior.floating,
               shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),

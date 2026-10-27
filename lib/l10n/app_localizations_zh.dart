@@ -1105,10 +1105,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dahaSonra => '稍后再说';
 
   @override
-  String get reklamIzleHakKazan => '观看广告（+3 次额度）';
+  String reklamIzleHakKazan(int adet) {
+    return '观看广告（+$adet 次额度）';
+  }
 
   @override
-  String get tebriklerHakEklendi => '恭喜！已增加 +3 次额度。 ✨';
+  String tebriklerHakEklendi(int adet) {
+    return '恭喜！已增加 +$adet 次额度。 ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1728,21 +1732,27 @@ class AppLocalizationsZh extends AppLocalizations {
   String get kuponKullan => '输入兑换码';
 
   @override
-  String get hakEklendiTebrikler => '恭喜！已增加 +3 次额度。 ✨';
+  String hakEklendiTebrikler(int adet) {
+    return '恭喜！已增加 +$adet 次额度。 ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => '衣橱已满！';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return '您已达到 $limit 件衣物的上限。观看一段短视频即可将衣橱容量扩大 +3 件？ 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return '您已达到 $limit 件衣物的上限。观看一段短视频即可将衣橱容量扩大 +$adet 件？ 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => '观看广告（+3 个容量）';
+  String reklamIzleSlotEkle(int adet) {
+    return '观看广告（+$adet 个容量）';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler => '恭喜！您的衣橱已成功扩展 +3 个新位置。 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return '恭喜！您的衣橱已成功扩展 +$adet 个新位置。 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => '已达今日上限！';
@@ -2574,8 +2584,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get degerlendirmeBaslik => '你喜欢FitCheck吗？';
 
   @override
-  String get degerlendirmeIcerik =>
-      '如果你喜欢这个应用，能花5秒给我们留个评价吗？小小的评价是很大的支持！⭐ 评价的用户可获得+3免费积分作为礼物！';
+  String get degerlendirmeIcerik => '如果你喜欢这个应用，能花5秒给我们留个评价吗？小小的评价是很大的支持！';
 
   @override
   String get degerlendirmeEvet => '好的，我来评价';

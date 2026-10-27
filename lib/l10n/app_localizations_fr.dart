@@ -1197,10 +1197,14 @@ class AppLocalizationsFr extends AppLocalizations {
   String get dahaSonra => 'Plus tard';
 
   @override
-  String get reklamIzleHakKazan => 'Regarder une pub (+3 crédit)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Regarder une pub (+$adet crédit)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'Félicitations ! +3 crédit ajouté. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'Félicitations ! +$adet crédit ajouté. ✨';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1877,22 +1881,27 @@ class AppLocalizationsFr extends AppLocalizations {
   String get kuponKullan => 'Utiliser un code promo';
 
   @override
-  String get hakEklendiTebrikler => 'Félicitations ! +3 crédit ajouté. ✨';
+  String hakEklendiTebrikler(int adet) {
+    return 'Félicitations ! +$adet crédit ajouté. ✨';
+  }
 
   @override
   String get gardirobunDolduTitle => 'Dressing plein !';
 
   @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'Vous avez atteint votre limite de $limit vêtements. Regarder une courte vidéo pour augmenter la capacité de votre dressing de +3 articles ? 👕';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'Vous avez atteint votre limite de $limit vêtements. Regarder une courte vidéo pour augmenter la capacité de votre dressing de +$adet articles ? 👕';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Regarder une pub (+3 emplacements)';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Regarder une pub (+$adet emplacements)';
+  }
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'Félicitations ! +3 nouveaux emplacements ajoutés à votre dressing. 🎉';
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'Félicitations ! +$adet nouveaux emplacements ajoutés à votre dressing. 🎉';
+  }
 
   @override
   String get gunlukHakBittiTitle => 'Limite quotidienne atteinte !';
@@ -2760,7 +2769,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get degerlendirmeIcerik =>
-      'Si vous aimez l\'application, prenez 5 secondes pour nous laisser un avis ! Les petits avis sont d\'une grande aide ! ⭐ Les évaluateurs reçoivent +3 crédits gratuits en cadeau !';
+      'Si vous aimez l\'application, prenez 5 secondes pour nous laisser un avis ! Les petits avis sont d\'une grande aide !';
 
   @override
   String get degerlendirmeEvet => 'Oui, je vais l\'évaluer';
