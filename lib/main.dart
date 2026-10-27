@@ -240,8 +240,11 @@ class KombinDanismaniApp extends StatefulWidget {
     this.baslangicDilKodu,
   });
 
+  static KombinDanismaniAppState? maybeOf(BuildContext context) =>
+      context.findAncestorStateOfType<KombinDanismaniAppState>();
+
   static KombinDanismaniAppState of(BuildContext context) {
-    final state = context.findAncestorStateOfType<KombinDanismaniAppState>();
+    final state = maybeOf(context);
     assert(state != null, 'KombinDanismaniAppState bulunamadı. Widget ağacında KombinDanismaniApp altında olmalı.');
     return state!;
   }

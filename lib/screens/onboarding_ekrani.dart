@@ -541,11 +541,13 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
   @override
   Widget build(BuildContext context) {
-    final appState = KombinDanismaniApp.of(context);
+    // Uygulama kabuğu yoksa (ör. ekran tek başına çizildiğinde) yerel
+    // ayarlara düş: ekran hiçbir durumda çökmemeli.
+    final appState = KombinDanismaniApp.maybeOf(context);
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
-    final seciliLocale = appState.currentLocale;
+    final seciliLocale = appState?.currentLocale ?? Localizations.localeOf(context);
 
     if (_seciliTarzlar.isEmpty) _seciliTarzlar.add(l10n.tarzSpor);
     _seciliRenk ??= l10n.renkKoyuTonlar;

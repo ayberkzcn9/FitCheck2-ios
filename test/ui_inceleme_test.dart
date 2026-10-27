@@ -109,7 +109,16 @@ Widget _uygulama(Widget child, {Locale? dil}) {
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
     theme: _tema(parlaklik: _parlaklik),
-    home: child,
+    // Bazı ekranlar (ör. haftalık planlayıcı) Scaffold'u saydam bırakıp
+    // arka planı AnaEkran'dan alıyor. Tek başına çizildiklerinde saydam
+    // Scaffold siyah tuvale düşüyor ve koyu metin okunmuyordu. Gerçek
+    // uygulamadaki zemini taklit etmek için tema zeminini alta koyuyoruz.
+    home: Builder(
+      builder: (context) => ColoredBox(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: child,
+      ),
+    ),
   );
 }
 
@@ -698,6 +707,11 @@ void main() {
     await bekle(tester);
     await goruntu(tester, '35_premium');
     _yerlesimHatasiniBildir(tester, 'Premium');
+
+    await tester.pumpWidget(_uygulama(const OnboardingEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '31_onboarding');
+    _yerlesimHatasiniBildir(tester, 'Onboarding');
 
     await tester.pumpWidget(
       _uygulama(
