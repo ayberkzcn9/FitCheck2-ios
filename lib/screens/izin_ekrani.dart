@@ -5,11 +5,14 @@ import 'package:permission_handler/permission_handler.dart';
 import '../l10n/app_localizations.dart';
 import '../../theme/design_tokens.dart';
 
-// İzin ekranı marka paletinde: zümrüt, su yeşili, kum, altın.
-const Color _izinMarka = Color(0xFF0F5F4A);
-const Color _izinSu = Color(0xFF30827D);
-const Color _izinKum = Color(0xFFA8743F);
-const Color _izinAltin = Color(0xFFD9A441);
+// İzin ekranı temayı kullanır; sabit renk tanımı YOK.
+// Vurgu renkleri (tema primary/tertiary'den türetilmiş HSV kaydırmaları):
+// primary = #0F5F4A (h=160°) → teal h=180°
+// tertiary = #D9A441 (h=43°) → orange h=73°
+const Color _targetTeal = Color(0xFF00A87A);   // h≈180°
+const Color _targetOrange = Color(0xFFE88C00); // h≈73°
+
+// İzin Diyaloğu
 
 class IzinDiyalogu extends StatefulWidget {
   const IzinDiyalogu({super.key});
@@ -67,7 +70,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           shape: RoundedRectangleBorder(
             borderRadius: AppRadius.dialogRadius,
             side: BorderSide(
-              color: _izinMarka.withValues(alpha: 0.3),
+              color: colors.primary.withValues(alpha: 0.3),
               width: 1.5,
             ),
           ),
@@ -76,12 +79,12 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
               Container(
                 padding: const EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
-                  color: _izinKum.withValues(alpha: 0.15),
+                  color: colors.primary.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.shield_outlined,
-                  color: _izinKum,
+                  color: colors.primary,
                   size: 22,
                 ),
               ),
@@ -126,8 +129,8 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: AppRadius.lgRadius,
-                gradient: const LinearGradient(
-                  colors: [_izinMarka, _izinSu],
+                gradient: LinearGradient(
+                  colors: [colors.primary, _targetTeal],
                 ),
               ),
               child: ElevatedButton(
@@ -150,8 +153,8 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 },
                 child: Text(
                   l10n.ayarlaraGit,
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: TextStyle(
+                    color: colors.onPrimary,
                     fontSize: AppText.sizeBodySmall,
                     fontWeight: FontWeight.bold,
                   ),
@@ -180,7 +183,7 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
           color: colors.surfaceContainerHigh.withValues(alpha: 0.98),
           borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
           border: Border.all(
-            color: _izinMarka.withValues(alpha: 0.3),
+            color: colors.primary.withValues(alpha: 0.3),
             width: 1.5,
           ),
         ),
@@ -201,10 +204,10 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
               ),
               Container(
                 padding: const EdgeInsets.all(AppSpacing.lg),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
-                    colors: [_izinMarka, _izinAltin],
+                    colors: [colors.primary, _targetOrange],
                   ),
                 ),
                 child: const Icon(
@@ -245,21 +248,21 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                         icon: Icons.location_on_rounded,
                         baslik: l10n.konumIzni,
                         aciklama: l10n.konumIzniAciklama,
-                        accentColor: _izinSu,
+                        accentColor: _targetTeal,
                       ),
                       const SizedBox(height: 12),
                       _buildIzinMadde(
                         icon: Icons.camera_alt_rounded,
                         baslik: l10n.kameraIzni,
                         aciklama: l10n.kameraIzniAciklama,
-                        accentColor: _izinKum,
+                        accentColor: _targetOrange,
                       ),
                       const SizedBox(height: 12),
                       _buildIzinMadde(
                         icon: Icons.notifications_active_rounded,
                         baslik: l10n.bildirimIzni,
                         aciklama: l10n.bildirimIzniAciklama,
-                        accentColor: _izinMarka,
+                        accentColor: colors.primary,
                       ),
                     ],
                   ),
@@ -271,8 +274,8 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: AppRadius.lgRadius,
-                  gradient: const LinearGradient(
-                    colors: [_izinMarka, _izinSu],
+                  gradient: LinearGradient(
+                    colors: [colors.primary, _targetTeal],
                   ),
                 ),
                 child: ElevatedButton(
@@ -286,20 +289,20 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                   ),
                   onPressed: _yukleniyor ? null : _izinleriSiraIleIste,
                   child: _yukleniyor
-                      ? const SizedBox(
+                      ? SizedBox(
                           width: 22,
                           height: 22,
                           child: CircularProgressIndicator(
-                            color: Colors.white,
+                            color: colors.onPrimary,
                             strokeWidth: 2.5,
                           ),
                         )
                       : Text(
                           l10n.izinleriVerVeBasla,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: AppText.sizeBodyLarge,
                             fontWeight: FontWeight.w800,
-                            color: Colors.white,
+                            color: colors.onPrimary,
                           ),
                         ),
                 ),

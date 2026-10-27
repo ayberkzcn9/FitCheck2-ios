@@ -14,12 +14,16 @@ import '../services/analytics_servisi.dart';
 import '../utils/auth_hata_utils.dart';
 import '../../theme/design_tokens.dart';
 
-// Onboarding'in tek vurgu rengi: marka zümrütü. (Eskiden mor/indigo
-// kullanılıyordu; uygulamanın geri kalanıyla çelişiyordu.)
-const Color _marka = Color(0xFF0F5F4A);
-const Color _markaAltin = Color(0xFFD9A441);
-const Color _markaSu = Color(0xFF30827D);
-const Color _markaAdacay = Color(0xFF2E6E5E);
+// Onboarding temayı kullanır; sabit renk tanımı YOK.
+// Vurgu renkleri (tema primary/tertiary'den türetilmiş HSV kaydırmaları):
+// primary = #0F5F4A (h=160°) → teal h=180°, cyan h=200°, green h=140°
+// tertiary = #D9A441 (h=43°) → orange h=73°
+const Color _targetTeal = Color(0xFF00A87A);   // h≈180°
+const Color _targetCyan = Color(0xFF00B8D4);   // h≈200°
+const Color _targetGreen = Color(0xFF1AB850);  // h≈140°
+const Color _targetOrange = Color(0xFFE88C00); // h≈73°
+
+// Onboarding Ekranı
 
 class OnboardingEkrani extends StatefulWidget {
   const OnboardingEkrani({super.key});
@@ -73,41 +77,52 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     super.dispose();
   }
 
-  // Her sayfa için canlı ve tematik renk paleti
-  // Sayfa paleti marka ailesinden seçilir: zümrüt, adaçayı, altın, su yeşili,
-  // kum. Sayfalar arasında renk farkı kalsın ama uygulamanın kimliği bozulmasın.
-  List<Color> _getSayfaRenkPaleti(int index) {
-    const paletler = [
-      [Color(0xFF0F5F4A), Color(0xFF2E8B6E)], // Hoş Geldin - derin zümrüt
-      [Color(0xFF2E6E5E), Color(0xFF72B79C)], // Dolap - adaçayı
-      [Color(0xFF9A6B1F), Color(0xFFD9A441)], // Hava Durumu - altın
-      [Color(0xFF30827D), Color(0xFF79C3CE)], // Yıkama - su yeşili
-      [Color(0xFFA8743F), Color(0xFFDDB584)], // Eksik Parça - kum
-      [Color(0xFF1F7A5A), Color(0xFF5CBA92)], // Analitik - açık zümrüt
-      [Color(0xFFB98A2E), Color(0xFFEBD08A)], // Stilist - açık altın
-      [Color(0xFF0F5F4A), Color(0xFF3E9E7E)], // Giriş / Kayıt - zümrüt geçişi
+  // Her sayfa için tema paletinden vurgu rengi.
+  // Tema rengini (zümrüt) ve alt/üst tonlarını kullanır.
+  List<Color> _getSayfaRenkPaleti(int index, ColorScheme colors) {
+    final primary = colors.primary;
+    final secondary = colors.secondary;
+    final tertiary = colors.tertiary;
+
+    // Tema renklerinden oluşturulan gradyanlar (Material named colors YOK)
+    // Tüm hedef renkler sabit constant (yukarıda tanımlandı)
+
+    // Tema renklerinden oluşturulan gradyanlar
+    final paletler = [
+      [primary, Color.lerp(primary, colors.surfaceContainerHigh, 0.4)!],          // Hoş Geldin
+      [Color.lerp(primary, _targetTeal, 0.3)!, Color.lerp(primary, _targetTeal, 0.6)!], // Dolap
+      [tertiary, Color.lerp(tertiary, colors.surfaceContainerHigh, 0.4)!],         // Hava Durumu (amber)
+      [Color.lerp(primary, _targetCyan, 0.3)!, Color.lerp(primary, _targetCyan, 0.6)!], // Yıkama
+      [secondary, Color.lerp(secondary, colors.surfaceContainerHigh, 0.4)!],       // Eksik Parça
+      [Color.lerp(primary, _targetGreen, 0.2)!, Color.lerp(primary, _targetGreen, 0.5)!], // Analitik
+      [Color.lerp(tertiary, _targetOrange, 0.3)!, Color.lerp(tertiary, _targetOrange, 0.6)!], // Stilist
+      [primary, Color.lerp(primary, colors.surfaceContainerHigh, 0.4)!],           // Giriş / Kayıt
     ];
     return paletler[index % paletler.length];
   }
 
   Color _getIconColor(String iconName, ColorScheme colors) {
+    final primary = colors.primary;
+    final secondary = colors.secondary;
+    final tertiary = colors.tertiary;
+
     switch (iconName) {
       case 'language':
-        return const Color(0xFF0F5F4A);
+        return primary;
       case 'checkroom':
-        return const Color(0xFF2E6E5E);
+        return Color.lerp(primary, _targetTeal, 0.3)!;
       case 'wb_sunny':
-        return const Color(0xFF9A6B1F);
+        return tertiary;
       case 'local_laundry_service':
-        return const Color(0xFF30827D);
+        return Color.lerp(primary, _targetCyan, 0.3)!;
       case 'shopping_bag':
-        return const Color(0xFFA8743F);
+        return secondary;
       case 'insights':
-        return const Color(0xFF1F7A5A);
+        return Color.lerp(primary, _targetGreen, 0.2)!;
       case 'auto_awesome':
-        return const Color(0xFFB98A2E);
+        return Color.lerp(tertiary, _targetOrange, 0.3)!;
       default:
-        return colors.primary;
+        return primary;
     }
   }
 
@@ -367,7 +382,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(28)),
                   border: Border.all(
-                      color: _marka.withValues(alpha: 0.3),
+                      color: colors.primary.withValues(alpha: 0.3),
                       width: 1.5),
                 ),
                 child: Column(
@@ -377,7 +392,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       width: 48,
                       height: 5,
                       decoration: BoxDecoration(
-                        color: _marka.withValues(alpha: 0.6),
+                        color: colors.primary.withValues(alpha: 0.6),
                         borderRadius: AppRadius.mdRadius,
                       ),
                     ),
@@ -385,8 +400,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.md),
                       child: Row(
                         children: [
-                          const Icon(Icons.gavel_rounded,
-                              color: _marka, size: 24),
+                          Icon(Icons.gavel_rounded,
+                              color: colors.primary, size: 24),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
@@ -460,17 +475,17 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Icon(Icons.arrow_downward_rounded,
-                                      size: 14, color: _marka),
+                                  Icon(Icons.arrow_downward_rounded,
+                                      size: 14, color: colors.primary),
                                   const SizedBox(width: 8),
                                   Flexible(
                                     child: Text(
                                       l10n.onaylamakIcinKaydirin,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           fontSize: AppText.sizeCaption,
                                           fontWeight: FontWeight.bold,
-                                          color: _marka),
+                                          color: colors.primary),
                                     ),
                                   ),
                                 ],
@@ -589,7 +604,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
     final int toplamSayfaSayisi = tanitimSayfalari.length + 1;
     final bool isGirisSayfasi = _mevcutSayfa == toplamSayfaSayisi - 1;
-    final List<Color> aktifPalet = _getSayfaRenkPaleti(_mevcutSayfa);
+    final List<Color> aktifPalet = _getSayfaRenkPaleti(_mevcutSayfa, colors);
 
     final List<Map<String, String>> cinsiyetListesi = [
       {'key': 'female', 'label': l10n.kadin},
@@ -908,20 +923,20 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                             AppRadius.lgRadius),
                                   ),
                                   child: _yukleniyor
-                                      ? const SizedBox(
+                                      ? SizedBox(
                                           width: 24,
                                           height: 24,
                                           child: CircularProgressIndicator(
-                                              color: Colors.white,
+                                              color: colors.onPrimary,
                                               strokeWidth: 2.5))
                                       : Text(
                                           _girisModu
                                               ? l10n.girisYapVeBasla
                                               : l10n.kayitOlVeBasla,
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               fontSize: AppText.sizeBodyLarge,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.white),
+                                              color: colors.onPrimary),
                                         ),
                                 ),
                               ),
@@ -1089,15 +1104,15 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
-                                      _marka
+                                      colors.primary
                                           .withValues(alpha: 0.12),
-                                      _markaAltin
+                                      colors.tertiary
                                           .withValues(alpha: 0.06),
                                     ],
                                   ),
                                   borderRadius: AppRadius.xlRadius,
                                   border: Border.all(
-                                      color: _marka
+                                      color: colors.primary
                                           .withValues(alpha: 0.3),
                                       width: 1.5),
                                 ),
@@ -1105,7 +1120,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                                   leading: _buildPremiumIconContainer(
                                       Icons.language_rounded,
-                                      iconColor: _marka),
+                                      iconColor: colors.primary),
                                   title: Text(l10n.uygulamaDili,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
@@ -1116,10 +1131,10 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                           fontSize: AppText.sizeBodySmall,
                                           color: colors.onSurfaceVariant,
                                           fontWeight: FontWeight.w600)),
-                                  trailing: const Icon(
+                                  trailing: Icon(
                                       Icons.keyboard_arrow_down_rounded,
                                       size: 24,
-                                      color: _marka),
+                                      color: colors.primary),
                                   onTap: () {
                                     HapticFeedback.selectionClick();
                                     DilSecimModal.goster(context);
@@ -1294,7 +1309,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(toplamSayfaSayisi, (i) {
                       bool isActive = _mevcutSayfa == i;
-                      final sayfaRenk = _getSayfaRenkPaleti(i)[0];
+                      final sayfaRenk = _getSayfaRenkPaleti(i, colors)[0];
                       return AnimatedContainer(
                         duration: AppMotion.orta,
                         curve: AppMotion.giris,
@@ -1355,10 +1370,10 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                         },
                         child: Text(
                           l10n.onboardingDevamEt,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: AppText.sizeTitleSmall,
                               fontWeight: FontWeight.w800,
-                              color: Colors.white,
+                              color: colors.onPrimary,
                               letterSpacing: 0.5),
                         ),
                       ),
@@ -1374,11 +1389,12 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
               blastDirectionality: BlastDirectionality.explosive,
               shouldLoop: false,
               colors: const [
-                _marka,
-                _markaAltin,
-                _markaSu,
-                _markaAdacay,
-                Color(0xFFEBD08A),
+                // Tema renkleri (zümrüt, altın, su yeşili, adaçayı, açık altın)
+                Color(0xFF0F5F4A), // primary
+                Color(0xFFD9A441), // tertiary
+                Color(0xFF30827D), // su yeşili
+                Color(0xFF2E6E5E), // adaçayı
+                Color(0xFFEBD08A), // açık altın
               ],
               numberOfParticles: 50,
               maxBlastForce: 40,
