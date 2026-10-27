@@ -36,6 +36,14 @@ class KiyafetAnalizServisi {
 
   /// Analiz için kullanılan sistem promptu.
   static String sistemPromptu(String dil) {
+    // AI'ın kullanabileceği tek renk isimleri (Profil > Renk Paleti ile birebir uyumlu).
+    // AI bu listeden DIŞARISI bir renk yazmamalı.
+    const renkListesi = '''
+İzin verilen renk isimleri (yalnızca bunlardan birini yaz):
+Türkçe: siyah, beyaz, lacivert, mavi, turkuaz, kırmızı, bordo, mercan, yeşil, mint, sarı, gri, gümüş, kahve, haki, zeytin, pembe, somon, gül, füşya, mor, lavanta, lila, turuncu, bronz, altın, hardal, bej, krem, ekru, şampanya, fildişi, kömür, antrasit.
+English: black, white, navy, blue, turquoise, red, burgundy, coral, green, mint, yellow, grey, silver, brown, khaki, olive, pink, salmon, rose, fuchsia, purple, lavender, lilac, orange, bronze, gold, mustard, beige, cream, ecru, champagne, ivory, charcoal, anthracite.
+''';
+
     return "Sen uzman bir moda analiz sistemisin. Görseli KUMAŞ KESİMİ, SİLÜETİ VE TÜRÜNE göre incele.\n"
         "ETEK vs PANTOLON: Bacak arası ağ dikişi VARSA 'alt' (pantolon/şort). Bacak ayrımı YOKSA ve tek parça aşağı iniyorsa ETEKtir ('alt').\n\n"
         "ÜRÜN İSİMLENDİRME KURALI (ÇOK ÖNEMLİ):\n"
@@ -44,6 +52,9 @@ class KiyafetAnalizServisi {
         "Doğru Örnekler: 'Mavi Kot Pantolon', 'Siyah Deri Ceket', 'Beyaz Spor Ayakkabı'.\n"
         "Yanlış Örnekler: 'Çok Şık Siyah Elbise' (4 kelime - YASAK), 'Kırmızı Tişört' (2 kelime - YASAK).\n"
         "ASLA 'Şık', 'Güzel', 'Modern' gibi sıfatlar kullanma!\n\n"
+        "RENK KURALI (ÇOK ÖNEMLİ):\n"
+        "$renkListesi\n"
+        "Bu listeden DIŞARISI bir renk yazma. 'Koyu mavi', 'Açık yeşil', 'Kırmızımsı' gibi tanımlayıcılar YASAK.\n\n"
         "MEVSİM KURALI: Kıyafetin kalınlığına ve kumaşına göre 'mevsim' alanına SADECE şu üç değerden birini yaz: 'kislik' (mont, kaban, yün, kalın triko, bot gibi soğuk hava parçaları), 'yazlik' (şort, keten, askılı, sandalet gibi ince yaz parçaları), 'dort_mevsim' (tişört, kot, spor ayakkabı gibi her mevsim giyilebilen parçalar). Bu değerleri ÇEVİRME, aynen yaz.\n\n"
         "SADECE şu JSON formatında ver ($dil dilinde):\n"
         "{\n  \"baslik\": \"3 Kelimelik Ürün Adı\",\n  \"kategori\": \"ust veya alt veya ayakkabi veya aksesuar\",\n  \"renk\": \"Renk\",\n  \"stil\": \"Tarz\",\n  \"mevsim\": \"kislik veya yazlik veya dort_mevsim\"\n}";

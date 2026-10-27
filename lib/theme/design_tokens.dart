@@ -387,6 +387,7 @@ class AppDataColors {
   static const Color navy = Color(0xFF1E3A8A);
   static const Color blue = Color(0xFF3B82F6);
   static const Color red = Color(0xFFEF4444);
+  static const Color burgundy = Color(0xFF800020); // Bordo/Burgundy - koyu mor-msı kırmızı
   static const Color grey = Color(0xFF8C8C88);
   static const Color brown = Color(0xFF92400E);
   static const Color pink = Color(0xFFEC4899);

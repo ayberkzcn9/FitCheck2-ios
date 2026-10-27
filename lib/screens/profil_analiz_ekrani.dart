@@ -377,46 +377,78 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
   Color _metindenRenkAyarla(String renkAdi) {
     final r = _normalize(renkAdi);
 
-    if (r.contains('siyah') || r.contains('black')) {
+    if (r.contains('siyah') || r.contains('black') ||
+        r.contains('kömür') || r.contains('charcoal') ||
+        r.contains('antrasit') || r.contains('anthracite') ||
+        r.contains('kara') || r.contains('jet')) {
       return Colors.black;
     }
-    if (r.contains('beyaz') || r.contains('white')) {
+    if (r.contains('beyaz') || r.contains('white') ||
+        r.contains('fildişi') || r.contains('ivory') ||
+        r.contains('off white') || r.contains('offwhite') ||
+        r.contains('beyazımsı') || r.contains('whitish')) {
       return Colors.white;
     }
     if (r.contains('lacivert') || r.contains('navy')) {
       return AppDataColors.navy;
     }
-    if (r.contains('mavi') || r.contains('blue')) {
+    if (r.contains('mavi') || r.contains('blue') ||
+        r.contains('turkuaz') || r.contains('turquoise') ||
+        r.contains('acik mavi') || r.contains('light blue')) {
       return AppDataColors.blue;
     }
-    if (r.contains('kirmizi') || r.contains('red')) {
+    if (r.contains('bordo') || r.contains('burgundy') ||
+        r.contains('maroon') || r.contains('bordeaux')) {
+      return AppDataColors.burgundy;
+    }
+    if (r.contains('kirmizi') || r.contains('red') ||
+        r.contains('mercan') || r.contains('coral')) {
       return AppDataColors.red;
     }
-    if (r.contains('yesil') || r.contains('green')) {
+    if (r.contains('yesil') || r.contains('green') ||
+        r.contains('mint') || r.contains('mint') ||
+        r.contains('sapphire') || r.contains('safir') ||
+        r.contains('teal')) {
       return AppMiscColors.greenLight;
     }
     if (r.contains('sari') || r.contains('yellow')) {
       return AppDataColors.yellow;
     }
-    if (r.contains('gri') || r.contains('grey') || r.contains('gray')) {
+    if (r.contains('gri') || r.contains('grey') || r.contains('gray') ||
+        r.contains('gumus') || r.contains('silver') ||
+        r.contains('platin') || r.contains('platinum')) {
       return AppDataColors.grey;
     }
-    if (r.contains('kahve') || r.contains('taba') || r.contains('brown')) {
+    if (r.contains('kahve') || r.contains('taba') || r.contains('brown') ||
+        r.contains('haki') || r.contains('khaki') ||
+        r.contains('zeytin') || r.contains('olive')) {
       return AppDataColors.brown;
     }
-    if (r.contains('pembe') || r.contains('pink')) {
+    if (r.contains('pembe') || r.contains('pink') ||
+        r.contains('som') || r.contains('salmon') ||
+        r.contains('gul') || r.contains('rose') ||
+        r.contains('fuşya') || r.contains('fuchsia') ||
+        r.contains('magent') || r.contains('magent')) {
       return AppDataColors.pink;
     }
-    if (r.contains('mor') || r.contains('purple')) {
+    if (r.contains('mor') || r.contains('purple') ||
+        r.contains('lavanta') || r.contains('lavender') ||
+        r.contains('lila') || r.contains('lilac')) {
       return AppDataColors.purple;
     }
-    if (r.contains('turuncu') || r.contains('orange')) {
+    if (r.contains('turuncu') || r.contains('orange') ||
+        r.contains('bronz') || r.contains('bronze') ||
+        r.contains('altin') || r.contains('gold') ||
+        r.contains('hardal') || r.contains('mustard')) {
       return AppDataColors.orange;
     }
     if (r.contains('bej') ||
         r.contains('krem') ||
         r.contains('beige') ||
-        r.contains('cream')) {
+        r.contains('cream') ||
+        r.contains('ekru') || r.contains('ecru') ||
+        r.contains('sampanya') || r.contains('champagne') ||
+        r.contains('isik') || r.contains('light') && r.contains('kahve')) {
       return AppDataColors.beige;
     }
 
