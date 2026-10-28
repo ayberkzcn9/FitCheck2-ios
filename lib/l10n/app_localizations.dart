@@ -3397,13 +3397,13 @@ abstract class AppLocalizations {
   /// No description provided for @kuponKoduAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'Ekstra kombin hakkı kazanmak için kupon kodunuzu aşağıya girin:'**
+  /// **'Kupon kodunuzu aşağıya girin:'**
   String get kuponKoduAciklama;
 
   /// No description provided for @kuponKoduHint.
   ///
   /// In tr, this message translates to:
-  /// **'Örn: VIP2026'**
+  /// **'Kupon kodu'**
   String get kuponKoduHint;
 
   /// No description provided for @kuponKullanButon.
@@ -3415,7 +3415,7 @@ abstract class AppLocalizations {
   /// No description provided for @kuponBasariliMesaji.
   ///
   /// In tr, this message translates to:
-  /// **'🎉 Kupon başarıyla tanımlandı! Haklarınız yüklendi.'**
+  /// **'🎉 Kupon etkinleştirildi.'**
   String get kuponBasariliMesaji;
 
   /// No description provided for @kuponKullanilmisUyari.
@@ -3433,7 +3433,7 @@ abstract class AppLocalizations {
   /// No description provided for @sinirsizIslemHakkiBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Sınırsız İşlem Hakkı 👑'**
+  /// **'Sınırsız Hak 👑'**
   String get sinirsizIslemHakkiBaslik;
 
   /// No description provided for @kalanHakkinizBaslik.
@@ -3451,7 +3451,7 @@ abstract class AppLocalizations {
   /// No description provided for @gunlukHakAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'Günlük haklarınız her gün 00:00\'da yenilenir. Daha fazla hak için reklam izleyebilir veya kupon kullanabilirsiniz.'**
+  /// **'Günlük haklarınız her gün 00:00\'da yenilenir. Daha fazla hak için reklam izleyebilirsiniz.'**
   String get gunlukHakAciklama;
 
   /// No description provided for @kuponKullan.
@@ -3499,7 +3499,7 @@ abstract class AppLocalizations {
   /// No description provided for @gunlukHakBittiIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek veya kupon girerek yeni haklar kazanabilirsin! 🛍️'**
+  /// **'Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek yeni haklar kazanabilirsin! 🛍️'**
   String get gunlukHakBittiIcerik;
 
   /// No description provided for @kuponGir.
@@ -3973,7 +3973,7 @@ abstract class AppLocalizations {
   /// No description provided for @gardirobumHakEklendiMesaj.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler, yeni kombin hakkı kazanıldı!'**
+  /// **'Tebrikler, yeni hak kazandın!'**
   String get gardirobumHakEklendiMesaj;
 
   /// No description provided for @ayarlariAc.
@@ -5181,6 +5181,18 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Kapat'**
   String get kapat;
+
+  /// No description provided for @islemIptalEdildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'İşlem iptal edildi. Şimdiye kadar eklenen kıyafetler gardırobunda duruyor.'**
+  String get islemIptalEdildi;
+
+  /// No description provided for @islemIptalEdiliyor.
+  ///
+  /// In tr, this message translates to:
+  /// **'İptal ediliyor…'**
+  String get islemIptalEdiliyor;
 
   /// No description provided for @sifreGoster.
   ///

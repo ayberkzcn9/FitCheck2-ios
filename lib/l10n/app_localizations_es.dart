@@ -1838,17 +1838,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get kuponKoduAciklama =>
-      'Introduce tu código de cupón a continuación para obtener créditos extra:';
+      'Introduce tu código de cupón a continuación:';
 
   @override
-  String get kuponKoduHint => 'Ej: VIP2026';
+  String get kuponKoduHint => 'Código de cupón';
 
   @override
   String get kuponKullanButon => 'Canjear';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 ¡Cupón aplicado con éxito! Créditos cargados.';
+  String get kuponBasariliMesaji => '🎉 ¡Cupón aplicado!';
 
   @override
   String get kuponKullanilmisUyari =>
@@ -1872,7 +1871,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Los créditos diarios se reinician todos los días a las 00:00. Puedes ver anuncios o usar cupones para ganar más créditos.';
+      'Los créditos diarios se reinician todos los días a las 00:00. Puedes ver anuncios para ganar más créditos.';
 
   @override
   String get kuponKullan => 'Usar cupón';
@@ -1905,7 +1904,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Has agotado tus operaciones diarias gratuitas. ¡Mira un vídeo corto o introduce un código de cupón para obtener nuevos créditos! 🛍️';
+      'Has agotado tus operaciones diarias gratuitas. ¡Mira un vídeo corto para obtener nuevos créditos! 🛍️';
 
   @override
   String get kuponGir => 'Introducir cupón';
@@ -2826,6 +2825,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get kapat => 'Cerrar';
+
+  @override
+  String get islemIptalEdildi =>
+      'Proceso cancelado. Las prendas añadidas hasta ahora siguen en tu armario.';
+
+  @override
+  String get islemIptalEdiliyor => 'Cancelando…';
 
   @override
   String get sifreGoster => 'Mostrar contraseña';

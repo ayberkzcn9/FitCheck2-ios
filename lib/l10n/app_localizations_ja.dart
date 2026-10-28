@@ -1722,16 +1722,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get kuponKoduKullanTitle => 'クーポンコードを使用';
 
   @override
-  String get kuponKoduAciklama => '追加のコーデクレジットを獲得するには、以下にプロモコードを入力してください：';
+  String get kuponKoduAciklama => '以下にクーポンコードを入力してください：';
 
   @override
-  String get kuponKoduHint => '例：VIP2026';
+  String get kuponKoduHint => 'クーポンコード';
 
   @override
   String get kuponKullanButon => '適用する';
 
   @override
-  String get kuponBasariliMesaji => '🎉 クーポンコードが適用されました！クレジットが追加されました。';
+  String get kuponBasariliMesaji => '🎉 クーポンコードが適用されました！';
 
   @override
   String get kuponKullanilmisUyari => '⚠️ このクーポンコードは既に使用されています！';
@@ -1740,7 +1740,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get kuponGecersizUyari => '❌ 无効なクーポンコードです！もう一度お試しください。';
 
   @override
-  String get sinirsizIslemHakkiBaslik => '無制限アクセス 👑';
+  String get sinirsizIslemHakkiBaslik => '無制限クレジット 👑';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
@@ -1751,8 +1751,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get sinirsizHakAciklama => 'プレミアム特典で、無制限のコーデ作成とスタイル分析をお楽しみいただけます。';
 
   @override
-  String get gunlukHakAciklama =>
-      '毎日のクレジットは00:00にリセットされます。広告の視聴やプロモコードの使用で追加獲得できます。';
+  String get gunlukHakAciklama => '毎日のクレジットは00:00にリセットされます。広告を視聴すると追加で獲得できます。';
 
   @override
   String get kuponKullan => 'クーポンコードを使用';
@@ -1777,7 +1776,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String yeniSlotEklendiTebrikler(int adet) {
-    return 'おめでとうございます！クローゼットに新しいスロットが+$adet追加されました。 🎉';
+    return 'おめでとうございます！クローゼットに新しい枠が+$adet追加されました。 🎉';
   }
 
   @override
@@ -1785,7 +1784,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      '本日の無料アクションを使い切りました。動画を視聴するかクーポンコードを入力して、新しいクレジットを獲得しましょう！ 🛍️';
+      '本日の無料アクションを使い切りました。動画を視聴して、新しいクレジットを獲得しましょう！ 🛍️';
 
   @override
   String get kuponGir => 'コードを入力';
@@ -2680,6 +2679,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get kapat => '閉じる';
+
+  @override
+  String get islemIptalEdildi => '処理をキャンセルしました。これまでに追加されたアイテムはクローゼットに残ります。';
+
+  @override
+  String get islemIptalEdiliyor => 'キャンセル中…';
 
   @override
   String get sifreGoster => 'パスワードを表示';

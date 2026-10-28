@@ -1837,18 +1837,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get kuponKoduKullanTitle => 'Gutscheincode einlösen';
 
   @override
-  String get kuponKoduAciklama =>
-      'Gib deinen Gutscheincode unten ein, um extra Guthaben zu erhalten:';
+  String get kuponKoduAciklama => 'Gib deinen Gutscheincode unten ein:';
 
   @override
-  String get kuponKoduHint => 'Z. B. VIP2026';
+  String get kuponKoduHint => 'Gutscheincode';
 
   @override
   String get kuponKullanButon => 'Einlösen';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Gutschein erfolgreich eingelöst! Guthaben hinzugefügt.';
+  String get kuponBasariliMesaji => '🎉 Gutschein eingelöst!';
 
   @override
   String get kuponKullanilmisUyari =>
@@ -1859,7 +1857,7 @@ class AppLocalizationsDe extends AppLocalizations {
       '❌ Ungültiger Gutscheincode! Bitte versuche es erneut.';
 
   @override
-  String get sinirsizIslemHakkiBaslik => 'Unbegrenzter Zugriff 👑';
+  String get sinirsizIslemHakkiBaslik => 'Unbegrenztes Guthaben 👑';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
@@ -1872,7 +1870,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Tägliches Guthaben wird täglich um 00:00 Uhr zurückgesetzt. Schau Videos oder löse Codes ein für mehr Guthaben.';
+      'Tägliches Guthaben wird täglich um 00:00 Uhr zurückgesetzt. Schau Videos für mehr Guthaben.';
 
   @override
   String get kuponKullan => 'Code einlösen';
@@ -1905,7 +1903,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Du hast deine kostenlosen Credits für heute aufgebraucht. Schau ein kurzes Video oder gib einen Code ein, um neue zu erhalten! 🛍️';
+      'Du hast deine kostenlosen Credits für heute aufgebraucht. Schau ein kurzes Video, um neue zu erhalten! 🛍️';
 
   @override
   String get kuponGir => 'Code eingeben';
@@ -2827,6 +2825,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get kapat => 'Schließen';
+
+  @override
+  String get islemIptalEdildi =>
+      'Vorgang abgebrochen. Bisher hinzugefügte Kleidungsstücke bleiben in deinem Kleiderschrank.';
+
+  @override
+  String get islemIptalEdiliyor => 'Wird abgebrochen…';
 
   @override
   String get sifreGoster => 'Passwort anzeigen';

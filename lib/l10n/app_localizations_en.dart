@@ -1817,18 +1817,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kuponKoduKullanTitle => 'Redeem Coupon Code';
 
   @override
-  String get kuponKoduAciklama =>
-      'Enter your coupon code below to get extra outfit credits:';
+  String get kuponKoduAciklama => 'Enter your coupon code below:';
 
   @override
-  String get kuponKoduHint => 'Ex: VIP2026';
+  String get kuponKoduHint => 'Coupon code';
 
   @override
   String get kuponKullanButon => 'Redeem';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Coupon successfully applied! Credits loaded.';
+  String get kuponBasariliMesaji => '🎉 Coupon applied!';
 
   @override
   String get kuponKullanilmisUyari =>
@@ -1851,7 +1849,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Daily credits reset every day at 00:00. You can watch ads or use coupons to earn more credits.';
+      'Daily credits reset every day at 00:00. You can watch ads to earn more credits.';
 
   @override
   String get kuponKullan => 'Redeem Coupon';
@@ -1884,7 +1882,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'You have used your daily free operations. Watch a short video or enter a coupon code to get new credits! 🛍️';
+      'You have used your daily free operations. Watch a short video to get new credits! 🛍️';
 
   @override
   String get kuponGir => 'Enter Coupon';
@@ -2802,6 +2800,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kapat => 'Close';
+
+  @override
+  String get islemIptalEdildi =>
+      'Processing cancelled. Clothes added so far remain in your wardrobe.';
+
+  @override
+  String get islemIptalEdiliyor => 'Cancelling…';
 
   @override
   String get sifreGoster => 'Show password';

@@ -308,46 +308,48 @@ class AnaEkranDialoglar {
                   const SizedBox(height: 24),
                   Row(
                     children: [
-                      Expanded(
-                        child: OutlinedButton.icon(
-                          style: OutlinedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: AppSpacing.md,
-                              horizontal: AppSpacing.xs,
-                            ),
-                            side: BorderSide(color: context.uygunMetin),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: AppRadius.lgRadius,
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.confirmation_number_outlined,
-                            color: context.uygunMetin,
-                            size: 18,
-                          ),
-                          label: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              l10n.kuponKullan,
-                              style: TextStyle(
-                                color: context.uygunMetin,
-                                fontWeight: FontWeight.bold,
-                                fontSize: AppText.sizeBodySmall,
+                      if (ReklamServisi.kuponAktifMi) ...[
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: AppSpacing.md,
+                                horizontal: AppSpacing.xs,
+                              ),
+                              side: BorderSide(color: context.uygunMetin),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: AppRadius.lgRadius,
                               ),
                             ),
+                            icon: Icon(
+                              Icons.confirmation_number_outlined,
+                              color: context.uygunMetin,
+                              size: 18,
+                            ),
+                            label: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                l10n.kuponKullan,
+                                style: TextStyle(
+                                  color: context.uygunMetin,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: AppText.sizeBodySmall,
+                                ),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.pop(ctx);
+                              kuponKoduDiyaloguGoster(
+                                context: context,
+                                anaRenk: anaRenk,
+                                onHakGuncelle: onHakGuncelle,
+                              );
+                            },
                           ),
-                          onPressed: () {
-                            Navigator.pop(ctx);
-                            kuponKoduDiyaloguGoster(
-                              context: context,
-                              anaRenk: anaRenk,
-                              onHakGuncelle: onHakGuncelle,
-                            );
-                          },
                         ),
-                      ),
+                      ],
                       if (ReklamServisi.reklamlarEtkinMi) ...[
-                        const SizedBox(width: 8),
+                        if (ReklamServisi.kuponAktifMi) const SizedBox(width: 8),
                         Expanded(
                           child: FilledButton.icon(
                             style: FilledButton.styleFrom(

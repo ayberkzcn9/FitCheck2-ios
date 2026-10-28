@@ -1817,18 +1817,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get kuponKoduKullanTitle => 'Использовать промокод';
 
   @override
-  String get kuponKoduAciklama =>
-      'Введите промокод ниже, чтобы получить дополнительные попытки подбора образов:';
+  String get kuponKoduAciklama => 'Введите промокод ниже:';
 
   @override
-  String get kuponKoduHint => 'Например: VIP2026';
+  String get kuponKoduHint => 'Промокод';
 
   @override
   String get kuponKullanButon => 'Применить';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Промокод успешно применён! Попытки добавлены.';
+  String get kuponBasariliMesaji => '🎉 Промокод применён!';
 
   @override
   String get kuponKullanilmisUyari => '⚠️ Вы уже использовали этот промокод!';
@@ -1838,7 +1836,7 @@ class AppLocalizationsRu extends AppLocalizations {
       '❌ Недействительный промокод! Попробуйте ещё раз.';
 
   @override
-  String get sinirsizIslemHakkiBaslik => 'Безлимитный доступ 👑';
+  String get sinirsizIslemHakkiBaslik => 'Безлимитные попытки 👑';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
@@ -1851,7 +1849,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Ежедневные попытки обновляются каждые сутки в 00:00. Вы можете смотреть рекламу или вводить промокоды для получения дополнительных попыток.';
+      'Ежедневные попытки обновляются каждые сутки в 00:00. Вы можете смотреть рекламу, чтобы получить дополнительные попытки.';
 
   @override
   String get kuponKullan => 'Ввести промокод';
@@ -1884,7 +1882,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Вы использовали бесплатные попытки на сегодня. Посмотрите видео или введите промокод, чтобы получить новые! 🛍️';
+      'Вы использовали бесплатные попытки на сегодня. Посмотрите видео, чтобы получить новые! 🛍️';
 
   @override
   String get kuponGir => 'Ввести код';
@@ -2802,6 +2800,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get kapat => 'Закрыть';
+
+  @override
+  String get islemIptalEdildi =>
+      'Обработка отменена. Вещи, добавленные до этого, остались в гардеробе.';
+
+  @override
+  String get islemIptalEdiliyor => 'Отмена…';
 
   @override
   String get sifreGoster => 'Показать пароль';

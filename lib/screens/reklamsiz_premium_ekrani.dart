@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
@@ -40,8 +41,9 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     super.dispose();
   }
 
-  // Mağazadan gelen hata metinleri olduğu gibi gösterilir; servisin kendi
-  // hata kodları ise yerelleştirilmiş mesaja çevrilir.
+  // Servisin bilinen hata kodları yerelleştirilmiş mesaja çevrilir. Mağazanın
+  // ham hata metni yalnızca geliştirme derlemesinde gösterilir; yayında genel
+  // bir mesaj verilir.
   String? _hataMetni(AppLocalizations l10n) {
     final hata = _satinAlma.hata;
     if (hata == null) return null;
@@ -51,7 +53,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     if (hata == SatinAlmaServisi.hataSatinAlmaBasarisiz) {
       return l10n.premiumSatinAlmaBasarisiz;
     }
-    return hata;
+    return kDebugMode ? hata : l10n.premiumSatinAlmaBasarisiz;
   }
 
   bool get _urunVar => _satinAlma.aylikVar || _satinAlma.yillikVar;
@@ -141,7 +143,9 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
 
           // Mağazanın neden ürün döndürmediğini görünür kılar (ör. Play
           // Console'da etkin temel plan yok ya da ürün kimliği bulunamadı).
-          if (!_satinAlma.hazirlaniyor && _satinAlma.tani != null) ...[
+          // Yalnızca geliştirme derlemesinde gösterilir; yayında kullanıcıya
+          // teknik metin gösterilmez.
+          if (kDebugMode && !_satinAlma.hazirlaniyor && _satinAlma.tani != null) ...[
             const SizedBox(height: AppSpacing.sm),
             Text(
               _satinAlma.tani!,

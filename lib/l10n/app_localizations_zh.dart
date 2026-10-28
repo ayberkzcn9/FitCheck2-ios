@@ -1697,16 +1697,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get kuponKoduKullanTitle => '使用兑换码';
 
   @override
-  String get kuponKoduAciklama => '在下方输入您的兑换码以获取额外的穿搭额度：';
+  String get kuponKoduAciklama => '在下方输入您的兑换码：';
 
   @override
-  String get kuponKoduHint => '例如：VIP2026';
+  String get kuponKoduHint => '兑换码';
 
   @override
   String get kuponKullanButon => '兑换';
 
   @override
-  String get kuponBasariliMesaji => '🎉 兑换码使用成功！穿搭额度已增加。';
+  String get kuponBasariliMesaji => '🎉 兑换码使用成功！';
 
   @override
   String get kuponKullanilmisUyari => '⚠️ 您已经使用过该兑换码了！';
@@ -1726,7 +1726,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get sinirsizHakAciklama => '享受会员特权的无限穿搭生成与风格分析。';
 
   @override
-  String get gunlukHakAciklama => '每日免费额度会在每天 00:00 重置。您可以观看广告或使用兑换码获取更多额度。';
+  String get gunlukHakAciklama => '每日免费额度会在每天 00:00 重置。您可以观看广告获取更多额度。';
 
   @override
   String get kuponKullan => '输入兑换码';
@@ -1751,14 +1751,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String yeniSlotEklendiTebrikler(int adet) {
-    return '恭喜！您的衣橱已成功扩展 +$adet 个新位置。 🎉';
+    return '恭喜！您的衣橱容量已增加 +$adet 个。 🎉';
   }
 
   @override
   String get gunlukHakBittiTitle => '已达今日上限！';
 
   @override
-  String get gunlukHakBittiIcerik => '您已用完今天的免费操作额度。观看视频或输入兑换码即可获取新额度！ 🛍️';
+  String get gunlukHakBittiIcerik => '您已用完今天的免费操作额度。观看视频即可获取新额度！ 🛍️';
 
   @override
   String get kuponGir => '输入兑换码';
@@ -2639,6 +2639,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get kapat => '关闭';
+
+  @override
+  String get islemIptalEdildi => '已取消处理。此前已添加的衣物仍保留在衣橱中。';
+
+  @override
+  String get islemIptalEdiliyor => '正在取消…';
 
   @override
   String get sifreGoster => '显示密码';

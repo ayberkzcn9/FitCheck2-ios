@@ -1818,18 +1818,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get kuponKoduKullanTitle => 'Kupon Kodu Kullan';
 
   @override
-  String get kuponKoduAciklama =>
-      'Ekstra kombin hakkı kazanmak için kupon kodunuzu aşağıya girin:';
+  String get kuponKoduAciklama => 'Kupon kodunuzu aşağıya girin:';
 
   @override
-  String get kuponKoduHint => 'Örn: VIP2026';
+  String get kuponKoduHint => 'Kupon kodu';
 
   @override
   String get kuponKullanButon => 'Kullan';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Kupon başarıyla tanımlandı! Haklarınız yüklendi.';
+  String get kuponBasariliMesaji => '🎉 Kupon etkinleştirildi.';
 
   @override
   String get kuponKullanilmisUyari =>
@@ -1840,7 +1838,7 @@ class AppLocalizationsTr extends AppLocalizations {
       '❌ Geçersiz kupon kodu! Lütfen tekrar deneyin.';
 
   @override
-  String get sinirsizIslemHakkiBaslik => 'Sınırsız İşlem Hakkı 👑';
+  String get sinirsizIslemHakkiBaslik => 'Sınırsız Hak 👑';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
@@ -1853,7 +1851,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Günlük haklarınız her gün 00:00\'da yenilenir. Daha fazla hak için reklam izleyebilir veya kupon kullanabilirsiniz.';
+      'Günlük haklarınız her gün 00:00\'da yenilenir. Daha fazla hak için reklam izleyebilirsiniz.';
 
   @override
   String get kuponKullan => 'Kupon Kullan';
@@ -1886,7 +1884,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek veya kupon girerek yeni haklar kazanabilirsin! 🛍️';
+      'Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek yeni haklar kazanabilirsin! 🛍️';
 
   @override
   String get kuponGir => 'Kupon Gir';
@@ -2147,8 +2145,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Günlük kombin oluşturma limitinize ulaştınız.';
 
   @override
-  String get gardirobumHakEklendiMesaj =>
-      'Tebrikler, yeni kombin hakkı kazanıldı!';
+  String get gardirobumHakEklendiMesaj => 'Tebrikler, yeni hak kazandın!';
 
   @override
   String get ayarlariAc => 'Ayarları Aç';
@@ -2804,6 +2801,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get kapat => 'Kapat';
+
+  @override
+  String get islemIptalEdildi =>
+      'İşlem iptal edildi. Şimdiye kadar eklenen kıyafetler gardırobunda duruyor.';
+
+  @override
+  String get islemIptalEdiliyor => 'İptal ediliyor…';
 
   @override
   String get sifreGoster => 'Şifreyi göster';

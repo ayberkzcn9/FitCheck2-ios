@@ -73,6 +73,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
   static int _idCounter = 0;
   final ImagePicker _picker = ImagePicker();
   bool _otomatikYukleniyor = false;
+  bool _iptalIstendi = false;
 
   /// Dolap araması ve kategori filtresi (rafların üstünde).
   final TextEditingController _aramaDenetleyici = TextEditingController();
@@ -1001,6 +1002,11 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
     );
   }
 
+  void _iptalIsteGonder() {
+    HapticFeedback.selectionClick();
+    setState(() => _iptalIstendi = true);
+  }
+
   Future<void> _kiyafetEkleIslemi(ImageSource source) async {
     final l10n = AppLocalizations.of(context)!;
     final colors = Theme.of(context).colorScheme;
@@ -1090,6 +1096,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
 
       setState(() {
         _otomatikYukleniyor = true;
+        _iptalIstendi = false;
         _totalPhotos = files.length;
         _currentPhotoIndex = 0;
         _currentStep = 'bg_removal';
@@ -1099,6 +1106,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
       int basarisizFotografSayisi = 0;
       for (int i = 0; i < files.length; i++) {
         if (!mounted) return;
+        if (_iptalIstendi) break;
 
         try {
           if (!mounted) return;
@@ -1140,6 +1148,10 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             if (karar == ArkaPlanKarari.atla) fotografAtlandi = true;
             break;
           }
+
+          // Kullanıcı iptal ettiyse arka plan silindikten sonra dur; yerleştirme
+          // düzenleyicisini açıp kullanıcıyı bekletme.
+          if (_iptalIstendi) break;
 
           // Kullanıcı "bu fotoğrafı atla" dediyse hiç ekleme.
           if (fotografAtlandi) {
@@ -1194,6 +1206,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
             }
           }
 
+          if (_iptalIstendi) break;
           // 🤖 AI Analiz
           if (!mounted) return;
           setState(() {
@@ -1209,6 +1222,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           _idCounter++;
           final uniqueId = "${DateTime.now().microsecondsSinceEpoch}_${_idCounter}_${random.nextInt(999999999)}_${kaydedilecekBytes.length}";
 
+          if (_iptalIstendi) break;
           if (!mounted) return;
           setState(() {
             _currentStep = 'saving';
@@ -1232,7 +1246,17 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
         }
       }
 
-      if (basarisizFotografSayisi > 0 && mounted) {
+      if (_iptalIstendi) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(l10n.islemIptalEdildi),
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+            ),
+          );
+        }
+      } else if (basarisizFotografSayisi > 0 && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.gardirobumHataMesaji),
@@ -1268,7 +1292,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
     // Kullanıcı "tekrar çek" dediyse, tur bittiğinde kamerayı yeniden aç.
     if (_yenidenCekIstendi) {
       _yenidenCekIstendi = false;
-      if (mounted) {
+      if (mounted && !_iptalIstendi) {
         await _kiyafetEkleIslemi(ImageSource.camera);
       }
     }
@@ -2371,6 +2395,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 pulseAnimation: _pulseAnimation,
                 aiMessages: _aiIslemMesajlari,
                 aiMessageIndex: _aiMesajIndex,
+                onIptal: _iptalIstendi ? null : _iptalIsteGonder,
+                iptalEdiliyor: _iptalIstendi,
                 anaRenk: widget.anaRenk,
               ),
             ),
@@ -2388,6 +2414,8 @@ class _YuklemeOverlay extends StatelessWidget {
   final List<String> aiMessages;
   final int aiMessageIndex;
   final Color anaRenk;
+  final VoidCallback? onIptal;
+  final bool iptalEdiliyor;
 
   const _YuklemeOverlay({
     required this.currentStep,
@@ -2397,11 +2425,15 @@ class _YuklemeOverlay extends StatelessWidget {
     required this.aiMessages,
     required this.aiMessageIndex,
     required this.anaRenk,
+    this.onIptal,
+    this.iptalEdiliyor = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+
+    final l10n = AppLocalizations.of(context)!;
 
     // Step bilgileri
     final stepInfo = _getStepInfo(context);
@@ -2583,6 +2615,20 @@ class _YuklemeOverlay extends StatelessWidget {
                         )
                       : const SizedBox.shrink(),
                 ),
+                if (onIptal != null || iptalEdiliyor) ...[
+                  const SizedBox(height: AppSpacing.lg),
+                  TextButton(
+                    onPressed: onIptal,
+                    child: Text(
+                      iptalEdiliyor ? l10n.islemIptalEdiliyor : l10n.iptal,
+                      style: TextStyle(
+                        fontSize: AppText.sizeBodySmall,
+                        fontWeight: FontWeight.w700,
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

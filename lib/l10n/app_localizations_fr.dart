@@ -1840,18 +1840,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get kuponKoduKullanTitle => 'Utiliser un code promo';
 
   @override
-  String get kuponKoduAciklama =>
-      'Saisissez votre code promo ci-dessous pour obtenir des crédits de tenue supplémentaires :';
+  String get kuponKoduAciklama => 'Saisissez votre code promo ci-dessous :';
 
   @override
-  String get kuponKoduHint => 'Ex : VIP2026';
+  String get kuponKoduHint => 'Code promo';
 
   @override
   String get kuponKullanButon => 'Utiliser';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Code promo appliqué avec succès ! Crédits ajoutés.';
+  String get kuponBasariliMesaji => '🎉 Code promo appliqué !';
 
   @override
   String get kuponKullanilmisUyari =>
@@ -1875,7 +1873,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Les crédits quotidiens sont réinitialisés chaque jour à 00:00. Vous pouvez regarder des publicités ou utiliser des codes promo pour en obtenir d\'autres.';
+      'Les crédits quotidiens sont réinitialisés chaque jour à 00:00. Vous pouvez regarder des publicités pour en obtenir d\'autres.';
 
   @override
   String get kuponKullan => 'Utiliser un code promo';
@@ -1908,7 +1906,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Vous avez utilisé vos actions gratuites du jour. Regardez une vidéo ou entrez un code promo pour obtenir de nouveaux crédits ! 🛍️';
+      'Vous avez utilisé vos actions gratuites du jour. Regardez une vidéo pour obtenir de nouveaux crédits ! 🛍️';
 
   @override
   String get kuponGir => 'Saisir un code';
@@ -2830,6 +2828,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get kapat => 'Fermer';
+
+  @override
+  String get islemIptalEdildi =>
+      'Traitement annulé. Les vêtements ajoutés jusqu\'ici restent dans votre dressing.';
+
+  @override
+  String get islemIptalEdiliyor => 'Annulation…';
 
   @override
   String get sifreGoster => 'Afficher le mot de passe';

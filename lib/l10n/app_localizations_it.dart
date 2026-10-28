@@ -1838,17 +1838,16 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get kuponKoduAciklama =>
-      'Inserisci il tuo codice promozionale qui sotto per guadagnare crediti outfit extra:';
+      'Inserisci il tuo codice promozionale qui sotto:';
 
   @override
-  String get kuponKoduHint => 'Es: VIP2026';
+  String get kuponKoduHint => 'Codice promozionale';
 
   @override
   String get kuponKullanButon => 'Riscatta';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Codice promozionale applicato! Crediti aggiunti.';
+  String get kuponBasariliMesaji => '🎉 Codice promozionale applicato!';
 
   @override
   String get kuponKullanilmisUyari =>
@@ -1858,7 +1857,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get kuponGecersizUyari => '❌ Codice promozionale non valido! Riprova.';
 
   @override
-  String get sinirsizIslemHakkiBaslik => 'Accesso Illimitato 👑';
+  String get sinirsizIslemHakkiBaslik => 'Crediti illimitati 👑';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
@@ -1871,7 +1870,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'I crediti giornalieri si azzerano ogni giorno alle 00:00. Guarda video o riscatta codici per avere più crediti.';
+      'I crediti giornalieri si azzerano ogni giorno alle 00:00. Guarda dei video per avere più crediti.';
 
   @override
   String get kuponKullan => 'Riscatta Codice';
@@ -1904,7 +1903,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Hai esaurito i tuoi crediti di utilizzo gratuito giornalieri. Guarda un breve video o inserisci un codice promozionale per ottenerne altri! 🛍️';
+      'Hai esaurito i tuoi crediti di utilizzo gratuito giornalieri. Guarda un breve video per ottenerne altri! 🛍️';
 
   @override
   String get kuponGir => 'Inserisci Codice';
@@ -2825,6 +2824,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get kapat => 'Chiudi';
+
+  @override
+  String get islemIptalEdildi =>
+      'Elaborazione annullata. I capi aggiunti finora restano nel guardaroba.';
+
+  @override
+  String get islemIptalEdiliyor => 'Annullamento…';
 
   @override
   String get sifreGoster => 'Mostra password';

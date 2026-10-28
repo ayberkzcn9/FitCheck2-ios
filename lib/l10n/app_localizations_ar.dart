@@ -1801,18 +1801,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kuponKoduKullanTitle => 'استخدام رمز القسيمة';
 
   @override
-  String get kuponKoduAciklama =>
-      'أدخل رمز القسيمة أدناه للحصول على أرصدة ملابس إضافية:';
+  String get kuponKoduAciklama => 'أدخل رمز القسيمة أدناه:';
 
   @override
-  String get kuponKoduHint => 'مثال: VIP2026';
+  String get kuponKoduHint => 'رمز القسيمة';
 
   @override
   String get kuponKullanButon => 'استخدام';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 تم تطبيق القسيمة بنجاح! تم تحميل الأرصدة.';
+  String get kuponBasariliMesaji => '🎉 تم تطبيق القسيمة!';
 
   @override
   String get kuponKullanilmisUyari => '⚠️ لقد استخدمت رمز القسيمة هذا من قبل!';
@@ -1835,7 +1833,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'تتجدد الأرصدة اليومية كل يوم الساعة 00:00. يمكنك مشاهدة الإعلانات أو استخدام القسائم لكسب المزيد من الأرصدة.';
+      'تتجدد الأرصدة اليومية كل يوم الساعة 00:00. يمكنك مشاهدة الإعلانات لكسب المزيد من الأرصدة.';
 
   @override
   String get kuponKullan => 'استخدام قسيمة';
@@ -1868,7 +1866,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'لقد استخدمت عملياتك المجانية اليومية. شاهد فيديو قصير أو أدخل رمز قسيمة للحصول على أرصدة جديدة! 🛍️';
+      'لقد استخدمت عملياتك المجانية اليومية. شاهد مقطع فيديو قصيرًا للحصول على أرصدة جديدة! 🛍️';
 
   @override
   String get kuponGir => 'إدخال قسيمة';
@@ -2781,6 +2779,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kapat => 'إغلاق';
+
+  @override
+  String get islemIptalEdildi =>
+      'تم إلغاء المعالجة. تبقى القطع التي أُضيفت حتى الآن في خزانتك.';
+
+  @override
+  String get islemIptalEdiliyor => 'جارٍ الإلغاء…';
 
   @override
   String get sifreGoster => 'إظهار كلمة المرور';

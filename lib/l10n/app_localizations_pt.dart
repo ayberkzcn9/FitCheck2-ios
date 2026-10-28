@@ -1828,18 +1828,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get kuponKoduKullanTitle => 'Usar código promocional';
 
   @override
-  String get kuponKoduAciklama =>
-      'Insira seu código promocional abaixo para obter créditos extras de looks:';
+  String get kuponKoduAciklama => 'Insira seu código promocional abaixo:';
 
   @override
-  String get kuponKoduHint => 'Ex: VIP2026';
+  String get kuponKoduHint => 'Código promocional';
 
   @override
   String get kuponKullanButon => 'Usar';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Código promocional aplicado com sucesso! Créditos adicionados.';
+  String get kuponBasariliMesaji => '🎉 Código promocional aplicado!';
 
   @override
   String get kuponKullanilmisUyari =>
@@ -1863,7 +1861,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Os créditos diários são reiniciados todos os dias às 00:00. Você pode assistir a anúncios ou usar códigos promocionais para obter mais.';
+      'Os créditos diários são reiniciados todos os dias às 00:00. Você pode assistir a anúncios para obter mais.';
 
   @override
   String get kuponKullan => 'Usar código promocional';
@@ -1896,7 +1894,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Você usou suas ações gratuitas do dia. Assista a um vídeo ou insira um código promocional para obter novos créditos! 🛍️';
+      'Você usou suas ações gratuitas do dia. Assista a um vídeo para obter novos créditos! 🛍️';
 
   @override
   String get kuponGir => 'Inserir código';
@@ -2818,6 +2816,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get kapat => 'Fechar';
+
+  @override
+  String get islemIptalEdildi =>
+      'Processamento cancelado. As peças adicionadas até agora permanecem no seu guarda-roupa.';
+
+  @override
+  String get islemIptalEdiliyor => 'Cancelando…';
 
   @override
   String get sifreGoster => 'Mostrar senha';

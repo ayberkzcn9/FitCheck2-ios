@@ -79,7 +79,6 @@ class SatinAlmaServisi extends ChangeNotifier {
 
   static const String _dogrulamaTsAnahtari = 'premium_dogrulama_ts';
   static const String _premiumAnahtari = 'reklamsiz_premium';
-  static const String _adminAnahtari = 'fitcheck_admin_modu';
 
   bool _dogrulamaSuruyor = false;
   Completer<bool>? _dogrulamaCompleter;
@@ -210,7 +209,7 @@ class SatinAlmaServisi extends ChangeNotifier {
 
     // Yönetici/kupon erişimi mağaza aboneliğinden bağımsızdır; dokunulmaz.
     // (Aksi halde kuponla reklamsız olan kullanıcının erişimi kapanırdı.)
-    if (prefs.getBool(_adminAnahtari) ?? false) return;
+    if (ReklamServisi.adminModuAcikMi(prefs)) return;
 
     final int? sonTs = prefs.getInt(_dogrulamaTsAnahtari);
     final bool premiumKayitli = prefs.getBool(_premiumAnahtari) ?? false;

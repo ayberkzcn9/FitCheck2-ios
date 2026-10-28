@@ -1128,12 +1128,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String reklamIzleHakKazan(int adet) {
-    return '광고 시청하기 (+$adet회 추가)';
+    return '광고 시청하기 (+$adet 생성권)';
   }
 
   @override
   String tebriklerHakEklendi(int adet) {
-    return '축하합니다! +$adet회 이용권이 추가되었습니다. ✨';
+    return '축하합니다! +$adet 생성권이 추가되었습니다. ✨';
   }
 
   @override
@@ -1730,16 +1730,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kuponKoduKullanTitle => '프로모션 코드 사용';
 
   @override
-  String get kuponKoduAciklama => '추가 코디 생성권을 받으려면 아래에 프로모션 코드를 입력하세요:';
+  String get kuponKoduAciklama => '아래에 프로모션 코드를 입력하세요:';
 
   @override
-  String get kuponKoduHint => '예: VIP2026';
+  String get kuponKoduHint => '프로모션 코드';
 
   @override
   String get kuponKullanButon => '사용하기';
 
   @override
-  String get kuponBasariliMesaji => '🎉 프로모션 코드가 적용되었습니다! 코디 생성권이 추가되었습니다.';
+  String get kuponBasariliMesaji => '🎉 프로모션 코드가 적용되었습니다!';
 
   @override
   String get kuponKullanilmisUyari => '⚠️ 이미 사용된 프로모션 코드입니다!';
@@ -1748,7 +1748,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kuponGecersizUyari => '❌ 유효하지 않은 코드입니다! 다시 확인해 주세요.';
 
   @override
-  String get sinirsizIslemHakkiBaslik => '무제한 이용권 👑';
+  String get sinirsizIslemHakkiBaslik => '무제한 생성권 👑';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
@@ -1761,14 +1761,14 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      '일일 이용권은 매일 00:00에 리셋됩니다. 광고를 시청하거나 코드를 입력하여 추가로 획득할 수 있습니다.';
+      '일일 생성권은 매일 00:00에 리셋됩니다. 광고를 시청하면 추가로 획득할 수 있습니다.';
 
   @override
   String get kuponKullan => '프로모션 코드 입력';
 
   @override
   String hakEklendiTebrikler(int adet) {
-    return '축하합니다! +$adet회 이용권이 추가되었습니다. ✨';
+    return '축하합니다! +$adet 생성권이 추가되었습니다. ✨';
   }
 
   @override
@@ -1794,7 +1794,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get gunlukHakBittiIcerik =>
-      '오늘의 무료 횟수를 모두 사용하셨습니다. 영상 광고를 시청하거나 코드를 입력하여 새로운 생성권을 받아보세요! 🛍️';
+      '오늘의 무료 횟수를 모두 사용하셨습니다. 영상 광고를 시청하여 새로운 생성권을 받아보세요! 🛍️';
 
   @override
   String get kuponGir => '코드 입력';
@@ -2694,6 +2694,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get kapat => '닫기';
+
+  @override
+  String get islemIptalEdildi => '처리가 취소되었습니다. 지금까지 추가된 옷은 옷장에 그대로 있습니다.';
+
+  @override
+  String get islemIptalEdiliyor => '취소하는 중…';
 
   @override
   String get sifreGoster => '비밀번호 표시';

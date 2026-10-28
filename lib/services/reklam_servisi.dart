@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,7 +20,31 @@ class ReklamServisi {
   static const int reklamOduluSlot = 2;
   static bool reklamlarEtkinMi = true;
   static const int reklamOduluKredi = 2;
-  static const String adminKuponKodu = 'FITCHECK-ADMIN-2026';
+  /// Yönetici kuponu kaynakta tutulmaz. Yalnızca geliştirme derlemesinde,
+  /// `--dart-define=FITCHECK_ADMIN_KUPON=...` ile verilirse etkinleşir.
+  static const String adminKuponKodu =
+      String.fromEnvironment('FITCHECK_ADMIN_KUPON');
+  static const String _adminAnahtari = 'fitcheck_admin_modu';
+
+  /// Kupon yalnızca geliştirme derlemesinde ve kod tanımlıysa etkindir.
+  static bool get kuponAktifMi =>
+      kuponKarari(yayinModu: kReleaseMode, kod: adminKuponKodu);
+
+  static bool kuponKarari({required bool yayinModu, required String kod}) =>
+      !yayinModu && kod.isNotEmpty;
+
+  /// Yönetici modu yalnızca geliştirme derlemesinde geçerlidir; yayın
+  /// sürümünde daha önce etkinleştirilmiş bir kayıt da yok sayılır.
+  static bool adminModuKarari({
+    required bool yayinModu,
+    required bool kayitliAdmin,
+  }) =>
+      !yayinModu && kayitliAdmin;
+
+  static bool adminModuAcikMi(SharedPreferences prefs) => adminModuKarari(
+        yayinModu: kReleaseMode,
+        kayitliAdmin: prefs.getBool(_adminAnahtari) ?? false,
+      );
 
   /// 🔧 ÖDÜLLÜ REKLAM AD UNIT ID (platforma göre)
   static const String _odulluReklamIdAndroid =
@@ -80,7 +105,7 @@ class ReklamServisi {
   Future<void> premiumDurumunuYukle() async {
     final prefs = await SharedPreferences.getInstance();
     final bool premium = prefs.getBool('reklamsiz_premium') ?? false;
-    final bool admin = prefs.getBool('fitcheck_admin_modu') ?? false;
+    final bool admin = adminModuAcikMi(prefs);
     // Premium ya da kuponla sınırsız (admin) kullanıcıya reklam gösterilmez.
     reklamlarEtkinMi = !(premium || admin);
   }
@@ -99,7 +124,7 @@ class ReklamServisi {
   Future<void> reklamlariAc() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('reklamsiz_premium', false);
-    final bool admin = prefs.getBool('fitcheck_admin_modu') ?? false;
+    final bool admin = adminModuAcikMi(prefs);
     reklamlarEtkinMi = !admin;
     if (reklamlarEtkinMi) unawaited(reklamlariBaslat());
   }
@@ -146,7 +171,7 @@ class ReklamServisi {
   Future<bool> isAdmin() async {
     if (_isAdminCache != null) return _isAdminCache!;
     final prefs = await SharedPreferences.getInstance();
-    final val = prefs.getBool('fitcheck_admin_modu') ?? false;
+    final val = adminModuAcikMi(prefs);
     _isAdminCache = val;
     return val;
   }
@@ -213,11 +238,12 @@ class ReklamServisi {
   }
 
   Future<int> kuponKoduKullan(String kod) async {
+    if (!kuponAktifMi) return 0;
     final temizKod = kod.trim().toUpperCase();
-    if (temizKod != adminKuponKodu) return 0;
+    if (temizKod != adminKuponKodu.toUpperCase()) return 0;
 
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('fitcheck_admin_modu', true);
+    await prefs.setBool(_adminAnahtari, true);
     _isAdminCache = true;
     // Kuponla sınırsız olan (admin) kullanıcıya da reklam gösterilmez.
     reklamlarEtkinMi = false;
