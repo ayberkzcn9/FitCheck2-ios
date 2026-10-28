@@ -32,6 +32,10 @@ class SatinAlmaServisi extends ChangeNotifier {
   static const String varsayilanFiyat = '49,90 TL';
   static const String varsayilanYillikFiyat = '399,90 TL';
 
+  /// Mağaza sorguları bu süre içinde dönmezse "hazır değil" sayılır. Aksi
+  /// halde yükleme göstergesi sonsuza kadar dönerdi.
+  static const Duration sorguZamanAsimi = Duration(seconds: 10);
+
   /// Ücretsiz deneme (introductory offer) gün sayısı.
   ///
   /// Play Console > Abonelik > Teklifler ve App Store Connect > Abonelik >
@@ -270,7 +274,7 @@ class SatinAlmaServisi extends ChangeNotifier {
     _yillikAdaylar = <ProductDetails>[];
 
     try {
-      magazaHazir = await _magaza.isAvailable();
+      magazaHazir = await _magaza.isAvailable().timeout(sorguZamanAsimi);
     } catch (e) {
       // Ödeme altyapısı olmayan platformlarda (masaüstü, web) hata verir.
       magazaHazir = false;
@@ -280,9 +284,9 @@ class SatinAlmaServisi extends ChangeNotifier {
     if (!magazaHazir) return;
 
     try {
-      final response = await _magaza.queryProductDetails(
-        {aylikUrunKimligi, yillikUrunKimligi},
-      );
+      final response = await _magaza
+          .queryProductDetails({aylikUrunKimligi, yillikUrunKimligi})
+          .timeout(sorguZamanAsimi);
       hata = response.error?.message;
       if (response.notFoundIDs.isNotEmpty) {
         tani = 'notFoundIDs: ${response.notFoundIDs.join(', ')}';

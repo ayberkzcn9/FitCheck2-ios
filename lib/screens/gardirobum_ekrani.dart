@@ -2276,13 +2276,43 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                 ),
                 actions: [
                   if (widget.gardirobum.isNotEmpty)
-                    IconButton(
+                    // Yıkıcı işlem (tüm gardırobu temizle) üst çubukta sürekli
+                    // duran kırmızı bir düğme olmamalı: yanlışlıkla basılabilir
+                    // ve ekranın en dikkat çekici öğesi hâline gelir. Taşma
+                    // menüsüne alındı; kırmızı renk yalnızca onay diyaloğunda
+                    // ve menü satırında kalıyor.
+                    PopupMenuButton<String>(
                       icon: Icon(
-                        Icons.delete_sweep_rounded,
-                        color: colors.error,
+                        Icons.more_vert_rounded,
+                        color: colors.onSurfaceVariant,
                       ),
-                      onPressed: _temizlemeOnayiAl,
-                      tooltip: l10n.gardirobumTemizleBaslik,
+                      onSelected: (deger) {
+                        if (deger == 'temizle') _temizlemeOnayiAl();
+                      },
+                      itemBuilder: (menuContext) => [
+                        PopupMenuItem<String>(
+                          value: 'temizle',
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.delete_sweep_rounded,
+                                size: 20,
+                                color: colors.error,
+                              ),
+                              const SizedBox(width: 12),
+                              Flexible(
+                                child: Text(
+                                  l10n.gardirobumTemizleBaslik,
+                                  style: TextStyle(
+                                    color: colors.error,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   const SizedBox(width: 8),
                 ],

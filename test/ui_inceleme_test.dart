@@ -46,6 +46,7 @@ import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/services/bugun_feed_servisi.dart';
 import 'package:fitcheck/services/kombin_duellosu_motoru.dart';
 import 'package:fitcheck/services/kombin_duellosu_servisi.dart';
+import 'package:fitcheck/services/satin_alma_servisi.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String _yaziTipi = 'ReviewFont';
@@ -199,6 +200,16 @@ Future<void> bekle(WidgetTester tester) async {
   // arkasında geçici bir blok görünüyor; bitmesini bekle.
   await tester.pump(const Duration(milliseconds: 600));
   await tester.pump();
+}
+
+/// Premium ekranı mağaza sorgusunu başlatır; test ortamında mağaza hiç
+/// yanıt vermez. Zaman aşımını ileri sararak ekranın gerçek "mağaza hazır
+/// değil" durumunu çizdiririz ve bekleyen zamanlayıcının testten sızmasını
+/// engelleriz.
+Future<void> premiumBekle(WidgetTester tester) async {
+  await bekle(tester);
+  await tester.pump(SatinAlmaServisi.sorguZamanAsimi + const Duration(seconds: 1));
+  await bekle(tester);
 }
 
 void main() {
@@ -704,7 +715,7 @@ void main() {
     await telefon(tester);
 
     await tester.pumpWidget(_uygulama(const ReklamsizPremiumEkrani()));
-    await bekle(tester);
+    await premiumBekle(tester);
     await goruntu(tester, '35_premium');
     _yerlesimHatasiniBildir(tester, 'Premium');
 
@@ -986,7 +997,7 @@ void main() {
     _yerlesimHatasiniBildir(tester, 'Onboarding x2');
 
     await tester.pumpWidget(_uygulama(const ReklamsizPremiumEkrani()));
-    await bekle(tester);
+    await premiumBekle(tester);
     await goruntu(tester, '57_olcek_premium');
     _yerlesimHatasiniBildir(tester, 'Premium x2');
   });
@@ -1038,9 +1049,14 @@ void main() {
     _yerlesimHatasiniBildir(tester, 'Koyu dolaptan');
 
     await tester.pumpWidget(_uygulama(const ReklamsizPremiumEkrani()));
-    await bekle(tester);
+    await premiumBekle(tester);
     await goruntu(tester, '61_koyu_premium');
     _yerlesimHatasiniBildir(tester, 'Koyu premium');
+
+    await tester.pumpWidget(_uygulama(const OnboardingEkrani()));
+    await bekle(tester);
+    await goruntu(tester, '60_koyu_onboarding');
+    _yerlesimHatasiniBildir(tester, 'Koyu onboarding');
 
     // --- RTL (ar): daha önce kapsanmayan ekranlar
     _parlaklik = Brightness.light;

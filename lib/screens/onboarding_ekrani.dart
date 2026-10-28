@@ -547,7 +547,11 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
-    final seciliLocale = appState?.currentLocale ?? Localizations.localeOf(context);
+    // Kabuk varsa sistem dili (null) seçimi aynen korunur; yalnızca kabuk
+    // yoksa yerel ayar kullanılır.
+    final Locale? seciliLocale = appState != null
+        ? appState.currentLocale
+        : Localizations.localeOf(context);
 
     if (_seciliTarzlar.isEmpty) _seciliTarzlar.add(l10n.tarzSpor);
     _seciliRenk ??= l10n.renkKoyuTonlar;
@@ -634,9 +638,103 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       resizeToAvoidBottomInset: true,
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+          decoration: BoxDecoration(
+            color: colors.surfaceContainer,
+            border: Border(
+                top: BorderSide(
+                    color: colors.outlineVariant.withValues(alpha: 0.4))),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Renkli ve Animasyonlu Sayfa Gösterge Çizgileri
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(toplamSayfaSayisi, (i) {
+                  bool isActive = _mevcutSayfa == i;
+                  final sayfaRenk = _getSayfaRenkPaleti(i, colors)[0];
+                  return AnimatedContainer(
+                    duration: AppMotion.orta,
+                    curve: AppMotion.giris,
+                    margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
+                    height: 8,
+                    width: isActive ? 28 : 8,
+                    decoration: BoxDecoration(
+                      color: isActive
+                          ? sayfaRenk
+                          : colors.surfaceContainerHighest,
+                      borderRadius: AppRadius.smRadius,
+                    ),
+                  );
+                }),
+              ),
+              const SizedBox(height: 12),
+
+              if (!isGirisSayfasi)
+                Container(
+                  constraints: const BoxConstraints(minHeight: 52),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: AppRadius.xlRadius,
+                    gradient: LinearGradient(
+                        colors: [aktifPalet[0], aktifPalet[1]]),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: AppRadius.xlRadius),
+                    ),
+                    onPressed: () {
+                      if (_mevcutSayfa == tanitimSayfalari.length - 1 &&
+                          !_kosullariKabulEtti) {
+                        HapticFeedback.heavyImpact();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              l10n.devamEtmekIcinKosullariKabulEdin,
+                              style: TextStyle(
+                                  color: colors.onTertiaryContainer,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            backgroundColor: colors.tertiaryContainer,
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: AppRadius.lgRadius),
+                          ),
+                        );
+                        return;
+                      }
+                      HapticFeedback.mediumImpact();
+                      _pageController.nextPage(
+                          duration: AppMotion.orta,
+                          curve: AppMotion.giris);
+                    },
+                    child: Text(
+                      l10n.onboardingDevamEt,
+                      style: TextStyle(
+                          fontSize: AppText.sizeTitleSmall,
+                          fontWeight: FontWeight.w800,
+                          color: colors.onPrimary,
+                          letterSpacing: 0.5),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
       body: Stack(
         children: [
+          // Alt boşluk alt çubuğa ait (bottomNavigationBar kendi SafeArea'sını
+          // taşıyor); burada da uygulanırsa boşluk iki kez eklenir.
           SafeArea(
+            bottom: false,
             child: Column(
               children: [
                 Padding(
@@ -692,7 +790,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       if (index == toplamSayfaSayisi - 1) {
                         return SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, 120),
+                          padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxl),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
@@ -1038,7 +1136,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
                       return SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, 120),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxl),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -1290,98 +1388,6 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                   ),
                 ),
               ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(
-                  24, 12, 24, MediaQuery.of(context).padding.bottom + 12),
-              decoration: BoxDecoration(
-                color: colors.surfaceContainer.withValues(alpha: 0.9),
-                border: Border(
-                    top: BorderSide(
-                        color: colors.outlineVariant.withValues(alpha: 0.4))),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Renkli ve Animasyonlu Sayfa Gösterge Çizgileri
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(toplamSayfaSayisi, (i) {
-                      bool isActive = _mevcutSayfa == i;
-                      final sayfaRenk = _getSayfaRenkPaleti(i, colors)[0];
-                      return AnimatedContainer(
-                        duration: AppMotion.orta,
-                        curve: AppMotion.giris,
-                        margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-                        height: 8,
-                        width: isActive ? 28 : 8,
-                        decoration: BoxDecoration(
-                          color: isActive
-                              ? sayfaRenk
-                              : colors.surfaceContainerHighest,
-                          borderRadius: AppRadius.smRadius,
-                        ),
-                      );
-                    }),
-                  ),
-                  const SizedBox(height: 12),
-
-                  if (!isGirisSayfasi)
-                    Container(
-                      height: 52,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: AppRadius.xlRadius,
-                        gradient: LinearGradient(
-                            colors: [aktifPalet[0], aktifPalet[1]]),
-                      ),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          shadowColor: Colors.transparent,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: AppRadius.xlRadius),
-                        ),
-                        onPressed: () {
-                          if (_mevcutSayfa == tanitimSayfalari.length - 1 &&
-                              !_kosullariKabulEtti) {
-                            HapticFeedback.heavyImpact();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  l10n.devamEtmekIcinKosullariKabulEdin,
-                                  style: TextStyle(
-                                      color: colors.onTertiaryContainer,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                backgroundColor: colors.tertiaryContainer,
-                                behavior: SnackBarBehavior.floating,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: AppRadius.lgRadius),
-                              ),
-                            );
-                            return;
-                          }
-                          HapticFeedback.mediumImpact();
-                          _pageController.nextPage(
-                              duration: AppMotion.orta,
-                              curve: AppMotion.giris);
-                        },
-                        child: Text(
-                          l10n.onboardingDevamEt,
-                          style: TextStyle(
-                              fontSize: AppText.sizeTitleSmall,
-                              fontWeight: FontWeight.w800,
-                              color: colors.onPrimary,
-                              letterSpacing: 0.5),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
             ),
           ),
           Align(

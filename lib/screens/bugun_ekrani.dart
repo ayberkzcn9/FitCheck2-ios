@@ -451,7 +451,11 @@ class _BugunEkraniState extends State<BugunEkrani> {
         ),
     ];
 
-    const sutun = 3;
+    // Yazı büyüdükçe üç sütun dar kalıyor ve kelimeler ortadan bölünüyordu
+    // ("Fotoğrafl / a ekle"). Büyük yazıda iki sütuna geçilir.
+    final buyukYazi = MediaQuery.textScalerOf(context).scale(AppText.sizeMicro) >
+        AppText.sizeMicro * 1.4;
+    final sutun = buyukYazi ? 2 : 3;
     final satirlar = <List<_HizliAksiyon>>[];
     for (var i = 0; i < aksiyonlar.length; i += sutun) {
       satirlar.add(

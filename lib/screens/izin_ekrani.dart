@@ -206,8 +206,10 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
                 padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
+                  // Zümrüt → turkuaz: aynı renk ailesinde temiz geçiş. Zümrüt
+                  // ile turuncu arasındaki geçiş ortada zeytin tonu üretir.
                   gradient: LinearGradient(
-                    colors: [colors.primary, _targetOrange],
+                    colors: [colors.primary, _targetTeal],
                   ),
                 ),
                 child: const Icon(

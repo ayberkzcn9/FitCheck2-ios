@@ -91,7 +91,7 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           if (_satinAlma.premiumAktif)
             _aktifKarti(l10n, colors)
           else ...[
-            if (_urunVar || _satinAlma.hazirlaniyor) ...[
+            if (_urunVar) ...[
               _planKartlari(l10n, colors),
               const SizedBox(height: AppSpacing.xl),
             ],
@@ -417,19 +417,25 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     ColorScheme colors, {
     required bool satinAlinabilir,
   }) {
+    // Mağaza ürünü gelmeden varsayılan fiyat gösterilmez: o fiyat gerçek
+    // Play fiyatından farklı olabilir. Mağaza hazırlanırken yükleme göstergesi
+    // çıkar; açıklama altta ilgili mesajla verilir.
+    final yukleniyor = _satinAlma.yukleniyor || _satinAlma.hazirlaniyor;
     return SizedBox(
       height: 56,
       width: double.infinity,
       child: FilledButton(
         onPressed: satinAlinabilir ? _satinAlma.satinAl : null,
-        child: _satinAlma.yukleniyor
+        child: yukleniyor
             ? const SizedBox(
                 width: 22,
                 height: 22,
                 child: CircularProgressIndicator(strokeWidth: 2.4),
               )
             : Text(
-                l10n.premiumAboneOlFiyatli(_seciliFiyat),
+                _urunVar
+                    ? l10n.premiumAboneOlFiyatli(_seciliFiyat)
+                    : l10n.premiumAboneOl,
                 style: const TextStyle(
                   fontSize: AppText.sizeBody,
                   fontWeight: FontWeight.w800,
