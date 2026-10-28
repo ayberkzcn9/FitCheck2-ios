@@ -2783,6 +2783,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kapat => 'إغلاق';
 
   @override
+  String get sifreGoster => 'إظهار كلمة المرور';
+
+  @override
+  String get sifreGizle => 'إخفاء كلمة المرور';
+
+  @override
+  String get gunSayisiAzalt => 'تقليل عدد الأيام';
+
+  @override
+  String get gunSayisiArttir => 'زيادة عدد الأيام';
+
+  @override
+  String get chatGorseliKaldir => 'إزالة الصورة';
+
+  @override
   String get bildirimBaslik => 'إشعار';
 
   @override

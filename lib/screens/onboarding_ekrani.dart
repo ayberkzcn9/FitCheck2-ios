@@ -416,6 +416,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                             ),
                           ),
                           IconButton(
+                            tooltip: l10n.kapat,
                             icon: Icon(Icons.close_rounded,
                                 size: 22, color: colors.onSurfaceVariant),
                             onPressed: () => Navigator.pop(ctx),
@@ -744,13 +745,13 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                     children: [
                       Row(
                         children: [
-                          _buildPremiumIconButton(
+                          Tooltip(message: l10n.dilAyarlari, child: _buildPremiumIconButton(
                               icon: Icons.language_rounded,
                               iconColor: antrasitRenk,
                               onTap: () {
                                 HapticFeedback.selectionClick();
                                 DilSecimModal.goster(context);
-                              }),
+                              })),
                         ],
                       ),
                       Flexible(
@@ -979,6 +980,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   prefixIcon: Icon(Icons.lock_outline_rounded,
                                       color: antrasitRenk),
                                   suffixIcon: IconButton(
+                                    tooltip: _sifreGizli ? l10n.sifreGoster : l10n.sifreGizle,
                                     icon: Icon(
                                         _sifreGizli
                                             ? Icons.visibility_off_rounded

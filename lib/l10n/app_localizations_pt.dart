@@ -2820,6 +2820,21 @@ class AppLocalizationsPt extends AppLocalizations {
   String get kapat => 'Fechar';
 
   @override
+  String get sifreGoster => 'Mostrar senha';
+
+  @override
+  String get sifreGizle => 'Ocultar senha';
+
+  @override
+  String get gunSayisiAzalt => 'Diminuir o número de dias';
+
+  @override
+  String get gunSayisiArttir => 'Aumentar o número de dias';
+
+  @override
+  String get chatGorseliKaldir => 'Remover imagem';
+
+  @override
   String get bildirimBaslik => 'Notificação';
 
   @override

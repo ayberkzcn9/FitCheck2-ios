@@ -1188,7 +1188,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String tebriklerHakEklendi(int adet) {
-    return 'Tebrikler! +$adet İşlem hakkı tanımlandı. ✨';
+    return 'Tebrikler! +$adet hak eklendi. ✨';
   }
 
   @override
@@ -1860,7 +1860,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String hakEklendiTebrikler(int adet) {
-    return 'Tebrikler! +$adet İşlem hakkı tanımlandı. ✨';
+    return 'Tebrikler! +$adet hak eklendi. ✨';
   }
 
   @override
@@ -1873,7 +1873,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String reklamIzleSlotEkle(int adet) {
-    return 'Reklam İzle (+$adet Slot)';
+    return 'Reklam İzle (+$adet Kıyafet Alanı)';
   }
 
   @override
@@ -2804,6 +2804,21 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get kapat => 'Kapat';
+
+  @override
+  String get sifreGoster => 'Şifreyi göster';
+
+  @override
+  String get sifreGizle => 'Şifreyi gizle';
+
+  @override
+  String get gunSayisiAzalt => 'Gün sayısını azalt';
+
+  @override
+  String get gunSayisiArttir => 'Gün sayısını artır';
+
+  @override
+  String get chatGorseliKaldir => 'Görseli kaldır';
 
   @override
   String get bildirimBaslik => 'Bildirim';

@@ -509,6 +509,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                     child: CircleAvatar(
                       backgroundColor: Colors.black.withValues(alpha: 0.5),
                       child: IconButton(
+                        tooltip: l10n.kapat,
                         icon: const Icon(Icons.close_rounded, color: Colors.white),
                         onPressed: () {
                           HapticFeedback.selectionClick();

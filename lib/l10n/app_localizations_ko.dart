@@ -2696,6 +2696,21 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kapat => '닫기';
 
   @override
+  String get sifreGoster => '비밀번호 표시';
+
+  @override
+  String get sifreGizle => '비밀번호 숨기기';
+
+  @override
+  String get gunSayisiAzalt => '일수 줄이기';
+
+  @override
+  String get gunSayisiArttir => '일수 늘리기';
+
+  @override
+  String get chatGorseliKaldir => '이미지 제거';
+
+  @override
   String get bildirimBaslik => '알림';
 
   @override

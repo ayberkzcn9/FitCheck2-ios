@@ -2641,6 +2641,21 @@ class AppLocalizationsZh extends AppLocalizations {
   String get kapat => '关闭';
 
   @override
+  String get sifreGoster => '显示密码';
+
+  @override
+  String get sifreGizle => '隐藏密码';
+
+  @override
+  String get gunSayisiAzalt => '减少天数';
+
+  @override
+  String get gunSayisiArttir => '增加天数';
+
+  @override
+  String get chatGorseliKaldir => '移除图片';
+
+  @override
   String get bildirimBaslik => '通知';
 
   @override

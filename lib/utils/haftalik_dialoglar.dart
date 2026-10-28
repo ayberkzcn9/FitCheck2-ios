@@ -344,6 +344,7 @@ class HaftalikDialoglar {
                                     ),
                                   ),
                                   child: IconButton(
+                                    tooltip: l10n.kapat,
                                     icon: Icon(
                                       Icons.close_rounded,
                                       color: context.uygunMetin,
@@ -581,6 +582,7 @@ class HaftalikDialoglar {
                       ),
                     ),
                     IconButton(
+                      tooltip: l10n.kapat,
                       icon: Icon(
                         Icons.close_rounded,
                         size: 28,

@@ -762,6 +762,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           automaticallyImplyLeading: false,
           leading: canPop
               ? IconButton(
+                  tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                   icon: const Icon(Icons.arrow_back_rounded),
                   onPressed: () {
                     HapticFeedback.lightImpact();

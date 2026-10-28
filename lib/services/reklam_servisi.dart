@@ -156,15 +156,17 @@ class ReklamServisi {
   Future<int> kalanHakGetir() async {
     if (await isAdmin()) return 999999;
     if (!reklamlarEtkinMi) return 999999;
-    if (_kalanHakCache != null) return _kalanHakCache!;
     final prefs = await SharedPreferences.getInstance();
     final bugun = DateTime.now().toIso8601String().substring(0, 10);
+    // Tarih önbellekten önce kontrol edilir: uygulama gece yarısını aşarak
+    // açık kalırsa dünün değeri yeni günde görünmesin.
     if (prefs.getString('reklam_hak_tarihi') != bugun) {
       await prefs.setString('reklam_hak_tarihi', bugun);
       await prefs.setInt('reklam_kalan_hak', ucretsizGunlukHak);
       _guncelleKalanHakCache(ucretsizGunlukHak);
       return ucretsizGunlukHak;
     }
+    if (_kalanHakCache != null) return _kalanHakCache!;
     final hak = prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
     _guncelleKalanHakCache(hak);
     return hak;

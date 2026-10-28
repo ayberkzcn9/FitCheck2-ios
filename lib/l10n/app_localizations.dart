@@ -2275,7 +2275,7 @@ abstract class AppLocalizations {
   /// No description provided for @tebriklerHakEklendi.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! +{adet} İşlem hakkı tanımlandı. ✨'**
+  /// **'Tebrikler! +{adet} hak eklendi. ✨'**
   String tebriklerHakEklendi(int adet);
 
   /// No description provided for @kombinIsaretlemeKaldirildi.
@@ -3463,7 +3463,7 @@ abstract class AppLocalizations {
   /// No description provided for @hakEklendiTebrikler.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! +{adet} İşlem hakkı tanımlandı. ✨'**
+  /// **'Tebrikler! +{adet} hak eklendi. ✨'**
   String hakEklendiTebrikler(int adet);
 
   /// No description provided for @gardirobunDolduTitle.
@@ -3481,7 +3481,7 @@ abstract class AppLocalizations {
   /// No description provided for @reklamIzleSlotEkle.
   ///
   /// In tr, this message translates to:
-  /// **'Reklam İzle (+{adet} Slot)'**
+  /// **'Reklam İzle (+{adet} Kıyafet Alanı)'**
   String reklamIzleSlotEkle(int adet);
 
   /// No description provided for @yeniSlotEklendiTebrikler.
@@ -5181,6 +5181,36 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Kapat'**
   String get kapat;
+
+  /// No description provided for @sifreGoster.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifreyi göster'**
+  String get sifreGoster;
+
+  /// No description provided for @sifreGizle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifreyi gizle'**
+  String get sifreGizle;
+
+  /// No description provided for @gunSayisiAzalt.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gün sayısını azalt'**
+  String get gunSayisiAzalt;
+
+  /// No description provided for @gunSayisiArttir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gün sayısını artır'**
+  String get gunSayisiArttir;
+
+  /// No description provided for @chatGorseliKaldir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Görseli kaldır'**
+  String get chatGorseliKaldir;
 
   /// No description provided for @bildirimBaslik.
   ///

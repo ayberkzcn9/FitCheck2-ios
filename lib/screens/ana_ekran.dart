@@ -1584,6 +1584,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                                 shape: BoxShape.circle,
                               ),
                               child: IconButton(
+                                tooltip: l10n.ayarlarTitle,
                                 key: _ayarlarKey,
                                 padding: EdgeInsets.zero,
                                 icon: Icon(

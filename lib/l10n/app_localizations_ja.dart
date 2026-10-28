@@ -2682,6 +2682,21 @@ class AppLocalizationsJa extends AppLocalizations {
   String get kapat => '閉じる';
 
   @override
+  String get sifreGoster => 'パスワードを表示';
+
+  @override
+  String get sifreGizle => 'パスワードを非表示';
+
+  @override
+  String get gunSayisiAzalt => '日数を減らす';
+
+  @override
+  String get gunSayisiArttir => '日数を増やす';
+
+  @override
+  String get chatGorseliKaldir => '画像を削除';
+
+  @override
   String get bildirimBaslik => '通知';
 
   @override

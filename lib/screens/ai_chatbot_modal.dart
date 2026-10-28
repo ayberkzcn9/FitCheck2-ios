@@ -1039,7 +1039,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                           ),
                         ),
                         Tooltip(
-                          message: l10n.chatGorselEklendi,
+                          message: l10n.chatGorseliKaldir,
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             constraints: const BoxConstraints(),

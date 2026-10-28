@@ -515,6 +515,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
                                 prefixIcon: Icon(Icons.lock_outline_rounded,
                                     size: 20, color: colors.onSurfaceVariant),
                                 suffixIcon: IconButton(
+                                  tooltip: _sifreGizli ? l10n.sifreGoster : l10n.sifreGizle,
                                   icon: Icon(
                                     _sifreGizli
                                         ? Icons.visibility_off_outlined

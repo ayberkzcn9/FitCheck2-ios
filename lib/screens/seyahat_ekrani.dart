@@ -92,6 +92,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
               ),
               IconButton(
                 visualDensity: VisualDensity.compact,
+                tooltip: l10n.gunSayisiAzalt,
                 onPressed: _gunSayisi > 1
                     ? () => setState(() => _gunSayisi--)
                     : null,
@@ -107,6 +108,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
               ),
               IconButton(
                 visualDensity: VisualDensity.compact,
+                tooltip: l10n.gunSayisiArttir,
                 onPressed: _gunSayisi < 30
                     ? () => setState(() => _gunSayisi++)
                     : null,

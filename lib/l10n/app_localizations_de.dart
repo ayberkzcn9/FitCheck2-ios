@@ -2829,6 +2829,21 @@ class AppLocalizationsDe extends AppLocalizations {
   String get kapat => 'Schließen';
 
   @override
+  String get sifreGoster => 'Passwort anzeigen';
+
+  @override
+  String get sifreGizle => 'Passwort verbergen';
+
+  @override
+  String get gunSayisiAzalt => 'Anzahl der Tage verringern';
+
+  @override
+  String get gunSayisiArttir => 'Anzahl der Tage erhöhen';
+
+  @override
+  String get chatGorseliKaldir => 'Bild entfernen';
+
+  @override
   String get bildirimBaslik => 'Benachrichtigung';
 
   @override

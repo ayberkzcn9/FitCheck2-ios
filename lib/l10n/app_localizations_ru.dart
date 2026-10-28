@@ -2804,6 +2804,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get kapat => 'Закрыть';
 
   @override
+  String get sifreGoster => 'Показать пароль';
+
+  @override
+  String get sifreGizle => 'Скрыть пароль';
+
+  @override
+  String get gunSayisiAzalt => 'Уменьшить количество дней';
+
+  @override
+  String get gunSayisiArttir => 'Увеличить количество дней';
+
+  @override
+  String get chatGorseliKaldir => 'Удалить изображение';
+
+  @override
   String get bildirimBaslik => 'Уведомление';
 
   @override

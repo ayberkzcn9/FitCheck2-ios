@@ -331,6 +331,7 @@ SADECE bu JSON formatında dön:
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
+                            tooltip: l10n.kapat,
                             icon: Icon(
                               Icons.close_rounded, 
                               size: 20, 
@@ -550,6 +551,7 @@ SADECE bu JSON formatında dön:
               Padding(
                 padding: const EdgeInsetsDirectional.only(end: 8.0),
                 child: IconButton(
+                  tooltip: l10n.kapat,
                   icon: const Icon(
                     Icons.close_rounded, 
                     size: 18,

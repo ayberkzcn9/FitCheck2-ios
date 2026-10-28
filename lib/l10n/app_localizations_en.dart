@@ -2804,6 +2804,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kapat => 'Close';
 
   @override
+  String get sifreGoster => 'Show password';
+
+  @override
+  String get sifreGizle => 'Hide password';
+
+  @override
+  String get gunSayisiAzalt => 'Decrease number of days';
+
+  @override
+  String get gunSayisiArttir => 'Increase number of days';
+
+  @override
+  String get chatGorseliKaldir => 'Remove image';
+
+  @override
   String get bildirimBaslik => 'Notification';
 
   @override
