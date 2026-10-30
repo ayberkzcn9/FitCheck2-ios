@@ -1,4 +1,4 @@
-# FitCheck 1.0.34+40 — Sürüm Notu
+# FitCheck 1.0.34+39 — Sürüm Notu
 
 Play Console'a yüklenecek 12 dilli kısa not. Her satır 500 UTF-16 karakterin
 altında.
