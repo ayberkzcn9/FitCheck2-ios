@@ -81,8 +81,6 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
   // Tema rengini (zümrüt) ve alt/üst tonlarını kullanır.
   List<Color> _getSayfaRenkPaleti(int index, ColorScheme colors) {
     final primary = colors.primary;
-    final secondary = colors.secondary;
-    final tertiary = colors.tertiary;
 
     // Tema renklerinden oluşturulan gradyanlar (Material named colors YOK)
     // Tüm hedef renkler sabit constant (yukarıda tanımlandı)
@@ -91,11 +89,6 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     final paletler = [
       [primary, Color.lerp(primary, colors.surfaceContainerHigh, 0.4)!],          // Hoş Geldin
       [Color.lerp(primary, _targetTeal, 0.3)!, Color.lerp(primary, _targetTeal, 0.6)!], // Dolap
-      [tertiary, Color.lerp(tertiary, colors.surfaceContainerHigh, 0.4)!],         // Hava Durumu (amber)
-      [Color.lerp(primary, _targetCyan, 0.3)!, Color.lerp(primary, _targetCyan, 0.6)!], // Yıkama
-      [secondary, Color.lerp(secondary, colors.surfaceContainerHigh, 0.4)!],       // Eksik Parça
-      [Color.lerp(primary, _targetGreen, 0.2)!, Color.lerp(primary, _targetGreen, 0.5)!], // Analitik
-      [Color.lerp(tertiary, _targetOrange, 0.3)!, Color.lerp(tertiary, _targetOrange, 0.6)!], // Stilist
       [primary, Color.lerp(primary, colors.surfaceContainerHigh, 0.4)!],           // Giriş / Kayıt
     ];
     return paletler[index % paletler.length];
@@ -575,37 +568,6 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         "aciklama": l10n.onboardingDolapAciklama,
         "icon": "checkroom",
         "lottie": "https://assets3.lottiefiles.com/packages/lf20_pcqhwzdj.json"
-      },
-      {
-        "baslik": l10n.onboardingHavaDurumu,
-        "aciklama": l10n.onboardingHavaAciklama,
-        "icon": "wb_sunny",
-        "lottie": "https://assets5.lottiefiles.com/packages/lf20_xlky4sqw.json"
-      },
-      {
-        "baslik": l10n.onboardingYikama,
-        "aciklama": l10n.onboardingYikamaAciklama,
-        "icon": "local_laundry_service",
-        "lottie":
-            "https://assets2.lottiefiles.com/private_files/lf30_j1t2h6.json"
-      },
-      {
-        "baslik": l10n.onboardingEksikParca,
-        "aciklama": l10n.onboardingEksikAciklama,
-        "icon": "shopping_bag",
-        "lottie": "https://assets8.lottiefiles.com/packages/lf20_p8tx08qj.json"
-      },
-      {
-        "baslik": l10n.onboardingAnalitik,
-        "aciklama": l10n.onboardingAnalitikAciklama,
-        "icon": "insights",
-        "lottie": "https://assets10.lottiefiles.com/packages/lf20_q5pk6p1k.json"
-      },
-      {
-        "baslik": l10n.onboardingStilist,
-        "aciklama": l10n.onboardingStilistAciklama,
-        "icon": "auto_awesome",
-        "lottie": "https://assets4.lottiefiles.com/packages/lf20_7k0f9h9p.json"
       },
     ];
 

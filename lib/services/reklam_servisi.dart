@@ -178,63 +178,110 @@ class ReklamServisi {
 
   // --- HAK VE LİMİT METODLARI (TAMAMI SINIRSIZ) ---
 
+  // Günlük hak ile reklamla kazanılan hak ayrı sayaçlarda tutulur. Böylece
+  // gece yarısı günlük hak yenilenirken reklamla kazanılan haklar silinmez.
+  static const String _kalanHakAnahtari = 'reklam_kalan_hak';
+  static const String _gunlukHakAnahtari = 'reklam_gunluk_hak';
+  static const String _ekstraHakAnahtari = 'reklam_ekstra_hak';
+  static const String _hakTarihiAnahtari = 'reklam_hak_tarihi';
+
+  static String _bugun() => DateTime.now().toIso8601String().substring(0, 10);
+
+  /// Testlerde önbelleği temizlemek için.
+  @visibleForTesting
+  static void onbellegiSifirla() {
+    _kalanHakCache = null;
+    _isAdminCache = null;
+  }
+
+  /// Eski tek sayaçlı modelden iki sayaçlı modele geçer.
+  ///
+  /// Eski toplam korunur; günlük/ekstra ayrımı bilinemediği için tüm bakiye
+  /// ekstra sayılır. Böylece hiçbir kazanılmış hak silinmez. İlk geçişte
+  /// günlük 3 hak bir kez fazla verilebilir; bu, hak kaybından yeğdir.
+  Future<void> _hakModeliniHazirla(SharedPreferences prefs) async {
+    if (prefs.containsKey(_gunlukHakAnahtari) &&
+        prefs.containsKey(_ekstraHakAnahtari)) {
+      return;
+    }
+    final toplam = prefs.getInt(_kalanHakAnahtari) ?? ucretsizGunlukHak;
+    await prefs.setInt(_gunlukHakAnahtari, 0);
+    await prefs.setInt(_ekstraHakAnahtari, toplam.clamp(0, 999999));
+  }
+
+  /// Gün değiştiyse günlük hakkı 3'e tamamlar; ekstra haklara dokunmaz.
+  Future<int> _haklariYenile(SharedPreferences prefs) async {
+    await _hakModeliniHazirla(prefs);
+    final bugun = _bugun();
+    if (prefs.getString(_hakTarihiAnahtari) != bugun) {
+      await prefs.setString(_hakTarihiAnahtari, bugun);
+      await prefs.setInt(_gunlukHakAnahtari, ucretsizGunlukHak);
+    }
+    return _toplamHak(prefs);
+  }
+
+  Future<int> _toplamHak(SharedPreferences prefs) async {
+    final gunluk = prefs.getInt(_gunlukHakAnahtari) ?? ucretsizGunlukHak;
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    final toplam = gunluk + ekstra;
+    // Eski anahtar, geri uyumluluk için toplamla güncellenir.
+    await prefs.setInt(_kalanHakAnahtari, toplam);
+    _guncelleKalanHakCache(toplam);
+    return toplam;
+  }
+
   Future<int> kalanHakGetir() async {
     if (await isAdmin()) return 999999;
     if (!reklamlarEtkinMi) return 999999;
     final prefs = await SharedPreferences.getInstance();
-    final bugun = DateTime.now().toIso8601String().substring(0, 10);
+    await _hakModeliniHazirla(prefs);
+    final bugun = _bugun();
     // Tarih önbellekten önce kontrol edilir: uygulama gece yarısını aşarak
     // açık kalırsa dünün değeri yeni günde görünmesin.
-    if (prefs.getString('reklam_hak_tarihi') != bugun) {
-      await prefs.setString('reklam_hak_tarihi', bugun);
-      await prefs.setInt('reklam_kalan_hak', ucretsizGunlukHak);
-      _guncelleKalanHakCache(ucretsizGunlukHak);
-      return ucretsizGunlukHak;
+    if (prefs.getString(_hakTarihiAnahtari) != bugun) {
+      await prefs.setString(_hakTarihiAnahtari, bugun);
+      await prefs.setInt(_gunlukHakAnahtari, ucretsizGunlukHak);
+      _kalanHakCache = null;
     }
     if (_kalanHakCache != null) return _kalanHakCache!;
-    final hak = prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    _guncelleKalanHakCache(hak);
-    return hak;
+    return _toplamHak(prefs);
   }
 
   Future<void> hakDusur() async {
     if (await isAdmin()) return;
     if (!reklamlarEtkinMi) return;
     final prefs = await SharedPreferences.getInstance();
-    final bugun = DateTime.now().toIso8601String().substring(0, 10);
-    if (prefs.getString('reklam_hak_tarihi') != bugun) {
-      await prefs.setString('reklam_hak_tarihi', bugun);
-      await prefs.setInt('reklam_kalan_hak', ucretsizGunlukHak);
-      _guncelleKalanHakCache(ucretsizGunlukHak);
+    await _haklariYenile(prefs);
+
+    // Önce günlük hak tüketilir; reklamla kazanılan haklar en sona kalır.
+    final gunluk = prefs.getInt(_gunlukHakAnahtari) ?? 0;
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    if (gunluk > 0) {
+      await prefs.setInt(_gunlukHakAnahtari, gunluk - 1);
+    } else if (ekstra > 0) {
+      await prefs.setInt(_ekstraHakAnahtari, ekstra - 1);
     }
-    final mevcut = _kalanHakCache ?? prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    final yeni = (mevcut - 1).clamp(0, 999);
-    await prefs.setInt('reklam_kalan_hak', yeni);
-    _guncelleKalanHakCache(yeni);
+    await _toplamHak(prefs);
   }
 
   Future<void> hakIadeEt() async {
     final prefs = await SharedPreferences.getInstance();
-    final mevcut = _kalanHakCache ?? prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    final yeni = mevcut + 1;
-    await prefs.setInt('reklam_kalan_hak', yeni);
-    _guncelleKalanHakCache(yeni);
+    await _haklariYenile(prefs);
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    // İade edilen hak süresizdir; günlük sayaçla karışmaz.
+    await prefs.setInt(_ekstraHakAnahtari, ekstra + 1);
+    await _toplamHak(prefs);
   }
 
   Future<void> reklamIzleyerekHakEkle(int eklenecekHak) async {
     if (await isAdmin()) return;
     if (!reklamlarEtkinMi) return;
     final prefs = await SharedPreferences.getInstance();
-    final bugun = DateTime.now().toIso8601String().substring(0, 10);
-    if (prefs.getString('reklam_hak_tarihi') != bugun) {
-      await prefs.setString('reklam_hak_tarihi', bugun);
-      await prefs.setInt('reklam_kalan_hak', ucretsizGunlukHak);
-      _guncelleKalanHakCache(ucretsizGunlukHak);
-    }
-    final mevcut = _kalanHakCache ?? prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    final yeni = mevcut + eklenecekHak;
-    await prefs.setInt('reklam_kalan_hak', yeni);
-    _guncelleKalanHakCache(yeni);
+    await _haklariYenile(prefs);
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    // Reklam ödülü günlük hakka değil, süresiz ekstra hakka eklenir.
+    await prefs.setInt(_ekstraHakAnahtari, ekstra + eklenecekHak);
+    await _toplamHak(prefs);
   }
 
   Future<int> kuponKoduKullan(String kod) async {
