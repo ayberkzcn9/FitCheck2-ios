@@ -1566,6 +1566,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hesabinizSilindi => 'Hesabınız ve ilişkili veriler silindi.';
 
   @override
+  String get hesapSilmeBasarisiz =>
+      'Hesap silme tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.';
+
+  @override
   String get kisiselStilVeProfilUst => 'KİŞİSEL STİL VE PROFİL';
 
   @override
@@ -1769,7 +1773,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'Hava durumuna uygun günlük kombin tavsiyeleri sunabilmek adına anlık konum bilginiz Open-Meteo servisleri ile anonim olarak işlenir. Konum verileriniz sunucularımızda saklanmaz veya üçüncü taraflarla paylaşılmaz.';
+      'Konum izni verdiğinizde enlem ve boylamınız hava durumu için Open-Meteo\'ya, şehir adını belirlemek için BigDataCloud\'a gönderilir. FitCheck bu koordinatları kendi sunucularında saklamaz. Bu servislerin veri işleme koşulları kendi gizlilik politikalarına tabidir.';
 
   @override
   String get gizlilikMadde3Baslik => '3. Sesli Asistan ve Mikrofon';
@@ -2246,7 +2250,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'Uygulama deneyimini iyileştirmek için anonim kullanım verileri gönderilir. Kapatırsanız bu cihazdaki analitik veriler silinir.';
+      'Analiz verileri, uygulama kullanımını anlamak ve deneyimi iyileştirmek için Firebase Analytics\'e gönderilir. Bu isteğe bağlıdır; istediğiniz zaman kapatabilirsiniz.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2286,6 +2290,10 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       'Google Play bağlantısı hazır değil. Lütfen tekrar deneyin.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'Bu platform için güvenli mağaza doğrulaması henüz hazır değil. Satın alma geçici olarak kullanılamıyor.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => 'Satın alma başlatılamadı.';

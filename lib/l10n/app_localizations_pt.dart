@@ -1573,6 +1573,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get hesabinizSilindi => 'Sua conta e seus dados foram excluídos.';
 
   @override
+  String get hesapSilmeBasarisiz =>
+      'Não foi possível concluir a exclusão da conta. Verifique sua conexão e tente novamente.';
+
+  @override
   String get kisiselStilVeProfilUst => 'ESTILO PESSOAL E PERFIL';
 
   @override
@@ -1779,7 +1783,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'A localização em tempo real é processada de forma anônima através dos serviços Open-Meteo com o único propósito de obter as condições do clima. Os dados nunca são armazenados ou compartilhados.';
+      'Quando você autoriza o acesso à localização, latitude e longitude são enviadas ao Open-Meteo para consultar o clima e ao BigDataCloud para identificar sua cidade. O FitCheck não armazena essas coordenadas em seus servidores. Cada provedor trata os dados conforme sua própria política de privacidade.';
 
   @override
   String get gizlilikMadde3Baslik => '3. Assistente de voz e microfone';
@@ -2260,7 +2264,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'Dados de uso anônimos são enviados para melhorar a experiência do app. Ao desativar, os dados de análise deste dispositivo são excluídos.';
+      'Dados de uso são enviados ao Firebase Analytics para compreender o uso do aplicativo e melhorar a experiência. Isso é opcional e pode ser desativado a qualquer momento.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2300,6 +2304,10 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       'O Google Play não está disponível de momento. Tente novamente.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'A verificação segura da loja ainda não está pronta para esta plataforma. As compras estão temporariamente indisponíveis.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi =>

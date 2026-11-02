@@ -1489,6 +1489,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get hesabinizSilindi => 'アカウントとデータが削除されました。';
 
   @override
+  String get hesapSilmeBasarisiz => 'アカウントを削除できませんでした。接続を確認して、もう一度お試しください。';
+
+  @override
   String get kisiselStilVeProfilUst => 'パーソナルスタイル＆プロファイル';
 
   @override
@@ -1675,7 +1678,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'リアルタイムの位置情報は、気象条件を取得する目的でのみOpen-Meteoサービスを通じて匿名で処理されます。データが保存または共有されることはありません。';
+      '位置情報へのアクセスを許可すると、緯度・経度が天気情報の取得のためOpen-Meteoへ、市区町村の特定のためBigDataCloudへ送信されます。FitCheckのサーバーには保存しません。各サービスによるデータ処理は、それぞれのプライバシーポリシーに従います。';
 
   @override
   String get gizlilikMadde3Baslik => '3. 音声アシスタントとマイク';
@@ -2132,7 +2135,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'アプリの改善のため、匿名の利用データを送信します。オフにすると、この端末に保存された分析データは削除されます。';
+      'アプリの利用状況を把握して体験を改善するため、利用状況データをFirebase Analyticsに送信します。これは任意で、いつでもオフにできます。';
 
   @override
   String get chatKarsilamaHavaYok => 'こんにちは！👋 あなたのスタイルに合う素敵なコーデを作りましょうか？✨';
@@ -2168,6 +2171,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get premiumMagazaHazirDegil => 'Google Playに接続できません。もう一度お試しください。';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'このプラットフォームでは安全なストア検証がまだ利用できません。購入は一時的にご利用いただけません。';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => '購入を開始できませんでした。';

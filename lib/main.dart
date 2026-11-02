@@ -94,9 +94,7 @@ Future<UygulamaBaslatmaSonucu> uygulamaHazirliklariniBaslat() async {
 
   AnalyticsServisi.firebaseHazir = firebaseHazir;
   try {
-    await AnalyticsServisi()
-        .izniYukle()
-        .timeout(const Duration(seconds: 5));
+    await AnalyticsServisi().izniYukle().timeout(const Duration(seconds: 5));
     await AnalyticsServisi().baslat().timeout(const Duration(seconds: 8));
   } catch (e) {
     debugPrint('Analytics başlatma hatası: $e');
@@ -156,9 +154,11 @@ Future<void> _eskiIdCakismalariniTemizle() async {
         if (item is Map && item['id'] != null) {
           final currentId = item['id'] as String;
           if (seen.contains(currentId)) {
-            item['id'] = '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
+            item['id'] =
+                '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
             changed = true;
-            debugPrint('🔧 Gardırop ID çakışması düzeltildi: $currentId -> ${item['id']}');
+            debugPrint(
+                '🔧 Gardırop ID çakışması düzeltildi: $currentId -> ${item['id']}');
           }
           seen.add(item['id'] as String);
         }
@@ -176,9 +176,11 @@ Future<void> _eskiIdCakismalariniTemizle() async {
         if (item is Map && item['id'] != null) {
           final currentId = item['id'] as String;
           if (seen.contains(currentId)) {
-            item['id'] = '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
+            item['id'] =
+                '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
             changed = true;
-            debugPrint('🔧 Favori ID çakışması düzeltildi: $currentId -> ${item['id']}');
+            debugPrint(
+                '🔧 Favori ID çakışması düzeltildi: $currentId -> ${item['id']}');
           }
           seen.add(item['id'] as String);
         }
@@ -196,9 +198,11 @@ Future<void> _eskiIdCakismalariniTemizle() async {
         if (item is Map && item['id'] != null) {
           final currentId = item['id'] as String;
           if (seen.contains(currentId)) {
-            item['id'] = '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
+            item['id'] =
+                '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
             changed = true;
-            debugPrint('🔧 Geçmiş ID çakışması düzeltildi: $currentId -> ${item['id']}');
+            debugPrint(
+                '🔧 Geçmiş ID çakışması düzeltildi: $currentId -> ${item['id']}');
           }
           seen.add(item['id'] as String);
         }
@@ -245,7 +249,8 @@ class KombinDanismaniApp extends StatefulWidget {
 
   static KombinDanismaniAppState of(BuildContext context) {
     final state = maybeOf(context);
-    assert(state != null, 'KombinDanismaniAppState bulunamadı. Widget ağacında KombinDanismaniApp altında olmalı.');
+    assert(state != null,
+        'KombinDanismaniAppState bulunamadı. Widget ağacında KombinDanismaniApp altında olmalı.');
     return state!;
   }
 
@@ -258,7 +263,6 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
       AnalyticsNavigatorObserver();
   Locale? _locale;
   late ThemeMode _temaModu;
-
 
   @override
   void initState() {
@@ -317,8 +321,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
     if (_temaModu == ThemeMode.dark) return true;
     if (_temaModu == ThemeMode.light) return false;
     // system: cihaz ayarına bak
-    final brightness =
-        PlatformDispatcher.instance.platformBrightness;
+    final brightness = PlatformDispatcher.instance.platformBrightness;
     return brightness == Brightness.dark;
   }
 
@@ -351,8 +354,6 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           if (userEmail != null && userEmail.isNotEmpty) {
             ReklamServisi().kullaniciEmailKaydet(userEmail);
           }
-
-          AnalyticsServisi().kullaniciKimligiAyarla(snapshot.data!.uid);
 
           return const AnaEkraniNavigasyon();
         }
@@ -401,8 +402,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         Locale('ru'),
       ],
       builder: (context, child) {
-        final bool koyuMu =
-            Theme.of(context).brightness == Brightness.dark;
+        final bool koyuMu = Theme.of(context).brightness == Brightness.dark;
         return Stack(
           children: [
             Positioned.fill(
@@ -470,9 +470,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         useMaterial3: true,
         colorScheme: lightColorScheme,
         textTheme: Typography.material2021().black.apply(
-          bodyColor: lightColorScheme.onSurface,
-          displayColor: lightColorScheme.onSurface,
-        ),
+              bodyColor: lightColorScheme.onSurface,
+              displayColor: lightColorScheme.onSurface,
+            ),
         dividerTheme: DividerThemeData(
           color: lightColorScheme.outlineVariant,
           thickness: 1,
@@ -545,9 +545,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         useMaterial3: true,
         colorScheme: darkColorScheme,
         textTheme: Typography.material2021().white.apply(
-          bodyColor: darkColorScheme.onSurface,
-          displayColor: darkColorScheme.onSurface,
-        ),
+              bodyColor: darkColorScheme.onSurface,
+              displayColor: darkColorScheme.onSurface,
+            ),
         dividerTheme: DividerThemeData(
           color: darkColorScheme.outlineVariant,
           thickness: 1,
@@ -659,8 +659,7 @@ class _BaslangicKapisiState extends State<_BaslangicKapisi> {
       sonuc = await widget.baslatmaIslemi.timeout(
         const Duration(seconds: 25),
         onTimeout: () {
-          debugPrint(
-              'Uygulama başlatma zaman aşımına uğradı; devam ediliyor.');
+          debugPrint('Uygulama başlatma zaman aşımına uğradı; devam ediliyor.');
           return const UygulamaBaslatmaSonucu(firebaseHazir: false);
         },
       );

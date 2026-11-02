@@ -1495,6 +1495,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get hesabinizSilindi => '계정 및 관련 데이터가 삭제되었습니다.';
 
   @override
+  String get hesapSilmeBasarisiz => '계정을 삭제하지 못했습니다. 연결을 확인한 후 다시 시도하세요.';
+
+  @override
   String get kisiselStilVeProfilUst => '개인 스타일 & 프로필';
 
   @override
@@ -1682,7 +1685,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      '실시간 위치 정보는 일기 예보를 받아오기 위한 목적으로만 Open-Meteo 서비스를 통해 익명으로 처리됩니다. 데이터는 저장되거나 공유되지 않습니다.';
+      '위치 접근을 허용하면 날씨 조회를 위해 위도·경도가 Open-Meteo에, 도시 확인을 위해 BigDataCloud에 전송됩니다. FitCheck 서버에는 해당 좌표를 저장하지 않습니다. 각 서비스의 데이터 처리는 해당 서비스의 개인정보 처리방침을 따릅니다.';
 
   @override
   String get gizlilikMadde3Baslik => '3. 음성 어시스턴트 및 마이크';
@@ -2146,7 +2149,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      '앱 개선을 위해 익명 사용 데이터가 전송됩니다. 끄면 이 기기에 저장된 분석 데이터가 삭제됩니다.';
+      '앱 사용 현황을 파악하고 경험을 개선하기 위해 사용 분석 데이터가 Firebase Analytics로 전송됩니다. 선택 사항이며 언제든지 끌 수 있습니다.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2184,6 +2187,10 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       '지금은 Google Play에 연결할 수 없습니다. 다시 시도해 주세요.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      '이 플랫폼의 안전한 스토어 검증이 아직 준비되지 않았습니다. 구매 기능을 일시적으로 사용할 수 없습니다.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => '구매를 시작할 수 없습니다.';

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class ReklamServisi {
   static const int reklamOduluSlot = 2;
   static bool reklamlarEtkinMi = true;
   static const int reklamOduluKredi = 2;
+
   /// Yönetici kuponu kaynakta tutulmaz. Yalnızca geliştirme derlemesinde,
   /// `--dart-define=FITCHECK_ADMIN_KUPON=...` ile verilirse etkinleşir.
   static const String adminKuponKodu =
@@ -104,7 +106,21 @@ class ReklamServisi {
 
   Future<void> premiumDurumunuYukle() async {
     final prefs = await SharedPreferences.getInstance();
-    final bool premium = prefs.getBool('reklamsiz_premium') ?? false;
+    final uid = AnalyticsServisi.firebaseHazir
+        ? FirebaseAuth.instance.currentUser?.uid
+        : null;
+    final serverTs = prefs.getInt('premium_sunucu_dogrulama_ts');
+    final serverDogrulamasiGecerli =
+        prefs.getBool('premium_sunucu_dogrulandi') == true &&
+            uid != null &&
+            prefs.getString('premium_sahip_uid') == uid &&
+            serverTs != null &&
+            DateTime.now().difference(
+                  DateTime.fromMillisecondsSinceEpoch(serverTs),
+                ) <=
+                const Duration(hours: 24);
+    final bool premium =
+        prefs.getBool('reklamsiz_premium') == true && serverDogrulamasiGecerli;
     final bool admin = adminModuAcikMi(prefs);
     // Premium ya da kuponla sınırsız (admin) kullanıcıya reklam gösterilmez.
     reklamlarEtkinMi = !(premium || admin);
@@ -204,7 +220,8 @@ class ReklamServisi {
         prefs.containsKey(_ekstraHakAnahtari)) {
       return;
     }
-    final toplam = prefs.getInt(_kalanHakAnahtari) ?? ucretsizGunlukHak;
+    final eskiSayacVar = prefs.containsKey(_kalanHakAnahtari);
+    final toplam = eskiSayacVar ? (prefs.getInt(_kalanHakAnahtari) ?? 0) : 0;
     await prefs.setInt(_gunlukHakAnahtari, 0);
     await prefs.setInt(_ekstraHakAnahtari, toplam.clamp(0, 999999));
   }

@@ -1566,6 +1566,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Your account and associated data have been deleted.';
 
   @override
+  String get hesapSilmeBasarisiz =>
+      'Account deletion could not be completed. Check your connection and try again.';
+
+  @override
   String get kisiselStilVeProfilUst => 'PERSONAL STYLE & PROFILE';
 
   @override
@@ -1768,7 +1772,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'Real-time location is processed anonymously via Open-Meteo services solely to fetch weather conditions. Location data is never stored on servers or shared with third parties.';
+      'When you grant location access, your latitude and longitude are sent to Open-Meteo for weather and to BigDataCloud to identify your city. FitCheck does not store these coordinates on its servers. Each provider\'s data processing is governed by its own privacy policy.';
 
   @override
   String get gizlilikMadde3Baslik => '3. Voice Assistant and Microphone';
@@ -2245,7 +2249,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'Anonymous usage data is sent to improve the app experience. Turning this off deletes the analytics data stored on this device.';
+      'Usage analytics are sent to Firebase Analytics to understand app usage and improve the experience. This is optional and can be turned off at any time.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2285,6 +2289,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       'Google Play is not available right now. Please try again.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'Secure store verification is not ready for this platform yet. Purchases are temporarily unavailable.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => 'Purchase could not be started.';

@@ -1582,6 +1582,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Dein Konto und zugehörige Daten wurden gelöscht.';
 
   @override
+  String get hesapSilmeBasarisiz =>
+      'Das Konto konnte nicht gelöscht werden. Prüfe deine Verbindung und versuche es erneut.';
+
+  @override
   String get kisiselStilVeProfilUst => 'PERSÖNLICHER STIL & PROFIL';
 
   @override
@@ -1788,7 +1792,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'Deine Echtzeit-Standortdaten werden anonym mit Open-Meteo-Diensten verarbeitet, um wettergerechte Outfit-Vorschläge zu liefern. Standortdaten werden nicht auf Servern gespeichert oder an Dritte weitergegeben.';
+      'Wenn Sie den Standortzugriff erlauben, werden Breiten- und Längengrad für das Wetter an Open-Meteo und zur Ermittlung Ihrer Stadt an BigDataCloud gesendet. FitCheck speichert diese Koordinaten nicht auf eigenen Servern. Für die Datenverarbeitung gelten die Datenschutzrichtlinien der jeweiligen Anbieter.';
 
   @override
   String get gizlilikMadde3Baslik => '3. Sprachassistent und Mikrofon';
@@ -2269,7 +2273,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'Zur Verbesserung der App werden anonyme Nutzungsdaten gesendet. Beim Ausschalten werden die Analysedaten auf diesem Gerät gelöscht.';
+      'Nutzungsdaten werden an Firebase Analytics gesendet, um die App-Nutzung zu verstehen und das Erlebnis zu verbessern. Die Teilnahme ist freiwillig und kann jederzeit deaktiviert werden.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2309,6 +2313,10 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       'Google Play ist gerade nicht verfügbar. Bitte versuche es erneut.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'Die sichere Store-Prüfung ist für diese Plattform noch nicht eingerichtet. Käufe sind vorübergehend nicht verfügbar.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi =>

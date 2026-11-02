@@ -1,0 +1,4 @@
+<resources>
+    <!-- Firebase Analytics is opt-in; the app enables it after consent. -->
+    <bool name="firebase_analytics_collection_enabled">false</bool>
+</resources>

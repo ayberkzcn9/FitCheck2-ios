@@ -1552,6 +1552,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hesabinizSilindi => 'تم حذف حسابك والبيانات المرتبطة به.';
 
   @override
+  String get hesapSilmeBasarisiz =>
+      'تعذّر إكمال حذف الحساب. تحقق من اتصال الإنترنت وحاول مرة أخرى.';
+
+  @override
   String get kisiselStilVeProfilUst => 'الأسلوب الشخصي والملف الشخصي';
 
   @override
@@ -1752,7 +1756,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'يتم معالجة الموقع المباشر دون الكشف عن الهوية عبر خدمات Open-Meteo فقط لجلب ظروف الطقس. لا يتم تخزين بيانات الموقع على السيرفرات أو مشاركتها مع أطراف ثالثة.';
+      'عند السماح بالوصول إلى الموقع، يُرسل خط العرض وخط الطول إلى Open-Meteo لمعرفة الطقس وإلى BigDataCloud لتحديد مدينتك. لا يخزن FitCheck هذه الإحداثيات على خوادمه. تخضع معالجة كل مزوّد لسياسة الخصوصية الخاصة به.';
 
   @override
   String get gizlilikMadde3Baslik => '3. المساعد الصوتي والميكروفون';
@@ -2225,7 +2229,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'تُرسل بيانات استخدام مجهولة لتحسين تجربة التطبيق. عند الإيقاف تُحذف بيانات التحليلات المخزّنة على هذا الجهاز.';
+      'تُرسل بيانات الاستخدام إلى Firebase Analytics لفهم استخدام التطبيق وتحسين التجربة. هذا اختياري ويمكن إيقافه في أي وقت.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2265,6 +2269,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       'Google Play غير متاح حاليًا. حاول مرة أخرى.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'لم يجهز التحقق الآمن من المتجر لهذه المنصة بعد. المشتريات غير متاحة مؤقتًا.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => 'تعذّر بدء عملية الشراء.';

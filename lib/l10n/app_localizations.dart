@@ -2950,6 +2950,12 @@ abstract class AppLocalizations {
   /// **'Hesabınız ve ilişkili veriler silindi.'**
   String get hesabinizSilindi;
 
+  /// No description provided for @hesapSilmeBasarisiz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap silme tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.'**
+  String get hesapSilmeBasarisiz;
+
   /// No description provided for @kisiselStilVeProfilUst.
   ///
   /// In tr, this message translates to:
@@ -3307,7 +3313,7 @@ abstract class AppLocalizations {
   /// No description provided for @gizlilikMadde2Icerik.
   ///
   /// In tr, this message translates to:
-  /// **'Hava durumuna uygun günlük kombin tavsiyeleri sunabilmek adına anlık konum bilginiz Open-Meteo servisleri ile anonim olarak işlenir. Konum verileriniz sunucularımızda saklanmaz veya üçüncü taraflarla paylaşılmaz.'**
+  /// **'Konum izni verdiğinizde enlem ve boylamınız hava durumu için Open-Meteo\'ya, şehir adını belirlemek için BigDataCloud\'a gönderilir. FitCheck bu koordinatları kendi sunucularında saklamaz. Bu servislerin veri işleme koşulları kendi gizlilik politikalarına tabidir.'**
   String get gizlilikMadde2Icerik;
 
   /// No description provided for @gizlilikMadde3Baslik.
@@ -4141,7 +4147,7 @@ abstract class AppLocalizations {
   /// No description provided for @analitikVerileriPaylasAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'Uygulama deneyimini iyileştirmek için anonim kullanım verileri gönderilir. Kapatırsanız bu cihazdaki analitik veriler silinir.'**
+  /// **'Analiz verileri, uygulama kullanımını anlamak ve deneyimi iyileştirmek için Firebase Analytics\'e gönderilir. Bu isteğe bağlıdır; istediğiniz zaman kapatabilirsiniz.'**
   String get analitikVerileriPaylasAciklama;
 
   /// No description provided for @chatKarsilamaHavaYok.
@@ -4209,6 +4215,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Google Play bağlantısı hazır değil. Lütfen tekrar deneyin.'**
   String get premiumMagazaHazirDegil;
+
+  /// No description provided for @premiumSatinAlmaDogrulamaHazirDegil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu platform için güvenli mağaza doğrulaması henüz hazır değil. Satın alma geçici olarak kullanılamıyor.'**
+  String get premiumSatinAlmaDogrulamaHazirDegil;
 
   /// No description provided for @premiumSatinAlmaBaslatilamadi.
   ///

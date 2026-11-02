@@ -1,0 +1,68 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedInAs(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function validProfile(data, uid) {
+      return data.keys().hasOnly([
+          'uid',
+          'kullaniciAdi',
+          'email',
+          'cinsiyet',
+          'isAnonymous',
+          'olusturulmaTarihi',
+          'profilResmi'
+        ])
+        && data.keys().hasAll([
+          'uid',
+          'kullaniciAdi',
+          'email',
+          'cinsiyet',
+          'isAnonymous',
+          'olusturulmaTarihi',
+          'profilResmi'
+        ])
+        && data.uid == uid
+        && data.kullaniciAdi is string
+        && data.kullaniciAdi.size() <= 120
+        && data.email is string
+        && data.email.size() <= 320
+        && data.cinsiyet is string
+        && data.cinsiyet.size() <= 40
+        && data.isAnonymous is bool
+        && data.olusturulmaTarihi is timestamp
+        && data.profilResmi is string
+        && data.profilResmi.size() <= 2048;
+    }
+
+    match /kullanicilar/{uid} {
+      allow get: if signedInAs(uid);
+      allow list: if false;
+      allow create: if signedInAs(uid)
+        && validProfile(request.resource.data, uid)
+        && request.resource.data.olusturulmaTarihi == request.time;
+      allow update: if signedInAs(uid)
+        && validProfile(request.resource.data, uid)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.isAnonymous == resource.data.isAnonymous
+        && request.resource.data.olusturulmaTarihi == resource.data.olusturulmaTarihi
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'kullaniciAdi', 'email', 'cinsiyet', 'profilResmi'
+        ]);
+      allow delete: if signedInAs(uid);
+    }
+
+    // Purchase tokens and entitlement records are server-only (Admin SDK).
+    match /purchaseClaims/{claimId} {
+      allow read, write: if false;
+    }
+
+    // Deny all collections not explicitly declared above.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

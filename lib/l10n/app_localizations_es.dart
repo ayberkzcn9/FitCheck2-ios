@@ -1579,6 +1579,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'Tu cuenta y los datos asociados han sido eliminados.';
 
   @override
+  String get hesapSilmeBasarisiz =>
+      'No se pudo completar la eliminación de la cuenta. Comprueba tu conexión e inténtalo de nuevo.';
+
+  @override
   String get kisiselStilVeProfilUst => 'ESTILO PERSONAL Y PERFIL';
 
   @override
@@ -1788,7 +1792,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'La ubicación en tiempo real se procesa de forma anónima a través de los servicios de Open-Meteo únicamente para consultar las condiciones meteorológicas. Los datos de ubicación nunca se almacenan en servidores ni se comparten con terceros.';
+      'Si autorizas el acceso a la ubicación, la latitud y longitud se envían a Open-Meteo para consultar el tiempo y a BigDataCloud para identificar tu ciudad. FitCheck no almacena estas coordenadas en sus servidores. Cada proveedor procesa los datos conforme a su propia política de privacidad.';
 
   @override
   String get gizlilikMadde3Baslik => '3. Asistente de voz y micrófono';
@@ -2270,7 +2274,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'Se envían datos de uso anónimos para mejorar la experiencia de la app. Si lo desactivas, se eliminan los datos de análisis de este dispositivo.';
+      'Los datos de uso se envían a Firebase Analytics para comprender el uso de la aplicación y mejorar la experiencia. Es opcional y puedes desactivarlo cuando quieras.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2310,6 +2314,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       'Google Play no está disponible ahora mismo. Inténtalo de nuevo.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'La verificación segura de la tienda aún no está disponible para esta plataforma. Las compras no están disponibles temporalmente.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => 'No se pudo iniciar la compra.';

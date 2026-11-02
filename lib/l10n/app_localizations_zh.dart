@@ -1467,6 +1467,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get hesabinizSilindi => '您的账户及相关数据已被删除。';
 
   @override
+  String get hesapSilmeBasarisiz => '未能完成账户删除。请检查网络连接后重试。';
+
+  @override
   String get kisiselStilVeProfilUst => '个人风格与档案';
 
   @override
@@ -1652,7 +1655,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      '实时位置信息仅通过 Open-Meteo 服务以匿名方式处理，纯粹用于获取天气状况。数据绝不会被存储或共享。';
+      '您授权访问位置后，纬度和经度会发送至 Open-Meteo 查询天气，并发送至 BigDataCloud 识别所在城市。FitCheck 不会在自己的服务器上保存这些坐标。各服务商的数据处理均受其自身隐私政策约束。';
 
   @override
   String get gizlilikMadde3Baslik => '3. 语音助手与麦克风';
@@ -2098,7 +2101,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      '为改进应用体验会发送匿名使用数据。关闭后，本机存储的分析数据将被删除。';
+      '使用分析数据会发送至 Firebase Analytics，以了解应用使用情况并改善体验。此项为可选设置，您可以随时关闭。';
 
   @override
   String get chatKarsilamaHavaYok => '您好！👋 要不要来搭配一套适合您风格的穿搭？✨';
@@ -2134,6 +2137,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get premiumMagazaHazirDegil => 'Google Play 目前不可用，请重试。';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil => '此平台的安全商店验证尚未就绪，购买功能暂时不可用。';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => '无法启动购买。';

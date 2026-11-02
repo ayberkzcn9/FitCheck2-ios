@@ -77,13 +77,17 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
 
     final hataMetni = _hataMetni(l10n);
     final mesgul = _satinAlma.yukleniyor;
-    final satinAlinabilir =
-        _urunVar && _satinAlma.magazaHazir && !mesgul && !_satinAlma.hazirlaniyor;
+    final satinAlinabilir = _urunVar &&
+        _satinAlma.magazaHazir &&
+        SatinAlmaServisi.satinAlmaDogrulanabilir &&
+        !mesgul &&
+        !_satinAlma.hazirlaniyor;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.premiumEkranBaslik)),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxxl),
+        padding: const EdgeInsets.fromLTRB(
+            AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxxl),
         children: [
           _kahraman(l10n, colors),
           const SizedBox(height: AppSpacing.xxl),
@@ -116,7 +120,8 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           TextButton(
             onPressed: _satinAlma.yukleniyor ||
                     _satinAlma.hazirlaniyor ||
-                    !_satinAlma.magazaHazir
+                    !_satinAlma.magazaHazir ||
+                    !SatinAlmaServisi.satinAlmaDogrulanabilir
                 ? null
                 : _satinAlma.satinAlmalariGeriYukle,
             child: Text(l10n.premiumGeriYukle),
@@ -127,6 +132,11 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
             Text(hataMetni,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: colors.error)),
+          ] else if (!SatinAlmaServisi.satinAlmaDogrulanabilir) ...[
+            const SizedBox(height: AppSpacing.md),
+            Text(l10n.premiumSatinAlmaDogrulamaHazirDegil,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: colors.onSurfaceVariant)),
           ] else if (!_satinAlma.hazirlaniyor && !_satinAlma.magazaHazir) ...[
             const SizedBox(height: AppSpacing.md),
             Text(l10n.premiumMagazaHazirDegil,
@@ -145,12 +155,16 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           // Console'da etkin temel plan yok ya da ürün kimliği bulunamadı).
           // Yalnızca geliştirme derlemesinde gösterilir; yayında kullanıcıya
           // teknik metin gösterilmez.
-          if (kDebugMode && !_satinAlma.hazirlaniyor && _satinAlma.tani != null) ...[
+          if (kDebugMode &&
+              !_satinAlma.hazirlaniyor &&
+              _satinAlma.tani != null) ...[
             const SizedBox(height: AppSpacing.sm),
             Text(
               _satinAlma.tani!,
               textAlign: TextAlign.center,
-              style: TextStyle(color: colors.onSurfaceVariant, fontSize: AppText.sizeCaption),
+              style: TextStyle(
+                  color: colors.onSurfaceVariant,
+                  fontSize: AppText.sizeCaption),
             ),
           ],
 
@@ -177,7 +191,8 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
           const SizedBox(height: AppSpacing.md),
           if (_satinAlma.denemeSunuluyor)
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.md, vertical: AppSpacing.xs),
               decoration: BoxDecoration(
                 color: AppAccents.success,
                 borderRadius: AppRadius.fullRadius,
@@ -399,7 +414,8 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     required Color onArka,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
         color: arka,
         borderRadius: AppRadius.fullRadius,
@@ -457,9 +473,11 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
     );
     return Column(
       children: [
-        Text(l10n.premiumYenilemeNotu, textAlign: TextAlign.center, style: stil),
+        Text(l10n.premiumYenilemeNotu,
+            textAlign: TextAlign.center, style: stil),
         const SizedBox(height: 6),
-        Text(l10n.premiumOzellikMagaza, textAlign: TextAlign.center, style: stil),
+        Text(l10n.premiumOzellikMagaza,
+            textAlign: TextAlign.center, style: stil),
       ],
     );
   }
@@ -491,7 +509,8 @@ class _OzellikSatiri extends StatelessWidget {
           Expanded(
             child: Text(
               metin,
-              style: const TextStyle(fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w600),
+              style: const TextStyle(
+                  fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w600),
             ),
           ),
         ],

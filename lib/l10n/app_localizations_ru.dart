@@ -1565,6 +1565,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hesabinizSilindi => 'Ваш аккаунт и данные были удалены.';
 
   @override
+  String get hesapSilmeBasarisiz =>
+      'Не удалось завершить удаление аккаунта. Проверьте подключение и повторите попытку.';
+
+  @override
   String get kisiselStilVeProfilUst => 'ПЕРСОНАЛЬНЫЙ СТИЛЬ И ПРОФИЛЬ';
 
   @override
@@ -1768,7 +1772,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'Геопозиция обрабатывается анонимно через сервисы Open-Meteo исключительно для получения текущей погоды. Данные не сохраняются и не передаются.';
+      'Если вы разрешаете доступ к местоположению, широта и долгота отправляются в Open-Meteo для получения погоды и в BigDataCloud для определения города. FitCheck не хранит эти координаты на своих серверах. Обработка данных каждым сервисом регулируется его собственной политикой конфиденциальности.';
 
   @override
   String get gizlilikMadde3Baslik => '3. Голосовой ассистент и микрофон';
@@ -2244,7 +2248,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'Для улучшения приложения отправляются анонимные данные об использовании. При отключении данные аналитики на этом устройстве удаляются.';
+      'Данные об использовании отправляются в Firebase Analytics, чтобы анализировать работу приложения и улучшать его. Это необязательно; передачу можно отключить в любое время.';
 
   @override
   String get chatKarsilamaHavaYok =>
@@ -2284,6 +2288,10 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get premiumMagazaHazirDegil =>
       'Google Play сейчас недоступен. Попробуй ещё раз.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'Безопасная проверка магазина для этой платформы ещё не настроена. Покупки временно недоступны.';
 
   @override
   String get premiumSatinAlmaBaslatilamadi => 'Не удалось начать покупку.';

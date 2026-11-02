@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -73,7 +74,8 @@ class AuthServisi {
   static String? get _googleWebClientId {
     // Google Web Client ID - Firebase Console > Authentication > Sign-in method > Google > Web SDK configuration
     // Bu değer public bir client ID'dir, secret değildir.
-    const String clientId = '1073036685578-4l5ugub50qiso6h1l86ndh9pkt4cnfbe.apps.googleusercontent.com';
+    const String clientId =
+        '1073036685578-4l5ugub50qiso6h1l86ndh9pkt4cnfbe.apps.googleusercontent.com';
     return clientId;
   }
 
@@ -419,25 +421,21 @@ class AuthServisi {
     final user = _auth.currentUser;
     if (user == null) return;
 
-    final String uid = user.uid;
-
-    // Önce kimlik doğrulama hesabı silinir. `delete()` `requires-recent-login`
-    // ile başarısız olabilir; bu durumda Firestore belgesi de silinmemelidir,
-    // aksi hâlde geriye profili olmayan ama giriş yapabilen yarım bir hesap
-    // kalır ve kullanıcı yeniden kayıt olamaz.
+    // Sunucu profili ve satın alma kayıtlarını temizler, ardından Auth hesabını
+    // siler. İstemci oturumu hâlâ geçerliyken bütün adımlar tek bir yetkili
+    // işlemde yapılır; başarısızlıkta sunucu verileri geri yükler.
     try {
-      await user.delete();
-    } on FirebaseAuthException catch (e) {
-      throw _hataMesajiniGetir(e.code);
+      await FirebaseFunctions.instanceFor(region: 'europe-west1')
+          .httpsCallable('deleteAccount')
+          .call()
+          .timeout(const Duration(seconds: 60));
+    } on FirebaseFunctionsException catch (e) {
+      if (e.code == 'failed-precondition') throw 'authHataYenidenGiris';
+      rethrow;
     }
 
-    // Hesap gitti; profil belgesi temizliği artık yan etkisi olmayan bir
-    // "elinden geleni yap" adımıdır.
-    try {
-      await _firestore.collection('kullanicilar').doc(uid).delete();
-    } catch (e) {
-      debugPrint('Hesap silindi ancak profil belgesi silinemedi → $e');
-    }
+    // Admin SDK hesabı sildi; istemcide kalan oturumu temizle.
+    await _auth.signOut();
 
     try {
       await _googleIsleminiSirala(() => _googleSignIn.signOut());

@@ -127,4 +127,13 @@ void main() {
 
     expect(await ReklamServisi().kalanHakGetir(), 3);
   });
+
+  test('temiz kurulum ilk gün tam 3 hakla başlar, 6 hak olmaz', () async {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+    final prefs = await SharedPreferences.getInstance();
+
+    expect(await ReklamServisi().kalanHakGetir(), 3);
+    expect(prefs.getInt('reklam_gunluk_hak'), 3);
+    expect(prefs.getInt('reklam_ekstra_hak'), 0);
+  });
 }

@@ -1,6 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io' show Platform;
 
+import 'package:cloud_functions/cloud_functions.dart';
+import 'package:crypto/crypto.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,6 +51,13 @@ class SatinAlmaServisi extends ChangeNotifier {
   /// yani yanlışlıkla açık bırakılsa bile deneme yoksa rozet gösterilmez.
   static const int denemeGunSayisi = 7;
 
+  /// Bu sürümde yalnızca Firebase Functions üzerinden doğrulanabilen Play
+  /// satın alımları etkinleştirilir. iOS doğrulaması eklenene kadar kapalıdır.
+  static bool get satinAlmaDogrulanabilir =>
+      Platform.isAndroid &&
+      AnalyticsServisi.firebaseHazir &&
+      FirebaseAuth.instance.currentUser != null;
+
   // Mağazadan gelen metinler dışındaki hata durumları; ekran bunları
   // yerelleştirilmiş mesaja çevirir.
   static const String hataSatinAlmaBaslatilamadi = 'satin_alma_baslatilamadi';
@@ -73,15 +84,17 @@ class SatinAlmaServisi extends ChangeNotifier {
   String? tani;
 
   bool _sorguSuruyor = false;
+  bool _sunucuSorgusuSuruyor = false;
 
-  /// Aboneliğin hâlâ geçerli olduğu mağazadan en fazla bu aralıkla doğrulanır.
-  static const int dogrulamaAraligiGun = 3;
-
-  static const String _dogrulamaTsAnahtari = 'premium_dogrulama_ts';
   static const String _premiumAnahtari = 'reklamsiz_premium';
+  static const String _premiumSunucuDogrulandiAnahtari =
+      'premium_sunucu_dogrulandi';
+  static const String _premiumSahipUidAnahtari = 'premium_sahip_uid';
+  static const String _premiumSunucuTsAnahtari = 'premium_sunucu_dogrulama_ts';
+  static const Duration _sunucuDogrulamaGecerlilik = Duration(hours: 24);
 
-  bool _dogrulamaSuruyor = false;
-  Completer<bool>? _dogrulamaCompleter;
+  FirebaseFunctions get _functions =>
+      FirebaseFunctions.instanceFor(region: 'europe-west1');
 
   // --- DURUM SORGULARI ---
 
@@ -97,15 +110,18 @@ class SatinAlmaServisi extends ChangeNotifier {
   }
 
   /// Satın alma için tercih edilen aylık teklif (deneme varsa deneme teklifi).
-  ProductDetails? get aylikUrun =>
-      denemeGunSayisi > 0 ? (_aylikDenemeTeklifi ?? _aylikNormalTeklif) : _aylikNormalTeklif;
+  ProductDetails? get aylikUrun => denemeGunSayisi > 0
+      ? (_aylikDenemeTeklifi ?? _aylikNormalTeklif)
+      : _aylikNormalTeklif;
 
   /// Satın alma için tercih edilen yıllık teklif (deneme varsa deneme teklifi).
-  ProductDetails? get yillikUrun =>
-      denemeGunSayisi > 0 ? (_yillikDenemeTeklifi ?? _yillikNormalTeklif) : _yillikNormalTeklif;
+  ProductDetails? get yillikUrun => denemeGunSayisi > 0
+      ? (_yillikDenemeTeklifi ?? _yillikNormalTeklif)
+      : _yillikNormalTeklif;
 
   ProductDetails? get _aylikDenemeTeklifi => _ilkUygunTeklif(_aylikAdaylar, 0);
-  ProductDetails? get _yillikDenemeTeklifi => _ilkUygunTeklif(_yillikAdaylar, 0);
+  ProductDetails? get _yillikDenemeTeklifi =>
+      _ilkUygunTeklif(_yillikAdaylar, 0);
   ProductDetails? get _aylikNormalTeklif => _ilkUygunTeklif(_aylikAdaylar, 1);
   ProductDetails? get _yillikNormalTeklif => _ilkUygunTeklif(_yillikAdaylar, 1);
 
@@ -126,7 +142,8 @@ class SatinAlmaServisi extends ChangeNotifier {
     if (Platform.isAndroid) {
       return _denemeVar(_aylikAdaylar) || _denemeVar(_yillikAdaylar);
     }
-    return true;
+    // iOS'taki introductory offer bu eklenti akışında doğrulanmıyor.
+    return false;
   }
 
   /// Seçili planın deneme sunup sunmadığı (plan kartındaki rozet için).
@@ -134,10 +151,10 @@ class SatinAlmaServisi extends ChangeNotifier {
     if (denemeGunSayisi <= 0) return false;
     if (plan == PremiumPlan.yillik) {
       if (_yillikAdaylar.isEmpty) return false;
-      return Platform.isAndroid ? _denemeVar(_yillikAdaylar) : true;
+      return Platform.isAndroid && _denemeVar(_yillikAdaylar);
     }
     if (_aylikAdaylar.isEmpty) return false;
-    return Platform.isAndroid ? _denemeVar(_aylikAdaylar) : true;
+    return Platform.isAndroid && _denemeVar(_aylikAdaylar);
   }
 
   /// Yıllık planın aylık ödemeye göre yüzde tasarrufu; hesaplanamazsa 0.
@@ -164,7 +181,25 @@ class SatinAlmaServisi extends ChangeNotifier {
 
     try {
       final prefs = await SharedPreferences.getInstance();
-      premiumAktif = prefs.getBool(_premiumAnahtari) ?? false;
+      final uid = AnalyticsServisi.firebaseHazir
+          ? FirebaseAuth.instance.currentUser?.uid
+          : null;
+      final sonSunucuDogrulamasi = prefs.getInt(_premiumSunucuTsAnahtari);
+      final dogrulamaTaze = sonSunucuDogrulamasi != null &&
+          DateTime.now().difference(
+                  DateTime.fromMillisecondsSinceEpoch(sonSunucuDogrulamasi)) <=
+              _sunucuDogrulamaGecerlilik;
+      premiumAktif = prefs.getBool(_premiumAnahtari) == true &&
+          prefs.getBool(_premiumSunucuDogrulandiAnahtari) == true &&
+          prefs.getString(_premiumSahipUidAnahtari) == uid &&
+          uid != null &&
+          dogrulamaTaze;
+      if (!premiumAktif &&
+          prefs.getBool(_premiumAnahtari) == true &&
+          !ReklamServisi.adminModuAcikMi(prefs)) {
+        await prefs.setBool(_premiumAnahtari, false);
+        await ReklamServisi().reklamlariAc();
+      }
       if (premiumAktif) {
         await ReklamServisi().reklamlariKapat();
       }
@@ -174,8 +209,6 @@ class SatinAlmaServisi extends ChangeNotifier {
         onError: (Object error) {
           hata = error.toString();
           yukleniyor = false;
-          // Doğrulama sürüyorsa "durum bilinmiyor" say: premium kapatılmaz.
-          _dogrulamayiBitir(true);
           notifyListeners();
         },
       );
@@ -187,85 +220,97 @@ class SatinAlmaServisi extends ChangeNotifier {
       notifyListeners();
     }
 
-    // Arayüz hazır olduktan sonra, arka planda: iptal edilen ya da süresi biten
-    // abonelikte reklamlar yeniden devreye girer.
-    if (magazaHazir) unawaited(_aboneligiDogrula());
+    // Abonelik durumu sunucudan doğrulanır. Eski sürümden kalan, sunucu
+    // doğrulaması olmayan yerel premium bayrağı tek başına yetki vermez.
+    if (magazaHazir && satinAlmaDogrulanabilir) {
+      unawaited(_sunucudanAbonelikDurumunuYukle());
+    }
   }
 
-  /// Yerelde premium görünen aboneliğin hâlâ geçerli olduğunu mağazadan
-  /// doğrular; iptal eden ya da süresi biten kullanıcı sonsuza kadar reklamsız
-  /// kalmasın diye.
-  ///
-  /// Emniyet kuralları (yanlış iptal riskini en aza indirir):
-  ///  • Android dışında çalışmaz (iOS'ta mağaza oturum ekranı açabilir).
-  ///  • Mağaza hazır değilse ya da hata verirse hiçbir şey değiştirilmez.
-  ///  • Şüpheli sonuçta (zaman aşımı) yerel kayıt silinir; bir sonraki açılışta
-  ///    doğrulama yeniden çalışır ve abonelik kendiliğinden geri gelir.
-  Future<void> _aboneligiDogrula() async {
-    if (_dogrulamaSuruyor) return;
-    if (!Platform.isAndroid) return;
+  Future<void> _sunucudanAbonelikDurumunuYukle() async {
+    if (_sunucuSorgusuSuruyor || !satinAlmaDogrulanabilir) return;
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
 
-    final prefs = await SharedPreferences.getInstance();
-
-    // Yönetici/kupon erişimi mağaza aboneliğinden bağımsızdır; dokunulmaz.
-    // (Aksi halde kuponla reklamsız olan kullanıcının erişimi kapanırdı.)
-    if (ReklamServisi.adminModuAcikMi(prefs)) return;
-
-    final int? sonTs = prefs.getInt(_dogrulamaTsAnahtari);
-    final bool premiumKayitli = prefs.getBool(_premiumAnahtari) ?? false;
-
-    final bool kontrolZamaniGeldi = sonTs == null ||
-        DateTime.now()
-                .difference(DateTime.fromMillisecondsSinceEpoch(sonTs))
-                .inDays >=
-            dogrulamaAraligiGun;
-    if (!kontrolZamaniGeldi) return;
-
-    _dogrulamaSuruyor = true;
-    final Completer<bool> tamam = Completer<bool>();
-    _dogrulamaCompleter = tamam;
-
+    _sunucuSorgusuSuruyor = true;
     try {
-      await _magaza.restorePurchases();
-      // Satın alma olayları restore tamamlandıktan hemen sonra da gelebildiği
-      // için kısa bir pencere beklenir. Olay gelmezse abonelik yoktur.
-      final bool abonelikVar =
-          await tamam.future.timeout(const Duration(seconds: 8),
-              onTimeout: () => false);
-
-      if (abonelikVar) {
-        premiumAktif = true;
-        await prefs.setBool(_premiumAnahtari, true);
-        await prefs.setInt(
-            _dogrulamaTsAnahtari, DateTime.now().millisecondsSinceEpoch);
-        await ReklamServisi().reklamlariKapat();
-      } else if (premiumKayitli) {
-        premiumAktif = false;
-        await prefs.setBool(_premiumAnahtari, false);
-        // Bir sonraki açılışta yeniden doğrulanır.
-        await prefs.remove(_dogrulamaTsAnahtari);
-        await ReklamServisi().reklamlariAc();
-        debugPrint('[SatinAlma] Abonelik doğrulanamadı, premium kapatıldı.');
+      final result = await _functions
+          .httpsCallable('getSubscriptionEntitlement')
+          .call()
+          .timeout(sorguZamanAsimi);
+      final data = result.data;
+      if (data is! Map || data['known'] is! bool) {
+        throw const FormatException('Invalid entitlement response');
+      }
+      if (data['known'] == true) {
+        await _sunucuOnayliDurumuUygula(
+          aktif: data['active'] == true,
+          uid: user.uid,
+        );
       } else {
-        await prefs.setInt(
-            _dogrulamaTsAnahtari, DateTime.now().millisecondsSinceEpoch);
+        // Eski sürüm satın alımları sunucuya henüz kaydedilmemiş olabilir.
+        // Mağazadan geri yükle; yalnızca sunucunun doğruladığı olay yetki verir.
+        await _magaza.restorePurchases();
       }
     } catch (e) {
-      // Çevrimdışı ya da mağaza hatası: mevcut durum korunur.
-      debugPrint('[SatinAlma] Abonelik doğrulama hatası: $e');
+      // Ağ/Functions hatasında doğrulanmamış satın alıma erişim verilmez.
+      debugPrint('[SatinAlma] Sunucu entitlement sorgusu başarısız.');
     } finally {
-      _dogrulamaCompleter = null;
-      _dogrulamaSuruyor = false;
+      _sunucuSorgusuSuruyor = false;
       notifyListeners();
     }
   }
 
-  /// Devam eden abonelik doğrulamasını sonuçlandırır (birden fazla olayda
-  /// tekrar tamamlanmasını engeller).
-  void _dogrulamayiBitir(bool sonuc) {
-    final Completer<bool>? tamam = _dogrulamaCompleter;
-    if (tamam == null || tamam.isCompleted) return;
-    tamam.complete(sonuc);
+  Future<bool> _satinAlmayiSunucudaDogrula(
+    PurchaseDetails satinAlma,
+  ) async {
+    if (!satinAlmaDogrulanabilir) {
+      throw StateError('Bu mağaza için sunucu doğrulaması yapılandırılmadı.');
+    }
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      throw StateError('Satın alma doğrulaması için oturum açılmalı.');
+    }
+    final token = satinAlma.verificationData.serverVerificationData;
+    if (token.isEmpty) throw StateError('Mağaza doğrulama verisi boş.');
+
+    final result = await _functions
+        .httpsCallable('verifySubscription')
+        .call(<String, Object>{
+      'store': 'google_play',
+      'productId': satinAlma.productID,
+      'purchaseToken': token,
+    }).timeout(sorguZamanAsimi);
+    final data = result.data;
+    if (data is! Map || data['verified'] != true || data['active'] is! bool) {
+      throw const FormatException('Invalid verification response');
+    }
+    await _sunucuOnayliDurumuUygula(
+      aktif: data['active'] == true,
+      uid: user.uid,
+    );
+    return data['active'] == true;
+  }
+
+  Future<void> _sunucuOnayliDurumuUygula({
+    required bool aktif,
+    required String uid,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    premiumAktif = aktif;
+    await prefs.setBool(_premiumAnahtari, aktif);
+    await prefs.setBool(_premiumSunucuDogrulandiAnahtari, true);
+    await prefs.setString(_premiumSahipUidAnahtari, uid);
+    await prefs.setInt(
+      _premiumSunucuTsAnahtari,
+      DateTime.now().millisecondsSinceEpoch,
+    );
+    if (aktif) {
+      await ReklamServisi().reklamlariKapat();
+    } else {
+      await ReklamServisi().reklamlariAc();
+    }
+    notifyListeners();
   }
 
   Future<void> _urunleriSorgula() async {
@@ -283,9 +328,8 @@ class SatinAlmaServisi extends ChangeNotifier {
     if (!magazaHazir) return;
 
     try {
-      final response = await _magaza
-          .queryProductDetails({aylikUrunKimligi, yillikUrunKimligi})
-          .timeout(sorguZamanAsimi);
+      final response = await _magaza.queryProductDetails(
+          {aylikUrunKimligi, yillikUrunKimligi}).timeout(sorguZamanAsimi);
       hata = response.error?.message;
       if (response.notFoundIDs.isNotEmpty) {
         tani = 'notFoundIDs: ${response.notFoundIDs.join(', ')}';
@@ -319,7 +363,7 @@ class SatinAlmaServisi extends ChangeNotifier {
 
   Future<void> satinAl() async {
     final ProductDetails? urun = seciliUrun;
-    if (urun == null || yukleniyor) return;
+    if (urun == null || yukleniyor || !satinAlmaDogrulanabilir) return;
     yukleniyor = true;
     hata = null;
     notifyListeners();
@@ -329,7 +373,12 @@ class SatinAlmaServisi extends ChangeNotifier {
     // (Subscription / Auto-Renewable) olarak tanımlanmalıdır.
     try {
       final basarili = await _magaza.buyNonConsumable(
-        purchaseParam: PurchaseParam(productDetails: urun),
+        purchaseParam: PurchaseParam(
+          productDetails: urun,
+          applicationUserName: sha256
+              .convert(utf8.encode(FirebaseAuth.instance.currentUser!.uid))
+              .toString(),
+        ),
       );
       // Ödeme ekranı açıldıysa sonuç purchaseStream'den işlenir.
       if (basarili) return;
@@ -371,25 +420,35 @@ class SatinAlmaServisi extends ChangeNotifier {
           satinAlma.productID != yillikUrunKimligi) {
         continue;
       }
+      var satinAlmaDogrulandi = false;
 
       if (satinAlma.status == PurchaseStatus.purchased ||
           satinAlma.status == PurchaseStatus.restored) {
-        // Üretimde satın alma doğrulaması güvenli bir sunucuda yapılmalıdır.
-        premiumAktif = true;
-        // Doğrulama sürüyorsa "abonelik var" bilgisi iletilir.
-        _dogrulamayiBitir(true);
-        await ReklamServisi().reklamlariKapat();
-        await AnalyticsServisi().olay(
-          satinAlma.status == PurchaseStatus.restored
-              ? 'premium_restore'
-              : 'premium_purchase',
-          {'product_id': satinAlma.productID},
-        );
+        try {
+          // Mağazanın istemci olayı tek başına premium yetkisi vermez.
+          final aktif = await _satinAlmayiSunucudaDogrula(satinAlma);
+          await AnalyticsServisi().olay(
+            satinAlma.status == PurchaseStatus.restored
+                ? 'premium_restore'
+                : 'premium_purchase',
+            {'product_id': satinAlma.productID},
+          );
+          if (!aktif) hata = hataSatinAlmaBasarisiz;
+          satinAlmaDogrulandi = true;
+        } catch (e) {
+          // Sunucuya ulaşılamazsa satın alma tamamlanmış sayılmaz; platform
+          // işlemi yeniden iletebilir ve premium kesinlikle açılmaz.
+          hata = hataSatinAlmaBasarisiz;
+          tani = e.toString();
+        }
       } else if (satinAlma.status == PurchaseStatus.error) {
         hata = satinAlma.error?.message ?? hataSatinAlmaBasarisiz;
+        satinAlmaDogrulandi = true;
+      } else if (satinAlma.status == PurchaseStatus.canceled) {
+        satinAlmaDogrulandi = true;
       }
 
-      if (satinAlma.pendingCompletePurchase) {
+      if (satinAlma.pendingCompletePurchase && satinAlmaDogrulandi) {
         await _magaza.completePurchase(satinAlma);
       }
     }
