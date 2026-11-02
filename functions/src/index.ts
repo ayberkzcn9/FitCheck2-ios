@@ -6,7 +6,7 @@ import {
   Timestamp,
   getFirestore,
 } from "firebase-admin/firestore";
-import { google } from "googleapis";
+import { GoogleAuth } from "google-auth-library";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { HttpsError, onCall } from "firebase-functions/v2/https";
 
@@ -38,15 +38,28 @@ async function verifyWithGooglePlay(
   productId: string,
   uid: string,
 ): Promise<VerifiedPlayPurchase> {
-  const auth = new google.auth.GoogleAuth({
+  const auth = new GoogleAuth({
     scopes: ["https://www.googleapis.com/auth/androidpublisher"],
   });
-  const publisher = google.androidpublisher({ version: "v3", auth });
-  const response = await publisher.purchases.subscriptionsv2.get({
-    packageName: PACKAGE_NAME,
-    token: purchaseToken,
+  const client = await auth.getClient();
+  const accessToken = await client.getAccessToken();
+  if (!accessToken.token) {
+    throw new HttpsError("unavailable", "Play API authentication is unavailable.");
+  }
+
+  const url = new URL(
+    `https://androidpublisher.googleapis.com/androidpublisher/v3/applications/${encodeURIComponent(PACKAGE_NAME)}/purchases/subscriptionsv2/tokens/${encodeURIComponent(purchaseToken)}`,
+  );
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${accessToken.token}` },
   });
-  const subscription = response.data as PlaySubscription;
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new HttpsError("permission-denied", "Purchase token was not found.");
+    }
+    throw new HttpsError("unavailable", "Google Play verification is unavailable.");
+  }
+  const subscription = (await response.json()) as PlaySubscription;
 
   const linkedAccount =
     subscription.externalAccountIdentifiers?.obfuscatedExternalAccountId;
