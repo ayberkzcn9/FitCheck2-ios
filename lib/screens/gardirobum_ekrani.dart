@@ -1649,6 +1649,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
   Widget _kiyafetKartiOlustur(Kiyafet item, int index, List<Kiyafet> kategoriListesi, AppLocalizations l10n) {
     final colors = Theme.of(context).colorScheme;
     final bool acik = _acikKartId == item.id;
+    final buyukYazi = MediaQuery.textScalerOf(context).scale(AppText.sizeSmall) >
+        AppText.sizeSmall * 1.4;
 
     return GestureDetector(
       onTap: () {
@@ -1799,7 +1801,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
                       Expanded(
                         child: Text(
                           item.gorunenBaslik,
-                          maxLines: 1,
+                          // %200 metin boyutunda kıyafet adını tek satırda
+                          // kesmek yerine kart başlığını iki satıra genişlet.
+                          maxLines: buyukYazi ? 2 : 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: item.sepetteMi
@@ -2161,6 +2165,8 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
     bool sayiGoster = true,
   }) {
     final colors = Theme.of(context).colorScheme;
+    final buyukYazi = MediaQuery.textScalerOf(context).scale(AppText.sizeSmall) >
+        AppText.sizeSmall * 1.4;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -2200,7 +2206,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> with SingleTickerPro
           ),
         ),
         SizedBox(
-          height: 265,
+          height: buyukYazi ? 310 : 265,
           child: kategoriListesi.isEmpty
               ? ListView(
                   scrollDirection: Axis.horizontal,

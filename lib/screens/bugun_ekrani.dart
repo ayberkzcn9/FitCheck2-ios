@@ -274,9 +274,6 @@ class _BugunEkraniState extends State<BugunEkrani> {
         ),
         slivers: [
           SliverToBoxAdapter(child: _baslik(context, l10n)),
-          SliverToBoxAdapter(
-            child: _hizliAksiyonlar(context, l10n, colors),
-          ),
           if (_bugunPlani != null)
             SliverToBoxAdapter(
               child: _planKarti(
@@ -294,6 +291,11 @@ class _BugunEkraniState extends State<BugunEkrani> {
             SliverToBoxAdapter(
               child: _seninIcin(context, l10n, colors, digerleri, indeks),
             ),
+          // Ana iş olan bugünün kombini hızlı araçlardan önce gelir. İlk
+          // ekranda kullanıcı önce ne giyeceğini, sonra diğer işlemleri görür.
+          SliverToBoxAdapter(
+            child: _hizliAksiyonlar(context, l10n, colors),
+          ),
           if (giyilmedi.isNotEmpty)
             SliverToBoxAdapter(
               child: _raf(
@@ -343,6 +345,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
     final hava = widget.gunlukHava.trim();
     final havaVar = hava.isNotEmpty && !widget.havaYukleniyor;
+    final havaBuyukYazida = MediaQuery.textScalerOf(context)
+            .scale(AppText.sizeCaption) >
+        AppText.sizeCaption * 1.4;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xs),
@@ -385,7 +390,9 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   Flexible(
                     child: Text(
                       hava,
-                      maxLines: 1,
+                      // Büyük yazıda hava bilgisi bir satıra sığmadığı için
+                      // sıcaklık/durum bilgisini kesmek yerine iki satıra aç.
+                      maxLines: havaBuyukYazida ? 2 : 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: AppText.sizeCaption,
@@ -441,6 +448,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           etiket: l10n.stilGunluguBaslik,
           renk: colors.primary,
           onTap: widget.onStilGunluguAc!,
+          ikincil: true,
         ),
       if (widget.onSeyahatAc != null)
         _HizliAksiyon(
@@ -448,20 +456,26 @@ class _BugunEkraniState extends State<BugunEkrani> {
           etiket: l10n.seyahatBaslik,
           renk: colors.primary,
           onTap: widget.onSeyahatAc!,
+          ikincil: true,
         ),
     ];
 
-    // Yazı büyüdükçe üç sütun dar kalıyor ve kelimeler ortadan bölünüyordu
-    // ("Fotoğrafl / a ekle"). Büyük yazıda iki sütuna geçilir.
+    // Dört ana işlem belirgin 2 sütunlu ızgarada; günlük ve seyahat araçları
+    // daha hafif çiplerde. Böylece ana kombin kartıyla görsel olarak yarışmaz.
+    final anaAksiyonlar =
+        aksiyonlar.where((aksiyon) => !aksiyon.ikincil).toList();
+    final araclar = aksiyonlar.where((aksiyon) => aksiyon.ikincil).toList();
     final buyukYazi = MediaQuery.textScalerOf(context).scale(AppText.sizeMicro) >
         AppText.sizeMicro * 1.4;
-    final sutun = buyukYazi ? 2 : 3;
+    const sutun = 2;
     final satirlar = <List<_HizliAksiyon>>[];
-    for (var i = 0; i < aksiyonlar.length; i += sutun) {
+    for (var i = 0; i < anaAksiyonlar.length; i += sutun) {
       satirlar.add(
-        aksiyonlar.sublist(
+        anaAksiyonlar.sublist(
           i,
-          i + sutun > aksiyonlar.length ? aksiyonlar.length : i + sutun,
+          i + sutun > anaAksiyonlar.length
+              ? anaAksiyonlar.length
+              : i + sutun,
         ),
       );
     }
@@ -471,7 +485,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
       child: Column(
         children: [
           for (var s = 0; s < satirlar.length; s++) ...[
-            if (s > 0) const SizedBox(height: 8),
+            if (s > 0) const SizedBox(height: AppSpacing.sm),
             Row(
               children: [
                 for (var i = 0; i < sutun; i++) ...[
@@ -485,7 +499,59 @@ class _BugunEkraniState extends State<BugunEkrani> {
               ],
             ),
           ],
+          if (araclar.isNotEmpty) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: buyukYazi
+                  ? SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          for (var i = 0; i < araclar.length; i++) ...[
+                            if (i > 0) const SizedBox(width: AppSpacing.sm),
+                            _aracDugmesi(araclar[i], colors, buyukYazi: true),
+                          ],
+                        ],
+                      ),
+                    )
+                  : Wrap(
+                      spacing: AppSpacing.sm,
+                      runSpacing: AppSpacing.sm,
+                      children: [
+                        for (final arac in araclar)
+                          _aracDugmesi(arac, colors),
+                      ],
+                    ),
+            ),
+          ],
         ],
+      ),
+    );
+  }
+
+  Widget _aracDugmesi(
+    _HizliAksiyon arac,
+    ColorScheme colors, {
+    bool buyukYazi = false,
+  }) {
+    return OutlinedButton.icon(
+      onPressed: () {
+        HapticFeedback.lightImpact();
+        arac.onTap();
+      },
+      icon: Icon(arac.ikon, size: 18),
+      label: Text(
+        arac.etiket,
+        maxLines: buyukYazi ? 1 : 2,
+        softWrap: !buyukYazi,
+        overflow: buyukYazi ? TextOverflow.visible : TextOverflow.ellipsis,
+      ),
+      style: OutlinedButton.styleFrom(
+        foregroundColor: colors.onSurfaceVariant,
+        side: BorderSide(color: colors.outlineVariant),
+        minimumSize: Size(0, buyukYazi ? 52 : 44),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
       ),
     );
   }
@@ -1566,11 +1632,13 @@ class _HizliAksiyon {
   final String etiket;
   final Color renk;
   final VoidCallback onTap;
+  final bool ikincil;
 
   const _HizliAksiyon({
     required this.ikon,
     required this.etiket,
     required this.renk,
     required this.onTap,
+    this.ikincil = false,
   });
 }

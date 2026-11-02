@@ -179,6 +179,11 @@ void main() {
     expect(find.text('Giydim'), findsOneWidget);
     expect(find.text('Kaydet'), findsOneWidget);
     expect(find.text('2 haftadır giymediklerin'), findsOneWidget);
+    expect(
+      tester.getTopLeft(find.text('Sade ofis kombini')).dy,
+      lessThan(tester.getTopLeft(find.text('Fotoğrafla ekle')).dy),
+      reason: 'Ana kombin hızlı araçlardan önce sunulmalı.',
+    );
 
     // Aynı parça iki rafta birden görünmemeli: bu küçük dolapta "bugüne
     // uygun" rafı tamamen boşaldığı için gizlenir.
@@ -455,7 +460,7 @@ void main() {
 
     expect(tester.takeException(), isNull);
 
-    // 3 sütunlu ızgara dar ekranda da altı aracı gösterir.
+    // Dört ana işlem ve iki ikincil araç dar ekranda da görünür.
     for (final etiket in [
       'Fotoğrafla ekle',
       'Kombin üret',
@@ -466,6 +471,19 @@ void main() {
     ]) {
       expect(find.text(etiket), findsOneWidget, reason: '$etiket görünmüyor');
     }
+  });
+
+  testWidgets('%200 yazıda hava durumu tek satırda kesilmez', (tester) async {
+    tester.platformDispatcher.textScaleFactorTestValue = 2.0;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+    await kur(tester, dolap: [ust, alt], kombinler: [kombin]);
+
+    final hava = tester.widget<Text>(
+      find.text('İstanbul • 21°C • Parçalı Bulutlu'),
+    );
+    expect(hava.maxLines, 2);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('kombin varken paylas dugmesi etkin', (tester) async {

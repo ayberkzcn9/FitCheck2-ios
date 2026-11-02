@@ -1528,6 +1528,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
     final bool programVarMi =
         _haftalikProgram != null && _haftalikProgram!['hafta'] != null;
+    final bool temizDolapBos =
+        widget.gardirobum.every((kiyafet) => kiyafet.sepetteMi);
 
     // Eksik parça varsa kullanıcı bilgilendirilir; plan yine de üretilir.
     final String? eksikParcaNotu =
@@ -2520,7 +2522,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                           _eksikParcaOnerisiYukleniyor ||
                                   _eksikParcaOnerisi != null
                               ? l10n.haftalikEksikParcaPlanKurulamadi
-                              : l10n.haftalikUyariDolapBosIcerik,
+                              : temizDolapBos
+                                  ? l10n.haftalikUyariDolapBosIcerik
+                                  : l10n.haftalikPlanAciklama,
                           textAlign: TextAlign.center,
                           style: theme.textTheme.bodyLarge?.copyWith(
                             color: colorScheme.onSurfaceVariant,

@@ -131,4 +131,26 @@ void main() {
     expect(find.text('2 Ürün'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets('%200 yazıda gardırop kıyafet adı iki satıra açılır',
+      (tester) async {
+    tester.platformDispatcher.textScaleFactorTestValue = 2.0;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    await kur(tester);
+
+    final baslik = tester.widget<Text>(find.text('Beyaz Tişört').first);
+    expect(baslik.maxLines, 2);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('%200 yazıda gardırop kıyafet adı iki satıra açılır',
+      (tester) async {
+    tester.platformDispatcher.textScaleFactorTestValue = 2.0;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    await kur(tester);
+
+    final baslik = tester.widget<Text>(find.text('Beyaz Tişört').first);
+    expect(baslik.maxLines, 2);
+    expect(tester.takeException(), isNull);
+  });
 }
