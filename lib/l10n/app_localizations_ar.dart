@@ -2959,6 +2959,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bugunBugununKombini => 'إطلالة اليوم';
 
   @override
+  String get bugunNedenBuKombin => 'لماذا هذه الإطلالة؟';
+
+  @override
+  String get bugunRenkUyumu => 'تناغم الألوان';
+
+  @override
   String get bugunHizliFotograf => 'أضف صورة';
 
   @override

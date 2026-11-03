@@ -2980,6 +2980,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get bugunBugununKombini => 'Bugünün kombini';
 
   @override
+  String get bugunNedenBuKombin => 'Neden bu kombin?';
+
+  @override
+  String get bugunRenkUyumu => 'Renk uyumu';
+
+  @override
   String get bugunHizliFotograf => 'Fotoğrafla ekle';
 
   @override

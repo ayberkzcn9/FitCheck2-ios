@@ -2854,6 +2854,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get bugunBugununKombini => '今日のコーデ';
 
   @override
+  String get bugunNedenBuKombin => 'このコーデの理由';
+
+  @override
+  String get bugunRenkUyumu => '色の調和';
+
+  @override
   String get bugunHizliFotograf => '写真を追加';
 
   @override

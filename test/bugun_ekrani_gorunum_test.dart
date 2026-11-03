@@ -179,6 +179,16 @@ void main() {
     expect(find.text('Giydim'), findsOneWidget);
     expect(find.text('Kaydet'), findsOneWidget);
     expect(find.text('2 haftadır giymediklerin'), findsOneWidget);
+    await tester.tap(find.text('Neden bu kombin?'));
+    await tester.pumpAndSettle();
+    expect(find.text('Renk uyumu'), findsOneWidget);
+    expect(find.text('88/100'), findsOneWidget);
+    expect(
+      find.text('Nötr ve toprak tonlar birbirini dengeliyor.'),
+      findsOneWidget,
+    );
+    await tester.tap(find.byTooltip('Kapat'));
+    await tester.pumpAndSettle();
     expect(
       tester.getTopLeft(find.text('Sade ofis kombini')).dy,
       lessThan(tester.getTopLeft(find.text('Fotoğrafla ekle')).dy),

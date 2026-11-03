@@ -5500,6 +5500,18 @@ abstract class AppLocalizations {
   /// **'Bugünün kombini'**
   String get bugunBugununKombini;
 
+  /// No description provided for @bugunNedenBuKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Neden bu kombin?'**
+  String get bugunNedenBuKombin;
+
+  /// No description provided for @bugunRenkUyumu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Renk uyumu'**
+  String get bugunRenkUyumu;
+
   /// No description provided for @bugunHizliFotograf.
   ///
   /// In tr, this message translates to:

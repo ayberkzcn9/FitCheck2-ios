@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 import '../../models/kiyafet.dart';
 import '../../l10n/app_localizations.dart';
@@ -97,6 +98,24 @@ class KiyafetKartcigi extends StatelessWidget {
                     fontSize: AppText.sizeCaption,
                   ),
                 ),
+                if (kiyafet.fiyat > 0 && kiyafet.giyilmeSayisi > 0) ...[
+                  const SizedBox(height: 3),
+                  Text(
+                    l10n.gardirobumMaliyet(
+                      NumberFormat.decimalPattern(
+                        Localizations.localeOf(context).toLanguageTag(),
+                      ).format(kiyafet.giyimBasinaMaliyet),
+                    ),
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.w700,
+                      fontSize: AppText.sizeMicro,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ],
             ),
           )

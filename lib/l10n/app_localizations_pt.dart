@@ -2997,6 +2997,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get bugunBugununKombini => 'O look de hoje';
 
   @override
+  String get bugunNedenBuKombin => 'Por que este look?';
+
+  @override
+  String get bugunRenkUyumu => 'Harmonia das cores';
+
+  @override
   String get bugunHizliFotograf => 'Adicionar foto';
 
   @override

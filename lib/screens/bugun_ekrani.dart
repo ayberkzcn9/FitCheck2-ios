@@ -30,6 +30,7 @@ import '../models/planli_kombin.dart';
 import '../services/akilli_raflar.dart';
 import '../services/analytics_servisi.dart';
 import '../services/bugun_feed_servisi.dart';
+import '../services/kombin_duellosu_motoru.dart';
 import '../services/planli_kombin_deposu.dart';
 import '../theme/design_tokens.dart';
 import '../utils/helpers.dart';
@@ -900,6 +901,137 @@ class _BugunEkraniState extends State<BugunEkrani> {
     );
   }
 
+  RenkDegerlendirme? _renkUyumunuDegerlendir(List<Kiyafet> parcalar) {
+    if (parcalar.length < 2 ||
+        parcalar.any((parca) => renkAilesi(parca.renk) == RenkAilesi.bilinmiyor)) {
+      return null;
+    }
+    return renkDegerlendir(parcalar.map((parca) => parca.renk));
+  }
+
+  String _renkSebebiniGetir(AppLocalizations l10n, DuelSebebi sebep) =>
+      switch (sebep) {
+        DuelSebebi.notr => l10n.duelloSebepNotr,
+        DuelSebebi.monokrom => l10n.duelloSebepMonokrom,
+        DuelSebebi.analog => l10n.duelloSebepAnalog,
+        DuelSebebi.vurgu => l10n.duelloSebepVurgu,
+        DuelSebebi.zit => l10n.duelloSebepZit,
+        DuelSebebi.dagink => l10n.duelloSebepDagink,
+        DuelSebebi.cokRenk => l10n.duelloSebepCokRenk,
+        DuelSebebi.havaUygun => l10n.duelloSebepHavaUygun,
+        DuelSebebi.havaAgir => l10n.duelloSebepHavaAgir,
+        DuelSebebi.havaHafif => l10n.duelloSebepHavaHafif,
+      };
+
+  void _nedenBuKombinGoster({
+    required BuildContext context,
+    required AppLocalizations l10n,
+    required BugunKombin kombin,
+    required RenkDegerlendirme? renk,
+  }) {
+    showModalBottomSheet<void>(
+      context: context,
+      useSafeArea: true,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (sheetContext) {
+        final sheetColors = Theme.of(sheetContext).colorScheme;
+        return Container(
+          decoration: BoxDecoration(
+            color: sheetColors.surfaceContainerHigh,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(28),
+            ),
+            border: Border.all(
+              color: sheetColors.outlineVariant.withValues(alpha: 0.4),
+            ),
+          ),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(AppSpacing.xl),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        l10n.bugunNedenBuKombin,
+                        style: TextStyle(
+                          color: sheetColors.onSurface,
+                          fontSize: AppText.sizeTitleSmall,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: l10n.kapat,
+                      onPressed: () => Navigator.pop(sheetContext),
+                      icon: const Icon(Icons.close_rounded),
+                    ),
+                  ],
+                ),
+                if (kombin.aciklama.trim().isNotEmpty) ...[
+                  const SizedBox(height: AppSpacing.sm),
+                  Text(
+                    kombin.aciklama,
+                    style: TextStyle(
+                      color: sheetColors.onSurfaceVariant,
+                      fontSize: AppText.sizeBodySmall,
+                      height: 1.4,
+                    ),
+                  ),
+                ],
+                if (renk != null) ...[
+                  const SizedBox(height: AppSpacing.lg),
+                  Divider(color: sheetColors.outlineVariant),
+                  const SizedBox(height: AppSpacing.sm),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.palette_outlined,
+                        color: sheetColors.primary,
+                        size: 20,
+                      ),
+                      const SizedBox(width: AppSpacing.sm),
+                      Expanded(
+                        child: Text(
+                          l10n.bugunRenkUyumu,
+                          style: TextStyle(
+                            color: sheetColors.onSurface,
+                            fontSize: AppText.sizeBodySmall,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        '${renk.puan}/100',
+                        style: TextStyle(
+                          color: sheetColors.primary,
+                          fontSize: AppText.sizeBodySmall,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: AppSpacing.xs),
+                  Text(
+                    _renkSebebiniGetir(l10n, renk.sebep),
+                    style: TextStyle(
+                      color: sheetColors.onSurfaceVariant,
+                      fontSize: AppText.sizeBodySmall,
+                      height: 1.4,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Widget _bosDurum(
     BuildContext context,
     AppLocalizations l10n,
@@ -957,6 +1089,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
     bool buyuk = false,
   }) {
     final parcalar = kombin.parcalar(indeks);
+    final renkDegerlendirme = _renkUyumunuDegerlendir(parcalar);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1010,6 +1143,30 @@ class _BugunEkraniState extends State<BugunEkrani> {
               fontSize: AppText.sizeCaption,
               height: 1.3,
               color: colors.onSurfaceVariant,
+            ),
+          ),
+        ],
+        if (buyuk &&
+            (kombin.aciklama.trim().isNotEmpty || renkDegerlendirme != null)) ...[
+          const SizedBox(height: AppSpacing.xs),
+          Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: TextButton.icon(
+              onPressed: () => _nedenBuKombinGoster(
+                context: context,
+                l10n: l10n,
+                kombin: kombin,
+                renk: renkDegerlendirme,
+              ),
+              icon: const Icon(Icons.lightbulb_outline_rounded, size: 18),
+              label: Text(l10n.bugunNedenBuKombin),
+              style: TextButton.styleFrom(
+                foregroundColor: colors.primary,
+                minimumSize: const Size(0, 44),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                ),
+              ),
             ),
           ),
         ],

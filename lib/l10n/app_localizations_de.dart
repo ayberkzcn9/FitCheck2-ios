@@ -3007,6 +3007,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get bugunBugununKombini => 'Das Outfit von heute';
 
   @override
+  String get bugunNedenBuKombin => 'Warum dieses Outfit?';
+
+  @override
+  String get bugunRenkUyumu => 'Farbharmonie';
+
+  @override
   String get bugunHizliFotograf => 'Foto hinzufügen';
 
   @override

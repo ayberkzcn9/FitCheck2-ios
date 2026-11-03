@@ -2980,6 +2980,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get bugunBugununKombini => 'Образ дня';
 
   @override
+  String get bugunNedenBuKombin => 'Почему этот образ?';
+
+  @override
+  String get bugunRenkUyumu => 'Цветовая гармония';
+
+  @override
   String get bugunHizliFotograf => 'Добавить фото';
 
   @override

@@ -2812,6 +2812,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get bugunBugununKombini => '今日穿搭';
 
   @override
+  String get bugunNedenBuKombin => '推荐这套穿搭的原因';
+
+  @override
+  String get bugunRenkUyumu => '色彩协调';
+
+  @override
   String get bugunHizliFotograf => '添加照片';
 
   @override

@@ -2870,6 +2870,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get bugunBugununKombini => '오늘의 코디';
 
   @override
+  String get bugunNedenBuKombin => '이 코디를 추천한 이유';
+
+  @override
+  String get bugunRenkUyumu => '색상 조화';
+
+  @override
   String get bugunHizliFotograf => '사진 추가';
 
   @override
