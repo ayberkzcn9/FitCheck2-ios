@@ -73,6 +73,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
   // 🤖 YAPAY ZEKÂ
   String _aiStilistKisiligi = 'Samimi / Arkadaş Canlısı';
+  String _kombinHedefi = 'denge';
   bool _sikiRenkUyumModu = true;
 
   // 🧠 STİLİST HAFIZASI (kalıcı öğrenme)
@@ -369,6 +370,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
       _aiStilistKisiligi =
           prefs.getString('ai_kisilik') ?? 'Samimi / Arkadaş Canlısı';
+      _kombinHedefi = prefs.getString('kombin_hedefi') ?? 'denge';
       _sikiRenkUyumModu = prefs.getBool('siki_renk_uyumu') ?? true;
       _sicaklikBirimi = prefs.getString('sicaklik_birimi') ?? '°C';
       _varsayilanSehir =
@@ -1268,6 +1270,53 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                               ),
                             );
                           }).toList(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.4)),
+                  Padding(
+                    padding: const EdgeInsets.all(AppSpacing.lg),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.kombinHedefiBaslik,
+                          style: TextStyle(
+                            fontSize: AppText.sizeBodySmall,
+                            fontWeight: FontWeight.w800,
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.xs),
+                        Text(
+                          l10n.kombinHedefiAciklama,
+                          style: TextStyle(
+                            fontSize: AppText.sizeCaption,
+                            color: colors.onSurfaceVariant,
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.md),
+                        Wrap(
+                          spacing: AppSpacing.sm,
+                          runSpacing: AppSpacing.sm,
+                          children: <MapEntry<String, String>>[
+                            MapEntry('denge', l10n.kombinHedefiDenge),
+                            MapEntry('renk_kesfet', l10n.kombinHedefiRenk),
+                            MapEntry(
+                                'unutulan_parcalar', l10n.kombinHedefiUnutulan),
+                            MapEntry(
+                                'cok_yonlu', l10n.kombinHedefiCokYonlu),
+                          ].map((hedef) => _buildChip(
+                                label: hedef.value,
+                                isSelected: _kombinHedefi == hedef.key,
+                                onTap: () {
+                                  setState(() => _kombinHedefi = hedef.key);
+                                  _ayarKaydet('kombin_hedefi', hedef.key);
+                                },
+                              )).toList(),
                         ),
                       ],
                     ),

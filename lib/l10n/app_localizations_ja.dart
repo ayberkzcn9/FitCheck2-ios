@@ -2860,6 +2860,24 @@ class AppLocalizationsJa extends AppLocalizations {
   String get bugunRenkUyumu => '色の調和';
 
   @override
+  String get kombinHedefiBaslik => 'コーデの目標';
+
+  @override
+  String get kombinHedefiAciklama => '新しいコーデや週間プランで何を優先しますか？';
+
+  @override
+  String get kombinHedefiDenge => 'バランス重視';
+
+  @override
+  String get kombinHedefiRenk => '色の組み合わせを楽しむ';
+
+  @override
+  String get kombinHedefiUnutulan => '着用回数の少ない服を活用';
+
+  @override
+  String get kombinHedefiCokYonlu => '着回しやすい服を優先';
+
+  @override
   String get bugunHizliFotograf => '写真を追加';
 
   @override

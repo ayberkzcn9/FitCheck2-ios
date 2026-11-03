@@ -5512,6 +5512,42 @@ abstract class AppLocalizations {
   /// **'Renk uyumu'**
   String get bugunRenkUyumu;
 
+  /// No description provided for @kombinHedefiBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin hedefin'**
+  String get kombinHedefiBaslik;
+
+  /// No description provided for @kombinHedefiAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni kombin ve haftalık plan önerilerinde neyi öne çıkaralım?'**
+  String get kombinHedefiAciklama;
+
+  /// No description provided for @kombinHedefiDenge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dengeli öneriler'**
+  String get kombinHedefiDenge;
+
+  /// No description provided for @kombinHedefiRenk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Renkleri keşfet'**
+  String get kombinHedefiRenk;
+
+  /// No description provided for @kombinHedefiUnutulan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Az giydiklerimi kullan'**
+  String get kombinHedefiUnutulan;
+
+  /// No description provided for @kombinHedefiCokYonlu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çok yönlü parçalar'**
+  String get kombinHedefiCokYonlu;
+
   /// No description provided for @bugunHizliFotograf.
   ///
   /// In tr, this message translates to:

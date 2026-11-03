@@ -2986,6 +2986,25 @@ class AppLocalizationsRu extends AppLocalizations {
   String get bugunRenkUyumu => 'Цветовая гармония';
 
   @override
+  String get kombinHedefiBaslik => 'Ваша цель в стиле';
+
+  @override
+  String get kombinHedefiAciklama =>
+      'Что учитывать в новых образах и недельных планах в первую очередь?';
+
+  @override
+  String get kombinHedefiDenge => 'Сбалансированные образы';
+
+  @override
+  String get kombinHedefiRenk => 'Исследовать цвета';
+
+  @override
+  String get kombinHedefiUnutulan => 'Носить редко используемые вещи';
+
+  @override
+  String get kombinHedefiCokYonlu => 'Универсальные вещи';
+
+  @override
   String get bugunHizliFotograf => 'Добавить фото';
 
   @override

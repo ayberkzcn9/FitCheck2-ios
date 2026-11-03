@@ -2818,6 +2818,24 @@ class AppLocalizationsZh extends AppLocalizations {
   String get bugunRenkUyumu => '色彩协调';
 
   @override
+  String get kombinHedefiBaslik => '你的穿搭目标';
+
+  @override
+  String get kombinHedefiAciklama => '新的穿搭和每周计划应优先考虑什么？';
+
+  @override
+  String get kombinHedefiDenge => '均衡搭配';
+
+  @override
+  String get kombinHedefiRenk => '尝试更多色彩';
+
+  @override
+  String get kombinHedefiUnutulan => '多穿较少使用的衣物';
+
+  @override
+  String get kombinHedefiCokYonlu => '优先选择百搭单品';
+
+  @override
   String get bugunHizliFotograf => '添加照片';
 
   @override

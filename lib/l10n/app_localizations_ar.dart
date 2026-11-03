@@ -2965,6 +2965,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bugunRenkUyumu => 'تناغم الألوان';
 
   @override
+  String get kombinHedefiBaslik => 'هدفك في الإطلالات';
+
+  @override
+  String get kombinHedefiAciklama =>
+      'ما الذي ينبغي أن تعطيه اقتراحات الإطلالات والخطط الأسبوعية الجديدة أولوية؟';
+
+  @override
+  String get kombinHedefiDenge => 'اقتراحات متوازنة';
+
+  @override
+  String get kombinHedefiRenk => 'استكشاف الألوان';
+
+  @override
+  String get kombinHedefiUnutulan => 'ارتداء القطع الأقل استخدامًا';
+
+  @override
+  String get kombinHedefiCokYonlu => 'قطع متعددة الاستخدامات';
+
+  @override
   String get bugunHizliFotograf => 'أضف صورة';
 
   @override

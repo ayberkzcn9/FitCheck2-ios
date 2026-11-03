@@ -2876,6 +2876,24 @@ class AppLocalizationsKo extends AppLocalizations {
   String get bugunRenkUyumu => '색상 조화';
 
   @override
+  String get kombinHedefiBaslik => '코디 목표';
+
+  @override
+  String get kombinHedefiAciklama => '새 코디와 주간 계획에서 무엇을 우선할까요?';
+
+  @override
+  String get kombinHedefiDenge => '균형 잡힌 추천';
+
+  @override
+  String get kombinHedefiRenk => '새로운 색 조합';
+
+  @override
+  String get kombinHedefiUnutulan => '덜 입은 옷 활용';
+
+  @override
+  String get kombinHedefiCokYonlu => '활용도 높은 옷 우선';
+
+  @override
   String get bugunHizliFotograf => '사진 추가';
 
   @override

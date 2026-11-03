@@ -45,11 +45,13 @@ class AiService {
   Future<String> _stilistPromptunuHazirla(String sistemPromptu) async {
     String kisilik = 'Samimi / Arkadaş Canlısı';
     String fit = 'Regular Fit';
+    String kombinHedefi = 'denge';
     bool sikiRenkUyumu = true;
     try {
       final prefs = await SharedPreferences.getInstance();
       kisilik = prefs.getString('ai_kisilik') ?? kisilik;
       fit = prefs.getString('kullanici_fit') ?? fit;
+      kombinHedefi = prefs.getString('kombin_hedefi') ?? kombinHedefi;
       sikiRenkUyumu = prefs.getBool('siki_renk_uyumu') ?? sikiRenkUyumu;
     } catch (_) {}
 
@@ -76,9 +78,22 @@ class AiService {
     final renkTalimat = sikiRenkUyumu
         ? 'Be stricter about color harmony; clearly point out clashing or mismatched color combinations.'
         : 'Be flexible about color harmony; also suggest bold and contrasting combinations when they work.';
+    final hedefTalimat = kombinHedefiTalimatiniGetir(kombinHedefi);
 
-    return '$sistemPromptu\n\nSTYLIST PERSONALITY AND RESPONSE TONE:\n$kisilikTalimat\n\nUSER PREFERENCES:\n$fitTalimat\n$renkTalimat';
+    return '$sistemPromptu\n\nSTYLIST PERSONALITY AND RESPONSE TONE:\n$kisilikTalimat\n\nUSER PREFERENCES:\n$fitTalimat\n$renkTalimat\n$hedefTalimat';
   }
+
+  @visibleForTesting
+  static String kombinHedefiTalimatiniGetir(String hedef) => switch (hedef) {
+        'renk_kesfet' =>
+          'OUTFIT GOAL: Explore fresh but harmonious color combinations when suitable. Preserve every garment color exactly as listed; never rename or substitute a hue.',
+        'unutulan_parcalar' =>
+          'OUTFIT GOAL: Prioritize clean items worn least recently or not yet worn. Never recommend laundry items, and keep weather suitability.',
+        'cok_yonlu' =>
+          'OUTFIT GOAL: Prefer versatile garments that coordinate with several other wardrobe items and can be reworn in different everyday settings.',
+        _ =>
+          'OUTFIT GOAL: Prefer balanced, practical outfits that fit the weather and the user\'s style without overusing recently worn items.',
+      };
 
   dynamic _decodeJson(http.Response response) {
     return safeJsonDecode<Map<String, dynamic>>(

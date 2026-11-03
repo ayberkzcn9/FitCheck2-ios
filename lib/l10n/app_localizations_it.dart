@@ -3010,6 +3010,25 @@ class AppLocalizationsIt extends AppLocalizations {
   String get bugunRenkUyumu => 'Armonia dei colori';
 
   @override
+  String get kombinHedefiBaslik => 'Il tuo obiettivo di stile';
+
+  @override
+  String get kombinHedefiAciklama =>
+      'Cosa devono privilegiare i nuovi outfit e i piani settimanali?';
+
+  @override
+  String get kombinHedefiDenge => 'Suggerimenti equilibrati';
+
+  @override
+  String get kombinHedefiRenk => 'Esplora i colori';
+
+  @override
+  String get kombinHedefiUnutulan => 'Usa i capi meno indossati';
+
+  @override
+  String get kombinHedefiCokYonlu => 'Capi versatili';
+
+  @override
   String get bugunHizliFotograf => 'Aggiungi una foto';
 
   @override

@@ -2986,6 +2986,25 @@ class AppLocalizationsTr extends AppLocalizations {
   String get bugunRenkUyumu => 'Renk uyumu';
 
   @override
+  String get kombinHedefiBaslik => 'Kombin hedefin';
+
+  @override
+  String get kombinHedefiAciklama =>
+      'Yeni kombin ve haftalık plan önerilerinde neyi öne çıkaralım?';
+
+  @override
+  String get kombinHedefiDenge => 'Dengeli öneriler';
+
+  @override
+  String get kombinHedefiRenk => 'Renkleri keşfet';
+
+  @override
+  String get kombinHedefiUnutulan => 'Az giydiklerimi kullan';
+
+  @override
+  String get kombinHedefiCokYonlu => 'Çok yönlü parçalar';
+
+  @override
   String get bugunHizliFotograf => 'Fotoğrafla ekle';
 
   @override
