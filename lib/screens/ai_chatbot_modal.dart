@@ -392,10 +392,10 @@ You MUST write your ENTIRE response in **$hedefDil**!
         _gorselPromptNotu(hazirGorseller, kullaniciFotografiVar: resim != null);
 
     try {
-      final String gizliBaglamEki =
-          (widget.gizliBaglam != null && widget.gizliBaglam!.trim().isNotEmpty)
-              ? "\n\n[CURRENT OUTFIT CONTEXT - The user just opened this chat from the outfit below and wants your expert feedback on it. Evaluate color harmony, style, weather suitability and skin tone, then suggest improvements. Do NOT repeat this context block back to the user.]\n${widget.gizliBaglam}"
-              : "";
+      final String gizliBaglamEki = (widget.gizliBaglam != null &&
+              widget.gizliBaglam!.trim().isNotEmpty)
+          ? "\n\n[CURRENT OUTFIT CONTEXT - The user just opened this chat from the outfit below and wants your expert feedback on it. Evaluate color harmony, style, weather suitability and skin tone, then suggest improvements. Do NOT repeat this context block back to the user.]\n${widget.gizliBaglam}"
+          : "";
       final cevap = await AiService().hibritAiSorgula(
         sistemPromptu:
             "$sistemPromptu\n\n$hafizaBlogu\n\n$gorselNotu\n\n📜 CHAT HISTORY:\n$sohbetGecmisi\n\n$envanter\n\n$kirliSepetiDurumu$gizliBaglamEki",
@@ -420,8 +420,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
 
       // Yaşayan stilist: uzun sohbetlerde hafızayı ara ara güncelle; kısa
       // sohbetlerde pencere kapanışı (dispose) beklenir.
-      final int kullaniciMesajSayisi =
-          _mesajlar.where((m) => m.isUser).length;
+      final int kullaniciMesajSayisi = _mesajlar.where((m) => m.isUser).length;
       if (kullaniciMesajSayisi >= 4 && kullaniciMesajSayisi % 4 == 0) {
         unawaited(_hafizayiGuncelle());
       }
@@ -503,13 +502,13 @@ You MUST write your ENTIRE response in **$hedefDil**!
           styleSheet: MarkdownStyleSheet(
             p: TextStyle(
               fontSize: AppText.sizeBodySmall,
-              letterSpacing: -0.1,
+              letterSpacing: 0,
               color: context.uygunMetin,
               height: 1.45,
               fontWeight: FontWeight.w400,
             ),
             strong: TextStyle(
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: context.uygunMetin,
             ),
             em: TextStyle(
@@ -518,12 +517,12 @@ You MUST write your ENTIRE response in **$hedefDil**!
             ),
             h1: TextStyle(
               fontSize: AppText.sizeTitleSmall,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: context.uygunMetin,
             ),
             h2: TextStyle(
               fontSize: AppText.sizeBodyLarge,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: context.uygunMetin,
             ),
             h3: TextStyle(
@@ -566,7 +565,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
             // Tablo metinleri.
             tableHead: TextStyle(
               fontSize: AppText.sizeSmall,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: context.uygunMetin,
             ),
             tableBody: TextStyle(
@@ -583,8 +582,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 left: BorderSide(color: widget.anaRenk, width: 3),
               ),
             ),
-            blockquotePadding:
-                const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+            blockquotePadding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md, vertical: AppSpacing.sm),
           ),
         ),
         if (kombinVar) ...[
@@ -605,7 +604,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 Row(
                   children: [
                     Icon(
-                      Icons.auto_awesome_rounded,
+                      Icons.style_outlined,
                       color: colorScheme.tertiary,
                       size: 18,
                     ),
@@ -614,7 +613,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                       child: Text(
                         l10n.chatKombinHazirBaslik(_ortamEtiketi(hedefOrtam)),
                         style: TextStyle(
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                           fontSize: AppText.sizeBodySmall,
                           color: context.uygunMetin,
                         ),
@@ -636,7 +635,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                       shape: RoundedRectangleBorder(
                         borderRadius: AppRadius.mdRadius,
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                     ),
                     onPressed: () {
                       HapticFeedback.mediumImpact();
@@ -646,7 +646,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                     label: Text(
                       l10n.chatKombiniGorButon,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                         fontSize: AppText.sizeBodySmall,
                       ),
                     ),
@@ -684,7 +684,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
           },
           borderRadius: AppRadius.xlRadius,
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
             decoration: BoxDecoration(
               color: colorScheme.surfaceContainerHighest,
               borderRadius: AppRadius.xlRadius,
@@ -797,7 +798,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                       Row(
                         children: [
                           const Icon(
-                            Icons.auto_awesome_rounded,
+                            Icons.style_outlined,
                             color: AppMiscColors.purple,
                             size: 22,
                           ),
@@ -810,7 +811,7 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                   l10n.chatAsistanSohbeti,
                                   style: theme.textTheme.titleMedium?.copyWith(
                                     color: context.uygunMetin,
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w600,
                                     fontSize: AppText.sizeBodyLarge,
                                   ),
                                   maxLines: 1,
@@ -858,7 +859,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                   child: ListView.builder(
                     controller: _scrollController,
                     physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                     itemCount: _mesajlar.length,
                     itemBuilder: (context, index) {
                       final m = _mesajlar[index];
@@ -869,7 +871,9 @@ You MUST write your ENTIRE response in **$hedefDil**!
                             : AlignmentDirectional.centerStart,
                         child: Container(
                           margin: const EdgeInsets.only(bottom: 12),
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.md,
+                              vertical: AppSpacing.md),
                           constraints: BoxConstraints(
                               maxWidth:
                                   MediaQuery.of(context).size.width * 0.85),
@@ -939,7 +943,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 // AI İŞLEMDE GÖSTERGESİ
                 if (_aiIslemde)
                   Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 20, bottom: 8),
+                    padding:
+                        const EdgeInsetsDirectional.only(start: 20, bottom: 8),
                     child: Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Row(
@@ -972,7 +977,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                   Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 16, bottom: 6),
+                      padding: const EdgeInsetsDirectional.only(
+                          start: 16, bottom: 6),
                       child: TextButton.icon(
                         onPressed: () => _mesajGonder(
                           mesaj: _sonMesaj,
@@ -991,8 +997,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 // RESİM ÖNİZLEME
                 if (_secilenResimBytes != null)
                   Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                     padding: const EdgeInsets.all(AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainer,
@@ -1062,13 +1068,15 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsetsDirectional.only(start: 16, end: 8, bottom: 8),
+                  padding: const EdgeInsetsDirectional.only(
+                      start: 16, end: 8, bottom: 8),
                   child: Row(
                     children: [
                       _hizliOneriCipi(l10n.chatOneriYagmur),
                       _hizliOneriCipi(l10n.chatOneriOfis),
                       _hizliOneriCipi(l10n.chatOneriHaftaSonu),
-                      _hizliOneriCipi(l10n.chatOneriKirliSepeti, kirliSepeti: true),
+                      _hizliOneriCipi(l10n.chatOneriKirliSepeti,
+                          kirliSepeti: true),
                     ],
                   ),
                 ),
@@ -1077,8 +1085,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                 SafeArea(
                   top: false,
                   child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.sm),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.sm, vertical: AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainer,
                       border: Border(
@@ -1123,7 +1131,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                         const SizedBox(width: 8),
                         Expanded(
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.md),
                             decoration: BoxDecoration(
                               color: colorScheme.surfaceContainerHighest,
                               borderRadius: AppRadius.xxlRadius,
@@ -1152,7 +1161,8 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                       border: InputBorder.none,
                                       isDense: true,
                                       contentPadding:
-                                          const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                                          const EdgeInsets.symmetric(
+                                              vertical: AppSpacing.md),
                                     ),
                                   ),
                                 ),

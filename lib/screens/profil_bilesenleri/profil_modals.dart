@@ -275,7 +275,8 @@ class _ModalCercevesi extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.md),
+                padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.md),
                 child: Column(
                   children: [
                     Container(
@@ -308,8 +309,8 @@ class _ModalCercevesi extends StatelessWidget {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: -0.4,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0,
                               color: colorScheme.onSurface,
                             ),
                           ),
@@ -319,7 +320,8 @@ class _ModalCercevesi extends StatelessWidget {
                           tooltip: MaterialLocalizations.of(context)
                               .closeButtonTooltip,
                           style: IconButton.styleFrom(
-                            backgroundColor: colorScheme.surfaceContainerHighest,
+                            backgroundColor:
+                                colorScheme.surfaceContainerHighest,
                             foregroundColor: colorScheme.onSurfaceVariant,
                           ),
                           onPressed: islemSuruyor
@@ -428,7 +430,7 @@ class _BosDurum extends StatelessWidget {
                     style: TextStyle(
                       color: colorScheme.onSurfaceVariant,
                       fontSize: AppText.sizeBodySmall,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
@@ -492,7 +494,7 @@ class _ParcaGorunumu extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: AppText.sizeBodySmall,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             color: colorScheme.onSurface,
           ),
         ),
@@ -586,7 +588,7 @@ class _GecmisDetaySheetState extends _IslemSheetState<_GecmisDetaySheet> {
               style: TextStyle(
                 color: colorScheme.onSurfaceVariant,
                 fontSize: AppText.sizeBodySmall,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 12),
@@ -598,9 +600,9 @@ class _GecmisDetaySheetState extends _IslemSheetState<_GecmisDetaySheet> {
                 child: Text(
                   baslik,
                   style: theme.textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     height: 1.2,
-                    letterSpacing: -0.5,
+                    letterSpacing: 0,
                     color: colorScheme.onSurface,
                   ),
                 ),
@@ -628,8 +630,8 @@ class _GecmisDetaySheetState extends _IslemSheetState<_GecmisDetaySheet> {
             style: TextStyle(
               color: colorScheme.primary,
               fontSize: AppText.sizeCaption,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1.2,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0,
             ),
           ),
           const SizedBox(height: 16),
@@ -743,14 +745,16 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: theme.textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: -0.4,
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0,
                                     color: colorScheme.onSurface,
                                   ),
                                 ),
                                 const SizedBox(height: 8),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: AppSpacing.md,
+                                      vertical: AppSpacing.sm),
                                   decoration: BoxDecoration(
                                     color: colorScheme.surfaceContainerHighest,
                                     borderRadius: AppRadius.mdRadius,
@@ -767,9 +771,9 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                                       Text(
                                         l10n.kombinUyumYuzdesi(
                                             favori.renkUyumuPuani.toString()),
-                                        style:
-                                            theme.textTheme.labelMedium?.copyWith(
-                                          fontWeight: FontWeight.bold,
+                                        style: theme.textTheme.labelMedium
+                                            ?.copyWith(
+                                          fontWeight: FontWeight.w600,
                                           color: colorScheme.onSurface,
                                         ),
                                       ),
@@ -807,7 +811,8 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                             children: [
                               for (final parca in parcalar)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.only(end: 12),
+                                  padding:
+                                      const EdgeInsetsDirectional.only(end: 12),
                                   child: _ParcaGorunumu(
                                     gardirobum: gardirobum,
                                     parcaAdi: parca,
@@ -829,7 +834,7 @@ class _FavorilerSheetState extends _IslemSheetState<_FavorilerSheet> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.auto_awesome_rounded,
+                                Icons.style_outlined,
                                 size: 17,
                                 color: colorScheme.tertiary,
                               ),
@@ -923,7 +928,8 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
       altAlan: sepettekiler.isEmpty
           ? null
           : Container(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.md),
+              padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.md),
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
@@ -950,7 +956,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                     l10n.tumunuTemizIsaretle,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w600,
                       fontSize: AppText.sizeBodySmall,
                     ),
                   ),
@@ -989,7 +995,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: theme.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.w600,
                                 fontSize: AppText.sizeBodySmall,
                                 color: colorScheme.onSurface,
                               ),
@@ -1002,7 +1008,7 @@ class _SepetSheetState extends _IslemSheetState<_SepetSheet> {
                               style: TextStyle(
                                 color: colorScheme.onSurfaceVariant,
                                 fontSize: AppText.sizeCaption,
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],

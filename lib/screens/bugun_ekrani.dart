@@ -33,7 +33,6 @@ import '../services/bugun_feed_servisi.dart';
 import '../services/kombin_duellosu_motoru.dart';
 import '../services/planli_kombin_deposu.dart';
 import '../theme/design_tokens.dart';
-import '../utils/helpers.dart';
 import '../widgets/bilgi_butonu.dart';
 
 class BugunEkrani extends StatefulWidget {
@@ -169,8 +168,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
     }
 
     final yeniImza = _imzaHesapla();
-    final gunDegisti =
-        _yuklenenGun.isNotEmpty && _yuklenenGun != _bugun();
+    final gunDegisti = _yuklenenGun.isNotEmpty && _yuklenenGun != _bugun();
     final sekmeyeGirildi = widget.isAktifSekme && !eski.isAktifSekme;
 
     if (yeniImza != _imza || (sekmeyeGirildi && gunDegisti)) {
@@ -337,47 +335,31 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
   Widget _baslik(BuildContext context, AppLocalizations l10n) {
     final colors = Theme.of(context).colorScheme;
-    final saat = DateTime.now().hour;
-    final selam = saat < 12
-        ? l10n.bugunGunaydin
-        : saat < 18
-            ? l10n.bugunIyiGunler
-            : l10n.bugunIyiAksamlar;
-
     final hava = widget.gunlukHava.trim();
     final havaVar = hava.isNotEmpty && !widget.havaYukleniyor;
-    final havaBuyukYazida = MediaQuery.textScalerOf(context)
-            .scale(AppText.sizeCaption) >
-        AppText.sizeCaption * 1.4;
+    final havaBuyukYazida =
+        MediaQuery.textScalerOf(context).scale(AppText.sizeCaption) >
+            AppText.sizeCaption * 1.4;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xs),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xs),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            selam,
-            style: TextStyle(
-              fontSize: AppText.sizeSmall,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.2,
-              color: colors.onSurfaceVariant,
-            ),
-          ),
-          const SizedBox(height: 2),
-          Text(
             l10n.bugunBaslik,
             style: TextStyle(
               fontSize: AppText.sizeDisplay,
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w600,
               color: colors.onSurface,
             ),
           ),
           if (havaVar) ...[
             const SizedBox(height: 8),
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.md, vertical: AppSpacing.xs),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHighest,
                 borderRadius: AppRadius.fullRadius,
@@ -387,7 +369,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 children: [
                   Icon(Icons.wb_cloudy_outlined,
                       size: 14, color: colors.onSurfaceVariant),
-                  const SizedBox(width: 6),
+                  const SizedBox(width: AppSpacing.sm),
                   Flexible(
                     child: Text(
                       hava,
@@ -432,7 +414,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
         onTap: () => widget.onSekmeSec(3),
       ),
       _HizliAksiyon(
-        ikon: Icons.auto_awesome_rounded,
+        ikon: Icons.chat_bubble_outline_rounded,
         etiket: l10n.bugunHizliStilist,
         renk: colors.primary,
         onTap: widget.onStilistAc,
@@ -466,23 +448,23 @@ class _BugunEkraniState extends State<BugunEkrani> {
     final anaAksiyonlar =
         aksiyonlar.where((aksiyon) => !aksiyon.ikincil).toList();
     final araclar = aksiyonlar.where((aksiyon) => aksiyon.ikincil).toList();
-    final buyukYazi = MediaQuery.textScalerOf(context).scale(AppText.sizeMicro) >
-        AppText.sizeMicro * 1.4;
+    final buyukYazi =
+        MediaQuery.textScalerOf(context).scale(AppText.sizeMicro) >
+            AppText.sizeMicro * 1.4;
     const sutun = 2;
     final satirlar = <List<_HizliAksiyon>>[];
     for (var i = 0; i < anaAksiyonlar.length; i += sutun) {
       satirlar.add(
         anaAksiyonlar.sublist(
           i,
-          i + sutun > anaAksiyonlar.length
-              ? anaAksiyonlar.length
-              : i + sutun,
+          i + sutun > anaAksiyonlar.length ? anaAksiyonlar.length : i + sutun,
         ),
       );
     }
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.sm),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.sm),
       child: Column(
         children: [
           for (var s = 0; s < satirlar.length; s++) ...[
@@ -520,8 +502,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                       spacing: AppSpacing.sm,
                       runSpacing: AppSpacing.sm,
                       children: [
-                        for (final arac in araclar)
-                          _aracDugmesi(arac, colors),
+                        for (final arac in araclar) _aracDugmesi(arac, colors),
                       ],
                     ),
             ),
@@ -575,7 +556,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
         .toList();
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.xs, AppSpacing.lg, AppSpacing.xs),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg, AppSpacing.xs, AppSpacing.lg, AppSpacing.xs),
       child: Material(
         color: colors.surfaceContainerHighest.withValues(alpha: 0.55),
         borderRadius: AppRadius.lgRadius,
@@ -583,7 +565,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
         child: InkWell(
           onTap: widget.onStilGunluguAc,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.md, AppSpacing.md, AppSpacing.md),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.md, AppSpacing.md, AppSpacing.md, AppSpacing.md),
             child: Row(
               children: [
                 Expanded(
@@ -591,23 +574,21 @@ class _BugunEkraniState extends State<BugunEkrani> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        turkceBuyukHarf(l10n.planBugun),
+                        l10n.planBugun,
                         style: TextStyle(
                           fontSize: AppText.sizeMicro,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.8,
+                          fontWeight: FontWeight.w600,
                           color: colors.onSurfaceVariant,
                         ),
                       ),
-                      const SizedBox(height: 2),
+                      const SizedBox(height: 4),
                       Text(
                         plan.baslik,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: AppText.sizeBodyLarge,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: -0.3,
+                          fontWeight: FontWeight.w600,
                           color: colors.onSurface,
                         ),
                       ),
@@ -619,7 +600,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
                             children: [
                               for (final parca in parcalar)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.only(end: 6),
+                                  padding: const EdgeInsetsDirectional.only(
+                                      end: AppSpacing.sm),
                                   child: SizedBox(
                                     width: 42,
                                     child: _planParcaGorseli(parca, colors),
@@ -692,7 +674,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
           aksiyon.onTap();
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md, horizontal: AppSpacing.xs),
+          padding: const EdgeInsets.symmetric(
+              vertical: AppSpacing.md, horizontal: AppSpacing.xs),
           child: Column(
             children: [
               Container(
@@ -713,7 +696,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                 style: TextStyle(
                   fontSize: AppText.sizeMicro,
                   height: 1.15,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                   color: colors.onSurface,
                 ),
               ),
@@ -757,8 +740,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           files: [XFile(dosya.path, mimeType: 'image/png')],
           text: l10n.bugunPaylasMetni,
           subject: l10n.bugunBugununKombini,
-          sharePositionOrigin:
-              sinir.localToGlobal(Offset.zero) & sinir.size,
+          sharePositionOrigin: sinir.localToGlobal(Offset.zero) & sinir.size,
         ),
       );
     } catch (e) {
@@ -782,18 +764,12 @@ class _BugunEkraniState extends State<BugunEkrani> {
     return RepaintBoundary(
       key: _paylasKey,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.xs),
+        padding: const EdgeInsets.fromLTRB(
+            AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.xs),
         child: Container(
           padding: const EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                colors.primaryContainer.withValues(alpha: 0.85),
-                colors.surfaceContainerHighest.withValues(alpha: 0.75),
-              ],
-            ),
+            color: colors.surfaceContainerLow,
             borderRadius: AppRadius.xxlRadius,
             border: Border.all(
               color: colors.outlineVariant.withValues(alpha: 0.35),
@@ -805,16 +781,16 @@ class _BugunEkraniState extends State<BugunEkrani> {
               Row(
                 children: [
                   Icon(Icons.wb_sunny_outlined,
-                      size: 16, color: colors.onPrimaryContainer),
-                  const SizedBox(width: 6),
+                      size: 16, color: colors.primary),
+                  const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     child: Text(
                       l10n.bugunBugununKombini,
                       style: TextStyle(
                         fontSize: AppText.sizeSmall,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 0.4,
-                        color: colors.onPrimaryContainer,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0,
+                        color: colors.onSurface,
                       ),
                     ),
                   ),
@@ -822,24 +798,25 @@ class _BugunEkraniState extends State<BugunEkrani> {
                     baslik: l10n.bugunBugununKombini,
                     aciklama: l10n.bilgiBugunKombini,
                     ikon: Icons.info_outline_rounded,
-                    renk: colors.onPrimaryContainer.withValues(alpha: 0.75),
+                    renk: colors.onSurfaceVariant,
                   ),
                   IconButton(
                     visualDensity: VisualDensity.compact,
                     tooltip: l10n.bugunPaylas,
-                    onPressed:
-                        (kombin == null || _paylasiliyor) ? null : _kombiniPaylas,
+                    onPressed: (kombin == null || _paylasiliyor)
+                        ? null
+                        : _kombiniPaylas,
                     icon: _paylasiliyor
                         ? SizedBox(
                             width: 16,
                             height: 16,
                             child: CircularProgressIndicator(
                               strokeWidth: 2,
-                              color: colors.onPrimaryContainer,
+                              color: colors.onSurfaceVariant,
                             ),
                           )
                         : Icon(Icons.ios_share_rounded,
-                            size: 19, color: colors.onPrimaryContainer),
+                            size: 19, color: colors.onSurfaceVariant),
                   ),
                   IconButton(
                     visualDensity: VisualDensity.compact,
@@ -851,11 +828,11 @@ class _BugunEkraniState extends State<BugunEkrani> {
                             height: 16,
                             child: CircularProgressIndicator(
                               strokeWidth: 2,
-                              color: colors.onPrimaryContainer,
+                              color: colors.onSurfaceVariant,
                             ),
                           )
                         : Icon(Icons.refresh_rounded,
-                            size: 20, color: colors.onPrimaryContainer),
+                            size: 20, color: colors.onSurfaceVariant),
                   ),
                 ],
               ),
@@ -865,7 +842,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
               else if (kombin == null)
                 _bosDurum(context, l10n, colors)
               else
-                _kombinIcerik(context, l10n, colors, kombin, indeks, buyuk: true),
+                _kombinIcerik(context, l10n, colors, kombin, indeks,
+                    buyuk: true),
             ],
           ),
         ),
@@ -903,7 +881,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
 
   RenkDegerlendirme? _renkUyumunuDegerlendir(List<Kiyafet> parcalar) {
     if (parcalar.length < 2 ||
-        parcalar.any((parca) => renkAilesi(parca.renk) == RenkAilesi.bilinmiyor)) {
+        parcalar
+            .any((parca) => renkAilesi(parca.renk) == RenkAilesi.bilinmiyor)) {
       return null;
     }
     return renkDegerlendir(parcalar.map((parca) => parca.renk));
@@ -936,95 +915,98 @@ class _BugunEkraniState extends State<BugunEkrani> {
       backgroundColor: Colors.transparent,
       builder: (sheetContext) {
         final sheetColors = Theme.of(sheetContext).colorScheme;
-        return Container(
-          decoration: BoxDecoration(
-            color: sheetColors.surfaceContainerHigh,
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(28),
+        return SafeArea(
+          top: false,
+          child: Container(
+            decoration: BoxDecoration(
+              color: sheetColors.surfaceContainerHigh,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(28),
+              ),
+              border: Border.all(
+                color: sheetColors.outlineVariant.withValues(alpha: 0.4),
+              ),
             ),
-            border: Border.all(
-              color: sheetColors.outlineVariant.withValues(alpha: 0.4),
-            ),
-          ),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(AppSpacing.xl),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        l10n.bugunNedenBuKombin,
-                        style: TextStyle(
-                          color: sheetColors.onSurface,
-                          fontSize: AppText.sizeTitleSmall,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      tooltip: l10n.kapat,
-                      onPressed: () => Navigator.pop(sheetContext),
-                      icon: const Icon(Icons.close_rounded),
-                    ),
-                  ],
-                ),
-                if (kombin.aciklama.trim().isNotEmpty) ...[
-                  const SizedBox(height: AppSpacing.sm),
-                  Text(
-                    kombin.aciklama,
-                    style: TextStyle(
-                      color: sheetColors.onSurfaceVariant,
-                      fontSize: AppText.sizeBodySmall,
-                      height: 1.4,
-                    ),
-                  ),
-                ],
-                if (renk != null) ...[
-                  const SizedBox(height: AppSpacing.lg),
-                  Divider(color: sheetColors.outlineVariant),
-                  const SizedBox(height: AppSpacing.sm),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(AppSpacing.xl),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.palette_outlined,
-                        color: sheetColors.primary,
-                        size: 20,
-                      ),
-                      const SizedBox(width: AppSpacing.sm),
                       Expanded(
                         child: Text(
-                          l10n.bugunRenkUyumu,
+                          l10n.bugunNedenBuKombin,
                           style: TextStyle(
                             color: sheetColors.onSurface,
-                            fontSize: AppText.sizeBodySmall,
-                            fontWeight: FontWeight.w800,
+                            fontSize: AppText.sizeTitleSmall,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
-                      Text(
-                        '${renk.puan}/100',
-                        style: TextStyle(
-                          color: sheetColors.primary,
-                          fontSize: AppText.sizeBodySmall,
-                          fontWeight: FontWeight.w900,
-                        ),
+                      IconButton(
+                        tooltip: l10n.kapat,
+                        onPressed: () => Navigator.pop(sheetContext),
+                        icon: const Icon(Icons.close_rounded),
                       ),
                     ],
                   ),
-                  const SizedBox(height: AppSpacing.xs),
-                  Text(
-                    _renkSebebiniGetir(l10n, renk.sebep),
-                    style: TextStyle(
-                      color: sheetColors.onSurfaceVariant,
-                      fontSize: AppText.sizeBodySmall,
-                      height: 1.4,
+                  if (kombin.aciklama.trim().isNotEmpty) ...[
+                    const SizedBox(height: AppSpacing.sm),
+                    Text(
+                      kombin.aciklama,
+                      style: TextStyle(
+                        color: sheetColors.onSurfaceVariant,
+                        fontSize: AppText.sizeBodySmall,
+                        height: 1.4,
+                      ),
                     ),
-                  ),
+                  ],
+                  if (renk != null) ...[
+                    const SizedBox(height: AppSpacing.lg),
+                    Divider(color: sheetColors.outlineVariant),
+                    const SizedBox(height: AppSpacing.sm),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.palette_outlined,
+                          color: sheetColors.primary,
+                          size: 20,
+                        ),
+                        const SizedBox(width: AppSpacing.sm),
+                        Expanded(
+                          child: Text(
+                            l10n.bugunRenkUyumu,
+                            style: TextStyle(
+                              color: sheetColors.onSurface,
+                              fontSize: AppText.sizeBodySmall,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          '${renk.puan}/100',
+                          style: TextStyle(
+                            color: sheetColors.primary,
+                            fontSize: AppText.sizeBodySmall,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: AppSpacing.xs),
+                    Text(
+                      _renkSebebiniGetir(l10n, renk.sebep),
+                      style: TextStyle(
+                        color: sheetColors.onSurfaceVariant,
+                        fontSize: AppText.sizeBodySmall,
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
         );
@@ -1051,7 +1033,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: AppText.sizeBody,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -1129,7 +1111,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: buyuk ? 17 : 14,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.w600,
             color: colors.onSurface,
           ),
         ),
@@ -1147,7 +1129,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
           ),
         ],
         if (buyuk &&
-            (kombin.aciklama.trim().isNotEmpty || renkDegerlendirme != null)) ...[
+            (kombin.aciklama.trim().isNotEmpty ||
+                renkDegerlendirme != null)) ...[
           const SizedBox(height: AppSpacing.xs),
           Align(
             alignment: AlignmentDirectional.centerStart,
@@ -1259,7 +1242,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                             style: TextStyle(
                               fontSize: AppText.sizeCaption,
                               height: 1.2,
-                              fontWeight: FontWeight.w800,
+                              fontWeight: FontWeight.w600,
                               color: colors.onSurface,
                             ),
                           ),
@@ -1271,7 +1254,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                                   '${parcalar.length}',
                                   style: TextStyle(
                                     fontSize: AppText.sizeMicro,
-                                    fontWeight: FontWeight.w700,
+                                    fontWeight: FontWeight.w500,
                                     color: colors.onSurfaceVariant,
                                   ),
                                 ),
@@ -1307,7 +1290,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
         final colors = Theme.of(sheetContext).colorScheme;
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xs, AppSpacing.xl, AppSpacing.xl),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.xl, AppSpacing.xs, AppSpacing.xl, AppSpacing.xl),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1316,7 +1300,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   kombin.baslik,
                   style: TextStyle(
                     fontSize: AppText.sizeTitleSmall,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -1434,14 +1418,15 @@ class _BugunEkraniState extends State<BugunEkrani> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, 6),
+                padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, 6),
                 child: Text(
                   parca.gorunenBaslik,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: AppText.sizeBody,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -1461,7 +1446,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
               if (widget.onKombinIstegi != null)
                 ListTile(
                   leading: Icon(
-                    Icons.auto_awesome_rounded,
+                    Icons.chat_bubble_outline_rounded,
                     color: colors.primary,
                   ),
                   title: Text(l10n.bugunParcaKombin),
@@ -1518,43 +1503,43 @@ class _BugunEkraniState extends State<BugunEkrani> {
                   final parca = parcalar[i];
                   return SizedBox(
                     width: 96,
-                child: GestureDetector(
-                  onTap: () => _parcaMenusu(context, l10n, parca),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 96,
-                        height: 76,
-                        padding: const EdgeInsets.all(AppSpacing.xs),
-                        decoration: BoxDecoration(
-                          color:
-                              colors.surfaceContainerHighest.withValues(alpha: 0.55),
-                          borderRadius: AppRadius.lgRadius,
-                        ),
-                        child: Image.memory(
-                          parca.resimBytes,
-                          fit: BoxFit.contain,
-                          filterQuality: FilterQuality.medium,
-                          gaplessPlayback: true,
-                        ),
+                    child: GestureDetector(
+                      onTap: () => _parcaMenusu(context, l10n, parca),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 96,
+                            height: 76,
+                            padding: const EdgeInsets.all(AppSpacing.xs),
+                            decoration: BoxDecoration(
+                              color: colors.surfaceContainerHighest
+                                  .withValues(alpha: 0.55),
+                              borderRadius: AppRadius.lgRadius,
+                            ),
+                            child: Image.memory(
+                              parca.resimBytes,
+                              fit: BoxFit.contain,
+                              filterQuality: FilterQuality.medium,
+                              gaplessPlayback: true,
+                            ),
+                          ),
+                          const SizedBox(height: AppSpacing.xs),
+                          Text(
+                            parca.gorunenBaslik,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: AppText.sizeMicro,
+                              color: colors.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: AppSpacing.xs),
-                      Text(
-                        parca.gorunenBaslik,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: AppText.sizeMicro,
-                          color: colors.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-        );
+                    ),
+                  );
+                },
+              ),
+            );
           },
         ),
       ],
@@ -1564,7 +1549,8 @@ class _BugunEkraniState extends State<BugunEkrani> {
   Widget _bolumBasligi(BuildContext context, String metin, {String? altYazi}) {
     final colors = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.md),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -1572,13 +1558,13 @@ class _BugunEkraniState extends State<BugunEkrani> {
             metin,
             style: TextStyle(
               fontSize: AppText.sizeSmall,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 0.4,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0,
               color: colors.onSurface,
             ),
           ),
           if (altYazi != null) ...[
-            const SizedBox(height: 2),
+            const SizedBox(height: 4),
             Text(
               altYazi,
               style: TextStyle(
@@ -1634,9 +1620,7 @@ class _BugunEkraniState extends State<BugunEkrani> {
     if (hedef.isEmpty) return false;
 
     for (final favori in widget.favoriKombinler) {
-      final mevcut = favori.parcalar
-          .map((p) => p.trim().toLowerCase())
-          .toList()
+      final mevcut = favori.parcalar.map((p) => p.trim().toLowerCase()).toList()
         ..sort();
       if (mevcut.length != hedef.length) continue;
       var ayni = true;

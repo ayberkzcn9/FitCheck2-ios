@@ -105,7 +105,8 @@ class DilSecimModal extends StatelessWidget {
 
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.xl),
+        padding: const EdgeInsets.fromLTRB(
+            AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.xl),
         constraints: BoxConstraints(
           maxHeight: MediaQuery.of(context).size.height * 0.75,
         ),
@@ -130,7 +131,7 @@ class DilSecimModal extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: AppText.sizeTitleSmall,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -161,10 +162,10 @@ class DilSecimModal extends StatelessWidget {
                   final dil = diller[index];
 
                   final dilKodu = dil['kod']!;
-                  final dilAdi =
-                      dilKodu == 'system' ? l10n.dilSecenekOtomatik : dil['ad']!;
+                  final dilAdi = dilKodu == 'system'
+                      ? l10n.dilSecenekOtomatik
+                      : dil['ad']!;
                   final bayrak = dil['bayrak']!;
-
                   final isSelected = currentCode == dilKodu;
 
                   return ListTile(
@@ -201,7 +202,7 @@ class DilSecimModal extends StatelessWidget {
                       style: TextStyle(
                         fontSize: AppText.sizeBodySmall,
                         fontWeight:
-                            isSelected ? FontWeight.bold : FontWeight.normal,
+                            isSelected ? FontWeight.w600 : FontWeight.normal,
                         color: isSelected ? colors.primary : colors.onSurface,
                       ),
                     ),

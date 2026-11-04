@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -242,7 +241,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       if (acilisSayisi < 2) return;
 
       // "Evet, değerlendireyim" dendi ise bir daha sorma
-      final bool degerlendirildi = prefs.getBool('degerlendirme_yapildi') ?? false;
+      final bool degerlendirildi =
+          prefs.getBool('degerlendirme_yapildi') ?? false;
       if (degerlendirildi) return;
 
       // Reddedildiyse her 3 açılışta bir tekrar sor
@@ -288,7 +288,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
               child: Text(
                 l10n.degerlendirmeBaslik,
                 style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   color: colorScheme.onSurface,
                 ),
               ),
@@ -323,7 +323,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
             },
             child: Text(
               l10n.degerlendirmeEvet,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.w600),
             ),
           ),
         ],
@@ -442,7 +442,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
             content: Text(
               l10n.anaDinliyor,
               style: TextStyle(
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
@@ -457,8 +457,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
 
         _speechToText.listen(
           listenOptions: stt.SpeechListenOptions(
-            localeId: konusmaDiliKodu(
-                Localizations.localeOf(context).languageCode),
+            localeId:
+                konusmaDiliKodu(Localizations.localeOf(context).languageCode),
           ),
           onResult: (result) {
             if (result.finalResult) {
@@ -501,16 +501,20 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       final prefs = await SharedPreferences.getInstance();
 
       final gardiropString = prefs.getString('gardirobum_data');
-      final gardiropDecoded = safeJsonDecodeList(gardiropString, tag: 'gardirobum_data');
-      _gardirobum = gardiropDecoded.map((item) => Kiyafet.fromJson(item)).toList();
+      final gardiropDecoded =
+          safeJsonDecodeList(gardiropString, tag: 'gardirobum_data');
+      _gardirobum =
+          gardiropDecoded.map((item) => Kiyafet.fromJson(item)).toList();
 
       final favoriString = prefs.getString('favoriler_data');
-      final favoriDecoded = safeJsonDecodeList(favoriString, tag: 'favoriler_data');
+      final favoriDecoded =
+          safeJsonDecodeList(favoriString, tag: 'favoriler_data');
       _favoriKombinler =
           favoriDecoded.map((item) => FavoriKombin.fromJson(item)).toList();
 
       final gecmisString = prefs.getString('gecmis_data');
-      final gecmisDecoded = safeJsonDecodeList(gecmisString, tag: 'gecmis_data');
+      final gecmisDecoded =
+          safeJsonDecodeList(gecmisString, tag: 'gecmis_data');
       _gecmisKombinler =
           gecmisDecoded.map((item) => Map<String, String>.from(item)).toList();
 
@@ -541,9 +545,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
       });
 
       final prefs = await SharedPreferences.getInstance();
-      final kayitliSehir = konumuZorla
-          ? ''
-          : (prefs.getString('varsayilan_sehir') ?? '').trim();
+      final kayitliSehir =
+          konumuZorla ? '' : (prefs.getString('varsayilan_sehir') ?? '').trim();
       final ozelSehir = kayitliSehir.isNotEmpty &&
           kayitliSehir != 'Otomatik (GPS)' &&
           kayitliSehir.toLowerCase() != 'automatic (gps)';
@@ -639,11 +642,9 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         'https://api.open-meteo.com/v1/forecast?latitude=$enlem&longitude=$boylam&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=auto',
       );
 
-      final response =
-          await http.get(url).timeout(const Duration(seconds: 10));
+      final response = await http.get(url).timeout(const Duration(seconds: 10));
       if (response.statusCode != 200) {
-        throw Exception(
-            'Hava durumu isteği başarısız: ${response.statusCode}');
+        throw Exception('Hava durumu isteği başarısız: ${response.statusCode}');
       }
 
       final data = safeJsonDecodeMap(response.body, tag: 'open-meteo');
@@ -667,7 +668,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
           maxSicakliklar.any((value) => value is! num) ||
           minSicakliklar.any((value) => value is! num) ||
           havaKodlari.any((value) => value is! num)) {
-        throw const FormatException('Hava durumu günlük verisi eksik veya bozuk');
+        throw const FormatException(
+            'Hava durumu günlük verisi eksik veya bozuk');
       }
 
       {
@@ -744,8 +746,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
               "$gercekGunAdi: ${minGosterim.toStringAsFixed(0)}$sicaklikBirimi / ${maxGosterim.toStringAsFixed(0)}$sicaklikBirimi, $dayDurum");
         }
 
-        final String sehirEtiketi =
-            sehirAdi.isNotEmpty ? "$sehirAdi • " : "";
+        final String sehirEtiketi = sehirAdi.isNotEmpty ? "$sehirAdi • " : "";
 
         if (mounted) {
           setState(() {
@@ -808,7 +809,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         return;
       }
 
-      final int varOlanIndex = _gardirobum.indexWhere((k) => k.id == kiyafet.id);
+      final int varOlanIndex =
+          _gardirobum.indexWhere((k) => k.id == kiyafet.id);
 
       setState(() {
         if (varOlanIndex != -1) {
@@ -926,13 +928,15 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   bool _isKombinFavoride(List<String> parcaBasliklari) {
     if (parcaBasliklari.isEmpty) return false;
 
-    final sortedInput = List<String>.from(
-        parcaBasliklari.map((e) => e.trim().toLowerCase()))..sort();
+    final sortedInput =
+        List<String>.from(parcaBasliklari.map((e) => e.trim().toLowerCase()))
+          ..sort();
 
     return _favoriKombinler.any((fav) {
       if (fav.parcalar.length != sortedInput.length) return false;
-      final sortedFav = List<String>.from(
-          fav.parcalar.map((e) => e.trim().toLowerCase()))..sort();
+      final sortedFav =
+          List<String>.from(fav.parcalar.map((e) => e.trim().toLowerCase()))
+            ..sort();
       for (int i = 0; i < sortedInput.length; i++) {
         if (sortedInput[i] != sortedFav[i]) return false;
       }
@@ -1122,7 +1126,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         // 🐛 Debug log
         debugPrint('Bugun Giydim eslesmesi:');
         debugPrint('   Aranan parcalar: $seciliParcaAdlari');
-        debugPrint('   Bulunan (${seciliKiyafetler.length} adet): ${seciliKiyafetler.map((k) => "${k.gorunenBaslik} (id:${k.id.substring(0,8)})").join(", ")}');
+        debugPrint(
+            '   Bulunan (${seciliKiyafetler.length} adet): ${seciliKiyafetler.map((k) => "${k.gorunenBaslik} (id:${k.id.substring(0, 8)})").join(", ")}');
       }
 
       final uyariMesaji = _kombinTekrarKnt(detayMetni, l10n);
@@ -1201,7 +1206,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                         child: Text(
                           l10n.anaYikamaUyariBaslik,
                           style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                             color: colorScheme.onSurface,
                           ),
                         ),
@@ -1227,7 +1232,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                       child: Text(
                         l10n.anaTamam,
                         style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -1393,8 +1398,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   // 🔒 Lock-protected callbacks for ProfilVeAnalizEkrani
   Future<void> _onSepetiTemizle() async {
     await _dataLock.synchronized(() async {
-      final int temizlenenSayi =
-          _gardirobum.where((k) => k.sepetteMi).length;
+      final int temizlenenSayi = _gardirobum.where((k) => k.sepetteMi).length;
       setState(() {
         for (var k in _gardirobum) {
           k.sepetteMi = false;
@@ -1460,158 +1464,159 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
           duration: AppMotion.kisa,
           opacity: _isBarsVisible ? 1.0 : 0.0,
           child: ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerLow.withValues(alpha: 0.85),
-                  border: Border(
-                    bottom: BorderSide(
-                      color: colorScheme.outlineVariant.withValues(alpha: 0.4),
-                      width: 1,
-                    ),
+            child: Container(
+              decoration: BoxDecoration(
+                color: colorScheme.surfaceContainerLow,
+                border: Border(
+                  bottom: BorderSide(
+                    color: colorScheme.outline.withValues(alpha: 0.08),
+                    width: 1,
                   ),
                 ),
-                child: SafeArea(
-                  bottom: false,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // Sol Taraf: Hak / Enerji Göstergesi
-                        GestureDetector(
-                          onTap: () {
-                            HapticFeedback.lightImpact();
-                            AnaEkranDialoglar.hakDetayVeKuponModalGoster(
-                                context: context,
-                                anaRenk: _anaRenk,
-                                kalanHak: _kalanHak,
-                                onHakGuncelle: _hakSayaciniGuncelle);
-                          },
-                          child: AnimatedContainer(
-                            duration: AppMotion.kisa,
-                            curve: AppMotion.giris,
-                            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
-                            decoration: BoxDecoration(
-                              color: _kalanHak > 0
-                                  ? AppAccents.warning.withValues(alpha: 0.15)
-                                  : colorScheme.errorContainer,
-                              borderRadius: AppRadius.xlRadius,
-                              border: Border.all(
-                                color: (_kalanHak > 0
-                                        ? AppAccents.warning
-                                        : colorScheme.error)
-                                    .withValues(alpha: 0.4),
-                                width: 1.2,
+              ),
+              child: SafeArea(
+                bottom: false,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Sol Taraf: Hak / Enerji Göstergesi
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          AnaEkranDialoglar.hakDetayVeKuponModalGoster(
+                              context: context,
+                              anaRenk: _anaRenk,
+                              kalanHak: _kalanHak,
+                              onHakGuncelle: _hakSayaciniGuncelle);
+                        },
+                        child: AnimatedContainer(
+                          duration: AppMotion.kisa,
+                          curve: AppMotion.giris,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.md,
+                              vertical: AppSpacing.xs),
+                          decoration: BoxDecoration(
+                            color: _kalanHak > 0
+                                ? AppAccents.warning.withValues(alpha: 0.15)
+                                : colorScheme.errorContainer,
+                            borderRadius: AppRadius.xlRadius,
+                            border: Border.all(
+                              color: (_kalanHak > 0
+                                      ? AppAccents.warning
+                                      : colorScheme.error)
+                                  .withValues(alpha: 0.4),
+                              width: 1.2,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.bolt_rounded,
+                                color: _kalanHak > 0
+                                    ? AppAccents.warning
+                                    : colorScheme.error,
+                                size: 20,
                               ),
+                              const SizedBox(width: 4),
+                              Text(
+                                _kalanHak >= 99999 ? '∞' : '$_kalanHak',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppText.sizeBodySmall,
+                                  color: _kalanHak > 0
+                                      ? AppAccents.warning
+                                      : colorScheme.onErrorContainer,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      // Sağ Taraf: Aksiyon İkonları Grubu
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            height: 40,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.xs),
+                            decoration: BoxDecoration(
+                              color: colorScheme.surfaceContainerHighest,
+                              borderRadius: AppRadius.xlRadius,
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(
-                                  Icons.bolt_rounded,
-                                  color: _kalanHak > 0
-                                      ? AppAccents.warning
-                                      : colorScheme.error,
-                                  size: 20,
+                                _buildHeaderIconButton(
+                                  key: _topluFotografEkleKey,
+                                  icon: Icons.add_photo_alternate_outlined,
+                                  tooltip: l10n.topluFotografEkleTooltip,
+                                  iconColor: colorScheme.onSurface,
+                                  onPressed: _fotografEkleAkisi,
                                 ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  _kalanHak >= 99999 ? '∞' : '$_kalanHak',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: AppText.sizeBodySmall,
-                                    color: _kalanHak > 0
-                                        ? AppAccents.warning
-                                        : colorScheme.onErrorContainer,
-                                  ),
+                                _buildHeaderIconButton(
+                                  key: _sesliAsistanKey,
+                                  icon: _isListening
+                                      ? Icons.mic_rounded
+                                      : Icons.mic_none_rounded,
+                                  tooltip: l10n.anaSesleKonus,
+                                  iconColor: _isListening
+                                      ? colorScheme.error
+                                      : colorScheme.onSurface,
+                                  onPressed: _sesliAsistanTetikle,
+                                ),
+                                _buildHeaderIconButton(
+                                  key: _aiStilistKey,
+                                  icon: Icons.style_outlined,
+                                  tooltip: l10n.anaStilistAsistani,
+                                  iconColor: colorScheme.onSurface,
+                                  onPressed: () => _aiChatbotModalAc(),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-
-                        // Sağ Taraf: Aksiyon İkonları Grubu
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              height: 40,
-                              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-                              decoration: BoxDecoration(
-                                color: colorScheme.surfaceContainerHighest,
-                                borderRadius: AppRadius.xlRadius,
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  _buildHeaderIconButton(
-                                    key: _topluFotografEkleKey,
-                                    icon: Icons.add_photo_alternate_outlined,
-                                    tooltip: l10n.topluFotografEkleTooltip,
-                                    iconColor: colorScheme.onSurface,
-                                    onPressed: _fotografEkleAkisi,
-                                  ),
-                                  _buildHeaderIconButton(
-                                    key: _sesliAsistanKey,
-                                    icon: _isListening
-                                        ? Icons.mic_rounded
-                                        : Icons.mic_none_rounded,
-                                    tooltip: l10n.anaSesleKonus,
-                                    iconColor: _isListening
-                                        ? colorScheme.error
-                                        : colorScheme.onSurface,
-                                    onPressed: _sesliAsistanTetikle,
-                                  ),
-                                  _buildHeaderIconButton(
-                                    key: _aiStilistKey,
-                                    icon: Icons.auto_awesome_rounded,
-                                    tooltip: l10n.anaStilistAsistani,
-                                    iconColor: colorScheme.onSurface,
-                                    onPressed: () => _aiChatbotModalAc(),
-                                  ),
-                                ],
-                              ),
+                          const SizedBox(width: 8),
+                          Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: colorScheme.surfaceContainerHighest,
+                              shape: BoxShape.circle,
                             ),
-                            const SizedBox(width: 8),
-                            Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                color: colorScheme.surfaceContainerHighest,
-                                shape: BoxShape.circle,
+                            child: IconButton(
+                              tooltip: l10n.ayarlarTitle,
+                              key: _ayarlarKey,
+                              padding: EdgeInsets.zero,
+                              icon: Icon(
+                                Icons.settings_outlined,
+                                size: 20,
+                                color: colorScheme.onSurface,
                               ),
-                              child: IconButton(
-                                tooltip: l10n.ayarlarTitle,
-                                key: _ayarlarKey,
-                                padding: EdgeInsets.zero,
-                                icon: Icon(
-                                  Icons.settings_outlined,
-                                  size: 20,
-                                  color: colorScheme.onSurface,
-                                ),
-                                onPressed: () async {
-                                  HapticFeedback.lightImpact();
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        settings: const RouteSettings(
-                                            name: AnalyticsServisi.ekranAyarlar),
-                                        builder: (context) =>
-                                            const AyarlarEkrani()),
-                                  );
-                                  if (!mounted) return;
-                                  _verileriYukle();
-                                  _hakSayaciniGuncelle();
-                                },
-                              ),
+                              onPressed: () async {
+                                HapticFeedback.lightImpact();
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      settings: const RouteSettings(
+                                          name: AnalyticsServisi.ekranAyarlar),
+                                      builder: (context) =>
+                                          const AyarlarEkrani()),
+                                );
+                                if (!mounted) return;
+                                _verileriYukle();
+                                _hakSayaciniGuncelle();
+                              },
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -1809,7 +1814,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
         return Container(
           width: double.infinity,
           color: colors.surfaceContainerHigh,
-          padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 6, AppSpacing.lg, AppSpacing.sm),
+          padding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg, 6, AppSpacing.lg, AppSpacing.sm),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -1820,7 +1826,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                       l10n.arkaPlandaIlerleme(durum.islenen, durum.toplam),
                       style: TextStyle(
                         fontSize: AppText.sizeMicro,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                         color: colors.onSurfaceVariant,
                       ),
                     ),
@@ -1829,7 +1835,7 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
                     l10n.arkaPlandaEkle,
                     style: TextStyle(
                       fontSize: AppText.sizeMicro,
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w600,
                       color: colors.onSurface,
                     ),
                   ),

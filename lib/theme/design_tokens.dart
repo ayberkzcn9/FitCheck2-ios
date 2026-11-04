@@ -49,11 +49,11 @@ class AppMotion {
   /// Ekranda kalırken (standart)
   static const Curve standart = Curves.easeInOutCubic;
 
-  /// Geri tepki (hafif aşma) — vurgu rozetleri
-  static const Curve tepki = Curves.elasticOut;
+  /// Kısa ve kontrollü vurgu geçişi
+  static const Curve tepki = Curves.easeOutCubic;
 
-  /// Geri tepki (yumuşak aşma) — kart açılışı
-  static const Curve standartBack = Curves.easeOutBack;
+  /// Kontrollü kart geçişi
+  static const Curve standartBack = Curves.easeOutCubic;
 }
 
 class AppSpacing {
@@ -167,7 +167,7 @@ class AppText {
   // için en küçük punto 12'dir (WCAG AA ve okunabilirlik).
   // ---------------------------------------------------------------------
 
-  /// 12 — mikro etiket (all-caps), alt bilgi
+  /// 12 — küçük etiket ve alt bilgi
   static const double sizeMicro = 12;
 
   /// 12 — küçük etiket
@@ -203,20 +203,16 @@ class AppText {
   /// 32 — display büyük (rakamlar)
   static const double sizeDisplayLarge = 32;
 
-  /// 42 — emoji boyutu
-  static const double sizeEmoji = 42;
-
   /// 44 — dev rakam (takvim ayı)
   static const double sizeDisplayHuge = 44;
 
   // ---------------------------------------------------------------------
   // HAZIR METİN STİLLERİ
   // ---------------------------------------------------------------------
-  /// 12 — çok küçük etiket (all-caps)
+  /// 12 — küçük etiket
   static const TextStyle labelMicro = TextStyle(
     fontSize: sizeMicro,
-    fontWeight: FontWeight.w800,
-    letterSpacing: 1.2,
+    fontWeight: FontWeight.w500,
   );
 
   /// 12 — küçük etiket
@@ -242,31 +238,27 @@ class AppText {
   /// 15 — vurgulu gövde
   static const TextStyle bodyStrong = TextStyle(
     fontSize: sizeBody,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w600,
   );
 
   /// 18 — başlık küçük
   static const TextStyle titleSmall = TextStyle(
     fontSize: sizeTitleSmall,
-    fontWeight: FontWeight.w800,
-    letterSpacing: -0.3,
+    fontWeight: FontWeight.w600,
   );
 
   /// 22 — başlık orta
   static const TextStyle title = TextStyle(
     fontSize: sizeTitleLarge,
-    fontWeight: FontWeight.w900,
-    letterSpacing: -0.5,
+    fontWeight: FontWeight.w600,
   );
 
   /// 26 — başlık büyük
   static const TextStyle headline = TextStyle(
     fontSize: sizeDisplay,
-    fontWeight: FontWeight.w900,
-    letterSpacing: -0.6,
+    fontWeight: FontWeight.w600,
   );
 }
-
 
 // ===========================================================================
 // AKSAN RENKLERİ — Sadece 2 ana aksan (sadeleştirme)
@@ -387,7 +379,8 @@ class AppDataColors {
   static const Color navy = Color(0xFF1E3A8A);
   static const Color blue = Color(0xFF3B82F6);
   static const Color red = Color(0xFFEF4444);
-  static const Color burgundy = Color(0xFF800020); // Bordo/Burgundy - koyu mor-msı kırmızı
+  static const Color burgundy =
+      Color(0xFF800020); // Bordo/Burgundy - koyu mor-msı kırmızı
   static const Color grey = Color(0xFF8C8C88);
   static const Color brown = Color(0xFF92400E);
   static const Color pink = Color(0xFFEC4899);

@@ -69,7 +69,7 @@ void main() {
     expect(find.text('Tur 1/10'), findsOneWidget);
   });
 
-  testWidgets('doğru karta dokununca Doğru! ve XP gösterilir', (tester) async {
+  testWidgets('doğru karta dokununca Doğru ve XP gösterilir', (tester) async {
     await kur(tester, tohum: 7);
 
     final beklenen = DuelMotoru()
@@ -83,7 +83,7 @@ void main() {
     await tester.tap(find.text(beklenen.solDogru ? 'A' : 'B'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Doğru!'), findsOneWidget);
+    expect(find.text('Doğru'), findsOneWidget);
     expect(find.text('+10 XP'), findsOneWidget);
     expect(find.text('Devam'), findsOneWidget);
   });
@@ -155,7 +155,7 @@ void main() {
     await tester.tap(find.text('Geri'));
     await tester.pumpAndSettle();
     expect(find.text('Tur 1/10'), findsOneWidget);
-    expect(find.text('Doğru!'), findsOneWidget);
+    expect(find.text('Doğru'), findsOneWidget);
     expect(find.text('+10 XP'), findsOneWidget);
     expect(find.text('+12 XP'), findsNothing);
 

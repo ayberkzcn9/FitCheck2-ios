@@ -227,7 +227,7 @@ class AnaEkranRehber {
       textSkip: l10n.rehberiAtla,
       textStyleSkip: const TextStyle(
         color: Colors.white,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w600,
         fontSize: AppText.sizeBodySmall,
         shadows: [
           Shadow(
@@ -284,7 +284,7 @@ class AnaEkranRehber {
             baslik,
             style: TextStyle(
               fontSize: AppText.sizeTitleSmall,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: colors.onSurface,
             ),
           ),
@@ -316,7 +316,7 @@ class AnaEkranRehber {
               child: Text(
                 sonAdimMi ? l10n.rehberAnladimBasla : l10n.rehberSonrakiAdim,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   fontSize: AppText.sizeBodySmall,
                 ),
               ),

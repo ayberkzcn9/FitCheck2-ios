@@ -173,6 +173,9 @@ void main() {
       dolap: [ust, alt, kaban],
       kombinler: [kombin],
     );
+    tester.view.padding = const FakeViewPadding(bottom: 24);
+    addTearDown(tester.view.reset);
+    await tester.pump();
 
     expect(find.text('Bugünün kombini'), findsOneWidget);
     expect(find.text('Sade ofis kombini'), findsOneWidget);
@@ -186,6 +189,15 @@ void main() {
     expect(
       find.text('Nötr ve toprak tonlar birbirini dengeliyor.'),
       findsOneWidget,
+    );
+    expect(
+      MediaQuery.paddingOf(
+        tester.element(
+          find.text('Nötr ve toprak tonlar birbirini dengeliyor.'),
+        ),
+      ).bottom,
+      0,
+      reason: 'Açıklama alt sistem gezinme alanından etkilenmemeli.',
     );
     await tester.tap(find.byTooltip('Kapat'));
     await tester.pumpAndSettle();
@@ -252,7 +264,8 @@ void main() {
     expect(giyilen['Sade ofis kombini']!.map((k) => k.id), ['u1', 'a1']);
   });
 
-  testWidgets('"Kaydet" favori oluşturur ve uyum 85-97 arasıdır', (tester) async {
+  testWidgets('"Kaydet" favori oluşturur ve uyum 85-97 arasıdır',
+      (tester) async {
     final favoriler = <FavoriKombin>[];
 
     await kur(
@@ -352,8 +365,10 @@ void main() {
     // "Giydim" parçaları sepete attığı için sepet dolu olmalı.
     await tester.pumpWidget(
       _kombinEkrani(
-        ust: _kiyafet(id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört', sepette: true),
-        alt: _kiyafet(id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon', sepette: true),
+        ust: _kiyafet(
+            id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört', sepette: true),
+        alt: _kiyafet(
+            id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon', sepette: true),
         kombin: kombin,
         gecmisKombinler: [
           {
@@ -385,8 +400,10 @@ void main() {
     // Sepet dolu: kombin "giyildi" görünür.
     await tester.pumpWidget(
       _kombinEkrani(
-        ust: _kiyafet(id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört', sepette: true),
-        alt: _kiyafet(id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon', sepette: true),
+        ust: _kiyafet(
+            id: 'u1', kategori: 'ust', baslik: 'Beyaz Tişört', sepette: true),
+        alt: _kiyafet(
+            id: 'a1', kategori: 'alt', baslik: 'Siyah Pantolon', sepette: true),
         kombin: kombin,
         gecmisKombinler: gecmisli,
         sepetJetonu: 0,
@@ -514,7 +531,8 @@ void main() {
     expect(tester.widget<IconButton>(dugme).onPressed, isNull);
   });
 
-  testWidgets('raftaki parcaya dokununca hizli aksiyonlar acilir', (tester) async {
+  testWidgets('raftaki parcaya dokununca hizli aksiyonlar acilir',
+      (tester) async {
     await kur(tester, dolap: [ust, alt, kaban], kombinler: [kombin]);
 
     final parca = find.text('Yün Kaban').first;
@@ -569,7 +587,7 @@ void main() {
       kombinler: [kombin],
     );
 
-    expect(find.text('BUGÜN PLANIN'), findsOneWidget);
+    expect(find.text('Bugün planın'), findsOneWidget);
     expect(find.text('Klasik Kombin'), findsOneWidget);
     expect(find.text('Takvimden değiştir'), findsOneWidget);
     expect(tester.takeException(), isNull);
@@ -584,7 +602,7 @@ void main() {
       kombinler: [kombin],
     );
 
-    expect(find.text('BUGÜN PLANIN'), findsNothing);
+    expect(find.text('Bugün planın'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 }

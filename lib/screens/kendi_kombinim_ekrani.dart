@@ -439,7 +439,12 @@ SADECE bu JSON formatında dön:
     );
   }
 
-  Widget _secimYuvasi(String baslik, String kategoriKodu, Kiyafet? secilenKiyafet, String bosEmoji) {
+  Widget _secimYuvasi(
+    String baslik,
+    String kategoriKodu,
+    Kiyafet? secilenKiyafet,
+    IconData bosIkon,
+  ) {
     final bool doluMu = secilenKiyafet != null;
     final colors = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context)!;
@@ -480,9 +485,10 @@ SADECE bu JSON formatında dön:
                       ),
                     )
                   : Center(
-                      child: Text(
-                        bosEmoji,
-                        style: const TextStyle(fontSize: AppText.sizeEmoji),
+                      child: Icon(
+                        bosIkon,
+                        size: 40,
+                        color: colors.onSurfaceVariant,
                       ),
                     ),
             ),
@@ -594,6 +600,59 @@ SADECE bu JSON formatında dön:
     );
   }
 
+  Widget _modSecenegi({
+    required String label,
+    required IconData icon,
+    required bool selected,
+    required VoidCallback onTap,
+  }) {
+    final colors = Theme.of(context).colorScheme;
+    final foreground = selected ? Colors.white : colors.onSurfaceVariant;
+
+    return Expanded(
+      child: Semantics(
+        container: true,
+        button: true,
+        selected: selected,
+        label: label,
+        excludeSemantics: true,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: AppRadius.lgRadius,
+          child: AnimatedContainer(
+            duration: AppMotion.kisa,
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+            decoration: BoxDecoration(
+              color: selected ? AppAccents.primary : Colors.transparent,
+              borderRadius: AppRadius.lgRadius,
+            ),
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, size: 18, color: foreground),
+                const SizedBox(width: AppSpacing.sm),
+                Flexible(
+                  child: Text(
+                    label,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: AppText.sizeBodySmall,
+                      fontWeight:
+                          selected ? FontWeight.w800 : FontWeight.w600,
+                      color: foreground,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -606,13 +665,9 @@ SADECE bu JSON formatında dön:
         ? (_secilenUst != null && _secilenAyakkabi != null)
         : (_secilenUst != null && _secilenAlt != null && _secilenAyakkabi != null);
 
-    final String ustEmoji = _tekParcaMi 
-        ? "👗" 
-        : (_cinsiyet.trim() == 'Erkek' ? "👕" : "👚");
-
-    const String altEmoji = "👖"; 
-    const String ayakkabiEmoji = "👟";
-    const String aksesuarEmoji = "⌚";
+    final ustIkon = _tekParcaMi
+        ? Icons.dry_cleaning_rounded
+        : Icons.checkroom_rounded;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -699,82 +754,68 @@ SADECE bu JSON formatında dön:
               ),
               child: Row(
                 children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        if (_tekParcaMi) HapticFeedback.selectionClick();
-                        setState(() {
-                          _tekParcaMi = false;
-                          _sonRenkPuani = null;
-                          _sonTuyo = null;
-                          _isLocalFavori = false;
-                          _sonFavoriKombinBasligi = null;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: AppMotion.kisa,
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                        decoration: BoxDecoration(
-                          color: !_tekParcaMi ? AppAccents.primary : Colors.transparent,
-                          borderRadius: AppRadius.lgRadius,
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "${_cinsiyet.trim() == 'Erkek' ? '👕' : '👚'} ${l10n.ustAltModu}",
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: AppText.sizeBodySmall,
-                            fontWeight: !_tekParcaMi ? FontWeight.w800 : FontWeight.w600,
-                            color: !_tekParcaMi ? Colors.white : colors.onSurfaceVariant,
-                          ),
-                        ),
-                      ),
-                    ),
+                  _modSecenegi(
+                    label: l10n.ustAltModu,
+                    icon: Icons.checkroom_rounded,
+                    selected: !_tekParcaMi,
+                    onTap: () {
+                      if (_tekParcaMi) HapticFeedback.selectionClick();
+                      setState(() {
+                        _tekParcaMi = false;
+                        _sonRenkPuani = null;
+                        _sonTuyo = null;
+                        _isLocalFavori = false;
+                        _sonFavoriKombinBasligi = null;
+                      });
+                    },
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        if (!_tekParcaMi) HapticFeedback.selectionClick();
-                        setState(() {
-                          _tekParcaMi = true;
-                          _secilenAlt = null;
-                          _sonRenkPuani = null;
-                          _sonTuyo = null;
-                          _isLocalFavori = false;
-                          _sonFavoriKombinBasligi = null;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: AppMotion.kisa,
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                        decoration: BoxDecoration(
-                          color: _tekParcaMi ? AppAccents.primary : Colors.transparent,
-                          borderRadius: AppRadius.lgRadius,
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "👗 ${l10n.tekParcaElbiseModu}",
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: AppText.sizeBodySmall,
-                            fontWeight: _tekParcaMi ? FontWeight.w800 : FontWeight.w600,
-                            color: _tekParcaMi ? Colors.white : colors.onSurfaceVariant,
-                          ),
-                        ),
-                      ),
-                    ),
+                  _modSecenegi(
+                    label: l10n.tekParcaElbiseModu,
+                    icon: Icons.dry_cleaning_rounded,
+                    selected: _tekParcaMi,
+                    onTap: () {
+                      if (!_tekParcaMi) HapticFeedback.selectionClick();
+                      setState(() {
+                        _tekParcaMi = true;
+                        _secilenAlt = null;
+                        _sonRenkPuani = null;
+                        _sonTuyo = null;
+                        _isLocalFavori = false;
+                        _sonFavoriKombinBasligi = null;
+                      });
+                    },
                   ),
                 ],
               ),
             ),
             
-            _secimYuvasi(_tekParcaMi ? l10n.tekParcaElbise : l10n.ustGiyim, "ust", _secilenUst, ustEmoji), 
+            _secimYuvasi(
+              _tekParcaMi ? l10n.tekParcaElbise : l10n.ustGiyim,
+              'ust',
+              _secilenUst,
+              ustIkon,
+            ),
             
             if (!_tekParcaMi)
-              _secimYuvasi(l10n.altGiyim, "alt", _secilenAlt, altEmoji), 
+              _secimYuvasi(
+                l10n.altGiyim,
+                'alt',
+                _secilenAlt,
+                Icons.style_rounded,
+              ),
               
-            _secimYuvasi(l10n.ayakkabi, "ayakkabi", _secilenAyakkabi, ayakkabiEmoji),
-            _secimYuvasi(l10n.aksesuarOpsiyonel, "aksesuar", _secilenAksesuar, aksesuarEmoji),
+            _secimYuvasi(
+              l10n.ayakkabi,
+              'ayakkabi',
+              _secilenAyakkabi,
+              Icons.hiking_rounded,
+            ),
+            _secimYuvasi(
+              l10n.aksesuarOpsiyonel,
+              'aksesuar',
+              _secilenAksesuar,
+              Icons.watch_rounded,
+            ),
             
             // Stilist AI Analiz Sonuç Kartı
             if (_sonRenkPuani != null && _sonTuyo != null) ...[

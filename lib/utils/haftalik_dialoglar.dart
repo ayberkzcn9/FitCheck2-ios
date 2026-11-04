@@ -48,7 +48,7 @@ class HaftalikDialoglar {
                   l10n.gunlukHakBittiBaslik,
                   style: TextStyle(
                     fontSize: AppText.sizeTitleSmall,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                     color: context.uygunMetin,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -76,7 +76,7 @@ class HaftalikDialoglar {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
                 style: FilledButton.styleFrom(
@@ -103,17 +103,17 @@ class HaftalikDialoglar {
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      l10n.reklamIzleHakKazan(
-                          ReklamServisi.reklamOduluKredi),
+                      l10n.reklamIzleHakKazan(ReklamServisi.reklamOduluKredi),
                       style: TextStyle(
                         fontSize: AppText.sizeBodySmall,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: context.uygunMetin,
                       ),
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     side: BorderSide(color: context.uygunMetin),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.mdRadius,
@@ -143,7 +143,7 @@ class HaftalikDialoglar {
                 style: TextStyle(
                   color: context.uygunAltMetin,
                   fontSize: AppText.sizeBodySmall,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
@@ -190,8 +190,8 @@ class HaftalikDialoglar {
                     baslik,
                     style: TextStyle(
                       fontSize: AppText.sizeTitleSmall,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: -0.5,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0,
                       color: context.uygunMetin,
                     ),
                   ),
@@ -226,7 +226,7 @@ class HaftalikDialoglar {
                   l10n.haftalikUyariButon,
                   style: const TextStyle(
                     fontSize: AppText.sizeBodySmall,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                     color: Colors.white,
                   ),
                 ),
@@ -244,7 +244,8 @@ class HaftalikDialoglar {
     required Color anaRenk,
     required List<dynamic> tumParcalarMetinleri,
     required int baslangicIndex,
-    required Map<String, String> Function(String, AppLocalizations) parcaBilgisiAyristir,
+    required Map<String, String> Function(String, AppLocalizations)
+        parcaBilgisiAyristir,
     required Uint8List? Function(String) gucluGorselBul,
   }) async {
     HapticFeedback.lightImpact();
@@ -265,7 +266,8 @@ class HaftalikDialoglar {
             final bilgi = parcaBilgisiAyristir(mevcutMetin, l10n);
 
             return BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
+              filter:
+                  ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
               child: Dialog(
                 backgroundColor: colors.surfaceContainerHigh,
                 elevation: 0,
@@ -332,7 +334,8 @@ class HaftalikDialoglar {
                             child: ClipRRect(
                               borderRadius: AppRadius.xlRadius,
                               child: BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
+                                filter: ImageFilter.blur(
+                                    sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: colors.surfaceContainerHighest
@@ -371,8 +374,7 @@ class HaftalikDialoglar {
                                   (dotIdx) {
                                     bool isActive = dotIdx == mevcutIndex;
                                     return AnimatedContainer(
-                                      duration:
-                                          AppMotion.normal,
+                                      duration: AppMotion.normal,
                                       margin: const EdgeInsets.symmetric(
                                         horizontal: AppSpacing.xs,
                                       ),
@@ -411,8 +413,8 @@ class HaftalikDialoglar {
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: AppText.sizeCaption,
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0,
                                       color: anaRenk,
                                     ),
                                   ),
@@ -422,7 +424,7 @@ class HaftalikDialoglar {
                                     "${mevcutIndex + 1} / ${tumParcalarMetinleri.length}",
                                     style: TextStyle(
                                       fontSize: AppText.sizeBodySmall,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                       color: context.uygunAltMetin,
                                     ),
                                   ),
@@ -433,8 +435,8 @@ class HaftalikDialoglar {
                               bilgi['baslik']!,
                               style: TextStyle(
                                 fontSize: AppText.sizeTitleSmall,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: -0.3,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0,
                                 color: context.uygunMetin,
                                 height: 1.2,
                               ),
@@ -492,7 +494,8 @@ class HaftalikDialoglar {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md, vertical: AppSpacing.sm),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHighest,
         borderRadius: AppRadius.mdRadius,
@@ -511,7 +514,7 @@ class HaftalikDialoglar {
             maxLines: 1,
             style: TextStyle(
               fontSize: AppText.sizeBodySmall,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
               color: context.uygunMetin,
             ),
           ),
@@ -544,7 +547,8 @@ class HaftalikDialoglar {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Container(
-            padding: const EdgeInsetsDirectional.only(top: 20, start: 24, end: 24),
+            padding:
+                const EdgeInsetsDirectional.only(top: 20, start: 24, end: 24),
             height: MediaQuery.of(context).size.height * 0.65,
             decoration: BoxDecoration(
               color: colors.surfaceContainerHigh,
@@ -575,8 +579,8 @@ class HaftalikDialoglar {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: AppText.sizeTitleSmall,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: -0.3,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0,
                           color: context.uygunMetin,
                         ),
                       ),

@@ -55,10 +55,26 @@ class KiyafetKartcigi extends StatelessWidget {
               child: ColorFiltered(
                 colorFilter: isSoluk
                     ? const ColorFilter.matrix([
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0,      0,      0,      1, 0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
                       ])
                     : const ColorFilter.mode(
                         Colors.transparent, BlendMode.multiply),
@@ -81,8 +97,8 @@ class KiyafetKartcigi extends StatelessWidget {
                 Text(
                   kiyafet.gorunenBaslik,
                   style: theme.textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: -0.3,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0,
                     color: colorScheme.onSurface,
                   ),
                   maxLines: 1,
@@ -94,7 +110,7 @@ class KiyafetKartcigi extends StatelessWidget {
                   l10n.kezGiyildi(kiyafet.giyilmeSayisi),
                   style: theme.textTheme.labelSmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w600,
                     fontSize: AppText.sizeCaption,
                   ),
                 ),
@@ -108,7 +124,7 @@ class KiyafetKartcigi extends StatelessWidget {
                     ),
                     style: theme.textTheme.labelSmall?.copyWith(
                       color: colorScheme.primary,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                       fontSize: AppText.sizeMicro,
                     ),
                     maxLines: 2,
@@ -197,9 +213,9 @@ class IstatistikKutusu extends StatelessWidget {
                   deger,
                   maxLines: 1,
                   style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     color: colorScheme.onSurface,
-                    letterSpacing: -0.5,
+                    letterSpacing: 0,
                   ),
                 ),
               ),
@@ -210,7 +226,7 @@ class IstatistikKutusu extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: colorScheme.onSurfaceVariant,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w600,
                   fontSize: AppText.sizeCaption,
                 ),
               ),
@@ -253,7 +269,7 @@ class KategoriSatiri extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   fontSize: AppText.sizeBodySmall,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w600,
                   color: colorScheme.onSurface,
                 ),
               ),
@@ -264,7 +280,7 @@ class KategoriSatiri extends StatelessWidget {
               style: theme.textTheme.bodySmall?.copyWith(
                 fontSize: AppText.sizeCaption,
                 color: colorScheme.onSurfaceVariant,
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],

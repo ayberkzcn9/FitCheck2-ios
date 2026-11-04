@@ -112,7 +112,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
               l10n.stilVeModaTercihleriniz,
               style: TextStyle(
                 fontSize: AppText.sizeTitle,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -129,9 +129,9 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
               l10n.favoriTarzinizUst,
               style: TextStyle(
                 fontSize: AppText.sizeCaption,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurfaceVariant,
-                letterSpacing: 1.2,
+                letterSpacing: 0,
               ),
             ),
             const SizedBox(height: 8),
@@ -156,9 +156,9 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
               l10n.giyimKesimiFitUst,
               style: TextStyle(
                 fontSize: AppText.sizeCaption,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurfaceVariant,
-                letterSpacing: 1.2,
+                letterSpacing: 0,
               ),
             ),
             const SizedBox(height: 8),
@@ -201,7 +201,8 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
       child: AnimatedContainer(
         duration: AppMotion.kisa,
         curve: AppMotion.giris,
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected
               ? colors.secondaryContainer
@@ -218,7 +219,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
           label,
           style: TextStyle(
             fontSize: AppText.sizeCaption,
-            fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w600,
             color: isSelected
                 ? colors.onSecondaryContainer
                 : colors.onSurfaceVariant,

@@ -164,7 +164,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     );
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
       children: [
         Row(
           children: [
@@ -181,7 +182,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: AppText.sizeBodyLarge,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w600,
                   color: colors.onSurface,
                 ),
               ),
@@ -205,7 +206,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     gun,
                     style: TextStyle(
                       fontSize: AppText.sizeMicro,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                       color: colors.onSurfaceVariant,
                     ),
                   ),
@@ -276,7 +277,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         const SizedBox(width: 6),
         Text(
           etiket,
-          style: TextStyle(fontSize: AppText.sizeMicro, color: colors.onSurfaceVariant),
+          style: TextStyle(
+              fontSize: AppText.sizeMicro, color: colors.onSurfaceVariant),
         ),
       ],
     );
@@ -312,7 +314,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               '${gun.tarih.day}',
               style: TextStyle(
                 fontSize: AppText.sizeCaption,
-                fontWeight: bugunMu ? FontWeight.w900 : FontWeight.w600,
+                fontWeight: bugunMu ? FontWeight.w600 : FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -386,8 +388,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     final yerel = MaterialLocalizations.of(context);
     final indeks = _parcaIndeksi();
     final bugun = DateTime.now();
-    final gecmisGun = gun.tarih
-        .isBefore(DateTime(bugun.year, bugun.month, bugun.day));
+    final gecmisGun =
+        gun.tarih.isBefore(DateTime(bugun.year, bugun.month, bugun.day));
     final plan = gun.planliKombin;
 
     await showModalBottomSheet<void>(
@@ -399,7 +401,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
       builder: (sheetContext) {
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.lg),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.lg),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -408,7 +411,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   yerel.formatMediumDate(gun.tarih),
                   style: TextStyle(
                     fontSize: AppText.sizeBodyLarge,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -532,7 +535,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: AppText.sizeBody,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -542,7 +545,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 l10n.planParcaSayisi(plan.parcalar.length),
                 style: TextStyle(
                   fontSize: AppText.sizeMicro,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   color: colors.onSurfaceVariant,
                 ),
               ),
@@ -599,7 +602,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.sm),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl,
+                      AppSpacing.lg, AppSpacing.xl, AppSpacing.sm),
                   child: Row(
                     children: [
                       Expanded(
@@ -607,7 +611,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                           l10n.planKombinSec,
                           style: TextStyle(
                             fontSize: AppText.sizeBodyLarge,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w600,
                             color: colors.onSurface,
                           ),
                         ),
@@ -621,9 +625,12 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     ],
                   ),
                 ),
-                if (favoriler.isEmpty && sonGiyilenler.isEmpty && oneriler.isEmpty)
+                if (favoriler.isEmpty &&
+                    sonGiyilenler.isEmpty &&
+                    oneriler.isEmpty)
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.sm, AppSpacing.xl, AppSpacing.xl),
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.xl,
+                        AppSpacing.sm, AppSpacing.xl, AppSpacing.xl),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -635,7 +642,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                         FilledButton.icon(
                           onPressed: () => Navigator.of(secimContext)
                               .pop(_kombinOlusturSinyali),
-                          icon: const Icon(Icons.auto_awesome_rounded, size: 18),
+                          icon: const Icon(Icons.style_outlined, size: 18),
                           label: Text(l10n.planKombinOlustur),
                         ),
                       ],
@@ -645,7 +652,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   Flexible(
                     child: ListView(
                       shrinkWrap: true,
-                      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
+                      padding: const EdgeInsets.fromLTRB(
+                          AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
                       children: [
                         if (oneriler.isNotEmpty) ...[
                           _secimBasligi(l10n.planOneriler, colors),
@@ -659,7 +667,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                                 parcalar: oneri.parcalar,
                                 indeks: indeks,
                                 colors: colors,
-                                onTap: () => Navigator.of(secimContext).pop(oneri),
+                                onTap: () =>
+                                    Navigator.of(secimContext).pop(oneri),
                               ),
                             ),
                         ],
@@ -697,7 +706,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                                 parcalar: gecmis.parcalar,
                                 indeks: indeks,
                                 colors: colors,
-                                onTap: () => Navigator.of(secimContext).pop(gecmis),
+                                onTap: () =>
+                                    Navigator.of(secimContext).pop(gecmis),
                               ),
                             ),
                         ],
@@ -748,10 +758,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
           (k) => PlanliKombin(
             tarih: '',
             baslik: k.baslik,
-            parcalar: k
-                .parcalar(idIndeks)
-                .map((p) => p.gorunenBaslik)
-                .toList(),
+            parcalar: k.parcalar(idIndeks).map((p) => p.gorunenBaslik).toList(),
           ),
         )
         .toList();
@@ -762,11 +769,11 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     return Padding(
       padding: const EdgeInsets.only(top: 6),
       child: Text(
-        turkceBuyukHarf(metin),
+        metin,
         style: TextStyle(
           fontSize: AppText.sizeMicro,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 0.8,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0,
           color: colors.onSurfaceVariant,
         ),
       ),
@@ -828,7 +835,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
             for (final parca in gorseller)
               Padding(
                 padding: const EdgeInsetsDirectional.only(end: 6),
-                child: SizedBox(width: 34, height: 44, child: _parcaGorseli(parca)),
+                child: SizedBox(
+                    width: 34, height: 44, child: _parcaGorseli(parca)),
               ),
             if (gorseller.isEmpty)
               Icon(Icons.checkroom_rounded, color: colors.onSurfaceVariant),
@@ -843,7 +851,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: AppText.sizeBodySmall,
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w600,
                       color: colors.onSurface,
                     ),
                   ),
@@ -891,7 +899,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   baslik,
                   style: TextStyle(
                     fontSize: AppText.sizeMicro,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurfaceVariant,
                   ),
                 ),
@@ -899,7 +907,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   metin,
                   style: TextStyle(
                     fontSize: AppText.sizeBodySmall,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -943,7 +951,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
     final indeks = _parcaIndeksi();
 
     return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
       itemCount: gecmis.length,
       separatorBuilder: (_, __) => const SizedBox(height: 10),
       itemBuilder: (context, i) {
@@ -975,7 +984,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       kayit['baslik'] ?? '',
                       style: TextStyle(
                         fontSize: AppText.sizeBodySmall,
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w600,
                         color: colors.onSurface,
                       ),
                     ),
@@ -1077,25 +1086,20 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
         ? colors.primary
         : rapor.degisim < 0
             ? AppAccents.error
-            : colors.onPrimaryContainer;
+            : colors.onSurfaceVariant;
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
       children: [
         RepaintBoundary(
           key: _raporKey,
           child: Container(
             padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  colors.primaryContainer.withValues(alpha: 0.85),
-                  colors.surfaceContainerHighest.withValues(alpha: 0.75),
-                ],
-              ),
+              color: colors.surfaceContainerLow,
               borderRadius: BorderRadius.circular(AppRadius.xxl),
+              border: Border.all(color: colors.outlineVariant),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1109,9 +1113,9 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                       style: TextStyle(
                         fontSize: AppText.sizeDisplayHuge,
                         height: 1.0,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: -1.5,
-                        color: colors.onPrimaryContainer,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0,
+                        color: colors.onSurface,
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -1127,15 +1131,14 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                                   fontSize: AppText.body.fontSize,
                                   height: 1.25,
                                   fontWeight: FontWeight.w600,
-                                  color: colors.onPrimaryContainer
-                                      .withValues(alpha: 0.85),
+                                  color: colors.onSurfaceVariant,
                                 ),
                               ),
                             ),
                             BilgiButonu(
                               baslik: l10n.stilGunluguRaporSayiEtiketi,
                               aciklama: l10n.bilgiRaporHafta,
-                              renk: colors.onPrimaryContainer.withValues(alpha: 0.7),
+                              renk: colors.onSurfaceVariant,
                             ),
                           ],
                         ),
@@ -1148,7 +1151,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   Align(
                     alignment: AlignmentDirectional.centerStart,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
                       decoration: BoxDecoration(
                         color: farkRengi.withValues(alpha: 0.14),
                         borderRadius: BorderRadius.circular(AppRadius.sm),
@@ -1157,7 +1161,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                         l10n.stilGunluguRaporGecenHafta(fark),
                         style: TextStyle(
                           fontSize: AppText.labelSmall.fontSize,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                           color: farkRengi,
                         ),
                       ),
@@ -1244,15 +1248,15 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 l10n.stilGunluguRaporDortHafta,
                 style: TextStyle(
                   fontSize: AppText.labelSmall.fontSize,
-                  fontWeight: FontWeight.w700,
-                  color: colors.onPrimaryContainer.withValues(alpha: 0.75),
+                  fontWeight: FontWeight.w600,
+                  color: colors.onSurfaceVariant,
                 ),
               ),
             ),
             BilgiButonu(
               baslik: l10n.stilGunluguRaporDortHafta,
               aciklama: l10n.bilgiRaporDortHafta,
-              renk: colors.onPrimaryContainer.withValues(alpha: 0.7),
+              renk: colors.onSurfaceVariant,
             ),
           ],
         ),
@@ -1265,7 +1269,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               for (var i = 0; i < haftalar.length; i++)
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -1273,8 +1278,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                           '${haftalar[i]}',
                           style: TextStyle(
                             fontSize: AppText.labelSmall.fontSize,
-                            fontWeight: FontWeight.w800,
-                            color: colors.onPrimaryContainer,
+                            fontWeight: FontWeight.w600,
+                            color: colors.onSurface,
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -1285,8 +1290,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                           decoration: BoxDecoration(
                             color: i == haftalar.length - 1
                                 ? colors.primary
-                                : colors.onPrimaryContainer
-                                    .withValues(alpha: 0.22),
+                                : colors.outlineVariant,
                             borderRadius: BorderRadius.circular(AppRadius.sm),
                           ),
                         ),
@@ -1317,15 +1321,15 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 l10n.stilGunluguRaporEnCokParcalar,
                 style: TextStyle(
                   fontSize: AppText.labelSmall.fontSize,
-                  fontWeight: FontWeight.w700,
-                  color: colors.onPrimaryContainer.withValues(alpha: 0.75),
+                  fontWeight: FontWeight.w600,
+                  color: colors.onSurfaceVariant,
                 ),
               ),
             ),
             BilgiButonu(
               baslik: l10n.stilGunluguRaporEnCokParcalar,
               aciklama: l10n.bilgiRaporEnCokParcalar,
-              renk: colors.onPrimaryContainer.withValues(alpha: 0.7),
+              renk: colors.onSurfaceVariant,
             ),
           ],
         ),
@@ -1349,7 +1353,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                     style: TextStyle(
                       fontSize: AppText.bodySmall.fontSize,
                       fontWeight: FontWeight.w600,
-                      color: colors.onPrimaryContainer,
+                      color: colors.onSurface,
                     ),
                   ),
                 ),
@@ -1357,8 +1361,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   '×${parca.adet}',
                   style: TextStyle(
                     fontSize: AppText.bodySmall.fontSize,
-                    fontWeight: FontWeight.w800,
-                    color: colors.onPrimaryContainer.withValues(alpha: 0.8),
+                    fontWeight: FontWeight.w600,
+                    color: colors.onSurfaceVariant,
                   ),
                 ),
               ],
@@ -1399,8 +1403,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   '${baslangic.add(Duration(days: i)).day}',
                   style: TextStyle(
                     fontSize: AppText.sizeMicro,
-                    color: colors.onPrimaryContainer
-                        .withValues(alpha: 0.8),
+                    color: colors.onSurfaceVariant,
                   ),
                 ),
               ],
@@ -1429,7 +1432,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                   etiket,
                   style: TextStyle(
                     fontSize: AppText.bodySmall.fontSize,
-                    color: colors.onPrimaryContainer.withValues(alpha: 0.8),
+                    color: colors.onSurfaceVariant,
                   ),
                 ),
               ),
@@ -1443,8 +1446,8 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                 deger,
                 style: TextStyle(
                   fontSize: AppText.body.fontSize,
-                  fontWeight: FontWeight.w900,
-                  color: colors.onPrimaryContainer,
+                  fontWeight: FontWeight.w600,
+                  color: colors.onSurface,
                 ),
               ),
             ],
@@ -1456,8 +1459,7 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
               child: LinearProgressIndicator(
                 value: oran.clamp(0.0, 1.0),
                 minHeight: 6,
-                backgroundColor:
-                    colors.onPrimaryContainer.withValues(alpha: 0.14),
+                backgroundColor: colors.outlineVariant,
                 valueColor: AlwaysStoppedAnimation<Color>(colors.primary),
               ),
             ),

@@ -155,7 +155,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get surum => '버전';
 
   @override
-  String get ayarOtomatikCihazDili => '🌐 자동 (기기 언어)';
+  String get ayarOtomatikCihazDili => '자동 (기기 언어)';
 
   @override
   String get iptal => '취소';
@@ -274,7 +274,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String stilistUyum(Object puan) {
-    return '🎨 스타일 조화: %$puan';
+    return '스타일 조화: %$puan';
   }
 
   @override
@@ -323,48 +323,48 @@ class AppLocalizationsKo extends AppLocalizations {
   String get ortamRomantik => '데이트';
 
   @override
-  String get stilistUyariDolapBosBaslik => '옷장이 비어 있거나 모든 옷이 세탁 중입니다! 🧺';
+  String get stilistUyariDolapBosBaslik => '옷장이 비어 있거나 모든 옷이 세탁 중입니다';
 
   @override
   String get stilistUyariDolapBosIcerik =>
       '맞춤형 코디 추천을 받으려면 옷장에 깨끗한 의류나 액세서리를 추가해 주세요.';
 
   @override
-  String get stilistUyariUstEksikBaslik => '상의가 부족해요! 👕';
+  String get stilistUyariUstEksikBaslik => '상의가 부족해요';
 
   @override
   String get stilistUyariUstEksikIcerik =>
-      '옷장에 깨끗한 상의가 없습니다. 완벽한 코디를 위해 상의를 최소 하나 이상 추가해 주세요!';
+      '옷장에 깨끗한 상의가 없습니다. 완벽한 코디를 위해 상의를 최소 하나 이상 추가해 주세요';
 
   @override
-  String get stilistUyariAltEksikBaslik => '하의가 부족해요! 👖';
+  String get stilistUyariAltEksikBaslik => '하의가 부족해요';
 
   @override
   String get stilistUyariAltEksikIcerik =>
-      '옷장에 깨끗한 하의가 없습니다. 멋진 스타일 연출을 위해 하의를 추가해 주세요!';
+      '옷장에 깨끗한 하의가 없습니다. 멋진 스타일 연출을 위해 하의를 추가해 주세요';
 
   @override
-  String get stilistUyariAyakkabiEksikBaslik => '신발이 부족해요! 👟';
+  String get stilistUyariAyakkabiEksikBaslik => '신발이 부족해요';
 
   @override
   String get stilistUyariAyakkabiEksikIcerik =>
-      '멋진 스타일이지만 함께 신을 깨끗한 신발을 찾지 못했습니다. 지금 신발을 추가해 보세요!';
+      '멋진 스타일이지만 함께 신을 깨끗한 신발을 찾지 못했습니다. 지금 신발을 추가해 보세요';
 
   @override
-  String get stilistUyariButon => '알겠어요, 추가할게요!';
+  String get stilistUyariButon => '알겠어요, 추가할게요';
 
   @override
   String get anaHavaYukleniyor => '지역 날씨 정보를 불러오는 중...';
 
   @override
-  String get anaDinliyor => '🎙️ FITCHECK가 듣고 있습니다... 말씀하세요!';
+  String get anaDinliyor => 'FITCHECK가 듣고 있습니다... 말씀하세요';
 
   @override
   String get anaMikrofonHata => '마이크 권한 또는 음성 인식 서비스를 사용할 수 없습니다.';
 
   @override
   String anaCinsiyetGuncellendi(Object cinsiyet) {
-    return '선택 사항이 업데이트되었습니다: \"$cinsiyet\" ✨';
+    return '선택 사항이 업데이트되었습니다: \"$cinsiyet\"';
   }
 
   @override
@@ -404,21 +404,21 @@ class AppLocalizationsKo extends AppLocalizations {
   String get anaHavaTahminiYuklenemedi => '일기 예보를 불러오지 못했습니다.';
 
   @override
-  String get anaFavoriEklendi => '즐겨찾기에 추가되었습니다! ⭐';
+  String get anaFavoriEklendi => '즐겨찾기에 추가되었습니다 ⭐';
 
   @override
   String get anaKombinTekrarUyari =>
-      '⚠️ 주의: 최근 이 의류나 유사한 조합을 자주 착용하셨습니다. 오늘은 다른 스타일을 연출해 보는 건 어떨까요?';
+      '주의: 최근 이 의류나 유사한 조합을 자주 착용하셨습니다. 오늘은 다른 스타일을 연출해 보는 건 어떨까요?';
 
   @override
-  String get anaKombinMukemmel => '✨ 탁월한 선택입니다! 오늘 스타일의 밸런스가 매우 훌륭합니다.';
+  String get anaKombinMukemmel => '탁월한 선택입니다 오늘 스타일의 밸런스가 매우 훌륭합니다.';
 
   @override
   String get anaYikamaUyariBaslik => '스마트 세탁 알림';
 
   @override
   String anaYikamaUyariIcerik(Object parcalar) {
-    return '이 코디를 착용함에 따라, 자주 입은 의류 \"$parcalar\" 아이템이 자동으로 빨래 바구니로 이동되었습니다! 🧺';
+    return '이 코디를 착용함에 따라, 자주 입은 의류 \"$parcalar\" 아이템이 자동으로 빨래 바구니로 이동되었습니다';
   }
 
   @override
@@ -522,31 +522,31 @@ class AppLocalizationsKo extends AppLocalizations {
   String get gunPaz => '일요일';
 
   @override
-  String get stilKahveBaslik => '☕ 카페 & 데일리 캐주얼';
+  String get stilKahveBaslik => '카페 & 데일리 캐주얼';
 
   @override
   String get stilKahveSoru => '친구들과 카페 갈 때 입기 좋은 편안하고 스타일리시한 코디 추천해줘';
 
   @override
-  String get stilOfisBaslik => '💼 세련된 오피스룩';
+  String get stilOfisBaslik => '세련된 오피스룩';
 
   @override
   String get stilOfisSoru => '사무실 출근용으로 어울리는 도시적이고 세련된 스타일 추천해줘';
 
   @override
-  String get stilSporBaslik => '🏃 스포티 & 편안한 스타일';
+  String get stilSporBaslik => '스포티 & 편안한 스타일';
 
   @override
   String get stilSporSoru => '주말 야외 활동에 딱 맞는 활동적이고 편안한 룩 추천해줘';
 
   @override
-  String get stilGeceBaslik => '🌙 드레스업 & 나이트라이프';
+  String get stilGeceBaslik => '드레스업 & 나이트라이프';
 
   @override
   String get stilGeceSoru => '특별한 저녁 식사나 모임에 어울리는 근사한 코디 추천해줘';
 
   @override
-  String get ilkGorevBaslik => '🎯 첫 걸음: 선호하는 스타일을 선택하세요!';
+  String get ilkGorevBaslik => '첫 걸음: 선호하는 스타일을 선택하세요';
 
   @override
   String get ilkGorevAciklama => 'FitCheck AI가 즉시 맞춤형 코디를 제안합니다. 오늘 어디로 가시나요?';
@@ -555,25 +555,25 @@ class AppLocalizationsKo extends AppLocalizations {
   String get haftalikUyariButon => '확인';
 
   @override
-  String get haftalikUyariDolapBosBaslik => '옷장이 비어 있습니다!';
+  String get haftalikUyariDolapBosBaslik => '옷장이 비어 있습니다';
 
   @override
   String get haftalikUyariDolapBosIcerik => '주간 코디를 계획하려면 먼저 옷장에 의류를 추가해야 합니다.';
 
   @override
-  String get haftalikUyariUstEksikBaslik => '상의가 부족해요!';
+  String get haftalikUyariUstEksikBaslik => '상의가 부족해요';
 
   @override
   String get haftalikUyariUstEksikIcerik => '옷장에 깨끗한 상의가 없습니다.';
 
   @override
-  String get haftalikUyariAltEksikBaslik => '하의가 부족해요!';
+  String get haftalikUyariAltEksikBaslik => '하의가 부족해요';
 
   @override
   String get haftalikUyariAltEksikIcerik => '옷장에 깨끗한 하의가 없습니다.';
 
   @override
-  String get haftalikUyariAyakkabiEksikBaslik => '신발이 부족해요!';
+  String get haftalikUyariAyakkabiEksikBaslik => '신발이 부족해요';
 
   @override
   String get haftalikUyariAyakkabiEksikIcerik => '옷장에 깨끗한 신발이 없습니다.';
@@ -737,7 +737,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get parca => '개';
 
   @override
-  String get onboardingHosGeldinBaslik => 'FitCheck에 오신 것을 환영합니다! ✨';
+  String get onboardingHosGeldinBaslik => 'FitCheck에 오신 것을 환영합니다';
 
   @override
   String get onboardingDolabiniDijitallestir => '나만의 옷장 디지털화';
@@ -857,10 +857,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get yeniHesapOlusturun => '새 계정 만들기';
 
   @override
-  String get stilDunyanaTekrarHosGeldin => '다시 오신 것을 환영합니다! ✨';
+  String get stilDunyanaTekrarHosGeldin => '다시 오신 것을 환영합니다';
 
   @override
-  String get kombinleriniSaklamakIcinKatil => '나만의 스타일을 동기화하고 안전하게 저장하세요 🚀';
+  String get kombinleriniSaklamakIcinKatil => '나만의 스타일을 동기화하고 안전하게 저장하세요';
 
   @override
   String get girisYap => '로그인';
@@ -914,7 +914,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kullanimKosullarini => '이용약관';
 
   @override
-  String get okudumVeOnayliyorum => '에 동의합니다.';
+  String kullanimKosullariOnayMetni(String terms) {
+    return '$terms을 읽고 동의합니다.';
+  }
 
   @override
   String get onaylamadanOnceKosullariOkuyun => '동의하기 전에 이용약관을 읽어주시기 바랍니다.';
@@ -924,11 +926,11 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get kullanimKosullariMetni =>
-      'FITCHECK 서비스 이용약관\n\n최종 수정일: 2026년 8월 27일\n\nFitCheck 모바일 애플리케이션(이하 \"앱\")을 이용하시기 전에 본 이용약관(이하 \"약관\")을 주의 깊게 읽어주시기 바랍니다. 앱을 다운로드, 접속 또는 이용함으로써 귀하는 본 약관의 모든 조건에 동의하게 됩니다.\n\n1. 당사자 및 목적\n본 약관은 FitCheck 개발자와 앱을 다운로드하여 사용하는 개인 사용자(이하 \"사용자\") 간에 체결됩니다. 앱은 디지털 옷장 관리, 의류 추적, 날씨 기반 코디 제안 및 AI 스타일 컨설팅 서비스를 제공합니다.\n\n2. 서비스 범위 및 이용 조건\n• 연령 제한: 만 13세 이상만 본 앱을 이용할 수 있습니다.\n• 사용자 정보: 프로필 설정 시 입력한 이름, 성별, 스타일, 선호 색상의 정확성에 대한 책임은 사용자에게 있습니다.\n• 조언의 성격: AI가 제공하는 스타일 점수, 구매 제안, 세탁 알림은 참고용 제안에 불과합니다.\n• 기상 데이터: 일기 예보는 실시간 위치를 기반으로 수집됩니다. 개발자는 데이터의 불일치에 대해 책임을 지지 않습니다.\n\n3. 지적재산권 및 콘텐츠 권리\n사용자가 업로드한 의류 사진의 지적재산권은 사용자에게 귀속됩니다. FitCheck 로고, 디자인, 소프트웨어 코드 및 알고리즘의 모든 권리는 FitCheck에 있습니다.\n\n4. 개인정보 보호 및 데이터 보안\n업로드된 사진과 코디 기록은 기본적으로 사용자의 기기에 로컬로 저장됩니다. 위치 데이터는 실시간 날씨 요청 목적으로만 사용됩니다.\n\n5. 책임의 한계\nFitCheck는 중단 없는 서비스를 보장하지 않습니다. 기기 변경이나 앱 삭제로 인한 데이터 손실에 대해 책임을 지지 않습니다.\n\n6. 문의하기\n문의 사항은 설정 탭의 문의하기 섹션 또는 support@fitcheckapp.com으로 연락해주시기 바랍니다.\n\n--- 📜 약관 끝 ---\n아래 버튼을 눌러 이용약관에 동의해 주세요.';
+      'FITCHECK 서비스 이용약관\n\n최종 수정일: 2026년 8월 27일\n\nFitCheck 모바일 애플리케이션(이하 \"앱\")을 이용하시기 전에 본 이용약관(이하 \"약관\")을 주의 깊게 읽어주시기 바랍니다. 앱을 다운로드, 접속 또는 이용함으로써 귀하는 본 약관의 모든 조건에 동의하게 됩니다.\n\n1. 당사자 및 목적\n본 약관은 FitCheck 개발자와 앱을 다운로드하여 사용하는 개인 사용자(이하 \"사용자\") 간에 체결됩니다. 앱은 디지털 옷장 관리, 의류 추적, 날씨 기반 코디 제안 및 AI 스타일 컨설팅 서비스를 제공합니다.\n\n2. 서비스 범위 및 이용 조건\n• 연령 제한: 만 13세 이상만 본 앱을 이용할 수 있습니다.\n• 사용자 정보: 프로필 설정 시 입력한 이름, 성별, 스타일, 선호 색상의 정확성에 대한 책임은 사용자에게 있습니다.\n• 조언의 성격: AI가 제공하는 스타일 점수, 구매 제안, 세탁 알림은 참고용 제안에 불과합니다.\n• 기상 데이터: 일기 예보는 실시간 위치를 기반으로 수집됩니다. 개발자는 데이터의 불일치에 대해 책임을 지지 않습니다.\n\n3. 지적재산권 및 콘텐츠 권리\n사용자가 업로드한 의류 사진의 지적재산권은 사용자에게 귀속됩니다. FitCheck 로고, 디자인, 소프트웨어 코드 및 알고리즘의 모든 권리는 FitCheck에 있습니다.\n\n4. 개인정보 보호 및 데이터 보안\n업로드된 사진과 코디 기록은 기본적으로 사용자의 기기에 로컬로 저장됩니다. 위치 데이터는 실시간 날씨 요청 목적으로만 사용됩니다.\n\n5. 책임의 한계\nFitCheck는 중단 없는 서비스를 보장하지 않습니다. 기기 변경이나 앱 삭제로 인한 데이터 손실에 대해 책임을 지지 않습니다.\n\n6. 문의하기\n문의 사항은 설정 탭의 문의하기 섹션 또는 support@fitcheckapp.com으로 연락해주시기 바랍니다.\n\n--- 약관 끝 ---\n아래 버튼을 눌러 이용약관에 동의해 주세요.';
 
   @override
   String chatKarsilama(Object hava) {
-    return '안녕하세요! 👋 오늘 바깥 날씨는 $hava입니다. 당신의 스타일에 어울리는 근사한 코디를 만들어 볼까요? ✨';
+    return '안녕하세요 오늘 바깥 날씨는 $hava입니다. 당신의 스타일에 어울리는 근사한 코디를 만들어 볼까요?';
   }
 
   @override
@@ -962,16 +964,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get chatGonder => '메시지 보내기';
 
   @override
-  String get chatOneriYagmur => '🌧️ 비 오는 날 맞춤 코디';
+  String get chatOneriYagmur => '비 오는 날 맞춤 코디';
 
   @override
-  String get chatOneriOfis => '💼 오피스 / 스마트 캐주얼';
+  String get chatOneriOfis => '오피스 / 스마트 캐주얼';
 
   @override
-  String get chatOneriHaftaSonu => '☕ 주말 편안한 캐주얼룩';
+  String get chatOneriHaftaSonu => '주말 편안한 캐주얼룩';
 
   @override
-  String get chatOneriKirliSepeti => '🧺 빨래 바구니 점검';
+  String get chatOneriKirliSepeti => '빨래 바구니 점검';
 
   @override
   String get chatDinleniyor => '음성 듣는 중...';
@@ -980,10 +982,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get chatBirSeylerYazin => '스타일리스트에게 메시지 입력...';
 
   @override
-  String get chatKombiniGiydim => '오늘 이 코디 입었어요 👗';
+  String get chatKombiniGiydim => '오늘 이 코디 입었어요';
 
   @override
-  String get chatKombinIslendi => '오늘의 착용 코디로 기록되었습니다! 📅';
+  String get chatKombinIslendi => '오늘의 착용 코디로 기록되었습니다';
 
   @override
   String get chatGorselIncele => '이 이미지를 확인하고 스타일에 맞는 코디를 제안해 주세요.';
@@ -1016,7 +1018,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get profilYikamaSepetimTitle => '빨래 바구니';
 
   @override
-  String get profilYikamaSepetimBos => '빨래 바구니가 비어 있습니다. 모든 옷이 깨끗해요! ✨';
+  String get profilYikamaSepetimBos => '빨래 바구니가 비어 있습니다. 모든 옷이 깨끗해요';
 
   @override
   String get profilSepetiBosalt => '빨래 바구니 비우기';
@@ -1121,7 +1123,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get dahaSonraAyarla => '나중에 설정';
 
   @override
-  String get gunlukHakBittiBaslik => '일일 제공 횟수 초과!';
+  String get gunlukHakBittiBaslik => '일일 제공 횟수 초과';
 
   @override
   String get dahaSonra => '나중에';
@@ -1133,7 +1135,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String tebriklerHakEklendi(int adet) {
-    return '축하합니다! +$adet 생성권이 추가되었습니다. ✨';
+    return '축하합니다 +$adet 생성권이 추가되었습니다.';
   }
 
   @override
@@ -1143,7 +1145,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String kombinGiydimIsaretlendi(String kombinAdi) {
-    return '\"$kombinAdi\" 코디를 오늘 입은 옷으로 등록했습니다! 👕✨';
+    return '\"$kombinAdi\" 코디를 오늘 입은 옷으로 등록했습니다';
   }
 
   @override
@@ -1156,16 +1158,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get farkliParcaSec => '다른 아이템 선택';
 
   @override
-  String get farkliUstSec => '다른 상의 선택 👕';
+  String get farkliUstSec => '다른 상의 선택';
 
   @override
-  String get farkliAltSec => '다른 하의 선택 👖';
+  String get farkliAltSec => '다른 하의 선택';
 
   @override
-  String get farkliAyakkabiSec => '다른 신발 선택 👟';
+  String get farkliAyakkabiSec => '다른 신발 선택';
 
   @override
-  String get farkliDisSec => '다른 아우터 선택 🧥';
+  String get farkliDisSec => '다른 아우터 선택';
 
   @override
   String get baskaTemizKiyafetYok => '교체할 수 있는 깨끗한 옷이\n이 카테고리에 없습니다.';
@@ -1189,11 +1191,11 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kombinParcalariBaslik => '코디 구성 아이템';
 
   @override
-  String get parcalariKaydirIpucu => '좌우로 스와이프하여 다른 아이템 보기 👈👉';
+  String get parcalariKaydirIpucu => '좌우로 스와이프하여 다른 아이템 보기';
 
   @override
   String zorunluParcaYorumu(Object parcaAdi) {
-    return '✨ 이 아이템을 중심으로 완벽한 스타일을 완성했어요: $parcaAdi!';
+    return '이 아이템을 중심으로 완벽한 스타일을 완성했어요: $parcaAdi';
   }
 
   @override
@@ -1201,29 +1203,28 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get dolabiKaristirEksikUyari =>
-      '랜덤 셔플을 진행하려면 깨끗한 상의, 하의, 신발이 최소 1개 이상 필요합니다! 👕👖👟';
+      '랜덤 셔플을 진행하려면 깨끗한 상의, 하의, 신발이 최소 1개 이상 필요합니다';
 
   @override
-  String get zarlarAtildiYorumu => '🎲 주사위가 던져졌습니다! 색다른 멋진 조합을 발견해 보세요.';
+  String get zarlarAtildiYorumu => '주사위가 던져졌습니다 색다른 멋진 조합을 발견해 보세요.';
 
   @override
   String get rastgeleKombinTuru => '랜덤 매치';
 
   @override
-  String get temizAlternatifYok => '이 카테고리에 교체 가능한 깨끗한 옷이 더 이상 없습니다! 🧺';
+  String get temizAlternatifYok => '이 카테고리에 교체 가능한 깨끗한 옷이 더 이상 없습니다';
 
   @override
   String get kisiselDokunus => '커스텀 조합';
 
   @override
-  String get aiYeniParcaAnalizEdiyor => 'AI가 새로운 아이템을 분석하는 중입니다... ✨';
+  String get aiYeniParcaAnalizEdiyor => 'AI가 새로운 아이템을 분석하는 중입니다...';
 
   @override
-  String get parcaDegisimVarsayilanYorum =>
-      '✨ 아이템을 변경하여 전반적인 룩의 밸런스가 더욱 좋아졌습니다!';
+  String get parcaDegisimVarsayilanYorum => '아이템을 변경하여 전반적인 룩의 밸런스가 더욱 좋아졌습니다';
 
   @override
-  String get parcaDegisimHataYorum => '✨ 아이템 변경으로 당신의 개성에 꼭 맞는 스타일이 완성되었습니다!';
+  String get parcaDegisimHataYorum => '아이템 변경으로 당신의 개성에 꼭 맞는 스타일이 완성되었습니다';
 
   @override
   String get bilgileriDuzenleBaslik => '정보 수정';
@@ -1244,7 +1245,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get zarAtKaristir => '주사위 던지기 (랜덤 셔플)';
 
   @override
-  String get zarPopupBaslik => '마법의 주사위를 흔들어 보세요!';
+  String get zarPopupBaslik => '마법의 주사위를 흔들어 보세요';
 
   @override
   String get zarPopupAciklama =>
@@ -1257,17 +1258,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String get zarSalla => '주사위 흔들기';
 
   @override
-  String get degistirmekIcinKaydirIpucu => '스와이프하거나 탭하여 아이템을 교체하세요 👈👉';
+  String get degistirmekIcinKaydirIpucu => '스와이프하거나 탭하여 아이템을 교체하세요';
 
   @override
   String get favorilerdeEtiketi => '즐겨찾기 됨';
 
   @override
-  String get bugunGiydildiEtiketi => '오늘 착용함 ✨';
+  String get bugunGiydildiEtiketi => '오늘 착용함';
 
   @override
-  String get varsayilanKendiAnalizYorumu =>
-      '멋진 감각이네요! 톤과 스타일의 조화가 매끄럽게 어우러집니다.';
+  String get varsayilanKendiAnalizYorumu => '멋진 감각이네요 톤과 스타일의 조화가 매끄럽게 어우러집니다.';
 
   @override
   String get kendiTasarimimBaslik => '나만의 스타일 연출';
@@ -1287,7 +1287,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get secimleriSifirla => '선택 초기화';
 
   @override
-  String get kombinHazirAiTavsiyesi => '근사한 코디입니다! AI로 조화도를 분석하고 저장하세요.';
+  String get kombinHazirAiTavsiyesi => '근사한 코디입니다 AI로 조화도를 분석하고 저장하세요.';
 
   @override
   String get kombinBaslaIpucu => '오늘 어떤 스타일을 연출하고 싶으신가요? 아이템을 선택해 보세요.';
@@ -1327,7 +1327,7 @@ class AppLocalizationsKo extends AppLocalizations {
       '모든 착용 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.';
 
   @override
-  String get gecmisBasariylaTemizlendi => '기록이 성공적으로 삭제되었습니다 🗑️';
+  String get gecmisBasariylaTemizlendi => '기록이 성공적으로 삭제되었습니다';
 
   @override
   String get kayitGecmistenSilindi => '해당 기록이 삭제되었습니다.';
@@ -1351,10 +1351,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get camasirSepetiTitle => '빨래 바구니';
 
   @override
-  String get sepetBosTumKiyafetlerTemiz => '빨래 바구니가 비어 있습니다. 모든 옷이 깨끗해요!';
+  String get sepetBosTumKiyafetlerTemiz => '빨래 바구니가 비어 있습니다. 모든 옷이 깨끗해요';
 
   @override
-  String get tumKiyafetlerTemizlendi => '모든 의류가 세탁되어 옷장으로 복원되었습니다 🧺✨';
+  String get tumKiyafetlerTemizlendi => '모든 의류가 세탁되어 옷장으로 복원되었습니다';
 
   @override
   String get tumunuTemizIsaretle => '모두 세탁 완료(깨끗함)로 표시';
@@ -1363,7 +1363,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get profilVeAnalizTitle => '프로필 및 옷장 분석';
 
   @override
-  String get harikaGidiyorsun => '매우 잘 관리하고 계십니다!';
+  String get harikaGidiyorsun => '매우 잘 관리하고 계십니다';
 
   @override
   String gundurSeridesin(Object gun) {
@@ -1441,7 +1441,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get googleHesabiniBagla => 'Google 계정 연동하기';
 
   @override
-  String get googleHesabiBaglandi => 'Google 계정이 успішно 연동되었습니다! 🔗';
+  String get googleHesabiBaglandi => 'Google 계정이 успішно 연동되었습니다';
 
   @override
   String get googleHesabiBaglantisiKesildi => 'Google 계정 연동이 해제되었습니다.';
@@ -1469,7 +1469,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String sifreEpostasiGonderildi(Object eposta) {
-    return '$eposta 주소로 재설정 이메일을 보냈습니다! ✉️';
+    return '$eposta 주소로 재설정 이메일을 보냈습니다';
   }
 
   @override
@@ -1620,7 +1620,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get geciciFotografHafizasiAciklama => '사진 처리를 위해 사용된 임시 저장공간을 확보합니다';
 
   @override
-  String get onbellekTemizlendiBasari => '이미지 캐시 및 임시 파일이 삭제되었습니다! ✨';
+  String get onbellekTemizlendiBasari => '이미지 캐시 및 임시 파일이 삭제되었습니다';
 
   @override
   String get onbellekTemizlerkenHata => '캐시를 비우는 동안 문제가 발생했습니다.';
@@ -1633,11 +1633,10 @@ class AppLocalizationsKo extends AppLocalizations {
       '등록된 모든 의류 및 코디 데이터를 JSON 형식으로 내보냅니다';
 
   @override
-  String get disaAktarilacakVeriYok => '내보낼 옷장 데이터가 없습니다. 📭';
+  String get disaAktarilacakVeriYok => '내보낼 옷장 데이터가 없습니다.';
 
   @override
-  String get gardiropVerisiKopyalandi =>
-      '모든 옷장 데이터가 클립보드에 JSON 형식으로 복사되었습니다! 📋';
+  String get gardiropVerisiKopyalandi => '모든 옷장 데이터가 클립보드에 JSON 형식으로 복사되었습니다';
 
   @override
   String get destekVeDegerlendirmeUst => '지원 및 평가';
@@ -1742,20 +1741,20 @@ class AppLocalizationsKo extends AppLocalizations {
   String get kuponKullanButon => '사용하기';
 
   @override
-  String get kuponBasariliMesaji => '🎉 프로모션 코드가 적용되었습니다!';
+  String get kuponBasariliMesaji => '프로모션 코드가 적용되었습니다';
 
   @override
-  String get kuponKullanilmisUyari => '⚠️ 이미 사용된 프로모션 코드입니다!';
+  String get kuponKullanilmisUyari => '이미 사용된 프로모션 코드입니다';
 
   @override
-  String get kuponGecersizUyari => '❌ 유효하지 않은 코드입니다! 다시 확인해 주세요.';
+  String get kuponGecersizUyari => '유효하지 않은 코드입니다 다시 확인해 주세요.';
 
   @override
-  String get sinirsizIslemHakkiBaslik => '무제한 생성권 👑';
+  String get sinirsizIslemHakkiBaslik => '무제한 생성권';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
-    return '남은 생성권: $hak회 ⚡';
+    return '남은 생성권: $hak회';
   }
 
   @override
@@ -1771,15 +1770,15 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String hakEklendiTebrikler(int adet) {
-    return '축하합니다! +$adet 생성권이 추가되었습니다. ✨';
+    return '축하합니다 +$adet 생성권이 추가되었습니다.';
   }
 
   @override
-  String get gardirobunDolduTitle => '옷장이 가득 찼습니다!';
+  String get gardirobunDolduTitle => '옷장이 가득 찼습니다';
 
   @override
   String gardirobunDolduIcerik(int limit, int adet) {
-    return '최대 용량인 $limit개에 도달했습니다. 짧은 영상 광고를 시청하고 옷장 용량을 +$adet개 늘리시겠습니까? 👕';
+    return '최대 용량인 $limit개에 도달했습니다. 짧은 영상 광고를 시청하고 옷장 용량을 +$adet개 늘리시겠습니까?';
   }
 
   @override
@@ -1789,36 +1788,36 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String yeniSlotEklendiTebrikler(int adet) {
-    return '축하합니다! 옷장에 새로운 슬롯 +$adet개가 추가되었습니다. 🎉';
+    return '축하합니다 옷장에 새로운 슬롯 +$adet개가 추가되었습니다.';
   }
 
   @override
-  String get gunlukHakBittiTitle => '일일 무료 횟수 소진!';
+  String get gunlukHakBittiTitle => '일일 무료 횟수 소진';
 
   @override
   String get gunlukHakBittiIcerik =>
-      '오늘의 무료 횟수를 모두 사용하셨습니다. 영상 광고를 시청하여 새로운 생성권을 받아보세요! 🛍️';
+      '오늘의 무료 횟수를 모두 사용하셨습니다. 영상 광고를 시청하여 새로운 생성권을 받아보세요';
 
   @override
   String get kuponGir => '코드 입력';
 
   @override
-  String get anaSemsiyeBildirimBaslik => '우산을 잊지 마세요! ☔';
+  String get anaSemsiyeBildirimBaslik => '우산을 잊지 마세요';
 
   @override
   String get anaSemsiyeBildirimIcerik =>
       '오늘 비가 올 예정입니다. 비에 젖지 않는 적절한 의류를 선택해 보세요.';
 
   @override
-  String get anaCamasirGunuBildirimBaslik => '즐거운 세탁 날! 🧺';
+  String get anaCamasirGunuBildirimBaslik => '즐거운 세탁 날';
 
   @override
   String get anaCamasirGunuBildirimIcerik =>
-      '빨래 바구니에 옷이 많이 쌓였습니다. 세탁기를 돌릴 시간이에요!';
+      '빨래 바구니에 옷이 많이 쌓였습니다. 세탁기를 돌릴 시간이에요';
 
   @override
   String chatZorunluParcaMesaji(Object parca) {
-    return '✨ 이 아이템과 함께 입으려면 어떤 옷이 어울릴까요? ($parca)';
+    return '이 아이템과 함께 입으려면 어떤 옷이 어울릴까요? ($parca)';
   }
 
   @override
@@ -1860,67 +1859,67 @@ class AppLocalizationsKo extends AppLocalizations {
   String get rehberiAtla => '가이드 건너뛰기';
 
   @override
-  String get rehberAnladimBasla => '확인했어요, 시작하기!';
+  String get rehberAnladimBasla => '확인했어요, 시작하기';
 
   @override
-  String get rehberSonrakiAdim => '다음 단계 ➔';
+  String get rehberSonrakiAdim => '다음 단계';
 
   @override
-  String get rehberGardirobuDijitallestirBaslik => '📸 나만의 옷장 디지털화';
+  String get rehberGardirobuDijitallestirBaslik => '나만의 옷장 디지털화';
 
   @override
   String get rehberGardirobuDijitallestirAciklama =>
       '이 버튼을 눌러 사진을 촬영하거나 갤러리에서 불러와 가상 옷장을 구축하세요.';
 
   @override
-  String get rehberSesliAsistanBaslik => '🎙️ 음성 스타일 어시스턴트';
+  String get rehberSesliAsistanBaslik => '음성 스타일 어시스턴트';
 
   @override
   String get rehberSesliAsistanAciklama =>
       '음성 명령으로 입을 옷을 물어보거나 실시간 코디 제안을 받을 수 있습니다.';
 
   @override
-  String get rehberAiStilistBaslik => '✨ AI 스타일리스트 추천';
+  String get rehberAiStilistBaslik => 'AI 스타일리스트 추천';
 
   @override
   String get rehberAiStilistAciklama =>
       '날씨, 피부 톤, 선호 스타일에 맞춘 나만의 맞춤 코디를 터치 한 번으로 확인하세요.';
 
   @override
-  String get rehberAyarlarBaslik => '⚙️ 개인화 & 설정';
+  String get rehberAyarlarBaslik => '개인화 & 설정';
 
   @override
   String get rehberAyarlarAciklama =>
       '성별, 퍼스널 컬러, 선호 색상 및 테마를 설정하거나 앱 안내 가이드를 다시 볼 수 있습니다.';
 
   @override
-  String get rehberNavGardirobumBaslik => '👔 나만의 옷장';
+  String get rehberNavGardirobumBaslik => '나만의 옷장';
 
   @override
   String get rehberNavGardirobumAciklama => '등록된 모든 옷을 카테고리별로 쉽게 조회하고 관리하세요.';
 
   @override
-  String get rehberNavHaftalikBaslik => '📅 주간 스타일 플래너';
+  String get rehberNavHaftalikBaslik => '주간 스타일 플래너';
 
   @override
   String get rehberNavHaftalikAciklama =>
       '7일간의 날씨 예보를 기반으로 일주일 데일리룩을 미리 계획해 보세요.';
 
   @override
-  String get rehberNavDolaptanBaslik => '🤖 AI 옷장 자동 코디';
+  String get rehberNavDolaptanBaslik => 'AI 옷장 자동 코디';
 
   @override
   String get rehberNavDolaptanAciklama =>
       '가지고 계신 옷들을 활용해 AI가 매일 최적의 스타일을 추천합니다.';
 
   @override
-  String get rehberNavKendiBaslik => '🎨 커스텀 코디 디자이너';
+  String get rehberNavKendiBaslik => '커스텀 코디 디자이너';
 
   @override
   String get rehberNavKendiAciklama => '상의, 하의, 신발을 직접 매치하여 자신만의 스타일을 저장하세요.';
 
   @override
-  String get rehberNavProfilBaslik => '📊 분석 & 세탁 관리';
+  String get rehberNavProfilBaslik => '분석 & 세탁 관리';
 
   @override
   String get rehberNavProfilAciklama =>
@@ -1934,7 +1933,7 @@ class AppLocalizationsKo extends AppLocalizations {
       '세탁 알림, 비 예보 알림 및 일일 스타일 팁을 수신하려면 알림 권한을 허용해 주시기 바랍니다.';
 
   @override
-  String get bildirimGunaydinBaslik => '좋은 아침입니다! ☀️';
+  String get bildirimGunaydinBaslik => '좋은 아침입니다';
 
   @override
   String get bildirimGunaydinIcerik =>
@@ -1998,7 +1997,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get fitOversize => '오버사이즈 / 루즈 핏';
 
   @override
-  String get gardirobumBosBaslik => '옷장이 비어 있습니다!';
+  String get gardirobumBosBaslik => '옷장이 비어 있습니다';
 
   @override
   String get gardirobumGizlendiBaslik => '옷장 숨김 상태';
@@ -2050,7 +2049,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get gardirobumHakBittiAciklama => '오늘 생성할 수 있는 코디 횟수를 모두 소진하셨습니다.';
 
   @override
-  String get gardirobumHakEklendiMesaj => '축하합니다! 새로운 코디 권한이 추가되었습니다.';
+  String get gardirobumHakEklendiMesaj => '축하합니다 새로운 코디 권한이 추가되었습니다.';
 
   @override
   String get ayarlariAc => '설정 열기';
@@ -2083,7 +2082,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get favorilerdenCikarildi => '즐겨찾기에서 삭제되었습니다.';
 
   @override
-  String get gardirobumHenuzYokEkle => '아직 등록된 옷이 없습니다. 지금 추가해 보세요!';
+  String get gardirobumHenuzYokEkle => '아직 등록된 옷이 없습니다. 지금 추가해 보세요';
 
   @override
   String gardirobumMaksFotografUyari(int max) {
@@ -2113,31 +2112,31 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String kombinSohbetKarsilama(Object kombin) {
-    return '\'$kombin\' 코디를 함께 살펴봐요! 색상 조화, 날씨, 대체 아이템 등 무엇이든 물어보세요. ✨';
+    return '\'$kombin\' 코디를 함께 살펴봐요 색상 조화, 날씨, 대체 아이템 등 무엇이든 물어보세요.';
   }
 
   @override
-  String get kombinSohbetOneriUyum => '🤔 이 코디가 잘 어울리는 이유는?';
+  String get kombinSohbetOneriUyum => '이 코디가 잘 어울리는 이유는?';
 
   @override
-  String get kombinSohbetOneriAlternatif => '👟 다른 아이템을 추천해줘';
+  String get kombinSohbetOneriAlternatif => '다른 아이템을 추천해줘';
 
   @override
-  String get kombinSohbetOneriHava => '🌦️ 날씨가 바뀌면 어떻게 입지?';
+  String get kombinSohbetOneriHava => '날씨가 바뀌면 어떻게 입지?';
 
   @override
-  String get kombinSohbetOneriAksesuar => '💍 액세서리를 추천해줘';
+  String get kombinSohbetOneriAksesuar => '액세서리를 추천해줘';
 
   @override
   String get kombinSohbetAltBaslikAnlik => '지금 코디에 대한 채팅';
 
   @override
   String get chatKirliSepetiBos =>
-      '🧺 빨래 바구니가 비어 있어요! 모든 아이템을 바로 입을 수 있으니, 언제든 코디를 추천해 드릴게요. ✨';
+      '빨래 바구니가 비어 있어요 모든 아이템을 바로 입을 수 있으니, 언제든 코디를 추천해 드릴게요.';
 
   @override
   String chatKirliSepetiDoluBaslik(Object sayi) {
-    return '🧺 빨래 바구니에 **$sayi**개의 아이템이 기다리고 있어요:';
+    return '빨래 바구니에 **$sayi**개의 아이템이 기다리고 있어요:';
   }
 
   @override
@@ -2152,8 +2151,7 @@ class AppLocalizationsKo extends AppLocalizations {
       '앱 사용 현황을 파악하고 경험을 개선하기 위해 사용 분석 데이터가 Firebase Analytics로 전송됩니다. 선택 사항이며 언제든지 끌 수 있습니다.';
 
   @override
-  String get chatKarsilamaHavaYok =>
-      '안녕하세요! 👋 당신의 스타일에 어울리는 근사한 코디를 만들어 볼까요? ✨';
+  String get chatKarsilamaHavaYok => '안녕하세요 당신의 스타일에 어울리는 근사한 코디를 만들어 볼까요?';
 
   @override
   String get premiumBaslik => '무제한 스타일, 광고 없음';
@@ -2233,417 +2231,405 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumUrunBulunamadi => '구독 정보를 불러오지 못했습니다. 나중에 다시 시도해 주세요.';
 
   @override
-  String get triviaQ1 =>
-      'Taba / Turuncu tonları ile renk çarkında tam zıt konumda yer alan ve güçlü bir kontrast oluşturan renk hangisidir?';
+  String get triviaQ1 => '카멜색이나 오렌지 톤의 정반대편에 있어 강한 대비를 만드는 색은 무엇인가요?';
 
   @override
-  String get triviaQ1o1 => 'Saks Mavisi / Petrol Mavisi';
+  String get triviaQ1o1 => '사파이어 블루 / 페트롤 블루';
 
   @override
-  String get triviaQ1o2 => 'Zümrüt Yeşili';
+  String get triviaQ1o2 => '에메랄드 그린';
 
   @override
-  String get triviaQ1o3 => 'Bordo';
+  String get triviaQ1o3 => '버건디';
 
   @override
-  String get triviaQ1o4 => 'Hardal Sarısı';
+  String get triviaQ1o4 => '머스터드 옐로';
 
   @override
-  String get triviaQ2 =>
-      'Modada \'Monokrom\' (Monochromatic) giyim tarzı ne anlama gelir?';
+  String get triviaQ2 => '패션에서 모노크롬 스타일은 무엇을 의미하나요?';
 
   @override
-  String get triviaQ2o1 =>
-      'Tek bir rengin farklı tonlarını bir arada kullanmak';
+  String get triviaQ2o1 => '한 가지 색의 다양한 톤을 함께 사용하는 것';
 
   @override
-  String get triviaQ2o2 => 'Sadece siyah ve beyaz kıyafetler giyinmek';
+  String get triviaQ2o2 => '검은색과 흰색 옷만 입는 것';
 
   @override
-  String get triviaQ2o3 => 'En az 3 zıt rengi aynı anda harmanlamak';
+  String get triviaQ2o3 => '대비되는 색을 세 가지 이상 함께 섞는 것';
 
   @override
-  String get triviaQ2o4 => 'Sadece desenli ve baskılı parçaları eşleştirmek';
+  String get triviaQ2o4 => '무늬와 프린트가 있는 옷만 매치하는 것';
 
   @override
-  String get triviaQ3 =>
-      'Altın (Gold) takıların, kiremit ve zeytin yeşili gibi tonların en çok yakıştığı cilt alt tonu hangisidir?';
+  String get triviaQ3 => '골드 주얼리와 테라코타, 올리브 그린 톤에 가장 잘 어울리는 피부 언더톤은 무엇인가요?';
 
   @override
-  String get triviaQ3o1 => 'Soğuk (Cool) Alt Ton';
+  String get triviaQ3o1 => '쿨 언더톤';
 
   @override
-  String get triviaQ3o2 => 'Sıcak (Warm) Alt Ton';
+  String get triviaQ3o2 => '웜 언더톤';
 
   @override
-  String get triviaQ3o3 => 'Mavi Alt Ton';
+  String get triviaQ3o3 => '블루 언더톤';
 
   @override
-  String get triviaQ3o4 => 'Pembe Alt Ton';
+  String get triviaQ3o4 => '핑크 언더톤';
 
   @override
-  String get triviaQ4 =>
-      'Kapsül gardırop oluştururken her renkle kolayca eşleşen \'Nötr Renkler\' grubunda hangisi YER ALMAZ?';
+  String get triviaQ4 => '캡슐 옷장에서 어떤 색과도 쉽게 어울리는 뉴트럴 컬러가 아닌 것은 무엇인가요?';
 
   @override
-  String get triviaQ4o1 => 'Bej / Krem';
+  String get triviaQ4o1 => '베이지 / 크림';
 
   @override
-  String get triviaQ4o2 => 'Lacivert';
+  String get triviaQ4o2 => '네이비';
 
   @override
-  String get triviaQ4o3 => 'Flaş (Neon) Sarı';
+  String get triviaQ4o3 => '네온 옐로';
 
   @override
-  String get triviaQ4o4 => 'Taba / Kahverengi';
+  String get triviaQ4o4 => '탠 / 브라운';
 
   @override
-  String get triviaQ5 =>
-      'Renk çarkında yan yana duran ve yumuşak, göz yormayan bir geçiş sağlayan renk grubuna ne ad verilir?';
+  String get triviaQ5 => '색상환에서 나란히 있어 부드러운 전환을 만드는 색 조합을 무엇이라고 하나요?';
 
   @override
-  String get triviaQ5o1 => 'Tamamlayıcı (Zıt) Renkler';
+  String get triviaQ5o1 => '보색(대비색)';
 
   @override
-  String get triviaQ5o2 => 'Analog Renkler';
+  String get triviaQ5o2 => '유사색';
 
   @override
-  String get triviaQ5o3 => 'Pastel Renkler';
+  String get triviaQ5o3 => '파스텔 색상';
 
   @override
-  String get triviaQ5o4 => 'Triadik Renkler';
+  String get triviaQ5o4 => '삼각 색상 조합';
 
   @override
-  String get triviaQ6 =>
-      'Modada vücut oranını daha uzun ve dengeli göstermek için uygulanan \'Üçte Bir Kuralı\' (Rule of Thirds) hangisidir?';
+  String get triviaQ6 => '체형 비율을 더 길고 균형 있게 보이게 하는 3분할 법칙은 무엇인가요?';
 
   @override
-  String get triviaQ6o1 => '1/2 Üst - 1/2 Alt (Gövde ve bacak eşit)';
+  String get triviaQ6o1 => '위 절반 - 아래 절반 (몸통과 다리가 같은 비율)';
 
   @override
-  String get triviaQ6o2 => '1/3 Üst - 2/3 Alt (Yüksek bel / Kısa üst)';
+  String get triviaQ6o2 => '위 3분의 1 - 아래 3분의 2 (하이웨이스트 / 짧은 상의)';
 
   @override
-  String get triviaQ6o3 => '2/3 Üst - 1/3 Alt (Uzun tunik / Kısa alt)';
+  String get triviaQ6o3 => '위 3분의 2 - 아래 3분의 1 (긴 튜닉 / 짧은 하의)';
 
   @override
-  String get triviaQ6o4 => '3/3 Tam boy tek parça';
+  String get triviaQ6o4 => '전신 원피스 한 벌';
 
   @override
-  String get triviaQ7 =>
-      'Fransızca moda terimi olan \'Ton-sür-ton\' giyim tekniği neyi ifade eder?';
+  String get triviaQ7 => '프랑스 패션 용어 \'톤온톤\'은 무엇을 뜻하나요?';
 
   @override
-  String get triviaQ7o1 =>
-      'Aynı rengin farklı doygunluk ve açık/koyu nüanslarını katmanlamak';
+  String get triviaQ7o1 => '같은 색의 다양한 채도와 밝고 어두운 톤을 겹쳐 입는 것';
 
   @override
-  String get triviaQ7o2 => 'Tamamen zıt iki rengi keskin hatlarla birleştirmek';
+  String get triviaQ7o2 => '완전히 반대되는 두 색을 뚜렷한 선으로 조합하는 것';
 
   @override
-  String get triviaQ7o3 => 'Siyah ve beyaz desenleri karıştırmak';
+  String get triviaQ7o3 => '흑백 패턴을 섞는 것';
 
   @override
-  String get triviaQ7o4 => 'Farklı kumaş dokularını tek renkte toplamak';
+  String get triviaQ7o4 => '한 가지 색으로 서로 다른 원단 질감을 조합하는 것';
 
   @override
-  String get triviaQ8 =>
-      'Klasik ve formal giyim kurallarına göre, deri kemer rengi hangisiyle birebir eşleşmelidir?';
+  String get triviaQ8 => '클래식한 포멀웨어 규칙에서 가죽 벨트 색은 무엇과 맞춰야 하나요?';
 
   @override
-  String get triviaQ8o1 => 'Kravat veya Şal';
+  String get triviaQ8o1 => '넥타이 또는 스카프';
 
   @override
-  String get triviaQ8o2 => 'Gömlek';
+  String get triviaQ8o2 => '셔츠';
 
   @override
-  String get triviaQ8o3 => 'Ayakkabı';
+  String get triviaQ8o3 => '신발';
 
   @override
-  String get triviaQ8o4 => 'Ceket Astarı';
+  String get triviaQ8o4 => '재킷 안감';
 
   @override
   String get triviaQ9 =>
-      'Renk çarkında eşit uzaklıktaki 3 rengin (Ör: Kırmızı, Sarı, Mavi) oluşturduğu canlı kombin tarzına ne denir?';
+      '색상환에서 같은 간격에 있는 빨강, 노랑, 파랑처럼 세 가지 색을 조합한 생동감 있는 스타일은 무엇인가요?';
 
   @override
-  String get triviaQ9o1 => 'Triadik (Üçlü) Renk Uyumu';
+  String get triviaQ9o1 => '삼각 배색';
 
   @override
-  String get triviaQ9o2 => 'Nötr Uyum';
+  String get triviaQ9o2 => '뉴트럴 배색';
 
   @override
-  String get triviaQ9o3 => 'Monokrom Uyum';
+  String get triviaQ9o3 => '모노크롬 배색';
 
   @override
-  String get triviaQ9o4 => 'Kapsül Geçiş';
+  String get triviaQ9o4 => '캡슐 배색';
 
   @override
-  String get triviaQ10 =>
-      'Ten rengine (Nude) veya giyilen pantolonun rengine tam uyan bir ayakkabı seçmek nasıl bir görsel etki yaratır?';
+  String get triviaQ10 => '피부색이나 바지 색과 같은 신발은 어떤 시각적 효과를 주나요?';
 
   @override
-  String get triviaQ10o1 => 'Bacak boyunu kesintisiz ve daha uzun gösterir';
+  String get triviaQ10o1 => '다리 라인이 끊기지 않아 더 길어 보입니다';
 
   @override
-  String get triviaQ10o2 => 'Vücudu daha geniş gösterir';
+  String get triviaQ10o2 => '체형이 더 넓어 보입니다';
 
   @override
-  String get triviaQ10o3 => 'Omuz genişliğini öne çıkarır';
+  String get triviaQ10o3 => '어깨너비를 강조합니다';
 
   @override
-  String get triviaQ10o4 => 'Boyu olduğundan kısa gösterir';
+  String get triviaQ10o4 => '키가 더 작아 보입니다';
 
   @override
   String get kombinOyunuBaslik => '콤비네이션 게임';
 
   @override
-  String get kombinMevcutKombin => 'Mevcut Kombin';
+  String get kombinMevcutKombin => '현재 코디';
 
   @override
-  String get kombinParcaUst => 'Üst';
+  String get kombinParcaUst => '상의';
 
   @override
-  String get kombinParcaAlt => 'Alt';
+  String get kombinParcaAlt => '하의';
 
   @override
-  String get kombinEksik_ayakkabi => 'Eksik: Ayakkabı';
+  String get kombinEksik_ayakkabi => '부족: 신발';
 
   @override
-  String get kombinEksik_ceket => 'Eksik: Ceket';
+  String get kombinEksik_ceket => '부족: 재킷';
 
   @override
-  String get kombinEksik_aksesuar => 'Eksik: Aksesuar';
+  String get kombinEksik_aksesuar => '부족: 액세서리';
 
   @override
-  String get kombinSoru_ayakkabi => 'Hangi ayakkabı en uygun?';
+  String get kombinSoru_ayakkabi => '어떤 신발이 가장 잘 어울리나요?';
 
   @override
-  String get kombinSoru_ceket => 'Hangi ceket en uygun?';
+  String get kombinSoru_ceket => '어떤 재킷이 가장 잘 어울리나요?';
 
   @override
-  String get kombinSoru_aksesuar => 'Hangi aksesuar en uygun?';
+  String get kombinSoru_aksesuar => '어떤 액세서리가 가장 잘 어울리나요?';
 
   @override
-  String get kombinKategoriAyakkabi => 'Ayakkabı';
+  String get kombinKategoriAyakkabi => '신발';
 
   @override
-  String get kombinKategoriCeket => 'Ceket';
+  String get kombinKategoriCeket => '재킷';
 
   @override
-  String get kombinKategoriAksesuar => 'Aksesuar';
+  String get kombinKategoriAksesuar => '액세서리';
 
   @override
-  String get kombinOrtamOfis => 'Ofis';
+  String get kombinOrtamOfis => '오피스';
 
   @override
-  String get kombinOrtamCasual => 'Casual';
+  String get kombinOrtamCasual => '캐주얼';
 
   @override
-  String get kombinOrtamDavet => 'Davet';
+  String get kombinOrtamDavet => '파티';
 
   @override
-  String get kombinOrtamSpor => 'Spor';
+  String get kombinOrtamSpor => '스포츠';
 
   @override
-  String get kombinHavaGunesli => 'Güneşli';
+  String get kombinHavaGunesli => '맑음';
 
   @override
-  String get kombinHavaYagmurlu => 'Yağmurlu';
+  String get kombinHavaYagmurlu => '비';
 
   @override
-  String get kombinHavaSoguk => 'Soğuk';
+  String get kombinHavaSoguk => '추움';
 
   @override
-  String get kombinHavaSicak => 'Sıcak';
+  String get kombinHavaSicak => '따뜻함';
 
   @override
-  String get kombinRenkBeyaz => 'Beyaz';
+  String get kombinRenkBeyaz => '흰색';
 
   @override
-  String get kombinRenkSiyah => 'Siyah';
+  String get kombinRenkSiyah => '검정';
 
   @override
-  String get kombinRenkKahverengi => 'Kahverengi';
+  String get kombinRenkKahverengi => '갈색';
 
   @override
-  String get kombinRenkLacivert => 'Lacivert';
+  String get kombinRenkLacivert => '네이비';
 
   @override
-  String get kombinRenkBej => 'Bej';
+  String get kombinRenkBej => '베이지';
 
   @override
-  String get kombinRenkKoyuYesil => 'Koyu Yeşil';
+  String get kombinRenkKoyuYesil => '진녹색';
 
   @override
-  String get kombinRenkNude => 'Nude';
+  String get kombinRenkNude => '누드';
 
   @override
-  String get kombinRenkAltin => 'Altın';
+  String get kombinRenkAltin => '골드';
 
   @override
-  String get kombinRenkGri => 'Gri';
+  String get kombinRenkGri => '회색';
 
   @override
-  String get kombinRenkPastelMavi => 'Pastel Mavi';
+  String get kombinRenkPastelMavi => '파스텔 블루';
 
   @override
-  String get kombinRenkKirmizi => 'Kırmızı';
+  String get kombinRenkKirmizi => '빨강';
 
   @override
-  String get kombinRenkMavi => 'Mavi';
+  String get kombinRenkMavi => '파랑';
 
   @override
-  String get kombinRenkGumus => 'Gümüş';
+  String get kombinRenkGumus => '은색';
 
   @override
-  String get kombinRenkKoyuMavi => 'Koyu Mavi';
+  String get kombinRenkKoyuMavi => '진파랑';
 
   @override
-  String get kombinRenkKamel => 'Kamel';
+  String get kombinRenkKamel => '카멜';
 
   @override
-  String get kombinRenkYesil => 'Yeşil';
+  String get kombinRenkYesil => '초록';
 
   @override
-  String get kombinRenkAcikMavi => 'Açık Mavi';
+  String get kombinRenkAcikMavi => '하늘색';
 
   @override
-  String get kombinRenkNavy => 'Navy';
+  String get kombinRenkNavy => '네이비';
 
   @override
-  String get kombinSecenekKahverengiOxford => 'Kahverengi Deri Oxford';
+  String get kombinSecenekKahverengiOxford => '갈색 가죽 옥스퍼드화';
 
   @override
-  String get kombinSecenekSiyahDerby => 'Siyah Deri Derby';
+  String get kombinSecenekSiyahDerby => '검정 더비 슈즈';
 
   @override
-  String get kombinSecenekBeyazSpor => 'Beyaz Spor Ayakkabı';
+  String get kombinSecenekBeyazSpor => '흰색 스니커즈';
 
   @override
-  String get kombinSecenekKahverengiCizme => 'Kahverengi Çizme';
+  String get kombinSecenekKahverengiCizme => '갈색 부츠';
 
   @override
-  String get kombinSecenekSiyahSuGecirmezBot => 'Siyah Su Geçirmez Bot';
+  String get kombinSecenekSiyahSuGecirmezBot => '검정 방수 부츠';
 
   @override
-  String get kombinSecenekNudeBallerina => 'Nude Ballerina';
+  String get kombinSecenekNudeBallerina => '누드 발레 플랫';
 
   @override
-  String get kombinSecenekAltinSandalet => 'Altın Sandalet';
+  String get kombinSecenekAltinSandalet => '골드 샌들';
 
   @override
-  String get kombinSecenekSiyahBlazer => 'Siyah Blazer';
+  String get kombinSecenekSiyahBlazer => '검정 블레이저';
 
   @override
-  String get kombinSecenekKirmiziDeriCeket => 'Kırmızı Deri Ceket';
+  String get kombinSecenekKirmiziDeriCeket => '빨강 가죽 재킷';
 
   @override
-  String get kombinSecenekAltinDetayliCeket => 'Altın Detaylı Ceket';
+  String get kombinSecenekAltinDetayliCeket => '골드 골드 장식 재킷';
 
   @override
-  String get kombinSecenekBeyazPufy => 'Beyaz Pufy Ceket';
+  String get kombinSecenekBeyazPufy => '흰색 푸피 패딩 재킷';
 
   @override
-  String get kombinSecenekBeyazKosu => 'Beyaz Koşu Ayakkabısı';
+  String get kombinSecenekBeyazKosu => '흰색 러닝화';
 
   @override
-  String get kombinSecenekSiyahBasketbol => 'Siyah Basketbol Ayakkabısı';
+  String get kombinSecenekSiyahBasketbol => '검정 농구화';
 
   @override
-  String get kombinSecenekMaviTerlik => 'Mavi Terlik';
+  String get kombinSecenekMaviTerlik => '파랑 슬리퍼';
 
   @override
-  String get kombinSecenekKahverengiLoafer => 'Kahverengi Loafer';
+  String get kombinSecenekKahverengiLoafer => '갈색 로퍼';
 
   @override
-  String get kombinSecenekBeyazBespan => 'Beyaz Beşpan';
+  String get kombinSecenekBeyazBespan => '흰색 베스판 신발';
 
   @override
-  String get kombinSecenekSiyahGunes => 'Siyah Güneş Gözlüğü';
+  String get kombinSecenekSiyahGunes => '검정 선글라스';
 
   @override
-  String get kombinSecenekSiyahSirtCantasi => 'Siyah Sırt Çantası';
+  String get kombinSecenekSiyahSirtCantasi => '검정 백팩';
 
   @override
-  String get kombinSecenekGumusAkilliSaat => 'Gümüş Akıllı Saat';
+  String get kombinSecenekGumusAkilliSaat => '은색 스마트워치';
 
   @override
-  String get kombinSecenekKamelCifteYaka => 'Kamel Renkli Çifte Yaka';
+  String get kombinSecenekKamelCifteYaka => '카멜 더블 칼라 재킷';
 
   @override
-  String get kombinSecenekSiyahBomber => 'Siyah Bomber';
+  String get kombinSecenekSiyahBomber => '검정 보머 재킷';
 
   @override
-  String get kombinSecenekKirmiziPufy => 'Kırmızı Pufy';
+  String get kombinSecenekKirmiziPufy => '빨강 푸피 패딩 재킷';
 
   @override
-  String get kombinSecenekYesilDenim => 'Yeşil Denim Ceket';
+  String get kombinSecenekYesilDenim => '초록 데님 재킷';
 
   @override
-  String get kombinSecenekKahverengiKemer => 'Kahverengi Kemer';
+  String get kombinSecenekKahverengiKemer => '갈색 벨트';
 
   @override
-  String get kombinSecenekSiyahKemer => 'Siyah Kemer';
+  String get kombinSecenekSiyahKemer => '검정 벨트';
 
   @override
-  String get kombinSecenekNavyBlokSal => 'Navy Blok Şal';
+  String get kombinSecenekNavyBlokSal => '네이비 컬러 블록 스카프';
 
   @override
-  String get kombinSecenekKahverengiGozluk => 'Kahverengi Gözlük';
+  String get kombinSecenekKahverengiGozluk => '갈색 안경';
 
   @override
-  String get kombinSecenekGriSuGecirmez => 'Gri Su Geçirmez Koşu';
+  String get kombinSecenekGriSuGecirmez => '회색 방수 러닝화';
 
   @override
-  String get kombinSecenekKahverengiTrekking => 'Kahverengi Trekking Botu';
+  String get kombinSecenekKahverengiTrekking => '갈색 트레킹 부츠';
 
   @override
-  String get kombinSecenekSiyahTerlik => 'Siyah Terlik';
+  String get kombinSecenekSiyahTerlik => '검정 슬리퍼';
 
   @override
-  String get kombinSecenekBeyazTenis => 'Beyaz Tenis Ayakkabısı';
+  String get kombinSecenekBeyazTenis => '흰색 테니스화';
 
   @override
-  String get kombinOyunBitti => 'Oyun Bitti';
+  String get kombinOyunBitti => '게임 종료';
 
   @override
-  String get kombinToplamPuan => 'Toplam Puan';
+  String get kombinToplamPuan => '총점';
 
   @override
-  String get kombinBasariOrani => 'Başarı Oranı';
+  String get kombinBasariOrani => '정답률';
 
   @override
-  String get kombinTekrarOyna => 'Tekrar Oyna';
+  String get kombinTekrarOyna => '다시 하기';
 
   @override
-  String get kombinAnaSayfa => 'Ana Sayfa';
+  String get kombinAnaSayfa => '홈';
 
   @override
-  String get kombinSonucUsta => 'Stil Ustası! 🏆';
+  String get kombinSonucUsta => '스타일 마스터';
 
   @override
-  String get kombinSonucUstaMesaj => 'Renk ve uyum hissini ödüllemeye değer!';
+  String get kombinSonucUstaMesaj => '색과 조화에 대한 감각이 보상받을 만해요';
 
   @override
-  String get kombinSonucIyi => 'İyi Gidiyorsun! 👍';
+  String get kombinSonucIyi => '잘하고 있어요';
 
   @override
-  String get kombinSonucIyiMesaj => 'Az pratikle mükemmel olacaksın.';
+  String get kombinSonucIyiMesaj => '조금만 연습하면 완벽해질 거예요.';
 
   @override
-  String get kombinSonucPratik => 'Pratik Lazım 📚';
+  String get kombinSonucPratik => '계속 연습하세요';
 
   @override
-  String get kombinSonucPratikMesaj =>
-      'Renk teorisi ipuçları için \"Analiz\" sekmesine bak.';
+  String get kombinSonucPratikMesaj => '색채 이론 팁은 분석 탭에서 확인하세요.';
 
   @override
   String get degerlendirmeBaslik => 'FitCheck이 마음에 드시나요?';
 
   @override
   String get degerlendirmeIcerik =>
-      '앱이 마음에 드신다면 5초만 투자해서 리뷰를 남겨주시겠어요? 작은 리뷰가 큰 힘이 됩니다!';
+      '앱이 마음에 드신다면 5초만 투자해서 리뷰를 남겨주시겠어요? 작은 리뷰가 큰 힘이 됩니다';
 
   @override
   String get degerlendirmeEvet => '네, 평가할게요';
@@ -2655,7 +2641,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get yakinda => '곧 공개';
 
   @override
-  String get yakindaAciklama => '이 기능을 준비하고 있어요, 곧 만나요!';
+  String get yakindaAciklama => '이 기능을 준비하고 있어요, 곧 만나요';
 
   @override
   String get aiOneriHazirlaniyor => '제안을 준비하는 중...';
@@ -2694,7 +2680,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get premiumEkranBaslik => 'FitCheck Premium';
 
   @override
-  String get dilSecimBaslik => '🌐 언어 선택';
+  String get dilSecimBaslik => '언어 선택';
 
   @override
   String get dilSecenekOtomatik => '자동 (기기 언어)';
@@ -2807,7 +2793,7 @@ class AppLocalizationsKo extends AppLocalizations {
       '스타일리스트가 당신에 대해 기억한 모든 내용이 삭제됩니다. 되돌릴 수 없습니다.';
 
   @override
-  String get stilistHafizasiTemizlendi => '기억이 삭제되었습니다 🧠';
+  String get stilistHafizasiTemizlendi => '기억이 삭제되었습니다';
 
   @override
   String get gardirobumArkaPlanSilinemediBaslik => '배경을 제거하지 못했습니다';
@@ -3001,7 +2987,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get duelloDokun => '코디를 탭하세요';
 
   @override
-  String get duelloDogru => '정답!';
+  String get duelloDogru => '정답';
 
   @override
   String get duelloYanlis => '아쉬워요';
@@ -3097,7 +3083,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get bugunPaylas => '코디 공유';
 
   @override
-  String get bugunPaylasMetni => '오늘의 코디는 FitCheck로 완성했어요 ✨';
+  String get bugunPaylasMetni => '오늘의 코디는 FitCheck로 완성했어요';
 
   @override
   String get bugunPaylasHata => '공유를 열 수 없어요. 다시 시도해 주세요.';
@@ -3229,7 +3215,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get seyahatPaylas => '목록 공유';
 
   @override
-  String get seyahatPaylasMetni => 'FitCheck 여행 짐 계획 ✨';
+  String get seyahatPaylasMetni => 'FitCheck 여행 짐 계획';
 
   @override
   String get geriAl => '실행 취소';

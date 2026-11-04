@@ -44,7 +44,8 @@ class HavaBar extends StatelessWidget {
     final ayarlarTooltip = this.ayarlarTooltip ?? l10n.anaAyarlarTooltip;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
       child: Card(
         elevation: 0,
         color: colorScheme.surfaceContainerLow,
@@ -63,7 +64,8 @@ class HavaBar extends StatelessWidget {
             onKonumuYenile();
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.lg, vertical: AppSpacing.md),
             child: Row(
               children: [
                 // Location Icon
@@ -76,7 +78,9 @@ class HavaBar extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
-                    havaHatasi ? Icons.location_off_rounded : Icons.my_location_rounded,
+                    havaHatasi
+                        ? Icons.location_off_rounded
+                        : Icons.my_location_rounded,
                     color: havaHatasi
                         ? colorScheme.onErrorContainer
                         : colorScheme.onSurfaceVariant,
@@ -94,8 +98,8 @@ class HavaBar extends StatelessWidget {
                         havaEtiketi.toUpperCase(),
                         style: theme.textTheme.labelSmall?.copyWith(
                           color: colorScheme.onSurface,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 1.0,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -104,8 +108,10 @@ class HavaBar extends StatelessWidget {
                             ? yukleniyorMetni
                             : havaSicaklikMetni,
                         style: theme.textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: havaHatasi ? colorScheme.error : colorScheme.onSurface,
+                          fontWeight: FontWeight.w600,
+                          color: havaHatasi
+                              ? colorScheme.error
+                              : colorScheme.onSurface,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

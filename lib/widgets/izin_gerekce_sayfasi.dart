@@ -34,7 +34,8 @@ class IzinGerekce {
       builder: (sheetContext) {
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
             child: ClipRRect(
               borderRadius: AppRadius.xxlRadius,
               child: BackdropFilter(
@@ -47,7 +48,8 @@ class IzinGerekce {
                     color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
                     borderRadius: AppRadius.xxlRadius,
                   ),
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.lg),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl,
+                      AppSpacing.xl, AppSpacing.xl, AppSpacing.lg),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,8 +67,8 @@ class IzinGerekce {
                         baslik,
                         style: TextStyle(
                           fontSize: AppText.sizeTitleSmall,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: -0.4,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0,
                           color: colors.onSurface,
                         ),
                       ),
@@ -98,7 +100,8 @@ class IzinGerekce {
                         SizedBox(
                           width: double.infinity,
                           child: TextButton(
-                            onPressed: () => Navigator.of(sheetContext).pop(false),
+                            onPressed: () =>
+                                Navigator.of(sheetContext).pop(false),
                             child: Text(vazgecMetni),
                           ),
                         ),

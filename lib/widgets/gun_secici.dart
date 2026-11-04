@@ -64,7 +64,8 @@ class GunSecici extends StatelessWidget {
               },
               child: AnimatedContainer(
                 duration: AppMotion.kisa,
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: 0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.lg, vertical: 0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: bg,
@@ -91,9 +92,9 @@ class GunSecici extends StatelessWidget {
                       gunAdi,
                       style: TextStyle(
                         fontSize: AppText.sizeBodySmall,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                         color: fg,
-                        letterSpacing: 0.5,
+                        letterSpacing: 0,
                       ),
                     ),
                   ],

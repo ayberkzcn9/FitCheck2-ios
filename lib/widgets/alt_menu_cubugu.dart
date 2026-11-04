@@ -3,8 +3,6 @@
 // `AnaEkran`den ayrıldı: tek başına test edilebilsin (etiketler, taşma,
 // erişilebilirlik) ve ekran dosyası kısalsın diye.
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -59,9 +57,7 @@ class AltMenuCubugu extends StatelessWidget {
     final double altBosluk = MediaQuery.of(context).padding.bottom;
     final double normalYukseklik = icerikYuksekligi + altBosluk;
 
-    return AnimatedContainer(
-      duration: AppMotion.kisa,
-      curve: AppMotion.standart,
+    return SizedBox(
       height: gorunur ? normalYukseklik : 0.0,
       child: AnimatedOpacity(
         duration: AppMotion.kisa,
@@ -72,45 +68,39 @@ class AltMenuCubugu extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(AppRadius.xxl),
             ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: AppBlur.cam,
-                sigmaY: AppBlur.cam,
+            child: Container(
+              height: normalYukseklik,
+              padding:
+                  EdgeInsets.fromLTRB(8, 8, 8, altBosluk > 0 ? altBosluk : 8),
+              decoration: BoxDecoration(
+                color: colorScheme.surfaceContainerLow,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(AppRadius.xxl),
+                ),
+                border: Border(
+                  top: BorderSide(
+                    color: colorScheme.outline.withValues(alpha: 0.08),
+                    width: 1,
+                  ),
+                ),
               ),
-              child: Container(
-                height: normalYukseklik,
-                padding: EdgeInsets.fromLTRB(
-                    8, 8, 8, altBosluk > 0 ? altBosluk : 8),
-                decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerLow.withValues(alpha: 0.90),
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(AppRadius.xxl),
-                  ),
-                  border: Border(
-                    top: BorderSide(
-                      color: colorScheme.outlineVariant.withValues(alpha: 0.4),
-                      width: 1,
-                    ),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    _oge(context, Sekmeler.bugun, Icons.wb_sunny_outlined,
-                        Icons.wb_sunny_rounded),
-                    _oge(context, Sekmeler.dolap, Icons.door_sliding_outlined,
-                        Icons.door_sliding_rounded),
-                    _oge(context, Sekmeler.plan, Icons.calendar_month_outlined,
-                        Icons.calendar_month_rounded),
-                    _oge(context, Sekmeler.kombin, Icons.casino_outlined,
-                        Icons.casino_rounded),
-                    // Sekmeler.kendi (4) bilinçli olarak kapalı.
-                    _oge(context, Sekmeler.profil, Icons.insights_outlined,
-                        Icons.insights_rounded),
-                    _oge(context, Sekmeler.oyun, Icons.style_outlined,
-                        Icons.style_rounded),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _oge(context, Sekmeler.bugun, Icons.wb_sunny_outlined,
+                      Icons.wb_sunny_rounded),
+                  _oge(context, Sekmeler.dolap, Icons.door_sliding_outlined,
+                      Icons.door_sliding_rounded),
+                  _oge(context, Sekmeler.plan, Icons.calendar_month_outlined,
+                      Icons.calendar_month_rounded),
+                  _oge(context, Sekmeler.kombin, Icons.casino_outlined,
+                      Icons.casino_rounded),
+                  // Sekmeler.kendi (4) bilinçli olarak kapalı.
+                  _oge(context, Sekmeler.profil, Icons.insights_outlined,
+                      Icons.insights_rounded),
+                  _oge(context, Sekmeler.oyun, Icons.style_outlined,
+                      Icons.style_rounded),
+                ],
               ),
             ),
           ),
@@ -163,17 +153,10 @@ class AltMenuCubugu extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnimatedContainer(
-                  duration: AppMotion.kisa,
-                  curve: AppMotion.giris,
-                  transform: isSelected
-                      ? Matrix4.diagonal3Values(1.1, 1.1, 1.0)
-                      : Matrix4.identity(),
-                  child: Icon(
-                    isSelected ? selectedIcon : unselectedIcon,
-                    color: iconColor,
-                    size: 25,
-                  ),
+                Icon(
+                  isSelected ? selectedIcon : unselectedIcon,
+                  color: iconColor,
+                  size: 25,
                 ),
                 const SizedBox(height: 4),
                 // Etiket hem keşfedilebilirliği hem seçim göstergesini taşır;
@@ -186,7 +169,7 @@ class AltMenuCubugu extends StatelessWidget {
                   style: TextStyle(
                     fontSize: AppText.sizeMicro,
                     height: 1.15,
-                    fontWeight: isSelected ? FontWeight.w800 : FontWeight.w500,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                     color: isSelected
                         ? colorScheme.primary
                         : colorScheme.onSurfaceVariant,

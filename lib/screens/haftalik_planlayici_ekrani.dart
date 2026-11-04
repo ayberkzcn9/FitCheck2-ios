@@ -12,7 +12,8 @@ import 'ai_chatbot_modal.dart';
 import '../services/analytics_servisi.dart';
 import '../services/reklam_servisi.dart';
 import '../services/bildirim_zamanlayici.dart';
-import '../utils/hava_uygunlugu.dart' show haftalikPlaniHavayaUygunlastir, haftalikTahminGunHavasi;
+import '../utils/hava_uygunlugu.dart'
+    show haftalikPlaniHavayaUygunlastir, haftalikTahminGunHavasi;
 import '../utils/helpers.dart';
 import '../utils/kategori_utils.dart';
 import '../utils/haftalik_dialoglar.dart';
@@ -123,7 +124,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
       if (!mounted) return;
 
       if (kayitliVeri != null && kayitliVeri.isNotEmpty) {
-        final kayitliProgram = safeJsonDecodeMap(kayitliVeri, tag: 'haftalik_program');
+        final kayitliProgram =
+            safeJsonDecodeMap(kayitliVeri, tag: 'haftalik_program');
         final kayitliHafta = kayitliProgram['hafta'];
         bool eskiPlanDonusturuldu = false;
         if (kayitliHafta is List && kayitliHafta.isNotEmpty) {
@@ -260,7 +262,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(l10n.tebriklerHakEklendi(ReklamServisi.reklamOduluKredi)),
+              content: Text(
+                  l10n.tebriklerHakEklendi(ReklamServisi.reklamOduluKredi)),
               backgroundColor: Theme.of(context).colorScheme.primary,
               behavior: SnackBarBehavior.floating,
             ),
@@ -335,7 +338,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
           zatenGiyildi
               ? l10n.kombinIsaretlemeKaldirildi(kombinAdi)
               : l10n.kombinGiydimIsaretlendi(kombinAdi),
-          style: const TextStyle(fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w600),
+          style: const TextStyle(
+              fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.w600),
         ),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
@@ -1001,8 +1005,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
       final String tenRengi =
           aiTenRengi(prefs.getString('kullanici_ten_rengi') ?? 'Wheat');
-      final String cinsiyet = aiCinsiyet(
-          prefs.getString('kullanici_cinsiyet') ?? 'Women');
+      final String cinsiyet =
+          aiCinsiyet(prefs.getString('kullanici_cinsiyet') ?? 'Women');
       final String tarz =
           aiTarz(prefs.getString('kullanici_tarzi') ?? 'General');
       final String renkPaleti =
@@ -1100,8 +1104,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
       final String tenRengi =
           aiTenRengi(prefs.getString('kullanici_ten_rengi') ?? 'Wheat');
-      final String cinsiyet = aiCinsiyet(
-          prefs.getString('kullanici_cinsiyet') ?? 'Women');
+      final String cinsiyet =
+          aiCinsiyet(prefs.getString('kullanici_cinsiyet') ?? 'Women');
       final String tarz =
           aiTarz(prefs.getString('kullanici_tarzi') ?? 'General');
       final String renkPaleti =
@@ -1322,10 +1326,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
     final String tenRengi =
         aiTenRengi(prefs.getString('kullanici_ten_rengi') ?? 'Wheat');
-    final String cinsiyet = aiCinsiyet(
-          prefs.getString('kullanici_cinsiyet') ?? 'Women');
-    final String tarz =
-        aiTarz(prefs.getString('kullanici_tarzi') ?? 'General');
+    final String cinsiyet =
+        aiCinsiyet(prefs.getString('kullanici_cinsiyet') ?? 'Women');
+    final String tarz = aiTarz(prefs.getString('kullanici_tarzi') ?? 'General');
     final String renkPaleti =
         aiRenkPaleti(prefs.getString('kullanici_renk_paleti') ?? 'Mixed');
 
@@ -1497,7 +1500,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
     final hamParcalar = ilkGun['parcalar'];
     if (hamParcalar is! List || hamParcalar.isEmpty) return;
 
-    final parcalar = parcalariKategoriyeGoreSirala(hamParcalar, kategoriMetindenCikar);
+    final parcalar =
+        parcalariKategoriyeGoreSirala(hamParcalar, kategoriMetindenCikar);
     if (parcalar.isEmpty) return;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -1508,7 +1512,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
         anaRenk: widget.anaRenk,
         tumParcalarMetinleri: parcalar,
         baslangicIndex: 0,
-        parcaBilgisiAyristir: (metin, l10n) => parcaBilgileriniAyristir(metin, l10n),
+        parcaBilgisiAyristir: (metin, l10n) =>
+            parcaBilgileriniAyristir(metin, l10n),
         gucluGorselBul: (metin) => _gucluGorselBul(metin, widget.gardirobum),
       );
     });
@@ -1562,8 +1567,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
           programVarMi ? l10n.planiYenile : l10n.haftalikProgramOlustur,
           style: const TextStyle(
             fontSize: AppText.sizeBodySmall,
-            fontWeight: FontWeight.bold,
-            letterSpacing: -0.2,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0,
           ),
         ),
         style: FilledButton.styleFrom(
@@ -1571,8 +1576,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
           // (yeşil yerine) — renk sistemi tek kaynaktan gelsin.
           backgroundColor: colorScheme.primary,
           foregroundColor: colorScheme.onPrimary,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           elevation: 0,
         ),
       ),
@@ -1624,8 +1628,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                         l10n.haftalikAjandaTitle,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0,
                           color: colorScheme.onSurface,
                         ),
                       ),
@@ -1638,7 +1642,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
               if (_hataMesaji != null && !programVarMi)
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
+                    padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
                     child: Card(
                       elevation: 0,
                       color: colorScheme.errorContainer,
@@ -1675,7 +1680,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
               if (programVarMi && eksikParcaNotu != null)
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
+                    padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
                     child: Card(
                       elevation: 0,
                       color: colorScheme.tertiaryContainer,
@@ -1688,7 +1694,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Icon(
-                              Icons.auto_awesome_rounded,
+                              Icons.style_outlined,
                               color: colorScheme.onTertiaryContainer,
                               size: 24,
                             ),
@@ -1701,7 +1707,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     l10n.haftalikEksikParcaAiOnerisi,
                                     style: theme.textTheme.titleSmall?.copyWith(
                                       color: colorScheme.onTertiaryContainer,
-                                      fontWeight: FontWeight.w800,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   const SizedBox(height: 4),
@@ -1726,7 +1732,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
               if (_eksikParcaOnerisiYukleniyor || _eksikParcaOnerisi != null)
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
+                    padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
                     child: Card(
                       elevation: 0,
                       color: colorScheme.tertiaryContainer,
@@ -1752,7 +1759,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     l10n.haftalikEksikParcaOnerisiBaslik,
                                     style: theme.textTheme.titleSmall?.copyWith(
                                       color: colorScheme.onTertiaryContainer,
-                                      fontWeight: FontWeight.w800,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -1809,7 +1816,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                     children: [
                       // Üst Buton Grubu
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                         child: Row(
                           children: [
                             Expanded(
@@ -1828,7 +1836,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                       l10n.temizle,
                                       style: TextStyle(
                                         fontSize: AppText.sizeBodySmall,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         color: colorScheme.error,
                                       ),
                                     ),
@@ -1840,7 +1848,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: AppRadius.lgRadius,
                                     ),
-                                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: AppSpacing.sm),
                                   ),
                                 ),
                               ),
@@ -1853,7 +1862,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
                       if (_hataMesaji != null)
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.lg,
+                              vertical: AppSpacing.xs),
                           child: Card(
                             elevation: 0,
                             color: colorScheme.errorContainer,
@@ -1917,7 +1928,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
                       // --- ANA KOMBİN KARTI ---
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, 100),
+                        padding: const EdgeInsets.fromLTRB(
+                            AppSpacing.lg, 0, AppSpacing.lg, 100),
                         child: Builder(
                           builder: (context) {
                             final gunItem =
@@ -1925,7 +1937,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                             final hamParcalar =
                                 gunItem['parcalar'] as List? ?? [];
                             final parcalarListesi =
-                                parcalariKategoriyeGoreSirala(hamParcalar, kategoriMetindenCikar);
+                                parcalariKategoriyeGoreSirala(
+                                    hamParcalar, kategoriMetindenCikar);
 
                             final rawGun = gunItem['gun']?.toString() ?? '';
                             final cevrilmisGun = _gunIsminiCevir(rawGun);
@@ -1959,7 +1972,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
                             final List<String> temizParcaIsimleri =
                                 parcalarListesi.map((p) {
-                              final b = parcaBilgileriniAyristir(p.toString(), l10n);
+                              final b =
+                                  parcaBilgileriniAyristir(p.toString(), l10n);
                               return b['baslik'] ?? p.toString();
                             }).toList();
 
@@ -1993,8 +2007,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                       overflow: TextOverflow.ellipsis,
                                       style: theme.textTheme.headlineSmall
                                           ?.copyWith(
-                                        fontWeight: FontWeight.w900,
-                                        letterSpacing: -0.5,
+                                        fontWeight: FontWeight.w600,
+                                        letterSpacing: 0,
                                         color: colorScheme.onSurface,
                                       ),
                                     ),
@@ -2006,7 +2020,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                         kombinAdi,
                                         style: theme.textTheme.titleLarge
                                             ?.copyWith(
-                                          fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.w600,
                                           color: isGiyildi
                                               ? AppAccents.success
                                               : widget.anaRenk,
@@ -2025,7 +2039,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           if (!booleanBosMu)
                                             Container(
                                               padding:
-                                                  const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: AppSpacing.md,
+                                                      vertical: AppSpacing.sm),
                                               decoration: BoxDecoration(
                                                 color: colorScheme
                                                     .surfaceContainerHighest,
@@ -2051,7 +2067,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                           Icons
                                                               .analytics_rounded,
                                                           size: 16,
-                                                          color: context.uygunMetin,
+                                                          color: context
+                                                              .uygunMetin,
                                                         ),
                                                         const SizedBox(
                                                             width: 6),
@@ -2063,7 +2080,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                               .labelMedium
                                                               ?.copyWith(
                                                             fontWeight:
-                                                                FontWeight.bold,
+                                                                FontWeight.w600,
                                                             color: colorScheme
                                                                 .onSurface,
                                                           ),
@@ -2074,7 +2091,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           if (gunlukHavaTahmini.isNotEmpty)
                                             Container(
                                               padding:
-                                                  const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: AppSpacing.md,
+                                                      vertical: AppSpacing.sm),
                                               decoration: BoxDecoration(
                                                 color: colorScheme
                                                     .surfaceContainerHighest,
@@ -2096,7 +2115,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                         .textTheme.labelMedium
                                                         ?.copyWith(
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                       color:
                                                           colorScheme.onSurface,
                                                     ),
@@ -2113,7 +2132,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     // Parçalar Listesi
                                     if (booleanBosMu)
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: AppSpacing.sm),
                                         child: Text(
                                           tuyoMetni.isNotEmpty
                                               ? tuyoMetni
@@ -2143,7 +2163,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                             final kategoriStr =
                                                 kategoriMetindenCikar(metin);
                                             String uiKategori =
-                                                kategoriEtiketiGetir(kategoriStr, l10n);
+                                                kategoriEtiketiGetir(
+                                                    kategoriStr, l10n);
 
                                             return GestureDetector(
                                               onTap: () => HaftalikDialoglar
@@ -2153,81 +2174,87 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                 tumParcalarMetinleri:
                                                     parcalarListesi,
                                                 baslangicIndex: i,
-                                                parcaBilgisiAyristir: (metin, l10n) =>
-                                                    parcaBilgileriniAyristir(metin, l10n),
+                                                parcaBilgisiAyristir: (metin,
+                                                        l10n) =>
+                                                    parcaBilgileriniAyristir(
+                                                        metin, l10n),
                                                 gucluGorselBul: (m) =>
                                                     _gucluGorselBul(
                                                         m, widget.gardirobum),
                                               ),
-                                               child: SizedBox(
-                                                 width: 120,
-                                                 height: 120,
-                                                 child: Stack(
-                                                   fit: StackFit.expand,
-                                                   children: [
-                                                     if (gorselBytes != null)
-                                                       Image.memory(
-                                                         gorselBytes,
-                                                         fit: BoxFit.cover,
-                                                       )
-                                                     else
-                                                       Center(
-                                                         child: Icon(
-                                                           Icons
-                                                               .checkroom_rounded,
-                                                           size: 36,
-                                                           color: context.uygunMetin,
-                                                         ),
-                                                       ),
+                                              child: SizedBox(
+                                                width: 120,
+                                                height: 120,
+                                                child: Stack(
+                                                  fit: StackFit.expand,
+                                                  children: [
+                                                    if (gorselBytes != null)
+                                                      Image.memory(
+                                                        gorselBytes,
+                                                        fit: BoxFit.cover,
+                                                      )
+                                                    else
+                                                      Center(
+                                                        child: Icon(
+                                                          Icons
+                                                              .checkroom_rounded,
+                                                          size: 36,
+                                                          color: context
+                                                              .uygunMetin,
+                                                        ),
+                                                      ),
 
-                                                     // Parça Değiştir Butonu
-                                                     Positioned(
-                                                       top: 6,
-                                                       right: 6,
-                                                       child: InkWell(
-                                                         onTap: () =>
-                                                             _parcaDegistirmeyiTetikle(
-                                                           _seciliGunIndex,
-                                                           metin,
-                                                         ),
-                                                         child: ClipRRect(
-                                                           borderRadius:
-                                                               BorderRadius
-                                                                   .circular(20),
-                                                           child: BackdropFilter(
-                                                             filter: ImageFilter
-                                                                 .blur(
-                                                               sigmaX: AppBlur.cam, sigmaY: AppBlur.cam,
-                                                             ),
-                                                             child: Container(
-                                                               padding:
-                                                                   const EdgeInsets
-                                                                       .all(6),
-                                                               decoration:
-                                                                   BoxDecoration(
-                                                                 color: Colors
-                                                                     .black
-                                                                     .withValues(
-                                                                         alpha:
-                                                                             0.3),
-                                                                 shape: BoxShape
-                                                                     .circle,
-                                                               ),
-                                                               child: const Icon(
-                                                                 Icons
-                                                                     .sync_rounded,
-                                                                 size: 16,
-                                                                 color: Colors
-                                                                     .white,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     ),
-                                                   ],
-                                                 ),
-                                               ),
+                                                    // Parça Değiştir Butonu
+                                                    Positioned(
+                                                      top: 6,
+                                                      right: 6,
+                                                      child: InkWell(
+                                                        onTap: () =>
+                                                            _parcaDegistirmeyiTetikle(
+                                                          _seciliGunIndex,
+                                                          metin,
+                                                        ),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                          child: BackdropFilter(
+                                                            filter: ImageFilter
+                                                                .blur(
+                                                              sigmaX:
+                                                                  AppBlur.cam,
+                                                              sigmaY:
+                                                                  AppBlur.cam,
+                                                            ),
+                                                            child: Container(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(6),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withValues(
+                                                                        alpha:
+                                                                            0.3),
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                              ),
+                                                              child: const Icon(
+                                                                Icons
+                                                                    .sync_rounded,
+                                                                size: 16,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
                                             );
                                           },
                                         ),
@@ -2239,14 +2266,16 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     if (booleanBosMu) ...[
                                       const SizedBox(height: 16),
                                       AiOneriKutusu(
-                                        baslik: l10n.haftalikEksikParcaAiOnerisi,
+                                        baslik:
+                                            l10n.haftalikEksikParcaAiOnerisi,
                                         metin: eksikParcaOneriMetni,
-                                        yukleniyor: _bosGunOnerileriYukleniyor &&
-                                            eksikParcaAiOnerisi.isEmpty,
-                                        onTekrarDene:
-                                            eksikParcaAiOnerisi.isEmpty
-                                                ? _bosGunlerIcinStilistOnerileriniGetir
-                                                : null,
+                                        yukleniyor:
+                                            _bosGunOnerileriYukleniyor &&
+                                                eksikParcaAiOnerisi.isEmpty,
+                                        onTekrarDene: eksikParcaAiOnerisi
+                                                .isEmpty
+                                            ? _bosGunlerIcinStilistOnerileriniGetir
+                                            : null,
                                       ),
                                     ],
 
@@ -2254,13 +2283,16 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                     if (!booleanBosMu) ...[
                                       const SizedBox(height: 20),
                                       Container(
-                                        padding: const EdgeInsets.all(AppSpacing.lg),
+                                        padding:
+                                            const EdgeInsets.all(AppSpacing.lg),
                                         decoration: BoxDecoration(
-                                          color: AppTints.styleistBgDinamik(context),
-                                          borderRadius:
-                                              AppRadius.xlRadius,
+                                          color: AppTints.styleistBgDinamik(
+                                              context),
+                                          borderRadius: AppRadius.xlRadius,
                                           border: Border.all(
-                                            color: AppTints.styleistBorderDinamik(context),
+                                            color:
+                                                AppTints.styleistBorderDinamik(
+                                                    context),
                                           ),
                                         ),
                                         child: Row(
@@ -2268,7 +2300,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             const Icon(
-                                              Icons.auto_awesome_rounded,
+                                              Icons.style_outlined,
                                               size: 18,
                                               color: AppAccents.styleist,
                                             ),
@@ -2297,10 +2329,9 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                               ?.copyWith(
                                                             fontStyle: FontStyle
                                                                 .italic,
-                                                            color:
-                                                                AppMiscColors
-                                                                    .styleistAltTextDinamik(
-                                                                        context),
+                                                            color: AppMiscColors
+                                                                .styleistAltTextDinamik(
+                                                                    context),
                                                           ),
                                                         ),
                                                       ],
@@ -2311,7 +2342,8 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                       style: theme
                                                           .textTheme.bodyMedium
                                                           ?.copyWith(
-                                                        fontSize: AppText.sizeBodySmall,
+                                                        fontSize: AppText
+                                                            .sizeBodySmall,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: AppMiscColors
@@ -2339,11 +2371,13 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           ),
                                           style: IconButton.styleFrom(
                                             backgroundColor: isFavori
-                                                ? AppStatusColors.favoriteBgDinamik(context)
+                                                ? AppStatusColors
+                                                    .favoriteBgDinamik(context)
                                                 : colorScheme
                                                     .surfaceContainerHighest,
                                             foregroundColor: isFavori
-                                                ? AppStatusColors.favoriteFgDinamik(context)
+                                                ? AppStatusColors
+                                                    .favoriteFgDinamik(context)
                                                 : colorScheme.onSurfaceVariant,
                                           ),
                                           onPressed: () {
@@ -2376,11 +2410,13 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                           ),
                                           style: IconButton.styleFrom(
                                             backgroundColor: isGiyildi
-                                                ? AppStatusColors.wornBgDinamik(context)
+                                                ? AppStatusColors.wornBgDinamik(
+                                                    context)
                                                 : colorScheme
                                                     .surfaceContainerHighest,
                                             foregroundColor: isGiyildi
-                                                ? AppStatusColors.wornFgDinamik(context)
+                                                ? AppStatusColors.wornFgDinamik(
+                                                    context)
                                                 : colorScheme.onSurfaceVariant,
                                           ),
                                           onPressed: () {
@@ -2485,7 +2521,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                             key: ValueKey<int>(_yuklemeMesajiIndex),
                             style: theme.textTheme.titleMedium?.copyWith(
                               color: colorScheme.onSurface,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -2512,7 +2548,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                           child: Icon(
                             _eksikParcaOnerisi != null
                                 ? Icons.checkroom_rounded
-                                : Icons.auto_awesome_mosaic_rounded,
+                                : Icons.grid_view_rounded,
                             size: 64,
                             color: context.uygunMetin,
                           ),

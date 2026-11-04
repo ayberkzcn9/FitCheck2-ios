@@ -40,7 +40,7 @@ class AyarlarDialoglar {
                   l10n.cikisYapTitle,
                   style: TextStyle(
                     fontSize: AppText.sizeTitleSmall,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -55,7 +55,8 @@ class AyarlarDialoglar {
               height: 1.4,
             ),
           ),
-          actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
+          actionsPadding: const EdgeInsets.fromLTRB(
+              AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
           actions: [
             TextButton(
               onPressed: () {
@@ -68,7 +69,7 @@ class AyarlarDialoglar {
                   l10n.iptal,
                   style: TextStyle(
                     color: colors.primary,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                     fontSize: AppText.sizeBodyLarge,
                   ),
                 ),
@@ -95,7 +96,7 @@ class AyarlarDialoglar {
                 child: Text(
                   l10n.cikisYapTitle,
                   style: const TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                     fontSize: AppText.sizeBodyLarge,
                   ),
                 ),
@@ -226,7 +227,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
               widget.l10n.sifreDegistirTitle,
               style: TextStyle(
                 fontSize: AppText.sizeTitleSmall,
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w600,
                 color: widget.colors.onSurface,
               ),
             ),
@@ -274,7 +275,8 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
           ],
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
+      actionsPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () {
@@ -287,7 +289,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
               widget.l10n.iptal,
               style: TextStyle(
                 color: widget.colors.primary,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 fontSize: AppText.sizeBodyLarge,
               ),
             ),
@@ -311,7 +313,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
             child: Text(
               widget.l10n.baglantiGonder,
               style: const TextStyle(
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 fontSize: AppText.sizeBodyLarge,
               ),
             ),
@@ -365,7 +367,7 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
         widget.l10n.varsayilanSehirBolge,
         style: TextStyle(
           fontSize: AppText.sizeTitleSmall,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w600,
           color: widget.colors.onSurface,
         ),
       ),
@@ -391,7 +393,8 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
           ),
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
+      actionsPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () {
@@ -404,7 +407,7 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
               widget.l10n.gpsKullan,
               style: TextStyle(
                 color: widget.colors.primary,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 fontSize: AppText.sizeBodySmall,
               ),
             ),
@@ -431,7 +434,7 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
             child: Text(
               widget.l10n.kaydet,
               style: const TextStyle(
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 fontSize: AppText.sizeBodySmall,
               ),
             ),

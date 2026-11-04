@@ -417,7 +417,7 @@ void main() {
       await tester.tap(find.text('Bu güne kombin seç'));
       await tester.pumpAndSettle();
 
-      expect(find.text('SON GİYİLENLER'), findsOneWidget);
+      expect(find.text('Son giyilenler'), findsOneWidget);
       expect(find.text('Ofis kombini'), findsOneWidget);
 
       await tester.tap(find.text('Ofis kombini'));
@@ -443,7 +443,7 @@ void main() {
       await tester.tap(find.text('Bu güne kombin seç'));
       await tester.pumpAndSettle();
 
-      expect(find.text('ÖNERİLER'), findsOneWidget);
+      expect(find.text('Öneriler'), findsOneWidget);
 
       // Öneri satırı seçilip güne atanmalı.
       await tester.tap(find.text('Beyaz Gömlek + Siyah Pantolon'));

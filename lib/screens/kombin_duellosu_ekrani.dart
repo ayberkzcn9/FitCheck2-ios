@@ -102,8 +102,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     super.dispose();
   }
 
-  KombinDuellosuServisi get _servis =>
-      widget.servisi ?? _varsayilanServis;
+  KombinDuellosuServisi get _servis => widget.servisi ?? _varsayilanServis;
 
   @override
   void initState() {
@@ -292,25 +291,12 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.xl),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.xl, AppSpacing.xl, AppSpacing.xl, AppSpacing.xl),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  colors.primary,
-                  Color.lerp(colors.primary, colors.onPrimaryContainer, 0.4) ??
-                      colors.primary,
-                ],
-              ),
+              color: colors.surfaceContainerLow,
               borderRadius: AppRadius.dialogRadius,
-              boxShadow: [
-                BoxShadow(
-                  color: colors.primary.withValues(alpha: 0.18),
-                  blurRadius: 24,
-                  offset: const Offset(0, 6),
-                ),
-              ],
+              border: Border.all(color: colors.outlineVariant),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -320,12 +306,12 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                     Container(
                       padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
-                        color: colors.onPrimary.withValues(alpha: 0.16),
+                        color: colors.primaryContainer,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         Icons.style_rounded,
-                        color: colors.onPrimary,
+                        color: colors.primary,
                         size: 22,
                       ),
                     ),
@@ -335,8 +321,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                         context,
                         icon: Icons.local_fire_department_rounded,
                         metin: l10n.duelloGunSerisi(_durum.gunlukSeri),
-                        renk: colors.onPrimary,
-                        zemin: colors.onPrimary.withValues(alpha: 0.16),
+                        renk: colors.onSurfaceVariant,
+                        zemin: colors.surfaceContainerHighest,
                       ),
                   ],
                 ),
@@ -344,8 +330,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 Text(
                   l10n.duelloBaslik,
                   style: text.headlineMedium?.copyWith(
-                    color: colors.onPrimary,
-                    fontWeight: FontWeight.w800,
+                    color: colors.onSurface,
+                    fontWeight: FontWeight.w600,
                     height: 1.1,
                   ),
                 ),
@@ -353,7 +339,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 Text(
                   l10n.duelloAltBaslik,
                   style: text.bodyMedium?.copyWith(
-                    color: colors.onPrimary.withValues(alpha: 0.85),
+                    color: colors.onSurfaceVariant,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -391,14 +377,14 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                       Icon(
                         Icons.check_circle_rounded,
                         size: 16,
-                        color: colors.onPrimary.withValues(alpha: 0.9),
+                        color: colors.primary,
                       ),
                       const SizedBox(width: 6),
                       Expanded(
                         child: Text(
                           l10n.duelloBugunOynadi,
                           style: text.bodySmall?.copyWith(
-                            color: colors.onPrimary.withValues(alpha: 0.9),
+                            color: colors.onSurfaceVariant,
                           ),
                         ),
                       ),
@@ -418,7 +404,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 l10n.duelloBaslat,
                 style: const TextStyle(
                   fontSize: AppText.sizeBodyLarge,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               style: FilledButton.styleFrom(
@@ -430,7 +416,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           ),
           const SizedBox(height: 18),
           Container(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.lg),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.lg),
             decoration: BoxDecoration(
               color: colors.surfaceContainerLow,
               borderRadius: AppRadius.xxlRadius,
@@ -447,7 +434,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                       child: Text(
                         l10n.duelloNasilOynanir,
                         style: text.titleSmall?.copyWith(
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -490,7 +477,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
   Widget _dikeyAyrac(ColorScheme colors) => Container(
         width: 1,
         height: 30,
-        color: colors.onPrimary.withValues(alpha: 0.18),
+        color: colors.outlineVariant,
       );
 
   Widget _istatistik(
@@ -505,8 +492,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         Text(
           deger,
           style: text.titleLarge?.copyWith(
-            color: colors.onPrimary,
-            fontWeight: FontWeight.w800,
+            color: colors.onSurface,
+            fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 2),
@@ -514,7 +501,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           etiket,
           textAlign: TextAlign.center,
           style: text.labelSmall?.copyWith(
-            color: colors.onPrimary.withValues(alpha: 0.8),
+            color: colors.onSurfaceVariant,
           ),
         ),
       ],
@@ -529,7 +516,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     required Color zemin,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
         color: zemin,
         borderRadius: AppRadius.xlRadius,
@@ -544,7 +532,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             style: TextStyle(
               color: renk,
               fontSize: AppText.sizeCaption,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],
@@ -571,7 +559,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               '$sira',
               style: TextStyle(
                 fontSize: AppText.sizeCaption,
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w600,
                 color: colors.primary,
               ),
             ),
@@ -671,9 +659,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             child: _kartlar(context, _soru),
           ),
           const SizedBox(height: 12),
-          _cevaplandi
-              ? _geriBildirim(context, _soru)
-              : _dokunmaIpucu(context),
+          _cevaplandi ? _geriBildirim(context, _soru) : _dokunmaIpucu(context),
         ],
       ),
     );
@@ -698,7 +684,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         Text(
           l10n.duelloTur(_soruIndex + 1, _sorular.length),
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w600,
               ),
         ),
         const Spacer(),
@@ -789,7 +775,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           child: AnimatedContainer(
             duration: AppMotion.kisa,
             height: 5,
-            margin: EdgeInsetsDirectional.only(end: index == _sorular.length - 1 ? 0 : 4),
+            margin: EdgeInsetsDirectional.only(
+                end: index == _sorular.length - 1 ? 0 : 4),
             decoration: BoxDecoration(
               color: gecti
                   ? colors.primary
@@ -810,7 +797,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     final renk = olcu == DuelOlcusu.renk;
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md, vertical: AppSpacing.md),
       decoration: BoxDecoration(
         color: colors.primary.withValues(alpha: 0.08),
         borderRadius: AppRadius.lgRadius,
@@ -827,7 +815,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
             child: Text(
               renk ? l10n.duelloOlcuRenk : l10n.duelloOlcuHava,
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
             ),
@@ -854,7 +842,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         'VS',
         style: TextStyle(
           fontSize: AppText.sizeMicro,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.w600,
           color: colors.onSurfaceVariant,
         ),
       ),
@@ -899,7 +887,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           child: AnimatedContainer(
             duration: AppMotion.kisa,
             curve: AppMotion.giris,
-            padding: const EdgeInsets.fromLTRB(AppSpacing.sm, AppSpacing.sm, AppSpacing.sm, AppSpacing.md),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.sm, AppSpacing.sm, AppSpacing.sm, AppSpacing.md),
             decoration: BoxDecoration(
               color: zemin,
               borderRadius: AppRadius.xlRadius,
@@ -913,7 +902,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                       Expanded(
                         flex: i == 0 ? 42 : (i == 1 ? 36 : 24),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxs),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: AppSpacing.xxs),
                           child: _parca(context, kart.parcalar[i]),
                         ),
                       ),
@@ -937,7 +927,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                       etiket,
                       style: TextStyle(
                         fontSize: AppText.sizeMicro,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                         color: colors.onSurface,
                       ),
                     ),
@@ -1021,7 +1011,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.md),
+      padding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.md),
       decoration: BoxDecoration(
         color: dogruMu
             ? AppAccents.successDeep.withValues(alpha: 0.09)
@@ -1047,10 +1038,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
               Text(
                 dogruMu ? l10n.duelloDogru : l10n.duelloYanlis,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w800,
-                      color: dogruMu
-                          ? AppAccents.successDeep
-                          : colors.error,
+                      fontWeight: FontWeight.w600,
+                      color: dogruMu ? AppAccents.successDeep : colors.error,
                     ),
               ),
               const Spacer(),
@@ -1058,7 +1047,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 '+$kazanilanXp XP',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       color: colors.onSurfaceVariant,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                     ),
               ),
             ],
@@ -1090,7 +1079,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                     ),
                     child: Text(
                       l10n.duelloGeri,
-                      style: const TextStyle(fontWeight: FontWeight.w700),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -1109,7 +1098,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                     ),
                     child: Text(
                       son ? l10n.duelloSonuc : l10n.duelloDevam,
-                      style: const TextStyle(fontWeight: FontWeight.w700),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -1216,8 +1205,8 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                       Text(
                         '$_dogru/$toplam',
                         style: text.displaySmall?.copyWith(
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: -1,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0,
                         ),
                       ),
                       Text(
@@ -1236,7 +1225,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
           Text(
             l10n.duelloSkor(_dogru, toplam),
             textAlign: TextAlign.center,
-            style: text.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+            style: text.titleMedium?.copyWith(fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 6),
           Text(
@@ -1263,7 +1252,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                     Text(
                       l10n.duelloSeviyeDegeri(_durum.seviye),
                       style: text.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     const Spacer(),
@@ -1317,7 +1306,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
                 l10n.duelloYeniden,
                 style: const TextStyle(
                   fontSize: AppText.sizeBodyLarge,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               style: FilledButton.styleFrom(
@@ -1350,7 +1339,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
         const SizedBox(height: 2),
         Text(
           deger,
-          style: text.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+          style: text.titleSmall?.copyWith(fontWeight: FontWeight.w600),
         ),
       ],
     );

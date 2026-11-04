@@ -113,8 +113,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
             ),
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
-            shape:
-                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -156,8 +155,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
             ),
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
-            shape:
-                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -195,12 +193,11 @@ class _GirisEkraniState extends State<GirisEkrani> {
         SnackBar(
           content: Text(
             l10n.sifreEpostasiGonderildi(eposta),
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
           backgroundColor: AppAccents.success,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (e) {
@@ -214,8 +211,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
           ),
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -253,8 +249,7 @@ class _GirisEkraniState extends State<GirisEkrani> {
             ),
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
-            shape:
-                RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -269,433 +264,417 @@ class _GirisEkraniState extends State<GirisEkrani> {
     final colors = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
     final primaryColor = widget.anaRenk ?? colors.primary;
-    final backgroundLight = Color.lerp(
-      theme.scaffoldBackgroundColor,
-      primaryColor,
-      0.035,
-    )!;
-    final backgroundDeep = Color.lerp(
-      theme.scaffoldBackgroundColor,
-      primaryColor,
-      0.10,
-    )!;
-
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [backgroundLight, backgroundDeep],
+      body: SafeArea(
+        child: Column(
+          children: [
+            // ÜST BAR: ATLA / MİSAFİR GİRİŞİ BUTONU
+            Padding(
+              padding: const EdgeInsetsDirectional.only(end: 16, top: 8),
+              child: Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: TextButton.icon(
+                  onPressed: _yukleniyor ? null : _anonimGirisTetikle,
+                  icon: Icon(
+                    Icons.arrow_forward_rounded,
+                    size: 18,
+                    color: colors.onSurfaceVariant,
+                  ),
+                  label: Text(
+                    l10n.onboardingAtla,
+                    style: TextStyle(
+                      fontSize: AppText.sizeBodySmall,
+                      fontWeight: FontWeight.w600,
+                      color: colors.onSurfaceVariant,
+                    ),
+                  ),
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: AppRadius.xlRadius),
+                    backgroundColor: colors.surfaceContainerHighest,
+                  ),
                 ),
               ),
             ),
-          ),
-          SafeArea(
-            child: Column(
-              children: [
-                // ÜST BAR: ATLA / MİSAFİR GİRİŞİ BUTONU
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 16, top: 8),
-                  child: Align(
-                    alignment: AlignmentDirectional.centerEnd,
-                    child: TextButton.icon(
-                      onPressed: _yukleniyor ? null : _anonimGirisTetikle,
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        size: 18,
-                        color: colors.onSurfaceVariant,
-                      ),
-                      label: Text(
-                        l10n.onboardingAtla,
-                        style: TextStyle(
-                          fontSize: AppText.sizeBodySmall,
-                          fontWeight: FontWeight.bold,
-                          color: colors.onSurfaceVariant,
+            Expanded(
+              child: Center(
+                child: SingleChildScrollView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Logo ve Başlık
+                        Icon(Icons.checkroom_rounded,
+                            size: 60, color: primaryColor),
+                        const SizedBox(height: 8),
+                        Text(
+                          "FitCheck",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: AppText.sizeDisplayLarge,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0,
+                            color: colors.onSurface,
+                          ),
                         ),
-                      ),
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: AppRadius.xlRadius),
-                        backgroundColor: colors.surfaceContainerHighest,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Center(
-                    child: SingleChildScrollView(
-                      keyboardDismissBehavior:
-                          ScrollViewKeyboardDismissBehavior.onDrag,
-                      physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl, vertical: AppSpacing.lg),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            // Logo ve Başlık
-                            Icon(Icons.checkroom_rounded,
-                                size: 60, color: primaryColor),
-                            const SizedBox(height: 8),
-                            Text(
-                              "FitCheck",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: AppText.sizeDisplayLarge,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: -0.5,
-                                color: colors.onSurface,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              _girisModu
-                                  ? l10n.stilDunyanaTekrarHosGeldin
-                                  : l10n.kombinleriniSaklamakIcinKatil,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: colors.onSurfaceVariant,
-                                fontSize: AppText.sizeBodySmall,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            const SizedBox(height: 24),
+                        const SizedBox(height: 8),
+                        Text(
+                          _girisModu
+                              ? l10n.stilDunyanaTekrarHosGeldin
+                              : l10n.kombinleriniSaklamakIcinKatil,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: colors.onSurfaceVariant,
+                            fontSize: AppText.sizeBodySmall,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 24),
 
-                            // Sekme Switcher (Giriş Yap / Kayıt Ol)
-                            Container(
-                              padding: const EdgeInsets.all(AppSpacing.xs),
-                              decoration: BoxDecoration(
-                                color: colors.surfaceContainerHighest,
-                                borderRadius: AppRadius.lgRadius,
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: GestureDetector(
-                                      onTap: () =>
-                                          setState(() => _girisModu = true),
-                                      child: AnimatedContainer(
-                                        duration:
-                                            AppMotion.kisa,
-                                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                                        decoration: BoxDecoration(
-                                          color: _girisModu
-                                              ? primaryColor
-                                              : Colors.transparent,
-                                          borderRadius:
-                                              AppRadius.mdRadius,
-                                        ),
-                                        child: Text(
-                                          l10n.girisYap,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: AppText.sizeBodySmall,
-                                            color: _girisModu
-                                                ? Colors.white
-                                                : colors.onSurfaceVariant,
-                                          ),
-                                        ),
+                        // Sekme Switcher (Giriş Yap / Kayıt Ol)
+                        Container(
+                          padding: const EdgeInsets.all(AppSpacing.xs),
+                          decoration: BoxDecoration(
+                            color: colors.surfaceContainerHighest,
+                            borderRadius: AppRadius.lgRadius,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      setState(() => _girisModu = true),
+                                  child: AnimatedContainer(
+                                    duration: AppMotion.kisa,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: AppSpacing.md),
+                                    decoration: BoxDecoration(
+                                      color: _girisModu
+                                          ? primaryColor
+                                          : Colors.transparent,
+                                      borderRadius: AppRadius.mdRadius,
+                                    ),
+                                    child: Text(
+                                      l10n.girisYap,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: AppText.sizeBodySmall,
+                                        color: _girisModu
+                                            ? Colors.white
+                                            : colors.onSurfaceVariant,
                                       ),
                                     ),
                                   ),
-                                  Expanded(
-                                    child: GestureDetector(
-                                      onTap: () =>
-                                          setState(() => _girisModu = false),
-                                      child: AnimatedContainer(
-                                        duration:
-                                            AppMotion.kisa,
-                                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                                        decoration: BoxDecoration(
-                                          color: !_girisModu
-                                              ? primaryColor
-                                              : Colors.transparent,
-                                          borderRadius:
-                                              AppRadius.mdRadius,
-                                        ),
-                                        child: Text(
-                                          l10n.kayitOl,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: AppText.sizeBodySmall,
-                                            color: !_girisModu
-                                                ? Colors.white
-                                                : colors.onSurfaceVariant,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-
-                            // Kullanıcı Adı Field (Sadece Kayıt modunda)
-                            if (!_girisModu) ...[
-                              TextFormField(
-                                controller: _kullaniciAdiController,
-                                style: TextStyle(color: colors.onSurface),
-                                decoration: InputDecoration(
-                                  labelText: l10n.adinizVeyaLakabiniz,
-                                  labelStyle:
-                                      TextStyle(color: colors.onSurfaceVariant),
-                                  prefixIcon: Icon(Icons.person_outline_rounded,
-                                      size: 20, color: colors.onSurfaceVariant),
-                                  filled: true,
-                                  fillColor: colors.surfaceContainerHighest,
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
-                                  border: OutlineInputBorder(
-                                      borderRadius: AppRadius.lgRadius,
-                                      borderSide: BorderSide.none),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: AppRadius.lgRadius,
-                                      borderSide: BorderSide(
-                                          color: primaryColor, width: 2)),
                                 ),
-                                validator: (val) {
-                                  if (val == null || val.trim().length < 3) {
-                                    return l10n.girisHataKullaniciAdiKisa;
-                                  }
-                                  return null;
-                                },
                               ),
-                              const SizedBox(height: 16),
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      setState(() => _girisModu = false),
+                                  child: AnimatedContainer(
+                                    duration: AppMotion.kisa,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: AppSpacing.md),
+                                    decoration: BoxDecoration(
+                                      color: !_girisModu
+                                          ? primaryColor
+                                          : Colors.transparent,
+                                      borderRadius: AppRadius.mdRadius,
+                                    ),
+                                    child: Text(
+                                      l10n.kayitOl,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: AppText.sizeBodySmall,
+                                        color: !_girisModu
+                                            ? Colors.white
+                                            : colors.onSurfaceVariant,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
+                          ),
+                        ),
+                        const SizedBox(height: 20),
 
-                            // E-Posta Field
-                            TextFormField(
-                              controller: _emailController,
-                              keyboardType: TextInputType.emailAddress,
-                              style: TextStyle(color: colors.onSurface),
-                              decoration: InputDecoration(
-                                labelText: l10n.epostaAdresiniz,
-                                labelStyle:
-                                    TextStyle(color: colors.onSurfaceVariant),
-                                prefixIcon: Icon(Icons.email_outlined,
-                                    size: 20, color: colors.onSurfaceVariant),
-                                filled: true,
-                                fillColor: colors.surfaceContainerHighest,
-                                contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
-                                border: OutlineInputBorder(
-                                    borderRadius: AppRadius.lgRadius,
-                                    borderSide: BorderSide.none),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: AppRadius.lgRadius,
-                                    borderSide: BorderSide(
-                                        color: primaryColor, width: 2)),
-                              ),
-                              validator: (val) {
-                                if (val == null || !val.contains("@")) {
-                                  return l10n.girisHataEpostaGecersiz;
-                                }
-                                return null;
-                              },
+                        // Kullanıcı Adı Field (Sadece Kayıt modunda)
+                        if (!_girisModu) ...[
+                          TextFormField(
+                            controller: _kullaniciAdiController,
+                            style: TextStyle(color: colors.onSurface),
+                            decoration: InputDecoration(
+                              labelText: l10n.adinizVeyaLakabiniz,
+                              labelStyle:
+                                  TextStyle(color: colors.onSurfaceVariant),
+                              prefixIcon: Icon(Icons.person_outline_rounded,
+                                  size: 20, color: colors.onSurfaceVariant),
+                              filled: true,
+                              fillColor: colors.surfaceContainerHighest,
+                              contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: AppSpacing.lg,
+                                  vertical: AppSpacing.md),
+                              border: OutlineInputBorder(
+                                  borderRadius: AppRadius.lgRadius,
+                                  borderSide: BorderSide.none),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: AppRadius.lgRadius,
+                                  borderSide: BorderSide(
+                                      color: primaryColor, width: 2)),
                             ),
-                            const SizedBox(height: 16),
+                            validator: (val) {
+                              if (val == null || val.trim().length < 3) {
+                                return l10n.girisHataKullaniciAdiKisa;
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                        ],
 
-                            // Şifre Field
-                            TextFormField(
-                              controller: _sifreController,
-                              obscureText: _sifreGizli,
-                              style: TextStyle(color: colors.onSurface),
-                              decoration: InputDecoration(
-                                labelText: l10n.sifreniz,
-                                labelStyle:
-                                    TextStyle(color: colors.onSurfaceVariant),
-                                prefixIcon: Icon(Icons.lock_outline_rounded,
-                                    size: 20, color: colors.onSurfaceVariant),
-                                suffixIcon: IconButton(
-                                  tooltip: _sifreGizli ? l10n.sifreGoster : l10n.sifreGizle,
-                                  icon: Icon(
-                                    _sifreGizli
-                                        ? Icons.visibility_off_outlined
-                                        : Icons.visibility_outlined,
-                                    size: 20,
-                                    color: colors.onSurfaceVariant,
-                                  ),
-                                  onPressed: () => setState(
-                                      () => _sifreGizli = !_sifreGizli),
-                                ),
-                                filled: true,
-                                fillColor: colors.surfaceContainerHighest,
-                                contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
-                                border: OutlineInputBorder(
-                                    borderRadius: AppRadius.lgRadius,
-                                    borderSide: BorderSide.none),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: AppRadius.lgRadius,
-                                    borderSide: BorderSide(
-                                        color: primaryColor, width: 2)),
+                        // E-Posta Field
+                        TextFormField(
+                          controller: _emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(color: colors.onSurface),
+                          decoration: InputDecoration(
+                            labelText: l10n.epostaAdresiniz,
+                            labelStyle:
+                                TextStyle(color: colors.onSurfaceVariant),
+                            prefixIcon: Icon(Icons.email_outlined,
+                                size: 20, color: colors.onSurfaceVariant),
+                            filled: true,
+                            fillColor: colors.surfaceContainerHighest,
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.lg,
+                                vertical: AppSpacing.md),
+                            border: OutlineInputBorder(
+                                borderRadius: AppRadius.lgRadius,
+                                borderSide: BorderSide.none),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: AppRadius.lgRadius,
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 2)),
+                          ),
+                          validator: (val) {
+                            if (val == null || !val.contains("@")) {
+                              return l10n.girisHataEpostaGecersiz;
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Şifre Field
+                        TextFormField(
+                          controller: _sifreController,
+                          obscureText: _sifreGizli,
+                          style: TextStyle(color: colors.onSurface),
+                          decoration: InputDecoration(
+                            labelText: l10n.sifreniz,
+                            labelStyle:
+                                TextStyle(color: colors.onSurfaceVariant),
+                            prefixIcon: Icon(Icons.lock_outline_rounded,
+                                size: 20, color: colors.onSurfaceVariant),
+                            suffixIcon: IconButton(
+                              tooltip: _sifreGizli
+                                  ? l10n.sifreGoster
+                                  : l10n.sifreGizle,
+                              icon: Icon(
+                                _sifreGizli
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined,
+                                size: 20,
+                                color: colors.onSurfaceVariant,
                               ),
-                              validator: (val) {
-                                if (val == null || val.length < 6) {
-                                  return l10n.girisHataSifreKisa;
-                                }
-                                return null;
-                              },
+                              onPressed: () =>
+                                  setState(() => _sifreGizli = !_sifreGizli),
                             ),
+                            filled: true,
+                            fillColor: colors.surfaceContainerHighest,
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.lg,
+                                vertical: AppSpacing.md),
+                            border: OutlineInputBorder(
+                                borderRadius: AppRadius.lgRadius,
+                                borderSide: BorderSide.none),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: AppRadius.lgRadius,
+                                borderSide:
+                                    BorderSide(color: primaryColor, width: 2)),
+                          ),
+                          validator: (val) {
+                            if (val == null || val.length < 6) {
+                              return l10n.girisHataSifreKisa;
+                            }
+                            return null;
+                          },
+                        ),
 
-                            // Şifremi unuttum bağlantısı (yalnızca giriş modunda)
-                            if (_girisModu)
-                              Align(
-                                alignment: AlignmentDirectional.centerEnd,
-                                child: TextButton(
-                                  onPressed: _yukleniyor
-                                      ? null
-                                      : _sifreSifirlamaTetikle,
-                                  style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                                    minimumSize: const Size(0, 44),
-                                    tapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
-                                  ),
-                                  child: Text(
-                                    l10n.sifremiUnuttum,
-                                    style: TextStyle(
-                                      fontSize: AppText.sizeBodySmall,
-                                      fontWeight: FontWeight.bold,
-                                      color: primaryColor,
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                            if (_girisModu)
-                              CheckboxListTile(
-                                contentPadding: EdgeInsets.zero,
-                                dense: true,
-                                value: _beniHatirla,
-                                activeColor: primaryColor,
-                                controlAffinity:
-                                    ListTileControlAffinity.leading,
-                                title: Text(
-                                  l10n.girisBeniHatirla,
-                                  style: TextStyle(
-                                      fontSize: AppText.sizeBodySmall,
-                                      color: colors.onSurface,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                onChanged: (value) {
-                                  setState(() => _beniHatirla = value ?? true);
-                                },
-                              ),
-
-                            const SizedBox(height: 20),
-
-                            // Tetikleyici Ana Buton
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: primaryColor,
-                                foregroundColor: Colors.white,
-                                minimumSize: const Size(double.infinity, 52),
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: AppRadius.lgRadius),
-                              ),
-                              onPressed: _yukleniyor ? null : _islemTetikle,
-                              child: _yukleniyor
-                                  ? const SizedBox(
-                                      width: 22,
-                                      height: 22,
-                                      child: CircularProgressIndicator(
-                                        color: Colors.white,
-                                        strokeWidth: 2.5,
-                                      ),
-                                    )
-                                  : Text(
-                                      _girisModu
-                                          ? l10n.girisYapVeBasla
-                                          : l10n.kayitOlVeBasla,
-                                      style: const TextStyle(
-                                        fontSize: AppText.sizeBodyLarge,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                            ),
-
-                            const SizedBox(height: 16),
-
-                            // Ayraç OR / VEYA
-                            Row(
-                              children: [
-                                Expanded(
-                                    child:
-                                        Divider(color: colors.outlineVariant)),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-                                  child: Text(
-                                    l10n.girisVeya,
-                                    style: TextStyle(
-                                        color: colors.onSurfaceVariant,
-                                        fontSize: AppText.sizeCaption,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                                Expanded(
-                                    child:
-                                        Divider(color: colors.outlineVariant)),
-                              ],
-                            ),
-
-                            const SizedBox(height: 16),
-
-                            const SizedBox(height: 16),
-
-                            // Google ile Giriş Yap Butonu - Tema uyumlu modern tasarım
-                            OutlinedButton.icon(
-                              style: OutlinedButton.styleFrom(
-                                minimumSize: const Size(double.infinity, 52),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: AppRadius.lgRadius),
-                                side: BorderSide(color: colors.outlineVariant, width: 1.5),
-                                backgroundColor: colors.surfaceContainerLow,
-                                foregroundColor: colors.onSurface,
-                                elevation: 0,
-                                padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                              ),
+                        // Şifremi unuttum bağlantısı (yalnızca giriş modunda)
+                        if (_girisModu)
+                          Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: TextButton(
                               onPressed:
-                                  _yukleniyor ? null : () { _googleGirisTetikle(); },
-                              icon: Image.asset(
-                                'assets/images/google_logo.png',
-                                height: 24,
-                                width: 24,
-                                errorBuilder: (_, __, ___) => const Icon(
-                                  Icons.g_mobiledata_rounded,
-                                  size: 26,
-                                  color: AppMiscColors.googleBlue,
-                                ),
+                                  _yukleniyor ? null : _sifreSifirlamaTetikle,
+                              style: TextButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: AppSpacing.sm),
+                                minimumSize: const Size(0, 44),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                               ),
-                              label: Text(
-                                l10n.girisYapGoogle,
+                              child: Text(
+                                l10n.sifremiUnuttum,
                                 style: TextStyle(
-                                  fontSize: AppText.sizeBodyLarge,
+                                  fontSize: AppText.sizeBodySmall,
                                   fontWeight: FontWeight.w600,
-                                  color: colors.onSurface,
-                                  letterSpacing: 0.2,
+                                  color: primaryColor,
                                 ),
                               ),
                             ),
+                          ),
+
+                        if (_girisModu)
+                          CheckboxListTile(
+                            contentPadding: EdgeInsets.zero,
+                            dense: true,
+                            value: _beniHatirla,
+                            activeColor: primaryColor,
+                            controlAffinity: ListTileControlAffinity.leading,
+                            title: Text(
+                              l10n.girisBeniHatirla,
+                              style: TextStyle(
+                                  fontSize: AppText.sizeBodySmall,
+                                  color: colors.onSurface,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            onChanged: (value) {
+                              setState(() => _beniHatirla = value ?? true);
+                            },
+                          ),
+
+                        const SizedBox(height: 20),
+
+                        // Tetikleyici Ana Buton
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primaryColor,
+                            foregroundColor: Colors.white,
+                            minimumSize: const Size(double.infinity, 52),
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: AppRadius.lgRadius),
+                          ),
+                          onPressed: _yukleniyor ? null : _islemTetikle,
+                          child: _yukleniyor
+                              ? const SizedBox(
+                                  width: 22,
+                                  height: 22,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 2.5,
+                                  ),
+                                )
+                              : Text(
+                                  _girisModu
+                                      ? l10n.girisYapVeBasla
+                                      : l10n.kayitOlVeBasla,
+                                  style: const TextStyle(
+                                    fontSize: AppText.sizeBodyLarge,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                        ),
+
+                        const SizedBox(height: 16),
+
+                        // Ayraç OR / VEYA
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Divider(color: colors.outlineVariant)),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: AppSpacing.md),
+                              child: Text(
+                                l10n.girisVeya,
+                                style: TextStyle(
+                                    color: colors.onSurfaceVariant,
+                                    fontSize: AppText.sizeCaption,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            Expanded(
+                                child: Divider(color: colors.outlineVariant)),
                           ],
                         ),
-                      ),
+
+                        const SizedBox(height: 16),
+
+                        const SizedBox(height: 16),
+
+                        // Google ile Giriş Yap Butonu - Tema uyumlu modern tasarım
+                        OutlinedButton.icon(
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 52),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: AppRadius.lgRadius),
+                            side: BorderSide(
+                                color: colors.outlineVariant, width: 1.5),
+                            backgroundColor: colors.surfaceContainerLow,
+                            foregroundColor: colors.onSurface,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: AppSpacing.md),
+                          ),
+                          onPressed: _yukleniyor
+                              ? null
+                              : () {
+                                  _googleGirisTetikle();
+                                },
+                          icon: Image.asset(
+                            'assets/images/google_logo.png',
+                            height: 24,
+                            width: 24,
+                            errorBuilder: (_, __, ___) => const Icon(
+                              Icons.g_mobiledata_rounded,
+                              size: 26,
+                              color: AppMiscColors.googleBlue,
+                            ),
+                          ),
+                          label: Text(
+                            l10n.girisYapGoogle,
+                            style: TextStyle(
+                              fontSize: AppText.sizeBodyLarge,
+                              fontWeight: FontWeight.w600,
+                              color: colors.onSurface,
+                              letterSpacing: 0,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

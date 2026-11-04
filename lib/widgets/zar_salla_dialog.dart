@@ -76,8 +76,8 @@ class ZarSallaDialog extends StatelessWidget {
                 l10n.zarPopupBaslik,
                 style: TextStyle(
                   fontSize: AppText.sizeTitle,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: -0.5,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0,
                   color: colors.onSurface,
                 ),
                 textAlign: TextAlign.center,
@@ -103,7 +103,8 @@ class ZarSallaDialog extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                        padding:
+                            const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
                           borderRadius: AppRadius.lgRadius,
                         ),
@@ -112,7 +113,7 @@ class ZarSallaDialog extends StatelessWidget {
                         l10n.iptal,
                         style: TextStyle(
                           color: colors.onSurfaceVariant,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -131,7 +132,8 @@ class ZarSallaDialog extends StatelessWidget {
                         backgroundColor: AppAccents.success,
                         foregroundColor: Colors.white,
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                        padding:
+                            const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
                           borderRadius: AppRadius.lgRadius,
                         ),
@@ -140,7 +142,7 @@ class ZarSallaDialog extends StatelessWidget {
                       label: Text(
                         l10n.zarlariAt,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w600,
                           fontSize: AppText.sizeBodySmall,
                         ),
                       ),

@@ -80,7 +80,8 @@ class BilgiSayfasi {
       builder: (sheetContext) {
         return SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
             child: ClipRRect(
               borderRadius: AppRadius.xxlRadius,
               child: BackdropFilter(
@@ -93,7 +94,8 @@ class BilgiSayfasi {
                     color: colors.surfaceContainerHigh.withValues(alpha: 0.92),
                     borderRadius: AppRadius.xxlRadius,
                   ),
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.lg),
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.xl,
+                      AppSpacing.md, AppSpacing.xl, AppSpacing.lg),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +106,8 @@ class BilgiSayfasi {
                           height: 4,
                           margin: const EdgeInsets.only(bottom: 12),
                           decoration: BoxDecoration(
-                            color: colors.onSurfaceVariant.withValues(alpha: 0.3),
+                            color:
+                                colors.onSurfaceVariant.withValues(alpha: 0.3),
                             borderRadius: AppRadius.xxsRadius,
                           ),
                         ),
@@ -129,8 +132,8 @@ class BilgiSayfasi {
                               baslik,
                               style: TextStyle(
                                 fontSize: AppText.sizeTitleSmall,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: -0.3,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0,
                                 color: colors.onSurface,
                               ),
                             ),
@@ -159,7 +162,8 @@ class BilgiSayfasi {
                         child: FilledButton(
                           onPressed: () => Navigator.of(sheetContext).pop(),
                           child: Text(
-                            MaterialLocalizations.of(sheetContext).okButtonLabel,
+                            MaterialLocalizations.of(sheetContext)
+                                .okButtonLabel,
                           ),
                         ),
                       ),

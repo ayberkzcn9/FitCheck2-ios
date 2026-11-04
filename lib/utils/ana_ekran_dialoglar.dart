@@ -43,7 +43,8 @@ class AnaEkranDialoglar {
                   top: Radius.circular(28),
                 ),
               ),
-              padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
+              padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
               child: SafeArea(
                 top: false,
                 bottom: true,
@@ -75,9 +76,9 @@ class AnaEkranDialoglar {
                             l10n.kuponKoduKullanTitle,
                             style: TextStyle(
                               fontSize: AppText.sizeTitleSmall,
-                              fontWeight: FontWeight.w900,
+                              fontWeight: FontWeight.w600,
                               color: context.uygunMetin,
-                              letterSpacing: -0.3,
+                              letterSpacing: 0,
                             ),
                           ),
                         ),
@@ -127,7 +128,7 @@ class AnaEkranDialoglar {
                             l10n.vazgec,
                             style: TextStyle(
                               color: context.uygunMetin,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -160,7 +161,7 @@ class AnaEkranDialoglar {
                                     l10n.kuponBasariliMesaji,
                                     style: TextStyle(
                                       color: colors.onPrimaryContainer,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   backgroundColor: colors.primaryContainer,
@@ -177,7 +178,7 @@ class AnaEkranDialoglar {
                                     l10n.kuponKullanilmisUyari,
                                     style: TextStyle(
                                       color: colors.onTertiaryContainer,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   backgroundColor: colors.tertiaryContainer,
@@ -194,7 +195,7 @@ class AnaEkranDialoglar {
                                     l10n.kuponGecersizUyari,
                                     style: TextStyle(
                                       color: colors.onErrorContainer,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   backgroundColor: colors.errorContainer,
@@ -209,7 +210,7 @@ class AnaEkranDialoglar {
                           child: Text(
                             l10n.kuponKullanButon,
                             style: const TextStyle(
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
                           ),
@@ -251,7 +252,8 @@ class AnaEkranDialoglar {
                 top: Radius.circular(28),
               ),
             ),
-            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xxl),
             child: SafeArea(
               top: false,
               bottom: true,
@@ -283,7 +285,7 @@ class AnaEkranDialoglar {
                               : l10n.kalanHakkinizBaslik(kalanHak),
                           style: TextStyle(
                             fontSize: AppText.sizeTitleSmall,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w600,
                             color: context.uygunMetin,
                           ),
                           textAlign: TextAlign.center,
@@ -332,7 +334,7 @@ class AnaEkranDialoglar {
                                 l10n.kuponKullan,
                                 style: TextStyle(
                                   color: context.uygunMetin,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: AppText.sizeBodySmall,
                                 ),
                               ),
@@ -349,7 +351,8 @@ class AnaEkranDialoglar {
                         ),
                       ],
                       if (ReklamServisi.reklamlarEtkinMi) ...[
-                        if (ReklamServisi.kuponAktifMi) const SizedBox(width: 8),
+                        if (ReklamServisi.kuponAktifMi)
+                          const SizedBox(width: 8),
                         Expanded(
                           child: FilledButton.icon(
                             style: FilledButton.styleFrom(
@@ -374,7 +377,7 @@ class AnaEkranDialoglar {
                                 l10n.reklamIzleHakKazan(
                                     ReklamServisi.reklamOduluKredi),
                                 style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: AppText.sizeBodySmall,
                                   color: Colors.white,
                                 ),
@@ -397,15 +400,14 @@ class AnaEkranDialoglar {
                                               ReklamServisi.reklamOduluKredi),
                                           style: TextStyle(
                                             color: colors.onSurface,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
                                         backgroundColor:
                                             colors.surfaceContainerHigh,
                                         behavior: SnackBarBehavior.floating,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              AppRadius.lgRadius,
+                                          borderRadius: AppRadius.lgRadius,
                                         ),
                                       ),
                                     );
@@ -427,7 +429,8 @@ class AnaEkranDialoglar {
                       width: double.infinity,
                       child: FilledButton.icon(
                         style: FilledButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: AppSpacing.md),
                           backgroundColor: anaRenk,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -446,7 +449,7 @@ class AnaEkranDialoglar {
                               SatinAlmaServisi.ornek.aylikFiyat,
                             ),
                             style: const TextStyle(
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                               fontSize: AppText.sizeBodySmall,
                               color: Colors.white,
                             ),
@@ -497,7 +500,7 @@ class AnaEkranDialoglar {
                   l10n.gardirobunDolduTitle,
                   style: TextStyle(
                     fontSize: AppText.sizeTitleSmall,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w600,
                     color: context.uygunMetin,
                   ),
                 ),
@@ -511,7 +514,9 @@ class AnaEkranDialoglar {
               Text(
                 l10n.gardirobunDolduIcerik(
                     maxLimit, ReklamServisi.reklamOduluSlot),
-                style: TextStyle(fontSize: AppText.sizeBodySmall, color: context.uygunAltMetin),
+                style: TextStyle(
+                    fontSize: AppText.sizeBodySmall,
+                    color: context.uygunAltMetin),
               ),
               const SizedBox(height: 20),
               // Birincil teklif: sınırsız gardırop. Ödüllü reklam ikincil.
@@ -521,7 +526,7 @@ class AnaEkranDialoglar {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
                 style: FilledButton.styleFrom(
@@ -548,16 +553,16 @@ class AnaEkranDialoglar {
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      l10n.reklamIzleSlotEkle(
-                          ReklamServisi.reklamOduluSlot),
+                      l10n.reklamIzleSlotEkle(ReklamServisi.reklamOduluSlot),
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: context.uygunMetin,
                       ),
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     side: BorderSide(color: context.uygunMetin),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.mdRadius,
@@ -578,7 +583,7 @@ class AnaEkranDialoglar {
                                     ReklamServisi.reklamOduluSlot),
                                 style: TextStyle(
                                   color: colors.onSurface,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               backgroundColor: colors.surfaceContainerHigh,
@@ -596,7 +601,8 @@ class AnaEkranDialoglar {
               ],
             ],
           ),
-          actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
+          actionsPadding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
@@ -604,7 +610,7 @@ class AnaEkranDialoglar {
                 l10n.vazgec,
                 style: TextStyle(
                   color: context.uygunMetin,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
@@ -643,7 +649,7 @@ class AnaEkranDialoglar {
                   l10n.gunlukHakBittiTitle,
                   style: TextStyle(
                     fontSize: AppText.sizeTitleSmall,
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w600,
                     color: context.uygunMetin,
                   ),
                 ),
@@ -656,7 +662,9 @@ class AnaEkranDialoglar {
             children: [
               Text(
                 l10n.gunlukHakBittiIcerik,
-                style: TextStyle(fontSize: AppText.sizeBodySmall, color: context.uygunAltMetin),
+                style: TextStyle(
+                    fontSize: AppText.sizeBodySmall,
+                    color: context.uygunAltMetin),
               ),
               const SizedBox(height: 20),
               // Birincil teklif: sınırsız kullanım. Ödüllü reklam premium'un
@@ -667,7 +675,7 @@ class AnaEkranDialoglar {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
                 style: FilledButton.styleFrom(
@@ -694,16 +702,16 @@ class AnaEkranDialoglar {
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      l10n.reklamIzleHakKazan(
-                          ReklamServisi.reklamOduluKredi),
+                      l10n.reklamIzleHakKazan(ReklamServisi.reklamOduluKredi),
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: context.uygunMetin,
                       ),
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     side: BorderSide(color: context.uygunMetin),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.mdRadius,
@@ -726,7 +734,7 @@ class AnaEkranDialoglar {
                                     ReklamServisi.reklamOduluKredi),
                                 style: TextStyle(
                                   color: colors.onSurface,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               backgroundColor: colors.surfaceContainerHigh,
@@ -744,7 +752,8 @@ class AnaEkranDialoglar {
               ],
             ],
           ),
-          actionsPadding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
+          actionsPadding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
@@ -752,7 +761,7 @@ class AnaEkranDialoglar {
                 l10n.dahaSonra,
                 style: TextStyle(
                   color: context.uygunMetin,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),

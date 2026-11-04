@@ -25,12 +25,16 @@ T? safeJsonDecode<T>(
 
 /// [jsonString] güvenli şekilde `List<dynamic>` olarak decode eder.
 List<dynamic> safeJsonDecodeList(String? jsonString, {String? tag}) {
-  return safeJsonDecode<List<dynamic>>(jsonString, fallback: <dynamic>[], tag: tag) ?? <dynamic>[];
+  return safeJsonDecode<List<dynamic>>(jsonString,
+          fallback: <dynamic>[], tag: tag) ??
+      <dynamic>[];
 }
 
 /// [jsonString] güvenli şekilde `Map<String, dynamic>` olarak decode eder.
 Map<String, dynamic> safeJsonDecodeMap(String? jsonString, {String? tag}) {
-  return safeJsonDecode<Map<String, dynamic>>(jsonString, fallback: <String, dynamic>{}, tag: tag) ?? <String, dynamic>{};
+  return safeJsonDecode<Map<String, dynamic>>(jsonString,
+          fallback: <String, dynamic>{}, tag: tag) ??
+      <String, dynamic>{};
 }
 
 /// Türkçe'ye uygun büyük harf dönüşümü.
@@ -52,7 +56,8 @@ String turkceBuyukHarf(String metin) {
   return sonuc.toString();
 }
 
-String metniGuvenliYap(String text) {  // Markdown işaretlerini ve kontrol karakterlerini temizler.
+String metniGuvenliYap(String text) {
+  // Markdown işaretlerini ve kontrol karakterlerini temizler.
   // ÖNEMLİ: Tüm Unicode alfabeler (Kiril, Arapça, Japonca, Korece, Çince...)
   // ve emojiler KORUNUR; yalnızca kontrol karakterleri atılır.
   return text
@@ -108,7 +113,7 @@ void gorseliBuhur(
                 baslik,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   fontSize: AppText.sizeBodyLarge,
                   color: colors.onSurface,
                 ),
@@ -129,7 +134,7 @@ void gorseliBuhur(
                   AppLocalizations.of(context)!.kapat,
                   style: TextStyle(
                     color: colors.primary,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                     fontSize: AppText.sizeBodySmall,
                   ),
                 ),
@@ -166,7 +171,8 @@ class GardirobIndex {
 
 /// [parcaMetni] içindeki parçaya karşılık gelen görseli bulur.
 /// Performans için [index] önbelleği geçilebilir (opsiyonel).
-Uint8List? parcaGorseliBul(String parcaMetni, List<Kiyafet> gardirobum, {GardirobIndex? index}) {
+Uint8List? parcaGorseliBul(String parcaMetni, List<Kiyafet> gardirobum,
+    {GardirobIndex? index}) {
   final temizParca = parcaMetni.toLowerCase();
   final idx = index ?? GardirobIndex(gardirobum);
 
@@ -185,9 +191,10 @@ Uint8List? parcaGorseliBul(String parcaMetni, List<Kiyafet> gardirobum, {Gardiro
     final itemRenk = item.renk.toLowerCase();
     final itemKategori = item.kategori.toLowerCase();
 
-    final isimVeyaRenkUyusuyor = temizParca.contains(itemBaslik) || temizParca.contains(itemRenk);
+    final isimVeyaRenkUyusuyor =
+        temizParca.contains(itemBaslik) || temizParca.contains(itemRenk);
     bool kategoriUyusuyor = temizParca.contains(itemKategori);
-    
+
     if (!kategoriUyusuyor) {
       // Kategori anahtar kelimeleri ile genişletilmiş eşleşme
       if (itemKategori == 'ust') {
@@ -212,13 +219,19 @@ Uint8List? parcaGorseliBul(String parcaMetni, List<Kiyafet> gardirobum, {Gardiro
   }
 
   // 3. Fallback: kategori bazlı ilk eşleşen (önbellek kullan)
-  if (temizParca.contains('bluz') || temizParca.contains('tisort') || temizParca.contains('gomlek')) {
+  if (temizParca.contains('bluz') ||
+      temizParca.contains('tisort') ||
+      temizParca.contains('gomlek')) {
     return idx.byKategori['ust']?.resimBytes;
   }
-  if (temizParca.contains('pantolon') || temizParca.contains('etek') || temizParca.contains('sort')) {
+  if (temizParca.contains('pantolon') ||
+      temizParca.contains('etek') ||
+      temizParca.contains('sort')) {
     return idx.byKategori['alt']?.resimBytes;
   }
-  if (temizParca.contains('ayakkabi') || temizParca.contains('bot') || temizParca.contains('sneaker')) {
+  if (temizParca.contains('ayakkabi') ||
+      temizParca.contains('bot') ||
+      temizParca.contains('sneaker')) {
     return idx.byKategori['ayakkabi']?.resimBytes;
   }
 

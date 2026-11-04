@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,14 +14,6 @@ import '../utils/auth_hata_utils.dart';
 import '../../theme/design_tokens.dart';
 
 // Onboarding temayı kullanır; sabit renk tanımı YOK.
-// Vurgu renkleri (tema primary/tertiary'den türetilmiş HSV kaydırmaları):
-// primary = #0F5F4A (h=160°) → teal h=180°, cyan h=200°, green h=140°
-// tertiary = #D9A441 (h=43°) → orange h=73°
-const Color _targetTeal = Color(0xFF00A87A);   // h≈180°
-const Color _targetCyan = Color(0xFF00B8D4);   // h≈200°
-const Color _targetGreen = Color(0xFF1AB850);  // h≈140°
-const Color _targetOrange = Color(0xFFE88C00); // h≈73°
-
 // Onboarding Ekranı
 
 class OnboardingEkrani extends StatefulWidget {
@@ -77,48 +68,6 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     super.dispose();
   }
 
-  // Her sayfa için tema paletinden vurgu rengi.
-  // Tema rengini (zümrüt) ve alt/üst tonlarını kullanır.
-  List<Color> _getSayfaRenkPaleti(int index, ColorScheme colors) {
-    final primary = colors.primary;
-
-    // Tema renklerinden oluşturulan gradyanlar (Material named colors YOK)
-    // Tüm hedef renkler sabit constant (yukarıda tanımlandı)
-
-    // Tema renklerinden oluşturulan gradyanlar
-    final paletler = [
-      [primary, Color.lerp(primary, colors.surfaceContainerHigh, 0.4)!],          // Hoş Geldin
-      [Color.lerp(primary, _targetTeal, 0.3)!, Color.lerp(primary, _targetTeal, 0.6)!], // Dolap
-      [primary, Color.lerp(primary, colors.surfaceContainerHigh, 0.4)!],           // Giriş / Kayıt
-    ];
-    return paletler[index % paletler.length];
-  }
-
-  Color _getIconColor(String iconName, ColorScheme colors) {
-    final primary = colors.primary;
-    final secondary = colors.secondary;
-    final tertiary = colors.tertiary;
-
-    switch (iconName) {
-      case 'language':
-        return primary;
-      case 'checkroom':
-        return Color.lerp(primary, _targetTeal, 0.3)!;
-      case 'wb_sunny':
-        return tertiary;
-      case 'local_laundry_service':
-        return Color.lerp(primary, _targetCyan, 0.3)!;
-      case 'shopping_bag':
-        return secondary;
-      case 'insights':
-        return Color.lerp(primary, _targetGreen, 0.2)!;
-      case 'auto_awesome':
-        return Color.lerp(tertiary, _targetOrange, 0.3)!;
-      default:
-        return primary;
-    }
-  }
-
   IconData _getIcon(String iconName) {
     switch (iconName) {
       case 'checkroom':
@@ -132,7 +81,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       case 'insights':
         return Icons.insights_rounded;
       case 'auto_awesome':
-        return Icons.auto_awesome_rounded;
+        return Icons.style_outlined;
       case 'language':
         return Icons.language_rounded;
       default:
@@ -179,8 +128,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           ),
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -204,8 +152,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           ),
           backgroundColor: colors.tertiaryContainer,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
       return;
@@ -221,8 +168,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           ),
           backgroundColor: colors.tertiaryContainer,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
       return;
@@ -276,8 +222,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           ),
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -340,8 +285,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
           ),
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } finally {
@@ -366,163 +310,161 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         builder: (context, setModalState) {
           return SafeArea(
             bottom: true,
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.82,
-                decoration: BoxDecoration(
-                  color: colors.surfaceContainerHigh.withValues(alpha: 0.95),
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(28)),
-                  border: Border.all(
-                      color: colors.primary.withValues(alpha: 0.3),
-                      width: 1.5),
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 12),
-                    Container(
-                      width: 48,
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: colors.primary.withValues(alpha: 0.6),
-                        borderRadius: AppRadius.mdRadius,
-                      ),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.82,
+              decoration: BoxDecoration(
+                color: colors.surfaceContainerHigh.withValues(alpha: 0.95),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(28)),
+                border: Border.all(color: colors.outlineVariant),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(height: 12),
+                  Container(
+                    width: 48,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: colors.primary.withValues(alpha: 0.6),
+                      borderRadius: AppRadius.mdRadius,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.md),
-                      child: Row(
-                        children: [
-                          Icon(Icons.gavel_rounded,
-                              color: colors.primary, size: 24),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Text(
-                              l10n.kullanimKosullariBaslik,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: AppText.sizeTitleSmall,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: -0.5,
-                                color: colors.onSurface,
-                              ),
-                            ),
-                          ),
-                          IconButton(
-                            tooltip: l10n.kapat,
-                            icon: Icon(Icons.close_rounded,
-                                size: 22, color: colors.onSurfaceVariant),
-                            onPressed: () => Navigator.pop(ctx),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Divider(
-                        height: 1,
-                        color: colors.outlineVariant.withValues(alpha: 0.4)),
-                    Expanded(
-                      child: NotificationListener<ScrollNotification>(
-                        onNotification: (scrollNotification) {
-                          if (scrollNotification.metrics.pixels >=
-                                  (scrollNotification.metrics.maxScrollExtent -
-                                      40) &&
-                              !enAltaUlasildi) {
-                            setModalState(() {
-                              enAltaUlasildi = true;
-                            });
-                            HapticFeedback.selectionClick();
-                          }
-                          return false;
-                        },
-                        child: SingleChildScrollView(
-                          controller: modalScrollController,
-                          physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.xl),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.xl, vertical: AppSpacing.md),
+                    child: Row(
+                      children: [
+                        Icon(Icons.gavel_rounded,
+                            color: colors.primary, size: 24),
+                        const SizedBox(width: 12),
+                        Expanded(
                           child: Text(
-                            l10n.kullanimKosullariMetni,
+                            l10n.kullanimKosullariBaslik,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: AppText.sizeBodySmall,
-                              height: 1.6,
-                              color: colors.onSurfaceVariant,
-                              fontWeight: FontWeight.w500,
+                              fontSize: AppText.sizeTitleSmall,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 0,
+                              color: colors.onSurface,
                             ),
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: l10n.kapat,
+                          icon: Icon(Icons.close_rounded,
+                              size: 22, color: colors.onSurfaceVariant),
+                          onPressed: () => Navigator.pop(ctx),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.4)),
+                  Expanded(
+                    child: NotificationListener<ScrollNotification>(
+                      onNotification: (scrollNotification) {
+                        if (scrollNotification.metrics.pixels >=
+                                (scrollNotification.metrics.maxScrollExtent -
+                                    40) &&
+                            !enAltaUlasildi) {
+                          setModalState(() {
+                            enAltaUlasildi = true;
+                          });
+                          HapticFeedback.selectionClick();
+                        }
+                        return false;
+                      },
+                      child: SingleChildScrollView(
+                        controller: modalScrollController,
+                        physics: const BouncingScrollPhysics(),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.xl,
+                            AppSpacing.lg, AppSpacing.xl, AppSpacing.xl),
+                        child: Text(
+                          l10n.kullanimKosullariMetni,
+                          style: TextStyle(
+                            fontSize: AppText.sizeBodySmall,
+                            height: 1.6,
+                            color: colors.onSurfaceVariant,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(16, 12, 16,
-                          12 + MediaQuery.of(context).padding.bottom),
-                      decoration: BoxDecoration(
-                        color: colors.surfaceContainer,
-                        border: Border(
-                            top: BorderSide(
-                                color: colors.outlineVariant
-                                    .withValues(alpha: 0.4))),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (!enAltaUlasildi)
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.arrow_downward_rounded,
-                                      size: 14, color: colors.primary),
-                                  const SizedBox(width: 8),
-                                  Flexible(
-                                    child: Text(
-                                      l10n.onaylamakIcinKaydirin,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontSize: AppText.sizeCaption,
-                                          fontWeight: FontWeight.bold,
-                                          color: colors.primary),
-                                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(
+                        16, 12, 16, 12 + MediaQuery.of(context).padding.bottom),
+                    decoration: BoxDecoration(
+                      color: colors.surfaceContainer,
+                      border: Border(
+                          top: BorderSide(
+                              color: colors.outlineVariant
+                                  .withValues(alpha: 0.4))),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (!enAltaUlasildi)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.arrow_downward_rounded,
+                                    size: 14, color: colors.primary),
+                                const SizedBox(width: 8),
+                                Flexible(
+                                  child: Text(
+                                    l10n.onaylamakIcinKaydirin,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontSize: AppText.sizeCaption,
+                                        fontWeight: FontWeight.w600,
+                                        color: colors.primary),
                                   ),
-                                ],
-                              ),
-                            ),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 52,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: enAltaUlasildi
-                                    ? AppAccents.successDark
-                                    : colors.surfaceContainerHighest,
-                                foregroundColor: enAltaUlasildi
-                                    ? Colors.white
-                                    : colors.onSurfaceVariant,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: AppRadius.lgRadius),
-                              ),
-                              onPressed: enAltaUlasildi
-                                  ? () {
-                                      HapticFeedback.mediumImpact();
-                                      setState(() {
-                                        _kosullarOkundu = true;
-                                        _kosullariKabulEtti = true;
-                                      });
-                                      Navigator.pop(ctx);
-                                    }
-                                  : null,
-                              child: Text(
-                                l10n.okudumAnladimKabulEdiyorum,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                    fontSize: AppText.sizeBodySmall, fontWeight: FontWeight.bold),
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 52,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: enAltaUlasildi
+                                  ? AppAccents.successDark
+                                  : colors.surfaceContainerHighest,
+                              foregroundColor: enAltaUlasildi
+                                  ? Colors.white
+                                  : colors.onSurfaceVariant,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: AppRadius.lgRadius),
+                            ),
+                            onPressed: enAltaUlasildi
+                                ? () {
+                                    HapticFeedback.mediumImpact();
+                                    setState(() {
+                                      _kosullarOkundu = true;
+                                      _kosullariKabulEtti = true;
+                                    });
+                                    Navigator.pop(ctx);
+                                  }
+                                : null,
+                            child: Text(
+                              l10n.okudumAnladimKabulEdiyorum,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: AppText.sizeBodySmall,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           );
@@ -541,6 +483,12 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
+    final kullanimKosullariBaglantisi = l10n.kullanimKosullarini;
+    final kullanimKosullariOnayMetni = l10n.kullanimKosullariOnayMetni(
+      kullanimKosullariBaglantisi,
+    );
+    final baglantiBaslangici =
+        kullanimKosullariOnayMetni.indexOf(kullanimKosullariBaglantisi);
     // Kabuk varsa sistem dili (null) seçimi aynen korunur; yalnızca kabuk
     // yoksa yerel ayar kullanılır.
     final Locale? seciliLocale = appState != null
@@ -573,7 +521,6 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
     final int toplamSayfaSayisi = tanitimSayfalari.length + 1;
     final bool isGirisSayfasi = _mevcutSayfa == toplamSayfaSayisi - 1;
-    final List<Color> aktifPalet = _getSayfaRenkPaleti(_mevcutSayfa, colors);
 
     final List<Map<String, String>> cinsiyetListesi = [
       {'key': 'female', 'label': l10n.kadin},
@@ -619,17 +566,17 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(toplamSayfaSayisi, (i) {
                   bool isActive = _mevcutSayfa == i;
-                  final sayfaRenk = _getSayfaRenkPaleti(i, colors)[0];
+                  final sayfaRenk = colors.primary;
                   return AnimatedContainer(
                     duration: AppMotion.orta,
                     curve: AppMotion.giris,
-                    margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
                     height: 8,
-                    width: isActive ? 28 : 8,
+                    width: 8,
                     decoration: BoxDecoration(
-                      color: isActive
-                          ? sayfaRenk
-                          : colors.surfaceContainerHighest,
+                      color:
+                          isActive ? sayfaRenk : colors.surfaceContainerHighest,
                       borderRadius: AppRadius.smRadius,
                     ),
                   );
@@ -638,20 +585,15 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
               const SizedBox(height: 12),
 
               if (!isGirisSayfasi)
-                Container(
-                  constraints: const BoxConstraints(minHeight: 52),
+                SizedBox(
+                  height: 52,
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: AppRadius.xlRadius,
-                    gradient: LinearGradient(
-                        colors: [aktifPalet[0], aktifPalet[1]]),
-                  ),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: colors.primary,
+                      foregroundColor: colors.onPrimary,
                       shape: RoundedRectangleBorder(
-                          borderRadius: AppRadius.xlRadius),
+                          borderRadius: AppRadius.lgRadius),
                     ),
                     onPressed: () {
                       if (_mevcutSayfa == tanitimSayfalari.length - 1 &&
@@ -675,16 +617,15 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       }
                       HapticFeedback.mediumImpact();
                       _pageController.nextPage(
-                          duration: AppMotion.orta,
-                          curve: AppMotion.giris);
+                          duration: AppMotion.orta, curve: AppMotion.giris);
                     },
                     child: Text(
                       l10n.onboardingDevamEt,
                       style: TextStyle(
                           fontSize: AppText.sizeTitleSmall,
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w600,
                           color: colors.onPrimary,
-                          letterSpacing: 0.5),
+                          letterSpacing: 0),
                     ),
                   ),
                 ),
@@ -701,26 +642,31 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
-                          Tooltip(message: l10n.dilAyarlari, child: _buildPremiumIconButton(
-                              icon: Icons.language_rounded,
-                              iconColor: antrasitRenk,
-                              onTap: () {
-                                HapticFeedback.selectionClick();
-                                DilSecimModal.goster(context);
-                              })),
+                          Tooltip(
+                              message: l10n.dilAyarlari,
+                              child: _buildPremiumIconButton(
+                                  icon: Icons.language_rounded,
+                                  iconColor: antrasitRenk,
+                                  onTap: () {
+                                    HapticFeedback.selectionClick();
+                                    DilSecimModal.goster(context);
+                                  })),
                         ],
                       ),
                       Flexible(
                         child: TextButton(
                           onPressed: _yukleniyor ? null : _onboardingAtla,
                           style: TextButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.lg,
+                                vertical: AppSpacing.sm),
                             shape: RoundedRectangleBorder(
                                 borderRadius: AppRadius.xlRadius),
                             backgroundColor: colors.surfaceContainerHighest
@@ -731,7 +677,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: colors.onSurfaceVariant,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                               fontSize: AppText.sizeBodySmall,
                             ),
                           ),
@@ -753,7 +699,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       if (index == toplamSayfaSayisi - 1) {
                         return SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxl),
+                          padding: const EdgeInsets.fromLTRB(AppSpacing.xxl,
+                              AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxl),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
@@ -767,8 +714,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: AppText.sizeHeadline,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: -0.5,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0,
                                   color: colors.onSurface,
                                 ),
                               ),
@@ -798,19 +745,19 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                         onTap: () =>
                                             setState(() => _girisModu = true),
                                         child: AnimatedContainer(
-                                          duration:
-                                              AppMotion.kisa,
-                                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                                          duration: AppMotion.kisa,
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: AppSpacing.md),
                                           decoration: BoxDecoration(
                                             color: _girisModu
                                                 ? authGreenColor
                                                 : null,
-                                            borderRadius:
-                                                AppRadius.mdRadius,
+                                            borderRadius: AppRadius.mdRadius,
                                             border: _girisModu
                                                 ? const Border(
                                                     bottom: BorderSide(
-                                                      color: AppOnboardingColors.darkGreen,
+                                                      color: AppOnboardingColors
+                                                          .darkGreen,
                                                       width: 2,
                                                     ),
                                                   )
@@ -820,7 +767,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                             l10n.girisYap,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w600,
                                               color: _girisModu
                                                   ? Colors.white
                                                   : colors.onSurfaceVariant,
@@ -834,19 +781,19 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                         onTap: () =>
                                             setState(() => _girisModu = false),
                                         child: AnimatedContainer(
-                                          duration:
-                                              AppMotion.kisa,
-                                          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                                          duration: AppMotion.kisa,
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: AppSpacing.md),
                                           decoration: BoxDecoration(
                                             color: !_girisModu
                                                 ? authGreenColor
                                                 : null,
-                                            borderRadius:
-                                                AppRadius.mdRadius,
+                                            borderRadius: AppRadius.mdRadius,
                                             border: !_girisModu
                                                 ? const Border(
                                                     bottom: BorderSide(
-                                                      color: AppOnboardingColors.darkGreen,
+                                                      color: AppOnboardingColors
+                                                          .darkGreen,
                                                       width: 2,
                                                     ),
                                                   )
@@ -856,7 +803,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                             l10n.kayitOl,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w600,
                                               color: !_girisModu
                                                   ? Colors.white
                                                   : colors.onSurfaceVariant,
@@ -875,7 +822,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   controller: _isimController,
                                   textCapitalization: TextCapitalization.words,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w700,
+                                      fontWeight: FontWeight.w600,
                                       fontSize: AppText.sizeBodySmall,
                                       color: colors.onSurface),
                                   decoration: InputDecoration(
@@ -888,7 +835,9 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     filled: true,
                                     fillColor: colors.surfaceContainerHighest
                                         .withValues(alpha: 0.6),
-                                    contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: AppSpacing.lg,
+                                        vertical: AppSpacing.md),
                                     border: OutlineInputBorder(
                                         borderRadius: AppRadius.lgRadius,
                                         borderSide: BorderSide.none),
@@ -905,7 +854,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 controller: _emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w700,
+                                    fontWeight: FontWeight.w600,
                                     fontSize: AppText.sizeBodySmall,
                                     color: colors.onSurface),
                                 decoration: InputDecoration(
@@ -917,7 +866,9 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   filled: true,
                                   fillColor: colors.surfaceContainerHighest
                                       .withValues(alpha: 0.6),
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: AppSpacing.lg,
+                                      vertical: AppSpacing.md),
                                   border: OutlineInputBorder(
                                       borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
@@ -932,7 +883,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                 controller: _sifreController,
                                 obscureText: _sifreGizli,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w700,
+                                    fontWeight: FontWeight.w600,
                                     fontSize: AppText.sizeBodySmall,
                                     color: colors.onSurface),
                                 decoration: InputDecoration(
@@ -942,7 +893,9 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   prefixIcon: Icon(Icons.lock_outline_rounded,
                                       color: antrasitRenk),
                                   suffixIcon: IconButton(
-                                    tooltip: _sifreGizli ? l10n.sifreGoster : l10n.sifreGizle,
+                                    tooltip: _sifreGizli
+                                        ? l10n.sifreGoster
+                                        : l10n.sifreGizle,
                                     icon: Icon(
                                         _sifreGizli
                                             ? Icons.visibility_off_rounded
@@ -954,7 +907,9 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   filled: true,
                                   fillColor: colors.surfaceContainerHighest
                                       .withValues(alpha: 0.6),
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: AppSpacing.lg,
+                                      vertical: AppSpacing.md),
                                   border: OutlineInputBorder(
                                       borderRadius: AppRadius.lgRadius,
                                       borderSide: BorderSide.none),
@@ -983,8 +938,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                     minimumSize:
                                         const Size(double.infinity, 52),
                                     shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            AppRadius.lgRadius),
+                                        borderRadius: AppRadius.lgRadius),
                                   ),
                                   child: _yukleniyor
                                       ? SizedBox(
@@ -999,7 +953,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                               : l10n.kayitOlVeBasla,
                                           style: TextStyle(
                                               fontSize: AppText.sizeBodyLarge,
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w600,
                                               color: colors.onPrimary),
                                         ),
                                 ),
@@ -1013,7 +967,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                       child: Divider(
                                           color: colors.outlineVariant)),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: AppSpacing.md),
                                     child: Text(
                                       l10n.girisVeya,
                                       style: TextStyle(
@@ -1030,42 +985,47 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
 
                               const SizedBox(height: 16),
 
-                               const SizedBox(height: 16),
+                              const SizedBox(height: 16),
 
-                               // Google ile Giriş Yap Butonu - Tema uyumlu modern tasarım
-                               OutlinedButton.icon(
-                                 style: OutlinedButton.styleFrom(
-                                   minimumSize: const Size(double.infinity, 52),
-                                   shape: RoundedRectangleBorder(
-                                       borderRadius: AppRadius.lgRadius),
-                                   side: BorderSide(color: colors.outlineVariant, width: 1.5),
-                                   backgroundColor: colors.surfaceContainerLow,
-                                   foregroundColor: colors.onSurface,
-                                   elevation: 0,
-                                   padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                                 ),
-                                 onPressed:
-                                     _yukleniyor ? null : () { _googleIleGirisTetikle(); },
-                                 icon: Image.asset(
-                                   'assets/images/google_logo.png',
-                                   height: 24,
-                                   width: 24,
-                                   errorBuilder: (_, __, ___) => const Icon(
-                                     Icons.g_mobiledata_rounded,
-                                     size: 26,
-                                     color: AppMiscColors.googleBlue,
-                                   ),
-                                 ),
-                                 label: Text(
-                                   l10n.girisYapGoogle,
-                                   style: TextStyle(
-                                     fontSize: AppText.sizeBodyLarge,
-                                     fontWeight: FontWeight.w600,
-                                     color: colors.onSurface,
-                                     letterSpacing: 0.2,
-                                   ),
-                                 ),
-                               ),
+                              // Google ile Giriş Yap Butonu - Tema uyumlu modern tasarım
+                              OutlinedButton.icon(
+                                style: OutlinedButton.styleFrom(
+                                  minimumSize: const Size(double.infinity, 52),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: AppRadius.lgRadius),
+                                  side: BorderSide(
+                                      color: colors.outlineVariant, width: 1.5),
+                                  backgroundColor: colors.surfaceContainerLow,
+                                  foregroundColor: colors.onSurface,
+                                  elevation: 0,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: AppSpacing.md),
+                                ),
+                                onPressed: _yukleniyor
+                                    ? null
+                                    : () {
+                                        _googleIleGirisTetikle();
+                                      },
+                                icon: Image.asset(
+                                  'assets/images/google_logo.png',
+                                  height: 24,
+                                  width: 24,
+                                  errorBuilder: (_, __, ___) => const Icon(
+                                    Icons.g_mobiledata_rounded,
+                                    size: 26,
+                                    color: AppMiscColors.googleBlue,
+                                  ),
+                                ),
+                                label: Text(
+                                  l10n.girisYapGoogle,
+                                  style: TextStyle(
+                                    fontSize: AppText.sizeBodyLarge,
+                                    fontWeight: FontWeight.w600,
+                                    color: colors.onSurface,
+                                    letterSpacing: 0,
+                                  ),
+                                ),
+                              ),
                               const SizedBox(height: 12),
 
                               OutlinedButton.icon(
@@ -1076,7 +1036,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   l10n.misafirOlarakDevamEt,
                                   style: TextStyle(
                                       color: colors.onSurface,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 style: OutlinedButton.styleFrom(
                                   minimumSize: const Size(double.infinity, 50),
@@ -1095,12 +1055,12 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                       final isLastTanitim =
                           index == tanitimSayfalari.length - 1;
                       final isFirstPage = index == 0;
-                      final Color sayfaIkonRengi =
-                          _getIconColor(sayfa["icon"]!, colors);
+                      final Color sayfaIkonRengi = colors.primary;
 
                       return SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxl),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl,
+                            AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxl),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -1146,8 +1106,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: AppText.sizeHeadline,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: -0.5,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0,
                                 color: colors.onSurface,
                               ),
                             ),
@@ -1166,28 +1126,21 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               const SizedBox(height: 36),
                               Container(
                                 decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      colors.primary
-                                          .withValues(alpha: 0.12),
-                                      colors.tertiary
-                                          .withValues(alpha: 0.06),
-                                    ],
-                                  ),
+                                  color: colors.surfaceContainerLow,
                                   borderRadius: AppRadius.xlRadius,
-                                  border: Border.all(
-                                      color: colors.primary
-                                          .withValues(alpha: 0.3),
-                                      width: 1.5),
+                                  border:
+                                      Border.all(color: colors.outlineVariant),
                                 ),
                                 child: ListTile(
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: AppSpacing.lg,
+                                      vertical: AppSpacing.xs),
                                   leading: _buildPremiumIconContainer(
                                       Icons.language_rounded,
                                       iconColor: colors.primary),
                                   title: Text(l10n.uygulamaDili,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w800,
+                                          fontWeight: FontWeight.w600,
                                           fontSize: AppText.sizeBodySmall,
                                           color: colors.onSurface)),
                                   subtitle: Text(dilAdiEtiketi,
@@ -1300,7 +1253,9 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                   checkColor: Colors.white,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: AppRadius.smRadius),
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: AppSpacing.md,
+                                      vertical: AppSpacing.xs),
                                   controlAffinity:
                                       ListTileControlAffinity.leading,
                                   title: GestureDetector(
@@ -1313,19 +1268,42 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                                           fontWeight: FontWeight.w600,
                                           color: colors.onSurfaceVariant,
                                         ),
-                                        children: [
-                                          TextSpan(
-                                            text: l10n.kullanimKosullarini,
-                                            style: TextStyle(
-                                              color: sayfaIkonRengi,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          TextSpan(
-                                              text: l10n.okudumVeOnayliyorum),
-                                        ],
+                                        children: baglantiBaslangici < 0
+                                            ? [
+                                                TextSpan(
+                                                  text:
+                                                      kullanimKosullariOnayMetni,
+                                                ),
+                                              ]
+                                            : [
+                                                TextSpan(
+                                                  text:
+                                                      kullanimKosullariOnayMetni
+                                                          .substring(
+                                                    0,
+                                                    baglantiBaslangici,
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text:
+                                                      kullanimKosullariBaglantisi,
+                                                  style: TextStyle(
+                                                    color: sayfaIkonRengi,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text:
+                                                      kullanimKosullariOnayMetni
+                                                          .substring(
+                                                    baglantiBaslangici +
+                                                        kullanimKosullariBaglantisi
+                                                            .length,
+                                                  ),
+                                                ),
+                                              ],
                                       ),
                                     ),
                                   ),
@@ -1395,7 +1373,8 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       child: AnimatedContainer(
         duration: AppMotion.kisa,
         curve: AppMotion.giris,
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.sm),
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.xl, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected ? effectiveAccent : colors.surfaceContainerLow,
           borderRadius: AppRadius.lgRadius,
@@ -1408,7 +1387,7 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         child: Text(label,
             style: TextStyle(
               fontSize: AppText.sizeBodySmall,
-              fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w600,
               color: isSelected ? Colors.white : colors.onSurfaceVariant,
             )),
       ),
@@ -1424,10 +1403,10 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
         child: Text(
           text,
           style: TextStyle(
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.w600,
             color: labelColor ?? colors.onSurface,
             fontSize: AppText.sizeCaption,
-            letterSpacing: 1.2,
+            letterSpacing: 0,
           ),
         ),
       ),

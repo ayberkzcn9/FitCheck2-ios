@@ -48,7 +48,8 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
         surfaceTintColor: Colors.transparent,
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
+        padding: const EdgeInsets.fromLTRB(
+            AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xxl),
         children: [
           _secimKartlari(context, l10n, colors),
           const SizedBox(height: 14),
@@ -85,7 +86,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                   l10n.seyahatGunSayisi,
                   style: TextStyle(
                     fontSize: AppText.sizeBodySmall,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -93,25 +94,23 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
               IconButton(
                 visualDensity: VisualDensity.compact,
                 tooltip: l10n.gunSayisiAzalt,
-                onPressed: _gunSayisi > 1
-                    ? () => setState(() => _gunSayisi--)
-                    : null,
+                onPressed:
+                    _gunSayisi > 1 ? () => setState(() => _gunSayisi--) : null,
                 icon: const Icon(Icons.remove_circle_outline_rounded),
               ),
               Text(
                 '$_gunSayisi',
                 style: TextStyle(
                   fontSize: AppText.sizeBodyLarge,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w600,
                   color: colors.onSurface,
                 ),
               ),
               IconButton(
                 visualDensity: VisualDensity.compact,
                 tooltip: l10n.gunSayisiArttir,
-                onPressed: _gunSayisi < 30
-                    ? () => setState(() => _gunSayisi++)
-                    : null,
+                onPressed:
+                    _gunSayisi < 30 ? () => setState(() => _gunSayisi++) : null,
                 icon: const Icon(Icons.add_circle_outline_rounded),
               ),
             ],
@@ -121,7 +120,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             l10n.seyahatHava,
             style: TextStyle(
               fontSize: AppText.sizeBodySmall,
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w600,
               color: colors.onSurface,
             ),
           ),
@@ -154,7 +153,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             l10n.seyahatAmac,
             style: TextStyle(
               fontSize: AppText.sizeBodySmall,
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w600,
               color: colors.onSurface,
             ),
           ),
@@ -201,7 +200,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
       selectedColor: colors.primaryContainer,
       labelStyle: TextStyle(
         fontSize: AppText.sizeCaption,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
         color: secili ? colors.onPrimaryContainer : colors.onSurfaceVariant,
       ),
     );
@@ -216,15 +215,9 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            colors.primaryContainer.withValues(alpha: 0.7),
-            colors.surfaceContainerHighest.withValues(alpha: 0.6),
-          ],
-        ),
+        color: colors.surfaceContainerLow,
         borderRadius: AppRadius.xxlRadius,
+        border: Border.all(color: colors.outlineVariant),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -236,8 +229,8 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                   l10n.seyahatPlanBaslik,
                   style: TextStyle(
                     fontSize: AppText.sizeBodyLarge,
-                    fontWeight: FontWeight.w900,
-                    color: colors.onPrimaryContainer,
+                    fontWeight: FontWeight.w600,
+                    color: colors.onSurface,
                   ),
                 ),
               ),
@@ -245,8 +238,8 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                 l10n.seyahatKombine('${plan.kombinSayisi}'),
                 style: TextStyle(
                   fontSize: AppText.sizeCaption,
-                  fontWeight: FontWeight.w800,
-                  color: colors.onPrimaryContainer.withValues(alpha: 0.8),
+                  fontWeight: FontWeight.w600,
+                  color: colors.onSurfaceVariant,
                 ),
               ),
             ],
@@ -256,7 +249,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             Text(
               l10n.seyahatEksikUst,
               style: TextStyle(
-                color: colors.onPrimaryContainer.withValues(alpha: 0.85),
+                color: colors.onSurfaceVariant,
               ),
             ),
           _grupIzgarasi(colors, [
@@ -283,8 +276,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                         _eksikMetni(l10n, eksik, plan.gunSayisi),
                         style: TextStyle(
                           fontSize: AppText.sizeCaption,
-                          color: colors.onPrimaryContainer
-                              .withValues(alpha: 0.9),
+                          color: colors.onSurfaceVariant,
                         ),
                       ),
                     ),
@@ -351,8 +343,8 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
             baslik,
             style: TextStyle(
               fontSize: AppText.sizeMicro,
-              fontWeight: FontWeight.w800,
-              color: colors.onPrimaryContainer.withValues(alpha: 0.75),
+              fontWeight: FontWeight.w600,
+              color: colors.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 6),
@@ -390,8 +382,7 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
                         style: TextStyle(
                           fontSize: AppText.sizeMicro,
                           height: 1.15,
-                          color: colors.onPrimaryContainer
-                              .withValues(alpha: 0.85),
+                          color: colors.onSurfaceVariant,
                         ),
                       ),
                     ],
@@ -426,9 +417,8 @@ class _SeyahatEkraniState extends State<SeyahatEkrani> {
 
     // iPad'de paylaşım sayfasının konumu gerekiyor.
     final kutu = context.findRenderObject();
-    final konum = kutu is RenderBox
-        ? kutu.localToGlobal(Offset.zero) & kutu.size
-        : null;
+    final konum =
+        kutu is RenderBox ? kutu.localToGlobal(Offset.zero) & kutu.size : null;
 
     await SharePlus.instance.share(
       ShareParams(

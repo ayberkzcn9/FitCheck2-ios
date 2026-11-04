@@ -1,13 +1,10 @@
-import 'dart:ui' show lerpDouble;
-
 import '../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 
 /// Uygulama açılırken arka plandaki hazırlıklar (Firebase, reklamlar,
 /// bildirimler) tamamlanana kadar gösterilen animasyonlu yükleme ekranı.
 ///
-/// Nefes alan logo ve altındaki ince ilerleme çubuğundan oluşur. Arka planı
-/// saydamdır; uygulamanın genel gradient zemini üzerinde görünür.
+/// Logo ve altındaki ince ilerleme çubuğundan oluşur.
 class YuklemeEkrani extends StatefulWidget {
   const YuklemeEkrani({super.key, this.animasyonluGiris = true});
 
@@ -21,7 +18,7 @@ class YuklemeEkrani extends StatefulWidget {
 }
 
 class _YuklemeEkraniState extends State<YuklemeEkrani>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   static const double _logoBoyutu = 116;
   static const double _logoKoseYaricapi = 30;
   static const String _logoYolu = 'assets/images/logo.png';
@@ -29,14 +26,9 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
   /// Ekrana ilk giriş animasyonu (solma + hafif yukarı kayma).
   late final AnimationController _girisKontrolcusu;
 
-  /// Logonun sürekli tekrarlayan "nefes alma" animasyonu.
-  late final AnimationController _nefesKontrolcusu;
-
   late final Animation<double> _girisOpaklik;
   late final Animation<double> _icerikOpaklik;
   late final Animation<Offset> _girisKayma;
-  late final Animation<double> _logoOlcek;
-  late final Animation<double> _logoParlaklik;
 
   @override
   void initState() {
@@ -45,11 +37,6 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
     _girisKontrolcusu = AnimationController(
       vsync: this,
       duration: AppMotion.uzun,
-    );
-
-    _nefesKontrolcusu = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1600),
     );
 
     _girisOpaklik = CurvedAnimation(
@@ -69,13 +56,6 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
       CurvedAnimation(parent: _girisKontrolcusu, curve: AppMotion.giris),
     );
 
-    final nefesEgrisi = CurvedAnimation(
-      parent: _nefesKontrolcusu,
-      curve: AppMotion.standart,
-    );
-    _logoOlcek = Tween<double>(begin: 0.94, end: 1.03).animate(nefesEgrisi);
-    _logoParlaklik = Tween<double>(begin: 0.0, end: 1.0).animate(nefesEgrisi);
-
     if (widget.animasyonluGiris) {
       _girisKontrolcusu.forward();
     } else {
@@ -84,22 +64,8 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    // "Hareketi azalt" tercihinde nabız yerine sabit logo gösterilir.
-    if (MediaQuery.disableAnimationsOf(context)) {
-      _nefesKontrolcusu.stop();
-      _nefesKontrolcusu.value = 1;
-    } else if (!_nefesKontrolcusu.isAnimating) {
-      _nefesKontrolcusu.repeat(reverse: true);
-    }
-  }
-
-  @override
   void dispose() {
     _girisKontrolcusu.dispose();
-    _nefesKontrolcusu.dispose();
     super.dispose();
   }
 
@@ -118,7 +84,7 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _logo(colors),
+                _logo(),
                 const SizedBox(height: 26),
                 FadeTransition(
                   opacity: _icerikOpaklik,
@@ -129,8 +95,8 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
                         'FitCheck',
                         style: TextStyle(
                           fontSize: AppText.sizeHeadline,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0,
                           color: colors.onSurface,
                         ),
                       ),
@@ -147,44 +113,17 @@ class _YuklemeEkraniState extends State<YuklemeEkrani>
     );
   }
 
-  /// Nefes alma efektiyle büyüyüp küçülen ve yumuşak bir gölge yayan logo.
-  Widget _logo(ColorScheme colors) {
-    return AnimatedBuilder(
-      animation: _nefesKontrolcusu,
-      builder: (context, child) {
-        final parlama = _logoParlaklik.value;
-
-        return Transform.scale(
-          scale: _logoOlcek.value,
-          child: Container(
-            width: _logoBoyutu,
-            height: _logoBoyutu,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(_logoKoseYaricapi),
-              boxShadow: [
-                BoxShadow(
-                  color: colors.primary.withValues(
-                    alpha: lerpDouble(0.10, 0.26, parlama)!,
-                  ),
-                  blurRadius: lerpDouble(20, 38, parlama)!,
-                  offset: Offset(0, lerpDouble(10, 16, parlama)!),
-                ),
-              ],
-            ),
-            child: child,
-          ),
-        );
-      },
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(_logoKoseYaricapi),
-        child: Image.asset(
-          _logoYolu,
-          width: _logoBoyutu,
-          height: _logoBoyutu,
-          fit: BoxFit.cover,
-          filterQuality: FilterQuality.medium,
-          gaplessPlayback: true,
-        ),
+  /// Sabit boyutlu ürün logosu.
+  Widget _logo() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(_logoKoseYaricapi),
+      child: Image.asset(
+        _logoYolu,
+        width: _logoBoyutu,
+        height: _logoBoyutu,
+        fit: BoxFit.cover,
+        filterQuality: FilterQuality.medium,
+        gaplessPlayback: true,
       ),
     );
   }

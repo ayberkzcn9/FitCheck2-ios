@@ -402,68 +402,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         Locale('ru'),
       ],
       builder: (context, child) {
-        final bool koyuMu = Theme.of(context).brightness == Brightness.dark;
-        return Stack(
-          children: [
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: koyuMu
-                        ? const [
-                            Color(0xFF0B110E),
-                            Color(0xFF101713),
-                            Color(0xFF151D19),
-                          ]
-                        : const [
-                            Color(0xFFFEFBF4),
-                            Color(0xFFFBF7EF),
-                            Color(0xFFF4EEE1),
-                          ],
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: -100,
-              left: -100,
-              child: Container(
-                width: 320,
-                height: 320,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: (koyuMu
-                          ? const Color(0xFF1F4D3F)
-                          : const Color(0xFFCFE8DD))
-                      .withValues(alpha: koyuMu ? 0.35 : 0.55),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: -120,
-              right: -100,
-              child: Container(
-                width: 380,
-                height: 380,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: (koyuMu
-                          ? const Color(0xFF3A2F14)
-                          : const Color(0xFFF1DFB8))
-                      .withValues(alpha: koyuMu ? 0.30 : 0.45),
-                ),
-              ),
-            ),
-            Positioned.fill(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 70, sigmaY: 70),
-                child: const SizedBox.expand(),
-              ),
-            ),
-            if (child != null) child,
-          ],
+        return ColoredBox(
+          color: Theme.of(context).colorScheme.surface,
+          child: child ?? const SizedBox.expand(),
         );
       },
       theme: ThemeData(
@@ -486,7 +427,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
             foregroundColor: lightColorScheme.onSurfaceVariant,
           ),
         ),
-        scaffoldBackgroundColor: Colors.transparent,
+        scaffoldBackgroundColor: lightColorScheme.surface,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           foregroundColor: lightColorScheme.onSurface,
@@ -561,7 +502,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
             foregroundColor: darkColorScheme.onSurfaceVariant,
           ),
         ),
-        scaffoldBackgroundColor: Colors.transparent,
+        scaffoldBackgroundColor: darkColorScheme.surface,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           foregroundColor: darkColorScheme.onSurface,

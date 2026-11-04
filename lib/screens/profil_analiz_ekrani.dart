@@ -377,78 +377,119 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
   Color _metindenRenkAyarla(String renkAdi) {
     final r = _normalize(renkAdi);
 
-    if (r.contains('siyah') || r.contains('black') ||
-        r.contains('kömür') || r.contains('charcoal') ||
-        r.contains('antrasit') || r.contains('anthracite') ||
-        r.contains('kara') || r.contains('jet')) {
+    if (r.contains('siyah') ||
+        r.contains('black') ||
+        r.contains('kömür') ||
+        r.contains('charcoal') ||
+        r.contains('antrasit') ||
+        r.contains('anthracite') ||
+        r.contains('kara') ||
+        r.contains('jet')) {
       return Colors.black;
     }
-    if (r.contains('beyaz') || r.contains('white') ||
-        r.contains('fildişi') || r.contains('ivory') ||
-        r.contains('off white') || r.contains('offwhite') ||
-        r.contains('beyazımsı') || r.contains('whitish')) {
+    if (r.contains('beyaz') ||
+        r.contains('white') ||
+        r.contains('fildişi') ||
+        r.contains('ivory') ||
+        r.contains('off white') ||
+        r.contains('offwhite') ||
+        r.contains('beyazımsı') ||
+        r.contains('whitish')) {
       return Colors.white;
     }
     if (r.contains('lacivert') || r.contains('navy')) {
       return AppDataColors.navy;
     }
-    if (r.contains('mavi') || r.contains('blue') ||
-        r.contains('turkuaz') || r.contains('turquoise') ||
-        r.contains('acik mavi') || r.contains('light blue')) {
+    if (r.contains('mavi') ||
+        r.contains('blue') ||
+        r.contains('turkuaz') ||
+        r.contains('turquoise') ||
+        r.contains('acik mavi') ||
+        r.contains('light blue')) {
       return AppDataColors.blue;
     }
-    if (r.contains('bordo') || r.contains('burgundy') ||
-        r.contains('maroon') || r.contains('bordeaux')) {
+    if (r.contains('bordo') ||
+        r.contains('burgundy') ||
+        r.contains('maroon') ||
+        r.contains('bordeaux')) {
       return AppDataColors.burgundy;
     }
-    if (r.contains('kirmizi') || r.contains('red') ||
-        r.contains('mercan') || r.contains('coral')) {
+    if (r.contains('kirmizi') ||
+        r.contains('red') ||
+        r.contains('mercan') ||
+        r.contains('coral')) {
       return AppDataColors.red;
     }
-    if (r.contains('yesil') || r.contains('green') ||
-        r.contains('mint') || r.contains('mint') ||
-        r.contains('sapphire') || r.contains('safir') ||
+    if (r.contains('yesil') ||
+        r.contains('green') ||
+        r.contains('mint') ||
+        r.contains('mint') ||
+        r.contains('sapphire') ||
+        r.contains('safir') ||
         r.contains('teal')) {
       return AppMiscColors.greenLight;
     }
     if (r.contains('sari') || r.contains('yellow')) {
       return AppDataColors.yellow;
     }
-    if (r.contains('gri') || r.contains('grey') || r.contains('gray') ||
-        r.contains('gumus') || r.contains('silver') ||
-        r.contains('platin') || r.contains('platinum')) {
+    if (r.contains('gri') ||
+        r.contains('grey') ||
+        r.contains('gray') ||
+        r.contains('gumus') ||
+        r.contains('silver') ||
+        r.contains('platin') ||
+        r.contains('platinum')) {
       return AppDataColors.grey;
     }
-    if (r.contains('kahve') || r.contains('taba') || r.contains('brown') ||
-        r.contains('haki') || r.contains('khaki') ||
-        r.contains('zeytin') || r.contains('olive')) {
+    if (r.contains('kahve') ||
+        r.contains('taba') ||
+        r.contains('brown') ||
+        r.contains('haki') ||
+        r.contains('khaki') ||
+        r.contains('zeytin') ||
+        r.contains('olive')) {
       return AppDataColors.brown;
     }
-    if (r.contains('pembe') || r.contains('pink') ||
-        r.contains('som') || r.contains('salmon') ||
-        r.contains('gul') || r.contains('rose') ||
-        r.contains('fuşya') || r.contains('fuchsia') ||
-        r.contains('magent') || r.contains('magent')) {
+    if (r.contains('pembe') ||
+        r.contains('pink') ||
+        r.contains('som') ||
+        r.contains('salmon') ||
+        r.contains('gul') ||
+        r.contains('rose') ||
+        r.contains('fuşya') ||
+        r.contains('fuchsia') ||
+        r.contains('magent') ||
+        r.contains('magent')) {
       return AppDataColors.pink;
     }
-    if (r.contains('mor') || r.contains('purple') ||
-        r.contains('lavanta') || r.contains('lavender') ||
-        r.contains('lila') || r.contains('lilac')) {
+    if (r.contains('mor') ||
+        r.contains('purple') ||
+        r.contains('lavanta') ||
+        r.contains('lavender') ||
+        r.contains('lila') ||
+        r.contains('lilac')) {
       return AppDataColors.purple;
     }
-    if (r.contains('turuncu') || r.contains('orange') ||
-        r.contains('bronz') || r.contains('bronze') ||
-        r.contains('altin') || r.contains('gold') ||
-        r.contains('hardal') || r.contains('mustard')) {
+    if (r.contains('turuncu') ||
+        r.contains('orange') ||
+        r.contains('bronz') ||
+        r.contains('bronze') ||
+        r.contains('altin') ||
+        r.contains('gold') ||
+        r.contains('hardal') ||
+        r.contains('mustard')) {
       return AppDataColors.orange;
     }
     if (r.contains('bej') ||
         r.contains('krem') ||
         r.contains('beige') ||
         r.contains('cream') ||
-        r.contains('ekru') || r.contains('ecru') ||
-        r.contains('sampanya') || r.contains('champagne') ||
-        r.contains('isik') || r.contains('light') && r.contains('kahve')) {
+        r.contains('ekru') ||
+        r.contains('ecru') ||
+        r.contains('sampanya') ||
+        r.contains('champagne') ||
+        r.contains('isik') ||
+        r.contains('light') && r.contains('kahve')) {
       return AppDataColors.beige;
     }
 
@@ -494,7 +535,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
         content: Text(
           message,
           style:
-              TextStyle(fontWeight: FontWeight.w700, color: colors.onSurface),
+              TextStyle(fontWeight: FontWeight.w600, color: colors.onSurface),
         ),
         backgroundColor: colors.surfaceContainerHigh,
         behavior: SnackBarBehavior.floating,
@@ -606,7 +647,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
           title: Text(
             l10n.gecmisiTemizleTitle,
             style:
-                TextStyle(color: colors.onSurface, fontWeight: FontWeight.bold),
+                TextStyle(color: colors.onSurface, fontWeight: FontWeight.w600),
           ),
           content: Text(
             l10n.gecmisiTemizleOnayIcerik,
@@ -729,7 +770,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
 
   Widget _bolumBasligi(
     String text, {
-    String? emoji,
+    IconData? icon,
     String? bilgiBaslik,
     String? bilgiAciklama,
   }) {
@@ -739,8 +780,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
       padding: const EdgeInsets.only(top: 24, bottom: 14),
       child: Row(
         children: [
-          if (emoji != null) ...[
-            Text(emoji, style: const TextStyle(fontSize: AppText.sizeHeadline)),
+          if (icon != null) ...[
+            Icon(icon, size: 18, color: colors.onSurfaceVariant),
             const SizedBox(width: 8),
           ],
           Expanded(
@@ -748,8 +789,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
               text,
               style: TextStyle(
                 fontSize: AppText.sizeTitleSmall,
-                fontWeight: FontWeight.w900,
-                letterSpacing: -0.5,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -827,7 +867,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w600,
                           fontSize: AppText.sizeBodyLarge,
                           color: colors.onSurface,
                         ),
@@ -835,7 +875,9 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                       if (tarih.isNotEmpty) ...[
                         const SizedBox(height: 5),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.sm,
+                              vertical: AppSpacing.xs),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
                             borderRadius: AppRadius.smRadius,
@@ -845,7 +887,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                             style: TextStyle(
                               color: colors.onSurfaceVariant,
                               fontSize: AppText.sizeCaption,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -932,9 +974,9 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                 l10n.profilVeAnalizTitle,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w600,
                   fontSize: AppText.sizeTitleSmall,
-                  letterSpacing: -0.5,
+                  letterSpacing: 0,
                   color: colors.onSurface,
                 ),
               ),
@@ -946,7 +988,8 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 0),
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 0),
             sliver: SliverToBoxAdapter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1003,7 +1046,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                       l10n.camasirSepetiTitle,
                                       style: TextStyle(
                                         fontSize: AppText.sizeBodyLarge,
-                                        fontWeight: FontWeight.w900,
+                                        fontWeight: FontWeight.w600,
                                         color: colors.onSurface,
                                       ),
                                     ),
@@ -1023,7 +1066,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                       ),
                                 style: TextStyle(
                                   fontSize: AppText.sizeBodySmall,
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w600,
                                   color: analiz.sepette == 0
                                       ? colors.primary
                                       : AppMiscColors.rose,
@@ -1040,7 +1083,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                             backgroundColor: AppMiscColors.roseBg,
                             labelStyle: const TextStyle(
                               color: AppMiscColors.rose,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                             ),
                             side: BorderSide.none,
                           ),
@@ -1097,7 +1140,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   if (analiz.renkler.isNotEmpty) ...[
                     _bolumBasligi(
                       l10n.renkPaletin,
-                      emoji: '🎨',
+                      icon: Icons.palette_outlined,
                       bilgiBaslik: l10n.renkPaletin,
                       bilgiAciklama: l10n.bilgiRenkPaleti,
                     ),
@@ -1118,8 +1161,6 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                               final oran =
                                   toplam == 0 ? 0 : renk.value / toplam * 100;
                               final renkObj = _metindenRenkAyarla(renk.key);
-                              final isBeyaz = renkObj == Colors.white;
-
                               return SizedBox(
                                 width: genislik,
                                 child: Column(
@@ -1131,20 +1172,10 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                         color: renkObj,
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: isBeyaz
-                                              ? Colors.black.withValues(alpha: 0.25)
-                                              : Colors.white,
-                                          width: isBeyaz ? 2 : 3,
+                                          color: colors.outline
+                                              .withValues(alpha: 0.18),
+                                          width: 1,
                                         ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: isBeyaz
-                                                ? Colors.black.withValues(alpha: 0.08)
-                                                : renkObj.withValues(alpha: 0.35),
-                                            blurRadius: 8,
-                                            offset: const Offset(0, 3),
-                                          ),
-                                        ],
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -1154,14 +1185,16 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontWeight: FontWeight.w800,
+                                        fontWeight: FontWeight.w600,
                                         fontSize: AppText.sizeCaption,
                                         color: colors.onSurface,
                                       ),
                                     ),
                                     const SizedBox(height: 4),
                                     Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 2),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: AppSpacing.sm,
+                                          vertical: AppSpacing.xxs),
                                       decoration: BoxDecoration(
                                         color: colors.surfaceContainerHighest,
                                         borderRadius: AppRadius.mdRadius,
@@ -1171,7 +1204,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                                         style: TextStyle(
                                           color: colors.onSurfaceVariant,
                                           fontSize: AppText.sizeCaption,
-                                          fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
                                     ),
@@ -1189,7 +1222,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   if (analiz.kahramanlar.isNotEmpty) ...[
                     _bolumBasligi(
                       l10n.dolabinKahramanlari,
-                      emoji: '🦸‍♂️',
+                      icon: Icons.star_outline_rounded,
                       bilgiBaslik: l10n.dolabinKahramanlari,
                       bilgiAciklama: l10n.bilgiKahramanlar,
                     ),
@@ -1203,7 +1236,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   if (analiz.unutulanlar.isNotEmpty) ...[
                     _bolumBasligi(
                       l10n.derinlerdeUnutulanlar,
-                      emoji: '👻',
+                      icon: Icons.history_rounded,
                       bilgiBaslik: l10n.derinlerdeUnutulanlar,
                       bilgiAciklama: l10n.bilgiUnutulanlar,
                     ),
@@ -1216,7 +1249,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                   // KATEGORI DAGILIMI
                   _bolumBasligi(
                     l10n.kategoriDagilimi,
-                    emoji: '📊',
+                    icon: Icons.bar_chart_rounded,
                     bilgiBaslik: l10n.kategoriDagilimi,
                     bilgiAciklama: l10n.bilgiKategoriDagilimi,
                   ),
@@ -1262,7 +1295,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                         '${l10n.sonGiyilenler} (${_gecmis.length})',
                         style: TextStyle(
                           fontSize: AppText.sizeTitleSmall,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w600,
                           color: colors.onSurface,
                         ),
                       ),
@@ -1288,7 +1321,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                             l10n.tumunuTemizle,
                             style: TextStyle(
                                 color: colors.error,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                     ],
@@ -1310,7 +1343,7 @@ class _ProfilVeAnalizEkraniState extends State<ProfilVeAnalizEkrani> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: colors.onSurfaceVariant,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
@@ -1477,7 +1510,7 @@ class _ProfilBilgiKarti extends StatelessWidget {
                         style: TextStyle(
                           color: colors.onSurfaceVariant,
                           fontSize: AppText.sizeCaption,
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -1493,7 +1526,7 @@ class _ProfilBilgiKarti extends StatelessWidget {
                   deger,
                   style: TextStyle(
                     fontSize: AppText.sizeBodyLarge,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     height: 1.25,
                     color: colors.onSurface,
                   ),
@@ -1548,7 +1581,7 @@ class _ProfilOzetKarti extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: AppText.sizeTitleSmall,
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w600,
               color: colors.onSurface,
             ),
           ),
@@ -1561,7 +1594,7 @@ class _ProfilOzetKarti extends StatelessWidget {
                   style: TextStyle(
                     color: colors.onSurfaceVariant,
                     fontSize: AppText.sizeCaption,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),

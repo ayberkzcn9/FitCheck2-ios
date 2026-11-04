@@ -497,7 +497,7 @@ void main() {
     await bekle(tester);
     await goruntu(tester, '10_duello_tur');
     // ignore: avoid_print
-    print('DIAG once: check=' + find.byIcon(Icons.check_circle_rounded).evaluate().length.toString() + ' dogruYazi=' + find.text('Doğru!').evaluate().length.toString() + ' ipucu=' + find.text('Bir kombine dokun').evaluate().length.toString());
+    print('DIAG once: check=' + find.byIcon(Icons.check_circle_rounded).evaluate().length.toString() + ' dogruYazi=' + find.text('Doğru').evaluate().length.toString() + ' ipucu=' + find.text('Bir kombine dokun').evaluate().length.toString());
 
     final beklenen =
         DuelMotoru().uret(gardirobum: dolap, adet: 10, tohum: 7).sorular.first;

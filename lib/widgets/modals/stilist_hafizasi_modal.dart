@@ -138,7 +138,7 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                     l10n.stilistHafizasiBaslik,
                     style: TextStyle(
                       fontSize: AppText.sizeTitleSmall,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w600,
                       color: colors.onSurface,
                     ),
                   ),
@@ -198,8 +198,8 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                 l10n.stilistHafizasiNelerBiliyor,
                 style: TextStyle(
                   fontSize: AppText.sizeCaption,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1.2,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0,
                   color: colors.onSurfaceVariant,
                 ),
               ),
@@ -245,8 +245,8 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                   l10n.stilistHafizasiOzetBaslik,
                   style: TextStyle(
                     fontSize: AppText.sizeCaption,
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: 1.2,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0,
                     color: colors.onSurfaceVariant,
                   ),
                 ),
@@ -281,7 +281,8 @@ class _StilistHafizasiModalState extends State<StilistHafizasiModal> {
                     side: BorderSide(
                       color: AppAccents.error.withValues(alpha: 0.4),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     shape: RoundedRectangleBorder(
                       borderRadius: AppRadius.lgRadius,
                     ),
