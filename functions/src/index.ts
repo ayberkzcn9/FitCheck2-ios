@@ -44,6 +44,7 @@ async function verifyWithGooglePlay(
   const client = await auth.getClient();
   const accessToken = await client.getAccessToken();
   if (!accessToken.token) {
+    console.error("Play API access token is missing.");
     throw new HttpsError("unavailable", "Play API authentication is unavailable.");
   }
 
@@ -54,6 +55,11 @@ async function verifyWithGooglePlay(
     headers: { Authorization: `Bearer ${accessToken.token}` },
   });
   if (!response.ok) {
+    const errorBody = (await response.text().catch(() => "")).slice(0, 800);
+    console.error("Google Play verification request failed.", {
+      status: response.status,
+      body: errorBody,
+    });
     if (response.status === 404) {
       throw new HttpsError("permission-denied", "Purchase token was not found.");
     }
@@ -162,9 +168,18 @@ async function verifyAndClaim(
     await claimPurchase(uid, productId, purchaseToken, result);
     return result;
   } catch (error) {
-    if (error instanceof HttpsError) throw error;
+    if (error instanceof HttpsError) {
+      console.error("Google Play verification rejected.", {
+        code: error.code,
+        message: error.message,
+      });
+      throw error;
+    }
     // Do not log purchase tokens or provider request details.
-    console.error("Google Play purchase verification failed.");
+    console.error("Google Play purchase verification failed.", {
+      name: error instanceof Error ? error.name : typeof error,
+      message: error instanceof Error ? error.message : String(error),
+    });
     throw new HttpsError(
       "unavailable",
       "Purchase verification is temporarily unavailable.",
