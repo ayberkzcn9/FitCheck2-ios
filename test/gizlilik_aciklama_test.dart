@@ -50,7 +50,9 @@ void main() {
     final android = File(
       'android/app/src/main/res/values/analytics.xml',
     ).readAsStringSync();
-    final ios = File('ios/Runner/Info.plist').readAsStringSync();
+    final ios = File('ios/Runner/Info.plist')
+        .readAsStringSync()
+        .replaceAll('\r\n', '\n');
     expect(
         android,
         contains(
