@@ -27,7 +27,8 @@ class BackgroundRemovalService {
     if (_apiKey == null || _apiKey!.isEmpty) {
       debugPrint('⚠️ BackgroundRemovalService: API key bulunamadı! .env dosyasına REMOVE_BG_API_KEY ekleyin.');
     } else {
-      debugPrint('✅ BackgroundRemovalService: API key yüklendi (${_apiKey!.substring(0, 8)}...)');
+      final gizli = _apiKey!.length > 8 ? _apiKey!.substring(0, 8) : _apiKey!;
+      debugPrint('✅ BackgroundRemovalService: API key yüklendi ($gizli...)');
     }
   }
 

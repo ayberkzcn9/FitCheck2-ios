@@ -32,8 +32,8 @@ class GizlilikPolitikasiModal extends StatelessWidget {
             child: Text(
               l10n.gizlilikPolitikasiTitle,
               style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                fontSize: AppText.sizeTitleSmall,
                 color: colors.onSurface,
               ),
             ),
@@ -50,8 +50,8 @@ class GizlilikPolitikasiModal extends StatelessWidget {
               Text(
                 l10n.sonGuncellemeTarihi,
                 style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
+                  fontSize: AppText.sizeCaption,
+                  fontWeight: FontWeight.w600,
                   color: colors.onSurfaceVariant,
                 ),
               ),
@@ -76,24 +76,30 @@ class GizlilikPolitikasiModal extends StatelessWidget {
                 l10n.gizlilikMadde4Baslik,
                 l10n.gizlilikMadde4Icerik,
               ),
+              _politikaParagraf(
+                context,
+                l10n.gizlilikMadde5Baslik,
+                l10n.gizlilikMadde5Icerik,
+              ),
             ],
           ),
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         FilledButton(
           style: FilledButton.styleFrom(
             backgroundColor: AppAccents.successDark,
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: AppRadius.mdRadius,
             ),
           ),
           onPressed: () => Navigator.pop(context),
           child: Text(
             l10n.anladim,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
       ],
@@ -115,8 +121,8 @@ class GizlilikPolitikasiModal extends StatelessWidget {
           Text(
             baslik,
             style: TextStyle(
-              fontWeight: FontWeight.w800,
-              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              fontSize: AppText.sizeBodySmall,
               color: colors.primary,
             ),
           ),
@@ -124,7 +130,7 @@ class GizlilikPolitikasiModal extends StatelessWidget {
           Text(
             icerik,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: AppText.sizeCaption,
               height: 1.4,
               color: colors.onSurfaceVariant,
             ),

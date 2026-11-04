@@ -314,7 +314,8 @@ class _ModaRenkYarismasiEkraniState extends State<ModaRenkYarismasiEkrani> with 
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.lock_outline, size: 64, color: colors.primary),
+                          Icon(Icons.lock_outline_rounded,
+                              size: 64, color: colors.primary),
                           const SizedBox(height: 16),
                           Text(l10n.modaYarismasiGunlukTamamlandi,
                               style: Theme.of(context).textTheme.headlineSmall, textAlign: TextAlign.center),
@@ -352,7 +353,8 @@ class _ModaRenkYarismasiEkraniState extends State<ModaRenkYarismasiEkrani> with 
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.emoji_events, size: 72, color: colors.primary),
+                          Icon(Icons.emoji_events_rounded,
+                              size: 72, color: colors.primary),
                           const SizedBox(height: 16),
                           Text(l10n.modaYarismasiSonuc, style: Theme.of(context).textTheme.headlineMedium),
                           const SizedBox(height: 8),
@@ -452,7 +454,11 @@ class _ModaRenkYarismasiEkraniState extends State<ModaRenkYarismasiEkrani> with 
                                         ),
                                       ),
                                       Icon(
-                                        dogru ? Icons.check_circle : yanlis ? Icons.cancel : Icons.radio_button_unchecked,
+                                        dogru
+                                            ? Icons.check_circle_rounded
+                                            : yanlis
+                                                ? Icons.cancel_rounded
+                                                : Icons.radio_button_unchecked_rounded,
                                         color: dogru ? colors.primary : yanlis ? colors.error : colors.onSurfaceVariant,
                                       ),
                                     ],

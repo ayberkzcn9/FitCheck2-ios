@@ -1,8 +1,11 @@
+import '../theme/design_tokens.dart';
 import 'dart:async';
 import 'dart:io';
 
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,7 +21,32 @@ class ReklamServisi {
   static const int reklamOduluSlot = 2;
   static bool reklamlarEtkinMi = true;
   static const int reklamOduluKredi = 2;
-  static const String adminKuponKodu = 'FITCHECK-ADMIN-2026';
+
+  /// Yönetici kuponu kaynakta tutulmaz. Yalnızca geliştirme derlemesinde,
+  /// `--dart-define=FITCHECK_ADMIN_KUPON=...` ile verilirse etkinleşir.
+  static const String adminKuponKodu =
+      String.fromEnvironment('FITCHECK_ADMIN_KUPON');
+  static const String _adminAnahtari = 'fitcheck_admin_modu';
+
+  /// Kupon yalnızca geliştirme derlemesinde ve kod tanımlıysa etkindir.
+  static bool get kuponAktifMi =>
+      kuponKarari(yayinModu: kReleaseMode, kod: adminKuponKodu);
+
+  static bool kuponKarari({required bool yayinModu, required String kod}) =>
+      !yayinModu && kod.isNotEmpty;
+
+  /// Yönetici modu yalnızca geliştirme derlemesinde geçerlidir; yayın
+  /// sürümünde daha önce etkinleştirilmiş bir kayıt da yok sayılır.
+  static bool adminModuKarari({
+    required bool yayinModu,
+    required bool kayitliAdmin,
+  }) =>
+      !yayinModu && kayitliAdmin;
+
+  static bool adminModuAcikMi(SharedPreferences prefs) => adminModuKarari(
+        yayinModu: kReleaseMode,
+        kayitliAdmin: prefs.getBool(_adminAnahtari) ?? false,
+      );
 
   /// 🔧 ÖDÜLLÜ REKLAM AD UNIT ID (platforma göre)
   static const String _odulluReklamIdAndroid =
@@ -78,8 +106,22 @@ class ReklamServisi {
 
   Future<void> premiumDurumunuYukle() async {
     final prefs = await SharedPreferences.getInstance();
-    final bool premium = prefs.getBool('reklamsiz_premium') ?? false;
-    final bool admin = prefs.getBool('fitcheck_admin_modu') ?? false;
+    final uid = AnalyticsServisi.firebaseHazir
+        ? FirebaseAuth.instance.currentUser?.uid
+        : null;
+    final serverTs = prefs.getInt('premium_sunucu_dogrulama_ts');
+    final serverDogrulamasiGecerli =
+        prefs.getBool('premium_sunucu_dogrulandi') == true &&
+            uid != null &&
+            prefs.getString('premium_sahip_uid') == uid &&
+            serverTs != null &&
+            DateTime.now().difference(
+                  DateTime.fromMillisecondsSinceEpoch(serverTs),
+                ) <=
+                const Duration(hours: 24);
+    final bool premium =
+        prefs.getBool('reklamsiz_premium') == true && serverDogrulamasiGecerli;
+    final bool admin = adminModuAcikMi(prefs);
     // Premium ya da kuponla sınırsız (admin) kullanıcıya reklam gösterilmez.
     reklamlarEtkinMi = !(premium || admin);
   }
@@ -98,7 +140,7 @@ class ReklamServisi {
   Future<void> reklamlariAc() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('reklamsiz_premium', false);
-    final bool admin = prefs.getBool('fitcheck_admin_modu') ?? false;
+    final bool admin = adminModuAcikMi(prefs);
     reklamlarEtkinMi = !admin;
     if (reklamlarEtkinMi) unawaited(reklamlariBaslat());
   }
@@ -122,7 +164,7 @@ class ReklamServisi {
               await AppTrackingTransparency.trackingAuthorizationStatus;
           if (attDurum == TrackingStatus.notDetermined) {
             // iOS, uygulama tam aktif olmadan diyaloğu göstermez; kısa bekle.
-            await Future.delayed(const Duration(milliseconds: 600));
+            await Future.delayed(AppMotion.uzun);
             await AppTrackingTransparency.requestTrackingAuthorization();
           }
         } catch (e) {
@@ -145,76 +187,127 @@ class ReklamServisi {
   Future<bool> isAdmin() async {
     if (_isAdminCache != null) return _isAdminCache!;
     final prefs = await SharedPreferences.getInstance();
-    final val = prefs.getBool('fitcheck_admin_modu') ?? false;
+    final val = adminModuAcikMi(prefs);
     _isAdminCache = val;
     return val;
   }
 
   // --- HAK VE LİMİT METODLARI (TAMAMI SINIRSIZ) ---
 
+  // Günlük hak ile reklamla kazanılan hak ayrı sayaçlarda tutulur. Böylece
+  // gece yarısı günlük hak yenilenirken reklamla kazanılan haklar silinmez.
+  static const String _kalanHakAnahtari = 'reklam_kalan_hak';
+  static const String _gunlukHakAnahtari = 'reklam_gunluk_hak';
+  static const String _ekstraHakAnahtari = 'reklam_ekstra_hak';
+  static const String _hakTarihiAnahtari = 'reklam_hak_tarihi';
+
+  static String _bugun() => DateTime.now().toIso8601String().substring(0, 10);
+
+  /// Testlerde önbelleği temizlemek için.
+  @visibleForTesting
+  static void onbellegiSifirla() {
+    _kalanHakCache = null;
+    _isAdminCache = null;
+  }
+
+  /// Eski tek sayaçlı modelden iki sayaçlı modele geçer.
+  ///
+  /// Eski toplam korunur; günlük/ekstra ayrımı bilinemediği için tüm bakiye
+  /// ekstra sayılır. Böylece hiçbir kazanılmış hak silinmez. İlk geçişte
+  /// günlük 3 hak bir kez fazla verilebilir; bu, hak kaybından yeğdir.
+  Future<void> _hakModeliniHazirla(SharedPreferences prefs) async {
+    if (prefs.containsKey(_gunlukHakAnahtari) &&
+        prefs.containsKey(_ekstraHakAnahtari)) {
+      return;
+    }
+    final eskiSayacVar = prefs.containsKey(_kalanHakAnahtari);
+    final toplam = eskiSayacVar ? (prefs.getInt(_kalanHakAnahtari) ?? 0) : 0;
+    await prefs.setInt(_gunlukHakAnahtari, 0);
+    await prefs.setInt(_ekstraHakAnahtari, toplam.clamp(0, 999999));
+  }
+
+  /// Gün değiştiyse günlük hakkı 3'e tamamlar; ekstra haklara dokunmaz.
+  Future<int> _haklariYenile(SharedPreferences prefs) async {
+    await _hakModeliniHazirla(prefs);
+    final bugun = _bugun();
+    if (prefs.getString(_hakTarihiAnahtari) != bugun) {
+      await prefs.setString(_hakTarihiAnahtari, bugun);
+      await prefs.setInt(_gunlukHakAnahtari, ucretsizGunlukHak);
+    }
+    return _toplamHak(prefs);
+  }
+
+  Future<int> _toplamHak(SharedPreferences prefs) async {
+    final gunluk = prefs.getInt(_gunlukHakAnahtari) ?? ucretsizGunlukHak;
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    final toplam = gunluk + ekstra;
+    // Eski anahtar, geri uyumluluk için toplamla güncellenir.
+    await prefs.setInt(_kalanHakAnahtari, toplam);
+    _guncelleKalanHakCache(toplam);
+    return toplam;
+  }
+
   Future<int> kalanHakGetir() async {
     if (await isAdmin()) return 999999;
     if (!reklamlarEtkinMi) return 999999;
-    if (_kalanHakCache != null) return _kalanHakCache!;
     final prefs = await SharedPreferences.getInstance();
-    final bugun = DateTime.now().toIso8601String().substring(0, 10);
-    if (prefs.getString('reklam_hak_tarihi') != bugun) {
-      await prefs.setString('reklam_hak_tarihi', bugun);
-      await prefs.setInt('reklam_kalan_hak', ucretsizGunlukHak);
-      _guncelleKalanHakCache(ucretsizGunlukHak);
-      return ucretsizGunlukHak;
+    await _hakModeliniHazirla(prefs);
+    final bugun = _bugun();
+    // Tarih önbellekten önce kontrol edilir: uygulama gece yarısını aşarak
+    // açık kalırsa dünün değeri yeni günde görünmesin.
+    if (prefs.getString(_hakTarihiAnahtari) != bugun) {
+      await prefs.setString(_hakTarihiAnahtari, bugun);
+      await prefs.setInt(_gunlukHakAnahtari, ucretsizGunlukHak);
+      _kalanHakCache = null;
     }
-    final hak = prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    _guncelleKalanHakCache(hak);
-    return hak;
+    if (_kalanHakCache != null) return _kalanHakCache!;
+    return _toplamHak(prefs);
   }
 
   Future<void> hakDusur() async {
     if (await isAdmin()) return;
     if (!reklamlarEtkinMi) return;
     final prefs = await SharedPreferences.getInstance();
-    final bugun = DateTime.now().toIso8601String().substring(0, 10);
-    if (prefs.getString('reklam_hak_tarihi') != bugun) {
-      await prefs.setString('reklam_hak_tarihi', bugun);
-      await prefs.setInt('reklam_kalan_hak', ucretsizGunlukHak);
-      _guncelleKalanHakCache(ucretsizGunlukHak);
+    await _haklariYenile(prefs);
+
+    // Önce günlük hak tüketilir; reklamla kazanılan haklar en sona kalır.
+    final gunluk = prefs.getInt(_gunlukHakAnahtari) ?? 0;
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    if (gunluk > 0) {
+      await prefs.setInt(_gunlukHakAnahtari, gunluk - 1);
+    } else if (ekstra > 0) {
+      await prefs.setInt(_ekstraHakAnahtari, ekstra - 1);
     }
-    final mevcut = _kalanHakCache ?? prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    final yeni = (mevcut - 1).clamp(0, 999);
-    await prefs.setInt('reklam_kalan_hak', yeni);
-    _guncelleKalanHakCache(yeni);
+    await _toplamHak(prefs);
   }
 
   Future<void> hakIadeEt() async {
     final prefs = await SharedPreferences.getInstance();
-    final mevcut = _kalanHakCache ?? prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    final yeni = mevcut + 1;
-    await prefs.setInt('reklam_kalan_hak', yeni);
-    _guncelleKalanHakCache(yeni);
+    await _haklariYenile(prefs);
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    // İade edilen hak süresizdir; günlük sayaçla karışmaz.
+    await prefs.setInt(_ekstraHakAnahtari, ekstra + 1);
+    await _toplamHak(prefs);
   }
 
   Future<void> reklamIzleyerekHakEkle(int eklenecekHak) async {
     if (await isAdmin()) return;
     if (!reklamlarEtkinMi) return;
     final prefs = await SharedPreferences.getInstance();
-    final bugun = DateTime.now().toIso8601String().substring(0, 10);
-    if (prefs.getString('reklam_hak_tarihi') != bugun) {
-      await prefs.setString('reklam_hak_tarihi', bugun);
-      await prefs.setInt('reklam_kalan_hak', ucretsizGunlukHak);
-      _guncelleKalanHakCache(ucretsizGunlukHak);
-    }
-    final mevcut = _kalanHakCache ?? prefs.getInt('reklam_kalan_hak') ?? ucretsizGunlukHak;
-    final yeni = mevcut + eklenecekHak;
-    await prefs.setInt('reklam_kalan_hak', yeni);
-    _guncelleKalanHakCache(yeni);
+    await _haklariYenile(prefs);
+    final ekstra = prefs.getInt(_ekstraHakAnahtari) ?? 0;
+    // Reklam ödülü günlük hakka değil, süresiz ekstra hakka eklenir.
+    await prefs.setInt(_ekstraHakAnahtari, ekstra + eklenecekHak);
+    await _toplamHak(prefs);
   }
 
   Future<int> kuponKoduKullan(String kod) async {
+    if (!kuponAktifMi) return 0;
     final temizKod = kod.trim().toUpperCase();
-    if (temizKod != adminKuponKodu) return 0;
+    if (temizKod != adminKuponKodu.toUpperCase()) return 0;
 
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('fitcheck_admin_modu', true);
+    await prefs.setBool(_adminAnahtari, true);
     _isAdminCache = true;
     // Kuponla sınırsız olan (admin) kullanıcıya da reklam gösterilmez.
     reklamlarEtkinMi = false;

@@ -18,6 +18,7 @@
 // atmaz); bu yüzden "geçersiz yanıt" kontrolü tek başına yeterli değildir —
 // aşağıdaki durum makinesi her iki durumu da aynı şekilde ele alır.
 
+import '../theme/design_tokens.dart';
 import 'dart:typed_data';
 
 /// Bir arka plan silici: görseli alır, arka planı silinmiş PNG'yi döndürür.
@@ -34,7 +35,7 @@ class ArkaPlanSilmeYardimcisi {
   static const int yerelDenemeSayisi = 2;
 
   /// Denemeler arası bekleme: anlık ağ/sunucu dalgalanmalarında işe yarar.
-  static const Duration denemelerArasiBekleme = Duration(milliseconds: 700);
+  static const Duration denemelerArasiBekleme = AppMotion.uzun;
 
   /// Arka planı silmeyi dener. Başarısızsa `null` döner.
   static Future<Uint8List?> dene(

@@ -1,3 +1,4 @@
+import '../../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -102,7 +103,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
                 height: 4,
                 decoration: BoxDecoration(
                   color: colors.outlineVariant,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: AppRadius.xxsRadius,
                 ),
               ),
             ),
@@ -110,8 +111,8 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.stilVeModaTercihleriniz,
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w900,
+                fontSize: AppText.sizeTitle,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -119,7 +120,7 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.stilModalAciklama,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: AppText.sizeBodySmall,
                 color: colors.onSurfaceVariant,
               ),
             ),
@@ -127,10 +128,10 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.favoriTarzinizUst,
               style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w900,
+                fontSize: AppText.sizeCaption,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurfaceVariant,
-                letterSpacing: 1.2,
+                letterSpacing: 0,
               ),
             ),
             const SizedBox(height: 8),
@@ -154,10 +155,10 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
             Text(
               l10n.giyimKesimiFitUst,
               style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w900,
+                fontSize: AppText.sizeCaption,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurfaceVariant,
-                letterSpacing: 1.2,
+                letterSpacing: 0,
               ),
             ),
             const SizedBox(height: 8),
@@ -196,16 +197,17 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
         HapticFeedback.selectionClick();
         onTap();
       },
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: AppRadius.mdRadius,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 240),
-        curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        duration: AppMotion.kisa,
+        curve: AppMotion.giris,
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected
               ? colors.secondaryContainer
               : colors.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.mdRadius,
           border: Border.all(
             color: isSelected
                 ? colors.secondary
@@ -216,8 +218,8 @@ class _StilTercihleriModalState extends State<StilTercihleriModal> {
         child: Text(
           label,
           style: TextStyle(
-            fontSize: 12,
-            fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+            fontSize: AppText.sizeCaption,
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w600,
             color: isSelected
                 ? colors.onSecondaryContainer
                 : colors.onSurfaceVariant,

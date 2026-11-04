@@ -397,7 +397,7 @@ abstract class AppLocalizations {
   /// No description provided for @ayarOtomatikCihazDili.
   ///
   /// In tr, this message translates to:
-  /// **'🌐 Otomatik (Cihaz Dili)'**
+  /// **'Otomatik (Cihaz Dili)'**
   String get ayarOtomatikCihazDili;
 
   /// No description provided for @iptal.
@@ -415,7 +415,7 @@ abstract class AppLocalizations {
   /// No description provided for @gardirobumTitle.
   ///
   /// In tr, this message translates to:
-  /// **'SANAL GARDIROBUM'**
+  /// **'Sanal Gardırobum'**
   String get gardirobumTitle;
 
   /// No description provided for @gardirobumYukleniyor.
@@ -547,13 +547,13 @@ abstract class AppLocalizations {
   /// No description provided for @stilistTitle.
   ///
   /// In tr, this message translates to:
-  /// **'ANLIK KOMBİN STİLİSTİ'**
+  /// **'Anlık Kombin Stilisti'**
   String get stilistTitle;
 
   /// No description provided for @gunlukKombinTitle.
   ///
   /// In tr, this message translates to:
-  /// **'GÜNLÜK KOMBİN'**
+  /// **'Günlük Kombin'**
   String get gunlukKombinTitle;
 
   /// No description provided for @gunlukKombinHazirBaslik.
@@ -619,7 +619,7 @@ abstract class AppLocalizations {
   /// No description provided for @stilistUyum.
   ///
   /// In tr, this message translates to:
-  /// **'🎨 Uyum: %{puan}'**
+  /// **'Uyum: %{puan}'**
   String stilistUyum(Object puan);
 
   /// No description provided for @stilistUstGiyim.
@@ -715,7 +715,7 @@ abstract class AppLocalizations {
   /// No description provided for @stilistUyariDolapBosBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Gardırobun Boş Veya Tüm Parçalar Yıkamada! 🧺'**
+  /// **'Gardırobun Boş Veya Tüm Parçalar Yıkamada'**
   String get stilistUyariDolapBosBaslik;
 
   /// No description provided for @stilistUyariDolapBosIcerik.
@@ -727,43 +727,43 @@ abstract class AppLocalizations {
   /// No description provided for @stilistUyariUstEksikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Üst Giyim Eksik! 👕'**
+  /// **'Üst Giyim Eksik'**
   String get stilistUyariUstEksikBaslik;
 
   /// No description provided for @stilistUyariUstEksikIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Gardırobunda henüz hiç temiz üst giyim yok. Tam bir kombin için dolabına en az bir üst parçası eklemelisin!'**
+  /// **'Gardırobunda henüz hiç temiz üst giyim yok. Tam bir kombin için dolabına en az bir üst parçası eklemelisin'**
   String get stilistUyariUstEksikIcerik;
 
   /// No description provided for @stilistUyariAltEksikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Alt Giyim Eksik! 👖'**
+  /// **'Alt Giyim Eksik'**
   String get stilistUyariAltEksikBaslik;
 
   /// No description provided for @stilistUyariAltEksikIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Gardırobunda henüz hiç temiz alt giyim yok. Şık bir kombin yapabilmemiz için dolabına bir alt parçası eklemelisin!'**
+  /// **'Gardırobunda henüz hiç temiz alt giyim yok. Şık bir kombin yapabilmemiz için dolabına bir alt parçası eklemelisin'**
   String get stilistUyariAltEksikIcerik;
 
   /// No description provided for @stilistUyariAyakkabiEksikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Ayakkabın Eksik! 👟'**
+  /// **'Ayakkabın Eksik'**
   String get stilistUyariAyakkabiEksikBaslik;
 
   /// No description provided for @stilistUyariAyakkabiEksikIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Kıyafetlerin harika görünüyor ama kombinini tamamlayacak temiz bir ayakkabı bulamadım. Dolabına hemen bir ayakkabı ekle!'**
+  /// **'Kıyafetlerin harika görünüyor ama kombinini tamamlayacak temiz bir ayakkabı bulamadım. Dolabına hemen bir ayakkabı ekle'**
   String get stilistUyariAyakkabiEksikIcerik;
 
   /// No description provided for @stilistUyariButon.
   ///
   /// In tr, this message translates to:
-  /// **'Anladım, Ekliyorum!'**
+  /// **'Anladım, Ekliyorum'**
   String get stilistUyariButon;
 
   /// No description provided for @anaHavaYukleniyor.
@@ -775,7 +775,7 @@ abstract class AppLocalizations {
   /// No description provided for @anaDinliyor.
   ///
   /// In tr, this message translates to:
-  /// **'🎙️ FITCHECK Sizi Dinliyor... Konuşun!'**
+  /// **'FITCHECK Sizi Dinliyor... Konuşun'**
   String get anaDinliyor;
 
   /// No description provided for @anaMikrofonHata.
@@ -787,7 +787,7 @@ abstract class AppLocalizations {
   /// No description provided for @anaCinsiyetGuncellendi.
   ///
   /// In tr, this message translates to:
-  /// **'Tercihiniz \"{cinsiyet}\" olarak güncellendi ✨'**
+  /// **'Tercihiniz \"{cinsiyet}\" olarak güncellendi'**
   String anaCinsiyetGuncellendi(Object cinsiyet);
 
   /// No description provided for @anaKonumKapaliBaslik.
@@ -865,19 +865,19 @@ abstract class AppLocalizations {
   /// No description provided for @anaFavoriEklendi.
   ///
   /// In tr, this message translates to:
-  /// **'Kombin favorilere eklendi! ⭐'**
+  /// **'Kombin favorilere eklendi ⭐'**
   String get anaFavoriEklendi;
 
   /// No description provided for @anaKombinTekrarUyari.
   ///
   /// In tr, this message translates to:
-  /// **'⚠️ Uyarı: Bu parçaları veya benzerlerini son zamanlarda çok sık giydin. Bugün farklı bir tarz deneyebilirsin!'**
+  /// **'Uyarı: Bu parçaları veya benzerlerini son zamanlarda çok sık giydin. Bugün farklı bir tarz deneyebilirsin'**
   String get anaKombinTekrarUyari;
 
   /// No description provided for @anaKombinMukemmel.
   ///
   /// In tr, this message translates to:
-  /// **'✨ Mükemmel seçim! Tarzın bugün gayet dengeli ve ferah.'**
+  /// **'Mükemmel seçim Tarzın bugün gayet dengeli ve ferah.'**
   String get anaKombinMukemmel;
 
   /// No description provided for @anaYikamaUyariBaslik.
@@ -889,7 +889,7 @@ abstract class AppLocalizations {
   /// No description provided for @anaYikamaUyariIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Bu kombini giydiğiniz için \"{parcalar}\" adlı parça(lar) çok sık kullanıldı ve otomatik olarak yıkama sepetine gönderildi! 🧺'**
+  /// **'Bu kombini giydiğiniz için \"{parcalar}\" adlı parça(lar) çok sık kullanıldı ve otomatik olarak yıkama sepetine gönderildi'**
   String anaYikamaUyariIcerik(Object parcalar);
 
   /// No description provided for @anaTamam.
@@ -1087,7 +1087,7 @@ abstract class AppLocalizations {
   /// No description provided for @stilKahveBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'☕ Kahve & Günlük'**
+  /// **'Kahve & Günlük'**
   String get stilKahveBaslik;
 
   /// No description provided for @stilKahveSoru.
@@ -1099,7 +1099,7 @@ abstract class AppLocalizations {
   /// No description provided for @stilOfisBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'💼 İş / Ofis Şıklığı'**
+  /// **'İş / Ofis Şıklığı'**
   String get stilOfisBaslik;
 
   /// No description provided for @stilOfisSoru.
@@ -1111,7 +1111,7 @@ abstract class AppLocalizations {
   /// No description provided for @stilSporBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🏃 Spor / Rahat Giyim'**
+  /// **'Spor / Rahat Giyim'**
   String get stilSporBaslik;
 
   /// No description provided for @stilSporSoru.
@@ -1123,7 +1123,7 @@ abstract class AppLocalizations {
   /// No description provided for @stilGeceBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🌙 Gece / Özel Davet'**
+  /// **'Gece / Özel Davet'**
   String get stilGeceBaslik;
 
   /// No description provided for @stilGeceSoru.
@@ -1135,7 +1135,7 @@ abstract class AppLocalizations {
   /// No description provided for @ilkGorevBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🎯 İlk Görev: Stilini Seç!'**
+  /// **'İlk Görev: Stilini Seç'**
   String get ilkGorevBaslik;
 
   /// No description provided for @ilkGorevAciklama.
@@ -1153,7 +1153,7 @@ abstract class AppLocalizations {
   /// No description provided for @haftalikUyariDolapBosBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Gardırobun Boş!'**
+  /// **'Gardırobun Boş'**
   String get haftalikUyariDolapBosBaslik;
 
   /// No description provided for @haftalikUyariDolapBosIcerik.
@@ -1165,7 +1165,7 @@ abstract class AppLocalizations {
   /// No description provided for @haftalikUyariUstEksikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Üst Giyim Eksik!'**
+  /// **'Üst Giyim Eksik'**
   String get haftalikUyariUstEksikBaslik;
 
   /// No description provided for @haftalikUyariUstEksikIcerik.
@@ -1177,7 +1177,7 @@ abstract class AppLocalizations {
   /// No description provided for @haftalikUyariAltEksikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Alt Giyim Eksik!'**
+  /// **'Alt Giyim Eksik'**
   String get haftalikUyariAltEksikBaslik;
 
   /// No description provided for @haftalikUyariAltEksikIcerik.
@@ -1189,7 +1189,7 @@ abstract class AppLocalizations {
   /// No description provided for @haftalikUyariAyakkabiEksikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Ayakkabı Eksik!'**
+  /// **'Ayakkabı Eksik'**
   String get haftalikUyariAyakkabiEksikBaslik;
 
   /// No description provided for @haftalikUyariAyakkabiEksikIcerik.
@@ -1207,7 +1207,7 @@ abstract class AppLocalizations {
   /// No description provided for @haftalikAjandaTitle.
   ///
   /// In tr, this message translates to:
-  /// **'HAFTALIK STİL AJANDASI'**
+  /// **'Haftalık Stil Ajandası'**
   String get haftalikAjandaTitle;
 
   /// No description provided for @haftalikAnlikHavaDurumu.
@@ -1411,7 +1411,7 @@ abstract class AppLocalizations {
   /// No description provided for @profilAnalizTitle.
   ///
   /// In tr, this message translates to:
-  /// **'PROFİL & ANALİZ'**
+  /// **'Profil & Analiz'**
   String get profilAnalizTitle;
 
   /// No description provided for @anlikDurum.
@@ -1507,7 +1507,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingHosGeldinBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'FitCheck\'e Hoş Geldin! ✨'**
+  /// **'FitCheck\'e Hoş Geldin'**
   String get onboardingHosGeldinBaslik;
 
   /// No description provided for @onboardingDolabiniDijitallestir.
@@ -1741,13 +1741,13 @@ abstract class AppLocalizations {
   /// No description provided for @stilDunyanaTekrarHosGeldin.
   ///
   /// In tr, this message translates to:
-  /// **'Stil dünyana tekrar hoş geldin ✨'**
+  /// **'Stil dünyana tekrar hoş geldin'**
   String get stilDunyanaTekrarHosGeldin;
 
   /// No description provided for @kombinleriniSaklamakIcinKatil.
   ///
   /// In tr, this message translates to:
-  /// **'Kombinlerini saklamak için aramıza katıl 🚀'**
+  /// **'Kombinlerini saklamak için aramıza katıl'**
   String get kombinleriniSaklamakIcinKatil;
 
   /// No description provided for @girisYap.
@@ -1849,7 +1849,7 @@ abstract class AppLocalizations {
   /// No description provided for @kullanimKosullarini.
   ///
   /// In tr, this message translates to:
-  /// **'Kullanım Koşullarını'**
+  /// **'Kullanım koşullarını'**
   String get kullanimKosullarini;
 
   /// No description provided for @okudumVeOnayliyorum.
@@ -1873,13 +1873,13 @@ abstract class AppLocalizations {
   /// No description provided for @kullanimKosullariMetni.
   ///
   /// In tr, this message translates to:
-  /// **'FITCHECK KULLANIM KOŞULLARI VE HİZMET SÖZLEŞMESİ\n\nSon Güncelleme Tarihi: 27 Ağustos 2026\n\nLütfen FitCheck mobil uygulamasını (“Uygulama”) kullanmadan önce bu Kullanım Koşulları’nı (“Sözleşme”) dikkatlice okuyunuz. Uygulamayı indirerek, erişerek veya kullanarak bu Sözleşme’de yer alan tüm şartları kabul etmiş sayılırsınız.\n\n1. TARAFLAR VE AMAÇ\nBu Sözleşme, FitCheck uygulamasının geliştiricisi ile Uygulama’yı indiren ve kullanan bireysel kullanıcı (\"Kullanıcı\") arasında akdedilmiştir. Uygulama; dijital gardırop oluşturma, kıyafet takibi, hava durumuna uygun kombin önerileri ve AI destekli stil danışmanlığı sunar.\n\n2. HİZMETİN KAPSAMI VE KULLANIM ŞARTLARI\n• Yaş Sınırı: Uygulamayı kullanmak için en az 13 yaşında olmanız gerekmektedir.\n• Kullanıcı Bilgileri: Kullanıcı, profil aşamasında sunduğu ad, cinsiyet, tarz ve renk tercihlerinin doğruluğundan sorumludur.\n• Tavsiye Niteliği: Yapay zeka tarafından sunulan stil puanları, satın alma önerileri ve çamaşır günü hatırlatmaları tamamen tavsiye niteliğindedir.\n• Hava Durumu Verileri: Hava durum bilgileri anlık konum bilgisine dayalı olarak sunulmaktadır. Olası sapmalardan Şirket sorumlu tutulamaz.\n\n3. FİKRİ MÜLKİYET VE İÇERİK HAKLARI\nYüklediğiniz kıyafet görsellerinin fikri mülkiyeti size aittir. FitCheck logosu, tasarımı, yazılım kodları ve algoritmaları tamamen FitCheck\'e aittir.\n\n4. GİZLİLİK VE VERİ GÜVENLİĞİ\nKıyafet görselleriniz ve kombin geçmişiniz öncelikli olarak cihazınızın yerel hafızasında saklanır. Konum verileri yalnızca anlık hava durumunu almak için kullanılır.\n\n5. SORUMLULUĞUN SINIRLANDIRILMASI\nFitCheck, hizmetin kesintisiz devam edeceğini garanti etmez. Cihaz değişikliği veya uygulama silinmesi sebebiyle veri kayıplarından sorumlu tutulamaz.\n\n6. İLETİŞİM\nSorularınız için bizimle Ayarlar sekmesindeki iletişim alanından veya destek@fitcheckapp.com adresinden iletişime geçebilirsiniz.\n\n--- 📜 SÖZLEŞMENİN SONU ---\nLütfen aşağıdaki butona basarak şartları onaylayınız.'**
+  /// **'FITCHECK KULLANIM KOŞULLARI VE HİZMET SÖZLEŞMESİ\n\nSon Güncelleme Tarihi: 27 Ağustos 2026\n\nLütfen FitCheck mobil uygulamasını (“Uygulama”) kullanmadan önce bu Kullanım Koşulları’nı (“Sözleşme”) dikkatlice okuyunuz. Uygulamayı indirerek, erişerek veya kullanarak bu Sözleşme’de yer alan tüm şartları kabul etmiş sayılırsınız.\n\n1. TARAFLAR VE AMAÇ\nBu Sözleşme, FitCheck uygulamasının geliştiricisi ile Uygulama’yı indiren ve kullanan bireysel kullanıcı (\"Kullanıcı\") arasında akdedilmiştir. Uygulama; dijital gardırop oluşturma, kıyafet takibi, hava durumuna uygun kombin önerileri ve AI destekli stil danışmanlığı sunar.\n\n2. HİZMETİN KAPSAMI VE KULLANIM ŞARTLARI\n• Yaş Sınırı: Uygulamayı kullanmak için en az 13 yaşında olmanız gerekmektedir.\n• Kullanıcı Bilgileri: Kullanıcı, profil aşamasında sunduğu ad, cinsiyet, tarz ve renk tercihlerinin doğruluğundan sorumludur.\n• Tavsiye Niteliği: Yapay zeka tarafından sunulan stil puanları, satın alma önerileri ve çamaşır günü hatırlatmaları tamamen tavsiye niteliğindedir.\n• Hava Durumu Verileri: Hava durum bilgileri anlık konum bilgisine dayalı olarak sunulmaktadır. Olası sapmalardan Şirket sorumlu tutulamaz.\n\n3. FİKRİ MÜLKİYET VE İÇERİK HAKLARI\nYüklediğiniz kıyafet görsellerinin fikri mülkiyeti size aittir. FitCheck logosu, tasarımı, yazılım kodları ve algoritmaları tamamen FitCheck\'e aittir.\n\n4. GİZLİLİK VE VERİ GÜVENLİĞİ\nKıyafet görselleriniz ve kombin geçmişiniz öncelikli olarak cihazınızın yerel hafızasında saklanır. Konum verileri yalnızca anlık hava durumunu almak için kullanılır.\n\n5. SORUMLULUĞUN SINIRLANDIRILMASI\nFitCheck, hizmetin kesintisiz devam edeceğini garanti etmez. Cihaz değişikliği veya uygulama silinmesi sebebiyle veri kayıplarından sorumlu tutulamaz.\n\n6. İLETİŞİM\nSorularınız için bizimle Ayarlar sekmesindeki iletişim alanından veya destek@fitcheckapp.com adresinden iletişime geçebilirsiniz.\n\n--- SÖZLEŞMENİN SONU ---\nLütfen aşağıdaki butona basarak şartları onaylayınız.'**
   String get kullanimKosullariMetni;
 
   /// No description provided for @chatKarsilama.
   ///
   /// In tr, this message translates to:
-  /// **'Selam! 👋 Bugün dışarısı {hava}. Senin tarzına uygun harika bir kombin hazırlayalım mı? ✨'**
+  /// **'Selam Bugün dışarısı {hava}. Senin tarzına uygun harika bir kombin hazırlayalım mı?'**
   String chatKarsilama(Object hava);
 
   /// No description provided for @chatGorselGonderildi.
@@ -1945,25 +1945,25 @@ abstract class AppLocalizations {
   /// No description provided for @chatOneriYagmur.
   ///
   /// In tr, this message translates to:
-  /// **'🌧️ Yağmurlu Hava Kombini'**
+  /// **'Yağmurlu Hava Kombini'**
   String get chatOneriYagmur;
 
   /// No description provided for @chatOneriOfis.
   ///
   /// In tr, this message translates to:
-  /// **'💼 Ofis / Şık Tarz'**
+  /// **'Ofis / Şık Tarz'**
   String get chatOneriOfis;
 
   /// No description provided for @chatOneriHaftaSonu.
   ///
   /// In tr, this message translates to:
-  /// **'☕ Hafta Sonu Rahatlığı'**
+  /// **'Hafta Sonu Rahatlığı'**
   String get chatOneriHaftaSonu;
 
   /// No description provided for @chatOneriKirliSepeti.
   ///
   /// In tr, this message translates to:
-  /// **'🧺 Kirli Sepeti Kontrolü'**
+  /// **'Kirli Sepeti Kontrolü'**
   String get chatOneriKirliSepeti;
 
   /// No description provided for @chatDinleniyor.
@@ -1981,13 +1981,13 @@ abstract class AppLocalizations {
   /// No description provided for @chatKombiniGiydim.
   ///
   /// In tr, this message translates to:
-  /// **'Bu Kombini Giydim 👗'**
+  /// **'Bu Kombini Giydim'**
   String get chatKombiniGiydim;
 
   /// No description provided for @chatKombinIslendi.
   ///
   /// In tr, this message translates to:
-  /// **'Kombin bugün giyilenlere işlendi! 📅'**
+  /// **'Kombin bugün giyilenlere işlendi'**
   String get chatKombinIslendi;
 
   /// No description provided for @chatGorselIncele.
@@ -2053,7 +2053,7 @@ abstract class AppLocalizations {
   /// No description provided for @profilYikamaSepetimBos.
   ///
   /// In tr, this message translates to:
-  /// **'Yıkama sepetiniz boş, tüm kıyafetleriniz temiz! ✨'**
+  /// **'Yıkama sepetiniz boş, tüm kıyafetleriniz temiz'**
   String get profilYikamaSepetimBos;
 
   /// No description provided for @profilSepetiBosalt.
@@ -2257,7 +2257,7 @@ abstract class AppLocalizations {
   /// No description provided for @gunlukHakBittiBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Günlük Hakkın Bitti!'**
+  /// **'Günlük Hakkın Bitti'**
   String get gunlukHakBittiBaslik;
 
   /// No description provided for @dahaSonra.
@@ -2269,14 +2269,14 @@ abstract class AppLocalizations {
   /// No description provided for @reklamIzleHakKazan.
   ///
   /// In tr, this message translates to:
-  /// **'Reklam İzle (+2 Hak)'**
-  String get reklamIzleHakKazan;
+  /// **'Reklam İzle (+{adet} Hak)'**
+  String reklamIzleHakKazan(int adet);
 
   /// No description provided for @tebriklerHakEklendi.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! +2 İşlem hakkı tanımlandı. ✨'**
-  String get tebriklerHakEklendi;
+  /// **'Tebrikler +{adet} hak eklendi.'**
+  String tebriklerHakEklendi(int adet);
 
   /// No description provided for @kombinIsaretlemeKaldirildi.
   ///
@@ -2287,7 +2287,7 @@ abstract class AppLocalizations {
   /// No description provided for @kombinGiydimIsaretlendi.
   ///
   /// In tr, this message translates to:
-  /// **'\"{kombinAdi}\" kombini bugün giyildi olarak işaretlendi! 👕✨'**
+  /// **'\"{kombinAdi}\" kombini bugün giyildi olarak işaretlendi'**
   String kombinGiydimIsaretlendi(String kombinAdi);
 
   /// No description provided for @kiyafetDetayi.
@@ -2311,25 +2311,25 @@ abstract class AppLocalizations {
   /// No description provided for @farkliUstSec.
   ///
   /// In tr, this message translates to:
-  /// **'Farklı Üst Giyim Seç 👕'**
+  /// **'Farklı Üst Giyim Seç'**
   String get farkliUstSec;
 
   /// No description provided for @farkliAltSec.
   ///
   /// In tr, this message translates to:
-  /// **'Farklı Alt Giyim Seç 👖'**
+  /// **'Farklı Alt Giyim Seç'**
   String get farkliAltSec;
 
   /// No description provided for @farkliAyakkabiSec.
   ///
   /// In tr, this message translates to:
-  /// **'Farklı Ayakkabı Seç 👟'**
+  /// **'Farklı Ayakkabı Seç'**
   String get farkliAyakkabiSec;
 
   /// No description provided for @farkliDisSec.
   ///
   /// In tr, this message translates to:
-  /// **'Farklı Dış Giyim Seç 🧥'**
+  /// **'Farklı Dış Giyim Seç'**
   String get farkliDisSec;
 
   /// No description provided for @baskaTemizKiyafetYok.
@@ -2377,13 +2377,13 @@ abstract class AppLocalizations {
   /// No description provided for @parcalariKaydirIpucu.
   ///
   /// In tr, this message translates to:
-  /// **'Kombindeki diğer parçalar için sağa/sola kaydırın 👈👉'**
+  /// **'Kombindeki diğer parçalar için sağa/sola kaydırın'**
   String get parcalariKaydirIpucu;
 
   /// No description provided for @zorunluParcaYorumu.
   ///
   /// In tr, this message translates to:
-  /// **'✨ {parcaAdi} parçasını merkeze alarak bu kombini hazırladım!'**
+  /// **'{parcaAdi} parçasını merkeze alarak bu kombini hazırladım'**
   String zorunluParcaYorumu(Object parcaAdi);
 
   /// No description provided for @sihirliDokunus.
@@ -2395,13 +2395,13 @@ abstract class AppLocalizations {
   /// No description provided for @dolabiKaristirEksikUyari.
   ///
   /// In tr, this message translates to:
-  /// **'Dolabı karıştırabilmek için en az 1 temiz Üst, Alt ve Ayakkabı bulunmalı! 👕👖👟'**
+  /// **'Dolabı karıştırabilmek için en az 1 temiz Üst, Alt ve Ayakkabı bulunmalı'**
   String get dolabiKaristirEksikUyari;
 
   /// No description provided for @zarlarAtildiYorumu.
   ///
   /// In tr, this message translates to:
-  /// **'🎲 Zarlar atıldı! Yepyeni ve şaşırtıcı bir kombin keşfettin.'**
+  /// **'Zarlar atıldı Yepyeni ve şaşırtıcı bir kombin keşfettin.'**
   String get zarlarAtildiYorumu;
 
   /// No description provided for @rastgeleKombinTuru.
@@ -2413,7 +2413,7 @@ abstract class AppLocalizations {
   /// No description provided for @temizAlternatifYok.
   ///
   /// In tr, this message translates to:
-  /// **'Bu kategori için temiz başka alternatif yok! 🧺'**
+  /// **'Bu kategori için temiz başka alternatif yok'**
   String get temizAlternatifYok;
 
   /// No description provided for @kisiselDokunus.
@@ -2425,19 +2425,19 @@ abstract class AppLocalizations {
   /// No description provided for @aiYeniParcaAnalizEdiyor.
   ///
   /// In tr, this message translates to:
-  /// **'Yapay zeka yeni parçayı analiz ediyor... ✨'**
+  /// **'Yapay zeka yeni parçayı analiz ediyor...'**
   String get aiYeniParcaAnalizEdiyor;
 
   /// No description provided for @parcaDegisimVarsayilanYorum.
   ///
   /// In tr, this message translates to:
-  /// **'✨ Parçaları değiştirerek harika bir uyum yakaladın!'**
+  /// **'Parçaları değiştirerek harika bir uyum yakaladın'**
   String get parcaDegisimVarsayilanYorum;
 
   /// No description provided for @parcaDegisimHataYorum.
   ///
   /// In tr, this message translates to:
-  /// **'✨ Parçaları değiştirerek kombini tamamen kendi tarzına uyarladın!'**
+  /// **'Parçaları değiştirerek kombini tamamen kendi tarzına uyarladın'**
   String get parcaDegisimHataYorum;
 
   /// No description provided for @bilgileriDuzenleBaslik.
@@ -2479,7 +2479,7 @@ abstract class AppLocalizations {
   /// No description provided for @zarPopupBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Sihirli Zarları Salla!'**
+  /// **'Sihirli Zarları Salla'**
   String get zarPopupBaslik;
 
   /// No description provided for @zarPopupAciklama.
@@ -2503,7 +2503,7 @@ abstract class AppLocalizations {
   /// No description provided for @degistirmekIcinKaydirIpucu.
   ///
   /// In tr, this message translates to:
-  /// **'Değiştirmek için parçaları sağa/sola kaydırın veya dokunun 👈👉'**
+  /// **'Değiştirmek için parçaları sağa/sola kaydırın veya dokunun'**
   String get degistirmekIcinKaydirIpucu;
 
   /// No description provided for @favorilerdeEtiketi.
@@ -2515,13 +2515,13 @@ abstract class AppLocalizations {
   /// No description provided for @bugunGiydildiEtiketi.
   ///
   /// In tr, this message translates to:
-  /// **'Bugün Giyildi ✨'**
+  /// **'Bugün Giyildi'**
   String get bugunGiydildiEtiketi;
 
   /// No description provided for @varsayilanKendiAnalizYorumu.
   ///
   /// In tr, this message translates to:
-  /// **'Harika bir seçim! Parçalar renk tonlarıyla mükemmel bir denge oluşturmuş.'**
+  /// **'Harika bir seçim Parçalar renk tonlarıyla mükemmel bir denge oluşturmuş.'**
   String get varsayilanKendiAnalizYorumu;
 
   /// No description provided for @kendiTasarimimBaslik.
@@ -2551,7 +2551,7 @@ abstract class AppLocalizations {
   /// No description provided for @kombinHazirAiTavsiyesi.
   ///
   /// In tr, this message translates to:
-  /// **'Kombin harika görünüyor! Yapay zeka ile analiz edip kaydet.'**
+  /// **'Kombin harika görünüyor Yapay zeka ile analiz edip kaydet.'**
   String get kombinHazirAiTavsiyesi;
 
   /// No description provided for @kombinBaslaIpucu.
@@ -2629,7 +2629,7 @@ abstract class AppLocalizations {
   /// No description provided for @gecmisBasariylaTemizlendi.
   ///
   /// In tr, this message translates to:
-  /// **'Geçmiş başarıyla temizlendi 🗑️'**
+  /// **'Geçmiş başarıyla temizlendi'**
   String get gecmisBasariylaTemizlendi;
 
   /// No description provided for @kayitGecmistenSilindi.
@@ -2677,13 +2677,13 @@ abstract class AppLocalizations {
   /// No description provided for @sepetBosTumKiyafetlerTemiz.
   ///
   /// In tr, this message translates to:
-  /// **'Sepet tamamen boş, tüm kıyafetler temiz!'**
+  /// **'Sepet tamamen boş, tüm kıyafetler temiz'**
   String get sepetBosTumKiyafetlerTemiz;
 
   /// No description provided for @tumKiyafetlerTemizlendi.
   ///
   /// In tr, this message translates to:
-  /// **'Tüm kıyafetler temizlendi ve dolaba eklendi 🧺✨'**
+  /// **'Tüm kıyafetler temizlendi ve dolaba eklendi'**
   String get tumKiyafetlerTemizlendi;
 
   /// No description provided for @tumunuTemizIsaretle.
@@ -2701,7 +2701,7 @@ abstract class AppLocalizations {
   /// No description provided for @harikaGidiyorsun.
   ///
   /// In tr, this message translates to:
-  /// **'Harika Gidiyorsun!'**
+  /// **'Harika Gidiyorsun'**
   String get harikaGidiyorsun;
 
   /// No description provided for @gundurSeridesin.
@@ -2845,7 +2845,7 @@ abstract class AppLocalizations {
   /// No description provided for @googleHesabiBaglandi.
   ///
   /// In tr, this message translates to:
-  /// **'Google hesabınız başarıyla bağlandı! 🔗'**
+  /// **'Google hesabınız başarıyla bağlandı'**
   String get googleHesabiBaglandi;
 
   /// No description provided for @googleHesabiBaglantisiKesildi.
@@ -2899,7 +2899,7 @@ abstract class AppLocalizations {
   /// No description provided for @sifreEpostasiGonderildi.
   ///
   /// In tr, this message translates to:
-  /// **'{eposta} adresine şifre yenileme e-postası gönderildi! ✉️'**
+  /// **'{eposta} adresine şifre yenileme e-postası gönderildi'**
   String sifreEpostasiGonderildi(Object eposta);
 
   /// No description provided for @baglantiGonder.
@@ -3163,7 +3163,7 @@ abstract class AppLocalizations {
   /// No description provided for @onbellekTemizlendiBasari.
   ///
   /// In tr, this message translates to:
-  /// **'Görsel önbelleği ve geçici dosyalar temizlendi! ✨'**
+  /// **'Görsel önbelleği ve geçici dosyalar temizlendi'**
   String get onbellekTemizlendiBasari;
 
   /// No description provided for @onbellekTemizlerkenHata.
@@ -3187,13 +3187,13 @@ abstract class AppLocalizations {
   /// No description provided for @disaAktarilacakVeriYok.
   ///
   /// In tr, this message translates to:
-  /// **'Dışa aktarılacak gardırop verisi bulunamadı. 📭'**
+  /// **'Dışa aktarılacak gardırop verisi bulunamadı.'**
   String get disaAktarilacakVeriYok;
 
   /// No description provided for @gardiropVerisiKopyalandi.
   ///
   /// In tr, this message translates to:
-  /// **'Tüm gardırop verileriniz JSON formatında panoya kopyalandı! 📋'**
+  /// **'Tüm gardırop verileriniz JSON formatında panoya kopyalandı'**
   String get gardiropVerisiKopyalandi;
 
   /// No description provided for @destekVeDegerlendirmeUst.
@@ -3259,7 +3259,7 @@ abstract class AppLocalizations {
   /// No description provided for @sonGuncellemeTarihi.
   ///
   /// In tr, this message translates to:
-  /// **'Son Güncelleme: 27 Ağustos 2026'**
+  /// **'Son Güncelleme: 20 Ekim 2026'**
   String get sonGuncellemeTarihi;
 
   /// No description provided for @gizlilikMadde1Baslik.
@@ -3283,7 +3283,7 @@ abstract class AppLocalizations {
   /// No description provided for @gizlilikMadde2Icerik.
   ///
   /// In tr, this message translates to:
-  /// **'Hava durumuna uygun günlük kombin tavsiyeleri sunabilmek adına anlık konum bilginiz Open-Meteo servisleri ile anonim olarak işlenir. Konum verileriniz sunucularımızda saklanmaz veya üçüncü taraflarla paylaşılmaz.'**
+  /// **'Konum izni verdiğinizde enlem ve boylamınız hava durumu için Open-Meteo\'ya, şehir adını belirlemek için BigDataCloud\'a gönderilir. FitCheck bu koordinatları kendi sunucularında saklamaz. Bu servislerin veri işleme koşulları kendi gizlilik politikalarına tabidir.'**
   String get gizlilikMadde2Icerik;
 
   /// No description provided for @gizlilikMadde3Baslik.
@@ -3373,13 +3373,13 @@ abstract class AppLocalizations {
   /// No description provided for @kuponKoduAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'Ekstra kombin hakkı kazanmak için kupon kodunuzu aşağıya girin:'**
+  /// **'Kupon kodunuzu aşağıya girin:'**
   String get kuponKoduAciklama;
 
   /// No description provided for @kuponKoduHint.
   ///
   /// In tr, this message translates to:
-  /// **'Örn: VIP2026'**
+  /// **'Kupon kodu'**
   String get kuponKoduHint;
 
   /// No description provided for @kuponKullanButon.
@@ -3391,31 +3391,31 @@ abstract class AppLocalizations {
   /// No description provided for @kuponBasariliMesaji.
   ///
   /// In tr, this message translates to:
-  /// **'🎉 Kupon başarıyla tanımlandı! Haklarınız yüklendi.'**
+  /// **'Kupon etkinleştirildi.'**
   String get kuponBasariliMesaji;
 
   /// No description provided for @kuponKullanilmisUyari.
   ///
   /// In tr, this message translates to:
-  /// **'⚠️ Bu kupon kodunu daha önce kullandınız!'**
+  /// **'Bu kupon kodunu daha önce kullandınız'**
   String get kuponKullanilmisUyari;
 
   /// No description provided for @kuponGecersizUyari.
   ///
   /// In tr, this message translates to:
-  /// **'❌ Geçersiz kupon kodu! Lütfen tekrar deneyin.'**
+  /// **'Geçersiz kupon kodu Lütfen tekrar deneyin.'**
   String get kuponGecersizUyari;
 
   /// No description provided for @sinirsizIslemHakkiBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Sınırsız İşlem Hakkı 👑'**
+  /// **'Sınırsız Hak'**
   String get sinirsizIslemHakkiBaslik;
 
   /// No description provided for @kalanHakkinizBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Kalan Hakkınız: {hak} ⚡'**
+  /// **'Kalan Hakkınız: {hak}'**
   String kalanHakkinizBaslik(Object hak);
 
   /// No description provided for @sinirsizHakAciklama.
@@ -3427,7 +3427,7 @@ abstract class AppLocalizations {
   /// No description provided for @gunlukHakAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'Günlük haklarınız her gün 00:00\'da yenilenir. Daha fazla hak için reklam izleyebilir veya kupon kullanabilirsiniz.'**
+  /// **'Günlük haklarınız her gün 00:00\'da yenilenir. Daha fazla hak için reklam izleyebilirsiniz.'**
   String get gunlukHakAciklama;
 
   /// No description provided for @kuponKullan.
@@ -3439,43 +3439,43 @@ abstract class AppLocalizations {
   /// No description provided for @hakEklendiTebrikler.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! +2 İşlem hakkı tanımlandı. ✨'**
-  String get hakEklendiTebrikler;
+  /// **'Tebrikler +{adet} hak eklendi.'**
+  String hakEklendiTebrikler(int adet);
 
   /// No description provided for @gardirobunDolduTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Gardırobun Doldu!'**
+  /// **'Gardırobun Doldu'**
   String get gardirobunDolduTitle;
 
   /// No description provided for @gardirobunDolduIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Mevcut limitin olan {limit} kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +2 kıyafet yükleme alanı eklemek ister misin? 👕'**
-  String gardirobunDolduIcerik(Object limit);
+  /// **'Mevcut limitin olan {limit} kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +{adet} kıyafet yükleme alanı eklemek ister misin?'**
+  String gardirobunDolduIcerik(int limit, int adet);
 
   /// No description provided for @reklamIzleSlotEkle.
   ///
   /// In tr, this message translates to:
-  /// **'Reklam İzle (+2 Slot)'**
-  String get reklamIzleSlotEkle;
+  /// **'Reklam İzle (+{adet} Kıyafet Alanı)'**
+  String reklamIzleSlotEkle(int adet);
 
   /// No description provided for @yeniSlotEklendiTebrikler.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler! Gardırobuna +2 yeni kıyafet alanı eklendi. 🎉'**
-  String get yeniSlotEklendiTebrikler;
+  /// **'Tebrikler Gardırobuna +{adet} yeni kıyafet alanı eklendi.'**
+  String yeniSlotEklendiTebrikler(int adet);
 
   /// No description provided for @gunlukHakBittiTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Günlük Hakkın Bitti!'**
+  /// **'Günlük Hakkın Bitti'**
   String get gunlukHakBittiTitle;
 
   /// No description provided for @gunlukHakBittiIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek veya kupon girerek yeni haklar kazanabilirsin! 🛍️'**
+  /// **'Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek yeni haklar kazanabilirsin'**
   String get gunlukHakBittiIcerik;
 
   /// No description provided for @kuponGir.
@@ -3487,7 +3487,7 @@ abstract class AppLocalizations {
   /// No description provided for @anaSemsiyeBildirimBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Şemsiyeni Unutma! ☔'**
+  /// **'Şemsiyeni Unutma'**
   String get anaSemsiyeBildirimBaslik;
 
   /// No description provided for @anaSemsiyeBildirimIcerik.
@@ -3499,19 +3499,19 @@ abstract class AppLocalizations {
   /// No description provided for @anaCamasirGunuBildirimBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Çamaşır Günü! 🧺'**
+  /// **'Çamaşır Günü'**
   String get anaCamasirGunuBildirimBaslik;
 
   /// No description provided for @anaCamasirGunuBildirimIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Sepetinde yıkanmayı bekleyen kıyafetler birikti. Makineyi çalıştırma vakti!'**
+  /// **'Sepetinde yıkanmayı bekleyen kıyafetler birikti. Makineyi çalıştırma vakti'**
   String get anaCamasirGunuBildirimIcerik;
 
   /// No description provided for @chatZorunluParcaMesaji.
   ///
   /// In tr, this message translates to:
-  /// **'✨ Bu parçayla ne giyebilirim? ({parca})'**
+  /// **'Bu parçayla ne giyebilirim? ({parca})'**
   String chatZorunluParcaMesaji(Object parca);
 
   /// No description provided for @chatKombinHazirBaslik.
@@ -3589,19 +3589,19 @@ abstract class AppLocalizations {
   /// No description provided for @rehberAnladimBasla.
   ///
   /// In tr, this message translates to:
-  /// **'Anladım, Başla!'**
+  /// **'Anladım, Başla'**
   String get rehberAnladimBasla;
 
   /// No description provided for @rehberSonrakiAdim.
   ///
   /// In tr, this message translates to:
-  /// **'Sonraki Adım ➔'**
+  /// **'Sonraki Adım'**
   String get rehberSonrakiAdim;
 
   /// No description provided for @rehberGardirobuDijitallestirBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'📸 Gardırobunu Dijitalleştir'**
+  /// **'Gardırobunu Dijitalleştir'**
   String get rehberGardirobuDijitallestirBaslik;
 
   /// No description provided for @rehberGardirobuDijitallestirAciklama.
@@ -3613,7 +3613,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberSesliAsistanBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🎙️ Sesli Stil Asistanı'**
+  /// **'Sesli Stil Asistanı'**
   String get rehberSesliAsistanBaslik;
 
   /// No description provided for @rehberSesliAsistanAciklama.
@@ -3625,7 +3625,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberAiStilistBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'✨ AI Stilist Önerileri'**
+  /// **'AI Stilist Önerileri'**
   String get rehberAiStilistBaslik;
 
   /// No description provided for @rehberAiStilistAciklama.
@@ -3637,7 +3637,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberAyarlarBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'⚙️ Kişiselleştirme & Ayarlar'**
+  /// **'Kişiselleştirme & Ayarlar'**
   String get rehberAyarlarBaslik;
 
   /// No description provided for @rehberAyarlarAciklama.
@@ -3649,7 +3649,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberNavGardirobumBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'👔 Gardırobum'**
+  /// **'Gardırobum'**
   String get rehberNavGardirobumBaslik;
 
   /// No description provided for @rehberNavGardirobumAciklama.
@@ -3661,7 +3661,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberNavHaftalikBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'📅 Haftalık Planlayıcı'**
+  /// **'Haftalık Planlayıcı'**
   String get rehberNavHaftalikBaslik;
 
   /// No description provided for @rehberNavHaftalikAciklama.
@@ -3673,7 +3673,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberNavDolaptanBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🤖 AI Dolaptan Kombin'**
+  /// **'AI Dolaptan Kombin'**
   String get rehberNavDolaptanBaslik;
 
   /// No description provided for @rehberNavDolaptanAciklama.
@@ -3685,7 +3685,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberNavKendiBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🎨 Kendi Kombinini Yap'**
+  /// **'Kendi Kombinini Yap'**
   String get rehberNavKendiBaslik;
 
   /// No description provided for @rehberNavKendiAciklama.
@@ -3697,7 +3697,7 @@ abstract class AppLocalizations {
   /// No description provided for @rehberNavProfilBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'📊 Analiz & Çamaşır Sepeti'**
+  /// **'Analiz & Çamaşır Sepeti'**
   String get rehberNavProfilBaslik;
 
   /// No description provided for @rehberNavProfilAciklama.
@@ -3721,7 +3721,7 @@ abstract class AppLocalizations {
   /// No description provided for @bildirimGunaydinBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Günaydın! ☀️'**
+  /// **'Günaydın'**
   String get bildirimGunaydinBaslik;
 
   /// No description provided for @bildirimGunaydinIcerik.
@@ -3847,7 +3847,7 @@ abstract class AppLocalizations {
   /// No description provided for @gardirobumBosBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'Dolabın Çok Boş!'**
+  /// **'Dolabın Çok Boş'**
   String get gardirobumBosBaslik;
 
   /// No description provided for @gardirobumGizlendiBaslik.
@@ -3949,7 +3949,7 @@ abstract class AppLocalizations {
   /// No description provided for @gardirobumHakEklendiMesaj.
   ///
   /// In tr, this message translates to:
-  /// **'Tebrikler, yeni kombin hakkı kazanıldı!'**
+  /// **'Tebrikler, yeni hak kazandın'**
   String get gardirobumHakEklendiMesaj;
 
   /// No description provided for @ayarlariAc.
@@ -4015,7 +4015,7 @@ abstract class AppLocalizations {
   /// No description provided for @gardirobumHenuzYokEkle.
   ///
   /// In tr, this message translates to:
-  /// **'Henüz kıyafet eklenmedi. Hemen ekleyin!'**
+  /// **'Henüz kıyafet eklenmedi. Hemen ekleyin'**
   String get gardirobumHenuzYokEkle;
 
   /// No description provided for @gardirobumMaksFotografUyari.
@@ -4057,31 +4057,31 @@ abstract class AppLocalizations {
   /// No description provided for @kombinSohbetKarsilama.
   ///
   /// In tr, this message translates to:
-  /// **'{kombin} kombinini birlikte inceleyelim! Renk uyumu, hava durumu ya da alternatif parçalar hakkında ne istersen sorabilirsin. ✨'**
+  /// **'{kombin} kombinini birlikte inceleyelim Renk uyumu, hava durumu ya da alternatif parçalar hakkında ne istersen sorabilirsin.'**
   String kombinSohbetKarsilama(Object kombin);
 
   /// No description provided for @kombinSohbetOneriUyum.
   ///
   /// In tr, this message translates to:
-  /// **'🤔 Bu kombin neden uyumlu?'**
+  /// **'Bu kombin neden uyumlu?'**
   String get kombinSohbetOneriUyum;
 
   /// No description provided for @kombinSohbetOneriAlternatif.
   ///
   /// In tr, this message translates to:
-  /// **'👟 Alternatif parça öner'**
+  /// **'Alternatif parça öner'**
   String get kombinSohbetOneriAlternatif;
 
   /// No description provided for @kombinSohbetOneriHava.
   ///
   /// In tr, this message translates to:
-  /// **'🌦️ Hava değişirse ne giyerim?'**
+  /// **'Hava değişirse ne giyerim?'**
   String get kombinSohbetOneriHava;
 
   /// No description provided for @kombinSohbetOneriAksesuar.
   ///
   /// In tr, this message translates to:
-  /// **'💍 Aksesuar önerisi ver'**
+  /// **'Aksesuar önerisi ver'**
   String get kombinSohbetOneriAksesuar;
 
   /// No description provided for @kombinSohbetAltBaslikAnlik.
@@ -4093,13 +4093,13 @@ abstract class AppLocalizations {
   /// No description provided for @chatKirliSepetiBos.
   ///
   /// In tr, this message translates to:
-  /// **'🧺 Kirli sepetin boş! Tüm parçaların kullanıma hazır, istediğin zaman kombin hazırlayabilirim. ✨'**
+  /// **'Kirli sepetin boş Tüm parçaların kullanıma hazır, istediğin zaman kombin hazırlayabilirim.'**
   String get chatKirliSepetiBos;
 
   /// No description provided for @chatKirliSepetiDoluBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🧺 Kirli sepetinde **{sayi}** parça yıkanmayı bekliyor:'**
+  /// **'Kirli sepetinde **{sayi}** parça yıkanmayı bekliyor:'**
   String chatKirliSepetiDoluBaslik(Object sayi);
 
   /// No description provided for @chatKirliSepetiDoluNot.
@@ -4117,13 +4117,13 @@ abstract class AppLocalizations {
   /// No description provided for @analitikVerileriPaylasAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'Uygulama deneyimini iyileştirmek için anonim kullanım verileri gönderilir. Kapatırsanız bu cihazdaki analitik veriler silinir.'**
+  /// **'Analiz verileri, uygulama kullanımını anlamak ve deneyimi iyileştirmek için Firebase Analytics\'e gönderilir. Bu isteğe bağlıdır; istediğiniz zaman kapatabilirsiniz.'**
   String get analitikVerileriPaylasAciklama;
 
   /// No description provided for @chatKarsilamaHavaYok.
   ///
   /// In tr, this message translates to:
-  /// **'Selam! 👋 Senin tarzına uygun harika bir kombin hazırlayalım mı? ✨'**
+  /// **'Selam Senin tarzına uygun harika bir kombin hazırlayalım mı?'**
   String get chatKarsilamaHavaYok;
 
   /// No description provided for @premiumBaslik.
@@ -5005,19 +5005,19 @@ abstract class AppLocalizations {
   /// No description provided for @kombinSonucUsta.
   ///
   /// In tr, this message translates to:
-  /// **'Stil Ustası! 🏆'**
+  /// **'Stil Ustası'**
   String get kombinSonucUsta;
 
   /// No description provided for @kombinSonucUstaMesaj.
   ///
   /// In tr, this message translates to:
-  /// **'Renk ve uyum hissini ödüllemeye değer!'**
+  /// **'Renk ve uyum hissini ödüllemeye değer'**
   String get kombinSonucUstaMesaj;
 
   /// No description provided for @kombinSonucIyi.
   ///
   /// In tr, this message translates to:
-  /// **'İyi Gidiyorsun! 👍'**
+  /// **'İyi Gidiyorsun'**
   String get kombinSonucIyi;
 
   /// No description provided for @kombinSonucIyiMesaj.
@@ -5029,7 +5029,7 @@ abstract class AppLocalizations {
   /// No description provided for @kombinSonucPratik.
   ///
   /// In tr, this message translates to:
-  /// **'Pratik Lazım 📚'**
+  /// **'Pratik Lazım'**
   String get kombinSonucPratik;
 
   /// No description provided for @kombinSonucPratikMesaj.
@@ -5047,7 +5047,7 @@ abstract class AppLocalizations {
   /// No description provided for @degerlendirmeIcerik.
   ///
   /// In tr, this message translates to:
-  /// **'Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek! ⭐ Değerlendirme yapanlara +3 hak hediye!'**
+  /// **'Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek'**
   String get degerlendirmeIcerik;
 
   /// No description provided for @degerlendirmeEvet.
@@ -5071,7 +5071,7 @@ abstract class AppLocalizations {
   /// No description provided for @yakindaAciklama.
   ///
   /// In tr, this message translates to:
-  /// **'Bu özellik üzerinde çalışıyoruz, çok yakında sizlerle!'**
+  /// **'Bu özellik üzerinde çalışıyoruz, çok yakında sizlerle'**
   String get yakindaAciklama;
 
   /// No description provided for @aiOneriHazirlaniyor.
@@ -5143,7 +5143,7 @@ abstract class AppLocalizations {
   /// No description provided for @dilSecimBaslik.
   ///
   /// In tr, this message translates to:
-  /// **'🌐 Dil Seçimi'**
+  /// **'Dil Seçimi'**
   String get dilSecimBaslik;
 
   /// No description provided for @dilSecenekOtomatik.
@@ -5305,7 +5305,7 @@ abstract class AppLocalizations {
   /// No description provided for @stilistHafizasiTemizlendi.
   ///
   /// In tr, this message translates to:
-  /// **'Hafıza temizlendi 🧠'**
+  /// **'Hafıza temizlendi'**
   String get stilistHafizasiTemizlendi;
 
   /// No description provided for @gardirobumArkaPlanSilinemediBaslik.
@@ -5349,6 +5349,1212 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Gölge ve desenli zeminden kaçın.'**
   String get cekimIpucu3;
+
+  /// No description provided for @kullanimKosullariOnayMetni.
+  ///
+  /// In tr, this message translates to:
+  /// **'{terms} okudum ve onaylıyorum.'**
+  String kullanimKosullariOnayMetni(String terms);
+
+  /// No description provided for @kendiTasarimimParcaSec.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parça seç'**
+  String get kendiTasarimimParcaSec;
+
+  /// No description provided for @hesapSilmeBasarisiz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap silme tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.'**
+  String get hesapSilmeBasarisiz;
+
+  /// No description provided for @bildirimTamZamanAyar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tam Zamanlı Bildirim'**
+  String get bildirimTamZamanAyar;
+
+  /// No description provided for @bildirimTamZamanAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bildirimlerin tam seçtiğin saatte gelmesi için Android\'de \'Alarms & reminders\' iznini ver.'**
+  String get bildirimTamZamanAciklama;
+
+  /// No description provided for @bildirimTamZamanAcik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tam zamanlı bildirimler açık.'**
+  String get bildirimTamZamanAcik;
+
+  /// No description provided for @premiumSatinAlmaDogrulamaHazirDegil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu platform için güvenli mağaza doğrulaması henüz hazır değil. Satın alma geçici olarak kullanılamıyor.'**
+  String get premiumSatinAlmaDogrulamaHazirDegil;
+
+  /// No description provided for @islemIptalEdildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'İşlem iptal edildi. Şimdiye kadar eklenen kıyafetler gardırobunda duruyor.'**
+  String get islemIptalEdildi;
+
+  /// No description provided for @islemIptalEdiliyor.
+  ///
+  /// In tr, this message translates to:
+  /// **'İptal ediliyor…'**
+  String get islemIptalEdiliyor;
+
+  /// No description provided for @sifreGoster.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifreyi göster'**
+  String get sifreGoster;
+
+  /// No description provided for @sifreGizle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifreyi gizle'**
+  String get sifreGizle;
+
+  /// No description provided for @gunSayisiAzalt.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gün sayısını azalt'**
+  String get gunSayisiAzalt;
+
+  /// No description provided for @gunSayisiArttir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gün sayısını artır'**
+  String get gunSayisiArttir;
+
+  /// No description provided for @chatGorseliKaldir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Görseli kaldır'**
+  String get chatGorseliKaldir;
+
+  /// No description provided for @kesimUyarisiBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kesim hatalı olabilir'**
+  String get kesimUyarisiBaslik;
+
+  /// No description provided for @kesimUyarisiAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafet zemine çok yakın renkte. Arka plan silme bu durumda zorlanır: zeminden parça kalabilir ya da kıyafetin bir bölümü kesilebilir. Farklı renkte bir zeminde tekrar çekmek genellikle çözer.'**
+  String get kesimUyarisiAciklama;
+
+  /// No description provided for @kesimUyarisiTekrarCek.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tekrar çek'**
+  String get kesimUyarisiTekrarCek;
+
+  /// No description provided for @kesimUyarisiYineDeKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yine de kaydet'**
+  String get kesimUyarisiYineDeKaydet;
+
+  /// No description provided for @gizlilikMadde5Baslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'5. Yapay Zekâ ile Görsel Analizi'**
+  String get gizlilikMadde5Baslik;
+
+  /// No description provided for @gizlilikMadde5Icerik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz.'**
+  String get gizlilikMadde5Icerik;
+
+  /// No description provided for @bugunSekmesi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün'**
+  String get bugunSekmesi;
+
+  /// No description provided for @bugunBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün'**
+  String get bugunBaslik;
+
+  /// No description provided for @bugunGunaydin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günaydın'**
+  String get bugunGunaydin;
+
+  /// No description provided for @bugunIyiGunler.
+  ///
+  /// In tr, this message translates to:
+  /// **'İyi günler'**
+  String get bugunIyiGunler;
+
+  /// No description provided for @bugunIyiAksamlar.
+  ///
+  /// In tr, this message translates to:
+  /// **'İyi akşamlar'**
+  String get bugunIyiAksamlar;
+
+  /// No description provided for @bugunBugununKombini.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünün kombini'**
+  String get bugunBugununKombini;
+
+  /// No description provided for @bugunNedenBuKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Neden bu kombin?'**
+  String get bugunNedenBuKombin;
+
+  /// No description provided for @bugunRenkUyumu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Renk uyumu'**
+  String get bugunRenkUyumu;
+
+  /// No description provided for @kombinHedefiBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin hedefin'**
+  String get kombinHedefiBaslik;
+
+  /// No description provided for @kombinHedefiAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni kombin ve haftalık plan önerilerinde neyi öne çıkaralım?'**
+  String get kombinHedefiAciklama;
+
+  /// No description provided for @kombinHedefiDenge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dengeli öneriler'**
+  String get kombinHedefiDenge;
+
+  /// No description provided for @kombinHedefiRenk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Renkleri keşfet'**
+  String get kombinHedefiRenk;
+
+  /// No description provided for @kombinHedefiUnutulan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Az giydiklerimi kullan'**
+  String get kombinHedefiUnutulan;
+
+  /// No description provided for @kombinHedefiCokYonlu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çok yönlü parçalar'**
+  String get kombinHedefiCokYonlu;
+
+  /// No description provided for @bugunHizliFotograf.
+  ///
+  /// In tr, this message translates to:
+  /// **'Fotoğrafla ekle'**
+  String get bugunHizliFotograf;
+
+  /// No description provided for @bugunHizliKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin üret'**
+  String get bugunHizliKombin;
+
+  /// No description provided for @bugunHizliStilist.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stiliste sor'**
+  String get bugunHizliStilist;
+
+  /// No description provided for @bugunHizliPlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftayı planla'**
+  String get bugunHizliPlan;
+
+  /// No description provided for @bugunHazirlaniyor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombinler hazırlanıyor…'**
+  String get bugunHazirlaniyor;
+
+  /// No description provided for @bugunBosBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabın henüz boş'**
+  String get bugunBosBaslik;
+
+  /// No description provided for @bugunBosAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'İlk parçanı ekle; her sabah burada yeni kombin önerileri olacak.'**
+  String get bugunBosAciklama;
+
+  /// No description provided for @bugunYenile.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yenile'**
+  String get bugunYenile;
+
+  /// No description provided for @bugunGiydim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giydim'**
+  String get bugunGiydim;
+
+  /// No description provided for @bugunKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get bugunKaydet;
+
+  /// No description provided for @bugunSeninIcin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Senin için'**
+  String get bugunSeninIcin;
+
+  /// No description provided for @bugunGiyilmediRafi.
+  ///
+  /// In tr, this message translates to:
+  /// **'2 haftadır giymediklerin'**
+  String get bugunGiyilmediRafi;
+
+  /// No description provided for @bugunYeniRafi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni eklenenler'**
+  String get bugunYeniRafi;
+
+  /// No description provided for @bugunHavaRafi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugüne uygun'**
+  String get bugunHavaRafi;
+
+  /// No description provided for @bugunRafIpucu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dokun: giydim, kombin kur veya dolapta aç'**
+  String get bugunRafIpucu;
+
+  /// No description provided for @duelloSekmesi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düello'**
+  String get duelloSekmesi;
+
+  /// No description provided for @duelloBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin Düellosu'**
+  String get duelloBaslik;
+
+  /// No description provided for @duelloAltBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'İki kombinden birini seç, stil gözünü test et.'**
+  String get duelloAltBaslik;
+
+  /// No description provided for @duelloBaslat.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düelloya başla'**
+  String get duelloBaslat;
+
+  /// No description provided for @duelloNasilOynanir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nasıl oynanır?'**
+  String get duelloNasilOynanir;
+
+  /// No description provided for @duelloKural1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her turda iki kombin görürsün.'**
+  String get duelloKural1;
+
+  /// No description provided for @duelloKural2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soruya göre doğru olanı seç.'**
+  String get duelloKural2;
+
+  /// No description provided for @duelloKural3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Doğru seçim seri ve puan kazandırır.'**
+  String get duelloKural3;
+
+  /// No description provided for @duelloEnIyi.
+  ///
+  /// In tr, this message translates to:
+  /// **'En iyi'**
+  String get duelloEnIyi;
+
+  /// No description provided for @duelloSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seri'**
+  String get duelloSeri;
+
+  /// No description provided for @duelloGunSerisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{gun} gün'**
+  String duelloGunSerisi(int gun);
+
+  /// No description provided for @duelloSeviye.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seviye'**
+  String get duelloSeviye;
+
+  /// No description provided for @duelloSeviyeDegeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seviye {seviye}'**
+  String duelloSeviyeDegeri(int seviye);
+
+  /// No description provided for @duelloXp.
+  ///
+  /// In tr, this message translates to:
+  /// **'{xp} XP'**
+  String duelloXp(int xp);
+
+  /// No description provided for @duelloTur.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tur {tur}/{toplam}'**
+  String duelloTur(int tur, int toplam);
+
+  /// No description provided for @duelloOlcuRenk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hangisinin renkleri daha uyumlu?'**
+  String get duelloOlcuRenk;
+
+  /// No description provided for @duelloOlcuHava.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hangisi bugünkü havaya daha uygun?'**
+  String get duelloOlcuHava;
+
+  /// No description provided for @duelloDokun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bir kombine dokun'**
+  String get duelloDokun;
+
+  /// No description provided for @duelloDogru.
+  ///
+  /// In tr, this message translates to:
+  /// **'Doğru'**
+  String get duelloDogru;
+
+  /// No description provided for @duelloYanlis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Olmadı'**
+  String get duelloYanlis;
+
+  /// No description provided for @duelloDevam.
+  ///
+  /// In tr, this message translates to:
+  /// **'Devam'**
+  String get duelloDevam;
+
+  /// No description provided for @duelloSonuc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sonucu gör'**
+  String get duelloSonuc;
+
+  /// No description provided for @duelloBitti.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düello bitti'**
+  String get duelloBitti;
+
+  /// No description provided for @duelloSkor.
+  ///
+  /// In tr, this message translates to:
+  /// **'{dogru}/{toplam} doğru'**
+  String duelloSkor(int dogru, int toplam);
+
+  /// No description provided for @duelloYeniden.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tekrar oyna'**
+  String get duelloYeniden;
+
+  /// No description provided for @duelloBugune.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün\'e dön'**
+  String get duelloBugune;
+
+  /// No description provided for @duelloEnIyiSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'En iyi seri: {seri}'**
+  String duelloEnIyiSeri(int seri);
+
+  /// No description provided for @duelloPaletNotu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu turda renk kartları var. Dolabına parça ekledikçe düellolar kendi kıyafetlerinle oynanır.'**
+  String get duelloPaletNotu;
+
+  /// No description provided for @duelloDolapEkle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolaba parça ekle'**
+  String get duelloDolapEkle;
+
+  /// No description provided for @duelloBugunOynadi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün oynadın. Yarın seriyi sürdür.'**
+  String get duelloBugunOynadi;
+
+  /// No description provided for @duelloSebepNotr.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nötr ve toprak tonlar birbirini dengeliyor.'**
+  String get duelloSebepNotr;
+
+  /// No description provided for @duelloSebepMonokrom.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tek renk ailesinde kalarak bütünlük sağlıyor.'**
+  String get duelloSebepMonokrom;
+
+  /// No description provided for @duelloSebepAnalog.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yakın tonlar yumuşak bir geçiş oluşturuyor.'**
+  String get duelloSebepAnalog;
+
+  /// No description provided for @duelloSebepVurgu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nötr bir zeminde tek vurgu rengi var.'**
+  String get duelloSebepVurgu;
+
+  /// No description provided for @duelloSebepZit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Karşıt renkler dengeli kullanılmış.'**
+  String get duelloSebepZit;
+
+  /// No description provided for @duelloSebepDagink.
+  ///
+  /// In tr, this message translates to:
+  /// **'İki uzak renk arasında köprü yok.'**
+  String get duelloSebepDagink;
+
+  /// No description provided for @duelloSebepCokRenk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Üç ayrı canlı renk birbiriyle yarışıyor.'**
+  String get duelloSebepCokRenk;
+
+  /// No description provided for @duelloSebepHavaUygun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parçalar bugünkü sıcaklığa uygun.'**
+  String get duelloSebepHavaUygun;
+
+  /// No description provided for @duelloSebepHavaAgir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kalın parçalar bu hava için fazla.'**
+  String get duelloSebepHavaAgir;
+
+  /// No description provided for @duelloSebepHavaHafif.
+  ///
+  /// In tr, this message translates to:
+  /// **'İnce parçalar bu hava için yetersiz.'**
+  String get duelloSebepHavaHafif;
+
+  /// No description provided for @bildirimSabahKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünkü kombinin hazır: {kombin}. Görmek için dokun.'**
+  String bildirimSabahKombin(String kombin);
+
+  /// No description provided for @bildirimPlanBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarınki kombinin hazır'**
+  String get bildirimPlanBaslik;
+
+  /// No description provided for @bildirimPlanKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarın için: {kombin}. Şimdi bak, sabah acele etme.'**
+  String bildirimPlanKombin(String kombin);
+
+  /// No description provided for @bildirimPlanBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarın için henüz kombin yok. 2 dakikada planla.'**
+  String get bildirimPlanBos;
+
+  /// No description provided for @planHatirlatimiAyar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Akşam plan hatırlatıcısı'**
+  String get planHatirlatimiAyar;
+
+  /// No description provided for @planHatirlatimiAyarAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yarınki kombinini akşam 21:00\'de hatırlatır'**
+  String get planHatirlatimiAyarAciklama;
+
+  /// No description provided for @bugunPaylas.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombini paylaş'**
+  String get bugunPaylas;
+
+  /// No description provided for @bugunPaylasMetni.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünkü kombini FitCheck\'te hazırladım'**
+  String get bugunPaylasMetni;
+
+  /// No description provided for @bugunPaylasHata.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paylaşım açılamadı. Tekrar dene.'**
+  String get bugunPaylasHata;
+
+  /// No description provided for @bugunParcaGiydim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün giydim'**
+  String get bugunParcaGiydim;
+
+  /// No description provided for @bugunParcaKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bununla kombin kur'**
+  String get bugunParcaKombin;
+
+  /// No description provided for @bugunParcaDolapta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolapta aç'**
+  String get bugunParcaDolapta;
+
+  /// No description provided for @bugunParcaGiydimIsaretlendi.
+  ///
+  /// In tr, this message translates to:
+  /// **'«{parca}» bugün giydim olarak işaretlendi.'**
+  String bugunParcaGiydimIsaretlendi(String parca);
+
+  /// No description provided for @stilGunluguBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stil Günlüğüm'**
+  String get stilGunluguBaslik;
+
+  /// No description provided for @stilGunluguTakvim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takvim'**
+  String get stilGunluguTakvim;
+
+  /// No description provided for @stilGunluguGunluk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük'**
+  String get stilGunluguGunluk;
+
+  /// No description provided for @stilGunluguRapor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rapor'**
+  String get stilGunluguRapor;
+
+  /// No description provided for @stilGunluguGiyildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giyildi'**
+  String get stilGunluguGiyildi;
+
+  /// No description provided for @stilGunluguPlanli.
+  ///
+  /// In tr, this message translates to:
+  /// **'Planlandı'**
+  String get stilGunluguPlanli;
+
+  /// No description provided for @stilGunluguGunBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu gün için kayıt yok'**
+  String get stilGunluguGunBos;
+
+  /// No description provided for @stilGunluguRaporOzet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta {kombin} kombin giyindin'**
+  String stilGunluguRaporOzet(String kombin);
+
+  /// No description provided for @stilGunluguRaporGecenHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geçen haftaya göre {fark}'**
+  String stilGunluguRaporGecenHafta(String fark);
+
+  /// No description provided for @stilGunluguRaporKullanim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolap kullanımı'**
+  String get stilGunluguRaporKullanim;
+
+  /// No description provided for @stilGunluguRaporEnCok.
+  ///
+  /// In tr, this message translates to:
+  /// **'En çok giyilen'**
+  String get stilGunluguRaporEnCok;
+
+  /// No description provided for @stilGunluguRaporSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük seri'**
+  String get stilGunluguRaporSeri;
+
+  /// No description provided for @stilGunluguRaporHicGiyilmemis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hiç giyilmemiş'**
+  String get stilGunluguRaporHicGiyilmemis;
+
+  /// No description provided for @stilGunluguRaporPaylas.
+  ///
+  /// In tr, this message translates to:
+  /// **'Raporu paylaş'**
+  String get stilGunluguRaporPaylas;
+
+  /// No description provided for @stilGunluguRaporPaylasMetni.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftalık stil raporum: {ozet}'**
+  String stilGunluguRaporPaylasMetni(String ozet);
+
+  /// No description provided for @stilGunluguRaporBos.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta henüz kombin kaydın yok. Giyildiğinde burada görünecek.'**
+  String get stilGunluguRaporBos;
+
+  /// No description provided for @seyahatBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat Modu'**
+  String get seyahatBaslik;
+
+  /// No description provided for @seyahatGunSayisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gün sayısı'**
+  String get seyahatGunSayisi;
+
+  /// No description provided for @seyahatHava.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hava'**
+  String get seyahatHava;
+
+  /// No description provided for @seyahatHavaSicak.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sıcak'**
+  String get seyahatHavaSicak;
+
+  /// No description provided for @seyahatHavaIliman.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ilıman'**
+  String get seyahatHavaIliman;
+
+  /// No description provided for @seyahatHavaSoguk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soğuk'**
+  String get seyahatHavaSoguk;
+
+  /// No description provided for @seyahatAmac.
+  ///
+  /// In tr, this message translates to:
+  /// **'Amaç'**
+  String get seyahatAmac;
+
+  /// No description provided for @seyahatAmacGunluk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Günlük'**
+  String get seyahatAmacGunluk;
+
+  /// No description provided for @seyahatAmacIs.
+  ///
+  /// In tr, this message translates to:
+  /// **'İş'**
+  String get seyahatAmacIs;
+
+  /// No description provided for @seyahatAmacOzel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Özel'**
+  String get seyahatAmacOzel;
+
+  /// No description provided for @seyahatPlanBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Valiz Planı'**
+  String get seyahatPlanBaslik;
+
+  /// No description provided for @seyahatKombine.
+  ///
+  /// In tr, this message translates to:
+  /// **'{adet} kombin çıkar'**
+  String seyahatKombine(String adet);
+
+  /// No description provided for @seyahatDiger.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dış giyim'**
+  String get seyahatDiger;
+
+  /// No description provided for @seyahatEksikUst.
+  ///
+  /// In tr, this message translates to:
+  /// **'Temiz üst giyim yok'**
+  String get seyahatEksikUst;
+
+  /// No description provided for @seyahatEksikAlt.
+  ///
+  /// In tr, this message translates to:
+  /// **'Temiz alt giyim yok'**
+  String get seyahatEksikAlt;
+
+  /// No description provided for @seyahatEksikAyakkabi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ayakkabı yok'**
+  String get seyahatEksikAyakkabi;
+
+  /// No description provided for @seyahatEksikKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'{gun} gün için kombin yetmiyor'**
+  String seyahatEksikKombin(String gun);
+
+  /// No description provided for @seyahatPaylas.
+  ///
+  /// In tr, this message translates to:
+  /// **'Listeyi paylaş'**
+  String get seyahatPaylas;
+
+  /// No description provided for @seyahatPaylasMetni.
+  ///
+  /// In tr, this message translates to:
+  /// **'FitCheck valiz planım'**
+  String get seyahatPaylasMetni;
+
+  /// No description provided for @geriAl.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geri al'**
+  String get geriAl;
+
+  /// No description provided for @stilGunluguRaporSayiEtiketi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta giyilen kombin'**
+  String get stilGunluguRaporSayiEtiketi;
+
+  /// No description provided for @stilGunluguRaporDortHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 4 hafta'**
+  String get stilGunluguRaporDortHafta;
+
+  /// No description provided for @stilGunluguRaporEnCokParcalar.
+  ///
+  /// In tr, this message translates to:
+  /// **'En çok giydiklerin'**
+  String get stilGunluguRaporEnCokParcalar;
+
+  /// No description provided for @navKombin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin'**
+  String get navKombin;
+
+  /// No description provided for @navProfil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profil'**
+  String get navProfil;
+
+  /// No description provided for @dolapAra.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabında ara'**
+  String get dolapAra;
+
+  /// No description provided for @dolapEslesmeYok.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aramanla eşleşen parça yok.'**
+  String get dolapEslesmeYok;
+
+  /// No description provided for @dolapAramayiTemizle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aramayı temizle'**
+  String get dolapAramayiTemizle;
+
+  /// No description provided for @planGuneKombinSec.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu güne kombin seç'**
+  String get planGuneKombinSec;
+
+  /// No description provided for @planKombinSec.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin seç'**
+  String get planKombinSec;
+
+  /// No description provided for @planDegistir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değiştir'**
+  String get planDegistir;
+
+  /// No description provided for @planKaldir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaldır'**
+  String get planKaldir;
+
+  /// No description provided for @planFavoriYok.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz favori kombinin yok.'**
+  String get planFavoriYok;
+
+  /// No description provided for @planKombinOlustur.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin oluştur'**
+  String get planKombinOlustur;
+
+  /// No description provided for @planGuneEklendi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kombin güne eklendi'**
+  String get planGuneEklendi;
+
+  /// No description provided for @planKaldirildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Plan kaldırıldı'**
+  String get planKaldirildi;
+
+  /// No description provided for @planHaftalikProgram.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftalık program'**
+  String get planHaftalikProgram;
+
+  /// No description provided for @planParcaSayisi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} parça'**
+  String planParcaSayisi(int count);
+
+  /// No description provided for @planBugun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün planın'**
+  String get planBugun;
+
+  /// No description provided for @planTakvimdenDegistir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takvimden değiştir'**
+  String get planTakvimdenDegistir;
+
+  /// No description provided for @planFavorilerim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Favorilerim'**
+  String get planFavorilerim;
+
+  /// No description provided for @planSonGiyilenler.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son giyilenler'**
+  String get planSonGiyilenler;
+
+  /// No description provided for @izinGerekceKameraBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kamerayla kıyafet ekle'**
+  String get izinGerekceKameraBaslik;
+
+  /// No description provided for @izinGerekceKameraAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kıyafetlerini fotoğraf olarak eklemek için kamerayı kullanıyoruz. Fotoğraf cihazından çıkar; arka plan silme ve renk/stil analizi sunucu üzerinde yapılır, kalıcı olarak saklanmaz.'**
+  String get izinGerekceKameraAciklama;
+
+  /// No description provided for @izinGerekceSimdiDegil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şimdi değil'**
+  String get izinGerekceSimdiDegil;
+
+  /// No description provided for @planOneriler.
+  ///
+  /// In tr, this message translates to:
+  /// **'Öneriler'**
+  String get planOneriler;
+
+  /// No description provided for @bilgiVerimlilik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolap verimliliği, dolabındaki parçaların ne kadarının en az bir kez giyildiğini gösterir. %60 üzeri sağlıklı bir dolap için iyidir; daha düşükse bazı parçalar henüz kullanılmamış ya da fazla almışsındır.'**
+  String get bilgiVerimlilik;
+
+  /// No description provided for @bilgiStil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stil kimliğin, dolabındaki parçaların çoğunluğunun ortak özelliklerinden çıkarılır: renk, kategori ve tarz etiketi. Kombin önerileri bu profile göre sıralanır.'**
+  String get bilgiStil;
+
+  /// No description provided for @bilgiSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seri, üst üste giydiğin gün sayısıdır. Her «bugün giydim» işaretlemen seriye ekler; bir gün atlayınca seri sıfırlanır.'**
+  String get bilgiSeri;
+
+  /// No description provided for @bilgiSepet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çamaşır sepeti, giydiğin ama henüz yıkamak istediğin parçalardır. Sepete attığın parçalar bir sonraki kombin önerisinde kullanılmaz.'**
+  String get bilgiSepet;
+
+  /// No description provided for @bilgiRenkPaleti.
+  ///
+  /// In tr, this message translates to:
+  /// **'Renk paletin, dolabında en çok bulunan dört rengin dağılımını gösterir. Birbirine yakın tonlar kombinde daha uyumlu görünür.'**
+  String get bilgiRenkPaleti;
+
+  /// No description provided for @bilgiKategoriDagilimi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kategori dağılımı, dolabının üst, alt, ayakkabı ve aksesuar dengesini gösterir. Tek bir kategoride fazla parça varsa kombin kurmak zorlaşır.'**
+  String get bilgiKategoriDagilimi;
+
+  /// No description provided for @bilgiAnlikDurum.
+  ///
+  /// In tr, this message translates to:
+  /// **'Anlık durum, bulunduğun şehre göre hava durumuna ve dolabına uygun kısa bir öneri verir.'**
+  String get bilgiAnlikDurum;
+
+  /// No description provided for @bilgiSeriBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giyme Serisi'**
+  String get bilgiSeriBaslik;
+
+  /// No description provided for @bilgiKahramanlar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabının kahramanları, dolabında en çok giyilen parçalardır. Sık giyilen parçalar kombinlerde daha çok yer alır ve gardırobunu sürdürür.'**
+  String get bilgiKahramanlar;
+
+  /// No description provided for @bilgiUnutulanlar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir.'**
+  String get bilgiUnutulanlar;
+
+  /// No description provided for @bilgiBugunKombini.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünün kombini, dolabın ve hava durumu dikkate alınarak seçilir. Günde en fazla bir yapay zekâ isteği yapılır ve sonuç gün boyunca saklanır; yapay zekâ kullanılamazsa kural bazlı öneriler devreye girer.'**
+  String get bilgiBugunKombini;
+
+  /// No description provided for @bilgiRaporHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 7 günde kaydettiğin kombin sayısı. Her «bugün giydim» işaretlemen bir kombin olarak sayılır; aynı güne birden fazla kombin kaydedebilirsin.'**
+  String get bilgiRaporHafta;
+
+  /// No description provided for @bilgiRaporDortHafta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 4 haftanın haftalık kombin sayıları. Grafik, haftalık düzeni ve artıp azalışı gösterir.'**
+  String get bilgiRaporDortHafta;
+
+  /// No description provided for @bilgiRaporEnCokParcalar.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta en çok giyilen parçalar. Sık kullanılan parçalar gardırobunun omurgasıdır.'**
+  String get bilgiRaporEnCokParcalar;
+
+  /// No description provided for @bilgiRaporKullanim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabındaki parçaların ne kadarının son 7 günde kullanıldığı. Düşükse bazı parçalar henüz kombine girmemiş demektir.'**
+  String get bilgiRaporKullanim;
+
+  /// No description provided for @bilgiRaporSeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Üst üste giydiğin gün sayısı. Her gün bir kombin kaydedersen artar, bir gün boşluk bırakırsan sıfırlanır.'**
+  String get bilgiRaporSeri;
+
+  /// No description provided for @bilgiRaporHicGiyilmemis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 7 günde hiç giyilmemiş parça sayısı. Bu parçalar yeni kombinlerle yeniden kullanılabilir.'**
+  String get bilgiRaporHicGiyilmemis;
+
+  /// No description provided for @bilgiDueloPuan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her soruda iki kombin arasından seçim yaparsın. Doğru cevap puan ve seri kazandırır, yanlış cevap seriyi sıfırlar. Puanlama kural tabanlıdır: renk uyumu, kategori dengesi ve mevsim tutarlılığı ölçülür. Dolabında 4\'ten az parça varsa geçmiş kombinlerden bir palet oluşturulur.'**
+  String get bilgiDueloPuan;
+
+  /// No description provided for @bilgiDolapCalisma.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır.'**
+  String get bilgiDolapCalisma;
+
+  /// No description provided for @duzenleArkaPlanBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arka plan ve yerleşim'**
+  String get duzenleArkaPlanBaslik;
+
+  /// No description provided for @duzenleIpucu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parçayı sürükleyerek yerleştirebilir, iki parmakla büyütebilirsin.'**
+  String get duzenleIpucu;
+
+  /// No description provided for @duzenleZeminBeyaz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Beyaz'**
+  String get duzenleZeminBeyaz;
+
+  /// No description provided for @duzenleZeminKirik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kırık beyaz'**
+  String get duzenleZeminKirik;
+
+  /// No description provided for @duzenleZeminGri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açık gri'**
+  String get duzenleZeminGri;
+
+  /// No description provided for @duzenleZeminSaydam.
+  ///
+  /// In tr, this message translates to:
+  /// **'Saydam'**
+  String get duzenleZeminSaydam;
+
+  /// No description provided for @duzenleKaydet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get duzenleKaydet;
+
+  /// No description provided for @duzenleVarsayilan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Varsayılan'**
+  String get duzenleVarsayilan;
+
+  /// No description provided for @arkaPlandaEkle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Arka planda ekle'**
+  String get arkaPlandaEkle;
+
+  /// No description provided for @arkaPlandaEkleAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulamayı kullanmaya devam edebilirsin; parçalar arka planda eklenir.'**
+  String get arkaPlandaEkleAciklama;
+
+  /// No description provided for @arkaPlandaBasladi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} fotoğraf arka planda ekleniyor'**
+  String arkaPlandaBasladi(int count);
+
+  /// No description provided for @arkaPlandaIlerleme.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count}/{toplam} işlendi'**
+  String arkaPlandaIlerleme(int count, int toplam);
+
+  /// No description provided for @arkaPlandaTamamlandi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} parça dolabına eklendi'**
+  String arkaPlandaTamamlandi(int count);
+
+  /// No description provided for @arkaPlandaBaziAtlandi.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} fotoğraf işlenemedi'**
+  String arkaPlandaBaziAtlandi(int count);
+
+  /// No description provided for @bugunKaydedildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydedildi'**
+  String get bugunKaydedildi;
+
+  /// No description provided for @bugunGiydildi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giydildi'**
+  String get bugunGiydildi;
+
+  /// No description provided for @ozellikYakinda.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu özellik yakında eklenecek'**
+  String get ozellikYakinda;
+
+  /// No description provided for @duelloGeri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geri'**
+  String get duelloGeri;
 }
 
 class _AppLocalizationsDelegate

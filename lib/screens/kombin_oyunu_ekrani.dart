@@ -643,7 +643,8 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
           color: Colors.grey[200],
           borderRadius: BorderRadius.circular(12),
         ),
-        child: const Icon(Icons.broken_image, size: 30, color: Colors.grey),
+        child: const Icon(Icons.broken_image_outlined,
+            size: 30, color: Colors.grey),
       ),
       imageBuilder: (context, imageProvider) => Container(
         width: size,
@@ -688,7 +689,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
         backgroundColor: colors.surface,
         foregroundColor: colors.onSurface,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_rounded),
           onPressed: widget.onReturnToHome ?? () => Navigator.of(context).pop(),
         ),
       ),
@@ -714,7 +715,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                       icerik: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.timer, size: 16, color: _kalanSure <= 5 ? colors.error : colors.onPrimaryContainer),
+                          Icon(Icons.timer_rounded, size: 16, color: _kalanSure <= 5 ? colors.error : colors.onPrimaryContainer),
                           const SizedBox(width: 4),
                           Text('$_kalanSure sn', style: Theme.of(context).textTheme.labelLarge?.copyWith(color: _kalanSure <= 5 ? colors.error : colors.onPrimaryContainer, fontWeight: FontWeight.bold)),
                         ],
@@ -736,10 +737,10 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.event, size: 18, color: colors.primary),
+                    Icon(Icons.event_rounded, size: 18, color: colors.primary),
                     const SizedBox(width: 4),
                     Text('${l10n.tr(kombin.ortamKey) ?? kombin.ortamKey} • ', style: Theme.of(context).textTheme.labelLarge?.copyWith(color: colors.primary)),
-                    Icon(Icons.wb_sunny, size: 18, color: colors.primary),
+                    Icon(Icons.wb_sunny_rounded, size: 18, color: colors.primary),
                     const SizedBox(width: 4),
                     Text(l10n.tr(kombin.havaKey) ?? kombin.havaKey, style: Theme.of(context).textTheme.labelLarge?.copyWith(color: colors.primary)),
                   ],
@@ -859,13 +860,13 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                               ),
                               if (dogru) ...[
                                 const SizedBox(height: 8),
-                                Icon(Icons.check_circle, color: colors.primary, size: 20),
+                                Icon(Icons.check_circle_rounded, color: colors.primary, size: 20),
                               ] else if (yanlis) ...[
                                 const SizedBox(height: 8),
-                                Icon(Icons.cancel, color: colors.error, size: 20),
+                                Icon(Icons.cancel_rounded, color: colors.error, size: 20),
                               ] else if (sureDolduSecimsiz && i == kombin.dogruIndex) ...[
                                 const SizedBox(height: 8),
-                                Icon(Icons.check_circle, color: colors.primary, size: 20),
+                                Icon(Icons.check_circle_rounded, color: colors.primary, size: 20),
                               ],
                             ],
                           ),
@@ -891,7 +892,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
         backgroundColor: colors.surface,
         foregroundColor: colors.onSurface,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_rounded),
           onPressed: widget.onReturnToHome ?? () => Navigator.of(context).pop(),
         ),
       ),
@@ -902,7 +903,8 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.hourglass_empty, size: 72, color: colors.primary),
+                Icon(Icons.hourglass_empty_rounded,
+                    size: 72, color: colors.primary),
                 const SizedBox(height: 16),
                 Text(
                   l10n.yakinda,
@@ -934,19 +936,19 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
     Color renk;
 
     if (yuzde >= 80) {
-      baslik = l10n.tr('kombinSonucUsta') ?? 'Stil Ustası! 🏆';
+      baslik = l10n.tr('kombinSonucUsta') ?? 'Stil Ustası';
       mesaj = l10n.tr('kombinSonucUstaMesaj') ?? 'Renk ve uyum hissini ödüllemeye değer!';
-      ikon = Icons.emoji_events;
+      ikon = Icons.emoji_events_rounded;
       renk = colors.primary;
     } else if (yuzde >= 60) {
-      baslik = l10n.tr('kombinSonucIyi') ?? 'İyi Gidiyorsun! 👍';
+      baslik = l10n.tr('kombinSonucIyi') ?? 'İyi Gidiyorsun';
       mesaj = l10n.tr('kombinSonucIyiMesaj') ?? 'Az pratikle mükemmel olacaksın.';
-      ikon = Icons.thumb_up;
+      ikon = Icons.thumb_up_rounded;
       renk = colors.tertiary;
     } else {
-      baslik = l10n.tr('kombinSonucPratik') ?? 'Pratik Lazım 📚';
+      baslik = l10n.tr('kombinSonucPratik') ?? 'Pratik Lazım';
       mesaj = l10n.tr('kombinSonucPratikMesaj') ?? 'Renk teorisi ipuçları için "Analiz" sekmesine bak.';
-      ikon = Icons.school;
+      ikon = Icons.school_rounded;
       renk = colors.error;
     }
 
@@ -988,7 +990,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                 children: [
                   Expanded(
                     child: OutlinedButton.icon(
-                      icon: const Icon(Icons.refresh),
+                      icon: const Icon(Icons.refresh_rounded),
                       label: Text(l10n.tr('kombinTekrarOyna') ?? 'Tekrar Oyna'),
                       onPressed: () {
                         setState(() {
@@ -1001,7 +1003,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                   const SizedBox(width: 12),
                   Expanded(
                     child: FilledButton.icon(
-                      icon: const Icon(Icons.home),
+                      icon: const Icon(Icons.home_rounded),
                       label: Text(l10n.tr('kombinAnaSayfa') ?? 'Ana Sayfa'),
                       onPressed: widget.onReturnToHome ?? () => Navigator.of(context).pop(),
                     ),
@@ -1079,7 +1081,8 @@ class _ParcaKarti extends StatelessWidget {
               color: Colors.grey[200],
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(Icons.broken_image, size: 30, color: Colors.grey),
+            child: const Icon(Icons.broken_image_outlined,
+                size: 30, color: Colors.grey),
           ),
           imageBuilder: (context, imageProvider) => Container(
             width: 60,

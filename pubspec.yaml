@@ -1,8 +1,8 @@
-name: fitcheck
-description: "FitCheck - Akıllı Kişisel Stilist ve Gardırop Uygulaması"
+﻿name: fitcheck
+description: "FitCheck - AkÄ±llÄ± KiÅŸisel Stilist ve GardÄ±rop UygulamasÄ±"
 publish_to: 'none'
 
-version: 1.0.30+36
+version: 1.0.35+41
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -11,21 +11,21 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Çoklu dil desteği (i18n) için gerekli paketler
+  # Ã‡oklu dil desteÄŸi (i18n) iÃ§in gerekli paketler
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
 
   http: ^1.2.0
   image_picker: ^1.0.7
-  image: ^4.9.2 # Gardırop görsellerinin yönünü standartlaştırır (EXIF + yatay→dikey)
+  image: ^4.9.2 # GardÄ±rop gÃ¶rsellerinin yÃ¶nÃ¼nÃ¼ standartlaÅŸtÄ±rÄ±r (EXIF + yatayâ†’dikey)
   url_launcher: ^6.3.0
   geolocator: ^14.0.3
   shared_preferences: ^2.5.5
   speech_to_text: ^7.0.0
   flutter_tts: ^4.0.2
   permission_handler: ^11.3.1
-  wakelock_plus: ^1.2.8 # 👈 Ekranın açık kalmasını sağlar
+  wakelock_plus: ^1.2.8 # ğŸ‘ˆ EkranÄ±n aÃ§Ä±k kalmasÄ±nÄ± saÄŸlar
   lottie: ^3.5.1
   confetti: ^0.8.0
   flutter_local_notifications: ^22.3.0
@@ -33,6 +33,8 @@ dependencies:
   sensors_plus: ^7.1.0
   tutorial_coach_mark: ^1.3.3
   firebase_core: ^3.0.0
+  cloud_functions: ^5.0.0
+  crypto: ^3.0.7
   cloud_firestore: ^5.0.0
   firebase_auth: ^5.0.0
   google_mobile_ads: ^9.1.0
@@ -49,6 +51,7 @@ dependencies:
   cached_network_image: ^3.4.1
   shimmer: ^3.0.0
   app_tracking_transparency: ^2.0.7
+  share_plus: ^13.3.1
 
 dev_dependencies:
   flutter_test:
@@ -56,7 +59,7 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
 
-# 💥 Launcher Icons yapılandırması en dış hizada olmalıdır
+# ğŸ’¥ Launcher Icons yapÄ±landÄ±rmasÄ± en dÄ±ÅŸ hizada olmalÄ±dÄ±r
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true
@@ -66,10 +69,10 @@ flutter_launcher_icons:
 flutter:
   uses-material-design: true
 
-  # Dil (ARB) dosyalarından otomatik Flutter kodlarının üretilmesi için:
+  # Dil (ARB) dosyalarÄ±ndan otomatik Flutter kodlarÄ±nÄ±n Ã¼retilmesi iÃ§in:
   generate: true
 
-  # 💥 Eğer logosu assets klasöründeyse Flutter'a tanıtmak için bu bölüm önemlidir:
+  # ğŸ’¥ EÄŸer logosu assets klasÃ¶rÃ¼ndeyse Flutter'a tanÄ±tmak iÃ§in bu bÃ¶lÃ¼m Ã¶nemlidir:
   assets:
     - assets/images/logo.png
     - assets/images/google_logo.png

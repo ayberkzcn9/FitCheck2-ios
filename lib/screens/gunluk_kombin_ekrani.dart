@@ -61,9 +61,8 @@ class GunlukKombinEkrani extends StatefulWidget {
 }
 
 class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _animController;
-  late AnimationController _pulseController;
   ShakeDetector? _shakeDetector;
 
   Kiyafet? _sonKombinUst;
@@ -91,7 +90,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     if (temizKiyafetler.isEmpty) return;
 
     _kombiniTemizle();
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(AppMotion.normal);
     if (!mounted) return;
 
     if (hedefOrtam != null && hedefOrtam.contains('[ZORUNLU_PARCA:')) {
@@ -150,7 +149,8 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     final temizAksesuarlar =
         _kategoridekiUygunKiyafetler(temizKiyafetler, 'aksesuar', havaKosulu);
 
-    final String zorunluKategori = kategoriModeldenCikar(zorunluKiyafet.kategori);
+    final String zorunluKategori =
+        kategoriModeldenCikar(zorunluKiyafet.kategori);
 
     setState(() {
       _sonKombinUst = zorunluKategori == 'ust'
@@ -181,22 +181,15 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     });
 
     _favoriDurumunuYenile();
-    await AnalyticsServisi()
-        .olay('outfit_generated', {'source': 'focus_item'});
+    await AnalyticsServisi().olay('outfit_generated', {'source': 'focus_item'});
     _olusturulanKombiniTamEkranAc();
   }
 
   @override
   void initState() {
     super.initState();
-    _animController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 600));
-
-    // Zar butonu için sürekli yanıp sönen glow animasyonu
-    _pulseController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1200),
-    )..repeat(reverse: true);
+    _animController =
+        AnimationController(vsync: this, duration: AppMotion.uzun);
 
     _kayitliDurumlariYukle();
 
@@ -276,7 +269,6 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
   void dispose() {
     _shakeDetector?.stopListening();
     _animController.dispose();
-    _pulseController.dispose();
     super.dispose();
   }
 
@@ -310,8 +302,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
       _sonKombinAyakkabi != null;
 
   /// Dolapta kombin kurulabilecek temiz parça var mı?
-  bool get _temizKiyafetVarMi =>
-      widget.gardirobum.any((k) => !k.sepetteMi);
+  bool get _temizKiyafetVarMi => widget.gardirobum.any((k) => !k.sepetteMi);
 
   void _favoriDurumunuDegistir() {
     HapticFeedback.mediumImpact();
@@ -328,9 +319,8 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     setState(() {
       if (_isFavori) {
         _isFavori = false;
-        widget.onFavoriSil
-            ?.call(widget.favoriKombinler.firstWhere((f) => f == favoriObjesi,
-                orElse: () => favoriObjesi));
+        widget.onFavoriSil?.call(widget.favoriKombinler
+            .firstWhere((f) => f == favoriObjesi, orElse: () => favoriObjesi));
       } else {
         _isFavori = true;
         widget.onFavoriEkle(favoriObjesi);
@@ -368,14 +358,14 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
               ? l10n.kombinGiydimIsaretlendi(_kombinBasligi)
               : l10n.kombinIsaretlemeKaldirildi(_kombinBasligi),
           style:
-              const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              const TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
         ),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        backgroundColor:
-            yeniDurum ? AppAccents.success : Colors.grey.shade700,
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+        backgroundColor: yeniDurum
+            ? AppAccents.success
+            : Theme.of(context).colorScheme.onSurfaceVariant,
       ),
     );
   }
@@ -391,8 +381,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     final baslangicMetni = _kombinBasligi;
     final parcaMetinleri =
         parcalar.map((k) => '${k.gorunenBaslik} (${k.renk})').join(', ');
-    final gizliBaglam =
-        'Outfit: $_kombinBasligi\n'
+    final gizliBaglam = 'Outfit: $_kombinBasligi\n'
         'Items: $parcaMetinleri\n'
         'Color Harmony: $_renkUyumuPuani%\n'
         'Weather: ${widget.gunlukHava}';
@@ -482,10 +471,12 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     HapticFeedback.heavyImpact();
 
     setState(() {
-      _sonKombinUst =
-          temizUstler.isNotEmpty ? temizUstler[random.nextInt(temizUstler.length)] : null;
-      _sonKombinAlt =
-          temizAltlar.isNotEmpty ? temizAltlar[random.nextInt(temizAltlar.length)] : null;
+      _sonKombinUst = temizUstler.isNotEmpty
+          ? temizUstler[random.nextInt(temizUstler.length)]
+          : null;
+      _sonKombinAlt = temizAltlar.isNotEmpty
+          ? temizAltlar[random.nextInt(temizAltlar.length)]
+          : null;
       _sonKombinAyakkabi = temizAyakkabilar.isNotEmpty
           ? temizAyakkabilar[random.nextInt(temizAyakkabilar.length)]
           : null;
@@ -500,7 +491,8 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     });
 
     _favoriDurumunuYenile();
-    await AnalyticsServisi().olay('outfit_generated', {'source': 'daily_random'});
+    await AnalyticsServisi()
+        .olay('outfit_generated', {'source': 'daily_random'});
     _olusturulanKombiniTamEkranAc();
   }
 
@@ -552,7 +544,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
         ? ''
         : formatliHava.substring(ayiriciIndex + 1).trim();
 
-    // Yanıp sönen (pulse eden) yuvarlak zar butonu - boyut parametrik.
+    // Kullanıcı eylemini gösteren, sabit renkli zar düğmesi.
     Widget zarDairesi({required double boyut, required double ikonBoyut}) {
       return GestureDetector(
         onTap: () async {
@@ -561,45 +553,24 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
           await _animController.forward(from: 0.0);
           _rastgeleKombinOlustur();
         },
-        child: AnimatedBuilder(
-          animation: _pulseController,
-          builder: (context, __) {
-            final double t = _pulseController.value; // 0..1
-            return Container(
-              width: boyut,
-              height: boyut,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: const LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFF22C55E), AppAccents.success],
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppAccents.success
-                        .withValues(alpha: 0.30 + 0.35 * t),
-                    blurRadius: 14 + 18 * t,
-                    spreadRadius: 2 + 5 * t,
-                  ),
-                ],
-              ),
-              child: Transform.scale(
-                scale: 1.0 + 0.05 * t,
-                child: RotationTransition(
-                  turns: Tween<double>(begin: 0, end: 2).animate(
-                    CurvedAnimation(
-                        parent: _animController, curve: Curves.easeInOut),
-                  ),
-                  child: Icon(
-                    Icons.casino_rounded,
-                    size: ikonBoyut,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            );
-          },
+        child: Container(
+          width: boyut,
+          height: boyut,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppAccents.primary,
+          ),
+          child: RotationTransition(
+            turns: Tween<double>(begin: 0, end: 2).animate(
+              CurvedAnimation(
+                  parent: _animController, curve: AppMotion.standart),
+            ),
+            child: Icon(
+              Icons.casino_rounded,
+              size: ikonBoyut,
+              color: Colors.white,
+            ),
+          ),
         ),
       );
     }
@@ -625,8 +596,8 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 l10n.gunlukKombinTitle,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -0.5,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0,
                   color: colorScheme.onSurface,
                 ),
               ),
@@ -635,7 +606,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
             // İçerik
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 8, 0, 100),
+                padding: const EdgeInsets.fromLTRB(0, AppSpacing.sm, 0, 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -659,7 +630,8 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                     // Kombin YOKSA: ortada büyük yanıp sönen zar
                     if (_kombinVarMi)
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpacing.lg),
                         child: Row(
                           children: [
                             zarDairesi(boyut: 58, ikonBoyut: 28),
@@ -670,9 +642,9 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w800,
-                                  letterSpacing: -0.2,
+                                  fontSize: AppText.sizeBodySmall,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0,
                                   color: colorScheme.onSurface,
                                 ),
                               ),
@@ -685,17 +657,18 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                               label: Text(
                                 l10n.temizle,
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: AppText.sizeBodySmall,
+                                  fontWeight: FontWeight.w600,
                                   color: colorScheme.error,
                                 ),
                               ),
                               style: TextButton.styleFrom(
                                 foregroundColor: colorScheme.error,
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 6),
+                                    horizontal: AppSpacing.md,
+                                    vertical: AppSpacing.xs),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
+                                    borderRadius: AppRadius.mdRadius),
                               ),
                             ),
                           ],
@@ -711,9 +684,9 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                             Text(
                               l10n.zarAtKaristir,
                               style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w800,
-                                letterSpacing: -0.2,
+                                fontSize: AppText.sizeBodySmall,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0,
                                 color: colorScheme.onSurface,
                               ),
                             ),
@@ -726,14 +699,15 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                     // Ana Kombin Kartı (haftalık planlayıcı stilinde)
                     if (_kombinVarMi)
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: _anaKombinKarti(
-                            l10n, theme, colorScheme, havaSicaklikMetni,
-                            havaDurumMetni),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpacing.lg),
+                        child: _anaKombinKarti(l10n, theme, colorScheme,
+                            havaSicaklikMetni, havaDurumMetni),
                       )
                     else
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(32, 24, 32, 24),
+                        padding: const EdgeInsets.fromLTRB(AppSpacing.xxxl,
+                            AppSpacing.xxl, AppSpacing.xxxl, AppSpacing.xxl),
                         child: Column(
                           children: [
                             Text(
@@ -742,7 +716,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                                   : l10n.haftalikUyariDolapBosBaslik,
                               textAlign: TextAlign.center,
                               style: theme.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w600,
                                 color: colorScheme.onSurface,
                               ),
                             ),
@@ -794,10 +768,8 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
     final parcalarListesi = <MapEntry<String, Kiyafet>>[
       if (_sonKombinUst != null) MapEntry('ust', _sonKombinUst!),
       if (_sonKombinAlt != null) MapEntry('alt', _sonKombinAlt!),
-      if (_sonKombinAyakkabi != null)
-        MapEntry('ayakkabi', _sonKombinAyakkabi!),
-      if (_sonKombinAksesuar != null)
-        MapEntry('aksesuar', _sonKombinAksesuar!),
+      if (_sonKombinAyakkabi != null) MapEntry('ayakkabi', _sonKombinAyakkabi!),
+      if (_sonKombinAksesuar != null) MapEntry('aksesuar', _sonKombinAksesuar!),
     ];
 
     return Card(
@@ -807,13 +779,13 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
         borderRadius: AppRadius.dialogRadius,
         side: BorderSide(
           color: _isBugunGiydildi
-              ? Colors.green
+              ? AppAccents.primary
               : colorScheme.outlineVariant,
           width: _isBugunGiydildi ? 2.0 : 1.0,
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(AppSpacing.xl),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -823,8 +795,8 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w900,
-                letterSpacing: -0.5,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0,
                 color: colorScheme.onSurface,
               ),
             ),
@@ -837,10 +809,10 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
               children: [
                 Container(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 12, vertical: 8),
+                      horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                   decoration: BoxDecoration(
                     color: colorScheme.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppRadius.mdRadius,
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -855,7 +827,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                       Text(
                         l10n.kombinUyumYuzdesi(_renkUyumuPuani.toString()),
                         style: theme.textTheme.labelMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                           color: colorScheme.onSurface,
                         ),
                       ),
@@ -865,10 +837,10 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 if (havaSicaklikMetni.isNotEmpty)
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 8),
+                        horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: colorScheme.surfaceContainerHighest,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.mdRadius,
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -879,7 +851,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                         Text(
                           havaSicaklikMetni,
                           style: theme.textTheme.labelMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                             color: colorScheme.onSurface,
                           ),
                         ),
@@ -911,16 +883,17 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
             // Stilist Yorumu (Mor kutu - haftalık ile aynı)
             if (_stilistYorumu.isNotEmpty)
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   color: AppTints.styleistBgDinamik(context),
                   borderRadius: AppRadius.xlRadius,
-                  border: Border.all(color: AppTints.styleistBorderDinamik(context)),
+                  border: Border.all(
+                      color: AppTints.styleistBorderDinamik(context)),
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.auto_awesome_rounded,
+                    const Icon(Icons.style_outlined,
                         size: 18, color: AppAccents.styleist),
                     const SizedBox(width: 12),
                     Expanded(
@@ -935,18 +908,19 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                                         color: AppAccents.styleist)),
                                 const SizedBox(width: 8),
                                 Text(l10n.yenidenDegerlendiriliyor,
-                                    style: theme.textTheme.bodyMedium
-                                        ?.copyWith(
-                                            fontStyle: FontStyle.italic,
-                                            color: AppMiscColors.styleistAltTextDinamik(context))),
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                        fontStyle: FontStyle.italic,
+                                        color: AppMiscColors
+                                            .styleistAltTextDinamik(context))),
                               ],
                             )
                           : Text(
                               metniGuvenliYap(_stilistYorumu),
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 fontWeight: FontWeight.w500,
-                                color: AppMiscColors.styleistTextDinamik(context),
+                                color:
+                                    AppMiscColors.styleistTextDinamik(context),
                                 height: 1.45,
                               ),
                             ),
@@ -963,9 +937,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
               children: [
                 IconButton.filledTonal(
                   icon: Icon(
-                    _isFavori
-                        ? Icons.star_rounded
-                        : Icons.star_outline_rounded,
+                    _isFavori ? Icons.star_rounded : Icons.star_outline_rounded,
                     size: 22,
                   ),
                   style: IconButton.styleFrom(
@@ -998,8 +970,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 ),
                 const SizedBox(width: 8),
                 IconButton.filledTonal(
-                  icon: const Icon(Icons.chat_bubble_outline_rounded,
-                      size: 22),
+                  icon: const Icon(Icons.chat_bubble_outline_rounded, size: 22),
                   style: IconButton.styleFrom(
                     backgroundColor: colorScheme.surfaceContainerHighest,
                     foregroundColor: colorScheme.onSurfaceVariant,
@@ -1025,7 +996,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
           fit: StackFit.expand,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
               child: Image.memory(
                 kiyafet.resimBytes,
                 fit: BoxFit.cover,
@@ -1043,9 +1014,10 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
                 child: ClipRRect(
                   borderRadius: AppRadius.xlRadius,
                   child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                    filter: ImageFilter.blur(
+                        sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                     child: Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(AppSpacing.sm),
                       decoration: BoxDecoration(
                         color: Colors.black.withValues(alpha: 0.3),
                         shape: BoxShape.circle,
@@ -1072,8 +1044,7 @@ class GunlukKombinEkraniState extends State<GunlukKombinEkrani>
 
     final int baslangicIndex =
         tumParcalar.indexWhere((k) => k.id == seciliKiyafet.id);
-    final List<String> tumParcalarId =
-        tumParcalar.map((k) => k.id).toList();
+    final List<String> tumParcalarId = tumParcalar.map((k) => k.id).toList();
 
     _modalAcik = true;
     await HaftalikDialoglar.netGorselModalGoster(

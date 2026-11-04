@@ -23,7 +23,7 @@ class AnalyticsServisi {
   static bool firebaseHazir = false;
 
   /// Kullanıcı veri toplamayı reddettiyse `false` yapılır.
-  static bool veriToplamaIzinli = true;
+  static bool veriToplamaIzinli = false;
 
   static bool get aktif => firebaseHazir && veriToplamaIzinli;
 
@@ -38,6 +38,7 @@ class AnalyticsServisi {
 
   /// Ana ekran sekmelerinin adları (`_seciliSekme` sırasıyla aynı).
   static const List<String> sekmeAdlari = <String>[
+    'tab_today',
     'tab_wardrobe',
     'tab_weekly_plan',
     'tab_now',
@@ -56,10 +57,11 @@ class AnalyticsServisi {
   Future<void> izniYukle() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      veriToplamaIzinli = prefs.getBool(izinAnahtari) ?? true;
+      veriToplamaIzinli = prefs.getBool(izinAnahtari) ?? false;
     } catch (e) {
       debugPrint('Analytics izni okunamadı: $e');
-      veriToplamaIzinli = true;
+      // Tercih okunamazsa güvenli varsayılan: analitik kapalı.
+      veriToplamaIzinli = false;
     }
   }
 
@@ -69,6 +71,12 @@ class AnalyticsServisi {
     await _koru(() async {
       await FirebaseAnalytics.instance
           .setAnalyticsCollectionEnabled(veriToplamaIzinli);
+      if (!veriToplamaIzinli) {
+        await FirebaseAnalytics.instance.setUserId(id: null);
+        await FirebaseAnalytics.instance.resetAnalyticsData();
+        _sonKullaniciKimligi = null;
+        _kimlikAyarlanmis = false;
+      }
     }, 'baslat');
   }
 

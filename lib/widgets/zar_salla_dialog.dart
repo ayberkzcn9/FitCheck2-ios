@@ -20,16 +20,16 @@ class ZarSallaDialog extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
       child: Dialog(
         backgroundColor: colors.surfaceContainerHigh,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: AppRadius.modalRadius,
           side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.4)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -37,7 +37,7 @@ class ZarSallaDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: AppAccents.success.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -54,7 +54,7 @@ class ZarSallaDialog extends StatelessWidget {
                   ),
                   const SizedBox(width: 16),
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: colors.primary.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -75,9 +75,9 @@ class ZarSallaDialog extends StatelessWidget {
               Text(
                 l10n.zarPopupBaslik,
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: -0.5,
+                  fontSize: AppText.sizeTitle,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0,
                   color: colors.onSurface,
                 ),
                 textAlign: TextAlign.center,
@@ -86,7 +86,7 @@ class ZarSallaDialog extends StatelessWidget {
               Text(
                 l10n.zarPopupAciklama,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   height: 1.4,
                   fontWeight: FontWeight.w500,
                   color: colors.onSurfaceVariant,
@@ -103,16 +103,17 @@ class ZarSallaDialog extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding:
+                            const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                       child: Text(
                         l10n.iptal,
                         style: TextStyle(
                           color: colors.onSurfaceVariant,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -131,17 +132,18 @@ class ZarSallaDialog extends StatelessWidget {
                         backgroundColor: AppAccents.success,
                         foregroundColor: Colors.white,
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding:
+                            const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                       icon: const Icon(Icons.casino_rounded, size: 20),
                       label: Text(
                         l10n.zarlariAt,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                         ),
                       ),
                     ),

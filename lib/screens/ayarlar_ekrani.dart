@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -11,6 +12,7 @@ import '../services/analytics_servisi.dart';
 import '../services/auth_servisi.dart';
 import '../utils/auth_hata_utils.dart';
 import '../services/bildirim_servisi.dart';
+import '../services/bildirim_zamanlayici.dart';
 import '../services/satin_alma_servisi.dart';
 import 'reklamsiz_premium_ekrani.dart';
 import '../widgets/dil_secim_modal.dart';
@@ -56,13 +58,22 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
   bool _yikamaUyarisi = true;
   bool _haftalikRaporBildirimi = true;
 
+  /// Akşam "yarınki kombinin hazır" hatırlatıcısı.
+  bool _planHatirlatimi = true;
+
   TimeOfDay _sabahBildirimSaati = const TimeOfDay(
     hour: 8,
     minute: 30,
   );
 
+  /// Android 12+ "tam zamanlı alarm" (Alarms & reminders) izni verildi mi?
+  ///
+  /// Verilmezse bildirimler yine gelir, sadece birkaç dakika geç gelir.
+  bool _tamZamanliAlarmIzinli = false;
+
   // 🤖 YAPAY ZEKÂ
   String _aiStilistKisiligi = 'Samimi / Arkadaş Canlısı';
+  String _kombinHedefi = 'denge';
   bool _sikiRenkUyumModu = true;
 
   // 🧠 STİLİST HAFIZASI (kalıcı öğrenme)
@@ -74,7 +85,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
   String _varsayilanSehir = 'Otomatik (GPS)';
 
   // 📊 GİZLİLİK VE ANALİTİK
-  bool _analitikIzinli = true;
+  bool _analitikIzinli = false;
 
   // ℹ️ KURULU SÜRÜM (paketten okunur, elle güncellenmez)
   String _surumMetni = '';
@@ -167,15 +178,15 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         'key': 'Profesyonel Moda Eleştirmeni',
         'baslik': l10n.aiKisilikElestirmenBaslik,
         'aciklama': l10n.aiKisilikElestirmenAciklama,
-        'ikon': Icons.auto_awesome_rounded,
-        'renk': AppMiscColors.purple,
+        'ikon': Icons.style_outlined,
+        'renk': AppAccents.primary,
       },
       {
         'key': 'Minimalist & Kısa',
         'baslik': l10n.aiKisilikMinimalistBaslik,
         'aciklama': l10n.aiKisilikMinimalistAciklama,
         'ikon': Icons.bolt_rounded,
-        'renk': AppMiscColors.greenLight,
+        'renk': AppAccents.primary,
       },
     ];
   }
@@ -236,10 +247,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               _isGoogleConnected
                   ? l10n.googleHesabiBaglandi
                   : l10n.googleHesabiBaglantisiKesildi,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
+              style: const TextStyle(fontWeight: FontWeight.w600)),
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (_) {
@@ -267,11 +277,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.sifreEpostasiGonderildi(girilenEmail),
-              style: const TextStyle(fontWeight: FontWeight.bold)),
+              style: const TextStyle(fontWeight: FontWeight.w600)),
           backgroundColor: AppAccents.success,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (e) {
@@ -283,8 +292,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   color: colors.onError, fontWeight: FontWeight.w600)),
           backgroundColor: colors.error,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     }
@@ -303,11 +311,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.hesabinizSilindi,
-                style: const TextStyle(fontWeight: FontWeight.bold)),
+                style: const TextStyle(fontWeight: FontWeight.w600)),
             backgroundColor: AppAccents.error,
             behavior: SnackBarBehavior.floating,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
         Navigator.pushAndRemoveUntil(
@@ -315,11 +322,15 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           MaterialPageRoute(builder: (context) => const GirisEkrani()),
           (route) => false,
         );
-      } catch (_) {
+      } catch (e) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-              content: Text(l10n.gardirobumHataMesaji),
+              content: Text(
+                e is String
+                    ? authHatasiMetni(e, l10n)
+                    : l10n.hesapSilmeBasarisiz,
+              ),
               behavior: SnackBarBehavior.floating),
         );
       }
@@ -342,9 +353,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       _seciliFit = prefs.getString('kullanici_fit') ?? 'Regular Fit';
       _temaKaranlikMi =
           (prefs.getString('uygulama_temasi_modu') ?? 'light') == 'dark';
-      _seciliCinsiyet =
-          prefs.getString('kullanici_cinsiyet') ?? 'Kadın';
+      _seciliCinsiyet = prefs.getString('kullanici_cinsiyet') ?? 'Kadın';
       _sabahBildirimi = prefs.getBool('sabah_bildirimi') ?? true;
+      _planHatirlatimi = prefs.getBool('plan_hatirlatimi') ?? true;
       _yikamaUyarisi = prefs.getBool('yikama_uyarisi') ?? true;
       _haftalikRaporBildirimi =
           prefs.getBool('haftalik_rapor_bildirimi') ?? true;
@@ -359,6 +370,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
       _aiStilistKisiligi =
           prefs.getString('ai_kisilik') ?? 'Samimi / Arkadaş Canlısı';
+      _kombinHedefi = prefs.getString('kombin_hedefi') ?? 'denge';
       _sikiRenkUyumModu = prefs.getBool('siki_renk_uyumu') ?? true;
       _sicaklikBirimi = prefs.getString('sicaklik_birimi') ?? '°C';
       _varsayilanSehir =
@@ -367,6 +379,49 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       _stilistHafizasiAcik = hafiza.acik;
       _stilistHafizaNotSayisi = hafiza.notlar.length;
     });
+
+    await _tamZamanliAlarmIzinDurumunuYenile();
+  }
+
+  /// Android'de "tam zamanlı alarm" izninin durumunu tazeler.
+  Future<void> _tamZamanliAlarmIzinDurumunuYenile() async {
+    try {
+      final sonuc = await BildirimServisi().tamZamanliAlarmIzinVar();
+      if (!mounted) return;
+      setState(() {
+        _tamZamanliAlarmIzinli = sonuc;
+      });
+    } catch (_) {
+      // İzin okunamazsa ayar gizli kalır; bildirimler yine planlanır.
+    }
+  }
+
+  /// "Alarms & reminders" ayar ekranını açar. Kullanıcı izin verirse
+  /// bildirimler tam seçtiği saatte gelir.
+  Future<void> _tamZamanliAlarmIzinIste() async {
+    HapticFeedback.selectionClick();
+    final l10n = AppLocalizations.of(context)!;
+
+    bool verildi = false;
+    try {
+      verildi = await BildirimServisi().tamZamanliAlarmIzinIste();
+    } catch (_) {
+      verildi = false;
+    }
+
+    await _tamZamanliAlarmIzinDurumunuYenile();
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          verildi ? l10n.bildirimTamZamanAcik : l10n.bildirimTamZamanAciklama,
+          style: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+      ),
+    );
   }
 
   /// Stilist hafızası ekranından dönünce sayaç/anahtar durumunu tazeler.
@@ -427,21 +482,16 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
     if (_sabahBildirimi) {
       try {
-        await BildirimServisi().gunlukSabahBildirimiKur(
-          saat: secilen.hour,
-          dakika: secilen.minute,
-          context: context,
-        );
+        await BildirimZamanlayici.yenidenKur(context: context);
       } catch (e) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.saatKaydedildiAksama,
-                style: const TextStyle(fontWeight: FontWeight.bold)),
+                style: const TextStyle(fontWeight: FontWeight.w600)),
             backgroundColor: AppAccents.warning,
             behavior: SnackBarBehavior.floating,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
         return;
@@ -453,9 +503,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(l10n.sabahBildirimiAyarlandi(secilen.format(context)),
-            style: const TextStyle(fontWeight: FontWeight.bold)),
+            style: const TextStyle(fontWeight: FontWeight.w600)),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
       ),
     );
   }
@@ -479,11 +529,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.bildirimIzinGerekliUyari,
-                style: const TextStyle(fontWeight: FontWeight.bold)),
+                style: const TextStyle(fontWeight: FontWeight.w600)),
             backgroundColor: AppAccents.error,
             behavior: SnackBarBehavior.floating,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
         setState(() {
@@ -499,11 +548,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       await _ayarKaydet('sabah_bildirimi', true);
 
       try {
-        await BildirimServisi().gunlukSabahBildirimiKur(
-          saat: _sabahBildirimSaati.hour,
-          dakika: _sabahBildirimSaati.minute,
-          context: context,
-        );
+        await BildirimZamanlayici.yenidenKur(context: context);
       } catch (_) {}
     } else {
       setState(() {
@@ -515,6 +560,48 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         await BildirimServisi().gunlukSabahBildiriminiIptalEt();
       } catch (_) {}
     }
+  }
+
+  Future<void> _planHatirlatimiDegistir(bool val) async {
+    HapticFeedback.lightImpact();
+    final l10n = AppLocalizations.of(context)!;
+
+    if (val) {
+      bool izinVerildi = false;
+      try {
+        izinVerildi =
+            await BildirimServisi().bildirimIzniKontrolEtVeIste(context);
+      } catch (_) {
+        izinVerildi = false;
+      }
+
+      if (!mounted) return;
+
+      if (!izinVerildi) {
+        setState(() => _planHatirlatimi = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l10n.bildirimIzinGerekliUyari,
+                style: const TextStyle(fontWeight: FontWeight.w600)),
+            backgroundColor: AppAccents.error,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          ),
+        );
+        return;
+      }
+    }
+
+    setState(() => _planHatirlatimi = val);
+    await _ayarKaydet('plan_hatirlatimi', val);
+
+    try {
+      if (val) {
+        await BildirimZamanlayici.yenidenKur(context: context);
+      } else {
+        await BildirimServisi().planHatirlatmalariniIptalEt();
+      }
+    } catch (_) {}
   }
 
   Future<void> _haftalikRaporBildiriminiDegistir(bool val) async {
@@ -567,11 +654,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.onbellekTemizlendiBasari,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
+              style: const TextStyle(fontWeight: FontWeight.w600)),
           backgroundColor: AppAccents.success,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     } catch (e) {
@@ -580,11 +666,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.onbellekTemizlerkenHata,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
+              style: const TextStyle(fontWeight: FontWeight.w600)),
           backgroundColor: AppAccents.warning,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
     }
@@ -606,11 +691,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.disaAktarilacakVeriYok,
-              style: const TextStyle(fontWeight: FontWeight.bold)),
+              style: const TextStyle(fontWeight: FontWeight.w600)),
           backgroundColor: AppAccents.warning,
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         ),
       );
       return;
@@ -623,10 +707,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(l10n.gardiropVerisiKopyalandi,
-            style: const TextStyle(fontWeight: FontWeight.bold)),
+            style: const TextStyle(fontWeight: FontWeight.w600)),
         backgroundColor: colors.inverseSurface,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
       ),
     );
   }
@@ -671,6 +755,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
           automaticallyImplyLeading: false,
           leading: canPop
               ? IconButton(
+                  tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                   icon: const Icon(Icons.arrow_back_rounded),
                   onPressed: () {
                     HapticFeedback.lightImpact();
@@ -686,20 +771,21 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             maxLines: 2,
             softWrap: true,
             style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: 18,
-              letterSpacing: -0.5,
+              fontWeight: FontWeight.w600,
+              fontSize: AppText.sizeTitleSmall,
+              letterSpacing: 0,
               color: colors.onSurface,
             ),
           ),
-          centerTitle: true,
+          centerTitle: false,
           backgroundColor: Colors.transparent,
           elevation: 0,
           surfaceTintColor: Colors.transparent,
         ),
         body: ListView(
           physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 140),
+          padding: const EdgeInsets.fromLTRB(
+              AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 140),
           children: [
             // 👤 HESAP YÖNETİMİ & OTURUM DURUMU
             _buildSectionHeader(context, l10n.hesapVeGuvenlikMerkeziUst),
@@ -707,8 +793,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                     leading: CircleAvatar(
                       radius: 24,
                       backgroundColor: _isLoggedIn && !_isAnonymous
@@ -728,8 +814,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                   color: _isLoggedIn && !_isAnonymous
                                       ? colors.onPrimary
                                       : colors.onSurfaceVariant,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppText.sizeTitleSmall),
                             )
                           : null,
                     ),
@@ -740,9 +826,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                               : l10n.kullaniciHesabi)
                           : l10n.misafirKullanici,
                       style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 14,
-                          letterSpacing: -0.3,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
+                          letterSpacing: 0,
                           color: colors.onSurface),
                     ),
                     subtitle: Row(
@@ -763,7 +849,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 ? (_userEmail ?? l10n.epostaDogrulanmis)
                                 : l10n.esitlemekIcinGirisYapin,
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: AppText.sizeCaption,
                                 color: colors.onSurfaceVariant,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -779,14 +865,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           )
                         : ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  AppMiscColors.greenLight, // Canlı Yeşil Renk
-                              foregroundColor: Colors.white,
+                              backgroundColor: colors.primary,
+                              foregroundColor: colors.onPrimary,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14)),
+                                  borderRadius: AppRadius.lgRadius),
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 14, vertical: 8),
+                                  horizontal: AppSpacing.md,
+                                  vertical: AppSpacing.sm),
                             ),
                             onPressed: _girisEkraninaYonlendir,
                             child: FittedBox(
@@ -795,8 +881,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 l10n.girisYap,
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 14),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: AppText.sizeBodySmall),
                               ),
                             ),
                           ),
@@ -809,17 +895,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     // 🛡️ SOSYAL HESAP BAĞLANTILARI
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 12),
+                          horizontal: AppSpacing.lg, vertical: AppSpacing.md),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             l10n.bagliHesaplarUst,
                             style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w900,
+                                fontSize: AppText.sizeCaption,
+                                fontWeight: FontWeight.w600,
                                 color: colors.onSurfaceVariant,
-                                letterSpacing: 1.2),
+                                letterSpacing: 0),
                           ),
                           const SizedBox(height: 8),
                           SizedBox(
@@ -832,9 +918,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                         : colors.outlineVariant,
                                     width: 1.5),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14)),
+                                    borderRadius: AppRadius.lgRadius),
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 12, horizontal: 8),
+                                    vertical: AppSpacing.md,
+                                    horizontal: AppSpacing.sm),
                               ),
                               icon: Image.asset(
                                 'assets/images/google_logo.png',
@@ -855,8 +942,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                       ? l10n.googleHesabiBagli
                                       : l10n.googleHesabiniBagla,
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: AppText.sizeBodySmall,
+                                    fontWeight: FontWeight.w600,
                                     color: _isGoogleConnected
                                         ? colors.onSurface
                                         : colors.onSurfaceVariant,
@@ -877,17 +964,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     // 🔐 GÜVENLİK VE ŞİFRE
                     ListTile(
                       contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 4),
+                          horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                       leading: _buildIconContainer(Icons.lock_outline_rounded,
                           iconColor: colors.primary),
                       title: Text(l10n.sifreVeGuvenlik,
                           style: TextStyle(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              fontSize: AppText.sizeBodySmall,
                               color: colors.onSurface)),
                       subtitle: Text(l10n.sifreYenilemeBaglantisiIste,
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: AppText.sizeCaption,
                               color: colors.onSurfaceVariant,
                               fontWeight: FontWeight.w600)),
                       trailing: Icon(Icons.arrow_forward_ios_rounded,
@@ -904,17 +991,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             _buildSectionHeader(context, 'Premium'),
             _buildPremiumCard(
               child: ListTile(
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                 leading: _buildIconContainer(
                   Icons.workspace_premium_rounded,
-                  iconColor: AppMiscColors.greenLight,
+                  iconColor: const Color(0xFF1F7A5A),
                 ),
                 title: Text(
                   l10n.premiumAylikBaslik,
                   style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontSize: AppText.sizeBodySmall,
                     color: colors.onSurface,
                   ),
                 ),
@@ -923,7 +1010,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     SatinAlmaServisi.ornek.aylikFiyat,
                   ),
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: AppText.sizeCaption,
                     color: colors.onSurfaceVariant,
                     fontWeight: FontWeight.w600,
                   ),
@@ -951,23 +1038,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                     leading: _buildIconContainer(
                       Icons.style_rounded,
-                      iconColor: AppMiscColors.purple,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.stilVeTarzTercihleri,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       '${l10n.secili}: ${_getStilLabel(_seciliStil, l10n)} • ${_getFitLabel(_seciliFit, l10n)}',
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -996,17 +1083,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   // 👤 CİNSİYET TERCİHİ
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           l10n.cinsiyetTercihiBaslik,
                           style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            fontSize: AppText.sizeCaption,
                             color: colors.onSurfaceVariant,
-                            letterSpacing: 1.2,
+                            letterSpacing: 0,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -1039,17 +1126,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           l10n.tenRengiTercihinizUst,
                           style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            fontSize: AppText.sizeCaption,
                             color: colors.onSurfaceVariant,
-                            letterSpacing: 1.2,
+                            letterSpacing: 0,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -1082,17 +1169,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           l10n.stilistKisiligiVeYantitTarziUst,
                           style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w900,
+                            fontSize: AppText.sizeCaption,
+                            fontWeight: FontWeight.w600,
                             color: colors.onSurfaceVariant,
-                            letterSpacing: 1.2,
+                            letterSpacing: 0,
                           ),
                         ),
                         const SizedBox(height: 12),
@@ -1115,16 +1202,16 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                   });
                                   _ayarKaydet('ai_kisilik', key);
                                 },
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: AppRadius.lgRadius,
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 240),
-                                  curve: Curves.easeOutCubic,
-                                  padding: const EdgeInsets.all(12),
+                                  duration: AppMotion.kisa,
+                                  curve: AppMotion.giris,
+                                  padding: const EdgeInsets.all(AppSpacing.md),
                                   decoration: BoxDecoration(
                                     color: secili
                                         ? renk.withValues(alpha: 0.15)
                                         : colors.surfaceContainerHigh,
-                                    borderRadius: BorderRadius.circular(16),
+                                    borderRadius: AppRadius.lgRadius,
                                     border: Border.all(
                                       color: secili
                                           ? renk
@@ -1149,9 +1236,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                               baslik,
                                               style: TextStyle(
                                                 fontWeight: secili
-                                                    ? FontWeight.w900
-                                                    : FontWeight.w700,
-                                                fontSize: 14,
+                                                    ? FontWeight.w600
+                                                    : FontWeight.w600,
+                                                fontSize: AppText.sizeBodySmall,
                                                 color: colors.onSurface,
                                               ),
                                             ),
@@ -1159,7 +1246,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                             Text(
                                               aciklama,
                                               style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize: AppText.sizeCaption,
                                                 color: colors.onSurfaceVariant,
                                                 height: 1.3,
                                                 fontWeight: FontWeight.w500,
@@ -1189,9 +1276,57 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   Divider(
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
+                  Padding(
+                    padding: const EdgeInsets.all(AppSpacing.lg),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.kombinHedefiBaslik,
+                          style: TextStyle(
+                            fontSize: AppText.sizeBodySmall,
+                            fontWeight: FontWeight.w600,
+                            color: colors.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.xs),
+                        Text(
+                          l10n.kombinHedefiAciklama,
+                          style: TextStyle(
+                            fontSize: AppText.sizeCaption,
+                            color: colors.onSurfaceVariant,
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.md),
+                        Wrap(
+                          spacing: AppSpacing.sm,
+                          runSpacing: AppSpacing.sm,
+                          children: <MapEntry<String, String>>[
+                            MapEntry('denge', l10n.kombinHedefiDenge),
+                            MapEntry('renk_kesfet', l10n.kombinHedefiRenk),
+                            MapEntry(
+                                'unutulan_parcalar', l10n.kombinHedefiUnutulan),
+                            MapEntry('cok_yonlu', l10n.kombinHedefiCokYonlu),
+                          ]
+                              .map((hedef) => _buildChip(
+                                    label: hedef.value,
+                                    isSelected: _kombinHedefi == hedef.key,
+                                    onTap: () {
+                                      setState(() => _kombinHedefi = hedef.key);
+                                      _ayarKaydet('kombin_hedefi', hedef.key);
+                                    },
+                                  ))
+                              .toList(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.4)),
                   SwitchListTile.adaptive(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     secondary: _buildIconContainer(
                       Icons.color_lens_rounded,
                       iconColor: AppAccents.warning,
@@ -1199,14 +1334,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     title: Text(
                       l10n.sikiRenkTeorisiUyumModu,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.sikiRenkTeorisiAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1224,17 +1359,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.psychology_rounded,
-                      iconColor: AppAccents.styleist,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.stilistHafizasiBaslik,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
@@ -1243,7 +1378,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                               _stilistHafizaNotSayisi)
                           : l10n.stilistHafizasiAltBaslikBos,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1271,8 +1406,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   SwitchListTile.adaptive(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     secondary: _buildIconContainer(
                       Icons.notifications_active_rounded,
                       iconColor: AppAccents.warning,
@@ -1280,15 +1415,15 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     title: Text(
                       l10n.sabahKombinOnerisi,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.herSabahBildirimAl(
                           _sabahBildirimSaati.format(context)),
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1297,29 +1432,29 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     onChanged: _sabahBildiriminiDegistir,
                   ),
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: const SizedBox(width: 40),
                     title: Text(
                       l10n.bildirimSaatiniOzellestir,
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.gunlukKombinBildirimSaati,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
                     trailing: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 6),
+                          horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                       decoration: BoxDecoration(
                         color: colors.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: AppRadius.mdRadius,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -1330,8 +1465,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           Text(
                             _sabahBildirimSaati.format(context),
                             style: TextStyle(
-                                fontWeight: FontWeight.w900,
-                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                fontSize: AppText.sizeCaption,
                                 color: colors.onSurface),
                           ),
                         ],
@@ -1339,27 +1474,90 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     ),
                     onTap: _saatSec,
                   ),
+                  if (!kIsWeb &&
+                      defaultTargetPlatform == TargetPlatform.android) ...[
+                    Divider(
+                        height: 1,
+                        color: colors.outlineVariant.withValues(alpha: 0.4)),
+                    ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
+                      leading: const SizedBox(width: 40),
+                      title: Text(
+                        l10n.bildirimTamZamanAyar,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: AppText.sizeBodySmall,
+                            color: colors.onSurface),
+                      ),
+                      subtitle: Text(
+                        l10n.bildirimTamZamanAciklama,
+                        style: TextStyle(
+                            fontSize: AppText.sizeCaption,
+                            color: colors.onSurfaceVariant,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      trailing: Icon(
+                        _tamZamanliAlarmIzinli
+                            ? Icons.check_circle_rounded
+                            : Icons.chevron_right_rounded,
+                        size: 20,
+                        color: _tamZamanliAlarmIzinli
+                            ? colors.primary
+                            : colors.onSurfaceVariant,
+                      ),
+                      onTap: _tamZamanliAlarmIzinIste,
+                    ),
+                  ],
                   Divider(
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   SwitchListTile.adaptive(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
+                    secondary: _buildIconContainer(
+                      Icons.nightlight_rounded,
+                      iconColor: AppAccents.info,
+                    ),
+                    title: Text(
+                      l10n.planHatirlatimiAyar,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
+                          color: colors.onSurface),
+                    ),
+                    subtitle: Text(
+                      l10n.planHatirlatimiAyarAciklama,
+                      style: TextStyle(
+                          fontSize: AppText.sizeCaption,
+                          color: colors.onSurfaceVariant,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    value: _planHatirlatimi,
+                    activeColor: colors.primary,
+                    onChanged: _planHatirlatimiDegistir,
+                  ),
+                  Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.4)),
+                  SwitchListTile.adaptive(
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     secondary: _buildIconContainer(
                       Icons.dry_cleaning_rounded,
-                      iconColor: AppMiscColors.pink,
+                      iconColor: const Color(0xFFA8743F),
                     ),
                     title: Text(
                       l10n.camasirSepetiUyarilari,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.camasirSepetiUyarilariAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1377,8 +1575,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   SwitchListTile.adaptive(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     secondary: _buildIconContainer(
                       Icons.assessment_rounded,
                       iconColor: AppAccents.success,
@@ -1386,14 +1584,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     title: Text(
                       l10n.haftalikStilRaporu,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.haftalikStilRaporuAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1413,23 +1611,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.language_rounded,
-                      iconColor: AppMiscColors.purple,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.uygulamaDili,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       seciliDilEtiketi,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -1445,25 +1643,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   // 🌙 Karanlık Mod
                   SwitchListTile.adaptive(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     secondary: _buildIconContainer(
                       Icons.dark_mode_rounded,
-                      iconColor: AppMiscColors.purple,
+                      iconColor: const Color(0xFF2E6E5E),
                     ),
                     title: Text(
                       l10n.karanlikMod,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
-                      _temaKaranlikMi
-                          ? l10n.koyuTemaAktif
-                          : l10n.acikTemaAktif,
+                      _temaKaranlikMi ? l10n.koyuTemaAktif : l10n.acikTemaAktif,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -1486,8 +1682,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1503,8 +1699,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 child: Text(
                                   l10n.sicaklikBirimi,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: AppText.sizeBodySmall,
                                       color: colors.onSurface),
                                 ),
                               ),
@@ -1524,14 +1720,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                                 value: '°C',
                                 label: Text('°C',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12))),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: AppText.sizeCaption))),
                             ButtonSegment(
                                 value: '°F',
                                 label: Text('°F',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12))),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: AppText.sizeCaption))),
                           ],
                           selected: {_sicaklikBirimi},
                           onSelectionChanged: (set) {
@@ -1550,23 +1746,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.location_city_rounded,
-                      iconColor: const Color(0xFF06B6D4),
+                      iconColor: const Color(0xFF30827D),
                     ),
                     title: Text(
                       l10n.varsayilanSehirBolge,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       '${l10n.secili}: $_varsayilanSehir',
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w600),
                     ),
@@ -1586,23 +1782,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.cleaning_services_rounded,
-                      iconColor: AppMiscColors.orangeLight,
+                      iconColor: const Color(0xFFB98A2E),
                     ),
                     title: Text(
                       l10n.gorselOnbelleginiTemizle,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.geciciFotografHafizasiAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1612,23 +1808,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.file_download_rounded,
-                      iconColor: const Color(0xFF60A5FA),
+                      iconColor: const Color(0xFF4F6B60),
                     ),
                     title: Text(
                       l10n.gardirobuDisaAktarYedekle,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.tumKiyafetVeKombinJsonAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1638,23 +1834,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   SwitchListTile.adaptive(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     secondary: _buildIconContainer(
                       Icons.insights_rounded,
-                      iconColor: AppMiscColors.greenLight,
+                      iconColor: const Color(0xFF1F7A5A),
                     ),
                     title: Text(
                       l10n.analitikVerileriPaylas,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.analitikVerileriPaylasAciklama,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1674,8 +1870,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               child: Column(
                 children: [
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.star_rounded,
                       iconColor: AppAccents.warning,
@@ -1683,14 +1879,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     title: Text(
                       l10n.uygulamayiDegerlendirin,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.googlePlay5YildizDestek,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1721,7 +1917,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                             SnackBar(
                                 content: Text(l10n.googlePlayAcilamadi,
                                     style: const TextStyle(
-                                        fontWeight: FontWeight.bold))),
+                                        fontWeight: FontWeight.w600))),
                           );
                         }
                       }
@@ -1731,8 +1927,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.mail_outline_rounded,
                       iconColor: AppAccents.success,
@@ -1740,14 +1936,14 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     title: Text(
                       l10n.geriBildirimVeDestek,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.hataBildirVeyaOneri,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1777,11 +1973,11 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           SnackBar(
                             content: Text(l10n.epostaUygulamasiAcilamadi,
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold)),
+                                    fontWeight: FontWeight.w600)),
                             backgroundColor: AppAccents.error,
                             behavior: SnackBarBehavior.floating,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16)),
+                                borderRadius: AppRadius.lgRadius),
                           ),
                         );
                       }
@@ -1791,23 +1987,23 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                       height: 1,
                       color: colors.outlineVariant.withValues(alpha: 0.4)),
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                     leading: _buildIconContainer(
                       Icons.security_rounded,
-                      iconColor: AppMiscColors.pink,
+                      iconColor: const Color(0xFFA8743F),
                     ),
                     title: Text(
                       l10n.gizlilikPolitikasiTitle,
                       style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
                       l10n.veriKullanimiVeGizlilikHaklari,
                       style: TextStyle(
-                          fontSize: 12,
+                          fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
                           fontWeight: FontWeight.w500),
                     ),
@@ -1826,8 +2022,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               _buildSectionHeader(context, l10n.hesapSilmeUst),
               _buildPremiumCard(
                 child: ListTile(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                   leading: _buildIconContainer(
                     Icons.delete_forever_rounded,
                     iconColor: colors.error,
@@ -1835,15 +2031,15 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   title: Text(
                     l10n.hesabiKaliciSilTitle,
                     style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontSize: AppText.sizeBodySmall,
                       color: colors.error,
                     ),
                   ),
                   subtitle: Text(
                     l10n.tumBulutVeYerelVeriTemizlenir,
                     style: TextStyle(
-                        fontSize: 12,
+                        fontSize: AppText.sizeCaption,
                         color: colors.onSurfaceVariant,
                         fontWeight: FontWeight.w500),
                   ),
@@ -1862,8 +2058,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
             _buildSectionHeader(context, l10n.hakkindaUst),
             _buildPremiumCard(
               child: ListTile(
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
                 leading: _buildIconContainer(
                   Icons.info_outline_rounded,
                   iconColor: AppAccents.success,
@@ -1871,24 +2067,24 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                 title: Text(
                   l10n.surum,
                   style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontSize: AppText.sizeBodySmall,
                       color: colors.onSurface),
                 ),
                 trailing: _surumMetni.isEmpty
                     ? null
                     : Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 6),
+                            horizontal: AppSpacing.md, vertical: AppSpacing.xs),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: AppRadius.mdRadius,
                         ),
                         child: Text(
                           _surumMetni,
                           style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              fontSize: AppText.sizeCaption,
                               color: colors.onSurface),
                         ),
                       ),
@@ -1909,17 +2105,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                   Text(
                     l10n.ayarlarAltbilgi,
                     style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w800,
+                      fontSize: AppText.sizeCaption,
+                      fontWeight: FontWeight.w600,
                       color: colors.onSurfaceVariant.withValues(alpha: 0.5),
-                      letterSpacing: 1.0,
+                      letterSpacing: 0,
                     ),
                   ),
                 ],
               ),
             ),
 
-                        const SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -1953,16 +2149,17 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         HapticFeedback.selectionClick();
         onTap();
       },
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: AppRadius.mdRadius,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 240),
-        curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        duration: AppMotion.kisa,
+        curve: AppMotion.giris,
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md, vertical: AppSpacing.sm),
         decoration: BoxDecoration(
           color: isSelected
               ? colors.secondaryContainer
               : colors.surfaceContainerHigh,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.mdRadius,
           border: Border.all(
             color: isSelected
                 ? colors.secondary
@@ -1973,8 +2170,8 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
         child: Text(
           label,
           style: TextStyle(
-            fontSize: 12,
-            fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+            fontSize: AppText.sizeCaption,
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w600,
             color: isSelected ? colors.onSecondaryContainer : colors.onSurface,
           ),
         ),
@@ -1987,10 +2184,10 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     final effectiveColor = iconColor ?? colors.onSurfaceVariant;
 
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
         color: effectiveColor.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.mdRadius,
       ),
       child: Icon(
         ikon,
@@ -2004,13 +2201,12 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     final colors = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 8, bottom: 8),
+      padding: const EdgeInsetsDirectional.only(start: 8, bottom: 8),
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w900,
-          letterSpacing: 1.2,
+          fontSize: AppText.sizeCaption,
+          fontWeight: FontWeight.w500,
           color: colors.onSurface,
         ),
       ),
@@ -2020,29 +2216,29 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
   String _getDilEtiketi(String? langCode, AppLocalizations l10n) {
     switch (langCode) {
       case 'tr':
-        return '🇹🇷 Türkçe';
+        return 'Türkçe';
       case 'en':
-        return '🇺🇸 English';
+        return 'English';
       case 'es':
-        return '🇪🇸 Español';
+        return 'Español';
       case 'it':
-        return '🇮🇹 Italiano';
+        return 'Italiano';
       case 'zh':
-        return '🇨🇳 中文';
+        return '中文';
       case 'ar':
-        return '🇸🇦 العربية';
+        return 'العربية';
       case 'fr':
-        return '🇫🇷 Français';
+        return 'Français';
       case 'de':
-        return '🇩🇪 Deutsch';
+        return 'Deutsch';
       case 'pt':
-        return '🇧🇷 Português';
+        return 'Português';
       case 'ja':
-        return '🇯🇵 日本語';
+        return '日本語';
       case 'ko':
-        return '🇰🇷 한국어';
+        return '한국어';
       case 'ru':
-        return '🇷🇺 Русский';
+        return 'Русский';
       default:
         return l10n.ayarOtomatikCihazDili;
     }
@@ -2078,13 +2274,11 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     ? l10n.cinsiyetBelirtilmemis
                     : l10n.anaKadin,
           ),
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.w600),
         ),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
       ),
     );
   }
 }
-
-

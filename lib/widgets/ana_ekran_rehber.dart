@@ -227,8 +227,8 @@ class AnaEkranRehber {
       textSkip: l10n.rehberiAtla,
       textStyleSkip: const TextStyle(
         color: Colors.white,
-        fontWeight: FontWeight.bold,
-        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        fontSize: AppText.sizeBodySmall,
         shadows: [
           Shadow(
             color: Colors.black54,
@@ -260,7 +260,7 @@ class AnaEkranRehber {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
         color: colors.surfaceContainerHigh,
         borderRadius: AppRadius.xxlRadius,
@@ -283,8 +283,8 @@ class AnaEkranRehber {
           Text(
             baslik,
             style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
+              fontSize: AppText.sizeTitleSmall,
+              fontWeight: FontWeight.w600,
               color: colors.onSurface,
             ),
           ),
@@ -292,32 +292,32 @@ class AnaEkranRehber {
           Text(
             aciklama,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
               height: 1.45,
             ),
           ),
           const SizedBox(height: 16),
           Align(
-            alignment: Alignment.centerRight,
+            alignment: AlignmentDirectional.centerEnd,
             child: FilledButton(
               style: FilledButton.styleFrom(
                 backgroundColor: colors.primary,
                 foregroundColor: colors.onPrimary,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppRadius.mdRadius,
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 10,
+                  horizontal: AppSpacing.lg,
+                  vertical: AppSpacing.md,
                 ),
               ),
               onPressed: onNext,
               child: Text(
                 sonAdimMi ? l10n.rehberAnladimBasla : l10n.rehberSonrakiAdim,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  fontSize: AppText.sizeBodySmall,
                 ),
               ),
             ),

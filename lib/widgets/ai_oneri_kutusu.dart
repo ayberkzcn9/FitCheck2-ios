@@ -36,12 +36,14 @@ class AiOneriKutusu extends StatelessWidget {
     // Dark mode'da koyu amber tonları, açık modda pastel
     final bg = koyu ? AppTints.warningBgDark : AppTints.warningBg;
     final border = koyu ? AppTints.warningBorderDark : AppTints.warningBorder;
-    final baslikRenk = koyu ? const Color(0xFFFFD699) : AppMiscColors.amberTextDark;
-    final govdeRenk = koyu ? const Color(0xFFE8C99A) : AppMiscColors.amberTextBody;
+    final baslikRenk =
+        koyu ? const Color(0xFFFFD699) : AppMiscColors.amberTextDark;
+    final govdeRenk =
+        koyu ? const Color(0xFFE8C99A) : AppMiscColors.amberTextBody;
     final ikonRenk = koyu ? const Color(0xFFFFC56B) : AppMiscColors.amberText;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: bg,
         borderRadius: AppRadius.xlRadius,
@@ -64,7 +66,7 @@ class AiOneriKutusu extends StatelessWidget {
                   baslik,
                   style: theme.textTheme.labelLarge?.copyWith(
                     color: baslikRenk,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -84,7 +86,7 @@ class AiOneriKutusu extends StatelessWidget {
                         child: Text(
                           yukleniyorMetni,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            fontSize: 14,
+                            fontSize: AppText.sizeBodySmall,
                             height: 1.4,
                             color: govdeRenk,
                           ),
@@ -96,7 +98,7 @@ class AiOneriKutusu extends StatelessWidget {
                   Text(
                     metin,
                     style: theme.textTheme.bodyMedium?.copyWith(
-                      fontSize: 14,
+                      fontSize: AppText.sizeBodySmall,
                       height: 1.4,
                       color: govdeRenk,
                     ),
@@ -106,13 +108,13 @@ class AiOneriKutusu extends StatelessWidget {
                       onPressed: onTekrarDene,
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
-                        minimumSize: const Size(0, 32),
+                        minimumSize: const Size(0, 44),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         foregroundColor: baslikRenk,
                       ),
                       child: Text(
                         tekrarDenemetni,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.w600),
                       ),
                     ),
                 ],

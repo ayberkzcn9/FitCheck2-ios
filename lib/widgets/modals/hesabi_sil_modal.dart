@@ -53,8 +53,8 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
             child: Text(
               l10n.hesabiKaliciSilTitle,
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontSize: AppText.sizeTitleSmall,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -68,7 +68,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
           Text(
             l10n.hesabiSilGeriAlinamazUyari,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
               height: 1.4,
             ),
@@ -77,8 +77,8 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
           Text(
             l10n.hesabiSilOnayKoduMetni,
             style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+              fontSize: AppText.sizeCaption,
+              fontWeight: FontWeight.w600,
               color: colors.onSurfaceVariant,
             ),
           ),
@@ -94,15 +94,15 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
               filled: true,
               fillColor: colors.surfaceContainerHighest,
               contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
+                horizontal: AppSpacing.lg,
+                vertical: AppSpacing.md,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.lgRadius,
                 borderSide: BorderSide.none,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.lgRadius,
                 borderSide: BorderSide(
                   color: _isValid ? colors.error : colors.primary,
                   width: 1.5,
@@ -117,7 +117,8 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
           ),
         ],
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false),
@@ -125,7 +126,7 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
             l10n.vazgec,
             style: TextStyle(
               color: colors.primary,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -134,13 +135,13 @@ class _HesabiSilModalState extends State<HesabiSilModal> {
             backgroundColor: colors.error,
             foregroundColor: colors.onError,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
             ),
           ),
           onPressed: _isValid ? () => Navigator.pop(context, true) : null,
           child: Text(
             l10n.hesabimiSil,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
       ],

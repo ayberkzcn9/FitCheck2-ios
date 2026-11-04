@@ -23,7 +23,7 @@ class AyarlarDialoglar {
           title: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(AppSpacing.sm),
                 decoration: BoxDecoration(
                   color: colors.errorContainer,
                   shape: BoxShape.circle,
@@ -39,8 +39,8 @@ class AyarlarDialoglar {
                 child: Text(
                   l10n.cikisYapTitle,
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w800,
+                    fontSize: AppText.sizeTitleSmall,
+                    fontWeight: FontWeight.w600,
                     color: colors.onSurface,
                   ),
                 ),
@@ -50,12 +50,13 @@ class AyarlarDialoglar {
           content: Text(
             l10n.cikisYapOnayIcerik,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               color: colors.onSurfaceVariant,
               height: 1.4,
             ),
           ),
-          actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          actionsPadding: const EdgeInsets.fromLTRB(
+              AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
           actions: [
             TextButton(
               onPressed: () {
@@ -68,8 +69,8 @@ class AyarlarDialoglar {
                   l10n.iptal,
                   style: TextStyle(
                     color: colors.primary,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    fontSize: AppText.sizeBodyLarge,
                   ),
                 ),
               ),
@@ -79,11 +80,11 @@ class AyarlarDialoglar {
                 backgroundColor: colors.error,
                 foregroundColor: colors.onError,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
+                  horizontal: AppSpacing.xl,
+                  vertical: AppSpacing.md,
                 ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: AppRadius.lgRadius,
                 ),
               ),
               onPressed: () {
@@ -95,8 +96,8 @@ class AyarlarDialoglar {
                 child: Text(
                   l10n.cikisYapTitle,
                   style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    fontSize: AppText.sizeBodyLarge,
                   ),
                 ),
               ),
@@ -209,7 +210,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
       title: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(AppSpacing.sm),
             decoration: BoxDecoration(
               color: widget.colors.primaryContainer,
               shape: BoxShape.circle,
@@ -225,8 +226,8 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
             child: Text(
               widget.l10n.sifreDegistirTitle,
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w800,
+                fontSize: AppText.sizeTitleSmall,
+                fontWeight: FontWeight.w600,
                 color: widget.colors.onSurface,
               ),
             ),
@@ -241,7 +242,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
             Text(
               widget.l10n.sifreSifirlamaAciklama,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: AppText.sizeBodySmall,
                 color: widget.colors.onSurfaceVariant,
               ),
             ),
@@ -266,7 +267,7 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
                 filled: true,
                 fillColor: widget.colors.surfaceContainerHighest,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: AppRadius.lgRadius,
                   borderSide: BorderSide.none,
                 ),
               ),
@@ -274,7 +275,8 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
           ],
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () {
@@ -287,8 +289,8 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
               widget.l10n.iptal,
               style: TextStyle(
                 color: widget.colors.primary,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                fontSize: AppText.sizeBodyLarge,
               ),
             ),
           ),
@@ -298,11 +300,11 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
             backgroundColor: widget.colors.primary,
             foregroundColor: widget.colors.onPrimary,
             padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 12,
+              horizontal: AppSpacing.xl,
+              vertical: AppSpacing.md,
             ),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
             ),
           ),
           onPressed: _gonder,
@@ -311,8 +313,8 @@ class _SifreDegistirDialogState extends State<_SifreDegistirDialog> {
             child: Text(
               widget.l10n.baglantiGonder,
               style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                fontSize: AppText.sizeBodyLarge,
               ),
             ),
           ),
@@ -364,8 +366,8 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
       title: Text(
         widget.l10n.varsayilanSehirBolge,
         style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w800,
+          fontSize: AppText.sizeTitleSmall,
+          fontWeight: FontWeight.w600,
           color: widget.colors.onSurface,
         ),
       ),
@@ -385,13 +387,14 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
             filled: true,
             fillColor: widget.colors.surfaceContainerHighest,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
               borderSide: BorderSide.none,
             ),
           ),
         ),
       ),
-      actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      actionsPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
         TextButton(
           onPressed: () {
@@ -404,8 +407,8 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
               widget.l10n.gpsKullan,
               style: TextStyle(
                 color: widget.colors.primary,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                fontSize: AppText.sizeBodySmall,
               ),
             ),
           ),
@@ -415,11 +418,11 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
             backgroundColor: widget.colors.primary,
             foregroundColor: widget.colors.onPrimary,
             padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 12,
+              horizontal: AppSpacing.xl,
+              vertical: AppSpacing.md,
             ),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: AppRadius.lgRadius,
             ),
           ),
           onPressed: () {
@@ -431,8 +434,8 @@ class _SehirSecimDialogState extends State<_SehirSecimDialog> {
             child: Text(
               widget.l10n.kaydet,
               style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                fontSize: AppText.sizeBodySmall,
               ),
             ),
           ),

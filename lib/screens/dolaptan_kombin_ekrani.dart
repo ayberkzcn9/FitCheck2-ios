@@ -13,10 +13,11 @@ import '../models/favori_kombin.dart';
 import '../models/kiyafet.dart';
 import '../services/ai_service.dart';
 import '../services/analytics_servisi.dart';
+import '../services/kiyafet_gorsel_hazirlayici.dart';
 import '../services/reklam_servisi.dart';
+import '../utils/helpers.dart';
 import '../utils/haftalik_dialoglar.dart';
 import '../utils/hava_uygunlugu.dart';
-import '../utils/helpers.dart';
 import '../utils/kategori_utils.dart';
 import '../ai/ai_dil.dart';
 import '../../theme/design_tokens.dart';
@@ -54,10 +55,13 @@ class DolaptanKombinStilistiEkrani extends StatefulWidget {
   });
 
   @override
-  State<DolaptanKombinStilistiEkrani> createState() => DolaptanKombinStilistiEkraniState();
+  State<DolaptanKombinStilistiEkrani> createState() =>
+      DolaptanKombinStilistiEkraniState();
 }
 
-class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkrani> with SingleTickerProviderStateMixin {
+class DolaptanKombinStilistiEkraniState
+    extends State<DolaptanKombinStilistiEkrani>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animController;
   late Animation<double> _donmeAnimasyonu;
   late Animation<double> _buyumeAnimasyonu;
@@ -77,23 +81,29 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
   bool _popUpGosterildi = false;
 
   /// Kombin henüz oluşturulmadıysa daima lokalize bir ad döner.
-  String _kombinBasligi(AppLocalizations l10n) =>
-      l10n.stilistKombininTitle(
+  String _kombinBasligi(AppLocalizations l10n) => l10n.stilistKombininTitle(
         _kombinTuru.trim().isEmpty ? l10n.rastgeleKombinTuru : _kombinTuru,
       );
 
   @override
   void initState() {
     super.initState();
-    _animController = AnimationController(vsync: this, duration: const Duration(milliseconds: 600));
+    _animController =
+        AnimationController(vsync: this, duration: AppMotion.uzun);
 
     _donmeAnimasyonu = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _animController, curve: Curves.easeInOutBack),
+      CurvedAnimation(parent: _animController, curve: AppMotion.standartBack),
     );
 
     _buyumeAnimasyonu = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.2).chain(CurveTween(curve: Curves.easeOutCubic)), weight: 50),
-      TweenSequenceItem(tween: Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: Curves.easeInCubic)), weight: 50),
+      TweenSequenceItem(
+          tween: Tween(begin: 1.0, end: 1.2)
+              .chain(CurveTween(curve: AppMotion.giris)),
+          weight: 50),
+      TweenSequenceItem(
+          tween: Tween(begin: 1.2, end: 1.0)
+              .chain(CurveTween(curve: AppMotion.cikis)),
+          weight: 50),
     ]).animate(_animController);
 
     _kayitliGiyilmeDurumunuYukle();
@@ -125,7 +135,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     if (!widget.isAktifSekme || _popUpGosterildi) return;
 
     final prefs = await SharedPreferences.getInstance();
-    final bool dahaOnceGosterildi = prefs.getBool('zar_popup_gosterildi') ?? false;
+    final bool dahaOnceGosterildi =
+        prefs.getBool('zar_popup_gosterildi') ?? false;
 
     if (!dahaOnceGosterildi) {
       _popUpGosterildi = true;
@@ -218,7 +229,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
 
   void _favoriDurumunuGuncelle() {
     final l10n = AppLocalizations.of(context)!;
-    final mevcutParcalar = _mevcutKombinParcalariniGetir().map((k) => k.gorunenBaslik).toList();
+    final mevcutParcalar =
+        _mevcutKombinParcalariniGetir().map((k) => k.gorunenBaslik).toList();
     if (mevcutParcalar.isEmpty) {
       if (mounted) setState(() => _isFavori = false);
       return;
@@ -250,10 +262,12 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
           final l10n = AppLocalizations.of(context)!;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(l10n.tebriklerHakEklendi, style: const TextStyle(fontWeight: FontWeight.bold)),
+              content: Text(
+                  l10n.tebriklerHakEklendi(ReklamServisi.reklamOduluKredi),
+                  style: const TextStyle(fontWeight: FontWeight.w600)),
               backgroundColor: AppAccents.success,
               behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
             ),
           );
         }
@@ -282,7 +296,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     final l10n = AppLocalizations.of(context)!;
 
     final mevcutParcalar = _mevcutKombinParcalariniGetir();
-    final List<String> parcalar = mevcutParcalar.map((k) => k.gorunenBaslik).toList();
+    final List<String> parcalar =
+        mevcutParcalar.map((k) => k.gorunenBaslik).toList();
 
     final favoriObjesi = FavoriKombin(
       baslik: _kombinBasligi(l10n),
@@ -341,12 +356,15 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
           yeniDurum
               ? l10n.kombinGiydimIsaretlendi(_kombinBasligi(l10n))
               : l10n.kombinIsaretlemeKaldirildi(_kombinBasligi(l10n)),
-          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style:
+              const TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
         ),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        backgroundColor: yeniDurum ? AppAccents.success : Colors.grey.shade700,
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+        backgroundColor: yeniDurum
+            ? AppAccents.success
+            : Theme.of(context).colorScheme.onSurfaceVariant,
       ),
     );
   }
@@ -368,15 +386,18 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
       return ham;
     }
     return ham
-        .replaceAll(RegExp(r'^(Konum Bugün:|Location Today:|Konum|Location):?\s*•?', caseSensitive: false), '')
+        .replaceAll(
+            RegExp(r'^(Konum Bugün:|Location Today:|Konum|Location):?\s*•?',
+                caseSensitive: false),
+            '')
         .trim();
   }
 
   /// Yapay zekâ istemlerinde kullanılacak hava durumu metni.
-  String _istemIcinHavaMetni(AppLocalizations l10n) =>
-      havaDurumuKullanilabilirMi(widget.gunlukHava, l10n)
-          ? widget.gunlukHava
-          : 'bilinmiyor (konum servisi kapalı, izin verilmedi veya veri yükleniyor)';
+  String _istemIcinHavaMetni(AppLocalizations l10n) => havaDurumuKullanilabilirMi(
+          widget.gunlukHava, l10n)
+      ? widget.gunlukHava
+      : 'bilinmiyor (konum servisi kapalı, izin verilmedi veya veri yükleniyor)';
 
   /// Ekrandaki anlık kombin hakkında yapay zeka ile sohbet penceresini açar.
   void _kombinSohbetiniAc() {
@@ -388,10 +409,10 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text('Bu özellik yakında eklenecek'),
+        content: Text(AppLocalizations.of(context)!.ozellikYakinda),
         backgroundColor: widget.anaRenk,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
       ),
     );
   }
@@ -400,7 +421,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     final tumParcalar = _mevcutKombinParcalariniGetir();
     if (tumParcalar.isEmpty) return;
 
-    final int baslangicIndex = tumParcalar.indexWhere((k) => k.id == seciliKiyafet.id);
+    final int baslangicIndex =
+        tumParcalar.indexWhere((k) => k.id == seciliKiyafet.id);
     final tumParcalarId = tumParcalar.map((k) => k.id).toList();
 
     HaftalikDialoglar.netGorselModalGoster(
@@ -409,7 +431,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
       tumParcalarMetinleri: tumParcalarId,
       baslangicIndex: baslangicIndex != -1 ? baslangicIndex : 0,
       parcaBilgisiAyristir: (id, l10n) {
-        final item = tumParcalar.firstWhere((k) => k.id == id, orElse: () => seciliKiyafet);
+        final item = tumParcalar.firstWhere((k) => k.id == id,
+            orElse: () => seciliKiyafet);
         String kat = kategoriModeldenCikar(item.kategori);
         String katGosterim = kategoriEtiketiGetir(kat, l10n);
 
@@ -421,14 +444,16 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
         };
       },
       gucluGorselBul: (id) {
-        final item = tumParcalar.firstWhere((k) => k.id == id, orElse: () => seciliKiyafet);
+        final item = tumParcalar.firstWhere((k) => k.id == id,
+            orElse: () => seciliKiyafet);
         return item.resimBytes;
       },
     );
   }
 
   Future<void> otomatikKombinUret({String? hedefOrtam}) async {
-    final temizKiyafetler = widget.gardirobum.where((k) => !k.sepetteMi).toList();
+    final temizKiyafetler =
+        widget.gardirobum.where((k) => !k.sepetteMi).toList();
     if (!_dolapKurallariniDogrula(temizKiyafetler)) return;
 
     final int kalanHak = await ReklamServisi().kalanHakGetir();
@@ -438,7 +463,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     }
 
     _kombiniTemizle();
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(AppMotion.normal);
 
     if (!mounted) return;
 
@@ -450,14 +475,12 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
         final String zorunluMetin = match.group(1)!.trim().toLowerCase();
 
         try {
-          final Kiyafet zorunluKiyafet = widget.gardirobum.firstWhere(
-            (k) => !k.sepetteMi && (
-              k.baslik.toLowerCase().contains(zorunluMetin) ||
-              k.gorunenBaslik.toLowerCase().contains(zorunluMetin) ||
-              zorunluMetin.contains(k.gorunenBaslik.toLowerCase()) ||
-              zorunluMetin.contains(k.baslik.toLowerCase())
-            )
-          );
+          final Kiyafet zorunluKiyafet = widget.gardirobum.firstWhere((k) =>
+              !k.sepetteMi &&
+              (k.baslik.toLowerCase().contains(zorunluMetin) ||
+                  k.gorunenBaslik.toLowerCase().contains(zorunluMetin) ||
+                  zorunluMetin.contains(k.gorunenBaslik.toLowerCase()) ||
+                  zorunluMetin.contains(k.baslik.toLowerCase())));
 
           _zorunluParcaIleKombinUret(zorunluKiyafet);
           return;
@@ -476,23 +499,44 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     final l10n = AppLocalizations.of(context)!;
     HapticFeedback.heavyImpact();
     final random = Random();
-    final temizKiyafetler = widget.gardirobum.where((k) => !k.sepetteMi).toList();
+    final temizKiyafetler =
+        widget.gardirobum.where((k) => !k.sepetteMi).toList();
     if (!_dolapKurallariniDogrula(temizKiyafetler)) return;
 
     final HavaKosulu? havaKosulu = havaKosuluCikar(widget.gunlukHava);
 
-    final temizUstler = _kategoridekiUygunKiyafetler(temizKiyafetler, 'ust', havaKosulu);
-    final temizAltlar = _kategoridekiUygunKiyafetler(temizKiyafetler, 'alt', havaKosulu);
-    final temizAyakkabilar = _kategoridekiUygunKiyafetler(temizKiyafetler, 'ayakkabi', havaKosulu);
-    final temizAksesuarlar = _kategoridekiUygunKiyafetler(temizKiyafetler, 'aksesuar', havaKosulu);
+    final temizUstler =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'ust', havaKosulu);
+    final temizAltlar =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'alt', havaKosulu);
+    final temizAyakkabilar =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'ayakkabi', havaKosulu);
+    final temizAksesuarlar =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'aksesuar', havaKosulu);
 
     String zorunluKategori = kategoriModeldenCikar(zorunluKiyafet.kategori);
 
     setState(() {
-      _sonKombinUst = zorunluKategori == 'ust' ? zorunluKiyafet : (temizUstler.isNotEmpty ? temizUstler[random.nextInt(temizUstler.length)] : null);
-      _sonKombinAlt = zorunluKategori == 'alt' ? zorunluKiyafet : (temizAltlar.isNotEmpty ? temizAltlar[random.nextInt(temizAltlar.length)] : null);
-      _sonKombinAyakkabi = zorunluKategori == 'ayakkabi' ? zorunluKiyafet : (temizAyakkabilar.isNotEmpty ? temizAyakkabilar[random.nextInt(temizAyakkabilar.length)] : null);
-      _sonKombinAksesuar = zorunluKategori == 'aksesuar' ? zorunluKiyafet : (temizAksesuarlar.isNotEmpty && random.nextBool() ? temizAksesuarlar[random.nextInt(temizAksesuarlar.length)] : null);
+      _sonKombinUst = zorunluKategori == 'ust'
+          ? zorunluKiyafet
+          : (temizUstler.isNotEmpty
+              ? temizUstler[random.nextInt(temizUstler.length)]
+              : null);
+      _sonKombinAlt = zorunluKategori == 'alt'
+          ? zorunluKiyafet
+          : (temizAltlar.isNotEmpty
+              ? temizAltlar[random.nextInt(temizAltlar.length)]
+              : null);
+      _sonKombinAyakkabi = zorunluKategori == 'ayakkabi'
+          ? zorunluKiyafet
+          : (temizAyakkabilar.isNotEmpty
+              ? temizAyakkabilar[random.nextInt(temizAyakkabilar.length)]
+              : null);
+      _sonKombinAksesuar = zorunluKategori == 'aksesuar'
+          ? zorunluKiyafet
+          : (temizAksesuarlar.isNotEmpty && random.nextBool()
+              ? temizAksesuarlar[random.nextInt(temizAksesuarlar.length)]
+              : null);
 
       _renkUyumuPuani = (85 + random.nextInt(15)).toInt();
       _stilistYorumu = l10n.zorunluParcaYorumu(zorunluKiyafet.gorunenBaslik);
@@ -537,16 +581,21 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     }
 
     final random = Random();
-    final temizKiyafetler = widget.gardirobum.where((k) => !k.sepetteMi).toList();
+    final temizKiyafetler =
+        widget.gardirobum.where((k) => !k.sepetteMi).toList();
 
     if (!_dolapKurallariniDogrula(temizKiyafetler)) return;
 
     final HavaKosulu? havaKosulu = havaKosuluCikar(widget.gunlukHava);
 
-    final temizUstler = _kategoridekiUygunKiyafetler(temizKiyafetler, 'ust', havaKosulu);
-    final temizAltlar = _kategoridekiUygunKiyafetler(temizKiyafetler, 'alt', havaKosulu);
-    final temizAyakkabilar = _kategoridekiUygunKiyafetler(temizKiyafetler, 'ayakkabi', havaKosulu);
-    final temizAksesuarlar = _kategoridekiUygunKiyafetler(temizKiyafetler, 'aksesuar', havaKosulu);
+    final temizUstler =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'ust', havaKosulu);
+    final temizAltlar =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'alt', havaKosulu);
+    final temizAyakkabilar =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'ayakkabi', havaKosulu);
+    final temizAksesuarlar =
+        _kategoridekiUygunKiyafetler(temizKiyafetler, 'aksesuar', havaKosulu);
 
     await ReklamServisi().hakDusur();
     if (!mounted) return;
@@ -556,10 +605,12 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     setState(() {
       _sonKombinUst = temizUstler[random.nextInt(temizUstler.length)];
       _sonKombinAlt = temizAltlar[random.nextInt(temizAltlar.length)];
-      _sonKombinAyakkabi = temizAyakkabilar[random.nextInt(temizAyakkabilar.length)];
+      _sonKombinAyakkabi =
+          temizAyakkabilar[random.nextInt(temizAyakkabilar.length)];
 
       if (temizAksesuarlar.isNotEmpty && random.nextBool()) {
-        _sonKombinAksesuar = temizAksesuarlar[random.nextInt(temizAksesuarlar.length)];
+        _sonKombinAksesuar =
+            temizAksesuarlar[random.nextInt(temizAksesuarlar.length)];
       } else {
         _sonKombinAksesuar = null;
       }
@@ -579,8 +630,11 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     HapticFeedback.mediumImpact();
     if (!mounted) return;
     final l10n = AppLocalizations.of(context)!;
-    final temizKiyafetler = widget.gardirobum.where((k) => !k.sepetteMi).toList();
-    final secenekler = temizKiyafetler.where((k) => kategoriModeldenCikar(k.kategori) == bolge).toList();
+    final temizKiyafetler =
+        widget.gardirobum.where((k) => !k.sepetteMi).toList();
+    final secenekler = temizKiyafetler
+        .where((k) => kategoriModeldenCikar(k.kategori) == bolge)
+        .toList();
 
     String modalBaslik = l10n.ustGiyim;
     if (bolge == 'alt') modalBaslik = l10n.altGiyim;
@@ -597,8 +651,11 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
       onTekliKiyafetDegistir: widget.onTekliKiyafetDegistir,
       onSecim: (yeniMetin) {
         final secilenItem = secenekler.firstWhere(
-          (k) => yeniMetin.contains(k.baslik) || yeniMetin.contains(k.gorunenBaslik),
-          orElse: () => secenekler.isNotEmpty ? secenekler.first : guncelKiyafet,
+          (k) =>
+              yeniMetin.contains(k.baslik) ||
+              yeniMetin.contains(k.gorunenBaslik),
+          orElse: () =>
+              secenekler.isNotEmpty ? secenekler.first : guncelKiyafet,
         );
 
         _parcaGuncelleVeAiAnalizEt(bolge, secilenItem);
@@ -606,7 +663,28 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     );
   }
 
-  Future<void> _parcaGuncelleVeAiAnalizEt(String bolge, Kiyafet yeniParca) async {
+  /// Modele gönderilen kombin görsellerinin sırasını ve ne olduğunu anlatır.
+  ///
+  /// Görseller [hazir] sırasıyla gider; promptta numaralarla eşleştirilir ki
+  /// model yanlış parçayı yanlış görselle bağdaştırmasın.
+  String _kombinGorselNotu(HazirGorseller hazir) {
+    final esleme = <String>[];
+    for (var i = 0; i < hazir.uzunluk; i++) {
+      final parca = hazir.parcalar[i];
+      esleme.add(
+        '${i + 1}) "${parca.gorunenBaslik}" (${parca.kategori}, ${parca.renk})',
+      );
+    }
+    return '[ATTACHED IMAGES] Images 1..${hazir.uzunluk} are the actual '
+        'garments of this outfit, in this order: ${esleme.join(', ')}. Their '
+        'backgrounds were removed automatically (plain white background), so do '
+        'not treat the white area as part of the garment. Judge pattern, '
+        'fabric, cut and exact shade from the images and mention what you '
+        'actually see.\n';
+  }
+
+  Future<void> _parcaGuncelleVeAiAnalizEt(
+      String bolge, Kiyafet yeniParca) async {
     if (!mounted) return;
     final l10n = AppLocalizations.of(context)!;
     final random = Random();
@@ -628,36 +706,66 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
 
     try {
       String parcaListesi = "";
-      if (_sonKombinUst != null) parcaListesi += "${l10n.ustGiyim}: ${_sonKombinUst!.gorunenBaslik} (${_sonKombinUst!.renk}), ";
-      if (_sonKombinAlt != null) parcaListesi += "${l10n.altGiyim}: ${_sonKombinAlt!.gorunenBaslik} (${_sonKombinAlt!.renk}), ";
-      if (_sonKombinAyakkabi != null) parcaListesi += "${l10n.ayakkabi}: ${_sonKombinAyakkabi!.gorunenBaslik} (${_sonKombinAyakkabi!.renk}), ";
-      if (_sonKombinAksesuar != null) parcaListesi += "${l10n.disGiyim}: ${_sonKombinAksesuar!.gorunenBaslik} (${_sonKombinAksesuar!.renk}), ";
+      if (_sonKombinUst != null)
+        parcaListesi +=
+            "${l10n.ustGiyim}: ${_sonKombinUst!.gorunenBaslik} (${_sonKombinUst!.renk}), ";
+      if (_sonKombinAlt != null)
+        parcaListesi +=
+            "${l10n.altGiyim}: ${_sonKombinAlt!.gorunenBaslik} (${_sonKombinAlt!.renk}), ";
+      if (_sonKombinAyakkabi != null)
+        parcaListesi +=
+            "${l10n.ayakkabi}: ${_sonKombinAyakkabi!.gorunenBaslik} (${_sonKombinAyakkabi!.renk}), ";
+      if (_sonKombinAksesuar != null)
+        parcaListesi +=
+            "${l10n.disGiyim}: ${_sonKombinAksesuar!.gorunenBaslik} (${_sonKombinAksesuar!.renk}), ";
 
+      // 👁️ VİZYON: Kombinin gerçek parçaları modele gönderilir (en fazla 4).
+      // Böylece puan/yorum desen, kumaş ve tonu gerçekten görerek verilir.
+      // Görsel hazırlanamazsa sessizce metinle devam edilir.
+      final List<Kiyafet> kombinParcalari = <Kiyafet>[
+        if (_sonKombinUst != null) _sonKombinUst!,
+        if (_sonKombinAlt != null) _sonKombinAlt!,
+        if (_sonKombinAyakkabi != null) _sonKombinAyakkabi!,
+        if (_sonKombinAksesuar != null) _sonKombinAksesuar!,
+      ];
+      final HazirGorseller hazirGorseller =
+          await KiyafetGorselHazirlayici.hazirla(kombinParcalari);
+      final String gorselNotu =
+          hazirGorseller.bosMu ? '' : _kombinGorselNotu(hazirGorseller);
       final aiCevap = await AiService().hibritAiSorgula(
-        sistemPromptu: "Sen uzman bir moda stilistisin. You MUST answer in $aiDili language. Kullanıcının değiştirdiği bu kombini renk uyumu, stil ve hava durumuna (${_istemIcinHavaMetni(l10n)}) göre yeniden değerlendir.\n"
+        sistemPromptu:
+            "Sen uzman bir moda stilistisin. You MUST answer in $aiDili language. Kullanıcının değiştirdiği bu kombini renk uyumu, stil ve hava durumuna (${_istemIcinHavaMetni(l10n)}) göre yeniden değerlendir.\n"
             "MEVSİM KURALI (ÇOK ÖNEMLİ): Kombini havaya uygunluğu açısından da değerlendir. Hava soğuksa (en yüksek sıcaklık 12°C ve altı) şort, keten, askılı, sandalet gibi yazlık parçalar uygun değildir; hava sıcaksa (en yüksek sıcaklık 28°C ve üstü) yün, mont, kaban, kalın triko, bot gibi kışlık parçalar uygun değildir. Uygun olmayan parça varsa 'yorum' alanında bunu açıkça belirt ve puanı düşür.\n"
+            "$gorselNotu"
             "SADECE şu JSON formatında cevap ver (başka hiçbir açıklama yazma):\n"
             "{\n  \"puan\": 85,\n  \"yorum\": \"Stilistin bu yeni kombinasyon hakkındaki samimi, yaratıcı ve profesyonel yorumu\"\n}",
-        kullaniciMesaji: "Güncel kombin parçaları: $parcaListesi. Bu kombini puanla ve yorumla.",
+        kullaniciMesaji:
+            "Güncel kombin parçaları: $parcaListesi. Bu kombini puanla ve yorumla.",
+        resimler: hazirGorseller.gorseller,
       );
 
-      String clean = aiCevap.replaceAll(RegExp(r'```json\s*|```\s*'), '').trim();
+      String clean =
+          aiCevap.replaceAll(RegExp(r'```json\s*|```\s*'), '').trim();
       final int firstBrace = clean.indexOf('{');
       final int lastBrace = clean.lastIndexOf('}');
       if (firstBrace != -1 && lastBrace != -1) {
         clean = clean.substring(firstBrace, lastBrace + 1);
       }
 
-      final Map<String, dynamic> parsed = safeJsonDecodeMap(clean, tag: 'ai_swap');
+      final Map<String, dynamic> parsed =
+          safeJsonDecodeMap(clean, tag: 'ai_swap');
 
       if (mounted) {
         setState(() {
-          _renkUyumuPuani = (parsed['puan'] as num?)?.toInt() ?? (75 + random.nextInt(25)).toInt();
-          _stilistYorumu = parsed['yorum']?.toString() ?? l10n.parcaDegisimVarsayilanYorum;
+          _renkUyumuPuani = (parsed['puan'] as num?)?.toInt() ??
+              (75 + random.nextInt(25)).toInt();
+          _stilistYorumu =
+              parsed['yorum']?.toString() ?? l10n.parcaDegisimVarsayilanYorum;
           _aiAnalizEdiyor = false;
         });
         _favoriDurumunuGuncelle();
-        await AnalyticsServisi().olay('outfit_generated', {'source': 'ai_swap'});
+        await AnalyticsServisi()
+            .olay('outfit_generated', {'source': 'ai_swap'});
       }
     } catch (e) {
       debugPrint("AI Kombin Güncelleme Hatası: $e");
@@ -678,7 +786,9 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     final colors = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
-    final bool kombinVarMi = _sonKombinUst != null || _sonKombinAlt != null || _sonKombinAyakkabi != null;
+    final bool kombinVarMi = _sonKombinUst != null ||
+        _sonKombinAlt != null ||
+        _sonKombinAyakkabi != null;
     final Color uyumRengi = _uyumRengiGetir(_renkUyumuPuani);
 
     Widget zarAtButonu = ElevatedButton(
@@ -691,9 +801,10 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
       style: ElevatedButton.styleFrom(
         backgroundColor: AppAccents.success,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
         elevation: 0,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md, vertical: AppSpacing.md),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -714,14 +825,14 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
           Flexible(
             child: FittedBox(
               fit: BoxFit.scaleDown,
-              alignment: Alignment.centerLeft,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(
                 kombinVarMi ? l10n.yenidenZarAt : l10n.zarAtKaristir,
                 style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w800,
+                  fontSize: AppText.sizeBodySmall,
+                  fontWeight: FontWeight.w600,
                   color: Colors.white,
-                  letterSpacing: -0.2,
+                  letterSpacing: 0,
                 ),
               ),
             ),
@@ -736,35 +847,36 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-           SliverAppBar(
-  pinned: false,
-  floating: false,
-  snap: false,
-  backgroundColor: theme.scaffoldBackgroundColor,
-  surfaceTintColor: Colors.transparent,
-  elevation: 0,
-  centerTitle: true,
-  title: Text(
-    l10n.stilistTitle,
-    style: TextStyle(
-      fontWeight: FontWeight.w900,
-      fontSize: 18,
-      letterSpacing: -0.5,
-      color: colors.onSurface,
-    ),
-  ),
-  actions: [
-    IconButton(
-      onPressed: _zarSallaPopUpGoster,
-      icon: const Icon(Icons.casino_rounded),
-      tooltip: l10n.zarSalla,
-    ),
-    const SizedBox(width: 8),
-  ],
-),
+            SliverAppBar(
+              pinned: false,
+              floating: false,
+              snap: false,
+              backgroundColor: theme.scaffoldBackgroundColor,
+              surfaceTintColor: Colors.transparent,
+              elevation: 0,
+              centerTitle: false,
+              title: Text(
+                l10n.stilistTitle,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: AppText.sizeTitleSmall,
+                  letterSpacing: 0,
+                  color: colors.onSurface,
+                ),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: _zarSallaPopUpGoster,
+                  icon: const Icon(Icons.casino_rounded),
+                  tooltip: l10n.zarSalla,
+                ),
+                const SizedBox(width: 8),
+              ],
+            ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 10, 20, 100),
+                padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 100),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -779,7 +891,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             side: BorderSide(
                               color: widget.havaHatasi
                                   ? colors.error.withValues(alpha: 0.3)
-                                  : colors.outlineVariant.withValues(alpha: 0.4),
+                                  : colors.outlineVariant
+                                      .withValues(alpha: 0.4),
                               width: 1.2,
                             ),
                           ),
@@ -790,11 +903,14 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                               widget.onKonumuYenile();
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: AppSpacing.lg,
+                                  vertical: AppSpacing.md),
                               child: Row(
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.all(8),
+                                    padding:
+                                        const EdgeInsets.all(AppSpacing.sm),
                                     decoration: BoxDecoration(
                                       color: widget.havaHatasi
                                           ? colors.errorContainer
@@ -814,28 +930,33 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                   const SizedBox(width: 16),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
-                                          l10n.stilistAnlikHavaDurumu.toUpperCase(),
+                                          l10n.stilistAnlikHavaDurumu,
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: AppText.sizeCaption,
                                             color: colors.primary,
-                                            fontWeight: FontWeight.w900,
-                                            letterSpacing: 1.0,
+                                            fontWeight: FontWeight.w600,
+                                            letterSpacing: 0,
                                           ),
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
                                           widget.havaYukleniyor
                                               ? l10n.stilistKonumKontrol
-                                              : (_formatliHavaMetni.isEmpty ? l10n.yukleniyor : _formatliHavaMetni),
+                                              : (_formatliHavaMetni.isEmpty
+                                                  ? l10n.yukleniyor
+                                                  : _formatliHavaMetni),
                                           style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w800,
-                                            color: widget.havaHatasi ? colors.error : colors.onSurface,
-                                            letterSpacing: -0.2,
+                                            fontSize: AppText.sizeBodySmall,
+                                            fontWeight: FontWeight.w600,
+                                            color: widget.havaHatasi
+                                                ? colors.error
+                                                : colors.onSurface,
+                                            letterSpacing: 0,
                                           ),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
@@ -843,18 +964,22 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                       ],
                                     ),
                                   ),
-                                  if (widget.havaHatasi && widget.onKonumAyarlariniAc != null) ...[
+                                  if (widget.havaHatasi &&
+                                      widget.onKonumAyarlariniAc != null) ...[
                                     IconButton.filledTonal(
                                       onPressed: () {
                                         HapticFeedback.lightImpact();
                                         widget.onKonumAyarlariniAc?.call();
                                       },
-                                      icon: const Icon(Icons.settings_rounded, size: 18),
+                                      icon: const Icon(Icons.settings_rounded,
+                                          size: 18),
                                       tooltip: l10n.ayarlaraGit,
                                       style: IconButton.styleFrom(
                                         backgroundColor: colors.errorContainer,
-                                        foregroundColor: colors.onErrorContainer,
-                                        padding: const EdgeInsets.all(8),
+                                        foregroundColor:
+                                            colors.onErrorContainer,
+                                        padding:
+                                            const EdgeInsets.all(AppSpacing.sm),
                                       ),
                                     ),
                                     const SizedBox(width: 8),
@@ -869,9 +994,7 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 16),
-
                         if (kombinVarMi)
                           Row(
                             children: [
@@ -881,19 +1004,28 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                   height: 50,
                                   child: OutlinedButton.icon(
                                     onPressed: _kombiniTemizle,
-                                    icon: Icon(Icons.delete_sweep_rounded, size: 18, color: colors.error),
+                                    icon: Icon(Icons.delete_sweep_rounded,
+                                        size: 18, color: colors.error),
                                     label: FittedBox(
                                       fit: BoxFit.scaleDown,
                                       child: Text(
                                         l10n.temizle,
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: colors.error),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: AppText.sizeBodySmall,
+                                            color: colors.error),
                                       ),
                                     ),
                                     style: OutlinedButton.styleFrom(
                                       foregroundColor: colors.error,
-                                      side: BorderSide(color: colors.error.withValues(alpha: 0.4), width: 1.5),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                                      side: BorderSide(
+                                          color: colors.error
+                                              .withValues(alpha: 0.4),
+                                          width: 1.5),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: AppRadius.lgRadius),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: AppSpacing.xs),
                                     ),
                                   ),
                                 ),
@@ -914,18 +1046,19 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             height: 50,
                             child: zarAtButonu,
                           ),
-
                         const SizedBox(height: 16),
                       ],
                     ),
-
                     if (kombinVarMi)
                       Container(
-                        padding: const EdgeInsets.all(24),
+                        padding: const EdgeInsets.all(AppSpacing.xxl),
                         decoration: BoxDecoration(
                           color: colors.surfaceContainerLow,
-                          borderRadius: BorderRadius.circular(32),
-                          border: Border.all(color: colors.outlineVariant.withValues(alpha: 0.4), width: 1.2),
+                          borderRadius: AppRadius.modalRadius,
+                          border: Border.all(
+                              color:
+                                  colors.outlineVariant.withValues(alpha: 0.4),
+                              width: 1.2),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -935,17 +1068,22 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: AppSpacing.sm,
+                                      vertical: AppSpacing.sm),
                                   decoration: BoxDecoration(
                                     color: uyumRengi.withValues(alpha: 0.12),
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(color: uyumRengi.withValues(alpha: 0.4)),
+                                    borderRadius: AppRadius.mdRadius,
+                                    border: Border.all(
+                                        color:
+                                            uyumRengi.withValues(alpha: 0.4)),
                                   ),
                                   child: Text(
-                                    l10n.stilistUyum(_renkUyumuPuani.toString()),
+                                    l10n.stilistUyum(
+                                        _renkUyumuPuani.toString()),
                                     style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w900,
+                                      fontSize: AppText.sizeCaption,
+                                      fontWeight: FontWeight.w600,
                                       color: uyumRengi,
                                     ),
                                   ),
@@ -954,15 +1092,19 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                             ),
                             const SizedBox(height: 8),
                             Align(
-                              alignment: Alignment.centerLeft,
+                              alignment: AlignmentDirectional.centerStart,
                               child: AnimatedSwitcher(
-                                duration: const Duration(milliseconds: 250),
+                                duration: AppMotion.kisa,
                                 child: Text(
                                   l10n.stilistKombininTitle(_kombinTuru),
                                   key: ValueKey<String>(_kombinTuru),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: -0.3, color: colors.onSurface),
+                                  style: TextStyle(
+                                      fontSize: AppText.sizeTitleSmall,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 0,
+                                      color: colors.onSurface),
                                 ),
                               ),
                             ),
@@ -973,29 +1115,47 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                 physics: const BouncingScrollPhysics(),
                                 scrollDirection: Axis.horizontal,
                                 children: [
-                                  if (_sonKombinUst != null) _kombinParcaKart(context, l10n.stilistUstGiyim, _sonKombinUst!, 'ust'),
-                                  if (_sonKombinAlt != null) _kombinParcaKart(context, l10n.stilistAltGiyim, _sonKombinAlt!, 'alt'),
-                                  if (_sonKombinAyakkabi != null) _kombinParcaKart(context, l10n.stilistAyakkabi, _sonKombinAyakkabi!, 'ayakkabi'),
-                                  if (_sonKombinAksesuar != null) _kombinParcaKart(context, l10n.disGiyim, _sonKombinAksesuar!, 'aksesuar'),
+                                  if (_sonKombinUst != null)
+                                    _kombinParcaKart(
+                                        context,
+                                        l10n.stilistUstGiyim,
+                                        _sonKombinUst!,
+                                        'ust'),
+                                  if (_sonKombinAlt != null)
+                                    _kombinParcaKart(
+                                        context,
+                                        l10n.stilistAltGiyim,
+                                        _sonKombinAlt!,
+                                        'alt'),
+                                  if (_sonKombinAyakkabi != null)
+                                    _kombinParcaKart(
+                                        context,
+                                        l10n.stilistAyakkabi,
+                                        _sonKombinAyakkabi!,
+                                        'ayakkabi'),
+                                  if (_sonKombinAksesuar != null)
+                                    _kombinParcaKart(context, l10n.disGiyim,
+                                        _sonKombinAksesuar!, 'aksesuar'),
                                 ],
                               ),
                             ),
                             const SizedBox(height: 12),
 
                             Container(
-                              padding: const EdgeInsets.all(16),
+                              padding: const EdgeInsets.all(AppSpacing.lg),
                               decoration: BoxDecoration(
                                 color: AppTints.styleistBgDinamik(context),
                                 borderRadius: AppRadius.xlRadius,
                                 border: Border.all(
-                                  color: AppTints.styleistBorderDinamik(context),
+                                  color:
+                                      AppTints.styleistBorderDinamik(context),
                                 ),
                               ),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Icon(
-                                    Icons.auto_awesome_rounded,
+                                    Icons.style_outlined,
                                     size: 18,
                                     color: AppAccents.styleist,
                                   ),
@@ -1007,7 +1167,8 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                               const SizedBox(
                                                 width: 16,
                                                 height: 16,
-                                                child: CircularProgressIndicator(
+                                                child:
+                                                    CircularProgressIndicator(
                                                   strokeWidth: 2,
                                                   color: AppAccents.styleist,
                                                 ),
@@ -1015,19 +1176,25 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                               const SizedBox(width: 8),
                                               Text(
                                                 l10n.yenidenDegerlendiriliyor,
-                                                style: theme.textTheme.bodyMedium?.copyWith(
+                                                style: theme
+                                                    .textTheme.bodyMedium
+                                                    ?.copyWith(
                                                   fontStyle: FontStyle.italic,
-                                                  color: AppMiscColors.styleistAltTextDinamik(context),
+                                                  color: AppMiscColors
+                                                      .styleistAltTextDinamik(
+                                                          context),
                                                 ),
                                               ),
                                             ],
                                           )
                                         : Text(
                                             metniGuvenliYap(_stilistYorumu),
-                                            style: theme.textTheme.bodyMedium?.copyWith(
-                                              fontSize: 14,
+                                            style: theme.textTheme.bodyMedium
+                                                ?.copyWith(
+                                              fontSize: AppText.sizeBodySmall,
                                               fontWeight: FontWeight.w500,
-                                              color: AppMiscColors.styleistTextDinamik(context),
+                                              color: AppMiscColors
+                                                  .styleistTextDinamik(context),
                                               height: 1.45,
                                             ),
                                           ),
@@ -1041,15 +1208,25 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                               children: [
                                 // Favori Butonu
                                 Tooltip(
-                                  message: _isFavori ? l10n.favorilerdeEtiketi : l10n.stilistFavoriyeEkle,
+                                  message: _isFavori
+                                      ? l10n.favorilerdeEtiketi
+                                      : l10n.stilistFavoriyeEkle,
                                   child: IconButton.filledTonal(
                                     icon: Icon(
-                                      _isFavori ? Icons.star_rounded : Icons.star_border_rounded,
+                                      _isFavori
+                                          ? Icons.star_rounded
+                                          : Icons.star_border_rounded,
                                       size: 22,
                                     ),
                                     style: IconButton.styleFrom(
-                                      backgroundColor: _isFavori ? AppStatusColors.favoriteBgDinamik(context) : colors.surfaceContainerHighest,
-                                      foregroundColor: _isFavori ? AppStatusColors.favoriteFgDinamik(context) : colors.onSurfaceVariant,
+                                      backgroundColor: _isFavori
+                                          ? AppStatusColors.favoriteBgDinamik(
+                                              context)
+                                          : colors.surfaceContainerHighest,
+                                      foregroundColor: _isFavori
+                                          ? AppStatusColors.favoriteFgDinamik(
+                                              context)
+                                          : colors.onSurfaceVariant,
                                     ),
                                     onPressed: _favoriDurumunuDegistir,
                                   ),
@@ -1058,15 +1235,25 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
 
                                 // Giydim Butonu
                                 Tooltip(
-                                  message: _isBugunGiydildi ? l10n.bugunGiydildiEtiketi : l10n.stilistBugunGiydim,
+                                  message: _isBugunGiydildi
+                                      ? l10n.bugunGiydildiEtiketi
+                                      : l10n.stilistBugunGiydim,
                                   child: IconButton.filledTonal(
                                     icon: Icon(
-                                      _isBugunGiydildi ? Icons.check_circle_rounded : Icons.check_circle_outline_rounded,
+                                      _isBugunGiydildi
+                                          ? Icons.check_circle_rounded
+                                          : Icons.check_circle_outline_rounded,
                                       size: 22,
                                     ),
                                     style: IconButton.styleFrom(
-                                      backgroundColor: _isBugunGiydildi ? AppStatusColors.wornBgDinamik(context) : colors.surfaceContainerHighest,
-                                      foregroundColor: _isBugunGiydildi ? AppStatusColors.wornFgDinamik(context) : colors.onSurfaceVariant,
+                                      backgroundColor: _isBugunGiydildi
+                                          ? AppStatusColors.wornBgDinamik(
+                                              context)
+                                          : colors.surfaceContainerHighest,
+                                      foregroundColor: _isBugunGiydildi
+                                          ? AppStatusColors.wornFgDinamik(
+                                              context)
+                                          : colors.onSurfaceVariant,
                                     ),
                                     onPressed: _bugunGiydimTetikle,
                                   ),
@@ -1076,12 +1263,18 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
                                 Tooltip(
                                   message: l10n.kombinSohbetAc,
                                   child: IconButton.filledTonal(
-                                    icon: const Icon(Icons.chat_bubble_outline_rounded, size: 22),
+                                    icon: const Icon(
+                                        Icons.chat_bubble_outline_rounded,
+                                        size: 22),
                                     style: IconButton.styleFrom(
-                                      backgroundColor: colors.surfaceContainerHighest,
+                                      backgroundColor:
+                                          colors.surfaceContainerHighest,
                                       foregroundColor: colors.onSurfaceVariant,
                                     ),
-                                    onPressed: _mevcutKombinParcalariniGetir().isNotEmpty ? _kombinSohbetiniAc : null,
+                                    onPressed: _mevcutKombinParcalariniGetir()
+                                            .isNotEmpty
+                                        ? _kombinSohbetiniAc
+                                        : null,
                                   ),
                                 ),
                               ],
@@ -1099,12 +1292,14 @@ class DolaptanKombinStilistiEkraniState extends State<DolaptanKombinStilistiEkra
     );
   }
 
-  Widget _kombinParcaKart(BuildContext context, String etiket, Kiyafet kiyafet, String bolge) {
+  Widget _kombinParcaKart(
+      BuildContext context, String etiket, Kiyafet kiyafet, String bolge) {
     return SadeKiyafetKarti(
       kiyafet: kiyafet,
       etiket: etiket,
       bolge: bolge,
-      onDegistir: ([bool ileriMi = true]) => _parcaDegistirModaliniAc(bolge, kiyafet),
+      onDegistir: ([bool ileriMi = true]) =>
+          _parcaDegistirModaliniAc(bolge, kiyafet),
       onDokunma: () => _netGorselModaliniAc(context, kiyafet),
     );
   }
@@ -1132,17 +1327,17 @@ class SadeKiyafetKarti extends StatelessWidget {
 
     return Container(
       width: 145,
-      margin: const EdgeInsets.only(right: 16, top: 4, bottom: 4),
+      margin: const EdgeInsetsDirectional.only(end: 16, top: 4, bottom: 4),
       decoration: BoxDecoration(
         color: colors.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: AppRadius.xxlRadius,
         border: Border.all(
           color: colors.outlineVariant.withValues(alpha: 0.4),
           width: 1.2,
         ),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: AppRadius.xxlRadius,
         child: Material(
           color: Colors.transparent,
           child: InkWell(
@@ -1153,7 +1348,8 @@ class SadeKiyafetKarti extends StatelessWidget {
                 Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(20.5)),
+                      borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(20.5)),
                       child: SizedBox(
                         height: 110,
                         width: double.infinity,
@@ -1161,18 +1357,26 @@ class SadeKiyafetKarti extends StatelessWidget {
                           kiyafet.resimBytes,
                           fit: BoxFit.cover,
                           errorBuilder: (_, __, ___) => Center(
-                            child: Icon(Icons.broken_image_outlined, color: colors.onSurfaceVariant),
+                            child: Icon(Icons.broken_image_outlined,
+                                color: colors.onSurfaceVariant),
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                      top: 0, left: 0, right: 0, height: 40,
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: 40,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            begin: Alignment.topCenter, end: Alignment.bottomCenter,
-                            colors: [Colors.black.withValues(alpha: 0.4), Colors.transparent],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black.withValues(alpha: 0.4),
+                              Colors.transparent
+                            ],
                           ),
                         ),
                       ),
@@ -1188,15 +1392,19 @@ class SadeKiyafetKarti extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: AppRadius.xlRadius,
                             child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              filter: ImageFilter.blur(
+                                  sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
                               child: Container(
-                                padding: const EdgeInsets.all(8),
+                                padding: const EdgeInsets.all(AppSpacing.sm),
                                 decoration: BoxDecoration(
                                   color: Colors.black.withValues(alpha: 0.35),
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white.withValues(alpha: 0.4)),
+                                  border: Border.all(
+                                      color:
+                                          Colors.white.withValues(alpha: 0.4)),
                                 ),
-                                child: const Icon(Icons.sync_rounded, color: Colors.white, size: 16),
+                                child: const Icon(Icons.sync_rounded,
+                                    color: Colors.white, size: 16),
                               ),
                             ),
                           ),
@@ -1207,18 +1415,19 @@ class SadeKiyafetKarti extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
+                    padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.sm, 6, AppSpacing.sm, 6),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          etiket.toUpperCase(),
+                          etiket,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: AppText.sizeCaption,
                             color: colors.primary,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 0.8,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -1227,10 +1436,10 @@ class SadeKiyafetKarti extends StatelessWidget {
                         Text(
                           kiyafet.gorunenBaslik,
                           style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w800,
+                            fontSize: AppText.sizeCaption,
+                            fontWeight: FontWeight.w600,
                             color: colors.onSurface,
-                            letterSpacing: -0.2,
+                            letterSpacing: 0,
                           ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -1239,7 +1448,7 @@ class SadeKiyafetKarti extends StatelessWidget {
                         Text(
                           kiyafet.renk,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: AppText.sizeCaption,
                             color: colors.onSurfaceVariant,
                             fontWeight: FontWeight.w600,
                           ),
@@ -1271,16 +1480,16 @@ class ZarSallaDialog extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
       child: Dialog(
         backgroundColor: colors.surfaceContainerHigh,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: AppRadius.modalRadius,
           side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.4)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -1288,7 +1497,7 @@ class ZarSallaDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: AppAccents.success.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -1305,7 +1514,7 @@ class ZarSallaDialog extends StatelessWidget {
                   ),
                   const SizedBox(width: 16),
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: colors.primary.withValues(alpha: 0.15),
                       borderRadius: AppRadius.xlRadius,
@@ -1326,9 +1535,9 @@ class ZarSallaDialog extends StatelessWidget {
               Text(
                 l10n.zarPopupBaslik,
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: -0.5,
+                  fontSize: AppText.sizeTitle,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0,
                   color: colors.onSurface,
                 ),
                 textAlign: TextAlign.center,
@@ -1337,7 +1546,7 @@ class ZarSallaDialog extends StatelessWidget {
               Text(
                 l10n.zarPopupAciklama,
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: AppText.sizeBodySmall,
                   height: 1.4,
                   fontWeight: FontWeight.w500,
                   color: colors.onSurfaceVariant,
@@ -1354,16 +1563,17 @@ class ZarSallaDialog extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding:
+                            const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                       child: Text(
                         l10n.iptal,
                         style: TextStyle(
                           color: colors.onSurfaceVariant,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -1382,17 +1592,18 @@ class ZarSallaDialog extends StatelessWidget {
                         backgroundColor: AppAccents.success,
                         foregroundColor: Colors.white,
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        padding:
+                            const EdgeInsets.symmetric(vertical: AppSpacing.md),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                       icon: const Icon(Icons.casino_rounded, size: 20),
                       label: Text(
                         l10n.zarlariAt,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
                         ),
                       ),
                     ),
@@ -1429,7 +1640,8 @@ class ShakeDetector {
   }
 
   void startListening() {
-    _subscription = accelerometerEventStream().listen((AccelerometerEvent event) {
+    _subscription =
+        accelerometerEventStream().listen((AccelerometerEvent event) {
       double gX = event.x / 9.80665;
       double gY = event.y / 9.80665;
       double gZ = event.z / 9.80665;

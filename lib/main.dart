@@ -26,10 +26,12 @@ import 'services/analytics_servisi.dart';
 import 'services/auth_servisi.dart';
 import 'services/background_removal_service.dart';
 import 'services/bildirim_servisi.dart';
+import 'services/bildirim_zamanlayici.dart';
 import 'services/fcm_service.dart';
 import 'services/reklam_servisi.dart';
 import 'services/satin_alma_servisi.dart';
 import '../theme/design_tokens.dart';
+import 'theme/app_tema.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -92,9 +94,7 @@ Future<UygulamaBaslatmaSonucu> uygulamaHazirliklariniBaslat() async {
 
   AnalyticsServisi.firebaseHazir = firebaseHazir;
   try {
-    await AnalyticsServisi()
-        .izniYukle()
-        .timeout(const Duration(seconds: 5));
+    await AnalyticsServisi().izniYukle().timeout(const Duration(seconds: 5));
     await AnalyticsServisi().baslat().timeout(const Duration(seconds: 8));
   } catch (e) {
     debugPrint('Analytics başlatma hatası: $e');
@@ -117,19 +117,10 @@ Future<UygulamaBaslatmaSonucu> uygulamaHazirliklariniBaslat() async {
   try {
     await BildirimServisi().init().timeout(const Duration(seconds: 10));
     final prefs = await SharedPreferences.getInstance();
-    final bool sabahBildirimiAcik = prefs.getBool('sabah_bildirimi') ?? true;
 
-    if (sabahBildirimiAcik) {
-      final int saat = prefs.getInt('sabah_bildirim_saat') ?? 8;
-      final int dakika = prefs.getInt('sabah_bildirim_dakika') ?? 30;
-
-      await BildirimServisi().gunlukSabahBildirimiKur(
-        saat: saat,
-        dakika: dakika,
-      );
-    } else {
-      await BildirimServisi().gunlukSabahBildiriminiIptalEt();
-    }
+    // Sabah + akşam serileri: haftalık plan varsa gövdede o günün gerçek
+    // kombini yazar, bildirime dokununca ilgili sekme açılır.
+    await BildirimZamanlayici.yenidenKur();
 
     final bool haftalikRaporAcik =
         prefs.getBool('haftalik_rapor_bildirimi') ?? true;
@@ -163,9 +154,11 @@ Future<void> _eskiIdCakismalariniTemizle() async {
         if (item is Map && item['id'] != null) {
           final currentId = item['id'] as String;
           if (seen.contains(currentId)) {
-            item['id'] = '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
+            item['id'] =
+                '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
             changed = true;
-            debugPrint('🔧 Gardırop ID çakışması düzeltildi: $currentId -> ${item['id']}');
+            debugPrint(
+                '🔧 Gardırop ID çakışması düzeltildi: $currentId -> ${item['id']}');
           }
           seen.add(item['id'] as String);
         }
@@ -183,9 +176,11 @@ Future<void> _eskiIdCakismalariniTemizle() async {
         if (item is Map && item['id'] != null) {
           final currentId = item['id'] as String;
           if (seen.contains(currentId)) {
-            item['id'] = '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
+            item['id'] =
+                '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
             changed = true;
-            debugPrint('🔧 Favori ID çakışması düzeltildi: $currentId -> ${item['id']}');
+            debugPrint(
+                '🔧 Favori ID çakışması düzeltildi: $currentId -> ${item['id']}');
           }
           seen.add(item['id'] as String);
         }
@@ -203,9 +198,11 @@ Future<void> _eskiIdCakismalariniTemizle() async {
         if (item is Map && item['id'] != null) {
           final currentId = item['id'] as String;
           if (seen.contains(currentId)) {
-            item['id'] = '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
+            item['id'] =
+                '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(999999999)}_${currentId.hashCode}';
             changed = true;
-            debugPrint('🔧 Geçmiş ID çakışması düzeltildi: $currentId -> ${item['id']}');
+            debugPrint(
+                '🔧 Geçmiş ID çakışması düzeltildi: $currentId -> ${item['id']}');
           }
           seen.add(item['id'] as String);
         }
@@ -247,9 +244,13 @@ class KombinDanismaniApp extends StatefulWidget {
     this.baslangicDilKodu,
   });
 
+  static KombinDanismaniAppState? maybeOf(BuildContext context) =>
+      context.findAncestorStateOfType<KombinDanismaniAppState>();
+
   static KombinDanismaniAppState of(BuildContext context) {
-    final state = context.findAncestorStateOfType<KombinDanismaniAppState>();
-    assert(state != null, 'KombinDanismaniAppState bulunamadı. Widget ağacında KombinDanismaniApp altında olmalı.');
+    final state = maybeOf(context);
+    assert(state != null,
+        'KombinDanismaniAppState bulunamadı. Widget ağacında KombinDanismaniApp altında olmalı.');
     return state!;
   }
 
@@ -262,8 +263,6 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
       AnalyticsNavigatorObserver();
   Locale? _locale;
   late ThemeMode _temaModu;
-
-  static const Color _seedColor = Color(0xFF3B3B3B);
 
   @override
   void initState() {
@@ -322,63 +321,14 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
     if (_temaModu == ThemeMode.dark) return true;
     if (_temaModu == ThemeMode.light) return false;
     // system: cihaz ayarına bak
-    final brightness =
-        PlatformDispatcher.instance.platformBrightness;
+    final brightness = PlatformDispatcher.instance.platformBrightness;
     return brightness == Brightness.dark;
   }
 
   Locale? get currentLocale => _locale;
 
-  ColorScheme _buildColorScheme(Brightness brightness) {
-    final base = ColorScheme.fromSeed(
-      seedColor: _seedColor,
-      brightness: brightness,
-    );
-    final isDark = brightness == Brightness.dark;
-
-    if (isDark) {
-      return base.copyWith(
-        primary: const Color(0xFFD0D0D0),
-        onPrimary: const Color(0xFF202020),
-        primaryContainer: const Color(0xFF4A4A4A),
-        onPrimaryContainer: const Color(0xFFF2F2F2),
-        secondary: const Color(0xFFC6C6C6),
-        onSecondary: const Color(0xFF202020),
-        secondaryContainer: const Color(0xFF464646),
-        onSecondaryContainer: const Color(0xFFF0F0F0),
-        tertiary: const Color(0xFFBDBDBD),
-        onTertiary: const Color(0xFF202020),
-        tertiaryContainer: const Color(0xFF414141),
-        onTertiaryContainer: const Color(0xFFEDEDED),
-        surfaceTint: const Color(0xFFD0D0D0),
-      );
-    }
-
-    return base.copyWith(
-      surface: const Color(0xFFF8F9FA),
-      surfaceContainerLow: Colors.white,
-      surfaceContainer: Colors.white,
-      surfaceContainerHighest:
-          const Color(0xFFEFF1F3),
-      primary: const Color(0xFF3B3B3B),
-      onPrimary: Colors.white,
-      primaryContainer: const Color(0xFFE3E3E3),
-      onPrimaryContainer: const Color(0xFF1B1B1B),
-      secondary: const Color(0xFF5F5F5F),
-      onSecondary: Colors.white,
-      secondaryContainer: const Color(0xFFE7E7E7),
-      onSecondaryContainer: const Color(0xFF202020),
-      tertiary: const Color(0xFF686868),
-      onTertiary: Colors.white,
-      tertiaryContainer: const Color(0xFFEAEAEA),
-      onTertiaryContainer: const Color(0xFF242424),
-      onSurface: const Color(0xFF1C1B1F),
-      onSurfaceVariant: const Color(0xFF49454F),
-      outline: const Color(0xFF79747E),
-      outlineVariant: const Color(0xFFCAC4D0),
-      surfaceTint: const Color(0xFF3B3B3B),
-    );
-  }
+  ColorScheme _buildColorScheme(Brightness brightness) =>
+      AppTema.renkSemasi(brightness);
 
   Widget _oturumKapisi(bool firebaseHazir) {
     if (!firebaseHazir) {
@@ -404,8 +354,6 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           if (userEmail != null && userEmail.isNotEmpty) {
             ReklamServisi().kullaniciEmailKaydet(userEmail);
           }
-
-          AnalyticsServisi().kullaniciKimligiAyarla(snapshot.data!.uid);
 
           return const AnaEkraniNavigasyon();
         }
@@ -454,75 +402,18 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
         Locale('ru'),
       ],
       builder: (context, child) {
-        final bool koyuMu =
-            Theme.of(context).brightness == Brightness.dark;
-        return Stack(
-          children: [
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: koyuMu
-                        ? const [
-                            Color(0xFF121212),
-                            Color(0xFF1A1A1A),
-                            Color(0xFF202020),
-                          ]
-                        : const [
-                            Color(0xFFFAFAFC),
-                            Color(0xFFF2F4F7),
-                            Color(0xFFEAECF0),
-                          ],
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: -100,
-              left: -100,
-              child: Container(
-                width: 320,
-                height: 320,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: (koyuMu
-                          ? const Color(0xFF2A2A2A)
-                          : const Color(0xFFE2E8F0))
-                      .withValues(alpha: koyuMu ? 0.4 : 0.6),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: -120,
-              right: -100,
-              child: Container(
-                width: 380,
-                height: 380,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: (koyuMu
-                          ? const Color(0xFF262626)
-                          : const Color(0xFFD1D5DB))
-                      .withValues(alpha: 0.4),
-                ),
-              ),
-            ),
-            Positioned.fill(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 70, sigmaY: 70),
-                child: const SizedBox.expand(),
-              ),
-            ),
-            if (child != null) child,
-          ],
+        return ColoredBox(
+          color: Theme.of(context).colorScheme.surface,
+          child: child ?? const SizedBox.expand(),
         );
       },
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: lightColorScheme,
-        textTheme: Typography.material2021().black,
+        textTheme: Typography.material2021().black.apply(
+              bodyColor: lightColorScheme.onSurface,
+              displayColor: lightColorScheme.onSurface,
+            ),
         dividerTheme: DividerThemeData(
           color: lightColorScheme.outlineVariant,
           thickness: 1,
@@ -536,10 +427,10 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
             foregroundColor: lightColorScheme.onSurfaceVariant,
           ),
         ),
-        scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(
+        scaffoldBackgroundColor: lightColorScheme.surface,
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
-          foregroundColor: Color(0xFF1C1B1F),
+          foregroundColor: lightColorScheme.onSurface,
           elevation: 0,
           scrolledUnderElevation: 0,
           centerTitle: false,
@@ -552,7 +443,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           color: lightColorScheme.surfaceContainerLow,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: AppRadius.lgRadius,
           ),
         ),
         dialogTheme: DialogThemeData(
@@ -594,7 +485,10 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: darkColorScheme,
-        textTheme: Typography.material2021().white,
+        textTheme: Typography.material2021().white.apply(
+              bodyColor: darkColorScheme.onSurface,
+              displayColor: darkColorScheme.onSurface,
+            ),
         dividerTheme: DividerThemeData(
           color: darkColorScheme.outlineVariant,
           thickness: 1,
@@ -608,10 +502,10 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
             foregroundColor: darkColorScheme.onSurfaceVariant,
           ),
         ),
-        scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(
+        scaffoldBackgroundColor: darkColorScheme.surface,
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
-          foregroundColor: Color(0xFFF2F2F2),
+          foregroundColor: darkColorScheme.onSurface,
           elevation: 0,
           scrolledUnderElevation: 0,
           centerTitle: false,
@@ -624,7 +518,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
           color: darkColorScheme.surfaceContainerLow,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: AppRadius.lgRadius,
           ),
         ),
         dialogTheme: DialogThemeData(
@@ -706,8 +600,7 @@ class _BaslangicKapisiState extends State<_BaslangicKapisi> {
       sonuc = await widget.baslatmaIslemi.timeout(
         const Duration(seconds: 25),
         onTimeout: () {
-          debugPrint(
-              'Uygulama başlatma zaman aşımına uğradı; devam ediliyor.');
+          debugPrint('Uygulama başlatma zaman aşımına uğradı; devam ediliyor.');
           return const UygulamaBaslatmaSonucu(firebaseHazir: false);
         },
       );
@@ -727,9 +620,9 @@ class _BaslangicKapisiState extends State<_BaslangicKapisi> {
     final sonuc = _sonuc;
 
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 450),
-      switchInCurve: Curves.easeOutCubic,
-      switchOutCurve: Curves.easeInCubic,
+      duration: AppMotion.orta,
+      switchInCurve: AppMotion.giris,
+      switchOutCurve: AppMotion.cikis,
       layoutBuilder: (mevcut, onceki) => Stack(
         fit: StackFit.expand,
         children: [...onceki, if (mevcut != null) mevcut],

@@ -1,3 +1,4 @@
+import '../utils/buyuk_harf.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; 
@@ -123,7 +124,7 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
           ),
           backgroundColor: colors.surfaceContainerHigh,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -150,7 +151,7 @@ class _KendiKombinimEkraniState extends State<KendiKombinimEkrani> {
           ),
           backgroundColor: colors.primaryContainer,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -261,7 +262,7 @@ SADECE bu JSON formatında dön:
             ),
             backgroundColor: colors.error,
             behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
           ),
         );
       }
@@ -285,7 +286,7 @@ SADECE bu JSON formatında dön:
       barrierColor: Colors.black.withValues(alpha: 0.6),
       builder: (bottomContext) {
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          filter: ImageFilter.blur(sigmaX: AppBlur.cam, sigmaY: AppBlur.cam),
           child: Container(
             height: MediaQuery.of(context).size.height * 0.75,
             decoration: BoxDecoration(
@@ -302,13 +303,13 @@ SADECE bu JSON formatında dön:
                     height: 5, 
                     decoration: BoxDecoration(
                       color: colors.onSurfaceVariant.withValues(alpha: 0.4), 
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: AppRadius.mdRadius,
                     ),
                   ),
                   const SizedBox(height: 20),
                   
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -317,7 +318,7 @@ SADECE bu JSON formatında dön:
                             l10n.parcaSecModalBaslik(baslik), 
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 18, 
+                              fontSize: AppText.sizeTitleSmall, 
                               fontWeight: FontWeight.w900, 
                               color: colors.onSurface, 
                               letterSpacing: -0.4,
@@ -330,6 +331,7 @@ SADECE bu JSON formatında dön:
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
+                            tooltip: l10n.kapat,
                             icon: Icon(
                               Icons.close_rounded, 
                               size: 20, 
@@ -353,7 +355,7 @@ SADECE bu JSON formatında dön:
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.all(24),
+                                  padding: const EdgeInsets.all(AppSpacing.xxl),
                                   decoration: BoxDecoration(
                                     color: colors.primaryContainer, 
                                     shape: BoxShape.circle,
@@ -370,7 +372,7 @@ SADECE bu JSON formatında dön:
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: colors.onSurfaceVariant, 
-                                    fontSize: 14, 
+                                    fontSize: AppText.sizeBodySmall, 
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -379,7 +381,7 @@ SADECE bu JSON formatında dön:
                           )
                         : GridView.builder(
                             physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.fromLTRB(20, 10, 20, 40),
+                            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 40),
                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
                               crossAxisSpacing: 16,
@@ -414,7 +416,7 @@ SADECE bu JSON formatında dön:
                                     color: colors.surfaceContainerLow,
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(18.5),
+                                    borderRadius: AppRadius.lgRadius,
                                     child: Image.memory(
                                       item.resimBytes,
                                       fit: BoxFit.cover,
@@ -437,7 +439,12 @@ SADECE bu JSON formatında dön:
     );
   }
 
-  Widget _secimYuvasi(String baslik, String kategoriKodu, Kiyafet? secilenKiyafet, String bosEmoji) {
+  Widget _secimYuvasi(
+    String baslik,
+    String kategoriKodu,
+    Kiyafet? secilenKiyafet,
+    IconData bosIkon,
+  ) {
     final bool doluMu = secilenKiyafet != null;
     final colors = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context)!;
@@ -445,8 +452,8 @@ SADECE bu JSON formatında dön:
     return GestureDetector(
       onTap: () => _parcaSecimEkraniAc(kategoriKodu, baslik),
       child: AnimatedContainer( 
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOutCubic,
+        duration: AppMotion.normal,
+        curve: AppMotion.giris,
         height: 110,
         margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
@@ -478,50 +485,79 @@ SADECE bu JSON formatında dön:
                       ),
                     )
                   : Center(
-                      child: Text(
-                        bosEmoji,
-                        style: const TextStyle(fontSize: 42),
+                      child: Icon(
+                        bosIkon,
+                        size: 40,
+                        color: colors.onSurfaceVariant,
                       ),
                     ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      baslik.toUpperCase(), 
+                      buyukHarf(baslik, Localizations.localeOf(context).languageCode), 
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(
                         color: colors.onSurface, 
                         fontWeight: FontWeight.w900, 
-                        fontSize: 12, 
+                        fontSize: AppText.sizeCaption, 
                         letterSpacing: 1.1,
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      doluMu ? secilenKiyafet.gorunenBaslik : l10n.parcaSecModalBaslik(baslik),
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: doluMu ? FontWeight.w800 : FontWeight.w600,
-                        color: doluMu ? colors.onSurface : colors.onSurfaceVariant,
-                        letterSpacing: -0.3,
+                    // Boş durumda "Üst Giyim Seç" yazısı üstteki kategori
+                    // etiketiyle aynı şeyi söylüyordu. Boş yuva dokunma
+                    // çağrısını anlatan bir rozetle gösteriliyor.
+                    if (doluMu)
+                      Text(
+                        secilenKiyafet.gorunenBaslik,
+                        style: TextStyle(
+                          fontSize: AppText.sizeBodySmall,
+                          fontWeight: FontWeight.w800,
+                          color: colors.onSurface,
+                          letterSpacing: -0.3,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    else
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.add_circle_outline_rounded,
+                            size: 15,
+                            color: colors.primary,
+                          ),
+                          const SizedBox(width: 5),
+                          Flexible(
+                            child: Text(
+                              l10n.kendiTasarimimParcaSec,
+                              style: TextStyle(
+                                fontSize: AppText.sizeSmall,
+                                fontWeight: FontWeight.w700,
+                                color: colors.primary,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
                   ],
                 ),
               ),
             ),
             if (doluMu)
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsetsDirectional.only(end: 8.0),
                 child: IconButton(
+                  tooltip: l10n.kapat,
                   icon: const Icon(
                     Icons.close_rounded, 
                     size: 18,
@@ -529,8 +565,8 @@ SADECE bu JSON formatında dön:
                   style: IconButton.styleFrom(
                     backgroundColor: colors.errorContainer,
                     foregroundColor: colors.onErrorContainer,
-                    padding: const EdgeInsets.all(8),
-                    minimumSize: const Size(32, 32),
+                    padding: const EdgeInsets.all(AppSpacing.sm),
+                    minimumSize: const Size(44, 44),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                   onPressed: () {
@@ -550,7 +586,7 @@ SADECE bu JSON formatında dön:
               )
             else
               Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+                padding: const EdgeInsetsDirectional.only(end: 16.0),
                 child: Icon(
                   Icons.add_circle_rounded, 
                   // Koyu modda görünür kalsın diye temaya duyarlı renk.
@@ -559,6 +595,59 @@ SADECE bu JSON formatında dön:
                 ),
               ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _modSecenegi({
+    required String label,
+    required IconData icon,
+    required bool selected,
+    required VoidCallback onTap,
+  }) {
+    final colors = Theme.of(context).colorScheme;
+    final foreground = selected ? Colors.white : colors.onSurfaceVariant;
+
+    return Expanded(
+      child: Semantics(
+        container: true,
+        button: true,
+        selected: selected,
+        label: label,
+        excludeSemantics: true,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: AppRadius.lgRadius,
+          child: AnimatedContainer(
+            duration: AppMotion.kisa,
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+            decoration: BoxDecoration(
+              color: selected ? AppAccents.primary : Colors.transparent,
+              borderRadius: AppRadius.lgRadius,
+            ),
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, size: 18, color: foreground),
+                const SizedBox(width: AppSpacing.sm),
+                Flexible(
+                  child: Text(
+                    label,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: AppText.sizeBodySmall,
+                      fontWeight:
+                          selected ? FontWeight.w800 : FontWeight.w600,
+                      color: foreground,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -576,13 +665,9 @@ SADECE bu JSON formatında dön:
         ? (_secilenUst != null && _secilenAyakkabi != null)
         : (_secilenUst != null && _secilenAlt != null && _secilenAyakkabi != null);
 
-    final String ustEmoji = _tekParcaMi 
-        ? "👗" 
-        : (_cinsiyet.trim() == 'Erkek' ? "👕" : "👚");
-
-    const String altEmoji = "👖"; 
-    const String ayakkabiEmoji = "👟";
-    const String aksesuarEmoji = "⌚";
+    final ustIkon = _tekParcaMi
+        ? Icons.dry_cleaning_rounded
+        : Icons.checkroom_rounded;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -592,18 +677,18 @@ SADECE bu JSON formatında dön:
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontWeight: FontWeight.w900, 
-            fontSize: 18, 
+            fontSize: AppText.sizeTitleSmall, 
             letterSpacing: -0.4,
             color: colors.onSurface,
           ),
         ),
-        centerTitle: true,
+        centerTitle: false,
         backgroundColor: theme.scaffoldBackgroundColor,
         elevation: 0,
         actions: [
           if (enAzBirParcaSecili)
             Padding(
-              padding: const EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsetsDirectional.only(end: 12.0),
               child: IconButton(
                 tooltip: l10n.secimleriSifirla,
                 icon: const Icon(
@@ -621,13 +706,13 @@ SADECE bu JSON formatında dön:
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 140), 
+        padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, 140), 
         child: Column(
           children: [
             // İpucu Bilgilendirme Kartı (Yumuşak Pastel Lavanta Tonları)
             Container(
               margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(AppSpacing.lg),
               decoration: BoxDecoration(
                 color: AppTints.styleistBgDinamik(context),
                 borderRadius: AppRadius.xlRadius,
@@ -647,7 +732,7 @@ SADECE bu JSON formatında dön:
                     child: Text(
                       kombinHazirMi ? l10n.kombinHazirAiTavsiyesi : l10n.kombinBaslaIpucu,
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        fontSize: 14,
+                        fontSize: AppText.sizeBodySmall,
                         fontWeight: FontWeight.w500,
                         color: AppMiscColors.styleistTextDinamik(context),
                         height: 1.45,
@@ -661,7 +746,7 @@ SADECE bu JSON formatında dön:
             // Üst-Alt / Tek Parça Mod Switcher
             Container(
               margin: const EdgeInsets.only(bottom: 24),
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
                 color: colors.surfaceContainerHighest,
                 borderRadius: AppRadius.xlRadius,
@@ -669,90 +754,76 @@ SADECE bu JSON formatında dön:
               ),
               child: Row(
                 children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        if (_tekParcaMi) HapticFeedback.selectionClick();
-                        setState(() {
-                          _tekParcaMi = false;
-                          _sonRenkPuani = null;
-                          _sonTuyo = null;
-                          _isLocalFavori = false;
-                          _sonFavoriKombinBasligi = null;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: BoxDecoration(
-                          color: !_tekParcaMi ? Colors.green : Colors.transparent,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "${_cinsiyet.trim() == 'Erkek' ? '👕' : '👚'} ${l10n.ustAltModu}",
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: !_tekParcaMi ? FontWeight.w800 : FontWeight.w600,
-                            color: !_tekParcaMi ? Colors.white : colors.onSurfaceVariant,
-                          ),
-                        ),
-                      ),
-                    ),
+                  _modSecenegi(
+                    label: l10n.ustAltModu,
+                    icon: Icons.checkroom_rounded,
+                    selected: !_tekParcaMi,
+                    onTap: () {
+                      if (_tekParcaMi) HapticFeedback.selectionClick();
+                      setState(() {
+                        _tekParcaMi = false;
+                        _sonRenkPuani = null;
+                        _sonTuyo = null;
+                        _isLocalFavori = false;
+                        _sonFavoriKombinBasligi = null;
+                      });
+                    },
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        if (!_tekParcaMi) HapticFeedback.selectionClick();
-                        setState(() {
-                          _tekParcaMi = true;
-                          _secilenAlt = null;
-                          _sonRenkPuani = null;
-                          _sonTuyo = null;
-                          _isLocalFavori = false;
-                          _sonFavoriKombinBasligi = null;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: BoxDecoration(
-                          color: _tekParcaMi ? Colors.green : Colors.transparent,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "👗 ${l10n.tekParcaElbiseModu}",
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: _tekParcaMi ? FontWeight.w800 : FontWeight.w600,
-                            color: _tekParcaMi ? Colors.white : colors.onSurfaceVariant,
-                          ),
-                        ),
-                      ),
-                    ),
+                  _modSecenegi(
+                    label: l10n.tekParcaElbiseModu,
+                    icon: Icons.dry_cleaning_rounded,
+                    selected: _tekParcaMi,
+                    onTap: () {
+                      if (!_tekParcaMi) HapticFeedback.selectionClick();
+                      setState(() {
+                        _tekParcaMi = true;
+                        _secilenAlt = null;
+                        _sonRenkPuani = null;
+                        _sonTuyo = null;
+                        _isLocalFavori = false;
+                        _sonFavoriKombinBasligi = null;
+                      });
+                    },
                   ),
                 ],
               ),
             ),
             
-            _secimYuvasi(_tekParcaMi ? l10n.tekParcaElbise : l10n.ustGiyim, "ust", _secilenUst, ustEmoji), 
+            _secimYuvasi(
+              _tekParcaMi ? l10n.tekParcaElbise : l10n.ustGiyim,
+              'ust',
+              _secilenUst,
+              ustIkon,
+            ),
             
             if (!_tekParcaMi)
-              _secimYuvasi(l10n.altGiyim, "alt", _secilenAlt, altEmoji), 
+              _secimYuvasi(
+                l10n.altGiyim,
+                'alt',
+                _secilenAlt,
+                Icons.style_rounded,
+              ),
               
-            _secimYuvasi(l10n.ayakkabi, "ayakkabi", _secilenAyakkabi, ayakkabiEmoji),
-            _secimYuvasi(l10n.aksesuarOpsiyonel, "aksesuar", _secilenAksesuar, aksesuarEmoji),
+            _secimYuvasi(
+              l10n.ayakkabi,
+              'ayakkabi',
+              _secilenAyakkabi,
+              Icons.hiking_rounded,
+            ),
+            _secimYuvasi(
+              l10n.aksesuarOpsiyonel,
+              'aksesuar',
+              _secilenAksesuar,
+              Icons.watch_rounded,
+            ),
             
             // Stilist AI Analiz Sonuç Kartı
             if (_sonRenkPuani != null && _sonTuyo != null) ...[
               const SizedBox(height: 8),
               AnimatedContainer(
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeOutBack,
-                padding: const EdgeInsets.all(24),
+                duration: AppMotion.orta,
+                curve: AppMotion.standartBack,
+                padding: const EdgeInsets.all(AppSpacing.xxl),
                 margin: const EdgeInsets.only(bottom: 24),
                 decoration: BoxDecoration(
                   color: colors.surfaceContainerLow,
@@ -771,7 +842,7 @@ SADECE bu JSON formatında dön:
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontWeight: FontWeight.w900, 
-                              fontSize: 16, 
+                              fontSize: AppText.sizeBodyLarge, 
                               letterSpacing: -0.5,
                               color: colors.onSurface,
                             ),
@@ -782,10 +853,10 @@ SADECE bu JSON formatında dön:
                         // Uyum rozeti — Haftalık Planlayıcı ve Günlük Kombin
                         // ekranlarıyla birebir aynı görünüm (tasarım devamlılığı).
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
                           decoration: BoxDecoration(
                             color: colors.surfaceContainerHighest,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: AppRadius.mdRadius,
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -812,7 +883,7 @@ SADECE bu JSON formatında dön:
 
                     // STİLİST İPUCU KUTUSU
                     Container(
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(AppSpacing.lg),
                       decoration: BoxDecoration(
                         color: AppTints.styleistBgDinamik(context),
                         borderRadius: AppRadius.xlRadius,
@@ -833,7 +904,7 @@ SADECE bu JSON formatında dön:
                             child: Text(
                               metniGuvenliYap(_sonTuyo!),
                               style: theme.textTheme.bodyMedium?.copyWith(
-                                fontSize: 14,
+                                fontSize: AppText.sizeBodySmall,
                                 fontWeight: FontWeight.w500,
                                 color: AppMiscColors.styleistTextDinamik(context),
                                 height: 1.45,
@@ -855,7 +926,7 @@ SADECE bu JSON formatında dön:
               children: [
                 Expanded(
                   child: AnimatedOpacity( 
-                    duration: const Duration(milliseconds: 300),
+                    duration: AppMotion.normal,
                     opacity: kombinHazirMi ? 1.0 : 0.5,
                     child: SizedBox(
                       height: 52, 
@@ -878,18 +949,18 @@ SADECE bu JSON formatında dön:
                           child: Text(
                             _aiIslemde ? l10n.stilistDegerlendiriyor : l10n.aiIleAnalizEtKaydet, 
                             style: const TextStyle(
-                              fontSize: 14, 
+                              fontSize: AppText.sizeBodySmall, 
                               fontWeight: FontWeight.bold, 
                               letterSpacing: -0.2,
                             ),
                           ),
                         ),
                         style: FilledButton.styleFrom(
-                          backgroundColor: Colors.green,
+                          backgroundColor: AppAccents.primary,
                           foregroundColor: Colors.white,
                           disabledBackgroundColor: colors.surfaceContainerHighest,
                           disabledForegroundColor: colors.onSurfaceVariant.withValues(alpha: 0.38),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
                           elevation: 0,
                         ),
                       ),
@@ -916,7 +987,7 @@ SADECE bu JSON formatında dön:
                             ? AppStatusColors.favoriteFgDinamik(context)
                             : colors.onSurfaceVariant,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: AppRadius.lgRadius,
                         ),
                       ),
                     ),

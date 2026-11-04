@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -30,6 +29,9 @@ const String _groqEndpoint =
     'https://api.groq.com/openai/v1/chat/completions';
 const Duration _aiTimeout = Duration(seconds: 30);
 
+/// İstek başına gönderilebilecek en fazla görsel (maliyet/kota koruması).
+const int _enFazlaGorselSiniri = 4;
+
 class AiServiceException implements Exception {
   const AiServiceException();
 }
@@ -43,11 +45,13 @@ class AiService {
   Future<String> _stilistPromptunuHazirla(String sistemPromptu) async {
     String kisilik = 'Samimi / Arkadaş Canlısı';
     String fit = 'Regular Fit';
+    String kombinHedefi = 'denge';
     bool sikiRenkUyumu = true;
     try {
       final prefs = await SharedPreferences.getInstance();
       kisilik = prefs.getString('ai_kisilik') ?? kisilik;
       fit = prefs.getString('kullanici_fit') ?? fit;
+      kombinHedefi = prefs.getString('kombin_hedefi') ?? kombinHedefi;
       sikiRenkUyumu = prefs.getBool('siki_renk_uyumu') ?? sikiRenkUyumu;
     } catch (_) {}
 
@@ -74,9 +78,22 @@ class AiService {
     final renkTalimat = sikiRenkUyumu
         ? 'Be stricter about color harmony; clearly point out clashing or mismatched color combinations.'
         : 'Be flexible about color harmony; also suggest bold and contrasting combinations when they work.';
+    final hedefTalimat = kombinHedefiTalimatiniGetir(kombinHedefi);
 
-    return '$sistemPromptu\n\nSTYLIST PERSONALITY AND RESPONSE TONE:\n$kisilikTalimat\n\nUSER PREFERENCES:\n$fitTalimat\n$renkTalimat';
+    return '$sistemPromptu\n\nSTYLIST PERSONALITY AND RESPONSE TONE:\n$kisilikTalimat\n\nUSER PREFERENCES:\n$fitTalimat\n$renkTalimat\n$hedefTalimat';
   }
+
+  @visibleForTesting
+  static String kombinHedefiTalimatiniGetir(String hedef) => switch (hedef) {
+        'renk_kesfet' =>
+          'OUTFIT GOAL: Explore fresh but harmonious color combinations when suitable. Preserve every garment color exactly as listed; never rename or substitute a hue.',
+        'unutulan_parcalar' =>
+          'OUTFIT GOAL: Prioritize clean items worn least recently or not yet worn. Never recommend laundry items, and keep weather suitability.',
+        'cok_yonlu' =>
+          'OUTFIT GOAL: Prefer versatile garments that coordinate with several other wardrobe items and can be reworn in different everyday settings.',
+        _ =>
+          'OUTFIT GOAL: Prefer balanced, practical outfits that fit the weather and the user\'s style without overusing recently worn items.',
+      };
 
   dynamic _decodeJson(http.Response response) {
     return safeJsonDecode<Map<String, dynamic>>(
@@ -115,25 +132,91 @@ class AiService {
     return metin.isEmpty ? null : metin;
   }
 
-  Future<String> _geminiIstek({
+  /// Gemini istek gövdesi. Görseller [resimler] sırasıyla eklenir.
+  ///
+  /// Ağ çağrısından ayrı tutuldu: çoklu görsel davranışı ağ olmadan test
+  /// edilebilsin (bkz. test/ai_service_govde_test.dart).
+  @visibleForTesting
+  Map<String, dynamic> geminiGovde({
     required String sistemPromptu,
     required String kullaniciMesaji,
-    Uint8List? resimBytes,
-  }) async {
-    if (geminiApiKey.isEmpty) throw const AiServiceException();
-    final etkiliSistemPromptu = await _stilistPromptunuHazirla(sistemPromptu);
-
+    List<Uint8List>? resimler,
+  }) {
     final parts = <Map<String, dynamic>>[
       {'text': kullaniciMesaji},
     ];
-    if (resimBytes != null && resimBytes.isNotEmpty) {
+    for (final resim in _gecerliGorseller(resimler)) {
       parts.add({
         'inlineData': {
           'mimeType': 'image/jpeg',
-          'data': base64Encode(resimBytes),
+          'data': base64Encode(resim),
         },
       });
     }
+
+    return {
+      'systemInstruction': {
+        'parts': [
+          {'text': sistemPromptu},
+        ],
+      },
+      'contents': [
+        {'role': 'user', 'parts': parts},
+      ],
+      'generationConfig': {'temperature': 0.3},
+    };
+  }
+
+  /// Groq istek gövdesi. Görsel varsa görme (vision) modeli kullanılır.
+  @visibleForTesting
+  Map<String, dynamic> groqGovde({
+    required String sistemPromptu,
+    required String kullaniciMesaji,
+    List<Uint8List>? resimler,
+  }) {
+    final gecerli = _gecerliGorseller(resimler);
+    final userContent = <Map<String, dynamic>>[
+      {'type': 'text', 'text': kullaniciMesaji},
+    ];
+    for (final resim in gecerli) {
+      userContent.add({
+        'type': 'image_url',
+        'image_url': {
+          'url': 'data:image/jpeg;base64,${base64Encode(resim)}',
+        },
+      });
+    }
+
+    return {
+      'model': gecerli.isEmpty ? _groqTextModel : _groqVisionModel,
+      'messages': [
+        {'role': 'system', 'content': sistemPromptu},
+        {
+          'role': 'user',
+          'content': gecerli.isEmpty ? kullaniciMesaji : userContent,
+        },
+      ],
+      'temperature': 0.3,
+      'max_completion_tokens': 4096,
+    };
+  }
+
+  /// Boş görselleri atar ve istek başına görsel sayısını sınırlar.
+  static List<Uint8List> _gecerliGorseller(List<Uint8List>? resimler) {
+    if (resimler == null || resimler.isEmpty) return const <Uint8List>[];
+    return resimler
+        .where((resim) => resim.isNotEmpty)
+        .take(_enFazlaGorselSiniri)
+        .toList(growable: false);
+  }
+
+  Future<String> _geminiIstek({
+    required String sistemPromptu,
+    required String kullaniciMesaji,
+    List<Uint8List>? resimler,
+  }) async {
+    if (geminiApiKey.isEmpty) throw const AiServiceException();
+    final etkiliSistemPromptu = await _stilistPromptunuHazirla(sistemPromptu);
 
     final response = await http
         .post(
@@ -142,17 +225,13 @@ class AiService {
             'Content-Type': 'application/json',
             'x-goog-api-key': geminiApiKey,
           },
-          body: jsonEncode({
-            'systemInstruction': {
-              'parts': [
-                {'text': etkiliSistemPromptu},
-              ],
-            },
-            'contents': [
-              {'role': 'user', 'parts': parts},
-            ],
-            'generationConfig': {'temperature': 0.3},
-          }),
+          body: jsonEncode(
+            geminiGovde(
+              sistemPromptu: etkiliSistemPromptu,
+              kullaniciMesaji: kullaniciMesaji,
+              resimler: resimler,
+            ),
+          ),
         )
         .timeout(_aiTimeout);
 
@@ -170,22 +249,10 @@ class AiService {
   Future<String> _groqIstek({
     required String sistemPromptu,
     required String kullaniciMesaji,
-    Uint8List? resimBytes,
+    List<Uint8List>? resimler,
   }) async {
     if (groqApiKey.isEmpty) throw const AiServiceException();
     final etkiliSistemPromptu = await _stilistPromptunuHazirla(sistemPromptu);
-
-    final userContent = <Map<String, dynamic>>[
-      {'type': 'text', 'text': kullaniciMesaji},
-    ];
-    if (resimBytes != null && resimBytes.isNotEmpty) {
-      userContent.add({
-        'type': 'image_url',
-        'image_url': {
-          'url': 'data:image/jpeg;base64,${base64Encode(resimBytes)}',
-        },
-      });
-    }
 
     final response = await http
         .post(
@@ -194,20 +261,13 @@ class AiService {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer $groqApiKey',
           },
-          body: jsonEncode({
-            'model': resimBytes != null && resimBytes.isNotEmpty
-                ? _groqVisionModel
-                : _groqTextModel,
-            'messages': [
-              {'role': 'system', 'content': etkiliSistemPromptu},
-              {
-                'role': 'user',
-                'content': resimBytes == null ? kullaniciMesaji : userContent,
-              },
-            ],
-            'temperature': 0.3,
-            'max_completion_tokens': 4096,
-          }),
+          body: jsonEncode(
+            groqGovde(
+              sistemPromptu: etkiliSistemPromptu,
+              kullaniciMesaji: kullaniciMesaji,
+              resimler: resimler,
+            ),
+          ),
         )
         .timeout(_aiTimeout);
 
@@ -225,36 +285,52 @@ class AiService {
   Future<String> _hibritIstek({
     required String sistemPromptu,
     required String kullaniciMesaji,
-    Uint8List? resimBytes,
+    List<Uint8List>? resimler,
+    bool gorselsizDenendi = false,
   }) async {
     try {
       return await _geminiIstek(
         sistemPromptu: sistemPromptu,
         kullaniciMesaji: kullaniciMesaji,
-        resimBytes: resimBytes,
+        resimler: resimler,
       );
     } catch (_) {
       try {
         return await _groqIstek(
           sistemPromptu: sistemPromptu,
           kullaniciMesaji: kullaniciMesaji,
-          resimBytes: resimBytes,
+          resimler: resimler,
         );
       } catch (_) {
+        // Görsellerle her iki sağlayıcı da başarısız olduysa (kota, model
+        // kısıtı, çok büyük istek...) bir kez görselsiz denenir. Böylece
+        // görme özelliği bir sorun çıkarsa bile kullanıcı cevapsız kalmaz.
+        if (!gorselsizDenendi && resimler != null && resimler.isNotEmpty) {
+          return _hibritIstek(
+            sistemPromptu: sistemPromptu,
+            kullaniciMesaji: kullaniciMesaji,
+            resimler: null,
+            gorselsizDenendi: true,
+          );
+        }
         throw const AiServiceException();
       }
     }
   }
 
+  /// Metin + (varsa) görsellerle AI'ya sorar.
+  ///
+  /// [resimler] sırayla gönderilir; promptta bu sıraya göre atıf yapılmalıdır
+  /// ("1. görsel şu parça" gibi).
   Future<String> hibritAiSorgula({
     required String sistemPromptu,
     required String kullaniciMesaji,
-    Uint8List? resimBytes,
+    List<Uint8List>? resimler,
   }) {
     return _hibritIstek(
       sistemPromptu: sistemPromptu,
       kullaniciMesaji: kullaniciMesaji,
-      resimBytes: resimBytes,
+      resimler: resimler,
     );
   }
 

@@ -19,10 +19,21 @@ class BildirimServisi {
 
   bool _initialized = false;
 
+  /// Bildirime dokunulduğunda açılacak sekme.
+  ///
+  /// Değerler: `bugun`, `plan`, `duello`. AnaEkran bunu dinler; tüketince
+  /// null'a çeker.
+  final ValueNotifier<String?> hedefSekme = ValueNotifier<String?>(null);
+
   // Bildirim ID'leri
   static const int sabahBildirimId = 1;
   static const int yikamaBildirimId = 2;
   static const int haftalikRaporBildirimId = 3;
+
+  // Yedi günlük seriler: 10-16 sabah, 20-26 akşam plan hatırlatıcısı.
+  static const int sabahSeriIlkId = 10;
+  static const int planSeriIlkId = 20;
+  static const int seriUzunlugu = 7;
 
   // Kanal ID'leri
   static const String genelKanalId = 'fitcheck_genel';
@@ -67,9 +78,24 @@ class BildirimServisi {
 
       final bool? result = await _notificationsPlugin.initialize(
         settings: initSettings,
+        onDidReceiveNotificationResponse: _bildirimeDokunuldu,
       );
 
       _initialized = result ?? false;
+
+      // Uygulama kapalıyken bildirime dokunulup açıldıysa hedefi yakala.
+      try {
+        final baslatma =
+            await _notificationsPlugin.getNotificationAppLaunchDetails();
+        if (baslatma?.didNotificationLaunchApp ?? false) {
+          final hedef = baslatma?.notificationResponse?.payload;
+          if (hedef != null && hedef.isNotEmpty) {
+            hedefSekme.value = hedef;
+          }
+        }
+      } catch (e) {
+        debugPrint('Bildirim başlatma bilgisi okunamadı: $e');
+      }
 
       // Android notification kanallarını oluştur.
       await _androidKanallariOlustur(context);
@@ -79,6 +105,13 @@ class BildirimServisi {
       debugPrint('Bildirim Servisi Başlatılırken Hata: $e');
       _initialized = false;
     }
+  }
+
+  /// Bildirime dokunulduğunda çalışır; hedef sekmeyi not eder.
+  void _bildirimeDokunuldu(NotificationResponse yanit) {
+    final hedef = yanit.payload;
+    if (hedef == null || hedef.isEmpty) return;
+    hedefSekme.value = hedef;
   }
 
   // ============================================================
@@ -146,10 +179,11 @@ class BildirimServisi {
         return false;
       }
 
-      // Android 12+ için Hassas Alarm/Hatırlatıcı izni kontrolü
-      if (await Permission.scheduleExactAlarm.isDenied) {
-        await Permission.scheduleExactAlarm.request();
-      }
+      // Android 12+ "tam zamanlı alarm" izni (Alarms & reminders) bilerek
+      // burada istenmiyor: anahtarı çevirirken kullanıcıyı sistem
+      // ayarlarına atlamak akışı bölüyor. Izin yoksa bildirimler yine
+      // gelir, sadece birkaç dakika geç gelir. Kullanıcı isterse Ayarlar >
+      // Bildirimler bölümünden kendisi verir.
 
       if (status.isGranted || status.isLimited) {
         return true;
@@ -160,6 +194,61 @@ class BildirimServisi {
       debugPrint('Bildirim izni kontrol edilirken hata: $e');
       return false;
     }
+  }
+
+  // ============================================================
+  // 1.5 ZAMANLAMA (TAM ZAMANLI ALARM İZNİ)
+  // ============================================================
+  //
+  // Android 12+ cihazlarda "tam zamanlı alarm" izni verilmeden `exact`
+  // modu kullanılırsa eklenti `exact_alarms_not_permitted` hatası
+  // fırlatır ve bildirim HİÇ kurulmaz. Bu yüzden:
+  //   1) izin varsa tam saatinde (exactAllowWhileIdle),
+  //   2) izin yoksa birkaç dakika geç ama MUTLAKA gelir (inexact).
+  //
+  // İzin "Alarms & reminders" (Özel izin > Alarmlar ve hatırlatıcılar)
+  // ekranından verilir; Ayarlar > Bildirimler bölümünden istenebilir.
+
+  /// Tam zamanlı alarm izni var mı? (Android 12+ özel izin)
+  Future<bool> tamZamanliAlarmIzinVar() async {
+    try {
+      final androidPlugin = _notificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>();
+      if (androidPlugin == null) return false;
+      final sonuc = await androidPlugin.canScheduleExactNotifications();
+      return sonuc ?? false;
+    } catch (e) {
+      debugPrint('Tam zamanlı alarm izni okunamadı: $e');
+      return false;
+    }
+  }
+
+  /// Android'de "Alarms & reminders" ekranını açar; kullanıcı izin verirse
+  /// bildirimler tam seçtiği saatte gelir.
+  Future<bool> tamZamanliAlarmIzinIste() async {
+    try {
+      final androidPlugin = _notificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>();
+      if (androidPlugin == null) return false;
+      final sonuc = await androidPlugin.requestExactAlarmsPermission();
+      return sonuc ?? false;
+    } catch (e) {
+      debugPrint('Tam zamanlı alarm izni istenemedi: $e');
+      return false;
+    }
+  }
+
+  /// Zamanlama modunu seçer (saf fonksiyon, test edilebilir).
+  ///
+  /// İzin varsa tam saatinde, yoksa `inexact`: birkaç dakika geç gelebilir
+  /// ama bildirim ASLA kaybolmaz.
+  @visibleForTesting
+  static AndroidScheduleMode alarmModuSec({required bool tamZamanliIzinVar}) {
+    return tamZamanliIzinVar
+        ? AndroidScheduleMode.exactAllowWhileIdle
+        : AndroidScheduleMode.inexactAllowWhileIdle;
   }
 
   // ============================================================
@@ -182,7 +271,7 @@ class BildirimServisi {
             children: [
               const Icon(
                 Icons.notifications_off_rounded,
-                color: Colors.orange,
+                color: AppAccents.warning,
                 size: 26,
               ),
               const SizedBox(width: 8),
@@ -190,7 +279,7 @@ class BildirimServisi {
                 child: Text(
                   l10n.bildirimIzinGerekliBaslik,
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: AppText.sizeBodyLarge,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -200,7 +289,7 @@ class BildirimServisi {
           content: Text(
             l10n.bildirimIzinGerekliIcerik,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: AppText.sizeBodySmall,
               height: 1.4,
             ),
           ),
@@ -216,7 +305,7 @@ class BildirimServisi {
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors.primary,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppRadius.mdRadius,
                 ),
               ),
               onPressed: () async {
@@ -258,7 +347,7 @@ class BildirimServisi {
         channelDescription: l10n.bildirimKanalGenelAciklama,
         importance: Importance.max,
         priority: Priority.high,
-        color: const Color(0xFF3B3B3B),
+        color: AppAccents.primary,
       );
 
       const DarwinNotificationDetails iosDetay = DarwinNotificationDetails(
@@ -286,80 +375,180 @@ class BildirimServisi {
   }
 
   // ============================================================
-  // 2. GÜNLÜK SABAH BİLDİRİMİ (v22.3.0 UYUMU)
+  // 2. GÜNLÜK SABAH BİLDİRİMİ — YEDİ GÜNLÜK SERİ
   // ============================================================
+  //
+  // Tekrarlayan (matchDateTimeComponents) tek bildirim yerine her gün için
+  // ayrı bir bildirim kuruluyor: böylece gövdeye o günün gerçek kombini
+  // yazılabiliyor. Uygulama her açıldığında seri tazelenir.
 
-  Future<void> gunlukSabahBildirimiKur({
-    int saat = 8,
-    int dakika = 30,
+  Future<void> sabahBildirimleriKur({
+    required List<BildirimIcerigi> bildirimler,
     BuildContext? context,
   }) async {
-    if (!_initialized) await init(context);
+    final l10n = await l10nAl(context);
+    await _seriKur(
+      bildirimler: bildirimler,
+      ilkId: sabahSeriIlkId,
+      kanalId: gunlukKanalId,
+      kanalBaslik: l10n.bildirimKanalGunlukBaslik,
+      kanalAciklama: l10n.bildirimKanalGunlukAciklama,
+    );
+  }
+
+  /// Akşam "yarınki kombinin hazır" hatırlatıcıları.
+  Future<void> planHatirlatmalariniKur({
+    required List<BildirimIcerigi> bildirimler,
+    BuildContext? context,
+  }) async {
+    final l10n = await l10nAl(context);
+    await _seriKur(
+      bildirimler: bildirimler,
+      ilkId: planSeriIlkId,
+      kanalId: genelKanalId,
+      kanalBaslik: l10n.bildirimKanalGenelBaslik,
+      kanalAciklama: l10n.bildirimKanalGenelAciklama,
+    );
+  }
+
+  /// Bildirimi zamanlar.
+  ///
+  /// Önce tam zamanlı alarm dener; izin yoksa veya hata verirse
+  /// `inexactAllowWhileIdle` moda düşer. Böylece bildirim uygulama kapalıyken
+  /// de gelir; en kötü ihtimalle birkaç dakika geç gelir.
+  Future<void> _zamanla({
+    required int id,
+    required String? title,
+    required String? body,
+    required tz.TZDateTime scheduledDate,
+    required NotificationDetails notificationDetails,
+    String? payload,
+    DateTimeComponents? matchDateTimeComponents,
+  }) async {
+    final androidPlugin = _notificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+
+    // iOS / web / masaüstü: mod yok, doğrudan zamanla.
+    if (androidPlugin == null) {
+      await _notificationsPlugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: notificationDetails,
+        payload: payload,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        matchDateTimeComponents: matchDateTimeComponents,
+      );
+      return;
+    }
+
+    final mod = alarmModuSec(
+      tamZamanliIzinVar: await tamZamanliAlarmIzinVar(),
+    );
 
     try {
-      saat = saat.clamp(0, 23);
-      dakika = dakika.clamp(0, 59);
-
-      final l10n = await l10nAl(context);
-
-      final AndroidNotificationDetails androidDetay =
-          AndroidNotificationDetails(
-        gunlukKanalId,
-        l10n.bildirimKanalGunlukBaslik,
-        channelDescription: l10n.bildirimKanalGunlukAciklama,
-        importance: Importance.max,
-        priority: Priority.high,
-        color: const Color(0xFF3B3B3B),
+      await _notificationsPlugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: notificationDetails,
+        payload: payload,
+        androidScheduleMode: mod,
+        matchDateTimeComponents: matchDateTimeComponents,
       );
-
-      const DarwinNotificationDetails iosDetay = DarwinNotificationDetails(
-        presentAlert: true,
-        presentBadge: true,
-        presentSound: true,
+    } catch (e) {
+      // İzin tam zamanlı sırada geldiyse bir kez inexact ile dene.
+      if (mod == AndroidScheduleMode.inexactAllowWhileIdle) rethrow;
+      debugPrint('Tam zamanlı alarm kurulamadı ($id), inexact deneniyor: $e');
+      await _notificationsPlugin.zonedSchedule(
+        id: id,
+        title: title,
+        body: body,
+        scheduledDate: scheduledDate,
+        notificationDetails: notificationDetails,
+        payload: payload,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        matchDateTimeComponents: matchDateTimeComponents,
       );
+    }
+  }
+
+  Future<void> _seriKur({
+    required List<BildirimIcerigi> bildirimler,
+    required int ilkId,
+    required String kanalId,
+    required String kanalBaslik,
+    required String kanalAciklama,
+  }) async {
+    if (!_initialized) await init();
+
+    try {
+      await _seriyiIptalEt(ilkId);
 
       final NotificationDetails detaylar = NotificationDetails(
-        android: androidDetay,
-        iOS: iosDetay,
+        android: AndroidNotificationDetails(
+          kanalId,
+          kanalBaslik,
+          channelDescription: kanalAciklama,
+          importance: Importance.high,
+          priority: Priority.high,
+          color: AppAccents.primary,
+        ),
+        iOS: const DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+        ),
       );
 
       final simdi = tz.TZDateTime.now(tz.local);
+      var kurulan = 0;
 
-      var planlananZaman = tz.TZDateTime(
-        tz.local,
-        simdi.year,
-        simdi.month,
-        simdi.day,
-        saat,
-        dakika,
-      );
+      for (var i = 0; i < bildirimler.length && i < seriUzunlugu; i++) {
+        final icerik = bildirimler[i];
+        final zaman = tz.TZDateTime(
+          tz.local,
+          icerik.zaman.year,
+          icerik.zaman.month,
+          icerik.zaman.day,
+          icerik.zaman.hour,
+          icerik.zaman.minute,
+        );
+        // Geçmiş saatteki bildirim hemen düşerdi; atla.
+        if (!zaman.isAfter(simdi)) continue;
 
-      if (!planlananZaman.isAfter(simdi)) {
-        planlananZaman = planlananZaman.add(const Duration(days: 1));
+        await _zamanla(
+          id: ilkId + i,
+          title: icerik.baslik,
+          body: icerik.icerik,
+          scheduledDate: zaman,
+          notificationDetails: detaylar,
+          payload: icerik.hedef,
+        );
+        kurulan++;
       }
 
-      await _notificationsPlugin.cancel(id: sabahBildirimId);
-
-      await _notificationsPlugin.zonedSchedule(
-        id: sabahBildirimId,
-        title: l10n.bildirimGunaydinBaslik,
-        body: l10n.bildirimGunaydinIcerik,
-        scheduledDate: planlananZaman,
-        notificationDetails: detaylar,
-        androidScheduleMode: AndroidScheduleMode.exact,
-        matchDateTimeComponents: DateTimeComponents.time,
-      );
-
-      debugPrint(
-        'Günlük sabah bildirimi ${saat.toString().padLeft(2, '0')}:${dakika.toString().padLeft(2, '0')} için kuruldu.',
-      );
+      debugPrint('Bildirim serisi kuruldu ($ilkId): $kurulan adet.');
     } catch (e) {
-      debugPrint('Günlük bildirim kurulamadı: $e');
+      debugPrint('Bildirim serisi kurulamadı ($ilkId): $e');
+    }
+  }
+
+  Future<void> _seriyiIptalEt(int ilkId) async {
+    for (var i = 0; i < seriUzunlugu; i++) {
+      try {
+        await _notificationsPlugin.cancel(id: ilkId + i);
+      } catch (_) {
+        // Tek tek iptal başarısız olsa da devam et.
+      }
     }
   }
 
   // ============================================================
-  // 3. GÜNLÜK SABAH BİLDİRİMİNİ İPTAL ET
+  // 3. BİLDİRİMLERİ İPTAL ET
   // ============================================================
 
   Future<void> gunlukSabahBildiriminiIptalEt() async {
@@ -367,9 +556,20 @@ class BildirimServisi {
 
     try {
       await _notificationsPlugin.cancel(id: sabahBildirimId);
-      debugPrint('Günlük sabah bildirimi iptal edildi.');
+      await _seriyiIptalEt(sabahSeriIlkId);
+      debugPrint('Sabah bildirimleri iptal edildi.');
     } catch (e) {
       debugPrint('Sabah bildirimi iptal edilirken hata: $e');
+    }
+  }
+
+  Future<void> planHatirlatmalariniIptalEt() async {
+    if (!_initialized) await init();
+    try {
+      await _seriyiIptalEt(planSeriIlkId);
+      debugPrint('Akşam plan hatırlatıcıları iptal edildi.');
+    } catch (e) {
+      debugPrint('Plan hatırlatıcıları iptal edilemedi: $e');
     }
   }
 
@@ -408,7 +608,7 @@ class BildirimServisi {
           channelDescription: l10n.bildirimKanalRaporAciklama,
           importance: Importance.high,
           priority: Priority.high,
-        color: const Color(0xFF3B3B3B),
+        color: AppAccents.primary,
         ),
         iOS: const DarwinNotificationDetails(
           presentAlert: true,
@@ -418,13 +618,12 @@ class BildirimServisi {
       );
 
       await _notificationsPlugin.cancel(id: haftalikRaporBildirimId);
-      await _notificationsPlugin.zonedSchedule(
+      await _zamanla(
         id: haftalikRaporBildirimId,
         title: l10n.haftalikStilRaporu,
         body: l10n.haftalikStilRaporuAciklama,
         scheduledDate: planlanan,
         notificationDetails: detaylar,
-        androidScheduleMode: AndroidScheduleMode.exact,
         matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
       );
     } catch (e) {
@@ -470,4 +669,23 @@ class BildirimServisi {
       return [];
     }
   }
+}
+
+/// Tek bir bildirimin içeriği ve zamanı.
+///
+/// [zaman] yerel saat diliminde duvar saatidir (gün + saat + dakika).
+class BildirimIcerigi {
+  const BildirimIcerigi({
+    required this.zaman,
+    required this.baslik,
+    required this.icerik,
+    this.hedef,
+  });
+
+  final DateTime zaman;
+  final String baslik;
+  final String icerik;
+
+  /// Dokununca açılacak sekme: ugun, plan, duello.
+  final String? hedef;
 }

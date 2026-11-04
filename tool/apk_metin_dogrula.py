@@ -28,7 +28,12 @@ def main():
     print("libapp.so: %d bayt" % len(lib))
 
     eksik = 0
-    for ad, metin in ARANANLAR:
+    # Komut satirindan verilen ek metinler de dogrulanir
+    # (or. python tool/apk_metin_dogrula.py apk.apk "Tekrar cek").
+    arananlar = list(ARANANLAR) + [
+        ("ek %d" % (i + 1), m) for i, m in enumerate(sys.argv[2:])
+    ]
+    for ad, metin in arananlar:
         bulundu = None
         for kod, etiket in (("utf-16-le", "UTF-16LE"), ("latin-1", "Latin-1"), ("utf-8", "UTF-8")):
             if lib.find(metin.encode(kod)) >= 0:

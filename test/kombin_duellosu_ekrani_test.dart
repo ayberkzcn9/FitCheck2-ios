@@ -1,0 +1,278 @@
+// "Kombin Düellosu" ekran testleri.
+//
+// Amaç: lobi → tur → geri bildirim → sonuç akışının gerçekten çizildiğini
+// ve doğru cevabın motordan gelen tarafla aynı olduğunu görmek.
+// Ağ yok, SharedPreferences sahte.
+
+import 'package:fitcheck/l10n/app_localizations.dart';
+import 'package:fitcheck/models/kiyafet.dart';
+import 'package:fitcheck/screens/kombin_duellosu_ekrani.dart';
+import 'package:fitcheck/services/kombin_duellosu_motoru.dart';
+import 'package:fitcheck/services/kombin_duellosu_servisi.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() {
+  setUp(() {
+    SharedPreferences.setMockInitialValues(<String, Object>{});
+  });
+
+  Future<void> kur(
+    WidgetTester tester, {
+    List<Kiyafet> dolap = const <Kiyafet>[],
+    int tohum = 7,
+    double menuYuksekligi = 0,
+  }) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('tr'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: Scaffold(
+          // Gerçek AnaEkran gibi: gövde menünün altına uzanıyor.
+          extendBody: menuYuksekligi > 0,
+          bottomNavigationBar: menuYuksekligi > 0
+              ? SizedBox(height: menuYuksekligi)
+              : null,
+          body: KombinDuellosuEkrani(
+            gardirobum: dolap,
+            motor: DuelMotoru(),
+            servisi: KombinDuellosuServisi(),
+            tohum: tohum,
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets('lobi başlık, kural ve başlat düğmesini gösterir', (tester) async {
+    await kur(tester);
+
+    expect(find.text('Kombin Düellosu'), findsOneWidget);
+    expect(find.text('Düelloya başla'), findsOneWidget);
+    expect(find.text('Nasıl oynanır?'), findsOneWidget);
+    expect(find.text('Her turda iki kombin görürsün.'), findsOneWidget);
+  });
+
+  testWidgets('boş dolapta renk kartı notu ve dolap düğmesi görünür',
+      (tester) async {
+    await kur(tester);
+
+    expect(find.text('Dolaba parça ekle'), findsOneWidget);
+    expect(find.textContaining('renk kartları'), findsOneWidget);
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Tur 1/10'), findsOneWidget);
+  });
+
+  testWidgets('doğru karta dokununca Doğru ve XP gösterilir', (tester) async {
+    await kur(tester, tohum: 7);
+
+    final beklenen = DuelMotoru()
+        .uret(gardirobum: const <Kiyafet>[], adet: 10, tohum: 7)
+        .sorular
+        .first;
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text(beklenen.solDogru ? 'A' : 'B'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Doğru'), findsOneWidget);
+    expect(find.text('+10 XP'), findsOneWidget);
+    expect(find.text('Devam'), findsOneWidget);
+  });
+
+  testWidgets('yanlış karta dokununca Olmadı gösterilir', (tester) async {
+    await kur(tester, tohum: 7);
+
+    final beklenen = DuelMotoru()
+        .uret(gardirobum: const <Kiyafet>[], adet: 10, tohum: 7)
+        .sorular
+        .first;
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text(beklenen.solDogru ? 'B' : 'A'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Olmadı'), findsOneWidget);
+    expect(find.text('+0 XP'), findsOneWidget);
+  });
+
+  testWidgets('on tur sonunda sonuç ekranı açılır', (tester) async {
+    await kur(tester);
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    for (var tur = 0; tur < 10; tur++) {
+      await tester.tap(find.text('A'));
+      await tester.pumpAndSettle();
+
+      final sonTur = tur == 9;
+      await tester.tap(find.text(sonTur ? 'Sonucu gör' : 'Devam'));
+      await tester.pumpAndSettle();
+    }
+
+    expect(find.text('Tekrar oyna'), findsOneWidget);
+    expect(find.text('Düello bitti'), findsOneWidget);
+    expect(find.textContaining('/10 doğru'), findsOneWidget);
+  });
+
+  testWidgets('önceki soruya dönülebilir, cevap ve XP korunur', (tester) async {
+    await kur(tester, tohum: 7);
+
+    final sorular = DuelMotoru()
+        .uret(gardirobum: const <Kiyafet>[], adet: 10, tohum: 7)
+        .sorular;
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    // 1. soru doğru cevaplanır (seri 1 → +10 XP).
+    await tester.tap(find.text(sorular[0].solDogru ? 'A' : 'B'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    expect(find.text('+10 XP'), findsOneWidget);
+
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
+
+    // 2. soru doğru cevaplanır (seri 2 → +12 XP).
+    await tester.tap(find.text(sorular[1].solDogru ? 'A' : 'B'));
+    await tester.pumpAndSettle();
+    expect(find.text('+12 XP'), findsOneWidget);
+
+    // "Geri" → 1. sorunun kendi cevabı ve kendi XP'si görünür.
+    await tester.tap(find.text('Geri'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    expect(find.text('Doğru'), findsOneWidget);
+    expect(find.text('+10 XP'), findsOneWidget);
+    expect(find.text('+12 XP'), findsNothing);
+
+    // "Devam" → 2. soruya döner; XP yeniden hesaplanmaz.
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
+    expect(find.text('+12 XP'), findsOneWidget);
+  });
+
+  testWidgets('ilk soruda Geri düğmesi görünmez', (tester) async {
+    await kur(tester);
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    // Henüz cevap yokken panel kapalı; üst çubukta da geri oku yok.
+    expect(find.text('Geri'), findsNothing);
+    expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+  });
+
+  testWidgets('geri dönüp ilerlemek soru sayısını ve XP\'yi bozmaz',
+      (tester) async {
+    await kur(tester, tohum: 7);
+
+    final sorular = DuelMotoru()
+        .uret(gardirobum: const <Kiyafet>[], adet: 10, tohum: 7)
+        .sorular;
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+
+    // 1. soru yanlış (seri bozulur), 2. soru doğru (+10 XP).
+    await tester.tap(find.text(sorular[0].solDogru ? 'B' : 'A'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Devam'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text(sorular[1].solDogru ? 'A' : 'B'));
+    await tester.pumpAndSettle();
+    expect(find.text('+10 XP'), findsOneWidget);
+
+    // Geri → yanlış cevap "Olmadı" olarak duruyor.
+    await tester.tap(find.text('Geri'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 1/10'), findsOneWidget);
+    expect(find.text('Olmadı'), findsOneWidget);
+    expect(find.text('+0 XP'), findsOneWidget);
+  });
+
+  testWidgets('tekrar oyna lobiye değil yeni tura götürür', (tester) async {
+    await kur(tester);
+
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    for (var tur = 0; tur < 10; tur++) {
+      await tester.tap(find.text('A'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(tur == 9 ? 'Sonucu gör' : 'Devam'));
+      await tester.pumpAndSettle();
+    }
+
+    await tester.tap(find.text('Tekrar oyna'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Tur 1/10'), findsOneWidget);
+  });
+
+  testWidgets('küçük ekranda Devam düğmesi alt menünün üstünde kalır',
+      (tester) async {
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = const Size(360, 640);
+    tester.view.padding = const FakeViewPadding(bottom: 24);
+    addTearDown(tester.view.reset);
+
+    await kur(tester, menuYuksekligi: 86);
+    await tester.ensureVisible(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('A'));
+    await tester.pumpAndSettle();
+
+    final devam = find.text('Devam');
+    expect(devam, findsOneWidget);
+
+    // Menü 62 dp + güvenli alan 24 dp = 86 dp. Düğme bunun üstünde olmalı,
+    // aksi halde menünün arkasında kalıp oyun kilitleniyor gibi görünüyor.
+    expect(tester.getRect(devam).bottom, lessThan(640 - 86));
+
+    await tester.tap(devam);
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
+  });
+
+  testWidgets('yatay modda oyun kilitlenmez, Devam görünür olur',
+      (tester) async {
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = const Size(640, 360);
+    addTearDown(tester.view.reset);
+
+    await kur(tester, menuYuksekligi: 62);
+    await tester.ensureVisible(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Düelloya başla'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('A'));
+    await tester.pumpAndSettle();
+
+    final devam = find.text('Devam');
+    expect(devam, findsOneWidget);
+    final kutu = tester.getRect(devam);
+    expect(kutu.top, greaterThanOrEqualTo(0));
+    expect(kutu.bottom, lessThanOrEqualTo(360 - 62));
+
+    await tester.tap(devam);
+    await tester.pumpAndSettle();
+    expect(find.text('Tur 2/10'), findsOneWidget);
+  });
+}

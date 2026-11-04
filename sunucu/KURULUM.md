@@ -145,13 +145,15 @@ sudo systemctl restart fitcheck-bg
 
 ## Model değiştirme (tek komut)
 
-Canlı model **`silueta`** (2 OCPU'da ~1,0-1,2 sn; u2net'ten hızlı ve açık renkli
-kıyafetlerde daha temiz). Modeli değiştirip ölçmek için:
+Canlı model **`isnet-general-use`** (2 OCPU'da ~5,1 sn). 19.10.2026'da gerçek bir
+kullanıcı fotoğrafıyla (siyah zemin + krem pantolon) yapılan karşılaştırmada
+`silueta` iki bacak arasındaki zemin parçasını **silmedi**; isnet aynı yeri
+tertemiz kesti. Hız için silueta'ya dönmek tek komut. Modeli değiştirip ölçmek için:
 
 ```bash
 bash /home/opc/model_degistir.sh                    # mevcut durumu raporla + ölç
-bash /home/opc/model_degistir.sh silueta            # 1 OCPU: ~1,7 sn, 2 OCPU: ~1,2 sn (canlı)
-bash /home/opc/model_degistir.sh isnet-general-use  # 1 OCPU: ~10 sn, 2 OCPU: ~5,4 sn
+bash /home/opc/model_degistir.sh isnet-general-use  # 2 OCPU: ~5,1 sn (canlı)
+bash /home/opc/model_degistir.sh silueta            # 1 OCPU: ~1,7 sn, 2 OCPU: ~1,2 sn
 bash /home/opc/model_degistir.sh u2net              # eski model
 ```
 
@@ -159,14 +161,38 @@ bash /home/opc/model_degistir.sh u2net              # eski model
 
 | Model | 1 OCPU | 2 OCPU | Not |
 |---|---|---|---|
-| u2net | 3,7-4,4 sn | — | arka plandan parça bırakıyor, beyaz kıyafetin bir bölümünü kesiyor |
-| **silueta** | 1,6-1,8 sn | **1,0-1,2 sn** | u2net'ten temiz; **canlıda bu çalışıyor** |
-| isnet-general-use | 10,0-10,3 sn | 5,2-5,8 sn | en temiz maske; ONNX girdisi sabit 1024x1024, küçültülemiyor |
-| birefnet-general-lite | ~130 sn | — | kullanılamaz |
-| u2net_cloth_seg | ~21 sn | — | parçalı sonuç, kıyafet için işe yaramaz |
+| u2net | 3,7-4,4 sn | — | arka plandan parça bırakıyor |
+| silueta | 1,6-1,8 sn | 1,0-1,2 sn | hızlı ama **bacağın içindeki zemini bırakıyor** |
+| **isnet-general-use** | 10,0-10,3 sn | **5,1-5,5 sn** | **canlıda bu çalışıyor**; ONNX girdisi sabit 1024x1024, küçültülemiyor |
+| birefnet-general-lite | ~130 sn | 17-46 sn | kullanılamaz |
+| u2net_cloth_seg | ~21 sn | 10,7 sn | parçalı/bozuk sonuç, kıyafet için işe yaramaz |
 
-**Karar (19.10.2026):** 2 OCPU'ya geçildi, isnet ölçüldü (~5,4 sn) ama kullanıcı
-hız tercihinde bulundu; canlıda **`silueta`** kaldı. isnet'e dönmek tek komut.
+**Karar (19.10.2026, güncellendi):** Kullanıcının fotoğrafında silueta, u2net ve
+u2net_cloth_seg aynı hatayı yaptı; yalnızca **isnet** doğru kesti. Hız şikâyeti
+5,1 sn'ye indiği için isnet canlıya alındı. Hız yeniden sorun olursa geri dönüş
+tek komut; kalıcı çözüm daha fazla CPU (ücretli) veya daha ucuz bir sağlayıcı.
+
+### Otomatik maske denetimi (sunucu v2.2, 19.10.2026)
+
+isnet'in zayıf noktası: **koyu kıyafet + koyu zemin** (ör. siyah zeminde bordo
+pantolon). Bu durumda kıyafeti arka plan sanıp maskeyi parçalıyor; yalnızca açık
+renkli çizgiler kalıyor. Tersine silueta da açık kıyafette bacak arasındaki
+zemini bırakıyor. Tek bir model her fotoğrafta doğru değil.
+
+Sunucu bu yüzden her maskenin **doluluk** oranını ölçer (opak piksel / maskenin
+sınır kutusu):
+
+| Fotoğraf | isnet doluluk | Sonuç |
+|---|---|---|
+| krem pantolon | 0,58 | isnet |
+| **bordo pantolon** | **0,07** | **silueta'ya düşüldü** (0,69) |
+| beyaz pantolon / sneaker / tişört | 0,49-0,66 | isnet |
+
+Doluluk `BG_MIN_FILL` (varsayılan 0,30) altındaysa yedek model
+(`BG_FALLBACK_MODEL=silueta`) çalışır; yedeğin doluluğu isnet'in 1,3 katından
+fazlaysa o kullanılır. Ek maliyet yalnızca bu fotoğraflarda ~1 sn (6,2 sn);
+normal fotoğraflar 5,1 sn'de kalır. Yanıt başlığı `X-BG-Model` hangi modelin
+kullanıldığını söyler. Kapatmak için: `Environment=BG_FALLBACK_MODEL=`.
 
 `bria-rmbg` sunucuda indirilmiş durumda ama **ticari kullanıma kapalı lisanslı**;
 canlıda kullanılmamalı.
@@ -174,7 +200,8 @@ canlıda kullanılmamalı.
 ## 2 OCPU'ya çıkarma (ücretsiz kota)
 
 2026'da Always Free Ampere A1 kotası 4 OCPU/24 GB'tan **2 OCPU/12 GB**'a
-indirildi; 4 OCPU artık ücretli (~25-28 $/ay). 2 OCPU'da isnet ~5-6 sn'ye iner.
+indirildi (15 Haziran 2026); 4 OCPU artık ücretli (~25-28 $/ay). Sunucu ücretsiz
+kotanın tamamını kullanıyor (2 OCPU / 12 GB). 2 OCPU'da isnet ~5,1 sn'ye iner.
 
 1. Genel IP'yi not et (uygulamada sabit: `BG_REMOVE_BASE_URL` + koddaki yedek).
 2. Sakin bir saatte: Console -> Compute -> Instances -> instance -> **Stop**.

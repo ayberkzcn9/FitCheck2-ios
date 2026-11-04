@@ -7,6 +7,7 @@
 //     child: Kart(...),
 //   )
 
+import '../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 
 class FadeSlideIn extends StatefulWidget {
@@ -29,7 +30,7 @@ class FadeSlideIn extends StatefulWidget {
     this.index = 0,
     this.baseDelayMs = 0,
     this.staggerMs = 45,
-    this.duration = const Duration(milliseconds: 350),
+    this.duration = AppMotion.normal,
   });
 
   @override
@@ -47,7 +48,7 @@ class _FadeSlideInState extends State<FadeSlideIn>
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this, duration: widget.duration);
-    _fade = CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic);
+    _fade = CurvedAnimation(parent: _controller, curve: AppMotion.giris);
     _slide = Tween<Offset>(
       begin: const Offset(0, 0.08),
       end: Offset.zero,

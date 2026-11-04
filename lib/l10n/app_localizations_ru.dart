@@ -163,7 +163,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get surum => 'Версия';
 
   @override
-  String get ayarOtomatikCihazDili => '🌐 Автоматически (язык устройства)';
+  String get ayarOtomatikCihazDili => 'Автоматически (язык устройства)';
 
   @override
   String get iptal => 'Отмена';
@@ -285,7 +285,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String stilistUyum(Object puan) {
-    return '🎨 Гармония: %$puan';
+    return 'Гармония: %$puan';
   }
 
   @override
@@ -335,41 +335,41 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get stilistUyariDolapBosBaslik =>
-      'Ваш гардероб пуст или все вещи в стирке! 🧺';
+      'Ваш гардероб пуст или все вещи в стирке';
 
   @override
   String get stilistUyariDolapBosIcerik =>
       'Чтобы получать персональные рекомендации, добавьте чистую одежду или аксессуары в ваш шкаф.';
 
   @override
-  String get stilistUyariUstEksikBaslik => 'Не хватает верха! 👕';
+  String get stilistUyariUstEksikBaslik => 'Не хватает верха';
 
   @override
   String get stilistUyariUstEksikIcerik =>
-      'В вашем гардеробе нет чистой плечевой одежды. Добавьте хотя бы один верх, чтобы составить образ!';
+      'В вашем гардеробе нет чистой плечевой одежды. Добавьте хотя бы один верх, чтобы составить образ';
 
   @override
-  String get stilistUyariAltEksikBaslik => 'Не хватает низа! 👖';
+  String get stilistUyariAltEksikBaslik => 'Не хватает низа';
 
   @override
   String get stilistUyariAltEksikIcerik =>
-      'У вас нет чистых брюк или юбок. Добавьте низ для создания стильного лука!';
+      'У вас нет чистых брюк или юбок. Добавьте низ для создания стильного лука';
 
   @override
-  String get stilistUyariAyakkabiEksikBaslik => 'Не хватает обуви! 👟';
+  String get stilistUyariAyakkabiEksikBaslik => 'Не хватает обуви';
 
   @override
   String get stilistUyariAyakkabiEksikIcerik =>
-      'Образ отличный, но мы не нашли чистую обувь. Добавьте пару прямо сейчас!';
+      'Образ отличный, но мы не нашли чистую обувь. Добавьте пару прямо сейчас';
 
   @override
-  String get stilistUyariButon => 'Понятно, добавлю!';
+  String get stilistUyariButon => 'Понятно, добавлю';
 
   @override
   String get anaHavaYukleniyor => 'Загрузка погоды...';
 
   @override
-  String get anaDinliyor => '🎙️ FITCHECK слушает... Говорите!';
+  String get anaDinliyor => 'FITCHECK слушает... Говорите';
 
   @override
   String get anaMikrofonHata =>
@@ -377,7 +377,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String anaCinsiyetGuncellendi(Object cinsiyet) {
-    return 'Ваши настройки обновлены: \"$cinsiyet\" ✨';
+    return 'Ваши настройки обновлены: \"$cinsiyet\"';
   }
 
   @override
@@ -422,22 +422,22 @@ class AppLocalizationsRu extends AppLocalizations {
       'Не удалось загрузить прогноз погоды.';
 
   @override
-  String get anaFavoriEklendi => 'Образ добавлен в избранное! ⭐';
+  String get anaFavoriEklendi => 'Образ добавлен в избранное ⭐';
 
   @override
   String get anaKombinTekrarUyari =>
-      '⚠️ Внимание: Вы очень часто носили эти вещи в последнее время. Попробуйте другой стиль сегодня!';
+      'Внимание: Вы очень часто носили эти вещи в последнее время. Попробуйте другой стиль сегодня';
 
   @override
   String get anaKombinMukemmel =>
-      '✨ Отличный выбор! Ваш образ сегодня идеально сбалансирован.';
+      'Отличный выбор Ваш образ сегодня идеально сбалансирован.';
 
   @override
   String get anaYikamaUyariBaslik => 'Умное уведомление о стирке';
 
   @override
   String anaYikamaUyariIcerik(Object parcalar) {
-    return 'Так как вы надевали этот образ, часто используемые вещи \"$parcalar\" автоматически отправлены в корзину для белья! 🧺';
+    return 'Так как вы надевали этот образ, часто используемые вещи \"$parcalar\" автоматически отправлены в корзину для белья';
   }
 
   @override
@@ -542,35 +542,35 @@ class AppLocalizationsRu extends AppLocalizations {
   String get gunPaz => 'Воскресенье';
 
   @override
-  String get stilKahveBaslik => '☕ Кофе и повседневный стиль';
+  String get stilKahveBaslik => 'Кофе и повседневный стиль';
 
   @override
   String get stilKahveSoru =>
       'Предложи удобный и стильный образ для встречи с друзьями за кофе';
 
   @override
-  String get stilOfisBaslik => '💼 Офис и деловой стиль';
+  String get stilOfisBaslik => 'Офис и деловой стиль';
 
   @override
   String get stilOfisSoru =>
       'Подбери элегантный и современный образ для работы в офисе';
 
   @override
-  String get stilSporBaslik => '🏃 Спорт и комфорт';
+  String get stilSporBaslik => 'Спорт и комфорт';
 
   @override
   String get stilSporSoru =>
       'Составь максимально комфортный спортивный лук для прогулки на выходных';
 
   @override
-  String get stilGeceBaslik => '🌙 Вечерний выход';
+  String get stilGeceBaslik => 'Вечерний выход';
 
   @override
   String get stilGeceSoru =>
       'Предложи эффектный образ для романтического ужина или особых случаев';
 
   @override
-  String get ilkGorevBaslik => '🎯 Первый шаг: Выберите ваш стиль!';
+  String get ilkGorevBaslik => 'Первый шаг: Выберите ваш стиль';
 
   @override
   String get ilkGorevAciklama =>
@@ -580,27 +580,27 @@ class AppLocalizationsRu extends AppLocalizations {
   String get haftalikUyariButon => 'Понятно';
 
   @override
-  String get haftalikUyariDolapBosBaslik => 'Ваш гардероб пуст!';
+  String get haftalikUyariDolapBosBaslik => 'Ваш гардероб пуст';
 
   @override
   String get haftalikUyariDolapBosIcerik =>
       'Вам необходимо добавить одежду в шкаф, чтобы спланировать неделю.';
 
   @override
-  String get haftalikUyariUstEksikBaslik => 'Не хватает верха!';
+  String get haftalikUyariUstEksikBaslik => 'Не хватает верха';
 
   @override
   String get haftalikUyariUstEksikIcerik =>
       'В вашем гардеробе нет чистой плечевой одежды.';
 
   @override
-  String get haftalikUyariAltEksikBaslik => 'Не хватает низа!';
+  String get haftalikUyariAltEksikBaslik => 'Не хватает низа';
 
   @override
   String get haftalikUyariAltEksikIcerik => 'У вас нет чистой поясной одежды.';
 
   @override
-  String get haftalikUyariAyakkabiEksikBaslik => 'Не хватает обуви!';
+  String get haftalikUyariAyakkabiEksikBaslik => 'Не хватает обуви';
 
   @override
   String get haftalikUyariAyakkabiEksikIcerik =>
@@ -771,7 +771,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get parca => 'предм.';
 
   @override
-  String get onboardingHosGeldinBaslik => 'Добро пожаловать в FitCheck! ✨';
+  String get onboardingHosGeldinBaslik => 'Добро пожаловать в FitCheck';
 
   @override
   String get onboardingDolabiniDijitallestir => 'Оцифруйте свой гардероб';
@@ -894,11 +894,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get yeniHesapOlusturun => 'Создать новый аккаунт';
 
   @override
-  String get stilDunyanaTekrarHosGeldin => 'С возвращением в ваш модный мир ✨';
+  String get stilDunyanaTekrarHosGeldin => 'С возвращением в ваш модный мир';
 
   @override
   String get kombinleriniSaklamakIcinKatil =>
-      'Присоединяйтесь, чтобы сохранять и синхронизировать образы 🚀';
+      'Присоединяйтесь, чтобы сохранять и синхронизировать образы';
 
   @override
   String get girisYap => 'Войти';
@@ -967,11 +967,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get kullanimKosullariMetni =>
-      'ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ И УСЛОВИЯ ИСПОЛЬЗОВАНИЯ FITCHECK\n\nПоследнее обновление: 27 августа 2026 г.\n\nПожалуйста, внимательно прочитайте настоящие условия («Соглашение») перед использованием мобильного приложения FitCheck («Приложение»). Загружая, открывая или используя Приложение, вы соглашаетесь соблюдать все условия данного Соглашения.\n\n1. СТОРОНЫ И ПРЕДМЕТ\nНастоящее Соглашение заключено между разработчиком FitCheck и индивидуальным пользователем («Пользователь»). Приложение предоставляет цифровое управление гардеробом, отслеживание вещей, подбор одежды по погоде и персональные рекомендации стилиста на базе ИИ.\n\n2. ОБЪЕМ УСЛУГ И УСЛОВИЯ ИСПОЛЬЗОВАНИЯ\n• Возрастное ограничение: Вам должно быть не менее 13 лет для использования Приложения.\n• Данные пользователя: Пользователь несет ответственность за точность имени, пола, стиля и предпочтений, указанных в профиле.\n• Рекомендательный характер: Оценки стиля, советы по покупкам и напоминания о стирке носят исключительно рекомендательный характер.\n• Погодные данные: Прогноз погоды определяется на основе геопозиции в реальном времени. Разработчик не несет ответственности за возможные расхождения.\n\n3. ИНТЕЛЛЕКТУАЛЬНАЯ СОБСТВЕННОСТЬ\nВы сохраняете права на загруженные фотографии одежды. Логотип FitCheck, дизайн, код и алгоритмы полностью принадлежат FitCheck.\n\n4. КОНФИДЕНЦИАЛЬНОСТЬ И БЕЗОПАСНОСТЬ\nЗагруженные фотографии и история образов по умолчанию хранятся локально на вашем устройстве.\n\n5. ОГРАНИЧЕНИЕ ОТВЕТСТВЕННОСТИ\nFitCheck не гарантирует бесперебойную работу и не несет ответственности за утерю данных при смене устройства.\n\n6. КОНТАКТЫ\nПо вопросам обращайтесь через раздел контактов в настройках или по адресу support@fitcheckapp.com.\n\n--- 📜 КОНЕЦ СОГЛАШЕНИЯ ---\nНажмите кнопку ниже, чтобы принять условия.';
+      'ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ И УСЛОВИЯ ИСПОЛЬЗОВАНИЯ FITCHECK\n\nПоследнее обновление: 27 августа 2026 г.\n\nПожалуйста, внимательно прочитайте настоящие условия («Соглашение») перед использованием мобильного приложения FitCheck («Приложение»). Загружая, открывая или используя Приложение, вы соглашаетесь соблюдать все условия данного Соглашения.\n\n1. СТОРОНЫ И ПРЕДМЕТ\nНастоящее Соглашение заключено между разработчиком FitCheck и индивидуальным пользователем («Пользователь»). Приложение предоставляет цифровое управление гардеробом, отслеживание вещей, подбор одежды по погоде и персональные рекомендации стилиста на базе ИИ.\n\n2. ОБЪЕМ УСЛУГ И УСЛОВИЯ ИСПОЛЬЗОВАНИЯ\n• Возрастное ограничение: Вам должно быть не менее 13 лет для использования Приложения.\n• Данные пользователя: Пользователь несет ответственность за точность имени, пола, стиля и предпочтений, указанных в профиле.\n• Рекомендательный характер: Оценки стиля, советы по покупкам и напоминания о стирке носят исключительно рекомендательный характер.\n• Погодные данные: Прогноз погоды определяется на основе геопозиции в реальном времени. Разработчик не несет ответственности за возможные расхождения.\n\n3. ИНТЕЛЛЕКТУАЛЬНАЯ СОБСТВЕННОСТЬ\nВы сохраняете права на загруженные фотографии одежды. Логотип FitCheck, дизайн, код и алгоритмы полностью принадлежат FitCheck.\n\n4. КОНФИДЕНЦИАЛЬНОСТЬ И БЕЗОПАСНОСТЬ\nЗагруженные фотографии и история образов по умолчанию хранятся локально на вашем устройстве.\n\n5. ОГРАНИЧЕНИЕ ОТВЕТСТВЕННОСТИ\nFitCheck не гарантирует бесперебойную работу и не несет ответственности за утерю данных при смене устройства.\n\n6. КОНТАКТЫ\nПо вопросам обращайтесь через раздел контактов в настройках или по адресу support@fitcheckapp.com.\n\n--- КОНЕЦ СОГЛАШЕНИЯ ---\nНажмите кнопку ниже, чтобы принять условия.';
 
   @override
   String chatKarsilama(Object hava) {
-    return 'Привет! 👋 Сегодня на улице $hava. Соберём отличный образ в твоём стиле? ✨';
+    return 'Привет Сегодня на улице $hava. Соберём отличный образ в твоём стиле?';
   }
 
   @override
@@ -1005,16 +1005,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get chatGonder => 'Отправить сообщение';
 
   @override
-  String get chatOneriYagmur => '🌧️ Образ для дождливого дня';
+  String get chatOneriYagmur => 'Образ для дождливого дня';
 
   @override
-  String get chatOneriOfis => '💼 Офис / Смарт-кэжуал';
+  String get chatOneriOfis => 'Офис / Смарт-кэжуал';
 
   @override
-  String get chatOneriHaftaSonu => '☕ Уютный выходной';
+  String get chatOneriHaftaSonu => 'Уютный выходной';
 
   @override
-  String get chatOneriKirliSepeti => '🧺 Проверка корзины с бельём';
+  String get chatOneriKirliSepeti => 'Проверка корзины с бельём';
 
   @override
   String get chatDinleniyor => 'Слушаю...';
@@ -1023,10 +1023,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get chatBirSeylerYazin => 'Напишите сообщение ассистенту...';
 
   @override
-  String get chatKombiniGiydim => 'Я надел(а) этот образ 👗';
+  String get chatKombiniGiydim => 'Я надел(а) этот образ';
 
   @override
-  String get chatKombinIslendi => 'Образ сохранён на сегодня! 📅';
+  String get chatKombinIslendi => 'Образ сохранён на сегодня';
 
   @override
   String get chatGorselIncele => 'Посмотри на фото и предложи образ.';
@@ -1060,8 +1060,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profilYikamaSepetimTitle => 'Корзина для белья';
 
   @override
-  String get profilYikamaSepetimBos =>
-      'Корзина пуста, вся ваша одежда чистая! ✨';
+  String get profilYikamaSepetimBos => 'Корзина пуста, вся ваша одежда чистая';
 
   @override
   String get profilSepetiBosalt => 'Очистить корзину';
@@ -1177,16 +1176,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dahaSonraAyarla => 'Настроить позже';
 
   @override
-  String get gunlukHakBittiBaslik => 'Дневной лимит исчерпан!';
+  String get gunlukHakBittiBaslik => 'Дневной лимит исчерпан';
 
   @override
   String get dahaSonra => 'Позже';
 
   @override
-  String get reklamIzleHakKazan => 'Смотреть рекламу (+3 попытка)';
+  String reklamIzleHakKazan(int adet) {
+    return 'Смотреть рекламу (+$adet попытка)';
+  }
 
   @override
-  String get tebriklerHakEklendi => 'Поздравляем! +3 попытка добавлена. ✨';
+  String tebriklerHakEklendi(int adet) {
+    return 'Поздравляем +$adet попытка добавлена.';
+  }
 
   @override
   String kombinIsaretlemeKaldirildi(String kombinAdi) {
@@ -1195,7 +1198,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String kombinGiydimIsaretlendi(String kombinAdi) {
-    return '\" $kombinAdi\" отмечен как надето сегодня! 👕✨';
+    return '\" $kombinAdi\" отмечен как надето сегодня';
   }
 
   @override
@@ -1208,16 +1211,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get farkliParcaSec => 'Выбрать другую вещь';
 
   @override
-  String get farkliUstSec => 'Выбрать другой верх 👕';
+  String get farkliUstSec => 'Выбрать другой верх';
 
   @override
-  String get farkliAltSec => 'Выбрать другой низ 👖';
+  String get farkliAltSec => 'Выбрать другой низ';
 
   @override
-  String get farkliAyakkabiSec => 'Выбрать другую обувь 👟';
+  String get farkliAyakkabiSec => 'Выбрать другую обувь';
 
   @override
-  String get farkliDisSec => 'Выбрать другую верхнюю одежду 🧥';
+  String get farkliDisSec => 'Выбрать другую верхнюю одежду';
 
   @override
   String get baskaTemizKiyafetYok =>
@@ -1243,11 +1246,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get parcalariKaydirIpucu =>
-      'Смахните влево/вправо для просмотра других вещей 👈👉';
+      'Смахните влево/вправо для просмотра других вещей';
 
   @override
   String zorunluParcaYorumu(Object parcaAdi) {
-    return '✨ Я создал этот образ вокруг вещи: $parcaAdi!';
+    return 'Я создал этот образ вокруг вещи: $parcaAdi';
   }
 
   @override
@@ -1255,32 +1258,32 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get dolabiKaristirEksikUyari =>
-      'Чтобы перемешать гардероб, нужно иметь хотя бы 1 чистый Верх, 1 Низ и 1 пару Обуви! 👕👖👟';
+      'Чтобы перемешать гардероб, нужно иметь хотя бы 1 чистый Верх, 1 Низ и 1 пару Обуви';
 
   @override
   String get zarlarAtildiYorumu =>
-      '🎲 Кубики брошены! Вы открыли неожиданное и стильное сочетание.';
+      'Кубики брошены Вы открыли неожиданное и стильное сочетание.';
 
   @override
   String get rastgeleKombinTuru => 'Случайный микс';
 
   @override
   String get temizAlternatifYok =>
-      'В этой категории больше нет чистых альтернатив! 🧺';
+      'В этой категории больше нет чистых альтернатив';
 
   @override
   String get kisiselDokunus => 'Персональный штрих';
 
   @override
-  String get aiYeniParcaAnalizEdiyor => 'ИИ анализирует новую вещь... ✨';
+  String get aiYeniParcaAnalizEdiyor => 'ИИ анализирует новую вещь...';
 
   @override
   String get parcaDegisimVarsayilanYorum =>
-      '✨ Замена этих вещей создала прекрасную общую гармонию!';
+      'Замена этих вещей создала прекрасную общую гармонию';
 
   @override
   String get parcaDegisimHataYorum =>
-      '✨ Замена элементов идеально адаптировала образ под ваш стиль!';
+      'Замена элементов идеально адаптировала образ под ваш стиль';
 
   @override
   String get bilgileriDuzenleBaslik => 'Редактировать данные';
@@ -1301,7 +1304,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get zarAtKaristir => 'Бросить кубики (Перемешать)';
 
   @override
-  String get zarPopupBaslik => 'Встряхни волшебные кубики!';
+  String get zarPopupBaslik => 'Встряхни волшебные кубики';
 
   @override
   String get zarPopupAciklama =>
@@ -1315,17 +1318,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get degistirmekIcinKaydirIpucu =>
-      'Смахните или нажмите на вещь для замены 👈👉';
+      'Смахните или нажмите на вещь для замены';
 
   @override
   String get favorilerdeEtiketi => 'В избранном';
 
   @override
-  String get bugunGiydildiEtiketi => 'Надето сегодня ✨';
+  String get bugunGiydildiEtiketi => 'Надето сегодня';
 
   @override
   String get varsayilanKendiAnalizYorumu =>
-      'Отличный выбор! Эти вещи замечательно сочетаются по тону и стилю.';
+      'Отличный выбор Эти вещи замечательно сочетаются по тону и стилю.';
 
   @override
   String get kendiTasarimimBaslik => 'Мой собственный образ';
@@ -1343,7 +1346,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get kombinHazirAiTavsiyesi =>
-      'Образ выглядит потрясающе! Оцените с помощью ИИ и сохраните.';
+      'Образ выглядит потрясающе Оцените с помощью ИИ и сохраните.';
 
   @override
   String get kombinBaslaIpucu =>
@@ -1384,7 +1387,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Вы уверены, что хотите удалить всю историю образов? Это действие необратимо.';
 
   @override
-  String get gecmisBasariylaTemizlendi => 'История успешно очищена 🗑️';
+  String get gecmisBasariylaTemizlendi => 'История успешно очищена';
 
   @override
   String get kayitGecmistenSilindi => 'Запись удалена из истории.';
@@ -1409,11 +1412,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get camasirSepetiTitle => 'Корзина для белья';
 
   @override
-  String get sepetBosTumKiyafetlerTemiz => 'Корзина пуста, вся одежда чистая!';
+  String get sepetBosTumKiyafetlerTemiz => 'Корзина пуста, вся одежда чистая';
 
   @override
   String get tumKiyafetlerTemizlendi =>
-      'Вся одежда постирана и возвращена в гардероб 🧺✨';
+      'Вся одежда постирана и возвращена в гардероб';
 
   @override
   String get tumunuTemizIsaretle => 'Отметить всё как чистые';
@@ -1422,7 +1425,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profilVeAnalizTitle => 'Профиль и аналитика';
 
   @override
-  String get harikaGidiyorsun => 'Вы отлично справляетесь!';
+  String get harikaGidiyorsun => 'Вы отлично справляетесь';
 
   @override
   String gundurSeridesin(Object gun) {
@@ -1501,7 +1504,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get googleHesabiniBagla => 'Привязать аккаунт Google';
 
   @override
-  String get googleHesabiBaglandi => 'Успешно привязан аккаунт Google! 🔗';
+  String get googleHesabiBaglandi => 'Успешно привязан аккаунт Google';
 
   @override
   String get googleHesabiBaglantisiKesildi => 'Аккаунт Google отвязан.';
@@ -1531,7 +1534,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String sifreEpostasiGonderildi(Object eposta) {
-    return 'Письмо со ссылкой отправлено на $eposta! ✉️';
+    return 'Письмо со ссылкой отправлено на $eposta';
   }
 
   @override
@@ -1681,7 +1684,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get onbellekTemizlendiBasari =>
-      'Кэш изображений и временные файлы успешно очищены! ✨';
+      'Кэш изображений и временные файлы успешно очищены';
 
   @override
   String get onbellekTemizlerkenHata => 'Произошла ошибка при очистке кэша.';
@@ -1695,11 +1698,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get disaAktarilacakVeriYok =>
-      'Не найдено данных гардероба для экспорта. 📭';
+      'Не найдено данных гардероба для экспорта.';
 
   @override
   String get gardiropVerisiKopyalandi =>
-      'Все данные гардероба скопированы в буфер обмена в формате JSON! 📋';
+      'Все данные гардероба скопированы в буфер обмена в формате JSON';
 
   @override
   String get destekVeDegerlendirmeUst => 'ПОДДЕРЖКА И ОЦЕНКА';
@@ -1737,7 +1740,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Просмотр правил использования данных и прав конфиденциальности';
 
   @override
-  String get sonGuncellemeTarihi => 'Последнее обновление: 27 августа 2026 г.';
+  String get sonGuncellemeTarihi => 'Последнее обновление: 20 октября 2026 г.';
 
   @override
   String get gizlilikMadde1Baslik => '1. Сбор и использование данных';
@@ -1751,7 +1754,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gizlilikMadde2Icerik =>
-      'Геопозиция обрабатывается анонимно через сервисы Open-Meteo исключительно для получения текущей погоды. Данные не сохраняются и не передаются.';
+      'Если вы разрешаете доступ к местоположению, широта и долгота отправляются в Open-Meteo для получения погоды и в BigDataCloud для определения города. FitCheck не хранит эти координаты на своих серверах. Обработка данных каждым сервисом регулируется его собственной политикой конфиденциальности.';
 
   @override
   String get gizlilikMadde3Baslik => '3. Голосовой ассистент и микрофон';
@@ -1800,32 +1803,30 @@ class AppLocalizationsRu extends AppLocalizations {
   String get kuponKoduKullanTitle => 'Использовать промокод';
 
   @override
-  String get kuponKoduAciklama =>
-      'Введите промокод ниже, чтобы получить дополнительные попытки подбора образов:';
+  String get kuponKoduAciklama => 'Введите промокод ниже:';
 
   @override
-  String get kuponKoduHint => 'Например: VIP2026';
+  String get kuponKoduHint => 'Промокод';
 
   @override
   String get kuponKullanButon => 'Применить';
 
   @override
-  String get kuponBasariliMesaji =>
-      '🎉 Промокод успешно применён! Попытки добавлены.';
+  String get kuponBasariliMesaji => 'Промокод применён';
 
   @override
-  String get kuponKullanilmisUyari => '⚠️ Вы уже использовали этот промокод!';
+  String get kuponKullanilmisUyari => 'Вы уже использовали этот промокод';
 
   @override
   String get kuponGecersizUyari =>
-      '❌ Недействительный промокод! Попробуйте ещё раз.';
+      'Недействительный промокод Попробуйте ещё раз.';
 
   @override
-  String get sinirsizIslemHakkiBaslik => 'Безлимитный доступ 👑';
+  String get sinirsizIslemHakkiBaslik => 'Безлимитные попытки';
 
   @override
   String kalanHakkinizBaslik(Object hak) {
-    return 'Осталось попыток: $hak ⚡';
+    return 'Осталось попыток: $hak';
   }
 
   @override
@@ -1834,56 +1835,61 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gunlukHakAciklama =>
-      'Ежедневные попытки обновляются каждые сутки в 00:00. Вы можете смотреть рекламу или вводить промокоды для получения дополнительных попыток.';
+      'Ежедневные попытки обновляются каждые сутки в 00:00. Вы можете смотреть рекламу, чтобы получить дополнительные попытки.';
 
   @override
   String get kuponKullan => 'Ввести промокод';
 
   @override
-  String get hakEklendiTebrikler => 'Поздравляем! +3 попытка добавлена. ✨';
-
-  @override
-  String get gardirobunDolduTitle => 'Гардероб полон!';
-
-  @override
-  String gardirobunDolduIcerik(Object limit) {
-    return 'Вы достигли лимита в $limit вещей. Посмотреть короткую рекламу, чтобы расширить гардероб ещё на +3 слотов? 👕';
+  String hakEklendiTebrikler(int adet) {
+    return 'Поздравляем +$adet попытка добавлена.';
   }
 
   @override
-  String get reklamIzleSlotEkle => 'Смотреть рекламу (+3 слотов)';
+  String get gardirobunDolduTitle => 'Гардероб полон';
 
   @override
-  String get yeniSlotEklendiTebrikler =>
-      'Поздравляем! В ваш гардероб добавлено +3 новых слотов. 🎉';
+  String gardirobunDolduIcerik(int limit, int adet) {
+    return 'Вы достигли лимита в $limit вещей. Посмотреть короткую рекламу, чтобы расширить гардероб ещё на +$adet слотов?';
+  }
 
   @override
-  String get gunlukHakBittiTitle => 'Дневной лимит исчерпан!';
+  String reklamIzleSlotEkle(int adet) {
+    return 'Смотреть рекламу (+$adet слотов)';
+  }
+
+  @override
+  String yeniSlotEklendiTebrikler(int adet) {
+    return 'Поздравляем В ваш гардероб добавлено +$adet новых слотов.';
+  }
+
+  @override
+  String get gunlukHakBittiTitle => 'Дневной лимит исчерпан';
 
   @override
   String get gunlukHakBittiIcerik =>
-      'Вы использовали бесплатные попытки на сегодня. Посмотрите видео или введите промокод, чтобы получить новые! 🛍️';
+      'Вы использовали бесплатные попытки на сегодня. Посмотрите видео, чтобы получить новые';
 
   @override
   String get kuponGir => 'Ввести код';
 
   @override
-  String get anaSemsiyeBildirimBaslik => 'Не забудьте зонт! ☔';
+  String get anaSemsiyeBildirimBaslik => 'Не забудьте зонт';
 
   @override
   String get anaSemsiyeBildirimIcerik =>
       'Сегодня ожидается дождь, не забудьте выбрать непромокаемую одежду.';
 
   @override
-  String get anaCamasirGunuBildirimBaslik => 'День стирки! 🧺';
+  String get anaCamasirGunuBildirimBaslik => 'День стирки';
 
   @override
   String get anaCamasirGunuBildirimIcerik =>
-      'В корзине накопилось много вещей. Самое время запустить стиральную машину!';
+      'В корзине накопилось много вещей. Самое время запустить стиральную машину';
 
   @override
   String chatZorunluParcaMesaji(Object parca) {
-    return '✨ Что мне надеть с этой вещью? ($parca)';
+    return 'Что мне надеть с этой вещью? ($parca)';
   }
 
   @override
@@ -1925,69 +1931,69 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rehberiAtla => 'ПРОПУСТИТЬ ОБУЧЕНИЕ';
 
   @override
-  String get rehberAnladimBasla => 'Понятно, начнём!';
+  String get rehberAnladimBasla => 'Понятно, начнём';
 
   @override
-  String get rehberSonrakiAdim => 'Следующий шаг ➔';
+  String get rehberSonrakiAdim => 'Следующий шаг';
 
   @override
-  String get rehberGardirobuDijitallestirBaslik => '📸 Оцифруйте свой гардероб';
+  String get rehberGardirobuDijitallestirBaslik => 'Оцифруйте свой гардероб';
 
   @override
   String get rehberGardirobuDijitallestirAciklama =>
       'Нажмите эту кнопку, чтобы сделать фото или загрузить их из галереи для создания виртуального шкафа.';
 
   @override
-  String get rehberSesliAsistanBaslik => '🎙️ Голосовой ассистент стиля';
+  String get rehberSesliAsistanBaslik => 'Голосовой ассистент стиля';
 
   @override
   String get rehberSesliAsistanAciklama =>
       'Используйте голосовые команды, чтобы узнать, что надеть, или получить мгновенный совет.';
 
   @override
-  String get rehberAiStilistBaslik => '✨ Рекомендации ИИ-стилиста';
+  String get rehberAiStilistBaslik => 'Рекомендации ИИ-стилиста';
 
   @override
   String get rehberAiStilistAciklama =>
       'Получайте персональные образы под погоду, ваш цветотип и предпочтения в один клик.';
 
   @override
-  String get rehberAyarlarBaslik => '⚙️ Персонализация и настройки';
+  String get rehberAyarlarBaslik => 'Персонализация и настройки';
 
   @override
   String get rehberAyarlarAciklama =>
       'Настраивайте пол, тон кожи, предпочитаемые цвета, тему или пересматривайте вступительное руководство.';
 
   @override
-  String get rehberNavGardirobumBaslik => '👔 Мой гардероб';
+  String get rehberNavGardirobumBaslik => 'Мой гардероб';
 
   @override
   String get rehberNavGardirobumAciklama =>
       'Удобно просматривайте, фильтруйте и управляйте всеми вещами по категориям.';
 
   @override
-  String get rehberNavHaftalikBaslik => '📅 Планировщик на неделю';
+  String get rehberNavHaftalikBaslik => 'Планировщик на неделю';
 
   @override
   String get rehberNavHaftalikAciklama =>
       'Планируйте повседневные луки на неделю вперед с учётом прогноза погоды на 7 дней.';
 
   @override
-  String get rehberNavDolaptanBaslik => '🤖 ИИ-генератор из гардероба';
+  String get rehberNavDolaptanBaslik => 'ИИ-генератор из гардероба';
 
   @override
   String get rehberNavDolaptanAciklama =>
       'Позвольте ИИ автоматически создавать образы из ваших существующих вещей на каждый день.';
 
   @override
-  String get rehberNavKendiBaslik => '🎨 Конструктор своего стиля';
+  String get rehberNavKendiBaslik => 'Конструктор своего стиля';
 
   @override
   String get rehberNavKendiAciklama =>
       'Комбинируйте верх, низ и обувь вручную для создания собственного неповторимого лука.';
 
   @override
-  String get rehberNavProfilBaslik => '📊 Аналитика и стирка';
+  String get rehberNavProfilBaslik => 'Аналитика и стирка';
 
   @override
   String get rehberNavProfilAciklama =>
@@ -2001,7 +2007,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Рекомендуем включить уведомления, чтобы получать напоминания о стирке, предупреждения о дожде и ежедневные советы по стилю.';
 
   @override
-  String get bildirimGunaydinBaslik => 'Доброе утро! ☀️';
+  String get bildirimGunaydinBaslik => 'Доброе утро';
 
   @override
   String get bildirimGunaydinIcerik =>
@@ -2068,7 +2074,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get fitOversize => 'Свободный / Оверсайз';
 
   @override
-  String get gardirobumBosBaslik => 'Ваш гардероб пуст!';
+  String get gardirobumBosBaslik => 'Ваш гардероб пуст';
 
   @override
   String get gardirobumGizlendiBaslik => 'Гардероб скрыт';
@@ -2123,7 +2129,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gardirobumHakEklendiMesaj =>
-      'Поздравляем, получена новая попытка создания образа!';
+      'Поздравляем, получена новая попытка создания образа';
 
   @override
   String get ayarlariAc => 'Открыть настройки';
@@ -2158,7 +2164,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get gardirobumHenuzYokEkle =>
-      'Вещи пока не добавлены. Добавьте первую вещь прямо сейчас!';
+      'Вещи пока не добавлены. Добавьте первую вещь прямо сейчас';
 
   @override
   String gardirobumMaksFotografUyari(int max) {
@@ -2188,31 +2194,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String kombinSohbetKarsilama(Object kombin) {
-    return 'Давайте вместе разберём ваш образ «$kombin»! Спрашивайте о сочетании цветов, погоде или альтернативных вещах. ✨';
+    return 'Давайте вместе разберём ваш образ «$kombin» Спрашивайте о сочетании цветов, погоде или альтернативных вещах.';
   }
 
   @override
-  String get kombinSohbetOneriUyum => '🤔 Почему этот образ удачен?';
+  String get kombinSohbetOneriUyum => 'Почему этот образ удачен?';
 
   @override
-  String get kombinSohbetOneriAlternatif => '👟 Предложи альтернативную вещь';
+  String get kombinSohbetOneriAlternatif => 'Предложи альтернативную вещь';
 
   @override
-  String get kombinSohbetOneriHava => '🌦️ А если погода изменится?';
+  String get kombinSohbetOneriHava => 'А если погода изменится?';
 
   @override
-  String get kombinSohbetOneriAksesuar => '💍 Подбери аксессуары';
+  String get kombinSohbetOneriAksesuar => 'Подбери аксессуары';
 
   @override
   String get kombinSohbetAltBaslikAnlik => 'Чат о вашем образе на сейчас';
 
   @override
   String get chatKirliSepetiBos =>
-      '🧺 Ваша корзина для белья пуста! Все вещи готовы к носке — я могу собрать образ в любой момент. ✨';
+      'Ваша корзина для белья пуста Все вещи готовы к носке — я могу собрать образ в любой момент.';
 
   @override
   String chatKirliSepetiDoluBaslik(Object sayi) {
-    return '🧺 В корзине для белья ждут стирки **$sayi** вещей:';
+    return 'В корзине для белья ждут стирки **$sayi** вещей:';
   }
 
   @override
@@ -2224,11 +2230,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get analitikVerileriPaylasAciklama =>
-      'Для улучшения приложения отправляются анонимные данные об использовании. При отключении данные аналитики на этом устройстве удаляются.';
+      'Данные об использовании отправляются в Firebase Analytics, чтобы анализировать работу приложения и улучшать его. Это необязательно; передачу можно отключить в любое время.';
 
   @override
   String get chatKarsilamaHavaYok =>
-      'Привет! 👋 Соберём отличный образ в твоём стиле? ✨';
+      'Привет Соберём отличный образ в твоём стиле?';
 
   @override
   String get premiumBaslik => 'Безлимитный стиль, без рекламы';
@@ -2309,416 +2315,421 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get triviaQ1 =>
-      'Taba / Turuncu tonları ile renk çarkında tam zıt konumda yer alan ve güçlü bir kontrast oluşturan renk hangisidir?';
+      'Какой цвет расположен прямо напротив рыжевато-оранжевых оттенков на цветовом круге и создаёт сильный контраст?';
 
   @override
-  String get triviaQ1o1 => 'Saks Mavisi / Petrol Mavisi';
+  String get triviaQ1o1 => 'Сапфировый / петролевый синий';
 
   @override
-  String get triviaQ1o2 => 'Zümrüt Yeşili';
+  String get triviaQ1o2 => 'Изумрудно-зелёный';
 
   @override
-  String get triviaQ1o3 => 'Bordo';
+  String get triviaQ1o3 => 'Бордовый';
 
   @override
-  String get triviaQ1o4 => 'Hardal Sarısı';
+  String get triviaQ1o4 => 'Горчичный';
 
   @override
-  String get triviaQ2 =>
-      'Modada \'Monokrom\' (Monochromatic) giyim tarzı ne anlama gelir?';
+  String get triviaQ2 => 'Что в моде означает монохромный стиль одежды?';
 
   @override
-  String get triviaQ2o1 =>
-      'Tek bir rengin farklı tonlarını bir arada kullanmak';
+  String get triviaQ2o1 => 'Сочетать разные оттенки одного цвета';
 
   @override
-  String get triviaQ2o2 => 'Sadece siyah ve beyaz kıyafetler giyinmek';
+  String get triviaQ2o2 => 'Носить только чёрную и белую одежду';
 
   @override
-  String get triviaQ2o3 => 'En az 3 zıt rengi aynı anda harmanlamak';
+  String get triviaQ2o3 => 'Сочетать не менее трёх контрастных цветов';
 
   @override
-  String get triviaQ2o4 => 'Sadece desenli ve baskılı parçaları eşleştirmek';
+  String get triviaQ2o4 => 'Сочетать только вещи с принтами и узорами';
 
   @override
   String get triviaQ3 =>
-      'Altın (Gold) takıların, kiremit ve zeytin yeşili gibi tonların en çok yakıştığı cilt alt tonu hangisidir?';
+      'Какой подтон кожи лучше всего сочетается с золотыми украшениями, терракотовыми и оливковыми оттенками?';
 
   @override
-  String get triviaQ3o1 => 'Soğuk (Cool) Alt Ton';
+  String get triviaQ3o1 => 'Холодный подтон';
 
   @override
-  String get triviaQ3o2 => 'Sıcak (Warm) Alt Ton';
+  String get triviaQ3o2 => 'Тёплый подтон';
 
   @override
-  String get triviaQ3o3 => 'Mavi Alt Ton';
+  String get triviaQ3o3 => 'Синий подтон';
 
   @override
-  String get triviaQ3o4 => 'Pembe Alt Ton';
+  String get triviaQ3o4 => 'Розовый подтон';
 
   @override
   String get triviaQ4 =>
-      'Kapsül gardırop oluştururken her renkle kolayca eşleşen \'Nötr Renkler\' grubunda hangisi YER ALMAZ?';
+      'Какой цвет НЕ относится к нейтральным, которые легко сочетать в капсульном гардеробе?';
 
   @override
-  String get triviaQ4o1 => 'Bej / Krem';
+  String get triviaQ4o1 => 'Бежевый / кремовый';
 
   @override
-  String get triviaQ4o2 => 'Lacivert';
+  String get triviaQ4o2 => 'Тёмно-синий';
 
   @override
-  String get triviaQ4o3 => 'Flaş (Neon) Sarı';
+  String get triviaQ4o3 => 'Неоново-жёлтый';
 
   @override
-  String get triviaQ4o4 => 'Taba / Kahverengi';
+  String get triviaQ4o4 => 'Коричневый';
 
   @override
   String get triviaQ5 =>
-      'Renk çarkında yan yana duran ve yumuşak, göz yormayan bir geçiş sağlayan renk grubuna ne ad verilir?';
+      'Как называется группа соседних цветов на цветовом круге, создающая мягкий переход?';
 
   @override
-  String get triviaQ5o1 => 'Tamamlayıcı (Zıt) Renkler';
+  String get triviaQ5o1 => 'Комплементарные (контрастные) цвета';
 
   @override
-  String get triviaQ5o2 => 'Analog Renkler';
+  String get triviaQ5o2 => 'Аналоговые цвета';
 
   @override
-  String get triviaQ5o3 => 'Pastel Renkler';
+  String get triviaQ5o3 => 'Пастельные цвета';
 
   @override
-  String get triviaQ5o4 => 'Triadik Renkler';
+  String get triviaQ5o4 => 'Триадные цвета';
 
   @override
   String get triviaQ6 =>
-      'Modada vücut oranını daha uzun ve dengeli göstermek için uygulanan \'Üçte Bir Kuralı\' (Rule of Thirds) hangisidir?';
+      'Какое правило третей визуально удлиняет и уравновешивает пропорции?';
 
   @override
-  String get triviaQ6o1 => '1/2 Üst - 1/2 Alt (Gövde ve bacak eşit)';
+  String get triviaQ6o1 =>
+      'Половина сверху и половина снизу (туловище и ноги поровну)';
 
   @override
-  String get triviaQ6o2 => '1/3 Üst - 2/3 Alt (Yüksek bel / Kısa üst)';
+  String get triviaQ6o2 =>
+      'Одна треть сверху и две трети снизу (высокая талия / короткий верх)';
 
   @override
-  String get triviaQ6o3 => '2/3 Üst - 1/3 Alt (Uzun tunik / Kısa alt)';
+  String get triviaQ6o3 =>
+      'Две трети сверху и одна треть снизу (длинная туника / короткий низ)';
 
   @override
-  String get triviaQ6o4 => '3/3 Tam boy tek parça';
+  String get triviaQ6o4 => 'Одна вещь во всю длину';
 
   @override
-  String get triviaQ7 =>
-      'Fransızca moda terimi olan \'Ton-sür-ton\' giyim tekniği neyi ifade eder?';
+  String get triviaQ7 => 'Что означает французский модный приём \"тон в тон\"?';
 
   @override
   String get triviaQ7o1 =>
-      'Aynı rengin farklı doygunluk ve açık/koyu nüanslarını katmanlamak';
+      'Сочетать разные уровни насыщенности и светлые/тёмные оттенки одного цвета';
 
   @override
-  String get triviaQ7o2 => 'Tamamen zıt iki rengi keskin hatlarla birleştirmek';
+  String get triviaQ7o2 =>
+      'Соединять два совершенно противоположных цвета резкими линиями';
 
   @override
-  String get triviaQ7o3 => 'Siyah ve beyaz desenleri karıştırmak';
+  String get triviaQ7o3 => 'Смешивать чёрно-белые узоры';
 
   @override
-  String get triviaQ7o4 => 'Farklı kumaş dokularını tek renkte toplamak';
+  String get triviaQ7o4 => 'Сочетать разные фактуры ткани в одном цвете';
 
   @override
   String get triviaQ8 =>
-      'Klasik ve formal giyim kurallarına göre, deri kemer rengi hangisiyle birebir eşleşmelidir?';
+      'С чем по классическим правилам формальной одежды должен совпадать цвет кожаного ремня?';
 
   @override
-  String get triviaQ8o1 => 'Kravat veya Şal';
+  String get triviaQ8o1 => 'С галстуком или шарфом';
 
   @override
-  String get triviaQ8o2 => 'Gömlek';
+  String get triviaQ8o2 => 'С рубашкой';
 
   @override
-  String get triviaQ8o3 => 'Ayakkabı';
+  String get triviaQ8o3 => 'С обувью';
 
   @override
-  String get triviaQ8o4 => 'Ceket Astarı';
+  String get triviaQ8o4 => 'С подкладкой пиджака';
 
   @override
   String get triviaQ9 =>
-      'Renk çarkında eşit uzaklıktaki 3 rengin (Ör: Kırmızı, Sarı, Mavi) oluşturduğu canlı kombin tarzına ne denir?';
+      'Как называется яркое сочетание трёх равноудалённых цветов, например красного, жёлтого и синего?';
 
   @override
-  String get triviaQ9o1 => 'Triadik (Üçlü) Renk Uyumu';
+  String get triviaQ9o1 => 'Триадная цветовая гармония';
 
   @override
-  String get triviaQ9o2 => 'Nötr Uyum';
+  String get triviaQ9o2 => 'Нейтральная гармония';
 
   @override
-  String get triviaQ9o3 => 'Monokrom Uyum';
+  String get triviaQ9o3 => 'Монохромная гармония';
 
   @override
-  String get triviaQ9o4 => 'Kapsül Geçiş';
+  String get triviaQ9o4 => 'Капсульное сочетание';
 
   @override
   String get triviaQ10 =>
-      'Ten rengine (Nude) veya giyilen pantolonun rengine tam uyan bir ayakkabı seçmek nasıl bir görsel etki yaratır?';
+      'Какой визуальный эффект создаёт обувь в тон кожи или брюк?';
 
   @override
-  String get triviaQ10o1 => 'Bacak boyunu kesintisiz ve daha uzun gösterir';
+  String get triviaQ10o1 => 'Визуально удлиняет ноги, не прерывая линию';
 
   @override
-  String get triviaQ10o2 => 'Vücudu daha geniş gösterir';
+  String get triviaQ10o2 => 'Делает фигуру шире';
 
   @override
-  String get triviaQ10o3 => 'Omuz genişliğini öne çıkarır';
+  String get triviaQ10o3 => 'Подчёркивает ширину плеч';
 
   @override
-  String get triviaQ10o4 => 'Boyu olduğundan kısa gösterir';
+  String get triviaQ10o4 => 'Визуально укорачивает рост';
 
   @override
   String get kombinOyunuBaslik => 'Игра в комбинации';
 
   @override
-  String get kombinMevcutKombin => 'Mevcut Kombin';
+  String get kombinMevcutKombin => 'Текущий образ';
 
   @override
-  String get kombinParcaUst => 'Üst';
+  String get kombinParcaUst => 'Верх';
 
   @override
-  String get kombinParcaAlt => 'Alt';
+  String get kombinParcaAlt => 'Низ';
 
   @override
-  String get kombinEksik_ayakkabi => 'Eksik: Ayakkabı';
+  String get kombinEksik_ayakkabi => 'Не хватает: обуви';
 
   @override
-  String get kombinEksik_ceket => 'Eksik: Ceket';
+  String get kombinEksik_ceket => 'Не хватает: куртки';
 
   @override
-  String get kombinEksik_aksesuar => 'Eksik: Aksesuar';
+  String get kombinEksik_aksesuar => 'Не хватает: аксессуаров';
 
   @override
-  String get kombinSoru_ayakkabi => 'Hangi ayakkabı en uygun?';
+  String get kombinSoru_ayakkabi => 'Какая обувь подходит лучше?';
 
   @override
-  String get kombinSoru_ceket => 'Hangi ceket en uygun?';
+  String get kombinSoru_ceket => 'Какая куртка подходит лучше?';
 
   @override
-  String get kombinSoru_aksesuar => 'Hangi aksesuar en uygun?';
+  String get kombinSoru_aksesuar => 'Какой аксессуар подходит лучше?';
 
   @override
-  String get kombinKategoriAyakkabi => 'Ayakkabı';
+  String get kombinKategoriAyakkabi => 'Обувь';
 
   @override
-  String get kombinKategoriCeket => 'Ceket';
+  String get kombinKategoriCeket => 'Куртка';
 
   @override
-  String get kombinKategoriAksesuar => 'Aksesuar';
+  String get kombinKategoriAksesuar => 'Аксессуары';
 
   @override
-  String get kombinOrtamOfis => 'Ofis';
+  String get kombinOrtamOfis => 'Офис';
 
   @override
-  String get kombinOrtamCasual => 'Casual';
+  String get kombinOrtamCasual => 'Повседневный';
 
   @override
-  String get kombinOrtamDavet => 'Davet';
+  String get kombinOrtamDavet => 'Вечеринка';
 
   @override
-  String get kombinOrtamSpor => 'Spor';
+  String get kombinOrtamSpor => 'Спорт';
 
   @override
-  String get kombinHavaGunesli => 'Güneşli';
+  String get kombinHavaGunesli => 'Солнечно';
 
   @override
-  String get kombinHavaYagmurlu => 'Yağmurlu';
+  String get kombinHavaYagmurlu => 'Дождливо';
 
   @override
-  String get kombinHavaSoguk => 'Soğuk';
+  String get kombinHavaSoguk => 'Холодно';
 
   @override
-  String get kombinHavaSicak => 'Sıcak';
+  String get kombinHavaSicak => 'Тепло';
 
   @override
-  String get kombinRenkBeyaz => 'Beyaz';
+  String get kombinRenkBeyaz => 'Белый';
 
   @override
-  String get kombinRenkSiyah => 'Siyah';
+  String get kombinRenkSiyah => 'Чёрный';
 
   @override
-  String get kombinRenkKahverengi => 'Kahverengi';
+  String get kombinRenkKahverengi => 'Коричневый';
 
   @override
-  String get kombinRenkLacivert => 'Lacivert';
+  String get kombinRenkLacivert => 'Тёмно-синий';
 
   @override
-  String get kombinRenkBej => 'Bej';
+  String get kombinRenkBej => 'Бежевый';
 
   @override
-  String get kombinRenkKoyuYesil => 'Koyu Yeşil';
+  String get kombinRenkKoyuYesil => 'Тёмно-зелёный';
 
   @override
-  String get kombinRenkNude => 'Nude';
+  String get kombinRenkNude => 'Телесный';
 
   @override
-  String get kombinRenkAltin => 'Altın';
+  String get kombinRenkAltin => 'Золотой';
 
   @override
-  String get kombinRenkGri => 'Gri';
+  String get kombinRenkGri => 'Серый';
 
   @override
-  String get kombinRenkPastelMavi => 'Pastel Mavi';
+  String get kombinRenkPastelMavi => 'Пастельно-голубой';
 
   @override
-  String get kombinRenkKirmizi => 'Kırmızı';
+  String get kombinRenkKirmizi => 'Красный';
 
   @override
-  String get kombinRenkMavi => 'Mavi';
+  String get kombinRenkMavi => 'Синий';
 
   @override
-  String get kombinRenkGumus => 'Gümüş';
+  String get kombinRenkGumus => 'Серебристый';
 
   @override
-  String get kombinRenkKoyuMavi => 'Koyu Mavi';
+  String get kombinRenkKoyuMavi => 'Тёмно-синий';
 
   @override
-  String get kombinRenkKamel => 'Kamel';
+  String get kombinRenkKamel => 'Верблюжий';
 
   @override
-  String get kombinRenkYesil => 'Yeşil';
+  String get kombinRenkYesil => 'Зелёный';
 
   @override
-  String get kombinRenkAcikMavi => 'Açık Mavi';
+  String get kombinRenkAcikMavi => 'Голубой';
 
   @override
-  String get kombinRenkNavy => 'Navy';
+  String get kombinRenkNavy => 'Тёмно-синий';
 
   @override
-  String get kombinSecenekKahverengiOxford => 'Kahverengi Deri Oxford';
+  String get kombinSecenekKahverengiOxford => 'Коричневые кожаные оксфорды';
 
   @override
-  String get kombinSecenekSiyahDerby => 'Siyah Deri Derby';
+  String get kombinSecenekSiyahDerby => 'Чёрные туфли дерби';
 
   @override
-  String get kombinSecenekBeyazSpor => 'Beyaz Spor Ayakkabı';
+  String get kombinSecenekBeyazSpor => 'Белые кроссовки';
 
   @override
-  String get kombinSecenekKahverengiCizme => 'Kahverengi Çizme';
+  String get kombinSecenekKahverengiCizme => 'Коричневые сапоги';
 
   @override
-  String get kombinSecenekSiyahSuGecirmezBot => 'Siyah Su Geçirmez Bot';
+  String get kombinSecenekSiyahSuGecirmezBot => 'Чёрные непромокаемые ботинки';
 
   @override
-  String get kombinSecenekNudeBallerina => 'Nude Ballerina';
+  String get kombinSecenekNudeBallerina => 'Бежевые балетки';
 
   @override
-  String get kombinSecenekAltinSandalet => 'Altın Sandalet';
+  String get kombinSecenekAltinSandalet => 'Золотистые сандалии';
 
   @override
-  String get kombinSecenekSiyahBlazer => 'Siyah Blazer';
+  String get kombinSecenekSiyahBlazer => 'Чёрный блейзер';
 
   @override
-  String get kombinSecenekKirmiziDeriCeket => 'Kırmızı Deri Ceket';
+  String get kombinSecenekKirmiziDeriCeket => 'Красная кожаная куртка';
 
   @override
-  String get kombinSecenekAltinDetayliCeket => 'Altın Detaylı Ceket';
+  String get kombinSecenekAltinDetayliCeket => 'Куртка с золотистыми деталями';
 
   @override
-  String get kombinSecenekBeyazPufy => 'Beyaz Pufy Ceket';
+  String get kombinSecenekBeyazPufy => 'Белый пуховик Pufy';
 
   @override
-  String get kombinSecenekBeyazKosu => 'Beyaz Koşu Ayakkabısı';
+  String get kombinSecenekBeyazKosu => 'Белые кроссовки для бега';
 
   @override
-  String get kombinSecenekSiyahBasketbol => 'Siyah Basketbol Ayakkabısı';
+  String get kombinSecenekSiyahBasketbol => 'Чёрные баскетбольные кроссовки';
 
   @override
-  String get kombinSecenekMaviTerlik => 'Mavi Terlik';
+  String get kombinSecenekMaviTerlik => 'Синие тапочки';
 
   @override
-  String get kombinSecenekKahverengiLoafer => 'Kahverengi Loafer';
+  String get kombinSecenekKahverengiLoafer => 'Коричневые лоферы';
 
   @override
-  String get kombinSecenekBeyazBespan => 'Beyaz Beşpan';
+  String get kombinSecenekBeyazBespan => 'Белая обувь Bespan';
 
   @override
-  String get kombinSecenekSiyahGunes => 'Siyah Güneş Gözlüğü';
+  String get kombinSecenekSiyahGunes => 'Чёрные солнцезащитные очки';
 
   @override
-  String get kombinSecenekSiyahSirtCantasi => 'Siyah Sırt Çantası';
+  String get kombinSecenekSiyahSirtCantasi => 'Чёрный рюкзак';
 
   @override
-  String get kombinSecenekGumusAkilliSaat => 'Gümüş Akıllı Saat';
+  String get kombinSecenekGumusAkilliSaat => 'Серебристые умные часы';
 
   @override
-  String get kombinSecenekKamelCifteYaka => 'Kamel Renkli Çifte Yaka';
+  String get kombinSecenekKamelCifteYaka =>
+      'Куртка верблюжьего цвета с двойным воротником';
 
   @override
-  String get kombinSecenekSiyahBomber => 'Siyah Bomber';
+  String get kombinSecenekSiyahBomber => 'Чёрная куртка-бомбер';
 
   @override
-  String get kombinSecenekKirmiziPufy => 'Kırmızı Pufy';
+  String get kombinSecenekKirmiziPufy => 'Красный пуховик Pufy';
 
   @override
-  String get kombinSecenekYesilDenim => 'Yeşil Denim Ceket';
+  String get kombinSecenekYesilDenim => 'Зелёная джинсовая куртка';
 
   @override
-  String get kombinSecenekKahverengiKemer => 'Kahverengi Kemer';
+  String get kombinSecenekKahverengiKemer => 'Коричневый ремень';
 
   @override
-  String get kombinSecenekSiyahKemer => 'Siyah Kemer';
+  String get kombinSecenekSiyahKemer => 'Чёрный ремень';
 
   @override
-  String get kombinSecenekNavyBlokSal => 'Navy Blok Şal';
+  String get kombinSecenekNavyBlokSal => 'Тёмно-синий шарф color block';
 
   @override
-  String get kombinSecenekKahverengiGozluk => 'Kahverengi Gözlük';
+  String get kombinSecenekKahverengiGozluk => 'Коричневые очки';
 
   @override
-  String get kombinSecenekGriSuGecirmez => 'Gri Su Geçirmez Koşu';
+  String get kombinSecenekGriSuGecirmez =>
+      'Серые непромокаемые кроссовки для бега';
 
   @override
-  String get kombinSecenekKahverengiTrekking => 'Kahverengi Trekking Botu';
+  String get kombinSecenekKahverengiTrekking =>
+      'Коричневые треккинговые ботинки';
 
   @override
-  String get kombinSecenekSiyahTerlik => 'Siyah Terlik';
+  String get kombinSecenekSiyahTerlik => 'Чёрные шлёпанцы';
 
   @override
-  String get kombinSecenekBeyazTenis => 'Beyaz Tenis Ayakkabısı';
+  String get kombinSecenekBeyazTenis => 'Белые теннисные кроссовки';
 
   @override
-  String get kombinOyunBitti => 'Oyun Bitti';
+  String get kombinOyunBitti => 'Игра окончена';
 
   @override
-  String get kombinToplamPuan => 'Toplam Puan';
+  String get kombinToplamPuan => 'Общий счёт';
 
   @override
-  String get kombinBasariOrani => 'Başarı Oranı';
+  String get kombinBasariOrani => 'Процент правильных ответов';
 
   @override
-  String get kombinTekrarOyna => 'Tekrar Oyna';
+  String get kombinTekrarOyna => 'Играть снова';
 
   @override
-  String get kombinAnaSayfa => 'Ana Sayfa';
+  String get kombinAnaSayfa => 'На главную';
 
   @override
-  String get kombinSonucUsta => 'Stil Ustası! 🏆';
+  String get kombinSonucUsta => 'Мастер стиля';
 
   @override
-  String get kombinSonucUstaMesaj => 'Renk ve uyum hissini ödüllemeye değer!';
+  String get kombinSonucUstaMesaj =>
+      'Твоё чувство цвета и гармонии достойно награды';
 
   @override
-  String get kombinSonucIyi => 'İyi Gidiyorsun! 👍';
+  String get kombinSonucIyi => 'Ты на верном пути';
 
   @override
-  String get kombinSonucIyiMesaj => 'Az pratikle mükemmel olacaksın.';
+  String get kombinSonucIyiMesaj => 'Немного практики — и всё получится.';
 
   @override
-  String get kombinSonucPratik => 'Pratik Lazım 📚';
+  String get kombinSonucPratik => 'Продолжай тренироваться';
 
   @override
   String get kombinSonucPratikMesaj =>
-      'Renk teorisi ipuçları için \"Analiz\" sekmesine bak.';
+      'Советы по теории цвета — во вкладке «Анализ».';
 
   @override
   String get degerlendirmeBaslik => 'Вам нравится FitCheck?';
 
   @override
   String get degerlendirmeIcerik =>
-      'Если вам нравится приложение, уделите 5 секунд и оставьте нам отзыв! Небольшие отзывы — большая помощь! ⭐ Оценившим пользователям +3 бесплатных кредита в подарок!';
+      'Если вам нравится приложение, уделите 5 секунд и оставьте нам отзыв Небольшие отзывы — большая помощь';
 
   @override
   String get degerlendirmeEvet => 'Да, оценю';
@@ -2731,7 +2742,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get yakindaAciklama =>
-      'Мы работаем над этой функцией, она скоро появится!';
+      'Мы работаем над этой функцией, она скоро появится';
 
   @override
   String get aiOneriHazirlaniyor => 'Подготовка рекомендации...';
@@ -2773,7 +2784,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get premiumEkranBaslik => 'FitCheck Premium';
 
   @override
-  String get dilSecimBaslik => '🌐 Выбор языка';
+  String get dilSecimBaslik => 'Выбор языка';
 
   @override
   String get dilSecenekOtomatik => 'Автоматически (язык устройства)';
@@ -2867,7 +2878,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Всё, что стилист помнит о вас, будет удалено. Это действие нельзя отменить.';
 
   @override
-  String get stilistHafizasiTemizlendi => 'Память очищена 🧠';
+  String get stilistHafizasiTemizlendi => 'Память очищена';
 
   @override
   String get gardirobumArkaPlanSilinemediBaslik => 'Фон не удалён';
@@ -2890,4 +2901,686 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cekimIpucu3 => 'Избегайте теней и узорчатых поверхностей.';
+
+  @override
+  String kullanimKosullariOnayMetni(String terms) {
+    return 'Я прочитал(а) и принимаю $terms.';
+  }
+
+  @override
+  String get kendiTasarimimParcaSec => 'Выберите вещь';
+
+  @override
+  String get hesapSilmeBasarisiz =>
+      'Не удалось завершить удаление аккаунта. Проверьте подключение и повторите попытку.';
+
+  @override
+  String get bildirimTamZamanAyar => 'Уведомления точно вовремя';
+
+  @override
+  String get bildirimTamZamanAciklama =>
+      'Разрешите «Alarms & reminders» на Android, чтобы уведомления приходили ровно в выбранное время.';
+
+  @override
+  String get bildirimTamZamanAcik => 'Уведомления точно вовремя включены.';
+
+  @override
+  String get premiumSatinAlmaDogrulamaHazirDegil =>
+      'Безопасная проверка магазина для этой платформы ещё не настроена. Покупки временно недоступны.';
+
+  @override
+  String get islemIptalEdildi =>
+      'Обработка отменена. Вещи, добавленные до этого, остались в гардеробе.';
+
+  @override
+  String get islemIptalEdiliyor => 'Отмена…';
+
+  @override
+  String get sifreGoster => 'Показать пароль';
+
+  @override
+  String get sifreGizle => 'Скрыть пароль';
+
+  @override
+  String get gunSayisiAzalt => 'Уменьшить количество дней';
+
+  @override
+  String get gunSayisiArttir => 'Увеличить количество дней';
+
+  @override
+  String get chatGorseliKaldir => 'Удалить изображение';
+
+  @override
+  String get kesimUyarisiBaslik => 'Вырез может быть неточным';
+
+  @override
+  String get kesimUyarisiAciklama =>
+      'Цвет вещи очень близок к цвету фона. Удаление фона в таком случае затруднено: могут остаться части фона или обрежется часть вещи. Повторная съёмка на поверхности другого цвета обычно решает проблему.';
+
+  @override
+  String get kesimUyarisiTekrarCek => 'Переснять';
+
+  @override
+  String get kesimUyarisiYineDeKaydet => 'Всё равно сохранить';
+
+  @override
+  String get gizlilikMadde5Baslik => '5. Анализ изображений с помощью ИИ';
+
+  @override
+  String get gizlilikMadde5Icerik =>
+      'Фотографии одежды обрабатываются на нашем собственном сервере для удаления фона и отправляются в сервисы ИИ Google (Gemini) и Groq для анализа стиля и подбора образов. Фотографии обрабатываются только для ответа на ваш запрос, мы не храним их постоянно и не используем для рекламы. Сама фотография остаётся на вашем устройстве; вы можете удалить её из гардероба в любой момент.';
+
+  @override
+  String get bugunSekmesi => 'Сегодня';
+
+  @override
+  String get bugunBaslik => 'Сегодня';
+
+  @override
+  String get bugunGunaydin => 'Доброе утро';
+
+  @override
+  String get bugunIyiGunler => 'Добрый день';
+
+  @override
+  String get bugunIyiAksamlar => 'Добрый вечер';
+
+  @override
+  String get bugunBugununKombini => 'Образ дня';
+
+  @override
+  String get bugunNedenBuKombin => 'Почему этот образ?';
+
+  @override
+  String get bugunRenkUyumu => 'Цветовая гармония';
+
+  @override
+  String get kombinHedefiBaslik => 'Ваша цель в стиле';
+
+  @override
+  String get kombinHedefiAciklama =>
+      'Что учитывать в новых образах и недельных планах в первую очередь?';
+
+  @override
+  String get kombinHedefiDenge => 'Сбалансированные образы';
+
+  @override
+  String get kombinHedefiRenk => 'Исследовать цвета';
+
+  @override
+  String get kombinHedefiUnutulan => 'Носить редко используемые вещи';
+
+  @override
+  String get kombinHedefiCokYonlu => 'Универсальные вещи';
+
+  @override
+  String get bugunHizliFotograf => 'Добавить фото';
+
+  @override
+  String get bugunHizliKombin => 'Создать образ';
+
+  @override
+  String get bugunHizliStilist => 'Спросить стилиста';
+
+  @override
+  String get bugunHizliPlan => 'Спланировать неделю';
+
+  @override
+  String get bugunHazirlaniyor => 'Готовим образы…';
+
+  @override
+  String get bugunBosBaslik => 'Ваш гардероб пока пуст';
+
+  @override
+  String get bugunBosAciklama =>
+      'Добавьте первую вещь; каждое утро здесь будут новые идеи образов.';
+
+  @override
+  String get bugunYenile => 'Обновить';
+
+  @override
+  String get bugunGiydim => 'Надел';
+
+  @override
+  String get bugunKaydet => 'Сохранить';
+
+  @override
+  String get bugunSeninIcin => 'Для вас';
+
+  @override
+  String get bugunGiyilmediRafi => 'Не надевали 2 недели';
+
+  @override
+  String get bugunYeniRafi => 'Недавно добавленные';
+
+  @override
+  String get bugunHavaRafi => 'Подходят на сегодня';
+
+  @override
+  String get bugunRafIpucu =>
+      'Нажмите: надето сегодня, собрать образ или открыть в гардеробе';
+
+  @override
+  String get duelloSekmesi => 'Дуэль';
+
+  @override
+  String get duelloBaslik => 'Дуэль образов';
+
+  @override
+  String get duelloAltBaslik =>
+      'Выбери один из двух образов и проверь свой вкус.';
+
+  @override
+  String get duelloBaslat => 'Начать дуэль';
+
+  @override
+  String get duelloNasilOynanir => 'Как играть';
+
+  @override
+  String get duelloKural1 => 'В каждом раунде два образа.';
+
+  @override
+  String get duelloKural2 => 'Выбери тот, о котором спрашивают.';
+
+  @override
+  String get duelloKural3 => 'Верный выбор даёт очки и серию.';
+
+  @override
+  String get duelloEnIyi => 'Лучший';
+
+  @override
+  String get duelloSeri => 'Серия';
+
+  @override
+  String duelloGunSerisi(int gun) {
+    return '$gun дн.';
+  }
+
+  @override
+  String get duelloSeviye => 'Уровень';
+
+  @override
+  String duelloSeviyeDegeri(int seviye) {
+    return 'Уровень $seviye';
+  }
+
+  @override
+  String duelloXp(int xp) {
+    return '$xp XP';
+  }
+
+  @override
+  String duelloTur(int tur, int toplam) {
+    return 'Раунд $tur/$toplam';
+  }
+
+  @override
+  String get duelloOlcuRenk => 'У какого образа лучше сочетание цветов?';
+
+  @override
+  String get duelloOlcuHava => 'Какой образ подходит к погоде сегодня?';
+
+  @override
+  String get duelloDokun => 'Нажми на образ';
+
+  @override
+  String get duelloDogru => 'Верно';
+
+  @override
+  String get duelloYanlis => 'Почти';
+
+  @override
+  String get duelloDevam => 'Продолжить';
+
+  @override
+  String get duelloSonuc => 'Смотреть результат';
+
+  @override
+  String get duelloBitti => 'Дуэль окончена';
+
+  @override
+  String duelloSkor(int dogru, int toplam) {
+    return '$dogru/$toplam верно';
+  }
+
+  @override
+  String get duelloYeniden => 'Играть снова';
+
+  @override
+  String get duelloBugune => 'Вернуться к «Сегодня»';
+
+  @override
+  String duelloEnIyiSeri(int seri) {
+    return 'Лучшая серия: $seri';
+  }
+
+  @override
+  String get duelloPaletNotu =>
+      'В этом раунде карточки цветов. Добавь вещи в гардероб — и дуэли будут с твоей одеждой.';
+
+  @override
+  String get duelloDolapEkle => 'Добавить вещи';
+
+  @override
+  String get duelloBugunOynadi =>
+      'Сегодня ты уже играл. Вернись завтра, чтобы продолжить серию.';
+
+  @override
+  String get duelloSebepNotr =>
+      'Нейтральные и землистые тона уравновешивают друг друга.';
+
+  @override
+  String get duelloSebepMonokrom => 'Одна цветовая гамма создаёт цельность.';
+
+  @override
+  String get duelloSebepAnalog => 'Близкие тона дают мягкий переход.';
+
+  @override
+  String get duelloSebepVurgu => 'Один акцентный цвет на нейтральной основе.';
+
+  @override
+  String get duelloSebepZit =>
+      'Противоположные цвета использованы сбалансированно.';
+
+  @override
+  String get duelloSebepDagink => 'Два далёких цвета ничем не связаны.';
+
+  @override
+  String get duelloSebepCokRenk => 'Три ярких цвета спорят друг с другом.';
+
+  @override
+  String get duelloSebepHavaUygun => 'Вещи подходят к сегодняшней температуре.';
+
+  @override
+  String get duelloSebepHavaAgir => 'Слишком тепло для такой погоды.';
+
+  @override
+  String get duelloSebepHavaHafif => 'Слишком легко для такой погоды.';
+
+  @override
+  String bildirimSabahKombin(String kombin) {
+    return 'Твой образ на сегодня готов: $kombin. Нажми, чтобы посмотреть.';
+  }
+
+  @override
+  String get bildirimPlanBaslik => 'Твой образ на завтра готов';
+
+  @override
+  String bildirimPlanKombin(String kombin) {
+    return 'На завтра: $kombin. Посмотри сейчас, утром не будет спешки.';
+  }
+
+  @override
+  String get bildirimPlanBos =>
+      'На завтра образ ещё не запланирован. Спланируй за 2 минуты.';
+
+  @override
+  String get planHatirlatimiAyar => 'Вечернее напоминание';
+
+  @override
+  String get planHatirlatimiAyarAciklama =>
+      'Напомнит об образе на завтра в 21:00';
+
+  @override
+  String get bugunPaylas => 'Поделиться образом';
+
+  @override
+  String get bugunPaylasMetni => 'Собрал(а) сегодняшний образ в FitCheck';
+
+  @override
+  String get bugunPaylasHata =>
+      'Не удалось открыть меню «Поделиться». Попробуй ещё раз.';
+
+  @override
+  String get bugunParcaGiydim => 'Надел(а) сегодня';
+
+  @override
+  String get bugunParcaKombin => 'Собрать образ с этим';
+
+  @override
+  String get bugunParcaDolapta => 'Открыть в гардеробе';
+
+  @override
+  String bugunParcaGiydimIsaretlendi(String parca) {
+    return '«$parca» отмечено как надетое сегодня.';
+  }
+
+  @override
+  String get stilGunluguBaslik => 'Мой дневник стиля';
+
+  @override
+  String get stilGunluguTakvim => 'Календарь';
+
+  @override
+  String get stilGunluguGunluk => 'Дневник';
+
+  @override
+  String get stilGunluguRapor => 'Отчёт';
+
+  @override
+  String get stilGunluguGiyildi => 'Надето';
+
+  @override
+  String get stilGunluguPlanli => 'Запланировано';
+
+  @override
+  String get stilGunluguGunBos => 'Нет записи за этот день';
+
+  @override
+  String stilGunluguRaporOzet(String kombin) {
+    return 'На этой неделе: $kombin образов';
+  }
+
+  @override
+  String stilGunluguRaporGecenHafta(String fark) {
+    return 'По сравнению с прошлой неделей: $fark';
+  }
+
+  @override
+  String get stilGunluguRaporKullanim => 'Использование гардероба';
+
+  @override
+  String get stilGunluguRaporEnCok => 'Самое частое';
+
+  @override
+  String get stilGunluguRaporSeri => 'Серия дней';
+
+  @override
+  String get stilGunluguRaporHicGiyilmemis => 'Ни разу не носили';
+
+  @override
+  String get stilGunluguRaporPaylas => 'Поделиться отчётом';
+
+  @override
+  String stilGunluguRaporPaylasMetni(String ozet) {
+    return 'Мой недельный отчёт о стиле: $ozet';
+  }
+
+  @override
+  String get stilGunluguRaporBos =>
+      'На этой неделе пока нет записанных образов. Они появятся здесь.';
+
+  @override
+  String get seyahatBaslik => 'Режим путешествия';
+
+  @override
+  String get seyahatGunSayisi => 'Количество дней';
+
+  @override
+  String get seyahatHava => 'Погода';
+
+  @override
+  String get seyahatHavaSicak => 'Жарко';
+
+  @override
+  String get seyahatHavaIliman => 'Тепло';
+
+  @override
+  String get seyahatHavaSoguk => 'Холодно';
+
+  @override
+  String get seyahatAmac => 'Повод';
+
+  @override
+  String get seyahatAmacGunluk => 'Повседневный';
+
+  @override
+  String get seyahatAmacIs => 'Работа';
+
+  @override
+  String get seyahatAmacOzel => 'Особый';
+
+  @override
+  String get seyahatPlanBaslik => 'План чемодана';
+
+  @override
+  String seyahatKombine(String adet) {
+    return '$adet образов';
+  }
+
+  @override
+  String get seyahatDiger => 'Верхняя одежда';
+
+  @override
+  String get seyahatEksikUst => 'Нет чистых верхов';
+
+  @override
+  String get seyahatEksikAlt => 'Нет чистых низов';
+
+  @override
+  String get seyahatEksikAyakkabi => 'Нет обуви';
+
+  @override
+  String seyahatEksikKombin(String gun) {
+    return 'Не хватает образов на $gun дней';
+  }
+
+  @override
+  String get seyahatPaylas => 'Поделиться списком';
+
+  @override
+  String get seyahatPaylasMetni => 'Мой план чемодана FitCheck';
+
+  @override
+  String get geriAl => 'Отменить';
+
+  @override
+  String get stilGunluguRaporSayiEtiketi => 'Образов надето за неделю';
+
+  @override
+  String get stilGunluguRaporDortHafta => 'Последние 4 недели';
+
+  @override
+  String get stilGunluguRaporEnCokParcalar => 'Самые носимые вещи';
+
+  @override
+  String get navKombin => 'Образ';
+
+  @override
+  String get navProfil => 'Профиль';
+
+  @override
+  String get dolapAra => 'Поиск в гардеробе';
+
+  @override
+  String get dolapEslesmeYok => 'Ничего не найдено.';
+
+  @override
+  String get dolapAramayiTemizle => 'Очистить поиск';
+
+  @override
+  String get planGuneKombinSec => 'Выбрать образ на этот день';
+
+  @override
+  String get planKombinSec => 'Выбрать образ';
+
+  @override
+  String get planDegistir => 'Изменить';
+
+  @override
+  String get planKaldir => 'Убрать';
+
+  @override
+  String get planFavoriYok => 'Пока нет избранных образов.';
+
+  @override
+  String get planKombinOlustur => 'Создать образ';
+
+  @override
+  String get planGuneEklendi => 'Образ добавлен на день';
+
+  @override
+  String get planKaldirildi => 'План убран';
+
+  @override
+  String get planHaftalikProgram => 'Недельный план';
+
+  @override
+  String planParcaSayisi(int count) {
+    return '$count вещей';
+  }
+
+  @override
+  String get planBugun => 'Твой образ на сегодня';
+
+  @override
+  String get planTakvimdenDegistir => 'Изменить в календаре';
+
+  @override
+  String get planFavorilerim => 'Мои избранное';
+
+  @override
+  String get planSonGiyilenler => 'Недавно надетое';
+
+  @override
+  String get izinGerekceKameraBaslik => 'Добавляйте вещи камерой';
+
+  @override
+  String get izinGerekceKameraAciklama =>
+      'Мы используем камеру, чтобы добавить одежду в виде фото. Фото покидает устройство; удаление фона и анализ цвета/стиля выполняются на нашем сервере и не хранятся постоянно.';
+
+  @override
+  String get izinGerekceSimdiDegil => 'Не сейчас';
+
+  @override
+  String get planOneriler => 'Предложения';
+
+  @override
+  String get bilgiVerimlilik =>
+      'Эффективность гардероба показывает долю вещей, надетых хотя бы раз. Выше 60 % считается здоровым показателем; ниже есть неиспользованные вещи или лишние покупки.';
+
+  @override
+  String get bilgiStil =>
+      'Ваш стилевой профиль вычисляется по самым частым признакам гардероба: цвету, категории и тегам стиля. Подборки образов сортируются по нему.';
+
+  @override
+  String get bilgiSeri =>
+      'Серия — это число дней подряд, когда вы надевали одежду. Каждое «ношу сегодня» увеличивает её, пропущенный день обнуляет.';
+
+  @override
+  String get bilgiSepet =>
+      'Корзина для белья содержит вещи, которые вы носили и хотите постирать. Они не попадают в следующую подборку образа.';
+
+  @override
+  String get bilgiRenkPaleti =>
+      'Палитра показывает распределение четырёх самых частых цветов в гардеробе. Похожие оттенки сочетаются лучше.';
+
+  @override
+  String get bilgiKategoriDagilimi =>
+      'Распределение по категориям показывает баланс верха, низа, обуви и аксессуаров. Слишком много вещей в одной категории затрудняет подбор образа.';
+
+  @override
+  String get bilgiAnlikDurum =>
+      'Мгновенная сводка даёт короткий совет по погоде в вашем городе и составу гардероба.';
+
+  @override
+  String get bilgiSeriBaslik => 'Серия дней ношения';
+
+  @override
+  String get bilgiKahramanlar =>
+      'Герои вашего гардероба — вещи, которые вы носите чаще всего. Часто надеваемые вещи попадают в больше образов и «вращают» гардероб.';
+
+  @override
+  String get bilgiUnutulanlar =>
+      'Забытые вещи — те, которые вы не надевали или не надевали очень давно. Неиспользованные вещи могут заиграть снова в новых образах.';
+
+  @override
+  String get bilgiBugunKombini =>
+      'Образ дня выбирается из гардероба с учётом погоды. В день выполняется не более одного запроса к ИИ, результат сохраняется на день; если ИИ недоступна, работают предложения по правилам.';
+
+  @override
+  String get bilgiRaporHafta =>
+      'Количество образов, записанных за последние 7 дней. Каждая отметка «ношу сегодня» считается одним образом; в один день можно записать несколько.';
+
+  @override
+  String get bilgiRaporDortHafta =>
+      'Количество образов по неделям за последние 4 недели. График показывает ваш недельный ритм и растёт он или падает.';
+
+  @override
+  String get bilgiRaporEnCokParcalar =>
+      'Вещи, которые вы носили чаще всего на этой неделе. Часто надетые вещи — основа гардероба.';
+
+  @override
+  String get bilgiRaporKullanim =>
+      'Доля гардероба, использованная за последние 7 дней. Низкое значение означает, что некоторые вещи ещё не попали в образ.';
+
+  @override
+  String get bilgiRaporSeri =>
+      'Число дней подряд, когда вы надевали одежду. Растёт с каждой записью образа и обнуляется после пропущенного дня.';
+
+  @override
+  String get bilgiRaporHicGiyilmemis =>
+      'Количество вещей, которые вообще не надевали за последние 7 дней. Их можно вернуть в оборот с новыми образами.';
+
+  @override
+  String get bilgiDueloPuan =>
+      'В каждом раунде показываются два образа, и ты выбираешь один. Верный ответ приносит очки и продлевает серию, неверный обнуляет её. Оценка по правилам: цветовая гармония, баланс категорий и соответствие сезону. Если в гардеробе меньше 4 вещей, палитра собирается из прошлых образов.';
+
+  @override
+  String get bilgiDolapCalisma =>
+      'Когда ты добавляешь фото, фон удаляется автоматически, а цвет, категория, стиль и сезон определяет ИИ. Одежда остаётся на устройстве; удаление фона и анализ выполняются на нашем сервере.';
+
+  @override
+  String get duzenleArkaPlanBaslik => 'Фон и размещение';
+
+  @override
+  String get duzenleIpucu =>
+      'Перетащите вещь, чтобы разместить её, и сожмите двумя пальцами, чтобы изменить размер.';
+
+  @override
+  String get duzenleZeminBeyaz => 'Белый';
+
+  @override
+  String get duzenleZeminKirik => 'Молочный';
+
+  @override
+  String get duzenleZeminGri => 'Светло-серый';
+
+  @override
+  String get duzenleZeminSaydam => 'Прозрачный';
+
+  @override
+  String get duzenleKaydet => 'Сохранить';
+
+  @override
+  String get duzenleVarsayilan => 'По умолчанию';
+
+  @override
+  String get arkaPlandaEkle => 'Добавить в фоне';
+
+  @override
+  String get arkaPlandaEkleAciklama =>
+      'Продолжай пользоваться приложением — вещи добавляются в фоне.';
+
+  @override
+  String arkaPlandaBasladi(int count) {
+    return '$count фото добавляются в фоне';
+  }
+
+  @override
+  String arkaPlandaIlerleme(int count, int toplam) {
+    return 'Обработано $count из $toplam';
+  }
+
+  @override
+  String arkaPlandaTamamlandi(int count) {
+    return '$count вещей добавлено в гардероб';
+  }
+
+  @override
+  String arkaPlandaBaziAtlandi(int count) {
+    return '$count фото не удалось обработать';
+  }
+
+  @override
+  String get bugunKaydedildi => 'Сохранено';
+
+  @override
+  String get bugunGiydildi => 'Надето';
+
+  @override
+  String get ozellikYakinda => 'Эта функция скоро появится';
+
+  @override
+  String get duelloGeri => 'Назад';
 }

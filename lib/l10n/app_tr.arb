@@ -46,10 +46,10 @@
   "uygulamaDili": "Uygulama Dili",
   "hakkinda": "Uygulama Hakkında",
   "surum": "Sürüm",
-  "ayarOtomatikCihazDili": "🌐 Otomatik (Cihaz Dili)",
+  "ayarOtomatikCihazDili": "Otomatik (Cihaz Dili)",
   "iptal": "İptal",
   "tamam": "Tamam",
-  "gardirobumTitle": "SANAL GARDIROBUM",
+  "gardirobumTitle": "Sanal Gardırobum",
   "gardirobumYukleniyor": "AI İnceliyor...",
   "gardirobumTopluEkle": "Toplu Parça Ekle",
   "gardirobumInceleniyor": "İnceleniyor ({kacinci}/{toplam})",
@@ -71,8 +71,8 @@
   "gardirobumGecersizParcaBaslik": "Geçersiz Parça Algılandı",
   "gardirobumGecersizParcaIcerik": "Sistemimiz bu görselde bir giysi, ayakkabı veya aksesuar tespit edemedi (Ahşap eşya, mobilya, ev eşyası veya uyumsuz nesne algılandı). Lütfen sadece gardırop parçalarınızı yükleyin.",
   "gardirobumTamam": "Tamam",
-  "stilistTitle": "ANLIK KOMBİN STİLİSTİ",
-  "gunlukKombinTitle": "GÜNLÜK KOMBİN",
+  "stilistTitle": "Anlık Kombin Stilisti",
+  "gunlukKombinTitle": "Günlük Kombin",
   "gunlukKombinHazirBaslik": "Kombinine Hazır mısın?",
   "gunlukKombinHazirIcerik": "Zar atarak ya da telefonunu sallayarak bugünün kombinini oluştur.",
   "gunlukKombinKartBaslik": "Bugünün Kombini",
@@ -83,7 +83,7 @@
   "stilistBugunNeGiymeliyim": "Bugün Ne Giymeliyim?",
   "stilistKombiniTemizle": "Kombini Temizle",
   "stilistKombininTitle": "{ortam} Kombinin",
-  "stilistUyum": "🎨 Uyum: %{puan}",
+  "stilistUyum": "Uyum: %{puan}",
   "stilistUstGiyim": "Üst Giyim",
   "stilistAltGiyim": "Alt Giyim",
   "stilistAyakkabi": "Ayakkabı",
@@ -99,19 +99,19 @@
   "ortamSpor": "Spor / Yürüyüş",
   "ortamGece": "Gece Eğlencesi",
   "ortamRomantik": "Romantik Buluşma",
-  "stilistUyariDolapBosBaslik": "Gardırobun Boş Veya Tüm Parçalar Yıkamada! 🧺",
+  "stilistUyariDolapBosBaslik": "Gardırobun Boş Veya Tüm Parçalar Yıkamada",
   "stilistUyariDolapBosIcerik": "Sana özel anlık kombinler yapabilmem için dolabına birkaç temiz kıyafet veya aksesuar eklemelisin.",
-  "stilistUyariUstEksikBaslik": "Üst Giyim Eksik! 👕",
-  "stilistUyariUstEksikIcerik": "Gardırobunda henüz hiç temiz üst giyim yok. Tam bir kombin için dolabına en az bir üst parçası eklemelisin!",
-  "stilistUyariAltEksikBaslik": "Alt Giyim Eksik! 👖",
-  "stilistUyariAltEksikIcerik": "Gardırobunda henüz hiç temiz alt giyim yok. Şık bir kombin yapabilmemiz için dolabına bir alt parçası eklemelisin!",
-  "stilistUyariAyakkabiEksikBaslik": "Ayakkabın Eksik! 👟",
-  "stilistUyariAyakkabiEksikIcerik": "Kıyafetlerin harika görünüyor ama kombinini tamamlayacak temiz bir ayakkabı bulamadım. Dolabına hemen bir ayakkabı ekle!",
-  "stilistUyariButon": "Anladım, Ekliyorum!",
+  "stilistUyariUstEksikBaslik": "Üst Giyim Eksik",
+  "stilistUyariUstEksikIcerik": "Gardırobunda henüz hiç temiz üst giyim yok. Tam bir kombin için dolabına en az bir üst parçası eklemelisin",
+  "stilistUyariAltEksikBaslik": "Alt Giyim Eksik",
+  "stilistUyariAltEksikIcerik": "Gardırobunda henüz hiç temiz alt giyim yok. Şık bir kombin yapabilmemiz için dolabına bir alt parçası eklemelisin",
+  "stilistUyariAyakkabiEksikBaslik": "Ayakkabın Eksik",
+  "stilistUyariAyakkabiEksikIcerik": "Kıyafetlerin harika görünüyor ama kombinini tamamlayacak temiz bir ayakkabı bulamadım. Dolabına hemen bir ayakkabı ekle",
+  "stilistUyariButon": "Anladım, Ekliyorum",
   "anaHavaYukleniyor": "Konum hava durumu yükleniyor...",
-  "anaDinliyor": "🎙️ FITCHECK Sizi Dinliyor... Konuşun!",
+  "anaDinliyor": "FITCHECK Sizi Dinliyor... Konuşun",
   "anaMikrofonHata": "Mikrofon izni veya ses tanıma servisi hazır değil.",
-  "anaCinsiyetGuncellendi": "Tercihiniz \"{cinsiyet}\" olarak güncellendi ✨",
+  "anaCinsiyetGuncellendi": "Tercihiniz \"{cinsiyet}\" olarak güncellendi",
   "anaKonumKapaliBaslik": "Konum Servisi Kapalı",
   "anaKonumKapaliIcerik": "Hava durumuna göre kombin önerileri alabilmek için GPS konumunuzu açmanız gerekiyor.",
   "anaKonumuAc": "Konumu Aç",
@@ -124,11 +124,11 @@
   "anaKonumIzinGerekliIcerik": "Uygulamanın hava durumunu görebilmesi için ayarlardan konum iznini aktif etmelisiniz.",
   "anaHavaDurumuAlinamadi": "Hava durumu alınamadı",
   "anaHavaTahminiYuklenemedi": "Hava tahminleri yüklenemedi.",
-  "anaFavoriEklendi": "Kombin favorilere eklendi! ⭐",
-  "anaKombinTekrarUyari": "⚠️ Uyarı: Bu parçaları veya benzerlerini son zamanlarda çok sık giydin. Bugün farklı bir tarz deneyebilirsin!",
-  "anaKombinMukemmel": "✨ Mükemmel seçim! Tarzın bugün gayet dengeli ve ferah.",
+  "anaFavoriEklendi": "Kombin favorilere eklendi ⭐",
+  "anaKombinTekrarUyari": "Uyarı: Bu parçaları veya benzerlerini son zamanlarda çok sık giydin. Bugün farklı bir tarz deneyebilirsin",
+  "anaKombinMukemmel": "Mükemmel seçim Tarzın bugün gayet dengeli ve ferah.",
   "anaYikamaUyariBaslik": "Akıllı Yıkama Uyarısı",
-  "anaYikamaUyariIcerik": "Bu kombini giydiğiniz için \"{parcalar}\" adlı parça(lar) çok sık kullanıldı ve otomatik olarak yıkama sepetine gönderildi! 🧺",
+  "anaYikamaUyariIcerik": "Bu kombini giydiğiniz için \"{parcalar}\" adlı parça(lar) çok sık kullanıldı ve otomatik olarak yıkama sepetine gönderildi",
   "anaTamam": "Tamam",
   "anaAyarlarTooltip": "Ayarlar",
   "anaKadin": "Kadın",
@@ -161,27 +161,27 @@
   "gunCum": "Cuma",
   "gunCmt": "Cumartesi",
   "gunPaz": "Pazar",
-  "stilKahveBaslik": "☕ Kahve & Günlük",
+  "stilKahveBaslik": "Kahve & Günlük",
   "stilKahveSoru": "Arkadaşlarla kahveye çıkmak için günlük şık bir kombin öner",
-  "stilOfisBaslik": "💼 İş / Ofis Şıklığı",
+  "stilOfisBaslik": "İş / Ofis Şıklığı",
   "stilOfisSoru": "Ofis ve iş ortamına uygun modern ve şık bir kombin öner",
-  "stilSporBaslik": "🏃 Spor / Rahat Giyim",
+  "stilSporBaslik": "Spor / Rahat Giyim",
   "stilSporSoru": "Hafta sonu gezisi için çok rahat ve spor bir kombin öner",
-  "stilGeceBaslik": "🌙 Gece / Özel Davet",
+  "stilGeceBaslik": "Gece / Özel Davet",
   "stilGeceSoru": "Akşam yemeği veya özel davet için iddialı bir kombin öner",
-  "ilkGorevBaslik": "🎯 İlk Görev: Stilini Seç!",
+  "ilkGorevBaslik": "İlk Görev: Stilini Seç",
   "ilkGorevAciklama": "FitCheck Yapay Zekası senin için anında kombin üretecek. Bugün nereye gidiyorsun?",
   "haftalikUyariButon": "Anladım",
-  "haftalikUyariDolapBosBaslik": "Gardırobun Boş!",
+  "haftalikUyariDolapBosBaslik": "Gardırobun Boş",
   "haftalikUyariDolapBosIcerik": "Haftalık plan yapabilmem için dolabına kıyafet eklemelisin.",
-  "haftalikUyariUstEksikBaslik": "Üst Giyim Eksik!",
+  "haftalikUyariUstEksikBaslik": "Üst Giyim Eksik",
   "haftalikUyariUstEksikIcerik": "Dolabında hiç temiz üst giyim yok.",
-  "haftalikUyariAltEksikBaslik": "Alt Giyim Eksik!",
+  "haftalikUyariAltEksikBaslik": "Alt Giyim Eksik",
   "haftalikUyariAltEksikIcerik": "Dolabında hiç temiz alt giyim yok.",
-  "haftalikUyariAyakkabiEksikBaslik": "Ayakkabı Eksik!",
+  "haftalikUyariAyakkabiEksikBaslik": "Ayakkabı Eksik",
   "haftalikUyariAyakkabiEksikIcerik": "Dolabında temiz ayakkabı bulunmuyor.",
   "haftalikHata": "Haftalık plan oluşturulurken hata oluştu.",
-  "haftalikAjandaTitle": "HAFTALIK STİL AJANDASI",
+  "haftalikAjandaTitle": "Haftalık Stil Ajandası",
   "haftalikAnlikHavaDurumu": "Haftalık Hava Tahmini",
   "haftalikKonumKontrol": "Hava durumu yükleniyor...",
   "haftalikTemizParca": "Temiz Parça",
@@ -215,7 +215,7 @@
   "kameraIzni": "Kamera İzni",
   "izinVerDevamEt": "İzin Ver ve Devam Et",
   "gunlukHavaMevcutDegil": "Hava durumu mevcut değil",
-  "profilAnalizTitle": "PROFİL & ANALİZ",
+  "profilAnalizTitle": "Profil & Analiz",
   "anlikDurum": "Anlık Durum",
   "toplamParca": "Toplam Parça",
   "favoriKombin": "Favori Kombin",
@@ -231,7 +231,7 @@
   "kayit": "Kayıt",
   "gecmisKombinYok": "Henüz geçmiş kombin kaydı yok.",
   "parca": "Parça",
-  "onboardingHosGeldinBaslik": "FitCheck'e Hoş Geldin! ✨",
+  "onboardingHosGeldinBaslik": "FitCheck'e Hoş Geldin",
   "onboardingDolabiniDijitallestir": "Dolabını Dijitalleştir",
   "onboardingDolapAciklama": "Kıyafetlerini saniyeler içinde ekle ve kendi sanal gardırobunu oluştur.",
   "onboardingHavaDurumu": "Hava Durumuna Uygun",
@@ -270,8 +270,8 @@
   "tenEsmerKoyu": "Esmer / Koyu",
   "hesabinizaGirisYapin": "Hesabınıza Giriş Yapın",
   "yeniHesapOlusturun": "Yeni Hesap Oluşturun",
-  "stilDunyanaTekrarHosGeldin": "Stil dünyana tekrar hoş geldin ✨",
-  "kombinleriniSaklamakIcinKatil": "Kombinlerini saklamak için aramıza katıl 🚀",
+  "stilDunyanaTekrarHosGeldin": "Stil dünyana tekrar hoş geldin",
+  "kombinleriniSaklamakIcinKatil": "Kombinlerini saklamak için aramıza katıl",
   "girisYap": "Giriş Yap",
   "girisYapGoogle": "Google ile Giriş Yap",
   "girisBeniHatirla": "Beni hatırla",
@@ -288,12 +288,12 @@
   "kullanimKosullariBaslik": "Kullanım Koşulları ve Sözleşme",
   "onaylamakIcinKaydirin": "Onaylamak için metnin sonuna kadar kaydırın",
   "okudumAnladimKabulEdiyorum": "Okudum, Anladım ve Kabul Ediyorum",
-  "kullanimKosullarini": "Kullanım Koşullarını",
+  "kullanimKosullarini": "Kullanım koşullarını",
   "okudumVeOnayliyorum": " okudum ve onaylıyorum.",
   "onaylamadanOnceKosullariOkuyun": "Onaylamadan önce lütfen kullanım koşullarını okuyun.",
   "devamEtmekIcinKosullariKabulEdin": "Devam etmek için kullanım koşullarını kabul etmelisiniz.",
-  "kullanimKosullariMetni": "FITCHECK KULLANIM KOŞULLARI VE HİZMET SÖZLEŞMESİ\n\nSon Güncelleme Tarihi: 27 Ağustos 2026\n\nLütfen FitCheck mobil uygulamasını (“Uygulama”) kullanmadan önce bu Kullanım Koşulları’nı (“Sözleşme”) dikkatlice okuyunuz. Uygulamayı indirerek, erişerek veya kullanarak bu Sözleşme’de yer alan tüm şartları kabul etmiş sayılırsınız.\n\n1. TARAFLAR VE AMAÇ\nBu Sözleşme, FitCheck uygulamasının geliştiricisi ile Uygulama’yı indiren ve kullanan bireysel kullanıcı (\"Kullanıcı\") arasında akdedilmiştir. Uygulama; dijital gardırop oluşturma, kıyafet takibi, hava durumuna uygun kombin önerileri ve AI destekli stil danışmanlığı sunar.\n\n2. HİZMETİN KAPSAMI VE KULLANIM ŞARTLARI\n• Yaş Sınırı: Uygulamayı kullanmak için en az 13 yaşında olmanız gerekmektedir.\n• Kullanıcı Bilgileri: Kullanıcı, profil aşamasında sunduğu ad, cinsiyet, tarz ve renk tercihlerinin doğruluğundan sorumludur.\n• Tavsiye Niteliği: Yapay zeka tarafından sunulan stil puanları, satın alma önerileri ve çamaşır günü hatırlatmaları tamamen tavsiye niteliğindedir.\n• Hava Durumu Verileri: Hava durum bilgileri anlık konum bilgisine dayalı olarak sunulmaktadır. Olası sapmalardan Şirket sorumlu tutulamaz.\n\n3. FİKRİ MÜLKİYET VE İÇERİK HAKLARI\nYüklediğiniz kıyafet görsellerinin fikri mülkiyeti size aittir. FitCheck logosu, tasarımı, yazılım kodları ve algoritmaları tamamen FitCheck'e aittir.\n\n4. GİZLİLİK VE VERİ GÜVENLİĞİ\nKıyafet görselleriniz ve kombin geçmişiniz öncelikli olarak cihazınızın yerel hafızasında saklanır. Konum verileri yalnızca anlık hava durumunu almak için kullanılır.\n\n5. SORUMLULUĞUN SINIRLANDIRILMASI\nFitCheck, hizmetin kesintisiz devam edeceğini garanti etmez. Cihaz değişikliği veya uygulama silinmesi sebebiyle veri kayıplarından sorumlu tutulamaz.\n\n6. İLETİŞİM\nSorularınız için bizimle Ayarlar sekmesindeki iletişim alanından veya destek@fitcheckapp.com adresinden iletişime geçebilirsiniz.\n\n--- 📜 SÖZLEŞMENİN SONU ---\nLütfen aşağıdaki butona basarak şartları onaylayınız.",
-  "chatKarsilama": "Selam! 👋 Bugün dışarısı {hava}. Senin tarzına uygun harika bir kombin hazırlayalım mı? ✨",
+  "kullanimKosullariMetni": "FITCHECK KULLANIM KOŞULLARI VE HİZMET SÖZLEŞMESİ\n\nSon Güncelleme Tarihi: 27 Ağustos 2026\n\nLütfen FitCheck mobil uygulamasını (“Uygulama”) kullanmadan önce bu Kullanım Koşulları’nı (“Sözleşme”) dikkatlice okuyunuz. Uygulamayı indirerek, erişerek veya kullanarak bu Sözleşme’de yer alan tüm şartları kabul etmiş sayılırsınız.\n\n1. TARAFLAR VE AMAÇ\nBu Sözleşme, FitCheck uygulamasının geliştiricisi ile Uygulama’yı indiren ve kullanan bireysel kullanıcı (\"Kullanıcı\") arasında akdedilmiştir. Uygulama; dijital gardırop oluşturma, kıyafet takibi, hava durumuna uygun kombin önerileri ve AI destekli stil danışmanlığı sunar.\n\n2. HİZMETİN KAPSAMI VE KULLANIM ŞARTLARI\n• Yaş Sınırı: Uygulamayı kullanmak için en az 13 yaşında olmanız gerekmektedir.\n• Kullanıcı Bilgileri: Kullanıcı, profil aşamasında sunduğu ad, cinsiyet, tarz ve renk tercihlerinin doğruluğundan sorumludur.\n• Tavsiye Niteliği: Yapay zeka tarafından sunulan stil puanları, satın alma önerileri ve çamaşır günü hatırlatmaları tamamen tavsiye niteliğindedir.\n• Hava Durumu Verileri: Hava durum bilgileri anlık konum bilgisine dayalı olarak sunulmaktadır. Olası sapmalardan Şirket sorumlu tutulamaz.\n\n3. FİKRİ MÜLKİYET VE İÇERİK HAKLARI\nYüklediğiniz kıyafet görsellerinin fikri mülkiyeti size aittir. FitCheck logosu, tasarımı, yazılım kodları ve algoritmaları tamamen FitCheck'e aittir.\n\n4. GİZLİLİK VE VERİ GÜVENLİĞİ\nKıyafet görselleriniz ve kombin geçmişiniz öncelikli olarak cihazınızın yerel hafızasında saklanır. Konum verileri yalnızca anlık hava durumunu almak için kullanılır.\n\n5. SORUMLULUĞUN SINIRLANDIRILMASI\nFitCheck, hizmetin kesintisiz devam edeceğini garanti etmez. Cihaz değişikliği veya uygulama silinmesi sebebiyle veri kayıplarından sorumlu tutulamaz.\n\n6. İLETİŞİM\nSorularınız için bizimle Ayarlar sekmesindeki iletişim alanından veya destek@fitcheckapp.com adresinden iletişime geçebilirsiniz.\n\n--- SÖZLEŞMENİN SONU ---\nLütfen aşağıdaki butona basarak şartları onaylayınız.",
+  "chatKarsilama": "Selam Bugün dışarısı {hava}. Senin tarzına uygun harika bir kombin hazırlayalım mı?",
   "chatGorselGonderildi": "Görsel gönderildi.",
   "chatAsistanSohbeti": "Asistan Sohbeti",
   "chatModHavaDuyarli": "Hava durumuna göre akıllı stil önerileri",
@@ -304,14 +304,14 @@
   "chatGaleri": "Galeriden görsel seç",
   "chatMikrofon": "Mikrofon",
   "chatGonder": "Mesajı gönder",
-  "chatOneriYagmur": "🌧️ Yağmurlu Hava Kombini",
-  "chatOneriOfis": "💼 Ofis / Şık Tarz",
-  "chatOneriHaftaSonu": "☕ Hafta Sonu Rahatlığı",
-  "chatOneriKirliSepeti": "🧺 Kirli Sepeti Kontrolü",
+  "chatOneriYagmur": "Yağmurlu Hava Kombini",
+  "chatOneriOfis": "Ofis / Şık Tarz",
+  "chatOneriHaftaSonu": "Hafta Sonu Rahatlığı",
+  "chatOneriKirliSepeti": "Kirli Sepeti Kontrolü",
   "chatDinleniyor": "Dinleniyor...",
   "chatBirSeylerYazin": "Asistana bir şeyler yazın...",
-  "chatKombiniGiydim": "Bu Kombini Giydim 👗",
-  "chatKombinIslendi": "Kombin bugün giyilenlere işlendi! 📅",
+  "chatKombiniGiydim": "Bu Kombini Giydim",
+  "chatKombinIslendi": "Kombin bugün giyilenlere işlendi",
   "chatGorselIncele": "Bu görseli incele ve kombin öner.",
   "profilAyarlariBaslik": "PROFİL AYARLARI",
   "cinsiyetTercihiBaslik": "Cinsiyet Tercihi",
@@ -322,7 +322,7 @@
   "profilFavoriKombinlerTitle": "Favori Kombinlerim",
   "profilFavoriKombinYok": "Henüz favorilere eklenmiş bir kombin bulunmuyor.",
   "profilYikamaSepetimTitle": "Çamaşır Sepetim",
-  "profilYikamaSepetimBos": "Yıkama sepetiniz boş, tüm kıyafetleriniz temiz! ✨",
+  "profilYikamaSepetimBos": "Yıkama sepetiniz boş, tüm kıyafetleriniz temiz",
   "profilSepetiBosalt": "Sepeti Boşalt",
   "profilSepetiBosaltOnay": "Tüm kıyafetler temizlendi olarak işaretlenecek. Onaylıyor musunuz?",
   "profilSepetiBosaltButon": "Evet, Hepsini Yıka",
@@ -356,10 +356,10 @@
   "bildirimIzniAciklama": "Çamaşır günü ve hava durumu uyarıları için",
   "izinleriVerVeBasla": "İzinleri Ver ve Başla",
   "dahaSonraAyarla": "Daha Sonra Ayarla",
-  "gunlukHakBittiBaslik": "Günlük Hakkın Bitti!",
+  "gunlukHakBittiBaslik": "Günlük Hakkın Bitti",
   "dahaSonra": "Daha Sonra",
-  "reklamIzleHakKazan": "Reklam İzle (+2 Hak)",
-  "tebriklerHakEklendi": "Tebrikler! +2 İşlem hakkı tanımlandı. ✨",
+  "reklamIzleHakKazan": "Reklam İzle (+{adet} Hak)",
+  "tebriklerHakEklendi": "Tebrikler +{adet} hak eklendi.",
   "kombinIsaretlemeKaldirildi": "\"{kombinAdi}\" kombini işaretlemesi kaldırıldı.",
   "@kombinIsaretlemeKaldirildi": {
     "placeholders": {
@@ -368,7 +368,7 @@
       }
     }
   },
-  "kombinGiydimIsaretlendi": "\"{kombinAdi}\" kombini bugün giyildi olarak işaretlendi! 👕✨",
+  "kombinGiydimIsaretlendi": "\"{kombinAdi}\" kombini bugün giyildi olarak işaretlendi",
   "@kombinGiydimIsaretlendi": {
     "placeholders": {
       "kombinAdi": {
@@ -379,10 +379,10 @@
   "kiyafetDetayi": "Kıyafet Detayı",
   "parcaDetayiBaslik": "PARÇA DETAYI",
   "farkliParcaSec": "Farklı Parça Seç",
-  "farkliUstSec": "Farklı Üst Giyim Seç 👕",
-  "farkliAltSec": "Farklı Alt Giyim Seç 👖",
-  "farkliAyakkabiSec": "Farklı Ayakkabı Seç 👟",
-  "farkliDisSec": "Farklı Dış Giyim Seç 🧥",
+  "farkliUstSec": "Farklı Üst Giyim Seç",
+  "farkliAltSec": "Farklı Alt Giyim Seç",
+  "farkliAyakkabiSec": "Farklı Ayakkabı Seç",
+  "farkliDisSec": "Farklı Dış Giyim Seç",
   "baskaTemizKiyafetYok": "Bu kategoride değiştirebileceğiniz\nbaşka temiz kıyafetiniz yok.",
   "planiYenile": "Planı Yenile",
   "havaEtiketi": "HAVA",
@@ -390,36 +390,36 @@
   "temizle": "Temizle",
   "yenidenDegerlendiriliyor": "Yeniden değerlendiriliyor...",
   "kombinParcalariBaslik": "KOMBİN PARÇALARI",
-  "parcalariKaydirIpucu": "Kombindeki diğer parçalar için sağa/sola kaydırın 👈👉",
-  "zorunluParcaYorumu": "✨ {parcaAdi} parçasını merkeze alarak bu kombini hazırladım!",
+  "parcalariKaydirIpucu": "Kombindeki diğer parçalar için sağa/sola kaydırın",
+  "zorunluParcaYorumu": "{parcaAdi} parçasını merkeze alarak bu kombini hazırladım",
   "sihirliDokunus": "Sihirli Dokunuş",
-  "dolabiKaristirEksikUyari": "Dolabı karıştırabilmek için en az 1 temiz Üst, Alt ve Ayakkabı bulunmalı! 👕👖👟",
-  "zarlarAtildiYorumu": "🎲 Zarlar atıldı! Yepyeni ve şaşırtıcı bir kombin keşfettin.",
+  "dolabiKaristirEksikUyari": "Dolabı karıştırabilmek için en az 1 temiz Üst, Alt ve Ayakkabı bulunmalı",
+  "zarlarAtildiYorumu": "Zarlar atıldı Yepyeni ve şaşırtıcı bir kombin keşfettin.",
   "rastgeleKombinTuru": "Rastgele",
-  "temizAlternatifYok": "Bu kategori için temiz başka alternatif yok! 🧺",
+  "temizAlternatifYok": "Bu kategori için temiz başka alternatif yok",
   "kisiselDokunus": "Kişisel Dokunus",
-  "aiYeniParcaAnalizEdiyor": "Yapay zeka yeni parçayı analiz ediyor... ✨",
-  "parcaDegisimVarsayilanYorum": "✨ Parçaları değiştirerek harika bir uyum yakaladın!",
-  "parcaDegisimHataYorum": "✨ Parçaları değiştirerek kombini tamamen kendi tarzına uyarladın!",
+  "aiYeniParcaAnalizEdiyor": "Yapay zeka yeni parçayı analiz ediyor...",
+  "parcaDegisimVarsayilanYorum": "Parçaları değiştirerek harika bir uyum yakaladın",
+  "parcaDegisimHataYorum": "Parçaları değiştirerek kombini tamamen kendi tarzına uyarladın",
   "bilgileriDuzenleBaslik": "Bilgileri Düzenle",
   "kiyafetAdiEtiketi": "Kıyafet Adı",
   "renkEtiketi": "Renk",
   "kaydet": "Kaydet",
   "yenidenZarAt": "Yeniden Zar At",
   "zarAtKaristir": "Zar At (Karıştır)",
-  "zarPopupBaslik": "Sihirli Zarları Salla!",
+  "zarPopupBaslik": "Sihirli Zarları Salla",
   "zarPopupAciklama": "Telefonunu fiziksel olarak sallayarak veya aşağıdaki butona basarak zarları atabilir, dolabından rastgele kombinler oluşturabilirsin.",
   "zarlariAt": "Zarları At",
   "zarSalla": "Zar Salla",
-  "degistirmekIcinKaydirIpucu": "Değiştirmek için parçaları sağa/sola kaydırın veya dokunun 👈👉",
+  "degistirmekIcinKaydirIpucu": "Değiştirmek için parçaları sağa/sola kaydırın veya dokunun",
   "favorilerdeEtiketi": "Favorilerde",
-  "bugunGiydildiEtiketi": "Bugün Giyildi ✨",
-  "varsayilanKendiAnalizYorumu": "Harika bir seçim! Parçalar renk tonlarıyla mükemmel bir denge oluşturmuş.",
+  "bugunGiydildiEtiketi": "Bugün Giyildi",
+  "varsayilanKendiAnalizYorumu": "Harika bir seçim Parçalar renk tonlarıyla mükemmel bir denge oluşturmuş.",
   "kendiTasarimimBaslik": "Kendi Tasarımım",
   "parcaSecModalBaslik": "{kategori} Seç",
   "kendiKombininiTasarlaTitle": "Kendi Kombinini Tasarla",
   "secimleriSifirla": "Seçimleri Sıfırla",
-  "kombinHazirAiTavsiyesi": "Kombin harika görünüyor! Yapay zeka ile analiz edip kaydet.",
+  "kombinHazirAiTavsiyesi": "Kombin harika görünüyor Yapay zeka ile analiz edip kaydet.",
   "kombinBaslaIpucu": "Bugün ne giymek istersin? Parçaları seçerek başla.",
   "ustAltModu": "Üst + Alt",
   "tekParcaElbiseModu": "Tek Parça (Elbise)",
@@ -432,7 +432,7 @@
   "karmasikSiklik": "Karmaşık Şıklık",
   "gecmisiTemizleTitle": "Geçmişi Temizle",
   "gecmisiTemizleOnayIcerik": "Tüm giyilenler geçmişini silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
-  "gecmisBasariylaTemizlendi": "Geçmiş başarıyla temizlendi 🗑️",
+  "gecmisBasariylaTemizlendi": "Geçmiş başarıyla temizlendi",
   "kayitGecmistenSilindi": "Kayıt geçmişten silindi.",
   "kombin": "Kombin",
   "kombinDetayiUst": "KOMBİN DETAYI",
@@ -440,11 +440,11 @@
   "detayBulunamadi": "Detay bulunamadı.",
   "henuzFavoriEklemediniz": "Henüz favori kombin eklemediniz.",
   "camasirSepetiTitle": "Çamaşır Sepeti",
-  "sepetBosTumKiyafetlerTemiz": "Sepet tamamen boş, tüm kıyafetler temiz!",
-  "tumKiyafetlerTemizlendi": "Tüm kıyafetler temizlendi ve dolaba eklendi 🧺✨",
+  "sepetBosTumKiyafetlerTemiz": "Sepet tamamen boş, tüm kıyafetler temiz",
+  "tumKiyafetlerTemizlendi": "Tüm kıyafetler temizlendi ve dolaba eklendi",
   "tumunuTemizIsaretle": "Tümünü Temiz İşaretle",
   "profilVeAnalizTitle": "Profil ve Analiz",
-  "harikaGidiyorsun": "Harika Gidiyorsun!",
+  "harikaGidiyorsun": "Harika Gidiyorsun",
   "gundurSeridesin": "{gun} Gündür Seridesin",
   "tumuTemiz": "Tümü Temiz",
   "kirliParcaSayisi": "{sayi} Kirli Parça",
@@ -468,7 +468,7 @@
   "bagliHesaplarUst": "BAĞLI HESAPLAR",
   "googleHesabiBagli": "Google Hesabı Bağlı",
   "googleHesabiniBagla": "Google Hesabını Bağla",
-  "googleHesabiBaglandi": "Google hesabınız başarıyla bağlandı! 🔗",
+  "googleHesabiBaglandi": "Google hesabınız başarıyla bağlandı",
   "googleHesabiBaglantisiKesildi": "Google hesabı bağlantısı kesildi.",
   "sifreVeGuvenlik": "Şifre ve Güvenlik",
   "sifreYenilemeBaglantisiIste": "Şifre yenileme bağlantısı iste",
@@ -477,7 +477,7 @@
   "sifreSifirlamaAciklama": "Hesabınıza bağlı e-posta adresine şifre sıfırlama bağlantısı gönderilecektir:",
   "epostaAdresi": "E-posta Adresi",
   "gecerliBirEpostaGiriniz": "Geçerli bir e-posta adresi giriniz",
-  "sifreEpostasiGonderildi": "{eposta} adresine şifre yenileme e-postası gönderildi! ✉️",
+  "sifreEpostasiGonderildi": "{eposta} adresine şifre yenileme e-postası gönderildi",
   "baglantiGonder": "Bağlantı Gönder",
   "hesabiKaliciSilTitle": "Hesabı Kalıcı Olarak Sil",
   "hesabiSilGeriAlinamazUyari": "Bu işlem geri alınamaz. Gardırop verileriniz ve profiliniz kalıcı olarak silinecektir.",
@@ -521,12 +521,12 @@
   "veriVeDepolamaYonetimiUst": "VERİ VE DEPOLAMA YÖNETİMİ",
   "gorselOnbelleginiTemizle": "Görsel Önbelleğini Temizle",
   "geciciFotografHafizasiAciklama": "Geçici fotoğraf hafızasını boşaltır",
-  "onbellekTemizlendiBasari": "Görsel önbelleği ve geçici dosyalar temizlendi! ✨",
+  "onbellekTemizlendiBasari": "Görsel önbelleği ve geçici dosyalar temizlendi",
   "onbellekTemizlerkenHata": "Önbellek temizlenirken bir aksama oluştu.",
   "gardirobuDisaAktarYedekle": "Gardırobu Dışa Aktar (Yedekle)",
   "tumKiyafetVeKombinJsonAciklama": "Tüm kıyafet ve kombin verilerini JSON al",
-  "disaAktarilacakVeriYok": "Dışa aktarılacak gardırop verisi bulunamadı. 📭",
-  "gardiropVerisiKopyalandi": "Tüm gardırop verileriniz JSON formatında panoya kopyalandı! 📋",
+  "disaAktarilacakVeriYok": "Dışa aktarılacak gardırop verisi bulunamadı.",
+  "gardiropVerisiKopyalandi": "Tüm gardırop verileriniz JSON formatında panoya kopyalandı",
   "destekVeDegerlendirmeUst": "DESTEK VE DEĞERLENDİRME",
   "uygulamayiDegerlendirin": "Uygulamayı Değerlendirin",
   "googlePlay5YildizDestek": "Google Play'de 5 yıldız vererek destek olun ⭐",
@@ -537,11 +537,11 @@
   "epostaUygulamasiAcilamadi": "E-posta uygulaması açılamadı. Lütfen ayberkzcn9@gmail.com adresine yazın.",
   "gizlilikPolitikasiTitle": "Gizlilik Politikası",
   "veriKullanimiVeGizlilikHaklari": "Veri kullanımı ve gizlilik haklarınızı görün",
-  "sonGuncellemeTarihi": "Son Güncelleme: 27 Ağustos 2026",
+  "sonGuncellemeTarihi": "Son Güncelleme: 20 Ekim 2026",
   "gizlilikMadde1Baslik": "1. Veri Toplama ve Kullanımı",
   "gizlilikMadde1Icerik": "FitCheck uygulaması, kişisel gardırop yönetiminizi ve kombin önerilerinizi optimize etmek için çalışır. Uygulamaya eklediğiniz kıyafet fotoğrafları, tarz ve cinsiyet tercihleriniz cihazınızda yerel olarak saklanır.",
   "gizlilikMadde2Baslik": "2. Konum İzinleri",
-  "gizlilikMadde2Icerik": "Hava durumuna uygun günlük kombin tavsiyeleri sunabilmek adına anlık konum bilginiz Open-Meteo servisleri ile anonim olarak işlenir. Konum verileriniz sunucularımızda saklanmaz veya üçüncü taraflarla paylaşılmaz.",
+  "gizlilikMadde2Icerik": "Konum izni verdiğinizde enlem ve boylamınız hava durumu için Open-Meteo'ya, şehir adını belirlemek için BigDataCloud'a gönderilir. FitCheck bu koordinatları kendi sunucularında saklamaz. Bu servislerin veri işleme koşulları kendi gizlilik politikalarına tabidir.",
   "gizlilikMadde3Baslik": "3. Sesli Asistan ve Mikrofon",
   "gizlilikMadde3Icerik": "Sesli komut ile kombin oluşturma özelliğini kullandığınızda, sesiniz anlık olarak metne dönüştürülür ve işlenir. Ses kayıtlarınız kalıcı olarak depolanmaz.",
   "gizlilikMadde4Baslik": "4. Üçüncü Taraf Servisler",
@@ -556,30 +556,30 @@
   "hakkindaUst": "HAKKINDA",
   "topluFotografEkleTooltip": "Toplu Kıyafet Ekle",
   "kuponKoduKullanTitle": "Kupon Kodu Kullan",
-  "kuponKoduAciklama": "Ekstra kombin hakkı kazanmak için kupon kodunuzu aşağıya girin:",
-  "kuponKoduHint": "Örn: VIP2026",
+  "kuponKoduAciklama": "Kupon kodunuzu aşağıya girin:",
+  "kuponKoduHint": "Kupon kodu",
   "kuponKullanButon": "Kullan",
-  "kuponBasariliMesaji": "🎉 Kupon başarıyla tanımlandı! Haklarınız yüklendi.",
-  "kuponKullanilmisUyari": "⚠️ Bu kupon kodunu daha önce kullandınız!",
-  "kuponGecersizUyari": "❌ Geçersiz kupon kodu! Lütfen tekrar deneyin.",
-  "sinirsizIslemHakkiBaslik": "Sınırsız İşlem Hakkı 👑",
-  "kalanHakkinizBaslik": "Kalan Hakkınız: {hak} ⚡",
+  "kuponBasariliMesaji": "Kupon etkinleştirildi.",
+  "kuponKullanilmisUyari": "Bu kupon kodunu daha önce kullandınız",
+  "kuponGecersizUyari": "Geçersiz kupon kodu Lütfen tekrar deneyin.",
+  "sinirsizIslemHakkiBaslik": "Sınırsız Hak",
+  "kalanHakkinizBaslik": "Kalan Hakkınız: {hak}",
   "sinirsizHakAciklama": "Premium ayrıcalığıyla tüm kombin ve stil analizlerini sınırsız kullanabilirsiniz.",
-  "gunlukHakAciklama": "Günlük haklarınız her gün 00:00'da yenilenir. Daha fazla hak için reklam izleyebilir veya kupon kullanabilirsiniz.",
+  "gunlukHakAciklama": "Günlük haklarınız her gün 00:00'da yenilenir. Daha fazla hak için reklam izleyebilirsiniz.",
   "kuponKullan": "Kupon Kullan",
-  "hakEklendiTebrikler": "Tebrikler! +2 İşlem hakkı tanımlandı. ✨",
-  "gardirobunDolduTitle": "Gardırobun Doldu!",
-  "gardirobunDolduIcerik": "Mevcut limitin olan {limit} kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +2 kıyafet yükleme alanı eklemek ister misin? 👕",
-  "reklamIzleSlotEkle": "Reklam İzle (+2 Slot)",
-  "yeniSlotEklendiTebrikler": "Tebrikler! Gardırobuna +2 yeni kıyafet alanı eklendi. 🎉",
-  "gunlukHakBittiTitle": "Günlük Hakkın Bitti!",
-  "gunlukHakBittiIcerik": "Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek veya kupon girerek yeni haklar kazanabilirsin! 🛍️",
+  "hakEklendiTebrikler": "Tebrikler +{adet} hak eklendi.",
+  "gardirobunDolduTitle": "Gardırobun Doldu",
+  "gardirobunDolduIcerik": "Mevcut limitin olan {limit} kıyafete ulaştın. Kısa bir video izleyerek gardırobuna +{adet} kıyafet yükleme alanı eklemek ister misin?",
+  "reklamIzleSlotEkle": "Reklam İzle (+{adet} Kıyafet Alanı)",
+  "yeniSlotEklendiTebrikler": "Tebrikler Gardırobuna +{adet} yeni kıyafet alanı eklendi.",
+  "gunlukHakBittiTitle": "Günlük Hakkın Bitti",
+  "gunlukHakBittiIcerik": "Bugünlük ücretsiz işlem hakkını tamamladın. Kısa bir video izleyerek yeni haklar kazanabilirsin",
   "kuponGir": "Kupon Gir",
-  "anaSemsiyeBildirimBaslik": "Şemsiyeni Unutma! ☔",
+  "anaSemsiyeBildirimBaslik": "Şemsiyeni Unutma",
   "anaSemsiyeBildirimIcerik": "Bugün hava yağmurlu görünüyor, kombinini buna göre seçmeyi unutma.",
-  "anaCamasirGunuBildirimBaslik": "Çamaşır Günü! 🧺",
-  "anaCamasirGunuBildirimIcerik": "Sepetinde yıkanmayı bekleyen kıyafetler birikti. Makineyi çalıştırma vakti!",
-  "chatZorunluParcaMesaji": "✨ Bu parçayla ne giyebilirim? ({parca})",
+  "anaCamasirGunuBildirimBaslik": "Çamaşır Günü",
+  "anaCamasirGunuBildirimIcerik": "Sepetinde yıkanmayı bekleyen kıyafetler birikti. Makineyi çalıştırma vakti",
+  "chatZorunluParcaMesaji": "Bu parçayla ne giyebilirim? ({parca})",
   "chatKombinHazirBaslik": "Kombinin Hazır ({ortam})",
   "chatKombiniGorButon": "Kombini Gör",
   "chatStilistKombinTasarlayor": "Stilist kombini tasarlıyor...",
@@ -592,29 +592,29 @@
   "cumartesi": "Cumartesi",
   "pazar": "Pazar",
   "rehberiAtla": "REHBERİ ATLA",
-  "rehberAnladimBasla": "Anladım, Başla!",
-  "rehberSonrakiAdim": "Sonraki Adım ➔",
-  "rehberGardirobuDijitallestirBaslik": "📸 Gardırobunu Dijitalleştir",
+  "rehberAnladimBasla": "Anladım, Başla",
+  "rehberSonrakiAdim": "Sonraki Adım",
+  "rehberGardirobuDijitallestirBaslik": "Gardırobunu Dijitalleştir",
   "rehberGardirobuDijitallestirAciklama": "Bu butona basarak kıyafetlerinin fotoğrafını çekebilir veya galerinden ekleyerek kendi dijital gardırobunu oluşturabilirsin.",
-  "rehberSesliAsistanBaslik": "🎙️ Sesli Stil Asistanı",
+  "rehberSesliAsistanBaslik": "Sesli Stil Asistanı",
   "rehberSesliAsistanAciklama": "Sesli komut vererek ne giyeceğini sorabilir veya hızlıca kombin tavsiyesi alabilirsin.",
-  "rehberAiStilistBaslik": "✨ AI Stilist Önerileri",
+  "rehberAiStilistBaslik": "AI Stilist Önerileri",
   "rehberAiStilistAciklama": "Günün havasına, ten rengine ve tarzına en uygun kombin önerilerini tek tıkla yapay zekadan alabilirsin.",
-  "rehberAyarlarBaslik": "⚙️ Kişiselleştirme & Ayarlar",
+  "rehberAyarlarBaslik": "Kişiselleştirme & Ayarlar",
   "rehberAyarlarAciklama": "Cinsiyet, ten rengi, renk ve tema tercihlerini ayarlayabilir veya kullanım rehberine tekrar ulaşabilirsin.",
-  "rehberNavGardirobumBaslik": "👔 Gardırobum",
+  "rehberNavGardirobumBaslik": "Gardırobum",
   "rehberNavGardirobumAciklama": "Tüm kıyafetlerini kategorilerine göre görüntüle, filtrele ve pratik bir şekilde yönet.",
-  "rehberNavHaftalikBaslik": "📅 Haftalık Planlayıcı",
+  "rehberNavHaftalikBaslik": "Haftalık Planlayıcı",
   "rehberNavHaftalikAciklama": "Önümüzdeki günlerin hava durumuna göre kombinlerini gün gün önceden planla.",
-  "rehberNavDolaptanBaslik": "🤖 AI Dolaptan Kombin",
+  "rehberNavDolaptanBaslik": "AI Dolaptan Kombin",
   "rehberNavDolaptanAciklama": "Mevcut kıyafetlerin arasından günün şartlarına en uygun otomatik kombinleri yapay zekaya ürettir.",
-  "rehberNavKendiBaslik": "🎨 Kendi Kombinini Yap",
+  "rehberNavKendiBaslik": "Kendi Kombinini Yap",
   "rehberNavKendiAciklama": "Üst, alt ve ayakkabı parçalarını manuel eşleştirerek kendi stilini oluştur ve kaydet.",
-  "rehberNavProfilBaslik": "📊 Analiz & Çamaşır Sepeti",
+  "rehberNavProfilBaslik": "Analiz & Çamaşır Sepeti",
   "rehberNavProfilAciklama": "Kıyafet giyilme istatistiklerini incele ve kirlenen parçalarını çamaşır sepetinden takip et.",
   "bildirimIzinGerekliBaslik": "Bildirim İzni Gerekli",
   "bildirimIzinGerekliIcerik": "Çamaşır günü hatırlatıcıları, yağmurlu hava uyarıları ve günlük stil önerilerini alabilmek için bildirim izinlerini açmanız önerilir.",
-  "bildirimGunaydinBaslik": "Günaydın! ☀️",
+  "bildirimGunaydinBaslik": "Günaydın",
   "bildirimGunaydinIcerik": "Bugünün hava durumuna göre harika bir kombin hazırladım. Görmek ister misin?",
   "bildirimKanalGenelBaslik": "Genel Bildirimler",
   "bildirimKanalGenelAciklama": "FitCheck genel bildirimleri",
@@ -635,7 +635,7 @@
   "fitSlim": "Slim Fit",
   "fitRegular": "Regular Fit",
   "fitOversize": "Oversize / Relaxed",
-  "gardirobumBosBaslik": "Dolabın Çok Boş!",
+  "gardirobumBosBaslik": "Dolabın Çok Boş",
   "gardirobumGizlendiBaslik": "Gardırop Gizlendi",
   "gardirobumGizlendiAciklama": "Görüntülemek için sağ üstteki göz simgesine dokunun",
   "gardirobumGoster": "İçeriği Göster",
@@ -652,7 +652,7 @@
   "gardirobumAiIslem5": "Son dokunuşlar yapılıyor...",
   "gardirobumHakBittiBaslik": "Günlük Limit Doldu",
   "gardirobumHakBittiAciklama": "Günlük kombin oluşturma limitinize ulaştınız.",
-  "gardirobumHakEklendiMesaj": "Tebrikler, yeni kombin hakkı kazanıldı!",
+  "gardirobumHakEklendiMesaj": "Tebrikler, yeni hak kazandın",
   "ayarlariAc": "Ayarları Aç",
   "kiyafetEkle": "Kıyafet Ekle",
   "kameraIleCek": "Kamera ile Çek",
@@ -663,7 +663,7 @@
   "kategori": "Kategori",
   "evetSil": "Evet, Sil",
   "favorilerdenCikarildi": "Favorilerden çıkarıldı",
-  "gardirobumHenuzYokEkle": "Henüz kıyafet eklenmedi. Hemen ekleyin!",
+  "gardirobumHenuzYokEkle": "Henüz kıyafet eklenmedi. Hemen ekleyin",
   "gardirobumMaksFotografUyari": "En fazla {max} adet fotoğraf seçebilirsiniz.",
   "@gardirobumMaksFotografUyari": {
     "placeholders": {
@@ -691,18 +691,18 @@
   "kombinSohbetAc": "Kombin hakkında sohbet et",
   "kombinSohbetBaslik": "Kombin Sohbeti",
   "kombinSohbetAltBaslik": "{gun} kombini üzerine sohbet",
-  "kombinSohbetKarsilama": "{kombin} kombinini birlikte inceleyelim! Renk uyumu, hava durumu ya da alternatif parçalar hakkında ne istersen sorabilirsin. ✨",
-  "kombinSohbetOneriUyum": "🤔 Bu kombin neden uyumlu?",
-  "kombinSohbetOneriAlternatif": "👟 Alternatif parça öner",
-  "kombinSohbetOneriHava": "🌦️ Hava değişirse ne giyerim?",
-  "kombinSohbetOneriAksesuar": "💍 Aksesuar önerisi ver",
+  "kombinSohbetKarsilama": "{kombin} kombinini birlikte inceleyelim Renk uyumu, hava durumu ya da alternatif parçalar hakkında ne istersen sorabilirsin.",
+  "kombinSohbetOneriUyum": "Bu kombin neden uyumlu?",
+  "kombinSohbetOneriAlternatif": "Alternatif parça öner",
+  "kombinSohbetOneriHava": "Hava değişirse ne giyerim?",
+  "kombinSohbetOneriAksesuar": "Aksesuar önerisi ver",
   "kombinSohbetAltBaslikAnlik": "Anlık kombin üzerine sohbet",
-  "chatKirliSepetiBos": "🧺 Kirli sepetin boş! Tüm parçaların kullanıma hazır, istediğin zaman kombin hazırlayabilirim. ✨",
-  "chatKirliSepetiDoluBaslik": "🧺 Kirli sepetinde **{sayi}** parça yıkanmayı bekliyor:",
+  "chatKirliSepetiBos": "Kirli sepetin boş Tüm parçaların kullanıma hazır, istediğin zaman kombin hazırlayabilirim.",
+  "chatKirliSepetiDoluBaslik": "Kirli sepetinde **{sayi}** parça yıkanmayı bekliyor:",
   "chatKirliSepetiDoluNot": "Bu parçalar yıkanana kadar kombin önerilerine dahil edilmez. İstersen temiz parçalarınla hemen bir kombin hazırlayabilirim.",
   "analitikVerileriPaylas": "Analitik verileri paylaş",
-  "analitikVerileriPaylasAciklama": "Uygulama deneyimini iyileştirmek için anonim kullanım verileri gönderilir. Kapatırsanız bu cihazdaki analitik veriler silinir.",
-  "chatKarsilamaHavaYok": "Selam! 👋 Senin tarzına uygun harika bir kombin hazırlayalım mı? ✨",
+  "analitikVerileriPaylasAciklama": "Analiz verileri, uygulama kullanımını anlamak ve deneyimi iyileştirmek için Firebase Analytics'e gönderilir. Bu isteğe bağlıdır; istediğiniz zaman kapatabilirsiniz.",
+  "chatKarsilamaHavaYok": "Selam Senin tarzına uygun harika bir kombin hazırlayalım mı?",
   "premiumBaslik": "Sınırsız stil, sıfır reklam",
   "premiumAciklama": "Kombinlerini ve stil analizlerini sınırsız kullan, tüm reklamları kaldır. Tek bir avantajlı abonelikle.",
   "premiumOzellikReklamsiz": "Tüm reklamlar kaldırılır",
@@ -877,18 +877,18 @@
   "kombinBasariOrani": "Başarı Oranı",
   "kombinTekrarOyna": "Tekrar Oyna",
   "kombinAnaSayfa": "Ana Sayfa",
-  "kombinSonucUsta": "Stil Ustası! 🏆",
-  "kombinSonucUstaMesaj": "Renk ve uyum hissini ödüllemeye değer!",
-  "kombinSonucIyi": "İyi Gidiyorsun! 👍",
+  "kombinSonucUsta": "Stil Ustası",
+  "kombinSonucUstaMesaj": "Renk ve uyum hissini ödüllemeye değer",
+  "kombinSonucIyi": "İyi Gidiyorsun",
   "kombinSonucIyiMesaj": "Az pratikle mükemmel olacaksın.",
-  "kombinSonucPratik": "Pratik Lazım 📚",
+  "kombinSonucPratik": "Pratik Lazım",
   "kombinSonucPratikMesaj": "Renk teorisi ipuçları için \"Analiz\" sekmesine bak.",
   "degerlendirmeBaslik": "FitCheck'i beğendiniz mi?",
-  "degerlendirmeIcerik": "Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek! ⭐ Değerlendirme yapanlara +3 hak hediye!",
+  "degerlendirmeIcerik": "Uygulamayı seviyorsanız 5 saniyenizi ayırıp bize yorum bırakabilir misiniz? Küçük yorumlar büyük destek",
   "degerlendirmeEvet": "Evet, değerlendireyim",
   "degerlendirmeBelkiSonra": "Belki sonra",
   "yakinda": "Yakında",
-  "yakindaAciklama": "Bu özellik üzerinde çalışıyoruz, çok yakında sizlerle!",
+  "yakindaAciklama": "Bu özellik üzerinde çalışıyoruz, çok yakında sizlerle",
   "aiOneriHazirlaniyor": "Öneri hazırlanıyor...",
   "haftalikStilistOnerisiHazirlanamadi": "Stilist önerisi hazırlanamadı. Tekrar dene.",
   "haftalikAiServisHatasi": "Yapay zekâ servisine ulaşılamadı. İnternet bağlantını kontrol edip tekrar dene.",
@@ -900,7 +900,7 @@
   "girisHataSifreKisa": "En az 6 karakter giriniz",
   "googleKullanicisi": "Google Kullanıcısı",
   "premiumEkranBaslik": "FitCheck Premium",
-  "dilSecimBaslik": "🌐 Dil Seçimi",
+  "dilSecimBaslik": "Dil Seçimi",
   "dilSecenekOtomatik": "Otomatik (Cihaz Dili)",
   "kapat": "Kapat",
   "bildirimBaslik": "Bildirim",
@@ -955,12 +955,407 @@
   "stilistHafizasiBos": "Henüz bir şey öğrenmedim. Sohbet ettikçe tarzını tanırım.",
   "stilistHafizasiTemizle": "Hafızayı temizle",
   "stilistHafizasiTemizleOnay": "Stilistin seninle ilgili hatırladığı her şey silinecek. Bu işlem geri alınamaz.",
-  "stilistHafizasiTemizlendi": "Hafıza temizlendi 🧠",
+  "stilistHafizasiTemizlendi": "Hafıza temizlendi",
   "gardirobumArkaPlanSilinemediBaslik": "Arka plan silinemedi",
   "gardirobumArkaPlanSilinemediAciklama": "Bağlantı sorunu olabilir. Tekrar denemek, fotoğrafı arka planıyla kaydetmek ya da bu fotoğrafı atlamak istediğini seç.",
   "gardirobumArkaPlanliKaydet": "Arka planıyla kaydet",
   "cekimIpucuBaslik": "Daha iyi kesim için",
   "cekimIpucu1": "Kıyafeti düz, tek renkli bir zemine koy.",
   "cekimIpucu2": "Zemin kıyafetten farklı bir renk olsun.",
-  "cekimIpucu3": "Gölge ve desenli zeminden kaçın."
+  "cekimIpucu3": "Gölge ve desenli zeminden kaçın.",
+  "kullanimKosullariOnayMetni": "{terms} okudum ve onaylıyorum.",
+  "@kullanimKosullariOnayMetni": {
+    "placeholders": {
+      "terms": {
+        "type": "String"
+      }
+    }
+  },
+  "@reklamIzleHakKazan": {
+    "placeholders": {
+      "adet": {
+        "type": "int"
+      }
+    }
+  },
+  "@tebriklerHakEklendi": {
+    "placeholders": {
+      "adet": {
+        "type": "int"
+      }
+    }
+  },
+  "kendiTasarimimParcaSec": "Parça seç",
+  "hesapSilmeBasarisiz": "Hesap silme tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+  "bildirimTamZamanAyar": "Tam Zamanlı Bildirim",
+  "bildirimTamZamanAciklama": "Bildirimlerin tam seçtiğin saatte gelmesi için Android'de 'Alarms & reminders' iznini ver.",
+  "bildirimTamZamanAcik": "Tam zamanlı bildirimler açık.",
+  "@hakEklendiTebrikler": {
+    "placeholders": {
+      "adet": {
+        "type": "int"
+      }
+    }
+  },
+  "@gardirobunDolduIcerik": {
+    "placeholders": {
+      "limit": {
+        "type": "int"
+      },
+      "adet": {
+        "type": "int"
+      }
+    }
+  },
+  "@reklamIzleSlotEkle": {
+    "placeholders": {
+      "adet": {
+        "type": "int"
+      }
+    }
+  },
+  "@yeniSlotEklendiTebrikler": {
+    "placeholders": {
+      "adet": {
+        "type": "int"
+      }
+    }
+  },
+  "premiumSatinAlmaDogrulamaHazirDegil": "Bu platform için güvenli mağaza doğrulaması henüz hazır değil. Satın alma geçici olarak kullanılamıyor.",
+  "islemIptalEdildi": "İşlem iptal edildi. Şimdiye kadar eklenen kıyafetler gardırobunda duruyor.",
+  "islemIptalEdiliyor": "İptal ediliyor…",
+  "sifreGoster": "Şifreyi göster",
+  "sifreGizle": "Şifreyi gizle",
+  "gunSayisiAzalt": "Gün sayısını azalt",
+  "gunSayisiArttir": "Gün sayısını artır",
+  "chatGorseliKaldir": "Görseli kaldır",
+  "kesimUyarisiBaslik": "Kesim hatalı olabilir",
+  "kesimUyarisiAciklama": "Kıyafet zemine çok yakın renkte. Arka plan silme bu durumda zorlanır: zeminden parça kalabilir ya da kıyafetin bir bölümü kesilebilir. Farklı renkte bir zeminde tekrar çekmek genellikle çözer.",
+  "kesimUyarisiTekrarCek": "Tekrar çek",
+  "kesimUyarisiYineDeKaydet": "Yine de kaydet",
+  "gizlilikMadde5Baslik": "5. Yapay Zekâ ile Görsel Analizi",
+  "gizlilikMadde5Icerik": "Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz.",
+  "bugunSekmesi": "Bugün",
+  "bugunBaslik": "Bugün",
+  "bugunGunaydin": "Günaydın",
+  "bugunIyiGunler": "İyi günler",
+  "bugunIyiAksamlar": "İyi akşamlar",
+  "bugunBugununKombini": "Bugünün kombini",
+  "bugunNedenBuKombin": "Neden bu kombin?",
+  "bugunRenkUyumu": "Renk uyumu",
+  "kombinHedefiBaslik": "Kombin hedefin",
+  "kombinHedefiAciklama": "Yeni kombin ve haftalık plan önerilerinde neyi öne çıkaralım?",
+  "kombinHedefiDenge": "Dengeli öneriler",
+  "kombinHedefiRenk": "Renkleri keşfet",
+  "kombinHedefiUnutulan": "Az giydiklerimi kullan",
+  "kombinHedefiCokYonlu": "Çok yönlü parçalar",
+  "bugunHizliFotograf": "Fotoğrafla ekle",
+  "bugunHizliKombin": "Kombin üret",
+  "bugunHizliStilist": "Stiliste sor",
+  "bugunHizliPlan": "Haftayı planla",
+  "bugunHazirlaniyor": "Kombinler hazırlanıyor…",
+  "bugunBosBaslik": "Dolabın henüz boş",
+  "bugunBosAciklama": "İlk parçanı ekle; her sabah burada yeni kombin önerileri olacak.",
+  "bugunYenile": "Yenile",
+  "bugunGiydim": "Giydim",
+  "bugunKaydet": "Kaydet",
+  "bugunSeninIcin": "Senin için",
+  "bugunGiyilmediRafi": "2 haftadır giymediklerin",
+  "bugunYeniRafi": "Yeni eklenenler",
+  "bugunHavaRafi": "Bugüne uygun",
+  "bugunRafIpucu": "Dokun: giydim, kombin kur veya dolapta aç",
+  "duelloSekmesi": "Düello",
+  "duelloBaslik": "Kombin Düellosu",
+  "duelloAltBaslik": "İki kombinden birini seç, stil gözünü test et.",
+  "duelloBaslat": "Düelloya başla",
+  "duelloNasilOynanir": "Nasıl oynanır?",
+  "duelloKural1": "Her turda iki kombin görürsün.",
+  "duelloKural2": "Soruya göre doğru olanı seç.",
+  "duelloKural3": "Doğru seçim seri ve puan kazandırır.",
+  "duelloEnIyi": "En iyi",
+  "duelloSeri": "Seri",
+  "duelloGunSerisi": "{gun} gün",
+  "@duelloGunSerisi": {
+    "placeholders": {
+      "gun": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloSeviye": "Seviye",
+  "duelloSeviyeDegeri": "Seviye {seviye}",
+  "@duelloSeviyeDegeri": {
+    "placeholders": {
+      "seviye": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloXp": "{xp} XP",
+  "@duelloXp": {
+    "placeholders": {
+      "xp": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloTur": "Tur {tur}/{toplam}",
+  "@duelloTur": {
+    "placeholders": {
+      "tur": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloOlcuRenk": "Hangisinin renkleri daha uyumlu?",
+  "duelloOlcuHava": "Hangisi bugünkü havaya daha uygun?",
+  "duelloDokun": "Bir kombine dokun",
+  "duelloDogru": "Doğru",
+  "duelloYanlis": "Olmadı",
+  "duelloDevam": "Devam",
+  "duelloSonuc": "Sonucu gör",
+  "duelloBitti": "Düello bitti",
+  "duelloSkor": "{dogru}/{toplam} doğru",
+  "@duelloSkor": {
+    "placeholders": {
+      "dogru": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloYeniden": "Tekrar oyna",
+  "duelloBugune": "Bugün'e dön",
+  "duelloEnIyiSeri": "En iyi seri: {seri}",
+  "@duelloEnIyiSeri": {
+    "placeholders": {
+      "seri": {
+        "type": "int"
+      }
+    }
+  },
+  "duelloPaletNotu": "Bu turda renk kartları var. Dolabına parça ekledikçe düellolar kendi kıyafetlerinle oynanır.",
+  "duelloDolapEkle": "Dolaba parça ekle",
+  "duelloBugunOynadi": "Bugün oynadın. Yarın seriyi sürdür.",
+  "duelloSebepNotr": "Nötr ve toprak tonlar birbirini dengeliyor.",
+  "duelloSebepMonokrom": "Tek renk ailesinde kalarak bütünlük sağlıyor.",
+  "duelloSebepAnalog": "Yakın tonlar yumuşak bir geçiş oluşturuyor.",
+  "duelloSebepVurgu": "Nötr bir zeminde tek vurgu rengi var.",
+  "duelloSebepZit": "Karşıt renkler dengeli kullanılmış.",
+  "duelloSebepDagink": "İki uzak renk arasında köprü yok.",
+  "duelloSebepCokRenk": "Üç ayrı canlı renk birbiriyle yarışıyor.",
+  "duelloSebepHavaUygun": "Parçalar bugünkü sıcaklığa uygun.",
+  "duelloSebepHavaAgir": "Kalın parçalar bu hava için fazla.",
+  "duelloSebepHavaHafif": "İnce parçalar bu hava için yetersiz.",
+  "bildirimSabahKombin": "Bugünkü kombinin hazır: {kombin}. Görmek için dokun.",
+  "@bildirimSabahKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBaslik": "Yarınki kombinin hazır",
+  "bildirimPlanKombin": "Yarın için: {kombin}. Şimdi bak, sabah acele etme.",
+  "@bildirimPlanKombin": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "bildirimPlanBos": "Yarın için henüz kombin yok. 2 dakikada planla.",
+  "planHatirlatimiAyar": "Akşam plan hatırlatıcısı",
+  "planHatirlatimiAyarAciklama": "Yarınki kombinini akşam 21:00'de hatırlatır",
+  "bugunPaylas": "Kombini paylaş",
+  "bugunPaylasMetni": "Bugünkü kombini FitCheck'te hazırladım",
+  "bugunPaylasHata": "Paylaşım açılamadı. Tekrar dene.",
+  "bugunParcaGiydim": "Bugün giydim",
+  "bugunParcaKombin": "Bununla kombin kur",
+  "bugunParcaDolapta": "Dolapta aç",
+  "bugunParcaGiydimIsaretlendi": "«{parca}» bugün giydim olarak işaretlendi.",
+  "@bugunParcaGiydimIsaretlendi": {
+    "placeholders": {
+      "parca": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguBaslik": "Stil Günlüğüm",
+  "stilGunluguTakvim": "Takvim",
+  "stilGunluguGunluk": "Günlük",
+  "stilGunluguRapor": "Rapor",
+  "stilGunluguGiyildi": "Giyildi",
+  "stilGunluguPlanli": "Planlandı",
+  "stilGunluguGunBos": "Bu gün için kayıt yok",
+  "stilGunluguRaporOzet": "Bu hafta {kombin} kombin giyindin",
+  "@stilGunluguRaporOzet": {
+    "placeholders": {
+      "kombin": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporGecenHafta": "Geçen haftaya göre {fark}",
+  "@stilGunluguRaporGecenHafta": {
+    "placeholders": {
+      "fark": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporKullanim": "Dolap kullanımı",
+  "stilGunluguRaporEnCok": "En çok giyilen",
+  "stilGunluguRaporSeri": "Günlük seri",
+  "stilGunluguRaporHicGiyilmemis": "Hiç giyilmemiş",
+  "stilGunluguRaporPaylas": "Raporu paylaş",
+  "stilGunluguRaporPaylasMetni": "Haftalık stil raporum: {ozet}",
+  "@stilGunluguRaporPaylasMetni": {
+    "placeholders": {
+      "ozet": {
+        "type": "String"
+      }
+    }
+  },
+  "stilGunluguRaporBos": "Bu hafta henüz kombin kaydın yok. Giyildiğinde burada görünecek.",
+  "seyahatBaslik": "Seyahat Modu",
+  "seyahatGunSayisi": "Gün sayısı",
+  "seyahatHava": "Hava",
+  "seyahatHavaSicak": "Sıcak",
+  "seyahatHavaIliman": "Ilıman",
+  "seyahatHavaSoguk": "Soğuk",
+  "seyahatAmac": "Amaç",
+  "seyahatAmacGunluk": "Günlük",
+  "seyahatAmacIs": "İş",
+  "seyahatAmacOzel": "Özel",
+  "seyahatPlanBaslik": "Valiz Planı",
+  "seyahatKombine": "{adet} kombin çıkar",
+  "@seyahatKombine": {
+    "placeholders": {
+      "adet": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatDiger": "Dış giyim",
+  "seyahatEksikUst": "Temiz üst giyim yok",
+  "seyahatEksikAlt": "Temiz alt giyim yok",
+  "seyahatEksikAyakkabi": "Ayakkabı yok",
+  "seyahatEksikKombin": "{gun} gün için kombin yetmiyor",
+  "@seyahatEksikKombin": {
+    "placeholders": {
+      "gun": {
+        "type": "String"
+      }
+    }
+  },
+  "seyahatPaylas": "Listeyi paylaş",
+  "seyahatPaylasMetni": "FitCheck valiz planım",
+  "geriAl": "Geri al",
+  "stilGunluguRaporSayiEtiketi": "Bu hafta giyilen kombin",
+  "stilGunluguRaporDortHafta": "Son 4 hafta",
+  "stilGunluguRaporEnCokParcalar": "En çok giydiklerin",
+  "navKombin": "Kombin",
+  "navProfil": "Profil",
+  "dolapAra": "Dolabında ara",
+  "dolapEslesmeYok": "Aramanla eşleşen parça yok.",
+  "dolapAramayiTemizle": "Aramayı temizle",
+  "planGuneKombinSec": "Bu güne kombin seç",
+  "planKombinSec": "Kombin seç",
+  "planDegistir": "Değiştir",
+  "planKaldir": "Kaldır",
+  "planFavoriYok": "Henüz favori kombinin yok.",
+  "planKombinOlustur": "Kombin oluştur",
+  "planGuneEklendi": "Kombin güne eklendi",
+  "planKaldirildi": "Plan kaldırıldı",
+  "planHaftalikProgram": "Haftalık program",
+  "planParcaSayisi": "{count} parça",
+  "@planParcaSayisi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "planBugun": "Bugün planın",
+  "planTakvimdenDegistir": "Takvimden değiştir",
+  "planFavorilerim": "Favorilerim",
+  "planSonGiyilenler": "Son giyilenler",
+  "izinGerekceKameraBaslik": "Kamerayla kıyafet ekle",
+  "izinGerekceKameraAciklama": "Kıyafetlerini fotoğraf olarak eklemek için kamerayı kullanıyoruz. Fotoğraf cihazından çıkar; arka plan silme ve renk/stil analizi sunucu üzerinde yapılır, kalıcı olarak saklanmaz.",
+  "izinGerekceSimdiDegil": "Şimdi değil",
+  "planOneriler": "Öneriler",
+  "bilgiVerimlilik": "Dolap verimliliği, dolabındaki parçaların ne kadarının en az bir kez giyildiğini gösterir. %60 üzeri sağlıklı bir dolap için iyidir; daha düşükse bazı parçalar henüz kullanılmamış ya da fazla almışsındır.",
+  "bilgiStil": "Stil kimliğin, dolabındaki parçaların çoğunluğunun ortak özelliklerinden çıkarılır: renk, kategori ve tarz etiketi. Kombin önerileri bu profile göre sıralanır.",
+  "bilgiSeri": "Seri, üst üste giydiğin gün sayısıdır. Her «bugün giydim» işaretlemen seriye ekler; bir gün atlayınca seri sıfırlanır.",
+  "bilgiSepet": "Çamaşır sepeti, giydiğin ama henüz yıkamak istediğin parçalardır. Sepete attığın parçalar bir sonraki kombin önerisinde kullanılmaz.",
+  "bilgiRenkPaleti": "Renk paletin, dolabında en çok bulunan dört rengin dağılımını gösterir. Birbirine yakın tonlar kombinde daha uyumlu görünür.",
+  "bilgiKategoriDagilimi": "Kategori dağılımı, dolabının üst, alt, ayakkabı ve aksesuar dengesini gösterir. Tek bir kategoride fazla parça varsa kombin kurmak zorlaşır.",
+  "bilgiAnlikDurum": "Anlık durum, bulunduğun şehre göre hava durumuna ve dolabına uygun kısa bir öneri verir.",
+  "bilgiSeriBaslik": "Giyme Serisi",
+  "bilgiKahramanlar": "Dolabının kahramanları, dolabında en çok giyilen parçalardır. Sık giyilen parçalar kombinlerde daha çok yer alır ve gardırobunu sürdürür.",
+  "bilgiUnutulanlar": "Derinlerde unutulanlar, hiç giyilmemiş ya da çok uzun süredir giyilmemiş parçalardır. Kullanılmayan parçalar yeni kombinlerle yeniden hayat bulabilir.",
+  "bilgiBugunKombini": "Bugünün kombini, dolabın ve hava durumu dikkate alınarak seçilir. Günde en fazla bir yapay zekâ isteği yapılır ve sonuç gün boyunca saklanır; yapay zekâ kullanılamazsa kural bazlı öneriler devreye girer.",
+  "bilgiRaporHafta": "Son 7 günde kaydettiğin kombin sayısı. Her «bugün giydim» işaretlemen bir kombin olarak sayılır; aynı güne birden fazla kombin kaydedebilirsin.",
+  "bilgiRaporDortHafta": "Son 4 haftanın haftalık kombin sayıları. Grafik, haftalık düzeni ve artıp azalışı gösterir.",
+  "bilgiRaporEnCokParcalar": "Bu hafta en çok giyilen parçalar. Sık kullanılan parçalar gardırobunun omurgasıdır.",
+  "bilgiRaporKullanim": "Dolabındaki parçaların ne kadarının son 7 günde kullanıldığı. Düşükse bazı parçalar henüz kombine girmemiş demektir.",
+  "bilgiRaporSeri": "Üst üste giydiğin gün sayısı. Her gün bir kombin kaydedersen artar, bir gün boşluk bırakırsan sıfırlanır.",
+  "bilgiRaporHicGiyilmemis": "Son 7 günde hiç giyilmemiş parça sayısı. Bu parçalar yeni kombinlerle yeniden kullanılabilir.",
+  "bilgiDueloPuan": "Her soruda iki kombin arasından seçim yaparsın. Doğru cevap puan ve seri kazandırır, yanlış cevap seriyi sıfırlar. Puanlama kural tabanlıdır: renk uyumu, kategori dengesi ve mevsim tutarlılığı ölçülür. Dolabında 4'ten az parça varsa geçmiş kombinlerden bir palet oluşturulur.",
+  "bilgiDolapCalisma": "Dolabına fotoğraf eklediğinde arka plan otomatik silinir; renk, kategori, stil ve mevsim yapay zekâ tarafından okunur. Kıyafetler cihazında saklanır, arka plan silme ve analiz sunucu üzerinde yapılır.",
+  "duzenleArkaPlanBaslik": "Arka plan ve yerleşim",
+  "duzenleIpucu": "Parçayı sürükleyerek yerleştirebilir, iki parmakla büyütebilirsin.",
+  "duzenleZeminBeyaz": "Beyaz",
+  "duzenleZeminKirik": "Kırık beyaz",
+  "duzenleZeminGri": "Açık gri",
+  "duzenleZeminSaydam": "Saydam",
+  "duzenleKaydet": "Kaydet",
+  "duzenleVarsayilan": "Varsayılan",
+  "arkaPlandaEkle": "Arka planda ekle",
+  "arkaPlandaEkleAciklama": "Uygulamayı kullanmaya devam edebilirsin; parçalar arka planda eklenir.",
+  "arkaPlandaBasladi": "{count} fotoğraf arka planda ekleniyor",
+  "@arkaPlandaBasladi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaIlerleme": "{count}/{toplam} işlendi",
+  "@arkaPlandaIlerleme": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "toplam": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaTamamlandi": "{count} parça dolabına eklendi",
+  "@arkaPlandaTamamlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "arkaPlandaBaziAtlandi": "{count} fotoğraf işlenemedi",
+  "@arkaPlandaBaziAtlandi": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "bugunKaydedildi": "Kaydedildi",
+  "bugunGiydildi": "Giydildi",
+  "ozellikYakinda": "Bu özellik yakında eklenecek",
+  "duelloGeri": "Geri"
 }

@@ -1,3 +1,4 @@
+import '../theme/design_tokens.dart';
 import 'package:flutter/material.dart';
 import '../main.dart'; // KombinDanismaniApp için
 import '../l10n/app_localizations.dart';
@@ -104,7 +105,8 @@ class DilSecimModal extends StatelessWidget {
 
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 20),
+        padding: const EdgeInsets.fromLTRB(
+            AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.xl),
         constraints: BoxConstraints(
           maxHeight: MediaQuery.of(context).size.height * 0.75,
         ),
@@ -117,7 +119,7 @@ class DilSecimModal extends StatelessWidget {
               height: 4,
               decoration: BoxDecoration(
                 color: colors.outlineVariant,
-                borderRadius: BorderRadius.circular(2),
+                borderRadius: AppRadius.xxsRadius,
               ),
             ),
 
@@ -128,8 +130,8 @@ class DilSecimModal extends StatelessWidget {
               l10n.dilSecimBaslik,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontSize: AppText.sizeTitleSmall,
+                fontWeight: FontWeight.w600,
                 color: colors.onSurface,
               ),
             ),
@@ -160,19 +162,19 @@ class DilSecimModal extends StatelessWidget {
                   final dil = diller[index];
 
                   final dilKodu = dil['kod']!;
-                  final dilAdi =
-                      dilKodu == 'system' ? l10n.dilSecenekOtomatik : dil['ad']!;
+                  final dilAdi = dilKodu == 'system'
+                      ? l10n.dilSecenekOtomatik
+                      : dil['ad']!;
                   final bayrak = dil['bayrak']!;
-
                   final isSelected = currentCode == dilKodu;
 
                   return ListTile(
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 2,
+                      horizontal: AppSpacing.sm,
+                      vertical: AppSpacing.xxs,
                     ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.mdRadius,
                     ),
 
                     // BAYRAK
@@ -189,7 +191,7 @@ class DilSecimModal extends StatelessWidget {
                       child: Text(
                         bayrak,
                         style: const TextStyle(
-                          fontSize: 24,
+                          fontSize: AppText.sizeHeadline,
                         ),
                       ),
                     ),
@@ -198,9 +200,9 @@ class DilSecimModal extends StatelessWidget {
                     title: Text(
                       dilAdi,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: AppText.sizeBodySmall,
                         fontWeight:
-                            isSelected ? FontWeight.bold : FontWeight.normal,
+                            isSelected ? FontWeight.w600 : FontWeight.normal,
                         color: isSelected ? colors.primary : colors.onSurface,
                       ),
                     ),

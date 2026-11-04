@@ -46,9 +46,8 @@ class AppPrimaryButton extends StatelessWidget {
           child: Text(
             label,
             style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.2,
+              fontSize: AppText.sizeBody,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -88,13 +87,17 @@ class AppSecondaryButton extends StatelessWidget {
       height: 52,
       child: OutlinedButton.icon(
         onPressed: onPressed,
-        icon: icon != null ? Icon(icon, size: 20, color: c) : const SizedBox.shrink(),
+        icon: icon != null
+            ? Icon(icon, size: 20, color: c)
+            : const SizedBox.shrink(),
         label: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
             label,
             style: TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w700, color: c),
+                fontSize: AppText.sizeBodySmall,
+                fontWeight: FontWeight.w600,
+                color: c),
           ),
         ),
         style: OutlinedButton.styleFrom(
@@ -132,8 +135,8 @@ class AppDangerButton extends StatelessWidget {
         label: Text(
           label,
           style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
+              fontSize: AppText.sizeBodySmall,
+              fontWeight: FontWeight.w600,
               color: AppAccents.error),
         ),
         style: OutlinedButton.styleFrom(
@@ -231,8 +234,8 @@ class AppChip extends StatelessWidget {
               }
             : null,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeOutCubic,
+          duration: AppMotion.kisa,
+          curve: AppMotion.giris,
           constraints: const BoxConstraints(minHeight: 44),
           padding: const EdgeInsets.symmetric(
               horizontal: AppSpacing.lg, vertical: AppSpacing.md),
@@ -258,8 +261,8 @@ class AppChip extends StatelessWidget {
               Text(
                 label,
                 style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
+                  fontSize: AppText.sizeSmall,
+                  fontWeight: FontWeight.w600,
                   color: selected ? cs.onPrimary : cs.onSurface,
                 ),
               ),
@@ -300,7 +303,7 @@ class AppBadge extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 16, color: color ?? cs.onSurface),
-          const SizedBox(width: 6),
+          const SizedBox(width: AppSpacing.sm),
           Text(
             label,
             style: AppText.labelSmall.copyWith(color: cs.onSurface),
@@ -325,7 +328,7 @@ class AppSectionHeader extends StatelessWidget {
       padding: const EdgeInsets.only(
           left: AppSpacing.lg, bottom: AppSpacing.sm, top: AppSpacing.lg),
       child: Text(
-        title.toUpperCase(),
+        title,
         style: AppText.labelMicro.copyWith(
           color: Theme.of(context).colorScheme.onSurfaceVariant,
         ),

@@ -32,7 +32,7 @@ class GunSecici extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
         itemCount: hafta.length,
         itemBuilder: (context, index) {
           final gunItem = hafta[index];
@@ -43,19 +43,19 @@ class GunSecici extends StatelessWidget {
           final bool giyildiMi = giyilmisGunler.contains(index);
 
           final bg = seciliMi
-              ? (giyildiMi ? Colors.green : anaRenk)
+              ? (giyildiMi ? AppAccents.primary : anaRenk)
               : giyildiMi
-                  ? Colors.green.shade100
+                  ? AppTints.successBg
                   : colorScheme.surfaceContainerHigh;
 
           final fg = seciliMi
               ? Colors.white
               : giyildiMi
-                  ? Colors.green.shade900
+                  ? AppAccents.primary
                   : colorScheme.onSurfaceVariant;
 
           return Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsetsDirectional.only(end: 8),
             child: InkWell(
               borderRadius: AppRadius.xxlRadius,
               onTap: () {
@@ -63,16 +63,16 @@ class GunSecici extends StatelessWidget {
                 onGunSecildi(index);
               },
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
+                duration: AppMotion.kisa,
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 18, vertical: 0),
+                    horizontal: AppSpacing.lg, vertical: 0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: bg,
                   borderRadius: AppRadius.xxlRadius,
                   border: Border.all(
                     color: giyildiMi && !seciliMi
-                        ? Colors.green.withValues(alpha: 0.4)
+                        ? AppAccents.primary.withValues(alpha: 0.4)
                         : Colors.transparent,
                     width: 1.5,
                   ),
@@ -91,10 +91,10 @@ class GunSecici extends StatelessWidget {
                     Text(
                       gunAdi,
                       style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w800,
+                        fontSize: AppText.sizeBodySmall,
+                        fontWeight: FontWeight.w600,
                         color: fg,
-                        letterSpacing: 0.5,
+                        letterSpacing: 0,
                       ),
                     ),
                   ],

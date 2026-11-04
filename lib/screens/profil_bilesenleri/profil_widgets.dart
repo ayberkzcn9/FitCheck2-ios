@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 import '../../models/kiyafet.dart';
 import '../../l10n/app_localizations.dart';
@@ -38,7 +39,7 @@ class KiyafetKartcigi extends StatelessWidget {
       width: 115,
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: AppRadius.lgRadius,
         border: Border.all(
           color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           width: 1.0,
@@ -54,10 +55,26 @@ class KiyafetKartcigi extends StatelessWidget {
               child: ColorFiltered(
                 colorFilter: isSoluk
                     ? const ColorFilter.matrix([
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0,      0,      0,      1, 0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
                       ])
                     : const ColorFilter.mode(
                         Colors.transparent, BlendMode.multiply),
@@ -73,15 +90,15 @@ class KiyafetKartcigi extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(AppSpacing.md),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   kiyafet.gorunenBaslik,
                   style: theme.textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: -0.3,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0,
                     color: colorScheme.onSurface,
                   ),
                   maxLines: 1,
@@ -93,10 +110,28 @@ class KiyafetKartcigi extends StatelessWidget {
                   l10n.kezGiyildi(kiyafet.giyilmeSayisi),
                   style: theme.textTheme.labelSmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    fontSize: AppText.sizeCaption,
                   ),
                 ),
+                if (kiyafet.fiyat > 0 && kiyafet.giyilmeSayisi > 0) ...[
+                  const SizedBox(height: 3),
+                  Text(
+                    l10n.gardirobumMaliyet(
+                      NumberFormat.decimalPattern(
+                        Localizations.localeOf(context).toLanguageTag(),
+                      ).format(kiyafet.giyimBasinaMaliyet),
+                    ),
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.w600,
+                      fontSize: AppText.sizeMicro,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ],
             ),
           )
@@ -140,7 +175,7 @@ class IstatistikKutusu extends StatelessWidget {
             : null,
         borderRadius: AppRadius.xlRadius,
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSpacing.xl),
           decoration: BoxDecoration(
             borderRadius: AppRadius.xlRadius,
             border: Border.all(
@@ -155,7 +190,7 @@ class IstatistikKutusu extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(AppSpacing.sm),
                     decoration: BoxDecoration(
                       color: effectiveIconColor.withValues(alpha: 0.15),
                       shape: BoxShape.circle,
@@ -173,14 +208,14 @@ class IstatistikKutusu extends StatelessWidget {
               const SizedBox(height: 16),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
+                alignment: AlignmentDirectional.centerStart,
                 child: Text(
                   deger,
                   maxLines: 1,
                   style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w600,
                     color: colorScheme.onSurface,
-                    letterSpacing: -0.5,
+                    letterSpacing: 0,
                   ),
                 ),
               ),
@@ -191,8 +226,8 @@ class IstatistikKutusu extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: colorScheme.onSurfaceVariant,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  fontSize: AppText.sizeCaption,
                 ),
               ),
             ],
@@ -233,8 +268,8 @@ class KategoriSatiri extends StatelessWidget {
                 etiket,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w900,
+                  fontSize: AppText.sizeBodySmall,
+                  fontWeight: FontWeight.w600,
                   color: colorScheme.onSurface,
                 ),
               ),
@@ -243,9 +278,9 @@ class KategoriSatiri extends StatelessWidget {
             Text(
               '$adet ${l10n.parca} (%$yuzde)',
               style: theme.textTheme.bodySmall?.copyWith(
-                fontSize: 12,
+                fontSize: AppText.sizeCaption,
                 color: colorScheme.onSurfaceVariant,
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],
@@ -256,7 +291,7 @@ class KategoriSatiri extends StatelessWidget {
           backgroundColor: colorScheme.surfaceContainerHighest,
           color: colorScheme.onSurfaceVariant,
           minHeight: 8,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: AppRadius.mdRadius,
         ),
       ],
     );
