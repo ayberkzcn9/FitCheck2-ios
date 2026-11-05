@@ -25,8 +25,11 @@ Bu dosya, FitCheck uygulamasının iOS (App Store) sürümü için yapılması g
 1. Apple Developer → Certificates, Identifiers & Profiles → App ID
    `com.fitcheck2.app` → **Sign In with Apple** capability ekle.
 2. Firebase Console → Authentication → Sign-in method → **Apple** sağlayıcısını etkinleştir.
-3. Xcode → Runner → Signing & Capabilities → **Sign In with Apple** göründüğünü doğrula.
-4. Provisioning profile'ı yeniden oluştur (Codemagic otomatik imzalama kullanıyorsa
+3. Apple Developer → App ID `com.fitcheck2.app` → **Push Notifications** capability'sini ekle.
+4. Xcode → Runner → Signing & Capabilities → **Sign In with Apple** ve
+   **Push Notifications** göründüğünü doğrula; **Background Modes → Remote notifications**
+   açık olsun.
+5. Provisioning profile'ı yeniden oluştur (Codemagic otomatik imzalama kullanıyorsa
    bir sonraki build yeni profili çeker).
 
 ---
@@ -145,6 +148,8 @@ Xcode → Product → Archive → Distribute App → App Store Connect → Uploa
 - [ ] `GoogleService-Info.plist` → `ios/Runner/` içine koy
 - [ ] Apple Developer hesabı al ($99)
 - [ ] App ID'de Sign In with Apple capability'sini aç
+- [ ] App ID'de Push Notifications capability'sini aç
+- [ ] Xcode'da Push Notifications + Background Modes → Remote notifications aç
 - [ ] Firebase Console'da Apple sağlayıcısını etkinleştir
 - [ ] App Store Connect'te uygulama oluştur
 - [ ] Mac bul/kirala
