@@ -1050,7 +1050,7 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
       String oneri = '';
       final parsed = safeJsonDecodeMap(clean, tag: 'haftalik_oneri');
-      if (parsed is Map && parsed['oneri'] is String) {
+      if (parsed['oneri'] is String) {
         oneri = (parsed['oneri'] as String).trim();
       }
       if (oneri.isEmpty) oneri = rawRes.trim();
@@ -1506,7 +1506,6 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      final l10n = AppLocalizations.of(context)!;
       HaftalikDialoglar.netGorselModalGoster(
         context: context,
         anaRenk: widget.anaRenk,
@@ -2160,11 +2159,6 @@ class _HaftalikPlanlayiciEkraniState extends State<HaftalikPlanlayiciEkrani> {
                                                 parcalarListesi[i].toString();
                                             final gorselBytes = _gucluGorselBul(
                                                 metin, widget.gardirobum);
-                                            final kategoriStr =
-                                                kategoriMetindenCikar(metin);
-                                            String uiKategori =
-                                                kategoriEtiketiGetir(
-                                                    kategoriStr, l10n);
 
                                             return GestureDetector(
                                               onTap: () => HaftalikDialoglar

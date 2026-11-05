@@ -486,6 +486,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     await _ayarKaydet('sabah_bildirim_dakika', secilen.minute);
 
     if (_sabahBildirimi) {
+      if (!mounted) return;
       try {
         await BildirimZamanlayici.yenidenKur(context: context);
       } catch (e) {
@@ -552,6 +553,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
       await _ayarKaydet('sabah_bildirimi', true);
 
+      if (!mounted) return;
       try {
         await BildirimZamanlayici.yenidenKur(context: context);
       } catch (_) {}
@@ -600,6 +602,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     setState(() => _planHatirlatimi = val);
     await _ayarKaydet('plan_hatirlatimi', val);
 
+    if (!mounted) return;
     try {
       if (val) {
         await BildirimZamanlayici.yenidenKur(context: context);
@@ -628,6 +631,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
     setState(() => _haftalikRaporBildirimi = val);
     await _ayarKaydet('haftalik_rapor_bildirimi', val);
+    if (!mounted) return;
     if (val) {
       await BildirimServisi().haftalikRaporBildiriminiKur(context: context);
     } else {
@@ -1352,7 +1356,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           fontWeight: FontWeight.w500),
                     ),
                     value: _sikiRenkUyumModu,
-                    activeColor: colors.primary,
+                    activeThumbColor: colors.primary,
                     onChanged: (val) {
                       HapticFeedback.lightImpact();
                       setState(() {
@@ -1434,7 +1438,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           fontWeight: FontWeight.w500),
                     ),
                     value: _sabahBildirimi,
-                    activeColor: colors.primary,
+                    activeThumbColor: colors.primary,
                     onChanged: _sabahBildiriminiDegistir,
                   ),
                   ListTile(
@@ -1540,7 +1544,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           fontWeight: FontWeight.w500),
                     ),
                     value: _planHatirlatimi,
-                    activeColor: colors.primary,
+                    activeThumbColor: colors.primary,
                     onChanged: _planHatirlatimiDegistir,
                   ),
                   Divider(
@@ -1568,7 +1572,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           fontWeight: FontWeight.w500),
                     ),
                     value: _yikamaUyarisi,
-                    activeColor: colors.primary,
+                    activeThumbColor: colors.primary,
                     onChanged: (val) {
                       HapticFeedback.lightImpact();
                       setState(() {
@@ -1602,7 +1606,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           fontWeight: FontWeight.w500),
                     ),
                     value: _haftalikRaporBildirimi,
-                    activeColor: colors.primary,
+                    activeThumbColor: colors.primary,
                     onChanged: _haftalikRaporBildiriminiDegistir,
                   ),
                 ],
@@ -1918,7 +1922,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           await launchUrl(webUrl,
                               mode: LaunchMode.externalApplication);
                         } catch (_) {
-                          if (!mounted) return;
+                          if (!context.mounted) return;
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 content: Text(l10n.googlePlayAcilamadi,
@@ -1974,7 +1978,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           throw Exception('Mail uygulaması bulunamadı');
                         }
                       } catch (_) {
-                        if (!mounted) return;
+                        if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(l10n.epostaUygulamasiAcilamadi,

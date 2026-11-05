@@ -48,6 +48,11 @@ class BildirimServisi {
   Future<void> init([BuildContext? context]) async {
     if (_initialized) return;
 
+    // Bağlam yalnızca burada, ilk await'ten önce okunur; sonrasında
+    // ekran kapanmış olabileceği için tekrar kullanılmaz.
+    final AppLocalizations? yerelL10n =
+        context == null ? null : AppLocalizations.of(context);
+
     try {
       // Timezone veritabanını başlat.
       tz.initializeTimeZones();
@@ -98,7 +103,7 @@ class BildirimServisi {
       }
 
       // Android notification kanallarını oluştur.
-      await _androidKanallariOlustur(context);
+      await _androidKanallariOlustur(yerelL10n);
 
       debugPrint('Bildirim Servisi Başlatıldı: $_initialized');
     } catch (e) {
@@ -118,14 +123,14 @@ class BildirimServisi {
   // ANDROID KANALLARI
   // ============================================================
 
-  Future<void> _androidKanallariOlustur([BuildContext? context]) async {
-    final androidPlugin = _notificationsPlugin
-        .resolvePlatformSpecificImplementation<
+  Future<void> _androidKanallariOlustur([AppLocalizations? yerelL10n]) async {
+    final androidPlugin =
+        _notificationsPlugin.resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
 
     if (androidPlugin == null) return;
 
-    final l10n = await l10nAl(context);
+    final l10n = yerelL10n ?? await cevrimdisiL10n();
 
     final AndroidNotificationChannel genelKanal = AndroidNotificationChannel(
       genelKanalId,
@@ -212,8 +217,8 @@ class BildirimServisi {
   /// Tam zamanlı alarm izni var mı? (Android 12+ özel izin)
   Future<bool> tamZamanliAlarmIzinVar() async {
     try {
-      final androidPlugin = _notificationsPlugin
-          .resolvePlatformSpecificImplementation<
+      final androidPlugin =
+          _notificationsPlugin.resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>();
       if (androidPlugin == null) return false;
       final sonuc = await androidPlugin.canScheduleExactNotifications();
@@ -228,8 +233,8 @@ class BildirimServisi {
   /// bildirimler tam seçtiği saatte gelir.
   Future<bool> tamZamanliAlarmIzinIste() async {
     try {
-      final androidPlugin = _notificationsPlugin
-          .resolvePlatformSpecificImplementation<
+      final androidPlugin =
+          _notificationsPlugin.resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>();
       if (androidPlugin == null) return false;
       final sonuc = await androidPlugin.requestExactAlarmsPermission();
@@ -335,10 +340,12 @@ class BildirimServisi {
     required String icerik,
     BuildContext? context,
   }) async {
-    if (!_initialized) await init(context);
+    final AppLocalizations? yerelL10n =
+        context == null ? null : AppLocalizations.of(context);
+    if (!_initialized) await init();
 
     try {
-      final l10n = await l10nAl(context);
+      final l10n = yerelL10n ?? await cevrimdisiL10n();
 
       final AndroidNotificationDetails androidDetay =
           AndroidNotificationDetails(
@@ -425,8 +432,8 @@ class BildirimServisi {
     String? payload,
     DateTimeComponents? matchDateTimeComponents,
   }) async {
-    final androidPlugin = _notificationsPlugin
-        .resolvePlatformSpecificImplementation<
+    final androidPlugin =
+        _notificationsPlugin.resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
 
     // iOS / web / masaüstü: mod yok, doğrudan zamanla.
@@ -579,10 +586,12 @@ class BildirimServisi {
     int dakika = 0,
     BuildContext? context,
   }) async {
-    if (!_initialized) await init(context);
+    final AppLocalizations? yerelL10n =
+        context == null ? null : AppLocalizations.of(context);
+    if (!_initialized) await init();
 
     try {
-      final l10n = await l10nAl(context);
+      final l10n = yerelL10n ?? await cevrimdisiL10n();
       final simdi = tz.TZDateTime.now(tz.local);
       var planlanan = tz.TZDateTime(
         tz.local,
@@ -608,7 +617,7 @@ class BildirimServisi {
           channelDescription: l10n.bildirimKanalRaporAciklama,
           importance: Importance.high,
           priority: Priority.high,
-        color: AppAccents.primary,
+          color: AppAccents.primary,
         ),
         iOS: const DarwinNotificationDetails(
           presentAlert: true,

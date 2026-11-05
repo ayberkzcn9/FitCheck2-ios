@@ -48,8 +48,8 @@ void main(List<String> yolListesi) {
 
     stdout.writeln(
       '${dosya.uri.pathSegments.last}: ${gorsel.width}x${gorsel.height}  '
-      '${ms} ms  değişti=$degisti  '
-      'dolu ${oncekiDolu} -> ${sonrakiDolu} (${sonrakiDolu - oncekiDolu})',
+      '$ms ms  değişti=$degisti  '
+      'dolu $oncekiDolu -> $sonrakiDolu (${sonrakiDolu - oncekiDolu})',
     );
 
     if (degisti) {

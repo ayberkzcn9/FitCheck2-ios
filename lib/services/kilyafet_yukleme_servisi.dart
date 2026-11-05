@@ -15,13 +15,11 @@
 //  * Test için dış bağımlılıklar (arka plan silici, analiz) enjekte edilebilir.
 
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../models/kiyafet.dart';
-import 'ai_service.dart';
 import 'arka_plan_silme_yardimcisi.dart';
 import 'background_removal_service.dart';
 import 'background_remover_service.dart';

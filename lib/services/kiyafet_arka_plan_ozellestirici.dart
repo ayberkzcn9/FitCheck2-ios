@@ -7,9 +7,7 @@
 // Tuvâl kare (1:1) ve dolabın ızgarasıyla aynı oranı taşır: böylece
 // "ekranda gördüğün" ile "kaydedilen" aynı yerleşimdir.
 
-import 'dart:io';
 import 'dart:math' as math;
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as img;

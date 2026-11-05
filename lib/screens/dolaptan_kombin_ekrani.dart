@@ -706,18 +706,22 @@ class DolaptanKombinStilistiEkraniState
 
     try {
       String parcaListesi = "";
-      if (_sonKombinUst != null)
+      if (_sonKombinUst != null) {
         parcaListesi +=
             "${l10n.ustGiyim}: ${_sonKombinUst!.gorunenBaslik} (${_sonKombinUst!.renk}), ";
-      if (_sonKombinAlt != null)
+      }
+      if (_sonKombinAlt != null) {
         parcaListesi +=
             "${l10n.altGiyim}: ${_sonKombinAlt!.gorunenBaslik} (${_sonKombinAlt!.renk}), ";
-      if (_sonKombinAyakkabi != null)
+      }
+      if (_sonKombinAyakkabi != null) {
         parcaListesi +=
             "${l10n.ayakkabi}: ${_sonKombinAyakkabi!.gorunenBaslik} (${_sonKombinAyakkabi!.renk}), ";
-      if (_sonKombinAksesuar != null)
+      }
+      if (_sonKombinAksesuar != null) {
         parcaListesi +=
             "${l10n.disGiyim}: ${_sonKombinAksesuar!.gorunenBaslik} (${_sonKombinAksesuar!.renk}), ";
+      }
 
       // 👁️ VİZYON: Kombinin gerçek parçaları modele gönderilir (en fazla 4).
       // Böylece puan/yorum desen, kumaş ve tonu gerçekten görerek verilir.

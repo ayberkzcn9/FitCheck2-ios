@@ -1,5 +1,6 @@
 /// Kategori çözümleme yardımcıları.
 /// Tüm ekranlarda (haftalık, anlık, kendi kombin) tek kaynak kullanılır.
+library;
 
 import '../l10n/app_localizations.dart';
 import '../models/kiyafet.dart';
@@ -122,16 +123,59 @@ String kategoriMetindenCikar(String metin) {
   }
 
   // Fallback: Anahtar kelime tabanlı (modelden çıkarımdan farklı olarak daha geniş)
-  if (s.contains('ust') || s.contains('top') || s.contains('bluz') || s.contains('tişört') || s.contains('tisort') || s.contains('gömlek') || s.contains('gomlek') || s.contains('kazak') || s.contains('sweat') || s.contains('hoodie') || s.contains('crop') || s.contains('body')) {
+  if (s.contains('ust') ||
+      s.contains('top') ||
+      s.contains('bluz') ||
+      s.contains('tişört') ||
+      s.contains('tisort') ||
+      s.contains('gömlek') ||
+      s.contains('gomlek') ||
+      s.contains('kazak') ||
+      s.contains('sweat') ||
+      s.contains('hoodie') ||
+      s.contains('crop') ||
+      s.contains('body')) {
     return 'ust';
   }
-  if (s.contains('alt') || s.contains('pantolon') || s.contains('şort') || s.contains('sort') || s.contains('etek') || s.contains('jean') || s.contains('tayt') || s.contains('leggings')) {
+  if (s.contains('alt') ||
+      s.contains('pantolon') ||
+      s.contains('şort') ||
+      s.contains('sort') ||
+      s.contains('etek') ||
+      s.contains('jean') ||
+      s.contains('tayt') ||
+      s.contains('leggings')) {
     return 'alt';
   }
-  if (s.contains('ayakkab') || s.contains('shoe') || s.contains('bot') || s.contains('sneaker') || s.contains('çizme') || s.contains('cizme') || s.contains('loafer') || s.contains('sandal')) {
+  if (s.contains('ayakkab') ||
+      s.contains('shoe') ||
+      s.contains('bot') ||
+      s.contains('sneaker') ||
+      s.contains('çizme') ||
+      s.contains('cizme') ||
+      s.contains('loafer') ||
+      s.contains('sandal')) {
     return 'ayakkabi';
   }
-  if (s.contains('dış') || s.contains('dis ') || s.contains('outer') || s.contains('ceket') || s.contains('mont') || s.contains('aksesuar') || s.contains('accessor') || s.contains('kemer') || s.contains('şapka') || s.contains('sapka') || s.contains('eldiven') || s.contains('atki') || s.contains('atkı') || s.contains('çanta') || s.contains('canta') || s.contains('takı') || s.contains('taki') || s.contains('gözlük') || s.contains('gozluk')) {
+  if (s.contains('dış') ||
+      s.contains('dis ') ||
+      s.contains('outer') ||
+      s.contains('ceket') ||
+      s.contains('mont') ||
+      s.contains('aksesuar') ||
+      s.contains('accessor') ||
+      s.contains('kemer') ||
+      s.contains('şapka') ||
+      s.contains('sapka') ||
+      s.contains('eldiven') ||
+      s.contains('atki') ||
+      s.contains('atkı') ||
+      s.contains('çanta') ||
+      s.contains('canta') ||
+      s.contains('takı') ||
+      s.contains('taki') ||
+      s.contains('gözlük') ||
+      s.contains('gozluk')) {
     return 'dis';
   }
 
@@ -268,27 +312,43 @@ String kiyafetMevsimEtiketi(Kiyafet kiyafet) {
   final kat = kategoriModeldenCikar(kiyafet.kategori);
   final baslik = kiyafet.baslik.toLowerCase();
   if (kat == 'ayakkabi') {
-    if (baslik.contains('bot') || baslik.contains('çizme') || baslik.contains('cizme')) {
+    if (baslik.contains('bot') ||
+        baslik.contains('çizme') ||
+        baslik.contains('cizme')) {
       return 'kishlik';
     }
     return 'dort_mevsim';
   }
   if (kat == 'dis') {
-    if (baslik.contains('mont') || baslik.contains('ceket') || baslik.contains('kaban')) {
+    if (baslik.contains('mont') ||
+        baslik.contains('ceket') ||
+        baslik.contains('kaban')) {
       return 'kishlik';
     }
-    if (baslik.contains('hırka') || baslik.contains('hirka') || baslik.contains('cardigan')) {
+    if (baslik.contains('hırka') ||
+        baslik.contains('hirka') ||
+        baslik.contains('cardigan')) {
       return 'dort_mevsim';
     }
   }
   if (kat == 'ust' || kat == 'alt') {
-    if (baslik.contains('kazak') || baslik.contains('sweat') || baslik.contains('hoodie') ||
-        baslik.contains('jean') || baslik.contains('pantolon') || baslik.contains('tayt')) {
+    if (baslik.contains('kazak') ||
+        baslik.contains('sweat') ||
+        baslik.contains('hoodie') ||
+        baslik.contains('jean') ||
+        baslik.contains('pantolon') ||
+        baslik.contains('tayt')) {
       return 'kishlik';
     }
-    if (baslik.contains('tişört') || baslik.contains('tisort') || baslik.contains('tshirt') ||
-        baslik.contains('şort') || baslik.contains('sort') || baslik.contains('etek') ||
-        baslik.contains('bluz') || baslik.contains('gömlek') || baslik.contains('gomlek')) {
+    if (baslik.contains('tişört') ||
+        baslik.contains('tisort') ||
+        baslik.contains('tshirt') ||
+        baslik.contains('şort') ||
+        baslik.contains('sort') ||
+        baslik.contains('etek') ||
+        baslik.contains('bluz') ||
+        baslik.contains('gömlek') ||
+        baslik.contains('gomlek')) {
       return 'yazlik';
     }
   }

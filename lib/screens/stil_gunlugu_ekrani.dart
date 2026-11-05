@@ -19,7 +19,6 @@ import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
-import '../models/bugun_kombin.dart';
 import '../models/favori_kombin.dart';
 import '../models/kiyafet.dart';
 import '../models/planli_kombin.dart';
@@ -447,7 +446,6 @@ class _StilGunluguEkraniState extends State<StilGunluguEkrani>
                               action: SnackBarAction(
                                 label: l10n.geriAl,
                                 onPressed: () async {
-                                  if (silinen == null) return;
                                   final geri =
                                       await PlanliKombinDeposu().ata(silinen);
                                   if (!mounted) return;

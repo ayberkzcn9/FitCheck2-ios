@@ -7,8 +7,6 @@
 // (Komut, eklenti hataları yüzünden kırmızı bitebilir; build/ui-review
 // klasöründeki PNG'ler yine de üretilir.)
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

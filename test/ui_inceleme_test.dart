@@ -9,7 +9,6 @@
 
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -42,12 +41,10 @@ import 'package:fitcheck/screens/reklamsiz_premium_ekrani.dart';
 import 'package:fitcheck/screens/kendi_kombinim_ekrani.dart';
 import 'package:fitcheck/screens/dolaptan_kombin_ekrani.dart';
 import 'package:fitcheck/screens/seyahat_ekrani.dart';
-import 'package:fitcheck/screens/stil_gunlugu_ekrani.dart';
 import 'package:fitcheck/services/bugun_feed_servisi.dart';
 import 'package:fitcheck/services/kombin_duellosu_motoru.dart';
 import 'package:fitcheck/services/kombin_duellosu_servisi.dart';
 import 'package:fitcheck/services/satin_alma_servisi.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 const String _yaziTipi = 'ReviewFont';
 
@@ -62,9 +59,8 @@ final Uint8List _png = base64Decode(
 ThemeData _tema({Brightness parlaklik = Brightness.light}) {
   final sema = AppTema.renkSemasi(parlaklik);
   final koyu = parlaklik == Brightness.dark;
-  final taban = koyu
-      ? Typography.material2021().white
-      : Typography.material2021().black;
+  final taban =
+      koyu ? Typography.material2021().white : Typography.material2021().black;
   return ThemeData(
     useMaterial3: true,
     colorScheme: sema,
@@ -86,7 +82,8 @@ ThemeData _tema({Brightness parlaklik = Brightness.light}) {
 
 /// Testte olmayan donanım kanallarını (sensör, titreşim) boş yanıtla susturur.
 void _donanimKanallariniSustur() {
-  final haberci = TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+  final haberci =
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
   for (final kanal in <String>[
     'dev.fluttercommunity.plus/sensors/method',
     'dev.fluttercommunity.plus/sensors/accelerometer',
@@ -173,8 +170,7 @@ Future<void> goruntu(WidgetTester tester, String ad) async {
 
     final klasor = Directory('build/ui-review');
     if (!klasor.existsSync()) klasor.createSync(recursive: true);
-    File('${klasor.path}/$ad.png')
-        .writeAsBytesSync(veri.buffer.asUint8List());
+    File('${klasor.path}/$ad.png').writeAsBytesSync(veri.buffer.asUint8List());
   });
 }
 
@@ -208,7 +204,8 @@ Future<void> bekle(WidgetTester tester) async {
 /// engelleriz.
 Future<void> premiumBekle(WidgetTester tester) async {
   await bekle(tester);
-  await tester.pump(SatinAlmaServisi.sorguZamanAsimi + const Duration(seconds: 1));
+  await tester
+      .pump(SatinAlmaServisi.sorguZamanAsimi + const Duration(seconds: 1));
   await bekle(tester);
 }
 
@@ -224,7 +221,9 @@ void main() {
   final ust = _kiyafet('Beyaz Tişört', 'ust', renk: 'Beyaz');
   final alt = _kiyafet('Siyah Pantolon', 'alt');
   final kaban = _kiyafet('Yün Kaban', 'ceket',
-      renk: 'Bej', sonGiyilme: DateTime(2026, 3, 1), eklenme: DateTime(2026, 1, 2));
+      renk: 'Bej',
+      sonGiyilme: DateTime(2026, 3, 1),
+      eklenme: DateTime(2026, 1, 2));
   final ayakkabi = _kiyafet('Beyaz Sneaker', 'ayakkabi', renk: 'Beyaz');
   final gomlek = _kiyafet('Beyaz Gömlek', 'ust',
       renk: 'Beyaz', sonGiyilme: DateTime(2026, 9, 1));
@@ -497,7 +496,10 @@ void main() {
     await bekle(tester);
     await goruntu(tester, '10_duello_tur');
     // ignore: avoid_print
-    print('DIAG once: check=' + find.byIcon(Icons.check_circle_rounded).evaluate().length.toString() + ' dogruYazi=' + find.text('Doğru').evaluate().length.toString() + ' ipucu=' + find.text('Bir kombine dokun').evaluate().length.toString());
+    print('DIAG once: check='
+        '${find.byIcon(Icons.check_circle_rounded).evaluate().length}'
+        ' dogruYazi=${find.text('Doğru').evaluate().length}'
+        ' ipucu=${find.text('Bir kombine dokun').evaluate().length}');
 
     final beklenen =
         DuelMotoru().uret(gardirobum: dolap, adet: 10, tohum: 7).sorular.first;
@@ -622,7 +624,8 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('gardirobum arama', (tester) async {    // Ekran açılışta .env okuyor.
+  testWidgets('gardirobum arama', (tester) async {
+    // Ekran açılışta .env okuyor.
     dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
 
     await telefon(tester);
@@ -744,7 +747,8 @@ void main() {
     _yerlesimHatasiniBildir(tester, 'Izin');
   });
 
-  testWidgets('Alt ekranlar: kendi kombinim ve dolaptan kombin cizilir', (tester) async {
+  testWidgets('Alt ekranlar: kendi kombinim ve dolaptan kombin cizilir',
+      (tester) async {
     SharedPreferences.setMockInitialValues(<String, Object>{});
     dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
     await telefon(tester);
@@ -841,7 +845,8 @@ void main() {
     _yerlesimHatasiniBildir(tester, 'Koyu giriş');
   });
 
-  testWidgets('Cok dilli kontrol: ar (RTL), de, ru - tasma ve yon denetimi', (tester) async {
+  testWidgets('Cok dilli kontrol: ar (RTL), de, ru - tasma ve yon denetimi',
+      (tester) async {
     SharedPreferences.setMockInitialValues(<String, Object>{});
     dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
     await telefon(tester);
@@ -851,8 +856,8 @@ void main() {
 
       await tester.pumpWidget(_uygulama(bugunEkrani(), dil: Locale(dil)));
       await bekle(tester);
-      await goruntu(tester, '44_dil_' + dil + '_bugun');
-      _yerlesimHatasiniBildir(tester, 'Bugun/' + dil);
+      await goruntu(tester, '44_dil_${dil}_bugun');
+      _yerlesimHatasiniBildir(tester, 'Bugun/$dil');
 
       await tester.pumpWidget(
         _uygulama(
@@ -869,19 +874,19 @@ void main() {
         ),
       );
       await bekle(tester);
-      await goruntu(tester, '45_dil_' + dil + '_dolap');
-      _yerlesimHatasiniBildir(tester, 'Dolap/' + dil);
+      await goruntu(tester, '45_dil_${dil}_dolap');
+      _yerlesimHatasiniBildir(tester, 'Dolap/$dil');
 
       await tester.pumpWidget(_uygulama(const GirisEkrani(), dil: Locale(dil)));
       await bekle(tester);
-      await goruntu(tester, '46_dil_' + dil + '_giris');
-      _yerlesimHatasiniBildir(tester, 'Giris/' + dil);
+      await goruntu(tester, '46_dil_${dil}_giris');
+      _yerlesimHatasiniBildir(tester, 'Giris/$dil');
 
       tester.view.physicalSize = const Size(320 * 2, 700 * 2);
       await tester.pumpWidget(_uygulama(const GirisEkrani(), dil: Locale(dil)));
       await bekle(tester);
-      await goruntu(tester, '47_dil_' + dil + '_giris_dar');
-      _yerlesimHatasiniBildir(tester, 'Giris dar/' + dil);
+      await goruntu(tester, '47_dil_${dil}_giris_dar');
+      _yerlesimHatasiniBildir(tester, 'Giris dar/$dil');
     }
   });
 
@@ -895,10 +900,11 @@ void main() {
     // ignore: avoid_print
     print(cikti);
     expect(sonuc.exitCode, 0,
-        reason: 'Tasarim butunlugu kapisi gecti:\n' + cikti);
+        reason: 'Tasarim butunlugu kapisi gecti:\n$cikti');
   });
 
-  testWidgets('Erisilebilirlik: yazi boyutu %200 - tasma denetimi', (tester) async {
+  testWidgets('Erisilebilirlik: yazi boyutu %200 - tasma denetimi',
+      (tester) async {
     SharedPreferences.setMockInitialValues(<String, Object>{});
     dotenv.testLoad(fileInput: 'REMOVE_BG_API_KEY=test');
     await telefon(tester);

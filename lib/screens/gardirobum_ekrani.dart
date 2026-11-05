@@ -10,7 +10,6 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/kiyafet.dart';
-import '../services/ai_service.dart';
 import '../services/arka_plan_silme_yardimcisi.dart';
 import '../services/background_removal_service.dart';
 import '../services/background_remover_service.dart';
@@ -21,14 +20,11 @@ import '../services/kilyafet_yukleme_servisi.dart';
 import '../services/reklam_servisi.dart';
 import '../services/satin_alma_servisi.dart';
 import '../utils/ana_ekran_dialoglar.dart';
-import '../utils/hava_uygunlugu.dart';
-import '../utils/helpers.dart';
 import '../utils/dolap_filtresi.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/bilgi_butonu.dart';
 import '../widgets/izin_gerekce_sayfasi.dart';
 import '../widgets/kiyafet_duzenleyici.dart';
-import '../widgets/stroked_text.dart';
 import '../../theme/design_tokens.dart';
 
 import 'reklamsiz_premium_ekrani.dart';
@@ -666,8 +662,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
                                         final kalan = await ReklamServisi()
                                             .kalanHakGetir();
                                         if (kalan <= 0) {
-                                          if (mounted)
+                                          if (mounted) {
                                             _kombinHakkiBittiDiyaloguGoster();
+                                          }
                                           return;
                                         }
                                         if (dialogContext.mounted) {
@@ -1096,6 +1093,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
 
       if (source == ImageSource.camera) {
         var cameraStatus = await Permission.camera.status;
+        if (!mounted) return;
         if (cameraStatus.isDenied) {
           // Önce neden istediğimizi anlat, sonra sistem penceresini aç.
           final kabul = await IzinGerekce.goster(
@@ -1361,31 +1359,6 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
         await _kiyafetEkleIslemi(ImageSource.camera);
       }
     }
-  }
-
-  Future<String> _gorselAnaliziniTekrarDene({
-    required String sistemPromptu,
-    required String kullaniciMesaji,
-    required Uint8List resimBytes,
-  }) async {
-    Object? sonHata;
-
-    for (int deneme = 1; deneme <= 3; deneme++) {
-      try {
-        return await AiService().hibritAiSorgula(
-          sistemPromptu: sistemPromptu,
-          kullaniciMesaji: kullaniciMesaji,
-          resimler: <Uint8List>[resimBytes],
-        );
-      } catch (e) {
-        sonHata = e;
-        if (deneme < 3) {
-          await Future.delayed(Duration(seconds: deneme * 2));
-        }
-      }
-    }
-
-    throw sonHata ?? const AiServiceException();
   }
 
   void _kiyafetDuzenle(Kiyafet item) {
