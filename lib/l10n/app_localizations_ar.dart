@@ -907,6 +907,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get aiOnayVazgec => 'ليس الآن';
 
   @override
+  String get aiBildirimTesekkur => 'تم استلام بلاغك. شكرًا.';
+
+  @override
+  String get aiBildirimGonder => 'إبلاغ';
+
+  @override
+  String get aiBildirimIcerik =>
+      'إذا كان رد الذكاء الاصطناعي غير لائق أو مضلل، فأبلغنا عنه. يُحفظ نص الرد للمراجعة.';
+
+  @override
+  String get aiBildirimBaslik => 'الإبلاغ عن الرد';
+
+  @override
+  String get aiYanitBildir => 'الإبلاغ عن هذا الرد';
+
+  @override
   String get aiOnayKabul => 'موافق ومتابعة';
 
   @override

@@ -924,6 +924,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get aiOnayVazgec => 'Nicht jetzt';
 
   @override
+  String get aiBildirimTesekkur => 'Deine Meldung ist eingegangen. Danke.';
+
+  @override
+  String get aiBildirimGonder => 'Melden';
+
+  @override
+  String get aiBildirimIcerik =>
+      'Wenn dir diese KI-Antwort unangemessen oder irreführend erscheint, melde sie. Der Antworttext wird zur Prüfung gespeichert.';
+
+  @override
+  String get aiBildirimBaslik => 'Antwort melden';
+
+  @override
+  String get aiYanitBildir => 'Diese Antwort melden';
+
+  @override
   String get aiOnayKabul => 'Zustimmen und fortfahren';
 
   @override

@@ -873,6 +873,22 @@ class AppLocalizationsJa extends AppLocalizations {
   String get aiOnayVazgec => '今はしない';
 
   @override
+  String get aiBildirimTesekkur => '報告を受け付けました。ありがとうございます。';
+
+  @override
+  String get aiBildirimGonder => '報告';
+
+  @override
+  String get aiBildirimIcerik =>
+      'この AI の回答が不適切または誤解を招く場合は報告してください。回答文は確認用に保存されます。';
+
+  @override
+  String get aiBildirimBaslik => '回答を報告';
+
+  @override
+  String get aiYanitBildir => 'この回答を報告';
+
+  @override
   String get aiOnayKabul => '同意して続行';
 
   @override

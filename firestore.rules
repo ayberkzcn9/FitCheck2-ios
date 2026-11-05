@@ -60,6 +60,21 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // Kullanıcıların AI yanıtı bildirimleri; yalnızca oluşturulabilir.
+    match /aiReports/{reportId} {
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly([
+          'uid', 'message', 'reason', 'createdAt'
+        ])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 4000
+        && request.resource.data.reason == 'user_report'
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if false;
+    }
+
     // Deny all collections not explicitly declared above.
     match /{document=**} {
       allow read, write: if false;

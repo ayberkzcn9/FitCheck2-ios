@@ -912,6 +912,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get aiOnayVazgec => 'Vazgeç';
 
   @override
+  String get aiBildirimTesekkur => 'Bildirimin alındı. Teşekkürler.';
+
+  @override
+  String get aiBildirimGonder => 'Bildir';
+
+  @override
+  String get aiBildirimIcerik =>
+      'Bu AI yanıtını uygunsuz veya yanıltıcı bulduysan bize bildir. Yanıt metni incelenmek üzere kaydedilir.';
+
+  @override
+  String get aiBildirimBaslik => 'Yanıtı bildir';
+
+  @override
+  String get aiYanitBildir => 'Bu yanıtı bildir';
+
+  @override
   String get aiOnayKabul => 'Kabul et ve devam et';
 
   @override

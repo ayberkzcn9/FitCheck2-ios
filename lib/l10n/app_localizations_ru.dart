@@ -913,6 +913,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get aiOnayVazgec => 'Не сейчас';
 
   @override
+  String get aiBildirimTesekkur => 'Жалоба получена. Спасибо.';
+
+  @override
+  String get aiBildirimGonder => 'Отправить';
+
+  @override
+  String get aiBildirimIcerik =>
+      'Если этот ответ ИИ кажется неуместным или вводящим в заблуждение, сообщите нам. Текст ответа сохраняется для проверки.';
+
+  @override
+  String get aiBildirimBaslik => 'Жалоба на ответ';
+
+  @override
+  String get aiYanitBildir => 'Пожаловаться на ответ';
+
+  @override
   String get aiOnayKabul => 'Принять и продолжить';
 
   @override

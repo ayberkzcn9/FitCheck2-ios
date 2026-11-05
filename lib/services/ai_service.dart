@@ -98,7 +98,7 @@ class AiService {
         : 'Be flexible about color harmony; also suggest bold and contrasting combinations when they work.';
     final hedefTalimat = kombinHedefiTalimatiniGetir(kombinHedefi);
 
-    return '$sistemPromptu\n\nSTYLIST PERSONALITY AND RESPONSE TONE:\n$kisilikTalimat\n\nUSER PREFERENCES:\n$fitTalimat\n$renkTalimat\n$hedefTalimat';
+    return '$sistemPromptu\n\nSTYLIST PERSONALITY AND RESPONSE TONE:\n$kisilikTalimat\n\nUSER PREFERENCES:\n$fitTalimat\n$renkTalimat\n$hedefTalimat\n\nSAFETY: Never produce sexual, violent, hateful, self-harm, illegal, or minor-related content. Refuse briefly and redirect to fashion. Preserve the requested output format.';
   }
 
   @visibleForTesting

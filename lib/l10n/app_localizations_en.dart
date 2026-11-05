@@ -915,6 +915,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aiOnayVazgec => 'Not now';
 
   @override
+  String get aiBildirimTesekkur => 'Your report was received. Thank you.';
+
+  @override
+  String get aiBildirimGonder => 'Report';
+
+  @override
+  String get aiBildirimIcerik =>
+      'If this AI response seems inappropriate or misleading, report it. The response text is saved for review.';
+
+  @override
+  String get aiBildirimBaslik => 'Report response';
+
+  @override
+  String get aiYanitBildir => 'Report this response';
+
+  @override
   String get aiOnayKabul => 'Accept and continue';
 
   @override

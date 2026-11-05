@@ -49,6 +49,11 @@ void main() {
       'aiOnayIcerik',
       'aiOnayKabul',
       'aiOnayVazgec',
+      'aiYanitBildir',
+      'aiBildirimBaslik',
+      'aiBildirimIcerik',
+      'aiBildirimGonder',
+      'aiBildirimTesekkur',
     ];
     for (final dil in diller) {
       final arb = jsonDecode(

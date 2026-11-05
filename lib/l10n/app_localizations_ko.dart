@@ -875,6 +875,22 @@ class AppLocalizationsKo extends AppLocalizations {
   String get aiOnayVazgec => '나중에';
 
   @override
+  String get aiBildirimTesekkur => '신고가 접수되었습니다. 감사합니다.';
+
+  @override
+  String get aiBildirimGonder => '신고';
+
+  @override
+  String get aiBildirimIcerik =>
+      '이 AI 응답이 부적절하거나 오해를 부를 수 있다면 신고해 주세요. 응답 텍스트는 검토를 위해 저장됩니다.';
+
+  @override
+  String get aiBildirimBaslik => '응답 신고';
+
+  @override
+  String get aiYanitBildir => '이 응답 신고';
+
+  @override
   String get aiOnayKabul => '동의하고 계속';
 
   @override

@@ -926,6 +926,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get aiOnayVazgec => 'Pas maintenant';
 
   @override
+  String get aiBildirimTesekkur => 'Ton signalement a bien été reçu. Merci.';
+
+  @override
+  String get aiBildirimGonder => 'Signaler';
+
+  @override
+  String get aiBildirimIcerik =>
+      'Si cette réponse de l\'IA te semble inappropriée ou trompeuse, signale-la. Le texte est conservé pour examen.';
+
+  @override
+  String get aiBildirimBaslik => 'Signaler la réponse';
+
+  @override
+  String get aiYanitBildir => 'Signaler cette réponse';
+
+  @override
   String get aiOnayKabul => 'Accepter et continuer';
 
   @override

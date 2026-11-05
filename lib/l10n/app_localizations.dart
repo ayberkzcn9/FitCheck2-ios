@@ -1774,6 +1774,36 @@ abstract class AppLocalizations {
   /// **'Vazgeç'**
   String get aiOnayVazgec;
 
+  /// No description provided for @aiBildirimTesekkur.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bildirimin alındı. Teşekkürler.'**
+  String get aiBildirimTesekkur;
+
+  /// No description provided for @aiBildirimGonder.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bildir'**
+  String get aiBildirimGonder;
+
+  /// No description provided for @aiBildirimIcerik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu AI yanıtını uygunsuz veya yanıltıcı bulduysan bize bildir. Yanıt metni incelenmek üzere kaydedilir.'**
+  String get aiBildirimIcerik;
+
+  /// No description provided for @aiBildirimBaslik.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yanıtı bildir'**
+  String get aiBildirimBaslik;
+
+  /// No description provided for @aiYanitBildir.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu yanıtı bildir'**
+  String get aiYanitBildir;
+
   /// No description provided for @aiOnayKabul.
   ///
   /// In tr, this message translates to:

@@ -855,6 +855,21 @@ class AppLocalizationsZh extends AppLocalizations {
   String get aiOnayVazgec => '暂不';
 
   @override
+  String get aiBildirimTesekkur => '已收到您的举报。谢谢。';
+
+  @override
+  String get aiBildirimGonder => '举报';
+
+  @override
+  String get aiBildirimIcerik => '如果此 AI 回复不当或具有误导性，请举报。回复文本将被保存以供审核。';
+
+  @override
+  String get aiBildirimBaslik => '举报回复';
+
+  @override
+  String get aiYanitBildir => '举报此回复';
+
+  @override
   String get aiOnayKabul => '同意并继续';
 
   @override

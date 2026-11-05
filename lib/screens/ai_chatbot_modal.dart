@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -472,6 +474,51 @@ You MUST write your ENTIRE response in **$hedefDil**!
     }
   }
 
+  Future<void> _yanitiBildir(ChatMesaj mesaj) async {
+    final l10n = AppLocalizations.of(context)!;
+    final onay = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.aiBildirimBaslik),
+        content: Text(
+          '${l10n.aiBildirimIcerik}\n\nsupport@fitcheckapp.com',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.anaIptal),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.aiBildirimGonder),
+          ),
+        ],
+      ),
+    );
+    if (onay != true || !mounted) return;
+
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+
+    try {
+      await FirebaseFirestore.instance.collection('aiReports').add({
+        'uid': uid,
+        'message': mesaj.mesaj,
+        'reason': 'user_report',
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.aiBildirimTesekkur),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    } catch (e) {
+      debugPrint('AI raporu gönderilemedi: $e');
+    }
+  }
+
   Widget _buildTemizMesajKarti(String text) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
@@ -932,6 +979,29 @@ You MUST write your ENTIRE response in **$hedefDil**!
                                       ),
                                     )
                                   : _buildTemizMesajKarti(m.mesaj),
+                              if (!m.isUser) ...[
+                                const SizedBox(height: 2),
+                                TextButton.icon(
+                                  onPressed: () => _yanitiBildir(m),
+                                  icon: const Icon(
+                                    Icons.flag_outlined,
+                                    size: 16,
+                                  ),
+                                  label: Text(l10n.aiYanitBildir),
+                                  style: TextButton.styleFrom(
+                                    foregroundColor:
+                                        colorScheme.onSurfaceVariant,
+                                    padding: EdgeInsets.zero,
+                                    minimumSize: const Size(0, 44),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.padded,
+                                    textStyle: TextStyle(
+                                      fontSize: AppText.sizeCaption,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ],
                           ),
                         ),
