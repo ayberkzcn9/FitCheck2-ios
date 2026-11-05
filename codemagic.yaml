@@ -29,10 +29,6 @@ workflows:
       # (ENV_FILE vb.) buradan okunur.
       groups:
         - fitcheck
-      ios_signing:
-        # Otomatik imzalama: Apple hesabı ile profil oluşturur
-        distribution_type: app_store
-        bundle_identifier: com.fitcheck2.app
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -92,16 +88,23 @@ workflows:
         script: |
           cd ios && pod install
 
-      # App ID'de Push ve Sign in with Apple açık olduğu için profil
-      # Codemagic tarafından otomatik oluşturulup projeye bağlanıyor.
+      # Sertifika ve profil Codemagic'e elle yüklenir (Code signing identities).
+      # Otomatik fetch/profil eşleştirme kullanılmıyor.
       - name: iOS imzalamayı ayarla
         script: |
-          keychain initialize
-          app-store-connect fetch-signing-files "com.fitcheck2.app" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
           xcode-project use-profiles
+
+      - name: İmza teşhisi
+        script: |
+          echo "=== Kurulu profiller ==="
+          for f in "$HOME/Library/MobileDevice/Provisioning Profiles"/*.mobileprovision; do
+            [ -e "$f" ] || continue
+            security cms -D -i "$f" 2>/dev/null | plutil -extract Name raw - 2>/dev/null || true
+          done
+          echo "=== Kod imzalama kimlikleri ==="
+          security find-identity -v -p codesigning || true
+          echo "=== Proje imza ayarları ==="
+          grep -E "CODE_SIGN_STYLE|PROVISIONING_PROFILE_SPECIFIER|CODE_SIGN_IDENTITY|DEVELOPMENT_TEAM" ios/Runner.xcodeproj/project.pbxproj || true
 
       - name: iOS build (IPA)
         script: |
