@@ -356,35 +356,38 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
               ),
               const SizedBox(height: 20),
               // Birincil teklif: sınırsız kullanım. Ödüllü reklam ikincil.
-              FilledButton.icon(
-                icon: const Icon(Icons.workspace_premium_rounded, size: 20),
-                label: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
-                    style: const TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                ),
-                style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                  backgroundColor: AppAccents.successDark,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: AppRadius.lgRadius,
-                  ),
-                ),
-                onPressed: () {
-                  HapticFeedback.selectionClick();
-                  Navigator.pop(ctx);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => const ReklamsizPremiumEkrani(),
+              if (SatinAlmaServisi.premiumSunuluyor)
+                FilledButton.icon(
+                  icon: const Icon(Icons.workspace_premium_rounded, size: 20),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
-                  );
-                },
-              ),
+                  ),
+                  style: FilledButton.styleFrom(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    backgroundColor: AppAccents.successDark,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: AppRadius.lgRadius,
+                    ),
+                  ),
+                  onPressed: () {
+                    HapticFeedback.selectionClick();
+                    Navigator.pop(ctx);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const ReklamsizPremiumEkrani(),
+                      ),
+                    );
+                  },
+                ),
               if (ReklamServisi.reklamlarEtkinMi) ...[
-                const SizedBox(height: 8),
+                if (SatinAlmaServisi.premiumSunuluyor)
+                  const SizedBox(height: 8),
                 OutlinedButton.icon(
                   icon: Icon(Icons.play_circle_fill_rounded,
                       color: colors.onSurfaceVariant, size: 20),

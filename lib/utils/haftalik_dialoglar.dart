@@ -70,30 +70,33 @@ class HaftalikDialoglar {
               const SizedBox(height: 20),
               // Birincil teklif: sınırsız kullanım. Ödüllü reklam ikincil
               // (çerçeveli) görünümde sunulur ki premium'u gölgelemesin.
-              FilledButton.icon(
-                icon: const Icon(Icons.workspace_premium_rounded, size: 20),
-                label: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
-                    style: const TextStyle(fontWeight: FontWeight.w600),
+              if (SatinAlmaServisi.premiumSunuluyor)
+                FilledButton.icon(
+                  icon: const Icon(Icons.workspace_premium_rounded, size: 20),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.premiumGec(SatinAlmaServisi.ornek.aylikFiyat),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
+                    ),
                   ),
-                ),
-                style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-                  backgroundColor: AppAccents.successDark,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: AppRadius.mdRadius,
+                  style: FilledButton.styleFrom(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    backgroundColor: AppAccents.successDark,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: AppRadius.mdRadius,
+                    ),
                   ),
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                    _premiumEkraniniAc(context);
+                  },
                 ),
-                onPressed: () {
-                  Navigator.pop(ctx);
-                  _premiumEkraniniAc(context);
-                },
-              ),
               if (ReklamServisi.reklamlarEtkinMi) ...[
-                const SizedBox(height: 8),
+                if (SatinAlmaServisi.premiumSunuluyor)
+                  const SizedBox(height: 8),
                 OutlinedButton.icon(
                   icon: Icon(
                     Icons.play_circle_fill_rounded,

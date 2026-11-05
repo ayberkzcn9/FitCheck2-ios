@@ -51,10 +51,18 @@ class SatinAlmaServisi extends ChangeNotifier {
   /// yani yanlışlıkla açık bırakılsa bile deneme yoksa rozet gösterilmez.
   static const int denemeGunSayisi = 7;
 
+  /// iOS ilk sürümde premium gizlenir; abonelik yalnızca Android'de sunulur.
+  /// Apple IAP ve sunucu doğrulaması eklenince bu karar güncellenir.
+  static bool premiumSunuluyorKarari(TargetPlatform platform) =>
+      platform == TargetPlatform.android;
+
+  static bool get premiumSunuluyor =>
+      premiumSunuluyorKarari(defaultTargetPlatform);
+
   /// Bu sürümde yalnızca Firebase Functions üzerinden doğrulanabilen Play
   /// satın alımları etkinleştirilir. iOS doğrulaması eklenene kadar kapalıdır.
   static bool get satinAlmaDogrulanabilir =>
-      Platform.isAndroid &&
+      premiumSunuluyor &&
       AnalyticsServisi.firebaseHazir &&
       FirebaseAuth.instance.currentUser != null;
 

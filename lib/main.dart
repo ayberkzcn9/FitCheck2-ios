@@ -106,7 +106,9 @@ Future<UygulamaBaslatmaSonucu> uygulamaHazirliklariniBaslat() async {
   // kartı ve satın alma diyalogları gerçek fiyatı göstersin) ve yerelde premium
   // görünen aboneliğin hâlâ geçerli olduğu düzenli aralıkla doğrulanır.
   // Arayüzü bekletmemek için await edilmez; hata durumunda akış etkilenmez.
-  unawaited(SatinAlmaServisi.ornek.baslat());
+  if (SatinAlmaServisi.premiumSunuluyor) {
+    unawaited(SatinAlmaServisi.ornek.baslat());
+  }
 
   if (!kIsWeb && ReklamServisi.reklamlarEtkinMi) {
     // AdMob başlatma + ATT izni + ön yükleme tek yerde: ReklamServisi.

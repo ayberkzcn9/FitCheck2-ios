@@ -986,49 +986,50 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
               ),
             ),
 
-            const SizedBox(height: 24),
-
-            _buildSectionHeader(context, 'Premium'),
-            _buildPremiumCard(
-              child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
-                leading: _buildIconContainer(
-                  Icons.workspace_premium_rounded,
-                  iconColor: const Color(0xFF1F7A5A),
-                ),
-                title: Text(
-                  l10n.premiumAylikBaslik,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: AppText.sizeBodySmall,
-                    color: colors.onSurface,
+            if (SatinAlmaServisi.premiumSunuluyor) ...[
+              const SizedBox(height: 24),
+              _buildSectionHeader(context, 'Premium'),
+              _buildPremiumCard(
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+                  leading: _buildIconContainer(
+                    Icons.workspace_premium_rounded,
+                    iconColor: const Color(0xFF1F7A5A),
                   ),
-                ),
-                subtitle: Text(
-                  l10n.premiumAylikAltBaslik(
-                    SatinAlmaServisi.ornek.aylikFiyat,
-                  ),
-                  style: TextStyle(
-                    fontSize: AppText.sizeCaption,
-                    color: colors.onSurfaceVariant,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                trailing: Icon(Icons.arrow_forward_ios_rounded,
-                    size: 14, color: colors.onSurfaceVariant),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      settings: const RouteSettings(
-                          name: AnalyticsServisi.ekranPremium),
-                      builder: (_) => const ReklamsizPremiumEkrani(),
+                  title: Text(
+                    l10n.premiumAylikBaslik,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: AppText.sizeBodySmall,
+                      color: colors.onSurface,
                     ),
-                  );
-                },
+                  ),
+                  subtitle: Text(
+                    l10n.premiumAylikAltBaslik(
+                      SatinAlmaServisi.ornek.aylikFiyat,
+                    ),
+                    style: TextStyle(
+                      fontSize: AppText.sizeCaption,
+                      color: colors.onSurfaceVariant,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  trailing: Icon(Icons.arrow_forward_ios_rounded,
+                      size: 14, color: colors.onSurfaceVariant),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        settings: const RouteSettings(
+                            name: AnalyticsServisi.ekranPremium),
+                        builder: (_) => const ReklamsizPremiumEkrani(),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
+            ],
 
             const SizedBox(height: 24),
 
