@@ -1633,6 +1633,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get googlePlay5YildizDestek => '在 Google Play 给我们 5 星好评以表支持 ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama => '在 App Store 给我们评分以支持我们 ⭐';
+
+  @override
   String get googlePlayAcilamadi => '无法打开 Google Play。';
 
   @override

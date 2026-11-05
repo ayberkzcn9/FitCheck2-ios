@@ -1747,6 +1747,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'Поддержите нас 5 звёздами в Google Play ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama =>
+      'Поддержите нас оценкой в App Store ⭐';
+
+  @override
   String get googlePlayAcilamadi => 'Не удалось открыть Google Play.';
 
   @override

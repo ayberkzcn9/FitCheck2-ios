@@ -11,7 +11,6 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import '../l10n/app_localizations.dart';
 import '../models/kiyafet.dart';
 import '../services/arka_plan_silme_yardimcisi.dart';
-import '../services/background_removal_service.dart';
 import '../services/background_remover_service.dart';
 import '../services/gorsel_yon_service.dart';
 import '../services/kesim_kalite_denetimi.dart';
@@ -120,7 +119,6 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
   @override
   void initState() {
     super.initState();
-    BackgroundRemovalService().initialize();
   }
 
   String _kategoriEtiketiGetir(String katCode, AppLocalizations l10n) {
@@ -1178,10 +1176,9 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
           final currentFile = files[i];
           final orijinalBytes = await currentFile.readAsBytes();
 
-          // 🎯 Arkaplanı sil — önce YEREL sunucu (rembg, gerekirse tekrar),
-          // olmazsa bulut (remove.bg). İkisi de olmazsa kullanıcıya sorulur;
-          // sessizce arka planlı kaydetmek "arka plan silinmiyor" izlenimi
-          // veriyordu.
+          // 🎯 Arkaplanı sil — yalnızca kendi sunucumuz (rembg, gerekirse
+          // tekrar). Fotoğraf üçüncü taraf bir bulut servisine gönderilmez;
+          // silinemezse kullanıcıya sorulur.
           if (!mounted) return;
           setState(() {
             _currentStep = 'bg_removal';
@@ -1195,11 +1192,6 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
             bgRemoved = await ArkaPlanSilmeYardimcisi.dene(
               orijinalBytes,
               yerel: BackgroundRemoverService.removeBackground,
-              bulut: (baytlar) => BackgroundRemovalService().removeBackground(
-                imageBytes: baytlar,
-                size: 'auto',
-                format: 'png',
-              ),
             );
             if (bgRemoved != null) break;
 

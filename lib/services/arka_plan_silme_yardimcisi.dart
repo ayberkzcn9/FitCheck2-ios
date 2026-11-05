@@ -6,17 +6,16 @@
 // görüyordu ve hatanın nedenini anlayamıyordu.
 //
 // Sıra:
-//   1) Yerel sunucu (rembg) — hızlı ve ücretsiz. Geçici ağ hataları için
-//      varsayılan olarak **bir kez daha** denenir.
-//   2) Bulut (remove.bg) — yedek.
-//   3) İkisi de olmazsa `null` döner; karar ekranı kullanıcıya bırakır.
+//   1) Yerel/HTTPS sunucu (rembg) — geçici ağ hataları için **bir kez daha**
+//      denenir.
+//   2) İsteğe bağlı yedek silici (varsayılan: yok). Uygulama, kullanıcı
+//      fotoğrafını adı gizlilik politikasında geçmeyen bir üçüncü tarafa
+//      göndermemek için yedek silici geçmez; başarısızlıkta karar kullanıcıya
+//      sorulur.
+//   3) Başarısızsa `null` döner; karar ekranı kullanıcıya bırakır.
 //
 // Sınıf, arka plan silici fonksiyonları DIŞARIDAN alır: böylece gerçek ağ
 // çağrısı yapmadan test edilebilir (bkz. test/arka_plan_silme_yardimcisi_test.dart).
-//
-// NOT: remove.bg hesabında kredi bittiğinde servis `null` döner (istisna
-// atmaz); bu yüzden "geçersiz yanıt" kontrolü tek başına yeterli değildir —
-// aşağıdaki durum makinesi her iki durumu da aynı şekilde ele alır.
 
 import '../theme/design_tokens.dart';
 import 'dart:typed_data';
@@ -41,7 +40,7 @@ class ArkaPlanSilmeYardimcisi {
   static Future<Uint8List?> dene(
     Uint8List girdi, {
     required ArkaPlanSilici yerel,
-    required ArkaPlanSilici bulut,
+    ArkaPlanSilici? bulut,
     int yerelDeneme = yerelDenemeSayisi,
     Duration bekleme = denemelerArasiBekleme,
   }) async {
@@ -54,6 +53,9 @@ class ArkaPlanSilmeYardimcisi {
       }
     }
 
+    // Yedek silici yalnızca açıkça verildiyse çağrılır; uygulama artık
+    // üçüncü taraf bir bulut servisi geçmiyor.
+    if (bulut == null) return null;
     final bulutSonuc = await _guvenli(bulut, girdi);
     return gecerliMi(bulutSonuc) ? bulutSonuc : null;
   }

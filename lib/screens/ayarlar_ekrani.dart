@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -1894,7 +1895,9 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                           color: colors.onSurface),
                     ),
                     subtitle: Text(
-                      l10n.googlePlay5YildizDestek,
+                      defaultTargetPlatform == TargetPlatform.android
+                          ? l10n.googlePlay5YildizDestek
+                          : l10n.appStoreDegerlendirAciklama,
                       style: TextStyle(
                           fontSize: AppText.sizeCaption,
                           color: colors.onSurfaceVariant,
@@ -1904,32 +1907,46 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                         size: 16, color: colors.onSurfaceVariant),
                     onTap: () async {
                       HapticFeedback.lightImpact();
-                      final marketUrl =
-                          Uri.parse('market://details?id=com.fitcheck2.app');
-                      final webUrl = Uri.parse(
-                          'https://play.google.com/store/apps/details?id=com.fitcheck2.app');
+
+                      // Android: Play Store sayfası. iOS: App Store sayfası.
+                      // iOS derlemesinde başka bir platformun mağaza adı veya
+                      // bağlantısı gösterilmez (App Store Kılavuzu 2.3.10).
+                      if (!kIsWeb &&
+                          defaultTargetPlatform == TargetPlatform.android) {
+                        final marketUrl =
+                            Uri.parse('market://details?id=com.fitcheck2.app');
+                        final webUrl = Uri.parse(
+                            'https://play.google.com/store/apps/details?id=com.fitcheck2.app');
+
+                        try {
+                          if (await canLaunchUrl(marketUrl)) {
+                            await launchUrl(marketUrl,
+                                mode: LaunchMode.externalNonBrowserApplication);
+                          } else {
+                            await launchUrl(webUrl,
+                                mode: LaunchMode.externalApplication);
+                          }
+                        } catch (_) {
+                          try {
+                            await launchUrl(webUrl,
+                                mode: LaunchMode.externalApplication);
+                          } catch (_) {
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(l10n.googlePlayAcilamadi,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w600))),
+                            );
+                          }
+                        }
+                        return;
+                      }
 
                       try {
-                        if (await canLaunchUrl(marketUrl)) {
-                          await launchUrl(marketUrl,
-                              mode: LaunchMode.externalNonBrowserApplication);
-                        } else {
-                          await launchUrl(webUrl,
-                              mode: LaunchMode.externalApplication);
-                        }
-                      } catch (_) {
-                        try {
-                          await launchUrl(webUrl,
-                              mode: LaunchMode.externalApplication);
-                        } catch (_) {
-                          if (!context.mounted) return;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(l10n.googlePlayAcilamadi,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.w600))),
-                          );
-                        }
+                        await InAppReview.instance.openStoreListing();
+                      } catch (e) {
+                        debugPrint('App Store sayfası açılamadı: $e');
                       }
                     },
                   ),

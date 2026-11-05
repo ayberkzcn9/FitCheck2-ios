@@ -1662,6 +1662,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get googlePlay5YildizDestek => 'Google Play에서 별점 5점으로 개발자를 응원해 주세요 ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama => 'App Store에서 평가해 주시면 큰 힘이 됩니다 ⭐';
+
+  @override
   String get googlePlayAcilamadi => 'Google Play를 열 수 없습니다.';
 
   @override

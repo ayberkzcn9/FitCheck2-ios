@@ -1748,6 +1748,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Support us by rating 5 stars on Google Play ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama =>
+      'Support us by rating us on the App Store ⭐';
+
+  @override
   String get googlePlayAcilamadi => 'Could not open Google Play.';
 
   @override

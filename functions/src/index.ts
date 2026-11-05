@@ -333,6 +333,19 @@ export const deleteAccount = onCall(async (request) => {
     );
   }
 
+  // Kullanıcının bildirdiği AI yanıtları da kişisel veri içerir (uid + metin).
+  const reportsSnapshot = await db
+    .collection("aiReports")
+    .where("uid", "==", uid)
+    .limit(401)
+    .get();
+  if (reportsSnapshot.size > 400) {
+    throw new HttpsError(
+      "failed-precondition",
+      "Too many report records to delete in one request.",
+    );
+  }
+
   const appleTokenRef = db.collection("appleTokens").doc(uid);
   const appleTokenSnapshot = await appleTokenRef.get();
   const appleRefreshToken = appleTokenSnapshot.data()?.refreshToken;
@@ -350,10 +363,15 @@ export const deleteAccount = onCall(async (request) => {
 
   try {
     if (profileSnapshot.exists) await profileRef.delete();
-    if (!claimsSnapshot.empty || appleTokenSnapshot.exists) {
+    if (
+      !claimsSnapshot.empty ||
+      appleTokenSnapshot.exists ||
+      !reportsSnapshot.empty
+    ) {
       const batch = db.batch();
       for (const claim of claimsSnapshot.docs) batch.delete(claim.ref);
       if (appleTokenSnapshot.exists) batch.delete(appleTokenRef);
+      for (const report of reportsSnapshot.docs) batch.delete(report.ref);
       await batch.commit();
     }
     await getAuth().deleteUser(uid);
@@ -365,7 +383,8 @@ export const deleteAccount = onCall(async (request) => {
       if (
         profileSnapshot.exists ||
         !claimsSnapshot.empty ||
-        appleTokenSnapshot.exists
+        appleTokenSnapshot.exists ||
+        !reportsSnapshot.empty
       ) {
         const restore = db.batch();
         if (profileSnapshot.exists) {
@@ -373,6 +392,9 @@ export const deleteAccount = onCall(async (request) => {
         }
         for (const claim of claimsSnapshot.docs) {
           restore.set(claim.ref, claim.data());
+        }
+        for (const report of reportsSnapshot.docs) {
+          restore.set(report.ref, report.data());
         }
         if (appleTokenSnapshot.exists) {
           restore.set(appleTokenRef, appleTokenSnapshot.data()!);

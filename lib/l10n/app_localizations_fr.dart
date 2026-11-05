@@ -1770,6 +1770,10 @@ class AppLocalizationsFr extends AppLocalizations {
       'Soutenez-nous en nous attribuant 5 étoiles sur Google Play ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama =>
+      'Soutenez-nous en nous notant sur l\'App Store ⭐';
+
+  @override
   String get googlePlayAcilamadi => 'Impossible d\'ouvrir Google Play.';
 
   @override

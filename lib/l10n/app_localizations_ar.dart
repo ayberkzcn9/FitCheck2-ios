@@ -1732,6 +1732,9 @@ class AppLocalizationsAr extends AppLocalizations {
       'ادعمنا بتقييم 5 نجوم على Google Play ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama => 'ادعمنا بتقييمنا على App Store ⭐';
+
+  @override
   String get googlePlayAcilamadi => 'تعذر فتح Google Play.';
 
   @override

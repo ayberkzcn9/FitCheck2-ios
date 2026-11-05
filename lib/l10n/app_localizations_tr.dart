@@ -1750,6 +1750,10 @@ class AppLocalizationsTr extends AppLocalizations {
       'Google Play\'de 5 yıldız vererek destek olun ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama =>
+      'App Store\'da değerlendirerek destek olun ⭐';
+
+  @override
   String get googlePlayAcilamadi => 'Google Play açılamadı.';
 
   @override

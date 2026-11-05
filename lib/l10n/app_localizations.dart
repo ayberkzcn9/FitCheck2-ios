@@ -3274,6 +3274,12 @@ abstract class AppLocalizations {
   /// **'Google Play\'de 5 yıldız vererek destek olun ⭐'**
   String get googlePlay5YildizDestek;
 
+  /// No description provided for @appStoreDegerlendirAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'App Store\'da değerlendirerek destek olun ⭐'**
+  String get appStoreDegerlendirAciklama;
+
   /// No description provided for @googlePlayAcilamadi.
   ///
   /// In tr, this message translates to:

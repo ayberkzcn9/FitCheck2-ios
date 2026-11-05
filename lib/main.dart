@@ -26,7 +26,6 @@ import 'widgets/modals/ai_onay_modal.dart';
 import 'services/ai_service.dart';
 import 'services/analytics_servisi.dart';
 import 'services/auth_servisi.dart';
-import 'services/background_removal_service.dart';
 import 'services/bildirim_servisi.dart';
 import 'services/bildirim_zamanlayici.dart';
 import 'services/fcm_service.dart';
@@ -48,8 +47,6 @@ Future<void> main() async {
   };
 
   await dotenv.load(fileName: '.env');
-
-  BackgroundRemovalService().initialize();
 
   final prefs = await SharedPreferences.getInstance();
   final bool onboardingTamamlandi =

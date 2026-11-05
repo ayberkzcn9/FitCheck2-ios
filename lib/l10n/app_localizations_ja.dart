@@ -1658,6 +1658,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get googlePlay5YildizDestek => 'Google Playで5つ星評価をつけて応援してください ⭐';
 
   @override
+  String get appStoreDegerlendirAciklama => 'App Store での評価で応援してください ⭐';
+
+  @override
   String get googlePlayAcilamadi => 'Google Playを開けませんでした。';
 
   @override

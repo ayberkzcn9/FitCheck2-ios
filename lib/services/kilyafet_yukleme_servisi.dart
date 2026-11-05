@@ -21,7 +21,6 @@ import 'package:image_picker/image_picker.dart';
 
 import '../models/kiyafet.dart';
 import 'arka_plan_silme_yardimcisi.dart';
-import 'background_removal_service.dart';
 import 'background_remover_service.dart';
 import 'gorsel_yon_service.dart';
 import 'kiyafet_analiz_servisi.dart';
@@ -103,11 +102,6 @@ class KilyafetYuklemeServisi {
         (Uint8List baytlar) => ArkaPlanSilmeYardimcisi.dene(
               baytlar,
               yerel: BackgroundRemoverService.removeBackground,
-              bulut: (b) => BackgroundRemovalService().removeBackground(
-                imageBytes: b,
-                size: 'auto',
-                format: 'png',
-              ),
             );
 
     final analizEt = analiz ??
