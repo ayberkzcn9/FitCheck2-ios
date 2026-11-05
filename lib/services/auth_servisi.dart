@@ -418,6 +418,20 @@ class AuthServisi {
       final userCredential = await _auth.signInWithCredential(credential);
       final user = userCredential.user;
 
+      final authorizationCode = appleCredential.authorizationCode;
+      if (authorizationCode.isNotEmpty) {
+        try {
+          await FirebaseFunctions.instanceFor(region: 'europe-west1')
+              .httpsCallable('storeAppleToken')
+              .call(<String, Object>{'code': authorizationCode})
+              .timeout(const Duration(seconds: 15));
+        } catch (e) {
+          // Giriş tamamlandı; token saklanamazsa hesap silmede Apple iptali
+          // yapılamayabilir. Kullanıcıyı girişten mahrum bırakma.
+          debugPrint('Apple authorization code storage failed: $e');
+        }
+      }
+
       if (user != null) {
         final adSoyad = <String?>[
           appleCredential.givenName,

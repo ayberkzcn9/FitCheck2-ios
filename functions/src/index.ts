@@ -7,6 +7,7 @@ import {
   getFirestore,
 } from "firebase-admin/firestore";
 import { GoogleAuth } from "google-auth-library";
+import jwt from "jsonwebtoken";
 import { setGlobalOptions } from "firebase-functions/v2";
 import { HttpsError, onCall } from "firebase-functions/v2/https";
 
@@ -220,6 +221,87 @@ export const getSubscriptionEntitlement = onCall(async (request) => {
   return { known: true, active };
 });
 
+const APPLE_CLIENT_ID = process.env.APPLE_CLIENT_ID ?? "com.fitcheck2.app";
+const APPLE_TEAM_ID = process.env.APPLE_TEAM_ID ?? "";
+const APPLE_KEY_ID = process.env.APPLE_KEY_ID ?? "";
+const APPLE_PRIVATE_KEY = process.env.APPLE_PRIVATE_KEY_BASE64
+  ? Buffer.from(process.env.APPLE_PRIVATE_KEY_BASE64, "base64").toString("utf8")
+  : (process.env.APPLE_PRIVATE_KEY ?? "").replace(/\\n/g, "\n");
+
+function appleConfigured(): boolean {
+  return Boolean(APPLE_TEAM_ID && APPLE_KEY_ID && APPLE_PRIVATE_KEY);
+}
+
+function appleClientSecret(): string {
+  return jwt.sign({}, APPLE_PRIVATE_KEY, {
+    algorithm: "ES256",
+    expiresIn: "5m",
+    audience: "https://appleid.apple.com",
+    issuer: APPLE_TEAM_ID,
+    subject: APPLE_CLIENT_ID,
+    keyid: APPLE_KEY_ID,
+  });
+}
+
+async function revokeAppleToken(refreshToken: string): Promise<void> {
+  const response = await fetch("https://appleid.apple.com/auth/revoke", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      token: refreshToken,
+      client_id: APPLE_CLIENT_ID,
+      client_secret: appleClientSecret(),
+      token_type_hint: "refresh_token",
+    }),
+  });
+  if (!response.ok) {
+    // Token zaten geçersiz olabilir; hesap silmeyi engelleme.
+    console.warn("Apple token revocation was not confirmed.");
+  }
+}
+
+export const storeAppleToken = onCall(async (request) => {
+  const uid = requireCaller(request.auth?.uid);
+  const code = (request.data as { code?: unknown } | null)?.code;
+  if (typeof code !== "string" || code.length < 10 || code.length > 4096) {
+    throw new HttpsError("invalid-argument", "Invalid Apple authorization code.");
+  }
+  if (!appleConfigured()) {
+    throw new HttpsError(
+      "failed-precondition",
+      "Apple token storage is not configured.",
+    );
+  }
+
+  const response = await fetch("https://appleid.apple.com/auth/token", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "authorization_code",
+      code,
+      client_id: APPLE_CLIENT_ID,
+      client_secret: appleClientSecret(),
+    }),
+  });
+  if (!response.ok) {
+    throw new HttpsError("unavailable", "Apple token exchange failed.");
+  }
+  const data = (await response.json()) as { refresh_token?: string };
+  if (!data.refresh_token) {
+    throw new HttpsError("unavailable", "Apple refresh token was not returned.");
+  }
+
+  await db.collection("appleTokens").doc(uid).set(
+    {
+      uid,
+      refreshToken: data.refresh_token,
+      updatedAt: FieldValue.serverTimestamp(),
+    },
+    { merge: true },
+  );
+  return { stored: true };
+});
+
 export const deleteAccount = onCall(async (request) => {
   const uid = requireCaller(request.auth?.uid);
   const authTime = request.auth?.token.auth_time;
@@ -251,11 +333,27 @@ export const deleteAccount = onCall(async (request) => {
     );
   }
 
+  const appleTokenRef = db.collection("appleTokens").doc(uid);
+  const appleTokenSnapshot = await appleTokenRef.get();
+  const appleRefreshToken = appleTokenSnapshot.data()?.refreshToken;
+  if (
+    typeof appleRefreshToken === "string" &&
+    appleRefreshToken.length > 0 &&
+    appleConfigured()
+  ) {
+    try {
+      await revokeAppleToken(appleRefreshToken);
+    } catch (error) {
+      console.warn("Apple token revocation failed; continuing deletion.");
+    }
+  }
+
   try {
     if (profileSnapshot.exists) await profileRef.delete();
-    if (!claimsSnapshot.empty) {
+    if (!claimsSnapshot.empty || appleTokenSnapshot.exists) {
       const batch = db.batch();
       for (const claim of claimsSnapshot.docs) batch.delete(claim.ref);
+      if (appleTokenSnapshot.exists) batch.delete(appleTokenRef);
       await batch.commit();
     }
     await getAuth().deleteUser(uid);
@@ -264,13 +362,20 @@ export const deleteAccount = onCall(async (request) => {
     // Auth silme başarısız olduysa profili ve entitlement kayıtlarını geri koy;
     // kullanıcı yarım silinmiş hesapla bırakılmasın.
     try {
-      if (profileSnapshot.exists || !claimsSnapshot.empty) {
+      if (
+        profileSnapshot.exists ||
+        !claimsSnapshot.empty ||
+        appleTokenSnapshot.exists
+      ) {
         const restore = db.batch();
         if (profileSnapshot.exists) {
           restore.set(profileRef, profileSnapshot.data()!);
         }
         for (const claim of claimsSnapshot.docs) {
           restore.set(claim.ref, claim.data());
+        }
+        if (appleTokenSnapshot.exists) {
+          restore.set(appleTokenRef, appleTokenSnapshot.data()!);
         }
         await restore.commit();
       }
