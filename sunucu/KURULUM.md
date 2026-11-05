@@ -219,3 +219,20 @@ Kalite farkı bu test fotoğraflarında küçük olduğu için canlıda `silueta
 
 Durdurma sırasında arka plan silme çalışmaz: eski sürümler fotoğrafı sessizce
 arka planıyla kaydeder, 1.0.30+ sürümler kullanıcıya sorar.
+
+## HTTPS (Caddy + sslip.io)
+
+Uygulama kişisel fotoğrafları yalnızca HTTPS üzerinden gönderir.
+
+- Genel adres: `https://129-159-12-161.sslip.io`
+- Caddy: `/etc/caddy/Caddyfile` (`sunucu/Caddyfile`), 80/443 → `127.0.0.1:8000`
+- Sertifika: Caddy otomatik Let's Encrypt
+- Oracle Cloud güvenlik listesinde **80 ve 443 ingress** açık olmalı.
+- `BG_REMOVE_BASE_URL` HTTPS olmalı; HTTP adresleri istemci tarafından yok sayılır.
+- `BG_REMOVE_API_KEY` yalnızca ortamdan okunur; kaynakta sabit anahtar yoktur.
+
+Kontrol:
+
+```bash
+curl -sS https://129-159-12-161.sslip.io/health
+```
