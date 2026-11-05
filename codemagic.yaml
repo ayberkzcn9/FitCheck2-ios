@@ -92,10 +92,15 @@ workflows:
         script: |
           cd ios && pod install
 
-      # Sertifika ve profil Codemagic'e elle yüklenir (Code signing identities).
-      # Otomatik fetch, Apple API'sinde takıldığı için kullanılmıyor.
+      # App ID'de Push ve Sign in with Apple açık olduğu için profil
+      # Codemagic tarafından otomatik oluşturulup projeye bağlanıyor.
       - name: iOS imzalamayı ayarla
         script: |
+          keychain initialize
+          app-store-connect fetch-signing-files "com.fitcheck2.app" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
           xcode-project use-profiles
 
       - name: iOS build (IPA)
