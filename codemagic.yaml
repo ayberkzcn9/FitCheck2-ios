@@ -41,13 +41,7 @@ workflows:
         # veya burada tanımlayın (gizli tutmak için UI tercih edilir)
         FLUTTER_BUILD_MODE: release
 
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-      cancel_previous_builds: true
+    # No automatic triggers: start builds manually to control macOS minutes.
 
     scripts:
       - name: Flutter bağımlılıkları
@@ -184,13 +178,7 @@ workflows:
       vars:
         FLUTTER_BUILD_MODE: release
 
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-      cancel_previous_builds: true
+    # No automatic triggers: start builds manually to control macOS minutes.
 
     scripts:
       - name: Flutter bağımlılıkları
