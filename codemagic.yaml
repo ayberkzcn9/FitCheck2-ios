@@ -29,6 +29,10 @@ workflows:
       # (ENV_FILE vb.) buradan okunur.
       groups:
         - fitcheck
+      # Yüklenen sertifika ve profili build makinesine kurar.
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.fitcheck2.app
       flutter: stable
       xcode: latest
       cocoapods: default
