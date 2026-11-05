@@ -16,7 +16,9 @@ Otomatik denetimler:
 import io, os, re, sys, colorsys, json
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-KOK = r'D:\indirilenler\Yeni klasor43\lib'
+# Depo köküne göre çözülür; CI'da (macOS/Linux) da aynı yol çalışır.
+KOK = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'lib')
 L10N = os.path.join(KOK, 'l10n')
 
 hatalar = []

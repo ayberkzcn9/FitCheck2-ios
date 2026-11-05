@@ -209,10 +209,31 @@ Future<void> premiumBekle(WidgetTester tester) async {
   await bekle(tester);
 }
 
+/// İnceleme görselleri için gerçek bir yazı tipi bulur.
+///
+/// Test ortamının varsayılan fontu her karakteri kare çizdiği için taşma
+/// ölçümü yanıltıcı olur. Yol platforma göre aranır; hiçbiri yoksa test
+/// varsayılan fontla devam eder.
+File? _incelemeYaziTipi() {
+  const adaylar = <String>[
+    r'C:\Windows\Fonts\arial.ttf',
+    '/System/Library/Fonts/Supplemental/Arial.ttf',
+    '/System/Library/Fonts/Arial.ttf',
+    '/Library/Fonts/Arial.ttf',
+    '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
+    '/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf',
+  ];
+  for (final yol in adaylar) {
+    final dosya = File(yol);
+    if (dosya.existsSync()) return dosya;
+  }
+  return null;
+}
+
 void main() {
   setUpAll(() async {
-    final font = File(r'C:\Windows\Fonts\arial.ttf');
-    if (!font.existsSync()) return;
+    final font = _incelemeYaziTipi();
+    if (font == null) return;
     final loader = FontLoader(_yaziTipi)
       ..addFont(Future.value(font.readAsBytesSync().buffer.asByteData()));
     await loader.load();
