@@ -50,15 +50,39 @@ workflows:
         script: |
           flutter pub get
 
-      # .env dosyasını Codemagic ortam değişkeninden oluştur
+      # .env dosyasını Codemagic ortam değişkeninden oluştur.
+      # Boşsa build'i durdur: anahtarlar olmadan AI özellikleri çalışmaz.
       - name: .env dosyası oluştur
         script: |
-          echo "$ENV_FILE" > .env
+          if [ -z "${ENV_FILE:-}" ]; then
+            echo "HATA: ENV_FILE tanımlı değil. Codemagic > Environment variables bölümüne ekleyin."
+            exit 1
+          fi
+          printf '%s\n' "$ENV_FILE" > .env
 
-      # iOS Firebase yapılandırması
+      # iOS Firebase yapılandırması depoda zaten var; yalnızca secret
+      # verilmişse üzerine yaz. Boş secret dosyayı bozmasın.
       - name: GoogleService-Info.plist yerleştir
         script: |
-          echo "$GOOGLE_SERVICE_INFO_PLIST" | base64 --decode > ios/Runner/GoogleService-Info.plist
+          if [ -n "${GOOGLE_SERVICE_INFO_PLIST:-}" ]; then
+            echo "$GOOGLE_SERVICE_INFO_PLIST" | base64 --decode > ios/Runner/GoogleService-Info.plist
+          else
+            echo "GOOGLE_SERVICE_INFO_PLIST tanımlı değil; depodaki dosya kullanılacak."
+          fi
+
+      # TestFlight aynı build numarasını ikinci kez kabul etmez.
+      # pubspec'teki numaranın üzerine Codemagic build sayacını ekle.
+      - name: Build numarası hesapla
+        script: |
+          BASE=$(sed -n 's/^version:.*+//p' pubspec.yaml | tr -d '[:space:]')
+          BASE=${BASE:-0}
+          EFFECTIVE=$((BASE + BUILD_NUMBER))
+          echo "BUILD_NUMBER_EFFECTIVE=$EFFECTIVE" >> $CM_ENV
+          echo "CFBundleVersion: $EFFECTIVE"
+
+      - name: Testler
+        script: |
+          flutter test --reporter compact
 
       - name: CocoaPods kur
         script: |
@@ -76,6 +100,7 @@ workflows:
       - name: iOS build (IPA)
         script: |
           flutter build ipa --release \
+            --build-number=$BUILD_NUMBER_EFFECTIVE \
             --obfuscate \
             --split-debug-info=build/symbols-ios
 
@@ -118,12 +143,30 @@ workflows:
 
       - name: .env dosyası oluştur
         script: |
-          echo "$ENV_FILE" > .env
+          if [ -z "${ENV_FILE:-}" ]; then
+            echo "HATA: ENV_FILE tanımlı değil. Codemagic > Environment variables bölümüne ekleyin."
+            exit 1
+          fi
+          printf '%s\n' "$ENV_FILE" > .env
 
-      # Android Firebase yapılandırması
+      # Android Firebase yapılandırması depoda zaten var; yalnızca secret
+      # verilmişse üzerine yaz.
       - name: google-services.json yerleştir
         script: |
-          echo "$GOOGLE_SERVICES_JSON" | base64 --decode > android/app/google-services.json
+          if [ -n "${GOOGLE_SERVICES_JSON:-}" ]; then
+            echo "$GOOGLE_SERVICES_JSON" | base64 --decode > android/app/google-services.json
+          else
+            echo "GOOGLE_SERVICES_JSON tanımlı değil; depodaki dosya kullanılacak."
+          fi
+
+      # Play aynı versionCode'u kabul etmez.
+      - name: Build numarası hesapla
+        script: |
+          BASE=$(sed -n 's/^version:.*+//p' pubspec.yaml | tr -d '[:space:]')
+          BASE=${BASE:-0}
+          EFFECTIVE=$((BASE + BUILD_NUMBER))
+          echo "BUILD_NUMBER_EFFECTIVE=$EFFECTIVE" >> $CM_ENV
+          echo "versionCode: $EFFECTIVE"
 
       # İmzalama anahtarı (keystore)
       - name: Keystore hazırla
@@ -137,6 +180,7 @@ workflows:
       - name: Android AAB build
         script: |
           flutter build appbundle --release \
+            --build-number=$BUILD_NUMBER_EFFECTIVE \
             --obfuscate \
             --split-debug-info=build/symbols
 

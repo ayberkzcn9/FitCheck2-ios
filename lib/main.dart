@@ -46,7 +46,13 @@ Future<void> main() async {
     return AiOnayModal.goster(context);
   };
 
-  await dotenv.load(fileName: '.env');
+  // .env depoda tutulmaz; CI'da ortam değişkeninden üretilir. Dosya yoksa
+  // uygulama çökmesin: anahtarlar --dart-define ile de verilebilir.
+  try {
+    await dotenv.load(fileName: '.env');
+  } catch (e) {
+    debugPrint('Uyarı: .env yüklenemedi ($e).');
+  }
 
   final prefs = await SharedPreferences.getInstance();
   final bool onboardingTamamlandi =
