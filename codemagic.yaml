@@ -103,19 +103,60 @@ workflows:
           echo "=== Kurulu profiller ==="
           for f in "$HOME/Library/MobileDevice/Provisioning Profiles"/*.mobileprovision; do
             [ -e "$f" ] || continue
+            echo "-- $f"
             security cms -D -i "$f" 2>/dev/null | plutil -extract Name raw - 2>/dev/null || true
+            security cms -D -i "$f" 2>/dev/null | plutil -extract UUID raw - 2>/dev/null || true
+            security cms -D -i "$f" 2>/dev/null | plutil -extract Entitlements.aps-environment raw - 2>/dev/null || true
+            security cms -D -i "$f" 2>/dev/null | plutil -extract Entitlements.com.apple.developer.applesignin xml1 -o - 2>/dev/null || true
           done
           echo "=== Kod imzalama kimlikleri ==="
           security find-identity -v -p codesigning || true
           echo "=== Proje imza ayarları ==="
           grep -E "CODE_SIGN_STYLE|PROVISIONING_PROFILE_SPECIFIER|CODE_SIGN_IDENTITY|DEVELOPMENT_TEAM" ios/Runner.xcodeproj/project.pbxproj || true
 
+      - name: IPA dışa aktarım profilini sabitle
+        script: |
+          cat > ios/ExportOptions.plist <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store-connect</string>
+            <key>destination</key>
+            <string>export</string>
+            <key>signingStyle</key>
+            <string>manual</string>
+            <key>teamID</key>
+            <string>M2KMC8X2N9</string>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>com.fitcheck2.app</key>
+              <string>ayberk ozcan</string>
+            </dict>
+          </dict>
+          </plist>
+          PLIST
+          plutil -lint ios/ExportOptions.plist
+
       - name: iOS build (IPA)
         script: |
           flutter build ipa --release \
             --build-number=$BUILD_NUMBER_EFFECTIVE \
+            --export-options-plist=ios/ExportOptions.plist \
             --obfuscate \
             --split-debug-info=build/symbols-ios
+
+      - name: IPA çıktısını doğrula
+        script: |
+          shopt -s nullglob
+          ipas=(build/ios/ipa/*.ipa)
+          if [ ${#ipas[@]} -eq 0 ]; then
+            echo "HATA: Xcode arşivi oluşturdu ancak IPA export edilmedi."
+            find build/ios -maxdepth 4 -type f -print | head -100
+            exit 1
+          fi
+          echo "IPA hazır: ${ipas[0]}"
 
     artifacts:
       - build/ios/ipa/*.ipa
