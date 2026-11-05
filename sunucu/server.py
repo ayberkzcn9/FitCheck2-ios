@@ -50,9 +50,9 @@ from starlette.concurrency import run_in_threadpool
 # ---------------------------------------------------------------------------
 # Ayarlar
 # ---------------------------------------------------------------------------
-API_KEY = os.getenv(
-    "BG_REMOVE_API_KEY", "uIplFP4EIh0-9ARqmOnNc-S4g8AgOKYi-tEBZcmJ_qA"
-)
+API_KEY = os.getenv("BG_REMOVE_API_KEY")
+if not API_KEY:
+    raise RuntimeError("BG_REMOVE_API_KEY must be set in the environment")
 ADMIN_KEY = os.getenv("BG_ADMIN_KEY", "change-this-admin-key")
 MODEL = os.getenv("BG_MODEL", "u2net")
 POST_PROCESS = os.getenv("BG_POST_PROCESS", "0") not in ("0", "false", "False")

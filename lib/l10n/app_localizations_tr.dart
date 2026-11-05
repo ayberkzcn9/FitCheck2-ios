@@ -909,6 +909,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get girisYapApple => 'Apple ile Giriş Yap';
 
   @override
+  String get aiOnayVazgec => 'Vazgeç';
+
+  @override
+  String get aiOnayKabul => 'Kabul et ve devam et';
+
+  @override
+  String get aiOnayIcerik =>
+      'Kıyafet fotoğrafların ve yazdığın metinler, stil analizi ve kombin önerisi için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar arka plan silme için kendi sunucumuzda da işlenir. Veriler yalnızca isteğini yanıtlamak için kullanılır; tarafımızca kalıcı olarak saklanmaz. Devam etmek için açık rıza vermen gerekiyor.';
+
+  @override
+  String get aiOnayBaslik => 'AI veri paylaşımı';
+
+  @override
   String get girisBeniHatirla => 'Beni hatırla';
 
   @override
@@ -968,7 +981,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get kullanimKosullariMetni =>
-      'FITCHECK KULLANIM KOŞULLARI VE HİZMET SÖZLEŞMESİ\n\nSon Güncelleme Tarihi: 27 Ağustos 2026\n\nLütfen FitCheck mobil uygulamasını (“Uygulama”) kullanmadan önce bu Kullanım Koşulları’nı (“Sözleşme”) dikkatlice okuyunuz. Uygulamayı indirerek, erişerek veya kullanarak bu Sözleşme’de yer alan tüm şartları kabul etmiş sayılırsınız.\n\n1. TARAFLAR VE AMAÇ\nBu Sözleşme, FitCheck uygulamasının geliştiricisi ile Uygulama’yı indiren ve kullanan bireysel kullanıcı (\"Kullanıcı\") arasında akdedilmiştir. Uygulama; dijital gardırop oluşturma, kıyafet takibi, hava durumuna uygun kombin önerileri ve AI destekli stil danışmanlığı sunar.\n\n2. HİZMETİN KAPSAMI VE KULLANIM ŞARTLARI\n• Yaş Sınırı: Uygulamayı kullanmak için en az 13 yaşında olmanız gerekmektedir.\n• Kullanıcı Bilgileri: Kullanıcı, profil aşamasında sunduğu ad, cinsiyet, tarz ve renk tercihlerinin doğruluğundan sorumludur.\n• Tavsiye Niteliği: Yapay zeka tarafından sunulan stil puanları, satın alma önerileri ve çamaşır günü hatırlatmaları tamamen tavsiye niteliğindedir.\n• Hava Durumu Verileri: Hava durum bilgileri anlık konum bilgisine dayalı olarak sunulmaktadır. Olası sapmalardan Şirket sorumlu tutulamaz.\n\n3. FİKRİ MÜLKİYET VE İÇERİK HAKLARI\nYüklediğiniz kıyafet görsellerinin fikri mülkiyeti size aittir. FitCheck logosu, tasarımı, yazılım kodları ve algoritmaları tamamen FitCheck\'e aittir.\n\n4. GİZLİLİK VE VERİ GÜVENLİĞİ\nKıyafet görselleriniz ve kombin geçmişiniz öncelikli olarak cihazınızın yerel hafızasında saklanır. Konum verileri yalnızca anlık hava durumunu almak için kullanılır.\n\n5. SORUMLULUĞUN SINIRLANDIRILMASI\nFitCheck, hizmetin kesintisiz devam edeceğini garanti etmez. Cihaz değişikliği veya uygulama silinmesi sebebiyle veri kayıplarından sorumlu tutulamaz.\n\n6. İLETİŞİM\nSorularınız için bizimle Ayarlar sekmesindeki iletişim alanından veya destek@fitcheckapp.com adresinden iletişime geçebilirsiniz.\n\n--- SÖZLEŞMENİN SONU ---\nLütfen aşağıdaki butona basarak şartları onaylayınız.';
+      'FITCHECK KULLANIM KOŞULLARI VE HİZMET SÖZLEŞMESİ\n\nSon Güncelleme Tarihi: 27 Ağustos 2026\n\nLütfen FitCheck mobil uygulamasını (“Uygulama”) kullanmadan önce bu Kullanım Koşulları’nı (“Sözleşme”) dikkatlice okuyunuz. Uygulamayı indirerek, erişerek veya kullanarak bu Sözleşme’de yer alan tüm şartları kabul etmiş sayılırsınız.\n\n1. TARAFLAR VE AMAÇ\nBu Sözleşme, FitCheck uygulamasının geliştiricisi ile Uygulama’yı indiren ve kullanan bireysel kullanıcı (\"Kullanıcı\") arasında akdedilmiştir. Uygulama; dijital gardırop oluşturma, kıyafet takibi, hava durumuna uygun kombin önerileri ve AI destekli stil danışmanlığı sunar.\n\n2. HİZMETİN KAPSAMI VE KULLANIM ŞARTLARI\n• Yaş Sınırı: Uygulamayı kullanmak için en az 13 yaşında olmanız gerekmektedir.\n• Kullanıcı Bilgileri: Kullanıcı, profil aşamasında sunduğu ad, cinsiyet, tarz ve renk tercihlerinin doğruluğundan sorumludur.\n• Tavsiye Niteliği: Yapay zeka tarafından sunulan stil puanları, satın alma önerileri ve çamaşır günü hatırlatmaları tamamen tavsiye niteliğindedir.\n• Hava Durumu Verileri: Hava durum bilgileri anlık konum bilgisine dayalı olarak sunulmaktadır. Olası sapmalardan Şirket sorumlu tutulamaz.\n\n3. FİKRİ MÜLKİYET VE İÇERİK HAKLARI\nYüklediğiniz kıyafet görsellerinin fikri mülkiyeti size aittir. FitCheck logosu, tasarımı, yazılım kodları ve algoritmaları tamamen FitCheck\'e aittir.\n\n4. GİZLİLİK VE VERİ GÜVENLİĞİ\nKıyafet görselleriniz ve kombin geçmişiniz cihazınızın yerel hafızasında saklanır. AI özelliklerini kullandığınızda, Gizlilik Politikası\'nda açıklanan veriler Gemini ve Groq\'a gönderilir. Konum verileri yalnızca anlık hava durumunu almak için kullanılır. Konum verileri yalnızca anlık hava durumunu almak için kullanılır.\n\n5. SORUMLULUĞUN SINIRLANDIRILMASI\nFitCheck, hizmetin kesintisiz devam edeceğini garanti etmez. Cihaz değişikliği veya uygulama silinmesi sebebiyle veri kayıplarından sorumlu tutulamaz.\n\n6. İLETİŞİM\nSorularınız için bizimle Ayarlar sekmesindeki iletişim alanından veya destek@fitcheckapp.com adresinden iletişime geçebilirsiniz.\n\n--- SÖZLEŞMENİN SONU ---\nLütfen aşağıdaki butona basarak şartları onaylayınız.';
 
   @override
   String chatKarsilama(Object hava) {
@@ -1752,7 +1765,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gizlilikMadde1Icerik =>
-      'FitCheck uygulaması, kişisel gardırop yönetiminizi ve kombin önerilerinizi optimize etmek için çalışır. Uygulamaya eklediğiniz kıyafet fotoğrafları, tarz ve cinsiyet tercihleriniz cihazınızda yerel olarak saklanır.';
+      'FitCheck uygulaması, kişisel gardırop yönetiminizi ve kombin önerilerinizi optimize etmek için çalışır. Uygulamaya eklediğiniz kıyafet fotoğrafları, tarz ve cinsiyet tercihleriniz cihazınızda yerel olarak saklanır. AI özelliklerinde, 5. bölümde açıklanan veriler Gemini ve Groq\'a gönderilir.';
 
   @override
   String get gizlilikMadde2Baslik => '2. Konum İzinleri';
@@ -2963,7 +2976,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get gizlilikMadde5Icerik =>
-      'Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Fotoğrafın kendisi cihazınızda kalır; dilediğiniz zaman gardıroptan silebilirsiniz.';
+      'Kıyafet fotoğrafları, arka planı silinmek üzere kendi sunucumuzda işlenir; stil analizi ve kombin önerileri için Google (Gemini) ve Groq yapay zekâ servislerine gönderilir. Fotoğraflar yalnızca isteğinizi yanıtlamak için işlenir, tarafımızca kalıcı olarak saklanmaz ve reklam amacıyla kullanılmaz. Orijinal fotoğraf da yalnızca istenen analiz için bu AI servislerine gönderilir ve tarafımızca kalıcı olarak saklanmaz.';
 
   @override
   String get bugunSekmesi => 'Bugün';

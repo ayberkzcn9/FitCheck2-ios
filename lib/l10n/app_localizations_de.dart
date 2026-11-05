@@ -921,6 +921,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get girisYapApple => 'Mit Apple anmelden';
 
   @override
+  String get aiOnayVazgec => 'Nicht jetzt';
+
+  @override
+  String get aiOnayKabul => 'Zustimmen und fortfahren';
+
+  @override
+  String get aiOnayIcerik =>
+      'Deine Kleidungsfotos und Texte werden für Stilanalyse und Outfit-Vorschläge an die KI-Dienste Google (Gemini) und Groq gesendet. Fotos werden außerdem auf unserem Server zur Hintergrundentfernung verarbeitet. Die Daten werden nur zur Beantwortung deiner Anfrage verwendet und von uns nicht dauerhaft gespeichert. Für die Fortsetzung ist deine ausdrückliche Zustimmung erforderlich.';
+
+  @override
+  String get aiOnayBaslik => 'KI-Datenfreigabe';
+
+  @override
   String get girisBeniHatirla => 'Angemeldet bleiben';
 
   @override
@@ -980,7 +993,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get kullanimKosullariMetni =>
-      'FITCHECK NUTZUNGSBEDINGUNGEN UND DIENSTLEISTUNGSVEREINBARUNG\n\nLetzte Aktualisierung: 27. August 2026\n\nBitte lies diese Nutzungsbedingungen („Vereinbarung“) sorgfältig durch, bevor du die mobile FitCheck-Anwendung („App“) nutzt. Durch das Herunterladen, den Zugriff oder die Nutzung der App stimmst du allen Bedingungen dieser Vereinbarung zu.\n\n1. PARTEIEN UND ZWECK\nDiese Vereinbarung wird zwischen dem Entwickler der FitCheck-App und dem einzelnen Nutzer („Nutzer“) geschlossen, der die App herunterlädt und nutzt. Die App bietet digitale Schrankverwaltung, Kleidungsverfolgung, wettergerechte Outfit-Vorschläge und KI-gestützte Stilberatung.\n\n2. UMFANG DES DIENSTES UND NUTZUNGSBEDINGUNGEN\n• Altersgrenze: Du musst mindestens 13 Jahre alt sein, um die App zu nutzen.\n• Nutzerinformationen: Der Nutzer ist für die Richtigkeit von Name, Geschlecht, Stil- und Farbpräferenzen bei der Profilerstellung verantwortlich.\n• Empfehlungscharakter: Von KI bereitgestellte Stilbewertungen, Kaufvorschläge und Waschtag-Erinnerungen dienen ausschließlich als Empfehlung.\n• Wetterdaten: Wetterinformationen basieren auf dem Echtzeit-Standort. Das Unternehmen haftet nicht für eventuelle Abweichungen.\n\n3. GEISTIGES EIGENTUM UND INHALTSRECHTE\nDas geistige Eigentum der hochgeladenen Kleiderfotos liegt bei dir. Das FitCheck-Logo, Design, Softwarecode und Algorithmen gehören vollständig zu FitCheck.\n\n4. DATENSCHUTZ UND SICHERHEIT\nDeine Kleiderfotos und Outfit-Historie werden primär im lokalen Speicher deines Geräts gespeichert. Standortdaten werden nur zum Abrufen des aktuellen Wetters verwendet.\n\n5. HAFTUNGSBESCHRÄNKUNG\nFitCheck garantiert keinen ununterbrochenen Betrieb und haftet nicht für Datenverluste durch Gerätewechsel oder Deinstallation der App.\n\n6. KONTAKT\nBei Fragen erreichst du uns über den Kontaktbereich im Einstellungs-Tab oder unter support@fitcheckapp.com.\n\n--- ENDE DER VEREINBARUNG ---\nBitte akzeptiere die Bedingungen durch Tippen auf den Button unten.';
+      'FITCHECK NUTZUNGSBEDINGUNGEN UND DIENSTLEISTUNGSVEREINBARUNG\n\nLetzte Aktualisierung: 27. August 2026\n\nBitte lies diese Nutzungsbedingungen („Vereinbarung“) sorgfältig durch, bevor du die mobile FitCheck-Anwendung („App“) nutzt. Durch das Herunterladen, den Zugriff oder die Nutzung der App stimmst du allen Bedingungen dieser Vereinbarung zu.\n\n1. PARTEIEN UND ZWECK\nDiese Vereinbarung wird zwischen dem Entwickler der FitCheck-App und dem einzelnen Nutzer („Nutzer“) geschlossen, der die App herunterlädt und nutzt. Die App bietet digitale Schrankverwaltung, Kleidungsverfolgung, wettergerechte Outfit-Vorschläge und KI-gestützte Stilberatung.\n\n2. UMFANG DES DIENSTES UND NUTZUNGSBEDINGUNGEN\n• Altersgrenze: Du musst mindestens 13 Jahre alt sein, um die App zu nutzen.\n• Nutzerinformationen: Der Nutzer ist für die Richtigkeit von Name, Geschlecht, Stil- und Farbpräferenzen bei der Profilerstellung verantwortlich.\n• Empfehlungscharakter: Von KI bereitgestellte Stilbewertungen, Kaufvorschläge und Waschtag-Erinnerungen dienen ausschließlich als Empfehlung.\n• Wetterdaten: Wetterinformationen basieren auf dem Echtzeit-Standort. Das Unternehmen haftet nicht für eventuelle Abweichungen.\n\n3. GEISTIGES EIGENTUM UND INHALTSRECHTE\nDas geistige Eigentum der hochgeladenen Kleiderfotos liegt bei dir. Das FitCheck-Logo, Design, Softwarecode und Algorithmen gehören vollständig zu FitCheck.\n\n4. DATENSCHUTZ UND SICHERHEIT\nDeine Kleiderfotos und Outfit-Historie werden auf deinem Gerät gespeichert. Wenn du KI-Funktionen nutzt, werden die in der Datenschutzrichtlinie beschriebenen Daten an Gemini und Groq gesendet. Standortdaten werden nur zum Abrufen des aktuellen Wetters verwendet. Standortdaten werden nur zum Abrufen des aktuellen Wetters verwendet.\n\n5. HAFTUNGSBESCHRÄNKUNG\nFitCheck garantiert keinen ununterbrochenen Betrieb und haftet nicht für Datenverluste durch Gerätewechsel oder Deinstallation der App.\n\n6. KONTAKT\nBei Fragen erreichst du uns über den Kontaktbereich im Einstellungs-Tab oder unter support@fitcheckapp.com.\n\n--- ENDE DER VEREINBARUNG ---\nBitte akzeptiere die Bedingungen durch Tippen auf den Button unten.';
 
   @override
   String chatKarsilama(Object hava) {
@@ -1769,7 +1782,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get gizlilikMadde1Icerik =>
-      'FitCheck optimiert deine persönliche Schrankverwaltung und Outfit-Empfehlungen. In die App hochgeladene Kleiderfotos, Stil- und Geschlechterpräferenzen werden lokal auf deinem Gerät gespeichert.';
+      'FitCheck optimiert deine persönliche Schrankverwaltung und Outfit-Empfehlungen. In die App hochgeladene Kleiderfotos, Stil- und Geschlechterpräferenzen werden lokal auf deinem Gerät gespeichert. Bei KI-Funktionen werden die in Abschnitt 5 beschriebenen Daten an Gemini und Groq gesendet.';
 
   @override
   String get gizlilikMadde2Baslik => '2. Standortberechtigungen';
@@ -2997,7 +3010,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get gizlilikMadde5Icerik =>
-      'Kleidungsfotos werden auf unserem eigenen Server verarbeitet, um den Hintergrund zu entfernen, und für Stilanalyse und Outfit-Vorschläge an die KI-Dienste von Google (Gemini) und Groq gesendet. Die Fotos werden nur zur Beantwortung deiner Anfrage verarbeitet, von uns nicht dauerhaft gespeichert und nicht für Werbung genutzt. Das Foto selbst bleibt auf deinem Gerät; du kannst es jederzeit aus der Garderobe löschen.';
+      'Kleidungsfotos werden auf unserem eigenen Server verarbeitet, um den Hintergrund zu entfernen, und für Stilanalyse und Outfit-Vorschläge an die KI-Dienste von Google (Gemini) und Groq gesendet. Die Fotos werden nur zur Beantwortung deiner Anfrage verarbeitet, von uns nicht dauerhaft gespeichert und nicht für Werbung genutzt. Das Originalfoto wird ebenfalls nur für die angeforderte Analyse an diese KI-Dienste gesendet und von uns nicht dauerhaft gespeichert.';
 
   @override
   String get bugunSekmesi => 'Heute';

@@ -50,13 +50,6 @@
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Arka plan silme sunucusuna bağlanmak için yerel ağ erişimi kullanılır.</string>
 
-	<!-- HTTP (Oracle Cloud sunucusu HTTP olduğu için) -->
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-
 	<!-- Google Reklam (AdMob) iOS uygulama kimliği -->
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7826590886723969~8662375996</string>

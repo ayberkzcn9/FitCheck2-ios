@@ -20,8 +20,10 @@ import 'screens/giris_ekrani.dart';
 
 // BİLEŞENLER
 import 'widgets/yukleme_ekrani.dart';
+import 'widgets/modals/ai_onay_modal.dart';
 
 // SERVİSLER
+import 'services/ai_service.dart';
 import 'services/analytics_servisi.dart';
 import 'services/auth_servisi.dart';
 import 'services/background_removal_service.dart';
@@ -33,8 +35,17 @@ import 'services/satin_alma_servisi.dart';
 import '../theme/design_tokens.dart';
 import 'theme/app_tema.dart';
 
+final GlobalKey<NavigatorState> fitcheckNavigatorKey =
+    GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  AiService.onayIste = () async {
+    final context = fitcheckNavigatorKey.currentContext;
+    if (context == null) return false;
+    return AiOnayModal.goster(context);
+  };
 
   await dotenv.load(fileName: '.env');
 
@@ -381,6 +392,7 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
     return MaterialApp(
       title: 'FitCheck',
       debugShowCheckedModeBanner: false,
+      navigatorKey: fitcheckNavigatorKey,
       navigatorObservers: [_analyticsObserver],
       locale: _locale,
       localizationsDelegates: const [

@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
 import '../main.dart';
+import '../services/ai_onay_servisi.dart';
 import '../services/analytics_servisi.dart';
 import '../services/auth_servisi.dart';
 import '../utils/auth_hata_utils.dart';
@@ -16,6 +17,7 @@ import '../services/bildirim_zamanlayici.dart';
 import '../services/satin_alma_servisi.dart';
 import 'reklamsiz_premium_ekrani.dart';
 import '../widgets/dil_secim_modal.dart';
+import '../widgets/modals/ai_onay_modal.dart';
 import '../widgets/modals/gizlilik_politikasi_modal.dart';
 import '../widgets/modals/hesabi_sil_modal.dart';
 import '../widgets/modals/stil_tercihleri_modal.dart';
@@ -86,6 +88,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
 
   // 📊 GİZLİLİK VE ANALİTİK
   bool _analitikIzinli = false;
+  bool _aiOnayVar = false;
 
   // ℹ️ KURULU SÜRÜM (paketten okunur, elle güncellenmez)
   String _surumMetni = '';
@@ -341,6 +344,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
     final prefs = await SharedPreferences.getInstance();
     final hafiza = StilistHafizasi();
     await hafiza.yukle();
+    final aiOnay = await AiOnayServisi.onayVarMi();
     if (!mounted) return;
 
     setState(() {
@@ -376,6 +380,7 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
       _varsayilanSehir =
           prefs.getString('varsayilan_sehir') ?? 'Otomatik (GPS)';
       _analitikIzinli = AnalyticsServisi.veriToplamaIzinli;
+      _aiOnayVar = aiOnay;
       _stilistHafizasiAcik = hafiza.acik;
       _stilistHafizaNotSayisi = hafiza.notlar.length;
     });
@@ -2011,6 +2016,46 @@ class _AyarlarEkraniState extends State<AyarlarEkrani> {
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         size: 14, color: colors.onSurfaceVariant),
                     onTap: () => GizlilikPolitikasiModal.goster(context),
+                  ),
+                  Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.4)),
+                  SwitchListTile.adaptive(
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg, vertical: AppSpacing.xs),
+                    secondary: _buildIconContainer(
+                      Icons.auto_awesome_rounded,
+                      iconColor: colors.primary,
+                    ),
+                    title: Text(
+                      l10n.aiOnayBaslik,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppText.sizeBodySmall,
+                          color: colors.onSurface),
+                    ),
+                    subtitle: Text(
+                      l10n.aiOnayIcerik,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontSize: AppText.sizeCaption,
+                          color: colors.onSurfaceVariant,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    value: _aiOnayVar,
+                    activeThumbColor: colors.primary,
+                    onChanged: (deger) async {
+                      if (!deger) {
+                        await AiOnayServisi.onayiKaldir();
+                        if (mounted) setState(() => _aiOnayVar = false);
+                        return;
+                      }
+                      final onay = await AiOnayModal.goster(context);
+                      if (!mounted || !onay) return;
+                      await AiOnayServisi.onayVer();
+                      if (mounted) setState(() => _aiOnayVar = true);
+                    },
                   ),
                 ],
               ),

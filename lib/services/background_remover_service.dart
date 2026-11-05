@@ -9,11 +9,11 @@
 //    [_fallbackApiKey] kullanılır.
 //
 // ⚙️ Ayarlar `.env` dosyasından okunur:
-//    BG_REMOVE_BASE_URL=http://192.168.1.XX:8000
+//    BG_REMOVE_BASE_URL=https://129-159-12-161.sslip.io
 //    BG_REMOVE_API_KEY=...
 //
-//    - Android Emülatör : http://10.0.2.2:8000
-//    - Gerçek cihaz     : http://192.168.1.XX:8000 (telefon ve PC aynı WiFi'de)
+//    HTTP adresleri bilerek kabul edilmez; kişisel fotoğraflar yalnızca
+//    geçerli sertifikalı HTTPS üzerinden gönderilir.
 
 import 'dart:io';
 
@@ -23,25 +23,23 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 class BackgroundRemoverService {
-  /// 🔧 Fallback adres. `.env`'de `BG_REMOVE_BASE_URL` varsa o kullanılır.
-  /// Oracle Cloud sunucusu (genel IP, her yerden erişilebilir).
-  static const String _fallbackBaseUrl = 'http://129.159.12.161:8000';
+  /// Varsayılan adres yalnızca HTTPS olabilir. Eski HTTP adresi bilerek
+  /// kullanılmaz; kişisel fotoğraflar şifresiz taşınmamalıdır.
+  static const String _fallbackBaseUrl = 'https://129-159-12-161.sslip.io';
 
-  /// 🔧 Fallback API key. `.env`'de `BG_REMOVE_API_KEY` varsa o kullanılır.
-  static const String _fallbackApiKey = 'uIplFP4EIh0-9ARqmOnNc-S4g8AgOKYi-tEBZcmJ_qA';
-
-  /// Sunucu adresi (önce `.env`, yoksa fallback).
+  /// Sunucu adresi: `.env` yalnızca HTTPS ise kullanılır; değilse güvenli
+  /// varsayılana düşülür.
   static String get baseUrl {
     final fromEnv = dotenv.env['BG_REMOVE_BASE_URL']?.trim();
-    return (fromEnv != null && fromEnv.isNotEmpty) ? fromEnv : _fallbackBaseUrl;
+    if (fromEnv != null && fromEnv.startsWith('https://')) return fromEnv;
+    return _fallbackBaseUrl;
   }
 
-  /// Sunucu API anahtarı (önce `.env`, yoksa fallback).
+  /// API anahtarı yalnızca ortamdan gelir; kaynakta sabit anahtar tutulmaz.
   static String get apiKey {
     final fromEnv = dotenv.env['BG_REMOVE_API_KEY']?.trim();
-    return (fromEnv != null && fromEnv.isNotEmpty)
-        ? fromEnv
-        : _fallbackApiKey;
+    if (fromEnv != null && fromEnv.isNotEmpty) return fromEnv;
+    return const String.fromEnvironment('BG_REMOVE_API_KEY');
   }
 
   /// Sunucu ayakta mı? (GET /health) — teşhis için.
@@ -65,6 +63,12 @@ class BackgroundRemoverService {
   /// çıktısını gerekirse dikeyleştirir ve çevresindeki boş alanı kırpar
   /// (bkz. `GorselYonService.duzenle`).
   static Future<Uint8List?> removeBackground(Uint8List imageBytes) async {
+    if (apiKey.isEmpty) {
+      debugPrint(
+        'Arka plan silme anahtarı yok; BG_REMOVE_API_KEY tanımlanmalı.',
+      );
+      return null;
+    }
     try {
       final request = http.MultipartRequest(
         'POST',
@@ -82,9 +86,8 @@ class BackgroundRemoverService {
       // fotoğraf ~11 sn sürer. Sunucu tek isteği aynı anda işlediğinden sırada
       // bekleyen istekler de olabilir; bu yüzden süre geniş tutulur. Süre
       // dolarsa çağıran bulut yedeğe (remove.bg) düşer.
-      final streamed = await request
-          .send()
-          .timeout(const Duration(seconds: 90));
+      final streamed =
+          await request.send().timeout(const Duration(seconds: 90));
       final response = await http.Response.fromStream(streamed);
 
       if (response.statusCode == 200) return response.bodyBytes;

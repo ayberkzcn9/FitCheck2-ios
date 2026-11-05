@@ -918,6 +918,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get girisYapApple => 'Iniciar sesión con Apple';
 
   @override
+  String get aiOnayVazgec => 'Ahora no';
+
+  @override
+  String get aiOnayKabul => 'Aceptar y continuar';
+
+  @override
+  String get aiOnayIcerik =>
+      'Tus fotos de prendas y textos se envían a los servicios de IA Google (Gemini) y Groq para el análisis de estilo y las sugerencias de conjuntos. Las fotos también se procesan en nuestro servidor para quitar el fondo. Los datos se usan solo para responder a tu solicitud y no los almacenamos de forma permanente. Se requiere tu consentimiento explícito para continuar.';
+
+  @override
+  String get aiOnayBaslik => 'Compartición de datos con IA';
+
+  @override
   String get girisBeniHatirla => 'Recuérdame';
 
   @override
@@ -977,7 +990,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get kullanimKosullariMetni =>
-      'TÉRMINOS DE USO Y CONTRATO DE SERVICIO DE FITCHECK\n\nÚltima actualización: 27 de agosto de 2026\n\nLee atentamente estos Términos de uso (\"Contrato\") antes de utilizar la aplicación móvil FitCheck (\"Aplicación\"). Al descargar, acceder o utilizar la Aplicación, aceptas quedar vinculado por todos los términos de este Contrato.\n\n1. PARTES Y OBJETO\nEste Contrato se celebra entre el desarrollador de la aplicación FitCheck y el usuario individual (\"Usuario\") que descarga y utiliza la Aplicación. La Aplicación ofrece gestión digital de armario, seguimiento de prendas, recomendaciones de atuendos según el clima y asesoría de estilo impulsada por IA.\n\n2. ALCANCE DEL SERVICIO Y CONDICIONES DE USO\n• Límite de edad: Debes tener al menos 13 años para utilizar la Aplicación.\n• Información del usuario: El usuario es responsable de la exactitud del nombre, género, estilo y preferencias de color proporcionadas durante la configuración del perfil.\n• Carácter orientativo: Las puntuaciones de estilo, las sugerencias de compra y los recordatorios de colada proporcionados por la inteligencia artificial son estrictamente orientativos.\n• Datos meteorológicos: Los pronósticos del tiempo se obtienen en función de la ubicación en tiempo real. La Empresa no se hace responsable de discrepancias.\n\n3. PROPIEDAD INTELECTUAL Y DERECHOS DE CONTENIDO\nConservas los derechos de propiedad intelectual sobre las fotos de ropa que subes. El logotipo, diseño, código de software y algoritmos de FitCheck pertenecen exclusivamente a FitCheck.\n\n4. PRIVACIDAD Y SEGURIDAD DE DATOS\nLas fotos que subas y el historial de atuendos se almacenan localmente en tu dispositivo de forma predeterminada. Los datos de ubicación solo se utilizan para consultas meteorológicas en tiempo real.\n\n5. LIMITACIÓN DE RESPONSABILIDAD\nFitCheck no garantiza un servicio ininterrumpido. No se responsabiliza por la pérdida de datos derivada del cambio de dispositivo o la eliminación de la aplicación.\n\n6. CONTACTO\nPara cualquier consulta, ponte en contacto a través de la sección de soporte en Ajustes o en support@fitcheckapp.com.\n\n--- FIN DEL CONTRATO ---\nPor favor, acepta los términos presionando el botón de abajo.';
+      'TÉRMINOS DE USO Y CONTRATO DE SERVICIO DE FITCHECK\n\nÚltima actualización: 27 de agosto de 2026\n\nLee atentamente estos Términos de uso (\"Contrato\") antes de utilizar la aplicación móvil FitCheck (\"Aplicación\"). Al descargar, acceder o utilizar la Aplicación, aceptas quedar vinculado por todos los términos de este Contrato.\n\n1. PARTES Y OBJETO\nEste Contrato se celebra entre el desarrollador de la aplicación FitCheck y el usuario individual (\"Usuario\") que descarga y utiliza la Aplicación. La Aplicación ofrece gestión digital de armario, seguimiento de prendas, recomendaciones de atuendos según el clima y asesoría de estilo impulsada por IA.\n\n2. ALCANCE DEL SERVICIO Y CONDICIONES DE USO\n• Límite de edad: Debes tener al menos 13 años para utilizar la Aplicación.\n• Información del usuario: El usuario es responsable de la exactitud del nombre, género, estilo y preferencias de color proporcionadas durante la configuración del perfil.\n• Carácter orientativo: Las puntuaciones de estilo, las sugerencias de compra y los recordatorios de colada proporcionados por la inteligencia artificial son estrictamente orientativos.\n• Datos meteorológicos: Los pronósticos del tiempo se obtienen en función de la ubicación en tiempo real. La Empresa no se hace responsable de discrepancias.\n\n3. PROPIEDAD INTELECTUAL Y DERECHOS DE CONTENIDO\nConservas los derechos de propiedad intelectual sobre las fotos de ropa que subes. El logotipo, diseño, código de software y algoritmos de FitCheck pertenecen exclusivamente a FitCheck.\n\n4. PRIVACIDAD Y SEGURIDAD DE DATOS\nLas fotos que subas y el historial de atuendos se almacenan en tu dispositivo. Cuando uses funciones de IA, los datos descritos en la Política de Privacidad se envían a Gemini y Groq. Los datos de ubicación solo se utilizan para consultas meteorológicas en tiempo real. Los datos de ubicación solo se utilizan para consultas meteorológicas en tiempo real.\n\n5. LIMITACIÓN DE RESPONSABILIDAD\nFitCheck no garantiza un servicio ininterrumpido. No se responsabiliza por la pérdida de datos derivada del cambio de dispositivo o la eliminación de la aplicación.\n\n6. CONTACTO\nPara cualquier consulta, ponte en contacto a través de la sección de soporte en Ajustes o en support@fitcheckapp.com.\n\n--- FIN DEL CONTRATO ---\nPor favor, acepta los términos presionando el botón de abajo.';
 
   @override
   String chatKarsilama(Object hava) {
@@ -1769,7 +1782,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get gizlilikMadde1Icerik =>
-      'FitCheck procesa información para optimizar la gestión de tu armario y las recomendaciones de atuendos. Las fotos, el estilo y las preferencias de género se almacenan localmente en tu dispositivo.';
+      'FitCheck procesa información para optimizar la gestión de tu armario y las recomendaciones de atuendos. Las fotos, el estilo y las preferencias de género se almacenan localmente en tu dispositivo. En las funciones de IA, los datos descritos en la sección 5 se envían a Gemini y Groq.';
 
   @override
   String get gizlilikMadde2Baslik => '2. Permisos de ubicación';
@@ -2999,7 +3012,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get gizlilikMadde5Icerik =>
-      'Las fotos de las prendas se procesan en nuestro propio servidor para quitar el fondo y se envían a los servicios de IA de Google (Gemini) y Groq para el análisis de estilo y las sugerencias de conjuntos. Las fotos se procesan solo para responder a tu solicitud, no las almacenamos de forma permanente ni las usamos para publicidad. La foto permanece en tu dispositivo; puedes borrarla del armario cuando quieras.';
+      'Las fotos de las prendas se procesan en nuestro propio servidor para quitar el fondo y se envían a los servicios de IA de Google (Gemini) y Groq para el análisis de estilo y las sugerencias de conjuntos. Las fotos se procesan solo para responder a tu solicitud, no las almacenamos de forma permanente ni las usamos para publicidad. La foto original también se envía solo para el análisis solicitado y no la conservamos de forma permanente.';
 
   @override
   String get bugunSekmesi => 'Hoy';

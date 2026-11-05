@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/helpers.dart';
+import 'ai_onay_servisi.dart';
 
 /// API key'ler .env dosyasından yüklenir, fallback olarak --dart-define desteklenir
 String get geminiApiKey {
@@ -13,6 +14,7 @@ String get geminiApiKey {
   if (fromDotEnv != null && fromDotEnv.isNotEmpty) return fromDotEnv;
   return const String.fromEnvironment('GEMINI_API_KEY');
 }
+
 String get groqApiKey {
   final fromDotEnv = dotenv.env['GROQ_API_KEY'];
   if (fromDotEnv != null && fromDotEnv.isNotEmpty) return fromDotEnv;
@@ -25,8 +27,7 @@ const String _geminiEndpoint =
     'https://generativelanguage.googleapis.com/v1beta/models/$_geminiModel:generateContent';
 const String _groqTextModel = 'openai/gpt-oss-120b';
 const String _groqVisionModel = 'meta-llama/llama-4-scout-17b-16e-instruct';
-const String _groqEndpoint =
-    'https://api.groq.com/openai/v1/chat/completions';
+const String _groqEndpoint = 'https://api.groq.com/openai/v1/chat/completions';
 const Duration _aiTimeout = Duration(seconds: 30);
 
 /// İstek başına gönderilebilecek en fazla görsel (maliyet/kota koruması).
@@ -36,11 +37,28 @@ class AiServiceException implements Exception {
   const AiServiceException();
 }
 
+/// Kullanıcı, kişisel verilerin üçüncü taraf AI servislerine gönderilmesine
+/// henüz açık rıza vermediğinde fırlatılır.
+class AiOnayGerekliException extends AiServiceException {
+  const AiOnayGerekliException();
+}
+
 /// Singleton AI servisi
 class AiService {
   static final AiService _instance = AiService._internal();
   factory AiService() => _instance;
   AiService._internal();
+
+  /// Uygulama açılışında bir kez atanır; onay yoksa kullanıcıya rıza
+  /// penceresini gösterir. Testlerde/önizlemelerde null kalabilir.
+  static Future<bool> Function()? onayIste;
+
+  Future<void> _aiOnayiniKontrolEt() async {
+    if (await AiOnayServisi.onayVarMi()) return;
+    final onay = await onayIste?.call() ?? false;
+    if (!onay) throw const AiOnayGerekliException();
+    await AiOnayServisi.onayVer();
+  }
 
   Future<String> _stilistPromptunuHazirla(String sistemPromptu) async {
     String kisilik = 'Samimi / Arkadaş Canlısı';
@@ -288,6 +306,7 @@ class AiService {
     List<Uint8List>? resimler,
     bool gorselsizDenendi = false,
   }) async {
+    await _aiOnayiniKontrolEt();
     try {
       return await _geminiIstek(
         sistemPromptu: sistemPromptu,

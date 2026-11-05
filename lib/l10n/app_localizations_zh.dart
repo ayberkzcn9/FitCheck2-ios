@@ -852,6 +852,19 @@ class AppLocalizationsZh extends AppLocalizations {
   String get girisYapApple => '使用 Apple 登录';
 
   @override
+  String get aiOnayVazgec => '暂不';
+
+  @override
+  String get aiOnayKabul => '同意并继续';
+
+  @override
+  String get aiOnayIcerik =>
+      '您的衣物照片和文本会发送至 Google（Gemini）和 Groq 人工智能服务，用于风格分析与搭配建议。照片还会在我们的服务器上去除背景。数据仅用于回应您的请求，我们不会永久保存。继续操作需要您的明确同意。';
+
+  @override
+  String get aiOnayBaslik => 'AI 数据共享';
+
+  @override
   String get girisBeniHatirla => '记住我';
 
   @override
@@ -907,7 +920,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get kullanimKosullariMetni =>
-      'FITCHECK 服务条款与使用协议\n\n最后更新日期：2026年8月27日\n\n在使用 FitCheck 移动应用（“本应用”）之前，请仔细阅读本使用条款（“本协议”）。通过下载、访问或使用本应用，即表示您同意受本协议所有条款的约束。\n\n1. 协议主体与目的\n本协议由 FitCheck 应用开发者与下载并使用本应用的高级个人用户（“用户”）签订。本应用提供数字衣橱管理、衣物追踪、基于天气的穿搭推荐以及 AI 驱动的造型咨询服务。\n\n2. 服务范围与使用条件\n• 年龄限制：您必须年满 13 岁方可使用本应用。\n• 用户信息：用户需对在个人资料设置中提供的姓名、性别、风格和色彩偏好的准确性负责。\n• 咨询性质：AI 提供的风格评分、购买建议和洗衣提醒仅供参考。\n• 天气数据：天气预报基于实时定位获取。本公司对任何偏差不承担责任。\n\n3. 知识产权与内容权利\n您保留对所上传衣物照片的知识产权。FitCheck 标志、设计、软件代码和算法完全归 FitCheck 所有。\n\n4. 隐私与数据安全\n您上传的照片和穿搭历史记录默认保存在您的本地设备上。位置数据仅用于实时天气查询。\n\n5. 责任限制\nFitCheck 不保证服务不间断。对于因更换设备或删除应用导致的数据丢失，我们概不负责。\n\n6. 联系方式\n如有疑问，请通过“设置”选项卡中的联系部分或发送邮件至 support@fitcheckapp.com 联系我们。\n\n--- 协议结束 ---\n请点击下方按钮接受条款。';
+      'FITCHECK 服务条款与使用协议\n\n最后更新日期：2026年8月27日\n\n在使用 FitCheck 移动应用（“本应用”）之前，请仔细阅读本使用条款（“本协议”）。通过下载、访问或使用本应用，即表示您同意受本协议所有条款的约束。\n\n1. 协议主体与目的\n本协议由 FitCheck 应用开发者与下载并使用本应用的高级个人用户（“用户”）签订。本应用提供数字衣橱管理、衣物追踪、基于天气的穿搭推荐以及 AI 驱动的造型咨询服务。\n\n2. 服务范围与使用条件\n• 年龄限制：您必须年满 13 岁方可使用本应用。\n• 用户信息：用户需对在个人资料设置中提供的姓名、性别、风格和色彩偏好的准确性负责。\n• 咨询性质：AI 提供的风格评分、购买建议和洗衣提醒仅供参考。\n• 天气数据：天气预报基于实时定位获取。本公司对任何偏差不承担责任。\n\n3. 知识产权与内容权利\n您保留对所上传衣物照片的知识产权。FitCheck 标志、设计、软件代码和算法完全归 FitCheck 所有。\n\n4. 隐私与数据安全\n您上传的照片和穿搭历史记录保存在您的设备上。使用 AI 功能时，隐私政策所述数据会发送至 Gemini 和 Groq。位置数据仅用于实时天气查询。位置数据仅用于实时天气查询。\n\n5. 责任限制\nFitCheck 不保证服务不间断。对于因更换设备或删除应用导致的数据丢失，我们概不负责。\n\n6. 联系方式\n如有疑问，请通过“设置”选项卡中的联系部分或发送邮件至 support@fitcheckapp.com 联系我们。\n\n--- 协议结束 ---\n请点击下方按钮接受条款。';
 
   @override
   String chatKarsilama(Object hava) {
@@ -1634,7 +1647,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get gizlilikMadde1Icerik =>
-      'FitCheck 处理信息以优化您的衣橱管理和搭配推荐。您的照片、风格和性别偏好均本地存储于您的设备上。';
+      'FitCheck 处理信息以优化您的衣橱管理和搭配推荐。您的照片、风格和性别偏好均本地存储于您的设备上。使用 AI 功能时，第5节所述数据会发送至 Gemini 和 Groq。';
 
   @override
   String get gizlilikMadde2Baslik => '2. 位置权限';
@@ -2785,7 +2798,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get gizlilikMadde5Icerik =>
-      '衣物照片会在我们自己的服务器上去除背景，并发送至 Google（Gemini）和 Groq 人工智能服务进行风格分析与搭配建议。照片仅用于回应您的请求，我们不会永久保存，也不会用于广告。照片本身保存在您的设备上，您可以随时从衣橱中删除。';
+      '衣物照片会在我们自己的服务器上去除背景，并发送至 Google（Gemini）和 Groq 人工智能服务进行风格分析与搭配建议。照片仅用于回应您的请求，我们不会永久保存，也不会用于广告。原始照片也仅为所请求的分析发送至这些 AI 服务，我们不会永久保存。';
 
   @override
   String get bugunSekmesi => '今天';

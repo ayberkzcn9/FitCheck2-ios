@@ -28,7 +28,7 @@ void main() {
     }
   });
 
-  test('Apple ile Giriş etiketi 12 dilde tanımlı', () {
+  test('Apple girişi ve AI onayı metinleri 12 dilde tanımlı', () {
     const diller = [
       'ar',
       'de',
@@ -43,13 +43,22 @@ void main() {
       'tr',
       'zh',
     ];
+    const anahtarlar = [
+      'girisYapApple',
+      'aiOnayBaslik',
+      'aiOnayIcerik',
+      'aiOnayKabul',
+      'aiOnayVazgec',
+    ];
     for (final dil in diller) {
       final arb = jsonDecode(
         File('lib/l10n/app_$dil.arb').readAsStringSync(),
       ) as Map<String, dynamic>;
-      expect(arb['girisYapApple'], isA<String>(), reason: dil);
-      expect((arb['girisYapApple'] as String).trim(), isNotEmpty,
-          reason: dil);
+      for (final anahtar in anahtarlar) {
+        expect(arb[anahtar], isA<String>(), reason: '$dil:$anahtar');
+        expect((arb[anahtar] as String).trim(), isNotEmpty,
+            reason: '$dil:$anahtar');
+      }
     }
   });
 }
