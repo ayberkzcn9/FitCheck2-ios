@@ -87,7 +87,7 @@ void main() {
     );
   });
 
-  testWidgets('kaydet birleşmiş görseli döndürür', (tester) async {
+  testWidgets('kaydet birleştirme sonucunu döndürür', (tester) async {
     Uint8List? sonuc;
     tester.view.physicalSize = const Size(390 * 3, 844 * 3);
     tester.view.devicePixelRatio = 3.0;
@@ -107,6 +107,9 @@ void main() {
                   sonuc = await KiyafetDuzenleyici.ac(
                     context,
                     kesim: _kesimUret(),
+                    // Birleştirme servisi ayrı testlerde doğrulanır; bu UI
+                    // testi platform izolasyon zamanlamasına bağlanmaz.
+                    birlestirici: (kesim) async => Uint8List.fromList(kesim),
                   );
                 },
                 child: const Text('ac'),
@@ -122,11 +125,6 @@ void main() {
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Kaydet'));
-    // Birleştirme gerçek bir izolasyonda çalışır; testin sahte saatinde
-    // beklemesi için runAsync kullanılır.
-    await tester.runAsync(
-      () => Future<void>.delayed(const Duration(milliseconds: 800)),
-    );
     await tester.pumpAndSettle();
 
     expect(sonuc, isNotNull);

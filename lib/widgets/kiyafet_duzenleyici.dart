@@ -13,22 +13,36 @@ import '../services/kiyafet_arka_plan_ozellestirici.dart';
 import '../theme/design_tokens.dart';
 
 class KiyafetDuzenleyici extends StatefulWidget {
-  const KiyafetDuzenleyici({super.key, required this.kesim});
+  const KiyafetDuzenleyici({
+    super.key,
+    required this.kesim,
+    this.birlestirici,
+  });
 
   /// Arka planı silinmiş (şeffaf) PNG.
   final Uint8List kesim;
+
+  /// Arayüz testlerinde izolasyon tabanlı görsel kodlamasını taklit eder.
+  /// Üretimde verilmez; gerçek birleştirme servisi kullanılır.
+  @visibleForTesting
+  final Future<Uint8List> Function(Uint8List kesim)? birlestirici;
 
   /// Editörü açar; kullanıcı "Varsayılan" derse `null`, kaydederse birleşmiş
   /// görseli döndürür.
   static Future<Uint8List?> ac(
     BuildContext context, {
     required Uint8List kesim,
+    @visibleForTesting
+    Future<Uint8List> Function(Uint8List kesim)? birlestirici,
   }) {
     return showModalBottomSheet<Uint8List>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (sheetContext) => KiyafetDuzenleyici(kesim: kesim),
+      builder: (sheetContext) => KiyafetDuzenleyici(
+        kesim: kesim,
+        birlestirici: birlestirici,
+      ),
     );
   }
 
@@ -79,13 +93,16 @@ class _KiyafetDuzenleyiciState extends State<KiyafetDuzenleyici> {
   Future<void> _kaydet() async {
     setState(() => _kaydediliyor = true);
     try {
-      final sonuc = await KiyafetArkaPlanOzellestirici.birlestir(
-        widget.kesim,
-        zemin: _zemin,
-        olcek: _olcek,
-        konumX: _konumX,
-        konumY: _konumY,
-      );
+      final birlestirici = widget.birlestirici;
+      final sonuc = birlestirici != null
+          ? await birlestirici(widget.kesim)
+          : await KiyafetArkaPlanOzellestirici.birlestir(
+              widget.kesim,
+              zemin: _zemin,
+              olcek: _olcek,
+              konumX: _konumX,
+              konumY: _konumY,
+            );
       if (!mounted) return;
       Navigator.of(context).pop(sonuc);
     } catch (_) {
