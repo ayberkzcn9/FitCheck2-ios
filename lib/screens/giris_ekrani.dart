@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../l10n/app_localizations.dart';
 import '../services/auth_servisi.dart';
 import '../utils/auth_hata_utils.dart';
@@ -136,6 +137,52 @@ class _GirisEkraniState extends State<GirisEkrani> {
       if (userCredential == null) return;
 
       final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('onboarding_tamamlandi', true);
+
+      if (!mounted) return;
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const AnaEkraniNavigasyon()),
+        (route) => false,
+      );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              authHatasiMetni(e, AppLocalizations.of(context)!),
+              style:
+                  TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
+            ),
+            backgroundColor: colors.error,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _yukleniyor = false);
+    }
+  }
+
+  // APPLE İLE GİRİŞ TETİKLEYİCİSİ (iOS)
+  void _appleGirisTetikle() async {
+    final colors = Theme.of(context).colorScheme;
+    HapticFeedback.lightImpact();
+    setState(() => _yukleniyor = true);
+
+    try {
+      final userCredential = await _authServisi.appleIleGirisYap();
+
+      if (userCredential == null) return;
+
+      final prefs = await SharedPreferences.getInstance();
+      final profil = await _authServisi.kullaniciProfiliniGetir();
+      final isim = profil?['kullaniciAdi']?.toString() ??
+          userCredential.user?.displayName;
+      if (isim != null && isim.trim().isNotEmpty) {
+        await prefs.setString('kullanici_ismi', isim.trim());
+      }
       await prefs.setBool('onboarding_tamamlandi', true);
 
       if (!mounted) return;
@@ -627,6 +674,17 @@ class _GirisEkraniState extends State<GirisEkrani> {
                         const SizedBox(height: 16),
 
                         const SizedBox(height: 16),
+
+                        if (Theme.of(context).platform ==
+                            TargetPlatform.iOS) ...[
+                          SignInWithAppleButton(
+                            onPressed: _yukleniyor ? null : _appleGirisTetikle,
+                            text: l10n.girisYapApple,
+                            height: 52,
+                            borderRadius: AppRadius.lgRadius,
+                          ),
+                          const SizedBox(height: 12),
+                        ],
 
                         // Google ile Giriş Yap Butonu - Tema uyumlu modern tasarım
                         OutlinedButton.icon(

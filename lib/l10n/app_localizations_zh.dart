@@ -849,6 +849,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get girisYapGoogle => '使用 Google 登录';
 
   @override
+  String get girisYapApple => '使用 Apple 登录';
+
+  @override
   String get girisBeniHatirla => '记住我';
 
   @override

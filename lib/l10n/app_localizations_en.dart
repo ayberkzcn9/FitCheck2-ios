@@ -909,6 +909,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get girisYapGoogle => 'Sign in with Google';
 
   @override
+  String get girisYapApple => 'Sign in with Apple';
+
+  @override
   String get girisBeniHatirla => 'Remember me';
 
   @override

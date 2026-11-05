@@ -869,6 +869,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get girisYapGoogle => 'Google로 로그인';
 
   @override
+  String get girisYapApple => 'Apple로 로그인';
+
+  @override
   String get girisBeniHatirla => '기억하기';
 
   @override

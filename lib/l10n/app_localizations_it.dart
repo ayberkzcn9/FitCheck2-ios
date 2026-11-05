@@ -915,6 +915,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get girisYapGoogle => 'Accedi con Google';
 
   @override
+  String get girisYapApple => 'Accedi con Apple';
+
+  @override
   String get girisBeniHatirla => 'Ricordami';
 
   @override

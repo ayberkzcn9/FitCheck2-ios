@@ -867,6 +867,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get girisYapGoogle => 'Google でログイン';
 
   @override
+  String get girisYapApple => 'Apple でサインイン';
+
+  @override
   String get girisBeniHatirla => 'ログイン情報を保存';
 
   @override

@@ -907,6 +907,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get girisYapGoogle => 'Войти через Google';
 
   @override
+  String get girisYapApple => 'Войти через Apple';
+
+  @override
   String get girisBeniHatirla => 'Запомнить меня';
 
   @override

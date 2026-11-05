@@ -15,6 +15,19 @@ Bu dosya, FitCheck uygulamasının iOS (App Store) sürümü için yapılması g
 | 5 | iOS minimum sürüm: **15.0** | `project.pbxproj`, `AppFrameworkInfo.plist` |
 | 6 | Privacy Manifest (`PrivacyInfo.xcprivacy`) | `ios/Runner/PrivacyInfo.xcprivacy` |
 | 7 | HTTP izni (Oracle Cloud sunucusu için) | `Info.plist` (NSAppTransportSecurity) |
+| 8 | Apple ile Giriş kodu ve entitlement | `auth_servisi.dart`, `Runner.entitlements` |
+
+> iOS ilk sürümde premium gizlenir; abonelik yalnızca Android'de sunulur.
+> Apple IAP eklenene kadar iOS'ta paywall gösterilmez.
+
+### Apple ile Giriş için zorunlu manuel adımlar
+
+1. Apple Developer → Certificates, Identifiers & Profiles → App ID
+   `com.fitcheck2.app` → **Sign In with Apple** capability ekle.
+2. Firebase Console → Authentication → Sign-in method → **Apple** sağlayıcısını etkinleştir.
+3. Xcode → Runner → Signing & Capabilities → **Sign In with Apple** göründüğünü doğrula.
+4. Provisioning profile'ı yeniden oluştur (Codemagic otomatik imzalama kullanıyorsa
+   bir sonraki build yeni profili çeker).
 
 ---
 
@@ -131,6 +144,8 @@ Xcode → Product → Archive → Distribute App → App Store Connect → Uploa
 - [ ] Firebase iOS uygulaması ekle + `GoogleService-Info.plist` indir
 - [ ] `GoogleService-Info.plist` → `ios/Runner/` içine koy
 - [ ] Apple Developer hesabı al ($99)
+- [ ] App ID'de Sign In with Apple capability'sini aç
+- [ ] Firebase Console'da Apple sağlayıcısını etkinleştir
 - [ ] App Store Connect'te uygulama oluştur
 - [ ] Mac bul/kirala
 - [ ] Xcode'da signing + capability ayarla

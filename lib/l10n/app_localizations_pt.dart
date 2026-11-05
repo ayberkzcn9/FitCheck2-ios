@@ -913,6 +913,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get girisYapGoogle => 'Entrar com o Google';
 
   @override
+  String get girisYapApple => 'Entrar com a Apple';
+
+  @override
   String get girisBeniHatirla => 'Lembrar-me';
 
   @override

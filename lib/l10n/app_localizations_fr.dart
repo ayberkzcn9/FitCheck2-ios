@@ -920,6 +920,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get girisYapGoogle => 'Se connecter avec Google';
 
   @override
+  String get girisYapApple => 'Se connecter avec Apple';
+
+  @override
   String get girisBeniHatirla => 'Se souvenir de moi';
 
   @override

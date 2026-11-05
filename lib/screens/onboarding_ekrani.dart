@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
 import 'package:confetti/confetti.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'ana_ekran.dart';
 import '../main.dart';
@@ -242,6 +243,68 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
       );
 
       // Kullanıcı Google penceresini kapattıysa işlemi durdur
+      if (userCredential == null) return;
+
+      _confettiController.play();
+      HapticFeedback.heavyImpact();
+      await Future.delayed(const Duration(milliseconds: 1000));
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('kullanici_cinsiyet', _cinsiyetKayitDegeri());
+      final String kaydedilecekTarz =
+          _seciliTarzlar.isEmpty ? 'Genel' : _seciliTarzlar.join(', ');
+      await prefs.setString('kullanici_tarzi', kaydedilecekTarz);
+      await prefs.setString('kullanici_renk_paleti', _seciliRenk ?? '');
+      await prefs.setString('kullanici_ten_rengi', _seciliTenRengi);
+
+      final profil = await _authServisi.kullaniciProfiliniGetir();
+      final String isim = _isimController.text.trim().isNotEmpty
+          ? _isimController.text.trim()
+          : (profil?['kullaniciAdi']?.toString() ??
+              userCredential.user?.displayName ??
+              '');
+      if (isim.isNotEmpty) {
+        await prefs.setString('kullanici_ismi', isim);
+      }
+      await prefs.setBool('onboarding_tamamlandi', true);
+
+      await AnalyticsServisi().olay('onboarding_complete', {'skipped': 0});
+
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AnaEkraniNavigasyon()),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            authHatasiMetni(e, AppLocalizations.of(context)!),
+            style:
+                TextStyle(color: colors.onError, fontWeight: FontWeight.w600),
+          ),
+          backgroundColor: colors.error,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: AppRadius.lgRadius),
+        ),
+      );
+    } finally {
+      if (mounted) setState(() => _yukleniyor = false);
+    }
+  }
+
+  // APPLE İLE GİRİŞ / KAYIT TETİKLEYİCİSİ (iOS)
+  Future<void> _appleIleGirisTetikle() async {
+    final colors = Theme.of(context).colorScheme;
+    HapticFeedback.lightImpact();
+    setState(() => _yukleniyor = true);
+
+    try {
+      final userCredential = await _authServisi.appleIleGirisYap(
+        cinsiyet: _cinsiyetKayitDegeri(),
+      );
+
       if (userCredential == null) return;
 
       _confettiController.play();
@@ -986,6 +1049,19 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
                               const SizedBox(height: 16),
 
                               const SizedBox(height: 16),
+
+                              if (Theme.of(context).platform ==
+                                  TargetPlatform.iOS) ...[
+                                SignInWithAppleButton(
+                                  onPressed: _yukleniyor
+                                      ? null
+                                      : _appleIleGirisTetikle,
+                                  text: l10n.girisYapApple,
+                                  height: 52,
+                                  borderRadius: AppRadius.lgRadius,
+                                ),
+                                const SizedBox(height: 12),
+                              ],
 
                               // Google ile Giriş Yap Butonu - Tema uyumlu modern tasarım
                               OutlinedButton.icon(

@@ -901,6 +901,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get girisYapGoogle => 'تسجيل الدخول باستخدام Google';
 
   @override
+  String get girisYapApple => 'تسجيل الدخول باستخدام Apple';
+
+  @override
   String get girisBeniHatirla => 'تذكرني';
 
   @override

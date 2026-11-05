@@ -906,6 +906,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get girisYapGoogle => 'Google ile Giriş Yap';
 
   @override
+  String get girisYapApple => 'Apple ile Giriş Yap';
+
+  @override
   String get girisBeniHatirla => 'Beni hatırla';
 
   @override

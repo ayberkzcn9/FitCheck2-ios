@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io' show Platform;
 
+import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -8,6 +11,7 @@ import 'package:flutter/services.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'analytics_servisi.dart';
 import '../utils/l10n_yardimcilari.dart';
@@ -24,6 +28,7 @@ class AuthServisi {
   static const String _girisYontemiAnahtari = 'son_giris_yontemi';
   static const String _girisEpostaAnahtari = 'son_giris_epostasi';
   static const String _googleYontemi = 'google';
+  static const String _appleYontemi = 'apple';
   static const String _epostaYontemi = 'eposta';
   static const String _anonimYontemi = 'anonim';
 
@@ -197,7 +202,11 @@ class AuthServisi {
 
   // Google ile ilk kez giriş yapan kullanıcının profil belgesini oluşturur;
   // belge varsa dokunulmaz. Belge okunamazsa kayıt sessizce atlanır.
-  Future<void> _googleProfiliniOlustur(User user, String cinsiyet) async {
+  Future<void> _googleProfiliniOlustur(
+    User user,
+    String cinsiyet, {
+    String? varsayilanAd,
+  }) async {
     try {
       final belge =
           await _firestore.collection('kullanicilar').doc(user.uid).get();
@@ -210,7 +219,8 @@ class AuthServisi {
     final l10n = await cevrimdisiL10n();
     await _profilBelgesiniKaydet(user.uid, {
       'uid': user.uid,
-      'kullaniciAdi': user.displayName ?? l10n.googleKullanicisi,
+      'kullaniciAdi':
+          user.displayName ?? varsayilanAd ?? l10n.googleKullanicisi,
       'email': user.email ?? '',
       'cinsiyet': cinsiyet,
       'isAnonymous': false,
@@ -376,7 +386,79 @@ class AuthServisi {
     }
   }
 
-  // 4. 🚀 ATLA / MİSAFİR GİRİŞİ (Anonim Oturum Açma)
+  // 4. APPLE İLE GİRİŞ YAP (yalnızca iOS)
+  Future<UserCredential?> appleIleGirisYap({
+    String cinsiyet = 'Kadın',
+  }) async {
+    if (!Platform.isIOS) {
+      throw 'authHataGenel';
+    }
+
+    try {
+      final rawNonce = generateNonce();
+      final nonce = sha256.convert(utf8.encode(rawNonce)).toString();
+
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: const <AppleIDAuthorizationScopes>[
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        nonce: nonce,
+      );
+
+      final idToken = appleCredential.identityToken;
+      if (idToken == null || idToken.isEmpty) {
+        throw 'authHataGenel';
+      }
+
+      final credential = OAuthProvider('apple.com').credential(
+        idToken: idToken,
+        rawNonce: rawNonce,
+      );
+      final userCredential = await _auth.signInWithCredential(credential);
+      final user = userCredential.user;
+
+      if (user != null) {
+        final adSoyad = <String?>[
+          appleCredential.givenName,
+          appleCredential.familyName,
+        ]
+            .whereType<String>()
+            .map((parca) => parca.trim())
+            .where((parca) => parca.isNotEmpty)
+            .join(' ');
+        if (adSoyad.isNotEmpty) {
+          try {
+            await user.updateDisplayName(adSoyad);
+          } catch (_) {
+            // Görünen ad güncellenemezse giriş yine de tamamlanmış sayılır.
+          }
+        }
+
+        await _googleProfiliniOlustur(
+          user,
+          cinsiyet,
+          varsayilanAd: user.email?.split('@').first,
+        );
+      }
+
+      await AnalyticsServisi().olay('login', {'method': 'apple'});
+      await _sonGirisiKaydet(_appleYontemi, email: user?.email);
+      return userCredential;
+    } on SignInWithAppleAuthorizationException catch (e) {
+      if (e.code == AuthorizationErrorCode.canceled) return null;
+      debugPrint('Apple yetkilendirme hatası: ${e.code}');
+      throw 'authHataGenel';
+    } on FirebaseAuthException catch (e) {
+      throw _hataMesajiniGetir(e.code);
+    } catch (e) {
+      if (e is String) rethrow;
+      debugPrint('Apple ile giriş beklenmeyen hata → $e');
+      throw 'authHataGenel';
+    }
+  }
+
+  // 5. 🚀 ATLA / MİSAFİR GİRİŞİ (Anonim Oturum Açma)
   Future<UserCredential?> anonimGirisYap({String cinsiyet = 'Kadın'}) async {
     try {
       UserCredential userCredential = await _auth.signInAnonymously();

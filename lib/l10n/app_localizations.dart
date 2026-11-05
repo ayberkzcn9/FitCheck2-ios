@@ -1762,6 +1762,12 @@ abstract class AppLocalizations {
   /// **'Google ile Giriş Yap'**
   String get girisYapGoogle;
 
+  /// No description provided for @girisYapApple.
+  ///
+  /// In tr, this message translates to:
+  /// **'Apple ile Giriş Yap'**
+  String get girisYapApple;
+
   /// No description provided for @girisBeniHatirla.
   ///
   /// In tr, this message translates to:
