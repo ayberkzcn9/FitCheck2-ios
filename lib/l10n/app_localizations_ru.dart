@@ -1772,6 +1772,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get gizlilikPolitikasiTitle => 'Политика конфиденциальности';
 
   @override
+  String get gizlilikPolitikasiTamamiAc => 'Открыть полную политику';
+
+  @override
   String get veriKullanimiVeGizlilikHaklari =>
       'Просмотр правил использования данных и прав конфиденциальности';
 

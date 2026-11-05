@@ -3316,6 +3316,12 @@ abstract class AppLocalizations {
   /// **'Gizlilik Politikası'**
   String get gizlilikPolitikasiTitle;
 
+  /// No description provided for @gizlilikPolitikasiTamamiAc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Politikanın tamamını aç'**
+  String get gizlilikPolitikasiTamamiAc;
+
   /// No description provided for @veriKullanimiVeGizlilikHaklari.
   ///
   /// In tr, this message translates to:

@@ -1655,6 +1655,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get gizlilikPolitikasiTitle => '隐私政策';
 
   @override
+  String get gizlilikPolitikasiTamamiAc => '打开完整政策';
+
+  @override
   String get veriKullanimiVeGizlilikHaklari => '查看数据使用规则和隐私权利';
 
   @override

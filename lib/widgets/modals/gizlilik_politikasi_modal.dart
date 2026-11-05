@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../../theme/design_tokens.dart';
 
@@ -88,6 +89,21 @@ class GizlilikPolitikasiModal extends StatelessWidget {
       actionsPadding: const EdgeInsets.fromLTRB(
           AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.xl),
       actions: [
+        // Tam politika HTTPS üzerinde yayınlanır; mağaza denetimi için
+        // uygulama içinden tıklanabilir bir bağlantı gerekir.
+        TextButton(
+          onPressed: () async {
+            final uri = Uri.parse(
+              'https://ayberkzcn9.github.io/fitcheck-privacy/',
+            );
+            try {
+              await launchUrl(uri, mode: LaunchMode.externalApplication);
+            } catch (e) {
+              debugPrint('Gizlilik politikası açılamadı: $e');
+            }
+          },
+          child: Text(l10n.gizlilikPolitikasiTamamiAc),
+        ),
         FilledButton(
           style: FilledButton.styleFrom(
             backgroundColor: AppAccents.successDark,

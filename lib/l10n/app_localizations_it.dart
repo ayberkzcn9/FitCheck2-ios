@@ -1790,6 +1790,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get gizlilikPolitikasiTitle => 'Informativa sulla Privacy';
 
   @override
+  String get gizlilikPolitikasiTamamiAc => 'Apri l\'informativa completa';
+
+  @override
   String get veriKullanimiVeGizlilikHaklari =>
       'Visualizza utilizzo dei dati e diritti sulla privacy';
 

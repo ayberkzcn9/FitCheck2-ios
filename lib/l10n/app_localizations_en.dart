@@ -1772,6 +1772,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gizlilikPolitikasiTitle => 'Privacy Policy';
 
   @override
+  String get gizlilikPolitikasiTamamiAc => 'Open full policy';
+
+  @override
   String get veriKullanimiVeGizlilikHaklari =>
       'View data usage and privacy rights';
 

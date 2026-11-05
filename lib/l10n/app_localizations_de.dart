@@ -1791,6 +1791,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get gizlilikPolitikasiTitle => 'Datenschutzrichtlinie';
 
   @override
+  String get gizlilikPolitikasiTamamiAc => 'Vollständige Richtlinie öffnen';
+
+  @override
   String get veriKullanimiVeGizlilikHaklari =>
       'Datennutzung und Datenschutzrechte ansehen';
 

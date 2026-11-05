@@ -1684,6 +1684,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get gizlilikPolitikasiTitle => '개인정보 처리방침';
 
   @override
+  String get gizlilikPolitikasiTamamiAc => '전체 정책 열기';
+
+  @override
   String get veriKullanimiVeGizlilikHaklari => '데이터 사용 방식 및 개인정보 보호 권리 확인';
 
   @override
