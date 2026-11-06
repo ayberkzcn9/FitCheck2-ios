@@ -107,5 +107,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+
+	<!-- Google Sign-In iOS için gerekli URL şeması -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1073036685578-a84k1qi3aag7ica9u3q2gj0akb8qms9t</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
