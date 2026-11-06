@@ -280,6 +280,9 @@ class KombinDanismaniAppState extends State<KombinDanismaniApp> {
   Locale? _locale;
   late ThemeMode _temaModu;
 
+  /// Başlatma işlemi future'ına erişim sağlar (onboarding atla butonu vb. için).
+  Future<UygulamaBaslatmaSonucu> get baslatmaIslemi => widget.baslatmaIslemi;
+
   @override
   void initState() {
     super.initState();
