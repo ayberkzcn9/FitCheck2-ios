@@ -141,6 +141,10 @@ class AppLocalizationsFr extends AppLocalizations {
       'Une erreur inattendue s\'est produite lors de la connexion Google.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'La connexion Apple n\'a pas pu être vérifiée. Veuillez réessayer.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

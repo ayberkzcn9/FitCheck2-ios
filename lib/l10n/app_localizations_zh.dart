@@ -120,6 +120,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get authHataGoogleBeklenmeyen => 'Google 登录时发生意外错误，请重试。';
 
   @override
+  String get authHataAppleDogrulanamadi => '无法验证 Apple 登录。请重试。';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

@@ -126,6 +126,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get authHataGoogleBeklenmeyen => 'Googleログイン中に予期しないエラーが発生しました。';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'Appleでのサインインを確認できませんでした。もう一度お試しください。';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

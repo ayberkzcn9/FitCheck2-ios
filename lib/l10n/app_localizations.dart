@@ -340,6 +340,12 @@ abstract class AppLocalizations {
   /// **'Google ile giriş yapılırken beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.'**
   String get authHataGoogleBeklenmeyen;
 
+  /// No description provided for @authHataAppleDogrulanamadi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Apple oturumu doğrulanamadı. Lütfen tekrar deneyin.'**
+  String get authHataAppleDogrulanamadi;
+
   /// No description provided for @appTitle.
   ///
   /// In tr, this message translates to:

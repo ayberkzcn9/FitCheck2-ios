@@ -1,0 +1,7 @@
+opencode.json
+*.rar
+*.log
+.env*
+CODEMAGIC_ENV_VALUES.txt
+CODEMAGIC_KOPYALA.txt
+SOHBET_YEDEGI.md

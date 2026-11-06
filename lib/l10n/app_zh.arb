@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "你需要选择 Google 账户才能登录。",
   "authHataGoogleOnayBekliyor": "你的 Google 账户有待处理的操，请重试。",
   "authHataGoogleBeklenmeyen": "Google 登录时发生意外错误，请重试。",
+  "authHataAppleDogrulanamadi": "无法验证 Apple 登录。请重试。",
   "appTitle": "FitCheck",
   "gorunumVeTema": "外观与主题",
   "karanlikMod": "深色模式",

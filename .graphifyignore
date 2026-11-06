@@ -1,0 +1,18 @@
+# graphify: derlenmis cikti, arsiv ve gurultu klasorlerini disarida tut
+build/
+.dart_tool/
+sürümler/
+functions/node_modules/
+functions/lib/
+.idea/
+.vscode/
+# uretilmis yerellestirme dosyalari (~1.5 MB, binlerce getter) - grafigi boguyor
+lib/l10n/
+**/*.g.dart
+**/*.freezed.dart
+*.rar
+*.zip
+*.log
+SOHBET_YEDEGI.md
+CODEMAGIC_ENV_VALUES.txt
+CODEMAGIC_KOPYALA.txt

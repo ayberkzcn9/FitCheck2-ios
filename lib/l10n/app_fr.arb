@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "Vous devez sélectionner votre compte Google pour vous connecter.",
   "authHataGoogleOnayBekliyor": "Une action est en attente sur votre compte Google. Veuillez réessayer.",
   "authHataGoogleBeklenmeyen": "Une erreur inattendue s'est produite lors de la connexion Google.",
+  "authHataAppleDogrulanamadi": "La connexion Apple n'a pas pu être vérifiée. Veuillez réessayer.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "Apparence et thème",
   "karanlikMod": "Mode sombre",

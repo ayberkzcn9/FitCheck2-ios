@@ -411,14 +411,21 @@ class AuthServisi {
         throw 'authHataGenel';
       }
 
+      // Apple'ın döndürdüğü yetkilendirme kodu Firebase'e `accessToken`
+      // olarak da verilmelidir. Yalnızca `idToken` gönderildiğinde Firebase
+      // jetonu doğrulayamıyor ve `invalid-credential` ("Invalid OAuth
+      // response from apple.com") dönüyor; bu da kullanıcıya e-posta/şifre
+      // hatası gibi görünüyordu.
+      final authorizationCode = appleCredential.authorizationCode;
+
       final credential = OAuthProvider('apple.com').credential(
         idToken: idToken,
         rawNonce: rawNonce,
+        accessToken: authorizationCode.isEmpty ? null : authorizationCode,
       );
       final userCredential = await _auth.signInWithCredential(credential);
       final user = userCredential.user;
 
-      final authorizationCode = appleCredential.authorizationCode;
       if (authorizationCode.isNotEmpty) {
         try {
           await FirebaseFunctions.instanceFor(region: 'europe-west1')
@@ -464,7 +471,7 @@ class AuthServisi {
       debugPrint('Apple yetkilendirme hatası: ${e.code}');
       throw 'authHataGenel';
     } on FirebaseAuthException catch (e) {
-      throw _hataMesajiniGetir(e.code);
+      throw _appleFirebaseHataMesajiniGetir(e.code);
     } catch (e) {
       if (e is String) rethrow;
       debugPrint('Apple ile giriş beklenmeyen hata → $e');
@@ -640,6 +647,27 @@ class AuthServisi {
         return 'authHataGoogleFarkliKullanici';
       case 'provider-already-linked':
         return 'authHataGoogleZatenBagli';
+      default:
+        return _hataMesajiniGetir(kod);
+    }
+  }
+
+  /// Apple girişinde Firebase'in döndürdüğü hata kodunu kullanıcıya
+  /// gösterilecek yerelleştirme anahtarına çevirir.
+  ///
+  /// E-posta/şifre akışındaki genel harita burada kullanılamaz: Apple
+  /// akışında `invalid-credential` "şifre hatalı" değil, "Apple'ın gönderdiği
+  /// kimlik jetonu Firebase tarafından doğrulanamadı" anlamına gelir.
+  /// Hata kodu günlüğe yazılır; kök neden (Firebase sağlayıcı ayarı, jeton
+  /// kitlesi, nonce) yalnızca bu koddan anlaşılır.
+  String _appleFirebaseHataMesajiniGetir(String kod) {
+    debugPrint('Apple ile giriş Firebase hata kodu → $kod');
+
+    switch (kod) {
+      case 'invalid-credential':
+      case 'invalid-user-token':
+      case 'internal-error':
+        return 'authHataAppleDogrulanamadi';
       default:
         return _hataMesajiniGetir(kod);
     }

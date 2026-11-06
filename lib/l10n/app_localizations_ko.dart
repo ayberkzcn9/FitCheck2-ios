@@ -128,6 +128,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get authHataGoogleBeklenmeyen => 'Google 로그인 중 예기치 않은 오류가 발생했습니다.';
 
   @override
+  String get authHataAppleDogrulanamadi => 'Apple 로그인을 확인할 수 없습니다. 다시 시도해 주세요.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

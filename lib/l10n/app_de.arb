@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "Sie müssen Ihr Google-Konto auswählen, um sich anzumelden.",
   "authHataGoogleOnayBekliyor": "In Ihrem Google-Konto steht eine Aktion aus. Bitte versuchen Sie es erneut.",
   "authHataGoogleBeklenmeyen": "Bei der Google-Anmeldung ist ein unerwarteter Fehler aufgetreten.",
+  "authHataAppleDogrulanamadi": "Die Apple-Anmeldung konnte nicht bestätigt werden. Bitte versuche es erneut.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "Aussehen und Design",
   "karanlikMod": "Dunkelmodus",

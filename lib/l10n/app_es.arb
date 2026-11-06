@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "Debes seleccionar tu cuenta de Google para iniciar sesión.",
   "authHataGoogleOnayBekliyor": "Hay una acción pendiente en tu cuenta de Google. Inténtalo de nuevo.",
   "authHataGoogleBeklenmeyen": "Ocurrió un error inesperado al iniciar sesión con Google.",
+  "authHataAppleDogrulanamadi": "No se pudo verificar el inicio de sesión con Apple. Inténtalo de nuevo.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "Apariencia y tema",
   "karanlikMod": "Modo oscuro",

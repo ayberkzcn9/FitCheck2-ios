@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "ログインするにはGoogleアカウントを選択してください。",
   "authHataGoogleOnayBekliyor": "Googleアカウントに保留中の操作があります。もう一度お試しください。",
   "authHataGoogleBeklenmeyen": "Googleログイン中に予期しないエラーが発生しました。",
+  "authHataAppleDogrulanamadi": "Appleでのサインインを確認できませんでした。もう一度お試しください。",
   "appTitle": "FitCheck",
   "gorunumVeTema": "外観とテーマ",
   "karanlikMod": "ダークモード",

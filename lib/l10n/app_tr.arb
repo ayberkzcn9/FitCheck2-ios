@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "Oturum açmak için Google hesabınızı seçmeniz gerekiyor.",
   "authHataGoogleOnayBekliyor": "Google hesabınızda onay bekleyen bir işlem var. Lütfen tekrar deneyin.",
   "authHataGoogleBeklenmeyen": "Google ile giriş yapılırken beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+  "authHataAppleDogrulanamadi": "Apple oturumu doğrulanamadı. Lütfen tekrar deneyin.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "Görünüm ve Tema",
   "karanlikMod": "Karanlık Mod",

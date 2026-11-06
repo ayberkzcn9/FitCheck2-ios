@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "Чтобы войти, выберите аккаунт Google.",
   "authHataGoogleOnayBekliyor": "В вашем аккаунте Google есть незавершённое действие. Попробуйте снова.",
   "authHataGoogleBeklenmeyen": "При входе через Google произошла непредвиденная ошибка.",
+  "authHataAppleDogrulanamadi": "Не удалось проверить вход через Apple. Попробуйте ещё раз.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "Внешний вид и тема",
   "karanlikMod": "Тёмная тема",

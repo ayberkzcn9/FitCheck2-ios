@@ -140,6 +140,10 @@ class AppLocalizationsPt extends AppLocalizations {
       'Ocorreu um erro inesperado durante o login com Google.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'Não foi possível verificar o início de sessão com a Apple. Tente novamente.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

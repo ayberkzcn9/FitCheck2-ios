@@ -1,0 +1,5 @@
+indexer:
+  ignore:
+    - opencode.json
+    - .dart_tool
+    - build

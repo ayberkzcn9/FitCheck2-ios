@@ -138,6 +138,10 @@ class AppLocalizationsIt extends AppLocalizations {
       'Si è verificato un errore imprevisto durante l\'accesso con Google.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'Impossibile verificare l\'accesso con Apple. Riprova.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

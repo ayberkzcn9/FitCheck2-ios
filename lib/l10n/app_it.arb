@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "Devi selezionare il tuo account Google per accedere.",
   "authHataGoogleOnayBekliyor": "C'è un'azione in sospeso sul tuo account Google. Riprova.",
   "authHataGoogleBeklenmeyen": "Si è verificato un errore imprevisto durante l'accesso con Google.",
+  "authHataAppleDogrulanamadi": "Impossibile verificare l'accesso con Apple. Riprova.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "Aspetto e Tema",
   "karanlikMod": "Modalità Scura",

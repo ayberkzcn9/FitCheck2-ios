@@ -139,6 +139,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'An unexpected error occurred during Google sign-in. Please try again.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'Apple sign-in could not be verified. Please try again.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

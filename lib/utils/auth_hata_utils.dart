@@ -56,6 +56,8 @@ String authHatasiMetni(Object hata, AppLocalizations l10n) {
       return l10n.authHataGoogleOnayBekliyor;
     case 'authHataGoogleBeklenmeyen':
       return l10n.authHataGoogleBeklenmeyen;
+    case 'authHataAppleDogrulanamadi':
+      return l10n.authHataAppleDogrulanamadi;
     default:
       return mesaj;
   }

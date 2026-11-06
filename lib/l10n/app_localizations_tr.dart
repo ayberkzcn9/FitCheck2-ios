@@ -137,6 +137,10 @@ class AppLocalizationsTr extends AppLocalizations {
       'Google ile giriş yapılırken beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'Apple oturumu doğrulanamadı. Lütfen tekrar deneyin.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

@@ -136,6 +136,10 @@ class AppLocalizationsAr extends AppLocalizations {
       'حدث خطأ غير متوقع أثناء تسجيل الدخول عبر Google.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'تعذّر التحقق من تسجيل الدخول عبر Apple. يرجى المحاولة مرة أخرى.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

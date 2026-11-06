@@ -143,6 +143,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Bei der Google-Anmeldung ist ein unerwarteter Fehler aufgetreten.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'Die Apple-Anmeldung konnte nicht bestätigt werden. Bitte versuche es erneut.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override

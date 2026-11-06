@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "You need to select your Google account to sign in.",
   "authHataGoogleOnayBekliyor": "There is a pending action on your Google account. Please try again.",
   "authHataGoogleBeklenmeyen": "An unexpected error occurred during Google sign-in. Please try again.",
+  "authHataAppleDogrulanamadi": "Apple sign-in could not be verified. Please try again.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "Appearance and Theme",
   "karanlikMod": "Dark Mode",

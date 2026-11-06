@@ -37,6 +37,7 @@
   "authHataGoogleHesapSec": "يجب اختيار حساب Google لتسجيل الدخول.",
   "authHataGoogleOnayBekliyor": "هناك إجراء معلّق في حساب Google الخاص بك. يرجى المحاولة مرة أخرى.",
   "authHataGoogleBeklenmeyen": "حدث خطأ غير متوقع أثناء تسجيل الدخول عبر Google.",
+  "authHataAppleDogrulanamadi": "تعذّر التحقق من تسجيل الدخول عبر Apple. يرجى المحاولة مرة أخرى.",
   "appTitle": "FitCheck",
   "gorunumVeTema": "المظهر والمظهر الداكن",
   "karanlikMod": "الوضع الداكن",

@@ -136,6 +136,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'При входе через Google произошла непредвиденная ошибка.';
 
   @override
+  String get authHataAppleDogrulanamadi =>
+      'Не удалось проверить вход через Apple. Попробуйте ещё раз.';
+
+  @override
   String get appTitle => 'FitCheck';
 
   @override
