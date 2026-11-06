@@ -95,6 +95,22 @@ class _OnboardingEkraniState extends State<OnboardingEkrani> {
     HapticFeedback.mediumImpact();
     setState(() => _yukleniyor = true);
 
+    // Firebase'in hazır olmasını bekle (maks. 25 sn). Kullanıcı "Atla"yı
+    // erken basarsa Firebase henüz hazır olmayabilir; beklemek
+    // "No Firebase App" hatasını önler.
+    final appState = KombinDanismaniApp.maybeOf(context);
+    if (appState != null) {
+      try {
+        await appState.baslatmaIslemi.timeout(const Duration(seconds: 25),
+            onTimeout: () {
+          debugPrint('Onboarding atla: Firebase başlatma zaman aşımı; devam.');
+          return const UygulamaBaslatmaSonucu(firebaseHazir: false);
+        });
+      } catch (_) {
+        debugPrint('Onboarding atla: Firebase başlatma bekleme hatası; devam.');
+      }
+    }
+
     try {
       await _authServisi.anonimGirisYap(cinsiyet: _cinsiyetKayitDegeri());
 
