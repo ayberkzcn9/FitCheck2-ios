@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -28,22 +30,58 @@ class _IzinDiyaloguState extends State<IzinDiyalogu> {
   bool _yukleniyor = false;
 
   Future<void> _izinleriSiraIleIste() async {
+    if (_yukleniyor) return;
     setState(() => _yukleniyor = true);
     HapticFeedback.mediumImpact();
 
-    final locationStatus = await Permission.location.request();
-    final cameraStatus = await Permission.camera.request();
-    await Permission.notification.request();
+    final locationStatus = await _izinIste(Permission.location);
+    final cameraStatus = await _izinIste(Permission.camera);
 
-    if (!locationStatus.isGranted || !cameraStatus.isGranted) {
-      if (!mounted) return;
-      setState(() => _yukleniyor = false);
+    if (!mounted) return;
+    setState(() => _yukleniyor = false);
+
+    // Yalnızca kullanıcı izni kalıcı olarak reddettiyse ayarlara yönlendir.
+    // Zaman aşımı veya ilk reddetme gibi durumlarda akış hata penceresiyle
+    // bölünmez; ekran kapanır, uygulama izinsiz özellikleri kendi içinde
+    // devre dışı bırakır.
+    final kaliciRed = locationStatus.isPermanentlyDenied ||
+        cameraStatus.isPermanentlyDenied ||
+        locationStatus.isRestricted ||
+        cameraStatus.isRestricted;
+    if (kaliciRed) {
       await _reddedilenIzinleriGoster();
       return;
     }
 
-    if (!mounted) return;
     Navigator.pop(context);
+
+    // Bildirim izni açılışta FCM ve flutter_local_notifications tarafından
+    // zaten isteniyor. Burada sonucu beklemek iOS'ta üst üste binen
+    // requestAuthorization çağrılarından birinin hiç yanıtlanmamasına yol
+    // açabiliyor; bu yüzden istek beklenmeden gönderilir.
+    unawaited(_izinIste(Permission.notification));
+  }
+
+  /// Tek bir izni ister. Native tarafta yanıt gelmezse (iOS'ta üst üste
+  /// binen izin istekleri, uygulamanın arka plana atılması vb.) arayüzün
+  /// sonsuza kadar spinner'da kalmaması için zaman aşımı ve hata yakalama
+  /// uygular; son durum her hâlükârda okunur.
+  Future<PermissionStatus> _izinIste(Permission izin) async {
+    try {
+      final status = await izin.request().timeout(const Duration(seconds: 60));
+      debugPrint('İzin isteği (${izin.toString()}) → $status');
+      return status;
+    } catch (e) {
+      debugPrint('İzin isteği (${izin.toString()}) tamamlanmadı → $e');
+      try {
+        final status = await izin.status.timeout(const Duration(seconds: 5));
+        debugPrint('İzin isteği (${izin.toString()}) mevcut durum → $status');
+        return status;
+      } catch (e) {
+        debugPrint('İzin durumu (${izin.toString()}) okunamadı → $e');
+        return PermissionStatus.denied;
+      }
+    }
   }
 
   Future<void> _reddedilenIzinleriGoster() async {
