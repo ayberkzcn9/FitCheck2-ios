@@ -1,8 +1,6 @@
-import '../theme/design_tokens.dart';
 import 'dart:async';
 import 'dart:io';
 
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/foundation.dart';
@@ -27,9 +25,13 @@ class ReklamServisi {
   /// zaten kapalıdır ([SatinAlmaServisi.premiumSunuluyor]). Premium, limit ve
   /// reklam kodu silinmez, yalnızca devre dışı kalır. Android etkilenmez.
   ///
-  /// Lansman bitince `false` yap ve ayrıca:
+  /// Lansman bitince `false` yap ve ayrıca (izleme/ATT geri gelir):
+  /// - pubspec.yaml: `app_tracking_transparency: ^2.0.7` paketini geri ekle,
+  ///   [reklamlariBaslat] içindeki ATT çağrısını yorumdan çıkar.
+  /// - ios/Runner/Info.plist ve *.lproj/InfoPlist.strings:
+  ///   NSUserTrackingUsageDescription metnini geri ekle (git geçmişinde var).
   /// - ios/Runner/PrivacyInfo.xcprivacy: NSPrivacyTracking → true, DeviceID
-  ///   girdisinde Tracking → true (reklam/ATT geri gelir).
+  ///   girdisinde Tracking → true, NSPrivacyTrackingDomains geri.
   /// - App Store Connect > App Privacy: izleme (Device ID) yeniden işaretle.
   static const bool iosLansmanUcretsiz = true;
 
@@ -174,21 +176,16 @@ class ReklamServisi {
     _reklamSdkBaslatildi = true;
 
     try {
-      // iOS 14+: reklamlar için izleme izni (ATT). Kullanıcı reddederse AdMob
-      // kişiselleştirilmemiş reklam servis eder; akış hiçbir durumda bozulmaz.
-      if (Platform.isIOS) {
-        try {
-          final TrackingStatus attDurum =
-              await AppTrackingTransparency.trackingAuthorizationStatus;
-          if (attDurum == TrackingStatus.notDetermined) {
-            // iOS, uygulama tam aktif olmadan diyaloğu göstermez; kısa bekle.
-            await Future.delayed(AppMotion.uzun);
-            await AppTrackingTransparency.requestTrackingAuthorization();
-          }
-        } catch (e) {
-          debugPrint('ATT izni hatası: $e');
-        }
-      }
+      // iOS izleme izni (ATT) lansman modunda kaldırıldı; bkz.
+      // [iosLansmanUcretsiz]. Reklamlar iOS'a dönünce buraya geri eklenir:
+      //   if (Platform.isIOS) {
+      //     final s = await AppTrackingTransparency.trackingAuthorizationStatus;
+      //     if (s == TrackingStatus.notDetermined) {
+      //       await Future.delayed(AppMotion.uzun);
+      //       await AppTrackingTransparency.requestTrackingAuthorization();
+      //     }
+      //   }
+      // ATT olmadan AdMob kişiselleştirilmemiş reklam gösterir.
 
       // AdMob başlatma ağ gerektirebilir; takılmayı önlemek için zaman aşımı.
       await MobileAds.instance

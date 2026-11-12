@@ -5,4 +5,3 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "FitCheck использует геопозицию только во время работы приложения для подбора образов по погоде. Фоновое отслеживание не ведётся.";
 "NSMicrophoneUsageDescription" = "FitCheck использует микрофон, чтобы вы могли просить голосового ассистента подобрать образ.";
 "NSSpeechRecognitionUsageDescription" = "FitCheck использует распознавание речи, чтобы понимать ваши голосовые запросы.";
-"NSUserTrackingUsageDescription" = "Разрешение используется для показа более релевантной рекламы. Без него приложение работает как обычно.";

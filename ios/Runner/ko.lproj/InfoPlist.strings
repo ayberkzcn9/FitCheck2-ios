@@ -5,4 +5,3 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "FitCheck는 앱 사용 중에만 날씨 기반 코디 추천을 위해 위치를 사용하며, 백그라운드에서 위치를 추적하지 않습니다.";
 "NSMicrophoneUsageDescription" = "FitCheck는 음성 비서에게 코디 추천을 요청할 수 있도록 마이크를 사용합니다.";
 "NSSpeechRecognitionUsageDescription" = "FitCheck는 음성 요청을 이해하기 위해 음성 인식을 사용합니다.";
-"NSUserTrackingUsageDescription" = "권한은 더 관련성 높은 광고를 보여 주는 데 사용됩니다. 거부해도 앱은 정상적으로 작동합니다.";

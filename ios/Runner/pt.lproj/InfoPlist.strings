@@ -5,4 +5,3 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "O FitCheck só usa a tua localização enquanto usas a app, para sugestões de looks com base no tempo. Não segue a tua localização em segundo plano.";
 "NSMicrophoneUsageDescription" = "O FitCheck usa o microfone para poderes pedir sugestões de looks ao assistente de voz.";
 "NSSpeechRecognitionUsageDescription" = "O FitCheck usa o reconhecimento de voz para entender os teus pedidos.";
-"NSUserTrackingUsageDescription" = "A tua autorização é usada para mostrar anúncios mais relevantes. A app funciona normalmente se recusares.";

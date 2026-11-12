@@ -5,4 +5,3 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "يستخدم FitCheck موقعك فقط أثناء استخدام التطبيق لاقتراح تنسيقات حسب الطقس، ولا يتتبع موقعك في الخلفية.";
 "NSMicrophoneUsageDescription" = "يستخدم FitCheck الميكروفون لتطلب من المساعد الصوتي اقتراحات للتنسيق.";
 "NSSpeechRecognitionUsageDescription" = "يستخدم FitCheck التعرف على الكلام لفهم طلباتك الصوتية.";
-"NSUserTrackingUsageDescription" = "يُستخدم إذنك لعرض إعلانات أكثر ملاءمة لك. يعمل التطبيق بشكل طبيعي إذا رفضت.";

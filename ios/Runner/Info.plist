@@ -63,8 +63,6 @@
 	<string>FitCheck uses the microphone so you can ask the voice assistant for outfit suggestions.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>FitCheck uses speech recognition to understand your voice requests.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Your permission is used to show you more relevant ads. The app works normally if you decline.</string>
 	<!-- Analytics is opt-in; the app enables it only after user consent. -->
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<false/>

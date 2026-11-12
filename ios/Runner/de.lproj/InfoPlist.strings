@@ -5,4 +5,3 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "FitCheck nutzt deinen Standort nur während der App-Nutzung für wetterbasierte Outfit-Vorschläge. Es findet keine Standortverfolgung im Hintergrund statt.";
 "NSMicrophoneUsageDescription" = "FitCheck nutzt das Mikrofon, damit du den Sprachassistenten nach Outfit-Vorschlägen fragen kannst.";
 "NSSpeechRecognitionUsageDescription" = "FitCheck nutzt die Spracherkennung, um deine Sprachanfragen zu verstehen.";
-"NSUserTrackingUsageDescription" = "Deine Erlaubnis wird genutzt, um dir relevantere Werbung zu zeigen. Die App funktioniert auch ohne Zustimmung normal.";

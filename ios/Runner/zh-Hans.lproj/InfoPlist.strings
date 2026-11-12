@@ -5,4 +5,3 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "FitCheck 仅在你使用应用时使用位置，用于基于天气的穿搭推荐，不会在后台追踪你的位置。";
 "NSMicrophoneUsageDescription" = "FitCheck 使用麦克风，方便你向语音助手询问穿搭建议。";
 "NSSpeechRecognitionUsageDescription" = "FitCheck 使用语音识别来理解你的语音请求。";
-"NSUserTrackingUsageDescription" = "你的授权将用于展示更相关的广告。拒绝后应用仍可正常使用。";
