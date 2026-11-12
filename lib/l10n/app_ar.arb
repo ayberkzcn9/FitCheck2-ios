@@ -1290,5 +1290,17 @@
   "bugunKaydedildi": "تم الحفظ",
   "bugunGiydildi": "تم الارتداء",
   "ozellikYakinda": "هذه الميزة قادمة قريبًا",
-  "duelloGeri": "رجوع"
+  "duelloGeri": "رجوع",
+  "premiumOzellikMagazaIos": "يُدار عبر App Store",
+  "premiumMagazaHazirDegilIos": "App Store غير متاح حاليًا. حاول مرة أخرى.",
+  "premiumKosullarLinki": "شروط الاستخدام (EULA)",
+  "erisimDogruCevap": "إجابة صحيحة",
+  "erisimYanlisCevap": "إجابة خاطئة",
+  "renkTuruncu": "برتقالي",
+  "renkSari": "أصفر",
+  "renkMor": "بنفسجي",
+  "renkPembe": "وردي",
+  "renkHaki": "كاكي",
+  "renkEkru": "إكرو",
+  "renkBordo": "عنابي"
 }

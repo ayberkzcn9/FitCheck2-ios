@@ -3591,4 +3591,41 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get duelloGeri => 'رجوع';
+
+  @override
+  String get premiumOzellikMagazaIos => 'يُدار عبر App Store';
+
+  @override
+  String get premiumMagazaHazirDegilIos =>
+      'App Store غير متاح حاليًا. حاول مرة أخرى.';
+
+  @override
+  String get premiumKosullarLinki => 'شروط الاستخدام (EULA)';
+
+  @override
+  String get erisimDogruCevap => 'إجابة صحيحة';
+
+  @override
+  String get erisimYanlisCevap => 'إجابة خاطئة';
+
+  @override
+  String get renkTuruncu => 'برتقالي';
+
+  @override
+  String get renkSari => 'أصفر';
+
+  @override
+  String get renkMor => 'بنفسجي';
+
+  @override
+  String get renkPembe => 'وردي';
+
+  @override
+  String get renkHaki => 'كاكي';
+
+  @override
+  String get renkEkru => 'إكرو';
+
+  @override
+  String get renkBordo => 'عنابي';
 }

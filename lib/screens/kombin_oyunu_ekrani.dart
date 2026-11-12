@@ -820,7 +820,7 @@ class _KombinOyunuEkraniState extends State<KombinOyunuEkrani> with SingleTicker
                   return Semantics(
                     button: true,
                     selected: secili,
-                    label: '${l10n.tr(secenek.aciklamaKey) ?? secenek.aciklamaKey}${dogru ? ', doğru cevap' : yanlis ? ', yanlış cevap' : ''}',
+                    label: '${l10n.tr(secenek.aciklamaKey) ?? secenek.aciklamaKey}${dogru ? ', ${l10n.erisimDogruCevap}' : yanlis ? ', ${l10n.erisimYanlisCevap}' : ''}',
                     child: Material(
                       color: bgColor,
                       borderRadius: BorderRadius.circular(16),

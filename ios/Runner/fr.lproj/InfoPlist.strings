@@ -1,0 +1,8 @@
+"NSCameraUsageDescription" = "FitCheck utilise l’appareil photo pour que tu puisses photographier tes vêtements et les ajouter à ta garde-robe.";
+"NSPhotoLibraryUsageDescription" = "FitCheck a besoin d’accéder à tes photos pour que tu choisisses des vêtements à ajouter à ta garde-robe.";
+"NSPhotoLibraryAddUsageDescription" = "FitCheck enregistre dans ta photothèque les images de tenues que tu crées.";
+"NSLocationWhenInUseUsageDescription" = "FitCheck utilise ta position pour afficher la météo locale et suggérer des tenues adaptées.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "FitCheck n’utilise ta position que pendant l’utilisation de l’app, pour des suggestions de tenues selon la météo. Aucun suivi en arrière-plan.";
+"NSMicrophoneUsageDescription" = "FitCheck utilise le micro pour que tu puisses demander des suggestions de tenues à l’assistant vocal.";
+"NSSpeechRecognitionUsageDescription" = "FitCheck utilise la reconnaissance vocale pour comprendre tes demandes.";
+"NSUserTrackingUsageDescription" = "Ton autorisation sert à afficher des publicités plus pertinentes. L’app fonctionne normalement si tu refuses.";

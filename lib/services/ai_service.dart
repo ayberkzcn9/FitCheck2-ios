@@ -356,7 +356,6 @@ class AiService {
   Future<String> sadeceMetinSorgula({
     required String sistemPromptu,
     required String kullaniciMesaji,
-    String varsayilanYorum = '✨ Parçaları başarıyla değiştirdin!',
   }) {
     return _hibritIstek(
       sistemPromptu: sistemPromptu,

@@ -3409,4 +3409,40 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get duelloGeri => '返回';
+
+  @override
+  String get premiumOzellikMagazaIos => '通过 App Store 管理';
+
+  @override
+  String get premiumMagazaHazirDegilIos => 'App Store 目前不可用，请重试。';
+
+  @override
+  String get premiumKosullarLinki => '使用条款（EULA）';
+
+  @override
+  String get erisimDogruCevap => '正确答案';
+
+  @override
+  String get erisimYanlisCevap => '错误答案';
+
+  @override
+  String get renkTuruncu => '橙色';
+
+  @override
+  String get renkSari => '黄色';
+
+  @override
+  String get renkMor => '紫色';
+
+  @override
+  String get renkPembe => '粉色';
+
+  @override
+  String get renkHaki => '卡其色';
+
+  @override
+  String get renkEkru => '米白色';
+
+  @override
+  String get renkBordo => '酒红色';
 }

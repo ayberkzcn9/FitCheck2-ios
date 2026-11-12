@@ -3650,4 +3650,41 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get duelloGeri => 'Indietro';
+
+  @override
+  String get premiumOzellikMagazaIos => 'Gestito tramite l\'App Store';
+
+  @override
+  String get premiumMagazaHazirDegilIos =>
+      'L\'App Store non è disponibile al momento. Riprova.';
+
+  @override
+  String get premiumKosullarLinki => 'Termini di utilizzo (EULA)';
+
+  @override
+  String get erisimDogruCevap => 'risposta corretta';
+
+  @override
+  String get erisimYanlisCevap => 'risposta sbagliata';
+
+  @override
+  String get renkTuruncu => 'Arancione';
+
+  @override
+  String get renkSari => 'Giallo';
+
+  @override
+  String get renkMor => 'Viola';
+
+  @override
+  String get renkPembe => 'Rosa';
+
+  @override
+  String get renkHaki => 'Cachi';
+
+  @override
+  String get renkEkru => 'Écru';
+
+  @override
+  String get renkBordo => 'Bordeaux';
 }

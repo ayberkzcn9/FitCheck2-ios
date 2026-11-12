@@ -1290,5 +1290,17 @@
   "bugunKaydedildi": "Сохранено",
   "bugunGiydildi": "Надето",
   "ozellikYakinda": "Эта функция скоро появится",
-  "duelloGeri": "Назад"
+  "duelloGeri": "Назад",
+  "premiumOzellikMagazaIos": "Управляется через App Store",
+  "premiumMagazaHazirDegilIos": "App Store сейчас недоступен. Попробуй ещё раз.",
+  "premiumKosullarLinki": "Условия использования (EULA)",
+  "erisimDogruCevap": "правильный ответ",
+  "erisimYanlisCevap": "неправильный ответ",
+  "renkTuruncu": "Оранжевый",
+  "renkSari": "Жёлтый",
+  "renkMor": "Фиолетовый",
+  "renkPembe": "Розовый",
+  "renkHaki": "Хаки",
+  "renkEkru": "Экрю",
+  "renkBordo": "Бордовый"
 }

@@ -3626,4 +3626,41 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get duelloGeri => 'Назад';
+
+  @override
+  String get premiumOzellikMagazaIos => 'Управляется через App Store';
+
+  @override
+  String get premiumMagazaHazirDegilIos =>
+      'App Store сейчас недоступен. Попробуй ещё раз.';
+
+  @override
+  String get premiumKosullarLinki => 'Условия использования (EULA)';
+
+  @override
+  String get erisimDogruCevap => 'правильный ответ';
+
+  @override
+  String get erisimYanlisCevap => 'неправильный ответ';
+
+  @override
+  String get renkTuruncu => 'Оранжевый';
+
+  @override
+  String get renkSari => 'Жёлтый';
+
+  @override
+  String get renkMor => 'Фиолетовый';
+
+  @override
+  String get renkPembe => 'Розовый';
+
+  @override
+  String get renkHaki => 'Хаки';
+
+  @override
+  String get renkEkru => 'Экрю';
+
+  @override
+  String get renkBordo => 'Бордовый';
 }

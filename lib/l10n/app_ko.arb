@@ -1290,5 +1290,17 @@
   "bugunKaydedildi": "저장됨",
   "bugunGiydildi": "착용함",
   "ozellikYakinda": "이 기능은 곧 제공됩니다",
-  "duelloGeri": "이전"
+  "duelloGeri": "이전",
+  "premiumOzellikMagazaIos": "App Store에서 관리됩니다",
+  "premiumMagazaHazirDegilIos": "지금은 App Store에 연결할 수 없습니다. 다시 시도해 주세요.",
+  "premiumKosullarLinki": "이용 약관(EULA)",
+  "erisimDogruCevap": "정답",
+  "erisimYanlisCevap": "오답",
+  "renkTuruncu": "주황색",
+  "renkSari": "노란색",
+  "renkMor": "보라색",
+  "renkPembe": "분홍색",
+  "renkHaki": "카키색",
+  "renkEkru": "에크루",
+  "renkBordo": "버건디"
 }

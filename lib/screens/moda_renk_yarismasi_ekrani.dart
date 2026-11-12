@@ -425,7 +425,7 @@ class _ModaRenkYarismasiEkraniState extends State<ModaRenkYarismasiEkrani> with 
                           child: Semantics(
                             button: true,
                             selected: secili,
-                            label: '${soru.secenekler[i]}${dogru ? ', doğru cevap' : yanlis ? ', yanlış cevap' : ''}',
+                            label: '${soru.secenekler[i]}${dogru ? ', ${l10n.erisimDogruCevap}' : yanlis ? ', ${l10n.erisimYanlisCevap}' : ''}',
                             child: Material(
                               color: fill,
                               borderRadius: BorderRadius.circular(16),

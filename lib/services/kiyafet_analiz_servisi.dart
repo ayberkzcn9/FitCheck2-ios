@@ -75,7 +75,7 @@ English: black, white, navy, blue, turquoise, red, burgundy, coral, green, mint,
       resim: resim,
       deneme: deneme,
     );
-    return coz(cevap);
+    return coz(cevap, dil: dil);
   }
 
   /// Ağ çağrısı; hata durumunda yeniden dener.
@@ -105,11 +105,28 @@ English: black, white, navy, blue, turquoise, red, burgundy, coral, green, mint,
     throw sonHata ?? const AiServiceException();
   }
 
+  /// Model ürün adı döndürmezse kullanılan, uygulama dilindeki başlık.
+  /// [dil] `aiHedefDil` çıktısıdır (ör. 'TURKISH').
+  static String _varsayilanBaslik(String dil) => switch (dil) {
+        'TURKISH' => 'Yeni Giyim Parçası',
+        'GERMAN' => 'Neues Kleidungsstück',
+        'FRENCH' => 'Nouveau vêtement',
+        'SPANISH' => 'Nueva prenda',
+        'ITALIAN' => 'Nuovo capo',
+        'PORTUGUESE' => 'Nova peça',
+        'RUSSIAN' => 'Новая вещь',
+        'ARABIC' => 'قطعة ملابس جديدة',
+        'JAPANESE' => '新しいアイテム',
+        'KOREAN' => '새 의류',
+        'CHINESE' => '新衣物',
+        _ => 'New Clothing Item',
+      };
+
   /// Model cevabını (JSON metni) alanlara ayırır.
   ///
   /// Başlık en fazla 3 kelimeye kırpılır; kategori küçük harfe indirilir;
   /// mevsim standart değerlere normalleştirilir.
-  static KiyafetAnalizi coz(String hamCevap) {
+  static KiyafetAnalizi coz(String hamCevap, {String dil = 'ENGLISH'}) {
     var clean = hamCevap.replaceAll(RegExp(r'```json\s*|```\s*'), '').trim();
     final ilkSusal = clean.indexOf('{');
     final sonSusal = clean.lastIndexOf('}');
@@ -119,7 +136,7 @@ English: black, white, navy, blue, turquoise, red, burgundy, coral, green, mint,
 
     final parsed = safeJsonDecodeMap(clean, tag: 'ai_analiz');
 
-    var baslik = metniGuvenliYap(parsed['baslik'] ?? 'Yeni Giyim Parçası');
+    var baslik = metniGuvenliYap(parsed['baslik'] ?? _varsayilanBaslik(dil));
     final kelimeler =
         baslik.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
     if (kelimeler.length > 3) {

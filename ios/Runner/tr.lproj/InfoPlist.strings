@@ -1,0 +1,8 @@
+"NSCameraUsageDescription" = "Kıyafetlerinizin fotoğrafını çekip gardırobunuza eklemek için kameraya erişim gerekiyor.";
+"NSPhotoLibraryUsageDescription" = "Gardırobunuza kıyafet eklemek için galerinizden fotoğraf seçmeniz gerekiyor.";
+"NSPhotoLibraryAddUsageDescription" = "Oluşturduğunuz kombin görsellerini kaydetmek için galeriye erişim gerekiyor.";
+"NSLocationWhenInUseUsageDescription" = "Bulunduğunuz konuma göre günlük hava durumunu ve kombin önerilerini göstermek için konumunuza erişim gerekiyor.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "FitCheck konumu yalnızca uygulamayı kullanırken hava durumu ve kombin önerileri için işler. Arka planda konum takibi yapmaz.";
+"NSMicrophoneUsageDescription" = "Sesli asistan ile kombin önerisi alabilmeniz için mikrofona erişim gerekiyor.";
+"NSSpeechRecognitionUsageDescription" = "Sesli komutlarınızı anlamak için konuşma tanıma özelliği kullanılır.";
+"NSUserTrackingUsageDescription" = "Size daha uygun reklamlar gösterebilmek için izleme izni kullanılır. İzin vermezseniz uygulama normal çalışır.";

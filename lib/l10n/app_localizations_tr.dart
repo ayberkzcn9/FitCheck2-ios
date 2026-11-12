@@ -3614,4 +3614,41 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get duelloGeri => 'Geri';
+
+  @override
+  String get premiumOzellikMagazaIos => 'App Store üzerinden yönetilir';
+
+  @override
+  String get premiumMagazaHazirDegilIos =>
+      'App Store bağlantısı hazır değil. Lütfen tekrar deneyin.';
+
+  @override
+  String get premiumKosullarLinki => 'Kullanım Koşulları (EULA)';
+
+  @override
+  String get erisimDogruCevap => 'doğru cevap';
+
+  @override
+  String get erisimYanlisCevap => 'yanlış cevap';
+
+  @override
+  String get renkTuruncu => 'Turuncu';
+
+  @override
+  String get renkSari => 'Sarı';
+
+  @override
+  String get renkMor => 'Mor';
+
+  @override
+  String get renkPembe => 'Pembe';
+
+  @override
+  String get renkHaki => 'Haki';
+
+  @override
+  String get renkEkru => 'Ekru';
+
+  @override
+  String get renkBordo => 'Bordo';
 }

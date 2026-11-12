@@ -1290,5 +1290,17 @@
   "bugunKaydedildi": "保存済み",
   "bugunGiydildi": "着用済み",
   "ozellikYakinda": "この機能は近日公開予定です",
-  "duelloGeri": "戻る"
+  "duelloGeri": "戻る",
+  "premiumOzellikMagazaIos": "App Storeで管理されます",
+  "premiumMagazaHazirDegilIos": "App Storeに接続できません。もう一度お試しください。",
+  "premiumKosullarLinki": "利用規約（EULA）",
+  "erisimDogruCevap": "正解",
+  "erisimYanlisCevap": "不正解",
+  "renkTuruncu": "オレンジ",
+  "renkSari": "黄色",
+  "renkMor": "紫",
+  "renkPembe": "ピンク",
+  "renkHaki": "カーキ",
+  "renkEkru": "エクリュ",
+  "renkBordo": "ボルドー"
 }

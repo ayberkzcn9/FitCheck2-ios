@@ -6,6 +6,21 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>tr</string>
+		<string>de</string>
+		<string>fr</string>
+		<string>es</string>
+		<string>it</string>
+		<string>pt</string>
+		<string>ru</string>
+		<string>ar</string>
+		<string>ja</string>
+		<string>ko</string>
+		<string>zh-Hans</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>FitCheck</string>
 	<key>CFBundleExecutable</key>
@@ -33,32 +48,29 @@
 		<string>remote-notification</string>
 	</array>
 
-	<!-- İZİN AÇIKLAMALARI (App Store reddetmesin diye ZORUNLU) -->
+	<!-- Permission purpose strings (English base; localized in *.lproj/InfoPlist.strings) -->
 	<key>NSCameraUsageDescription</key>
-	<string>Kıyafetlerinizin fotoğrafını çekip gardırobunuza eklemek için kameraya erişim gerekiyor.</string>
+	<string>FitCheck uses the camera so you can photograph your clothes and add them to your wardrobe.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Gardırobunuza kıyafet eklemek için galerinizden fotoğraf seçmeniz gerekiyor.</string>
+	<string>FitCheck needs access to your photos so you can choose clothing pictures to add to your wardrobe.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Oluşturduğunuz kombin görsellerini kaydetmek için galeriye erişim gerekiyor.</string>
+	<string>FitCheck saves the outfit images you create to your photo library.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Bulunduğunuz konuma göre günlük hava durumunu ve kombin önerilerini göstermek için konumunuza erişim gerekiyor.</string>
+	<string>FitCheck uses your location to show the local weather and suggest outfits that suit it.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>FitCheck konumu yalnızca uygulamayı kullanırken hava durumu ve kombin önerileri için işler. Arka planda konum takibi yapmaz ve uygulama kapalıyken konumunuza erişmez.</string>
+	<string>FitCheck only uses your location while you are using the app, for weather-based outfit suggestions. It does not track your location in the background.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Sesli asistan ile kombin önerisi alabilmeniz için mikrofona erişim gerekiyor.</string>
+	<string>FitCheck uses the microphone so you can ask the voice assistant for outfit suggestions.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Sesli komutlarınızı anlamak için konuşma tanıma özelliği kullanılır.</string>
+	<string>FitCheck uses speech recognition to understand your voice requests.</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Size daha uygun reklamlar gösterebilmek için izleme izni kullanılır. İzin vermezseniz uygulama normal çalışır.</string>
+	<string>Your permission is used to show you more relevant ads. The app works normally if you decline.</string>
 	<!-- Analytics is opt-in; the app enables it only after user consent. -->
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<false/>
 
-	<!-- Yerel ağ (yerel RemBG sunucusu için) -->
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Arka plan silme sunucusuna bağlanmak için yerel ağ erişimi kullanılır.</string>
 
-	<!-- Google Reklam (AdMob) iOS uygulama kimliği -->
+	<!-- Google AdMob iOS app ID -->
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7826590886723969~8662375996</string>
 	<key>SKAdNetworkItems</key>
@@ -100,15 +112,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
 
-	<!-- Google Sign-In iOS için gerekli URL şeması -->
+	<!-- Google Sign-In URL scheme -->
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

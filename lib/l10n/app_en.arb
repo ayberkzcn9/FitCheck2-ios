@@ -1290,5 +1290,17 @@
   "bugunKaydedildi": "Saved",
   "bugunGiydildi": "Worn",
   "ozellikYakinda": "This feature is coming soon",
-  "duelloGeri": "Back"
+  "duelloGeri": "Back",
+  "premiumOzellikMagazaIos": "Managed through the App Store",
+  "premiumMagazaHazirDegilIos": "The App Store is not available right now. Please try again.",
+  "premiumKosullarLinki": "Terms of Use (EULA)",
+  "erisimDogruCevap": "correct answer",
+  "erisimYanlisCevap": "wrong answer",
+  "renkTuruncu": "Orange",
+  "renkSari": "Yellow",
+  "renkMor": "Purple",
+  "renkPembe": "Pink",
+  "renkHaki": "Khaki",
+  "renkEkru": "Ecru",
+  "renkBordo": "Burgundy"
 }

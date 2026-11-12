@@ -3479,4 +3479,41 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get duelloGeri => '이전';
+
+  @override
+  String get premiumOzellikMagazaIos => 'App Store에서 관리됩니다';
+
+  @override
+  String get premiumMagazaHazirDegilIos =>
+      '지금은 App Store에 연결할 수 없습니다. 다시 시도해 주세요.';
+
+  @override
+  String get premiumKosullarLinki => '이용 약관(EULA)';
+
+  @override
+  String get erisimDogruCevap => '정답';
+
+  @override
+  String get erisimYanlisCevap => '오답';
+
+  @override
+  String get renkTuruncu => '주황색';
+
+  @override
+  String get renkSari => '노란색';
+
+  @override
+  String get renkMor => '보라색';
+
+  @override
+  String get renkPembe => '분홍색';
+
+  @override
+  String get renkHaki => '카키색';
+
+  @override
+  String get renkEkru => '에크루';
+
+  @override
+  String get renkBordo => '버건디';
 }

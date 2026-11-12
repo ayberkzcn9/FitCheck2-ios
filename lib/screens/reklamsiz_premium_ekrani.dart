@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/satin_alma_servisi.dart';
@@ -134,7 +135,10 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
                 style: TextStyle(color: colors.onSurfaceVariant)),
           ] else if (!_satinAlma.hazirlaniyor && !_satinAlma.magazaHazir) ...[
             const SizedBox(height: AppSpacing.md),
-            Text(l10n.premiumMagazaHazirDegil,
+            Text(
+                _iosMu
+                    ? l10n.premiumMagazaHazirDegilIos
+                    : l10n.premiumMagazaHazirDegil,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: colors.onSurfaceVariant)),
           ] else if (!_satinAlma.hazirlaniyor &&
@@ -468,10 +472,51 @@ class _ReklamsizPremiumEkraniState extends State<ReklamsizPremiumEkrani> {
         Text(l10n.premiumYenilemeNotu,
             textAlign: TextAlign.center, style: stil),
         const SizedBox(height: 6),
-        Text(l10n.premiumOzellikMagaza,
-            textAlign: TextAlign.center, style: stil),
+        Text(
+            _iosMu
+                ? l10n.premiumOzellikMagazaIos
+                : l10n.premiumOzellikMagaza,
+            textAlign: TextAlign.center,
+            style: stil),
+        const SizedBox(height: AppSpacing.sm),
+        // Otomatik yenilenen abonelikte gizlilik politikası ve kullanım
+        // koşulları bağlantıları satın alma ekranında zorunlu
+        // (App Store Kılavuzu 3.1.2).
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: AppSpacing.md,
+          children: [
+            TextButton(
+              onPressed: () => _baglantiAc(_gizlilikUrl),
+              child: Text(l10n.gizlilikPolitikasiTitle,
+                  style: const TextStyle(fontSize: AppText.sizeCaption)),
+            ),
+            TextButton(
+              onPressed: () => _baglantiAc(_kosullarUrl),
+              child: Text(l10n.premiumKosullarLinki,
+                  style: const TextStyle(fontSize: AppText.sizeCaption)),
+            ),
+          ],
+        ),
       ],
     );
+  }
+
+  static const String _gizlilikUrl =
+      'https://ayberkzcn9.github.io/fitcheck-privacy/';
+
+  /// Apple'ın standart son kullanıcı lisans sözleşmesi (EULA).
+  static const String _kosullarUrl =
+      'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
+
+  bool get _iosMu => !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
+
+  Future<void> _baglantiAc(String adres) async {
+    try {
+      await launchUrl(Uri.parse(adres), mode: LaunchMode.externalApplication);
+    } catch (e) {
+      debugPrint('Bağlantı açılamadı: $e');
+    }
   }
 }
 

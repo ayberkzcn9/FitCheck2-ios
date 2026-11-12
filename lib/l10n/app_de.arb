@@ -1290,5 +1290,17 @@
   "bugunKaydedildi": "Gespeichert",
   "bugunGiydildi": "Getragen",
   "ozellikYakinda": "Diese Funktion wird bald verfügbar sein",
-  "duelloGeri": "Zurück"
+  "duelloGeri": "Zurück",
+  "premiumOzellikMagazaIos": "Verwaltung über den App Store",
+  "premiumMagazaHazirDegilIos": "Der App Store ist gerade nicht verfügbar. Bitte versuche es erneut.",
+  "premiumKosullarLinki": "Nutzungsbedingungen (EULA)",
+  "erisimDogruCevap": "richtige Antwort",
+  "erisimYanlisCevap": "falsche Antwort",
+  "renkTuruncu": "Orange",
+  "renkSari": "Gelb",
+  "renkMor": "Lila",
+  "renkPembe": "Rosa",
+  "renkHaki": "Khaki",
+  "renkEkru": "Ecru",
+  "renkBordo": "Bordeaux"
 }

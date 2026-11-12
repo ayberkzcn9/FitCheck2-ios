@@ -1,0 +1,8 @@
+"NSCameraUsageDescription" = "يستخدم FitCheck الكاميرا لتتمكن من تصوير ملابسك وإضافتها إلى خزانتك.";
+"NSPhotoLibraryUsageDescription" = "يحتاج FitCheck إلى الوصول إلى صورك لتختار صور الملابس وتضيفها إلى خزانتك.";
+"NSPhotoLibraryAddUsageDescription" = "يحفظ FitCheck صور التنسيقات التي تنشئها في مكتبة الصور.";
+"NSLocationWhenInUseUsageDescription" = "يستخدم FitCheck موقعك لعرض الطقس المحلي واقتراح تنسيقات مناسبة.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "يستخدم FitCheck موقعك فقط أثناء استخدام التطبيق لاقتراح تنسيقات حسب الطقس، ولا يتتبع موقعك في الخلفية.";
+"NSMicrophoneUsageDescription" = "يستخدم FitCheck الميكروفون لتطلب من المساعد الصوتي اقتراحات للتنسيق.";
+"NSSpeechRecognitionUsageDescription" = "يستخدم FitCheck التعرف على الكلام لفهم طلباتك الصوتية.";
+"NSUserTrackingUsageDescription" = "يُستخدم إذنك لعرض إعلانات أكثر ملاءمة لك. يعمل التطبيق بشكل طبيعي إذا رفضت.";

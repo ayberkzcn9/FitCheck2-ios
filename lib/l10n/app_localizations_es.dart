@@ -3656,4 +3656,41 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get duelloGeri => 'Atrás';
+
+  @override
+  String get premiumOzellikMagazaIos => 'Se gestiona a través del App Store';
+
+  @override
+  String get premiumMagazaHazirDegilIos =>
+      'El App Store no está disponible ahora mismo. Inténtalo de nuevo.';
+
+  @override
+  String get premiumKosullarLinki => 'Términos de uso (EULA)';
+
+  @override
+  String get erisimDogruCevap => 'respuesta correcta';
+
+  @override
+  String get erisimYanlisCevap => 'respuesta incorrecta';
+
+  @override
+  String get renkTuruncu => 'Naranja';
+
+  @override
+  String get renkSari => 'Amarillo';
+
+  @override
+  String get renkMor => 'Morado';
+
+  @override
+  String get renkPembe => 'Rosa';
+
+  @override
+  String get renkHaki => 'Caqui';
+
+  @override
+  String get renkEkru => 'Crudo';
+
+  @override
+  String get renkBordo => 'Burdeos';
 }

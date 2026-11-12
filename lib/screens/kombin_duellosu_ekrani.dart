@@ -881,7 +881,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
       child: Semantics(
         button: true,
         selected: secildi,
-        label: _kartEtiketi(etiket, kart),
+        label: _kartEtiketi(AppLocalizations.of(context)!, etiket, kart),
         child: GestureDetector(
           onTap: cevaplandi ? null : () => _sec(etiket == 'A'),
           child: AnimatedContainer(
@@ -955,12 +955,36 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
     );
   }
 
+  /// Renk kartı düellosundaki sabit (Türkçe) palet adlarını uygulama diline
+  /// çevirir; ekran okuyucu başka dilde Türkçe renk adı okumasın.
+  static String _paletRenkAdi(AppLocalizations l10n, String renk) =>
+      switch (renk) {
+        'Lacivert' => l10n.kombinRenkLacivert,
+        'Beyaz' => l10n.kombinRenkBeyaz,
+        'Kahverengi' => l10n.kombinRenkKahverengi,
+        'Siyah' => l10n.kombinRenkSiyah,
+        'Bej' => l10n.kombinRenkBej,
+        'Gri' => l10n.kombinRenkGri,
+        'Yeşil' => l10n.kombinRenkYesil,
+        'Kırmızı' => l10n.kombinRenkKirmizi,
+        'Mavi' => l10n.kombinRenkMavi,
+        'Turuncu' => l10n.renkTuruncu,
+        'Sarı' => l10n.renkSari,
+        'Mor' => l10n.renkMor,
+        'Pembe' => l10n.renkPembe,
+        'Haki' => l10n.renkHaki,
+        'Ekru' => l10n.renkEkru,
+        'Bordo' => l10n.renkBordo,
+        _ => renk,
+      };
+
   /// Ekran okuyucu için kart açıklaması: "A: Beyaz Tişört, Siyah Pantolon".
   ///
   /// Parça adı yoksa (renk kartı düellosu) rengi kullanılır.
-  static String _kartEtiketi(String etiket, DuelKarti kart) {
+  static String _kartEtiketi(
+      AppLocalizations l10n, String etiket, DuelKarti kart) {
     final parcalar = kart.parcalar
-        .map((p) => p.kiyafet?.gorunenBaslik ?? p.renk)
+        .map((p) => p.kiyafet?.gorunenBaslik ?? _paletRenkAdi(l10n, p.renk))
         .where((ad) => ad.trim().isNotEmpty)
         .toList();
     if (parcalar.isEmpty) return etiket;

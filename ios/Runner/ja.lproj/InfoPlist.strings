@@ -1,0 +1,8 @@
+"NSCameraUsageDescription" = "FitCheckは服を撮影してワードローブに追加するためにカメラを使用します。";
+"NSPhotoLibraryUsageDescription" = "FitCheckはワードローブに追加する服の写真を選ぶために写真へのアクセスが必要です。";
+"NSPhotoLibraryAddUsageDescription" = "FitCheckは作成したコーデ画像を写真ライブラリに保存します。";
+"NSLocationWhenInUseUsageDescription" = "FitCheckは現在地の天気を表示し、天気に合うコーデを提案するために位置情報を使用します。";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "FitCheckはアプリ使用中のみ、天気に基づくコーデ提案のために位置情報を使用します。バックグラウンドで追跡することはありません。";
+"NSMicrophoneUsageDescription" = "FitCheckは音声アシスタントにコーデを相談できるようマイクを使用します。";
+"NSSpeechRecognitionUsageDescription" = "FitCheckは音声リクエストを理解するために音声認識を使用します。";
+"NSUserTrackingUsageDescription" = "許可いただくと、より関連性の高い広告を表示します。許可しなくてもアプリは通常どおり使えます。";

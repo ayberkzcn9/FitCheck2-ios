@@ -6633,6 +6633,78 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Geri'**
   String get duelloGeri;
+
+  /// No description provided for @premiumOzellikMagazaIos.
+  ///
+  /// In tr, this message translates to:
+  /// **'App Store üzerinden yönetilir'**
+  String get premiumOzellikMagazaIos;
+
+  /// No description provided for @premiumMagazaHazirDegilIos.
+  ///
+  /// In tr, this message translates to:
+  /// **'App Store bağlantısı hazır değil. Lütfen tekrar deneyin.'**
+  String get premiumMagazaHazirDegilIos;
+
+  /// No description provided for @premiumKosullarLinki.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanım Koşulları (EULA)'**
+  String get premiumKosullarLinki;
+
+  /// No description provided for @erisimDogruCevap.
+  ///
+  /// In tr, this message translates to:
+  /// **'doğru cevap'**
+  String get erisimDogruCevap;
+
+  /// No description provided for @erisimYanlisCevap.
+  ///
+  /// In tr, this message translates to:
+  /// **'yanlış cevap'**
+  String get erisimYanlisCevap;
+
+  /// No description provided for @renkTuruncu.
+  ///
+  /// In tr, this message translates to:
+  /// **'Turuncu'**
+  String get renkTuruncu;
+
+  /// No description provided for @renkSari.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sarı'**
+  String get renkSari;
+
+  /// No description provided for @renkMor.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mor'**
+  String get renkMor;
+
+  /// No description provided for @renkPembe.
+  ///
+  /// In tr, this message translates to:
+  /// **'Pembe'**
+  String get renkPembe;
+
+  /// No description provided for @renkHaki.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haki'**
+  String get renkHaki;
+
+  /// No description provided for @renkEkru.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ekru'**
+  String get renkEkru;
+
+  /// No description provided for @renkBordo.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bordo'**
+  String get renkBordo;
 }
 
 class _AppLocalizationsDelegate

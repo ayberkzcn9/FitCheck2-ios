@@ -1290,5 +1290,17 @@
   "bugunKaydedildi": "已保存",
   "bugunGiydildi": "已穿着",
   "ozellikYakinda": "此功能即将推出",
-  "duelloGeri": "返回"
+  "duelloGeri": "返回",
+  "premiumOzellikMagazaIos": "通过 App Store 管理",
+  "premiumMagazaHazirDegilIos": "App Store 目前不可用，请重试。",
+  "premiumKosullarLinki": "使用条款（EULA）",
+  "erisimDogruCevap": "正确答案",
+  "erisimYanlisCevap": "错误答案",
+  "renkTuruncu": "橙色",
+  "renkSari": "黄色",
+  "renkMor": "紫色",
+  "renkPembe": "粉色",
+  "renkHaki": "卡其色",
+  "renkEkru": "米白色",
+  "renkBordo": "酒红色"
 }
