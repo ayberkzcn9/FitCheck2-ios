@@ -3,14 +3,11 @@
 <plist version="1.0">
 <dict>
 	<!-- iOS launch mode (ReklamServisi.iosLansmanUcretsiz): no ads, no ATT, no tracking.
-	     Set back to true (and DeviceID Tracking below) when ads return. -->
+	     When ads return: set NSPrivacyTracking and DeviceID Tracking to true and re-add
+	     NSPrivacyTrackingDomains: googleads.g.doubleclick.net, googleadservices.com
+	     (Apple rejects tracking domains while NSPrivacyTracking is false: ITMS-91064). -->
 	<key>NSPrivacyTracking</key>
 	<false/>
-	<key>NSPrivacyTrackingDomains</key>
-	<array>
-		<string>googleads.g.doubleclick.net</string>
-		<string>googleadservices.com</string>
-	</array>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
 		<dict>
