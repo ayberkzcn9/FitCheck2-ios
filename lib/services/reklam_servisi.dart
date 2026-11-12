@@ -20,6 +20,24 @@ class ReklamServisi {
   static const int varsayilanKiyafetLimiti = 21;
   static const int reklamOduluSlot = 2;
   static bool reklamlarEtkinMi = true;
+
+  /// iOS LANSMAN MODU — geri alınabilir tek anahtar.
+  ///
+  /// `true`: iOS'ta herkes sınırsız ve reklamsız kullanır; premium ekranı
+  /// zaten kapalıdır ([SatinAlmaServisi.premiumSunuluyor]). Premium, limit ve
+  /// reklam kodu silinmez, yalnızca devre dışı kalır. Android etkilenmez.
+  ///
+  /// Lansman bitince `false` yap ve ayrıca:
+  /// - ios/Runner/PrivacyInfo.xcprivacy: NSPrivacyTracking → true, DeviceID
+  ///   girdisinde Tracking → true (reklam/ATT geri gelir).
+  /// - App Store Connect > App Privacy: izleme (Device ID) yeniden işaretle.
+  static const bool iosLansmanUcretsiz = true;
+
+  static bool lansmanUcretsizKarari(TargetPlatform platform) =>
+      iosLansmanUcretsiz && platform == TargetPlatform.iOS;
+
+  static bool get lansmanUcretsizMi =>
+      !kIsWeb && lansmanUcretsizKarari(defaultTargetPlatform);
   static const int reklamOduluKredi = 2;
 
   /// Yönetici kuponu kaynakta tutulmaz. Yalnızca geliştirme derlemesinde,
@@ -123,7 +141,7 @@ class ReklamServisi {
         prefs.getBool('reklamsiz_premium') == true && serverDogrulamasiGecerli;
     final bool admin = adminModuAcikMi(prefs);
     // Premium ya da kuponla sınırsız (admin) kullanıcıya reklam gösterilmez.
-    reklamlarEtkinMi = !(premium || admin);
+    reklamlarEtkinMi = !(premium || admin || lansmanUcretsizMi);
   }
 
   Future<void> reklamlariKapat() async {
@@ -141,7 +159,7 @@ class ReklamServisi {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('reklamsiz_premium', false);
     final bool admin = adminModuAcikMi(prefs);
-    reklamlarEtkinMi = !admin;
+    reklamlarEtkinMi = !(admin || lansmanUcretsizMi);
     if (reklamlarEtkinMi) unawaited(reklamlariBaslat());
   }
 

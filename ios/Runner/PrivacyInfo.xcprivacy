@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- iOS launch mode (ReklamServisi.iosLansmanUcretsiz): no ads, no ATT, no tracking.
+	     Set back to true (and DeviceID Tracking below) when ads return. -->
 	<key>NSPrivacyTracking</key>
-	<true/>
+	<false/>
 	<key>NSPrivacyTrackingDomains</key>
 	<array>
 		<string>googleads.g.doubleclick.net</string>
@@ -65,7 +67,7 @@
 			<key>NSPrivacyCollectedDataTypeLinked</key>
 			<false/>
 			<key>NSPrivacyCollectedDataTypeTracking</key>
-			<true/>
+			<false/>
 			<key>NSPrivacyCollectedDataTypePurposes</key>
 			<array>
 				<string>NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising</string>

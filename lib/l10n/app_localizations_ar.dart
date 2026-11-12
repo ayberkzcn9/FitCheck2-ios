@@ -3628,4 +3628,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get renkBordo => 'عنابي';
+
+  @override
+  String get lansmanSinirsizAciklama =>
+      'عرض الإطلاق: جميع التنسيقات وتحليلات الأناقة غير محدودة ومجانية حاليًا.';
 }

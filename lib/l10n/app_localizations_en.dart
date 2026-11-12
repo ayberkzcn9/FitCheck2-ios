@@ -3658,4 +3658,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get renkBordo => 'Burgundy';
+
+  @override
+  String get lansmanSinirsizAciklama =>
+      'Launch special: all outfit and style analyses are unlimited and free for now.';
 }

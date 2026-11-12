@@ -3445,4 +3445,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get renkBordo => '酒红色';
+
+  @override
+  String get lansmanSinirsizAciklama => '上线特惠：所有穿搭推荐和风格分析暂时无限次免费使用。';
 }

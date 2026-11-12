@@ -3697,4 +3697,8 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get renkBordo => 'Bordeaux';
+
+  @override
+  String get lansmanSinirsizAciklama =>
+      'Offre de lancement : toutes les tenues et analyses de style sont illimitées et gratuites pour le moment.';
 }

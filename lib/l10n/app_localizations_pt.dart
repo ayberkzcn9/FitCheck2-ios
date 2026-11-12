@@ -3678,4 +3678,8 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get renkBordo => 'Bordeaux';
+
+  @override
+  String get lansmanSinirsizAciklama =>
+      'Especial de lançamento: todos os looks e análises de estilo são ilimitados e gratuitos por agora.';
 }

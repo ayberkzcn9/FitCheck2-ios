@@ -3516,4 +3516,8 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get renkBordo => '버건디';
+
+  @override
+  String get lansmanSinirsizAciklama =>
+      '출시 기념: 모든 코디 추천과 스타일 분석을 당분간 무제한 무료로 이용할 수 있습니다.';
 }

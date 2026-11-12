@@ -3663,4 +3663,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get renkBordo => 'Бордовый';
+
+  @override
+  String get lansmanSinirsizAciklama =>
+      'В честь запуска: все образы и анализы стиля пока безлимитны и бесплатны.';
 }

@@ -3497,4 +3497,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get renkBordo => 'ボルドー';
+
+  @override
+  String get lansmanSinirsizAciklama => 'リリース記念：コーデ提案とスタイル分析は今だけ無制限・無料です。';
 }

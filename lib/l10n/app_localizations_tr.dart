@@ -3651,4 +3651,8 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get renkBordo => 'Bordo';
+
+  @override
+  String get lansmanSinirsizAciklama =>
+      'Lansmana özel: tüm kombin ve stil analizleri şimdilik sınırsız ve ücretsiz.';
 }

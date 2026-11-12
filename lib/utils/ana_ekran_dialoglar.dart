@@ -298,7 +298,9 @@ class AnaEkranDialoglar {
                   const SizedBox(height: 8),
                   Text(
                     kalanHak >= 99999
-                        ? l10n.sinirsizHakAciklama
+                        ? (ReklamServisi.lansmanUcretsizMi
+                            ? l10n.lansmanSinirsizAciklama
+                            : l10n.sinirsizHakAciklama)
                         : l10n.gunlukHakAciklama,
                     textAlign: TextAlign.center,
                     style: TextStyle(

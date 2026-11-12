@@ -6705,6 +6705,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Bordo'**
   String get renkBordo;
+
+  /// No description provided for @lansmanSinirsizAciklama.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lansmana özel: tüm kombin ve stil analizleri şimdilik sınırsız ve ücretsiz.'**
+  String get lansmanSinirsizAciklama;
 }
 
 class _AppLocalizationsDelegate
