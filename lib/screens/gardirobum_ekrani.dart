@@ -20,6 +20,7 @@ import '../services/reklam_servisi.dart';
 import '../services/satin_alma_servisi.dart';
 import '../utils/ana_ekran_dialoglar.dart';
 import '../utils/dolap_filtresi.dart';
+import '../utils/renk_adi.dart';
 import '../ai/ai_dil.dart';
 import '../widgets/bilgi_butonu.dart';
 import '../widgets/izin_gerekce_sayfasi.dart';
@@ -563,7 +564,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
-                                          "${suAnkiKiyafet.renk} • ${_kategoriEtiketiGetir(suAnkiKiyafet.kategori, l10n)}",
+                                          "${renkAdiYerellestir(l10n, suAnkiKiyafet.renk)} • ${_kategoriEtiketiGetir(suAnkiKiyafet.kategori, l10n)}",
                                           style: TextStyle(
                                             color: Colors.white
                                                 .withValues(alpha: 0.7),
@@ -1984,7 +1985,7 @@ class GardirobumEkraniState extends State<GardirobumEkrani> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "${item.renk} • ${_kategoriEtiketiGetir(item.kategori, l10n)}",
+                        "${renkAdiYerellestir(l10n, item.renk)} • ${_kategoriEtiketiGetir(item.kategori, l10n)}",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(

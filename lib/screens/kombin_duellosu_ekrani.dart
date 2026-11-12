@@ -21,6 +21,7 @@ import '../services/analytics_servisi.dart';
 import '../services/kombin_duellosu_motoru.dart';
 import '../services/kombin_duellosu_servisi.dart';
 import '../theme/design_tokens.dart';
+import '../utils/renk_adi.dart';
 import '../widgets/bilgi_butonu.dart';
 
 class KombinDuellosuEkrani extends StatefulWidget {
@@ -958,25 +959,7 @@ class _KombinDuellosuEkraniState extends State<KombinDuellosuEkrani> {
   /// Renk kartı düellosundaki sabit (Türkçe) palet adlarını uygulama diline
   /// çevirir; ekran okuyucu başka dilde Türkçe renk adı okumasın.
   static String _paletRenkAdi(AppLocalizations l10n, String renk) =>
-      switch (renk) {
-        'Lacivert' => l10n.kombinRenkLacivert,
-        'Beyaz' => l10n.kombinRenkBeyaz,
-        'Kahverengi' => l10n.kombinRenkKahverengi,
-        'Siyah' => l10n.kombinRenkSiyah,
-        'Bej' => l10n.kombinRenkBej,
-        'Gri' => l10n.kombinRenkGri,
-        'Yeşil' => l10n.kombinRenkYesil,
-        'Kırmızı' => l10n.kombinRenkKirmizi,
-        'Mavi' => l10n.kombinRenkMavi,
-        'Turuncu' => l10n.renkTuruncu,
-        'Sarı' => l10n.renkSari,
-        'Mor' => l10n.renkMor,
-        'Pembe' => l10n.renkPembe,
-        'Haki' => l10n.renkHaki,
-        'Ekru' => l10n.renkEkru,
-        'Bordo' => l10n.renkBordo,
-        _ => renk,
-      };
+      renkAdiYerellestir(l10n, renk);
 
   /// Ekran okuyucu için kart açıklaması: "A: Beyaz Tişört, Siyah Pantolon".
   ///

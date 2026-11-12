@@ -24,6 +24,7 @@ import 'ayarlar_ekrani.dart';
 import 'izin_ekrani.dart';
 import '../l10n/app_localizations.dart';
 import '../services/analytics_servisi.dart';
+import '../services/yorum_istegi_servisi.dart';
 import '../services/bildirim_servisi.dart';
 import '../services/bildirim_zamanlayici.dart';
 import '../services/kilyafet_yukleme_servisi.dart';
@@ -231,34 +232,33 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
   // yerel puanlama penceresi açılır ve bir daha sorulmaz.
   Future<void> _degerlendirmeKontrolEt() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-
-      // Açılış sayacını artır
-      final int acilisSayisi = (prefs.getInt('acilis_sayisi') ?? 0) + 1;
-      await prefs.setInt('acilis_sayisi', acilisSayisi);
-
-      // İlk açılışta değerlendirme İSTEME
-      if (acilisSayisi < 2) return;
-
-      // "Evet, değerlendireyim" dendi ise bir daha sorma
-      final bool degerlendirildi =
-          prefs.getBool('degerlendirme_yapildi') ?? false;
-      if (degerlendirildi) return;
-
-      // Reddedildiyse her 3 açılışta bir tekrar sor
-      final int sonIsteme = prefs.getInt('degerlendirme_son_isteme') ?? 0;
-      if (acilisSayisi != 2 && acilisSayisi - sonIsteme < 3) return;
-
-      if (!mounted) return;
-
-      // Ana ekran otursun, rehber/konum diyalogları ile çakışmasın
-      await Future.delayed(const Duration(milliseconds: 2000));
-      if (!mounted) return;
-
-      await prefs.setInt('degerlendirme_son_isteme', acilisSayisi);
-      _degerlendirmeDiyaloguGoster();
+      // Yalnızca açılış sayacını artırır. İstek artık açılışta değil,
+      // kullanıcı olumlu bir şey yaptıktan sonra gösterilir
+      // (bkz. _olumluAnSonrasiYorumIste).
+      await YorumIstegiServisi.acilisiSay();
     } catch (e) {
       debugPrint('Değerlendirme kontrol hatası: $e');
+    }
+  }
+
+  /// Kombin "giydim" veya favoriye eklendi gibi olumlu bir andan sonra
+  /// çağrılır. Koşullar uygunsa puanlama sorusunu kısa bir gecikmeyle
+  /// gösterir (diğer diyalog/snackbar'larla çakışmasın diye).
+  Future<void> _olumluAnSonrasiYorumIste() async {
+    try {
+      final goster = await YorumIstegiServisi.olumluAnKaydet();
+      if (!goster) return;
+
+      await Future.delayed(const Duration(milliseconds: 3500));
+      if (!mounted) return;
+      // Üstte başka bir diyalog/sayfa varsa (ör. yıkama uyarısı) sorma.
+      if (ModalRoute.of(context)?.isCurrent != true) return;
+
+      await YorumIstegiServisi.soruldu();
+      if (!mounted) return;
+      _degerlendirmeDiyaloguGoster();
+    } catch (e) {
+      debugPrint('Olumlu an yorum isteği hatası: $e');
     }
   }
 
@@ -884,6 +884,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
             behavior: SnackBarBehavior.floating,
           ),
         );
+        // Olumlu an: kombin favoriye eklendi.
+        unawaited(_olumluAnSonrasiYorumIste());
       }
     });
   }
@@ -1260,6 +1262,8 @@ class _AnaEkraniNavigasyonState extends State<AnaEkraniNavigasyon> {
             behavior: SnackBarBehavior.floating,
           ),
         );
+        // Olumlu an: kombin "giydim" olarak işaretlendi.
+        unawaited(_olumluAnSonrasiYorumIste());
       }
     });
   }
